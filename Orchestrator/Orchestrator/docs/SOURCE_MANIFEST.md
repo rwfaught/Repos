@@ -1845,3 +1845,49 @@ production readiness behavior is registered by Phase 114.
 No production readiness is registered by Phase 114.
 
 `PHASE114_END_TO_END_INTAKE_ADMISSION_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 115 Admission To Boundary Packet Contract Registration
+
+Boundary:
+
+`PHASE_115_ADMISSION_TO_BOUNDARY_PACKET_SOURCE_TEST_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/boundary_packet.py`
+
+Registered new test files:
+
+- `tests/test_phase_115_admission_to_boundary_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_115.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic non-executing admission-to-boundary-packet
+draft contract only. Phase 115 registers packet-draft dataclasses,
+admission-posture mapping, conservative refusal for non-accepted or external
+states, packet text rendering, capability assessment preservation, no-activity
+preservation, and non-proof preservation.
+
+No worker execution, concrete substrate selection, Codex invocation, live
+routing, route execution, raw prompt-to-route implementation,
+natural-language intent inference, regex-based prompt classifier,
+provider/model execution, provider/model selection, WSL/Ollama, installer,
+Discord, OpenClaw/Hermes/bridge/adapter/platform execution, RAG/local document
+lookup implementation, web lookup implementation, reminder/scheduler
+implementation, connector execution, file operation behavior, artifact
+export/package implementation, autonomous writeback, cleanup, deletion,
+archive, production task execution, or production readiness behavior is
+registered by Phase 115.
+
+No production readiness is registered by Phase 115.
+
+`PHASE115_ADMISSION_TO_BOUNDARY_PACKET_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

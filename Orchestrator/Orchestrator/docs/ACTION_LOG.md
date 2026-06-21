@@ -1911,3 +1911,47 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   production readiness.
 
 `PHASE114_END_TO_END_INTAKE_ADMISSION_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 115 Admission To Boundary Packet Contract
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_115_ADMISSION_TO_BOUNDARY_PACKET_SOURCE_TEST_MUTATION`
+- Created source: `orchestrator/boundary_packet.py`.
+- Created tests: `tests/test_phase_115_admission_to_boundary_packet_contract.py`.
+- Created docs: `docs/PHASE_115.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: added a deterministic non-executing packet drafting contract that
+  maps accepted admission posture to direct-answer, read-only, report-only,
+  docs-only mutation, or source/test mutation packet drafts while refusing
+  non-accepted, unknown, blocked/external, platform/provider/model/runtime, and
+  production-execution postures.
+- Validation: `python -m py_compile orchestrator/boundary_packet.py
+  orchestrator/intake_admission_pipeline.py orchestrator/prompt_to_envelope.py
+  orchestrator/route_proposal.py orchestrator/request_routing.py
+  orchestrator/capability_registry.py`;
+  `python -m unittest tests.test_phase_115_admission_to_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_114_end_to_end_intake_admission_pipeline`;
+  `python -m unittest tests.test_phase_113_prompt_to_envelope_fixture_contract`;
+  `python -m unittest tests.test_phase_111_route_proposal_source_contract`;
+  `python -m unittest tests.test_phase_110_route_validator_capability_registry_integration`;
+  `python -m unittest tests.test_phase_103_domain_general_request_routing_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; command
+  status is reported in the Phase 115 worker report.
+- Explicit non-proofs: no worker execution, concrete substrate selection,
+  Codex invocation, live router, route execution, raw prompt-to-route
+  implementation, natural-language intent inference, regex-based prompt
+  classifier, provider/model execution or selection, WSL/Ollama, installer,
+  Discord, OpenClaw/Hermes/bridge/adapter/platform execution, RAG/local
+  document lookup implementation, web lookup implementation,
+  reminder/scheduler implementation, connector execution, file operation
+  behavior, artifact export/package implementation, autonomous writeback,
+  cleanup, deletion, archive, production task execution, or production
+  readiness is proven.
+- Caveat: Phase 115 source/test proof is packet drafting only; packet drafts
+  are not dispatch, worker execution, coordinator acceptance, route execution,
+  or production readiness.
+
+`PHASE115_ADMISSION_TO_BOUNDARY_PACKET_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

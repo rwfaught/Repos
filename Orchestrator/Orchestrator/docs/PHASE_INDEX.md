@@ -113,14 +113,15 @@ This file enables controlled progression through the system build.
 112. PHASE_112.md - Prompt To Envelope Inference Boundary And Fixture Doctrine
 113. PHASE_113.md - Prompt To Envelope Fixture Contract
 114. PHASE_114.md - End To End Intake Admission Pipeline
+115. PHASE_115.md - Admission To Boundary Packet Contract
 
 ---
 
 ## Current Phase
 
-Phase 114 - End To End Intake Admission Pipeline
+Phase 115 - Admission To Boundary Packet Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 114 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 115 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1190,4 +1191,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   archive, production task execution, or production readiness behavior changed.
 - Marker:
   `PHASE114_END_TO_END_INTAKE_ADMISSION_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 115 - Admission To Boundary Packet Contract
+
+- Status: locally source/test/docs-proven; Phase 115 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_115.md`.
+- Behavior: adds a deterministic non-executing admission-to-boundary-packet
+  source/test contract that drafts human-mediated packet posture from accepted
+  admission decisions without dispatching workers or selecting substrates.
+- Boundary: no worker execution, concrete substrate selection, Codex
+  invocation, live router, route execution, raw prompt-to-route implementation,
+  natural-language intent inference, regex prompt classifier, provider/model
+  execution or selection, RAG/local lookup, web lookup implementation,
+  scheduler/reminder implementation, connector execution, file operation
+  behavior, artifact export/package implementation, autonomous writeback,
+  cleanup, deletion, archive, production task execution, or production
+  readiness behavior changed.
+- Marker:
+  `PHASE115_ADMISSION_TO_BOUNDARY_PACKET_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
