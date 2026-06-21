@@ -116,14 +116,15 @@ This file enables controlled progression through the system build.
 115. PHASE_115.md - Admission To Boundary Packet Contract
 116. PHASE_116.md - Fixture To Boundary Packet Pipeline
 117. PHASE_117.md - Coordinator Review Report Contract
+118. PHASE_118.md - Manual Coordinator Review Runner Contract
 
 ---
 
 ## Current Phase
 
-Phase 117 - Coordinator Review Report Contract
+Phase 118 - Manual Coordinator Review Runner Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 117 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 118 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1253,4 +1254,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   or production readiness behavior changed.
 - Marker:
   `PHASE117_COORDINATOR_REVIEW_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 118 - Manual Coordinator Review Runner Contract
+
+- Status: locally source/test/docs-proven; Phase 118 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_118.md`.
+- Behavior: adds a deterministic manual coordinator review runner contract for
+  known explicit fixture and structured-intake cases through Phase 116 and
+  Phase 117 review report rendering.
+- Boundary: no service/API/UI, CLI framework, live prompt inference,
+  natural-language intent inference, regex prompt classifier, live router,
+  route execution, worker execution, Codex or Relay invocation, concrete
+  substrate selection, provider/model execution or selection, RAG/local lookup,
+  web lookup implementation, scheduler/reminder implementation, connector
+  execution, file operation behavior, artifact export/package implementation,
+  autonomous writeback, cleanup, deletion, archive, production task execution,
+  or production readiness behavior changed.
+- Marker:
+  `PHASE118_MANUAL_COORDINATOR_REVIEW_RUNNER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

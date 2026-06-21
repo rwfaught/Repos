@@ -1983,3 +1983,50 @@ task execution, or production readiness behavior is registered by Phase 117.
 No production readiness is registered by Phase 117.
 
 `PHASE117_COORDINATOR_REVIEW_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 118 Manual Coordinator Review Runner Contract Registration
+
+Boundary:
+
+`PHASE_118_MANUAL_COORDINATOR_REVIEW_RUNNER_CONTRACT_SOURCE_TEST_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/manual_review_runner.py`
+
+Registered new test files:
+
+- `tests/test_phase_118_manual_review_runner_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_118.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic manual coordinator review runner contract
+only. Phase 118 registers a built-in explicit fixture/structured-intake
+catalog, defensive fixture retrieval, named fixture review runs, direct
+fixture review runs, structured intake review runs, rendered review text, and
+non-proof/no-activity preservation.
+
+No service/API/UI, CLI framework, live prompt inference, raw prompt-to-route
+implementation, natural-language intent inference, regex-based prompt
+classifier, model/provider inference, live routing, route execution, worker
+execution, Codex invocation, Relay invocation, concrete substrate selection,
+provider/model execution, provider/model selection, WSL/Ollama, installer,
+Discord, OpenClaw/Hermes/bridge/adapter platform execution, RAG/local document
+lookup implementation, web lookup implementation, reminder/scheduler
+implementation, connector execution, file operation behavior, artifact
+export/package implementation, autonomous writeback, cleanup, deletion,
+archive, production task execution, or production readiness behavior is
+registered by Phase 118.
+
+No production readiness is registered by Phase 118.
+
+`PHASE118_MANUAL_COORDINATOR_REVIEW_RUNNER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
