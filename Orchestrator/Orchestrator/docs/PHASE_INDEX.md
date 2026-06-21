@@ -114,14 +114,15 @@ This file enables controlled progression through the system build.
 113. PHASE_113.md - Prompt To Envelope Fixture Contract
 114. PHASE_114.md - End To End Intake Admission Pipeline
 115. PHASE_115.md - Admission To Boundary Packet Contract
+116. PHASE_116.md - Fixture To Boundary Packet Pipeline
 
 ---
 
 ## Current Phase
 
-Phase 115 - Admission To Boundary Packet Contract
+Phase 116 - Fixture To Boundary Packet Pipeline
 
-Status: latest locally source/test/docs-proven phase; Phase 115 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 116 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1211,4 +1212,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   readiness behavior changed.
 - Marker:
   `PHASE115_ADMISSION_TO_BOUNDARY_PACKET_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 116 - Fixture To Boundary Packet Pipeline
+
+- Status: locally source/test/docs-proven; Phase 116 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_116.md`.
+- Behavior: adds a deterministic non-executing fixture/intake to boundary
+  packet pipeline that composes Phase 114 admission and Phase 115 packet
+  drafting contracts.
+- Boundary: no live prompt inference, natural-language intent inference,
+  regex prompt classifier, live router, route execution, worker execution,
+  Codex or Relay invocation, concrete substrate selection, provider/model
+  execution or selection, RAG/local lookup, web lookup implementation,
+  scheduler/reminder implementation, connector execution, file operation
+  behavior, artifact export/package implementation, autonomous writeback,
+  cleanup, deletion, archive, production task execution, or production
+  readiness behavior changed.
+- Marker:
+  `PHASE116_FIXTURE_TO_BOUNDARY_PACKET_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
