@@ -117,14 +117,15 @@ This file enables controlled progression through the system build.
 116. PHASE_116.md - Fixture To Boundary Packet Pipeline
 117. PHASE_117.md - Coordinator Review Report Contract
 118. PHASE_118.md - Manual Coordinator Review Runner Contract
+119. PHASE_119.md - Manual Review CLI Adapter Contract
 
 ---
 
 ## Current Phase
 
-Phase 118 - Manual Coordinator Review Runner Contract
+Phase 119 - Manual Review CLI Adapter Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 118 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 119 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1274,4 +1275,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   or production readiness behavior changed.
 - Marker:
   `PHASE118_MANUAL_COORDINATOR_REVIEW_RUNNER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 119 - Manual Review CLI Adapter Contract
+
+- Status: locally source/test/docs-proven; Phase 119 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_119.md`.
+- Behavior: adds a deterministic standard-library CLI-compatible adapter
+  contract over the Phase 118 manual review runner for listing built-in
+  fixtures and rendering one named fixture's coordinator review report.
+- Boundary: no service/API/UI productization, live prompt inference,
+  natural-language intent inference, regex prompt classifier, live router,
+  route execution, worker execution, Codex or Relay invocation, concrete
+  substrate selection, provider/model execution or selection, RAG/local lookup,
+  web lookup implementation, scheduler/reminder implementation, connector
+  execution, file operation behavior, artifact export/package implementation,
+  autonomous writeback, cleanup, deletion, archive, production task execution,
+  or production readiness behavior changed.
+- Marker:
+  `PHASE119_MANUAL_REVIEW_CLI_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
