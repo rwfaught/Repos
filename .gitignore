@@ -46,3 +46,9 @@
 **/build/
 **/.DS_Store
 **/Thumbs.db
+
+# Source snapshot tools may be tracked, generated archives should not be.
+!Source Files/
+!Source Files/Update-SourceFiles.ps1
+!Source Files/*.md
+Source Files/*.zip
