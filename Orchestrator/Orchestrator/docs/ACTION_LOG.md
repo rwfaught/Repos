@@ -2186,3 +2186,45 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   execution, route execution, or production readiness.
 
 `PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`
+
+## Phase 121 Manual Review CLI Runbook And Golden Smoke Contract
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_121_MANUAL_REVIEW_CLI_OPERATOR_RUNBOOK_AND_GOLDEN_SMOKE_DOCS_SOURCE_TEST_MUTATION`
+- Created docs: `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`; `docs/PHASE_121.md`.
+- Created tests:
+  `tests/test_phase_121_manual_review_cli_runbook_golden_contract.py`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: added an operator-facing manual review CLI runbook plus a golden
+  smoke test contract for documented fixture IDs, documented commands,
+  expected review sections, safe fixture success exits, and conservative
+  blocked-fixture non-zero posture.
+- Validation:
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`;
+  `python -m unittest tests.test_phase_119_manual_review_cli_adapter_contract`;
+  `python -m orchestrator.manual_review_cli --list-fixtures`;
+  `python -m orchestrator.manual_review_cli --fixture safe_direct_answer`;
+  `python -m orchestrator.manual_review_cli --fixture safe_coding_report_only`;
+  `python -m orchestrator.manual_review_cli --fixture production_execution_blocked; Write-Output "LASTEXITCODE=$LASTEXITCODE"`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no service/API/UI productization, CLI framework
+  expansion, source behavior changes to `manual_review_cli.py`, live prompt
+  inference, raw prompt-to-route implementation, natural-language intent
+  inference, regex classifier, live router, route execution, worker execution,
+  Codex invocation, Relay invocation, concrete substrate selection,
+  provider/model/runtime/platform execution or selection, WSL/Ollama,
+  installer, Discord, OpenClaw/Hermes/bridge/adapter/platform execution,
+  RAG/local document lookup implementation, web lookup implementation,
+  reminder/scheduler implementation, connector execution, file operation
+  behavior, artifact export/package implementation, autonomous writeback,
+  cleanup, deletion, archive, production task execution, or production
+  readiness is proven.
+- Caveat: Phase 121 is docs/test golden smoke only; it is not productized
+  coordinator CLI/UI, service/API/UI, dispatch, coordinator acceptance, worker
+  execution, route execution, or production readiness.
+
+`PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`

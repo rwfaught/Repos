@@ -119,14 +119,15 @@ This file enables controlled progression through the system build.
 118. PHASE_118.md - Manual Coordinator Review Runner Contract
 119. PHASE_119.md - Manual Review CLI Adapter Contract
 120. PHASE_120.md - Manual Review CLI Module Entrypoint Fix
+121. PHASE_121.md - Manual Review CLI Runbook And Golden Smoke Contract
 
 ---
 
 ## Current Phase
 
-Phase 120 - Manual Review CLI Module Entrypoint Fix
+Phase 121 - Manual Review CLI Runbook And Golden Smoke Contract
 
-Status: latest locally source/test/smoke-proven phase; Phase 120 source snapshot refresh attempted.
+Status: latest locally docs/test-proven phase; Phase 121 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1317,4 +1318,25 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 121 - Manual Review CLI Runbook And Golden Smoke Contract
+
+- Status: locally docs/test-proven; Phase 121 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_121.md`.
+- Behavior: adds an operator-facing manual review CLI runbook and a
+  source-level golden smoke contract for documented fixture listing, fixture
+  review output sections, and conservative blocked-fixture exit posture.
+- Boundary: no service/API/UI productization, CLI framework expansion, source
+  behavior changes to `manual_review_cli.py`, live prompt inference,
+  natural-language intent inference, regex prompt classifier, live router,
+  route execution, worker execution, Codex or Relay invocation, concrete
+  substrate selection, provider/model execution or selection, RAG/local lookup,
+  web lookup implementation, scheduler/reminder implementation, connector
+  execution, file operation behavior, artifact export/package implementation,
+  autonomous writeback, cleanup, deletion, archive, production task execution,
+  or production readiness behavior changed.
+- Marker:
+  `PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`.
 - Production readiness is not claimed.

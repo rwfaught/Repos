@@ -2122,3 +2122,47 @@ readiness behavior is registered by Phase 120.
 No production readiness is registered by Phase 120.
 
 `PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`
+
+## Phase 121 Manual Review CLI Runbook And Golden Smoke Contract Registration
+
+Boundary:
+
+`PHASE_121_MANUAL_REVIEW_CLI_OPERATOR_RUNBOOK_AND_GOLDEN_SMOKE_DOCS_SOURCE_TEST_MUTATION`
+
+Registered new test files:
+
+- `tests/test_phase_121_manual_review_cli_runbook_golden_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+- `docs/PHASE_121.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: docs/test golden smoke contract only. Phase 121
+registers operator-facing manual review CLI commands, expected fixture IDs,
+expected review sections, exit-code posture, troubleshooting guidance, and a
+standard-library golden contract over `build_manual_review_cli_output(...)`.
+
+No service/API/UI productization, CLI framework expansion, source behavior
+changes to `manual_review_cli.py`, live prompt inference, raw prompt-to-route
+implementation, natural-language intent inference, regex-based prompt
+classifier, model/provider inference, live routing, route execution, worker
+execution, Codex invocation, Relay invocation, concrete substrate selection,
+provider/model execution, provider/model selection, WSL/Ollama, installer,
+Discord, OpenClaw/Hermes/bridge/adapter platform execution, RAG/local document
+lookup implementation, web lookup implementation, reminder/scheduler
+implementation, connector execution, file operation behavior, artifact
+export/package implementation, autonomous writeback, cleanup, deletion,
+archive, production task execution, or production readiness behavior is
+registered by Phase 121.
+
+No production readiness is registered by Phase 121.
+
+`PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`
