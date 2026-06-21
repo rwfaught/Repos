@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.Zone.Identifier
+.DS_Store
+Thumbs.db
+
+# ORCHESTRATOR_SOURCE_HYGIENE_GENERATED_WORKSPACE_BEGIN
+# Generated Orchestrator workspace state: preserve directories, exclude runtime/proof payloads.
+/data/tasks/*
+!/data/tasks/.gitkeep
+/data/runs/*
+!/data/runs/.gitkeep
+/data/artifacts/*
+!/data/artifacts/.gitkeep
+/data/verifier_results/*
+!/data/verifier_results/.gitkeep
+/data/reviewer_recommendations/*
+!/data/reviewer_recommendations/.gitkeep
+/data/case_packets/*
+!/data/case_packets/.gitkeep
+/test_logs/*
+!/test_logs/.gitkeep
+# ORCHESTRATOR_SOURCE_HYGIENE_GENERATED_WORKSPACE_END

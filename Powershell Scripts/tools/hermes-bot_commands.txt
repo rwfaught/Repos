@@ -1,0 +1,6 @@
+hermes-bot status
+hermes-bot health
+hermes-bot logs
+hermes-bot stop
+hermes-bot start
+hermes-bot restart

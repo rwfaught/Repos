@@ -1,0 +1,106 @@
+﻿{
+    "schema":  {
+                   "id":  "openclaw.local_worker_routing.v1",
+                   "version":  1,
+                   "createdByBoundary":  "REPRO_v1_7_04C31_CREATE_LOCAL_WORKER_ROUTING_DECLARATIVE_CONFIG_DOCS_AND_FILE_NO_RUNTIME",
+                   "createdAtLocal":  "20260607_023816",
+                   "status":  "declarative-config-created-no-runtime-integration"
+               },
+    "shellContract":  {
+                          "defaultShell":  "powershell.exe",
+                          "compatibility":  "Windows PowerShell 5.1",
+                          "pwshAllowedOnlyWhenBoundaryDeclares":  true
+                      },
+    "localWorkerSurface":  {
+                               "currentSurface":  "WSL Ollama",
+                               "windowsOllamaAssumedAvailable":  false,
+                               "runtimeIntegrationEnabled":  true,
+                               "runtimeIntegrationBoundaryRequired":  true
+                           },
+    "coordinatorAuthority":  {
+                                 "primary":  "GPT-5.5 Thinking / high",
+                                 "extraHighUse":  [
+                                                      "destructive ambiguity",
+                                                      "proof-chain conflict",
+                                                      "ratification reversal",
+                                                      "source/runtime/package boundary overlap",
+                                                      "RC7 risk"
+                                                  ],
+                                 "responsibilities":  [
+                                                          "NBM decision",
+                                                          "boundary design",
+                                                          "proof interpretation",
+                                                          "final PASS/FAIL/BLOCKED classification",
+                                                          "package ratification",
+                                                          "root-cause adjudication",
+                                                          "escalation decisions"
+                                                      ]
+                             },
+    "localRoles":  {
+                       "utilityTiny":  {
+                                           "label":  "local.utility.tiny",
+                                           "candidates":  [
+                                                              "qwen3:0.6b",
+                                                              "qwen3:0.6b-4k"
+                                                          ],
+                                           "allowed":  [
+                                                           "simple summaries",
+                                                           "low-risk text cleanup",
+                                                           "short command explanation",
+                                                           "simple grep/log triage",
+                                                           "non-authoritative drafts"
+                                                       ]
+                                       },
+                       "coderPrimary":  {
+                                            "label":  "local.coder.primary",
+                                            "candidates":  [
+                                                               "qwen2.5-coder:32b"
+                                                           ],
+                                            "allowed":  [
+                                                            "bounded code draft assistance",
+                                                            "shell/PowerShell draft review",
+                                                            "static source reading",
+                                                            "local implementation sketches",
+                                                            "bounded helper-script generation"
+                                                        ]
+                                        }
+                   },
+    "localWorkerProhibitions":  [
+                                    "must_not_decide_NBMs",
+                                    "must_not_declare_final_PASS_FAIL_BLOCKED",
+                                    "must_not_claim_package_ratification",
+                                    "must_not_close_root_cause",
+                                    "must_not_touch_RC7",
+                                    "must_not_print_token_values",
+                                    "must_not_perform_token_diagnosis_without_explicit_boundary",
+                                    "must_not_run_destructive_WSL_operations",
+                                    "must_not_run_ollama_pull_without_explicit_boundary",
+                                    "must_not_run_ollama_run_without_explicit_boundary",
+                                    "must_not_mutate_runtime_or_routing_without_explicit_boundary"
+                                ],
+    "routingClasses":  {
+                           "classA_lowRiskUtility":  "local.utility.tiny_allowed",
+                           "classB_boundedCodeDocDraft":  "local.coder.primary_draft_allowed",
+                           "classC_proofRunnerDesign":  "frontier.coordinator_final_review_required",
+                           "classD_runtimeMutationOrRatification":  "frontier.coordinator_required",
+                           "classE_architectureRoutingDecision":  "frontier.coordinator_required"
+                       },
+    "futureIntegration":  {
+                              "c31CreatesConfigOnly":  true,
+                              "runtimeConsumptionEnabled":  false,
+                              "implementationBoundaryRequired":  "C32_or_later",
+                              "routingScriptMutationAllowedHere":  false
+                          },
+    "guardrails":  {
+                       "noWsl":  true,
+                       "noRuntimeTouch":  true,
+                       "noModelDownloads":  true,
+                       "noOllamaPull":  true,
+                       "noOllamaRun":  true,
+                       "noRoutingScriptMutation":  true,
+                       "noPackageRebuild":  true,
+                       "noDiscordChecks":  true,
+                       "noTokenEnvDump":  true,
+                       "noRc7Touch":  true
+                   }
+}

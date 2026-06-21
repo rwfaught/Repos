@@ -1,0 +1,100 @@
+{
+  "current_success_result_review_surface": true,
+  "task_id": "task_phase88_ollama_spine_20260612T222046469591Z",
+  "run_id": "run_afff8ef9",
+  "task_path": "C:\\Users\\accou\\Desktop\\Repos\\Orchestrator\\Orchestrator\\data\\tasks\\task_phase88_ollama_spine_20260612T222046469591Z.json",
+  "final_task_status": "completed",
+  "final_outcome_classification": "completed_current_state_success",
+  "ready_for_operator_review": true,
+  "reason": "Engine-executed task result is ready for current-success operator review.",
+  "detail": "This read-only surface inspects persisted task state, execution artifact, and deterministic verifier result. It does not execute, mutate, verify, review, call a provider, or touch runtime/model/platform behavior.",
+  "blocked_conditions": [],
+  "missing_requirements": [],
+  "task_summary": {
+    "task_id": "task_phase88_ollama_spine_20260612T222046469591Z",
+    "run_id": "run_afff8ef9",
+    "title": "Phase 88 live Ollama orchestration-spine current-success proof",
+    "role": "coder",
+    "status": "completed",
+    "files_in_scope": [],
+    "success_criteria": [
+      "Execute through the product engine and dispatcher with provider ollama.",
+      "Return a concise bounded response from the live local model.",
+      "Do not claim file mutation or autonomous code writeback.",
+      "Persist task state, execution artifact, provider metadata, and deterministic verifier result."
+    ],
+    "expected_output": null,
+    "execution_artifact_id": "artifact_fbfdfc32",
+    "verification_checks": null
+  },
+  "artifact_summary": {
+    "artifact_id": "artifact_fbfdfc32",
+    "artifact_path": "C:\\Users\\accou\\Desktop\\Repos\\Orchestrator\\Orchestrator\\data\\artifacts\\artifact_fbfdfc32.json",
+    "task_id": "task_phase88_ollama_spine_20260612T222046469591Z",
+    "run_id": "run_afff8ef9",
+    "role": "coder",
+    "status": "success",
+    "output_present": true
+  },
+  "verification_summary": {
+    "verifier_result_path": "C:\\Users\\accou\\Desktop\\Repos\\Orchestrator\\Orchestrator\\data\\verifier_results\\task_phase88_ollama_spine_20260612T222046469591Z_20260612T222050508504Z.json",
+    "overall_passed": true,
+    "check_count": 0,
+    "checks": [],
+    "messages": [
+      "Verification skipped: no files_in_scope provided."
+    ],
+    "verification_caveat": "Deterministic verification is a bounded tripwire only; it does not prove semantic correctness, production readiness, or task adequacy in the strong sense."
+  },
+  "acceptance_summary": {
+    "acceptance_record_present": false,
+    "accepted": false,
+    "acceptance_record_id": "",
+    "acceptance_record_path": ""
+  },
+  "operator_response_surface": "completed_result_response_options",
+  "response_options": [
+    {
+      "option_id": "inspect_task_state",
+      "label": "Inspect persisted task state.",
+      "authorized_now": true,
+      "requires_later_boundary": false
+    },
+    {
+      "option_id": "inspect_execution_artifact",
+      "label": "Inspect persisted execution artifact.",
+      "authorized_now": true,
+      "requires_later_boundary": false
+    },
+    {
+      "option_id": "inspect_verifier_result",
+      "label": "Inspect persisted deterministic verifier result.",
+      "authorized_now": true,
+      "requires_later_boundary": false
+    },
+    {
+      "option_id": "record_operator_acceptance_later",
+      "label": "Define a later explicit acceptance-record boundary if the operator accepts the result.",
+      "authorized_now": false,
+      "requires_later_boundary": true,
+      "later_boundary": "operator_acceptance_record_boundary"
+    }
+  ],
+  "next_action": "operator_may_inspect_task_artifact_and_verifier_then_choose_later_boundary",
+  "task_created": false,
+  "task_mutated": false,
+  "task_executed": false,
+  "execution_performed": false,
+  "artifact_created": false,
+  "artifact_mutated": false,
+  "verifier_invoked": false,
+  "reviewer_invoked": false,
+  "provider_executed": false,
+  "runtime_executed": false,
+  "model_executed": false,
+  "platform_invoked": false,
+  "openclaw_invoked": false,
+  "discord_invoked": false,
+  "bridge_invoked": false,
+  "adapter_invoked": false
+}

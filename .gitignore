@@ -1,0 +1,48 @@
+# Track only the selected root folders and repo metadata by default.
+*
+!.gitignore
+!.agents/
+!.agents/**
+!.codex/
+!.codex/**
+!AutoHotkey Scripts/
+!AutoHotkey Scripts/**
+!Important Configs/
+!Important Configs/**
+!Orchestrator/
+!Orchestrator/**
+!Powershell Scripts/
+!Powershell Scripts/**
+!Source Files/
+!Source Files/**
+
+# Never track nested Git metadata.
+**/.git/
+
+# Local secrets and environment files.
+**/.env
+**/.env.*
+**/*secret*
+**/*token*
+**/*credential*
+**/*key*.txt
+**/*key*.json
+**/*key*.env
+
+# Runtime/cache/build artifacts.
+**/runtime/
+**/__pycache__/
+**/*.py[cod]
+**/*.log
+**/*.pid
+**/*.status.json
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/node_modules/
+**/dist/
+**/build/
+**/.DS_Store
+**/Thumbs.db

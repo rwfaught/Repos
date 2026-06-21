@@ -1,0 +1,10 @@
+{
+  "objective_text": "Sync inbox items and produce a digest.",
+  "provided_artifacts": [],
+  "confirmed_context": {
+    "required_connector": "gmail_connector"
+  },
+  "available_capabilities": [
+    "local_files"
+  ]
+}

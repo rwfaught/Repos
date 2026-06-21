@@ -1,0 +1,5 @@
+openclaw-bot status
+openclaw-bot stop
+openclaw-bot start
+openclaw-install
+openclaw-install -DistroName <name>

@@ -1,0 +1,8 @@
+{
+  "case_id": "case62_reg58_dab8fe07",
+  "case_type": "billing_dispute",
+  "title": "Billing dispute",
+  "objective": "Contest invoice",
+  "status": "active",
+  "next_step": "Collect documents"
+}

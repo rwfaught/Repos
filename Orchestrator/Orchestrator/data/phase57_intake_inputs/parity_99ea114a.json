@@ -1,0 +1,10 @@
+{
+  "objective_text": "Pull activity from Slack and summarize unresolved threads.",
+  "provided_artifacts": [],
+  "confirmed_context": {
+    "required_connector": "slack_connector"
+  },
+  "available_capabilities": [
+    "local_files"
+  ]
+}

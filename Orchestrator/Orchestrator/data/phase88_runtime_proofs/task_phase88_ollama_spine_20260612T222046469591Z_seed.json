@@ -1,0 +1,16 @@
+{
+  "boundary": "LIVE_PRODUCT_PHASE88_OLLAMA_ORCHESTRATION_SPINE_CURRENT_SUCCESS_PROOF_GUARDED_TASK_PROVIDER_MODEL_RUNTIME_EXECUTION_NO_WSL_NO_INSTALLER_NO_DISCORD_NO_BRIDGE_NO_ADAPTER_NO_PLATFORM_MUTATION_NO_A18CF_NO_VENDOR_NO_CLEANUP_NO_DELETE_NO_ARCHIVE_YES_TASK_MUTATION_YES_PROVIDER_EXECUTION_YES_MODEL_EXECUTION_YES_RUNTIME_EXECUTION_YES_PROOF_OUTPUT_CAPTURE_NO_ACCEPTANCE_RECORD_NO_CODEX_NO_OZ",
+  "run_id": "run_afff8ef9",
+  "task_id": "task_phase88_ollama_spine_20260612T222046469591Z",
+  "task_path": "data/tasks/task_phase88_ollama_spine_20260612T222046469591Z.json",
+  "provider": "ollama",
+  "ollama_model": "llama3.2:latest",
+  "ollama_api_url": "http://127.0.0.1:11434/api/generate",
+  "caveats": [
+    "Manual Windows Ollama environment only.",
+    "No installer-managed model provisioning proof.",
+    "No WSL, Discord, OpenClaw, bridge, adapter, or platform proof.",
+    "No autonomous file mutation proof because no apply/writeback layer is present.",
+    "Semantic correctness is not proven by this boundary."
+  ]
+}

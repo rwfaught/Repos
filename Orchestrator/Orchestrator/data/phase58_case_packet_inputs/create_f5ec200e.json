@@ -1,0 +1,29 @@
+{
+  "case_id": "case58_cli_create_bc11708b",
+  "case_type": "billing_dispute",
+  "title": "Billing dispute with vendor",
+  "objective": "Contest incorrect invoice",
+  "counterparties": [
+    "Vendor A"
+  ],
+  "source_materials": [
+    "invoice.pdf"
+  ],
+  "extracted_facts": [
+    "invoice total mismatch"
+  ],
+  "timeline_events": [
+    "2026-01-01 invoice received"
+  ],
+  "open_issues": [
+    "line item not contracted"
+  ],
+  "missing_evidence": [
+    "signed contract"
+  ],
+  "contradictions": [],
+  "drafts": [],
+  "decisions": [],
+  "status": "active",
+  "next_step": "request corrected invoice"
+}

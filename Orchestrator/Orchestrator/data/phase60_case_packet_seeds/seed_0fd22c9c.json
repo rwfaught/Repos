@@ -1,0 +1,14 @@
+{
+  "case_id": "case60_i_16114ba6",
+  "case_type": "billing_dispute",
+  "title": "Billing dispute",
+  "objective": "Contest charge.",
+  "source_materials": [
+    "invoice.pdf"
+  ],
+  "open_issues": [
+    "wrong amount"
+  ],
+  "status": "active",
+  "next_step": "Request correction"
+}

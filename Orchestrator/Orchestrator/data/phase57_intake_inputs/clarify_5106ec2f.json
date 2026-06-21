@@ -1,0 +1,15 @@
+{
+  "objective_text": "Generate a report from my source data.",
+  "provided_artifacts": [
+    "input_export.csv"
+  ],
+  "confirmed_context": {
+    "required_artifacts": [
+      "input_export.csv"
+    ],
+    "requires_output_format": true
+  },
+  "available_capabilities": [
+    "local_files"
+  ]
+}

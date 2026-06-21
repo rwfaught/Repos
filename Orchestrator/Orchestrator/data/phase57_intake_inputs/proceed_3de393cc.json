@@ -1,0 +1,16 @@
+{
+  "objective_text": "Summarize the provided release notes into a short report.",
+  "provided_artifacts": [
+    "release_notes.md"
+  ],
+  "confirmed_context": {
+    "required_artifacts": [
+      "release_notes.md"
+    ],
+    "source_format": "markdown",
+    "output_format": "summary"
+  },
+  "available_capabilities": [
+    "local_files"
+  ]
+}

@@ -1,0 +1,126 @@
+## Assessment
+
+Your instinct is basically right: **local-first should not mean “force every serious task through the biggest local model.”** It should mean: keep default work private/local when it is safe and useful, then escalate when quality, risk, or complexity demands it.
+
+For your setup, I would separate the system into three lanes:
+
+```text id="m13pfb"
+Personal assistant lane: Hermes + small/medium local model + RAG.
+Local specialist lane: OpenClaw/Ollama with qwen3-30b when you want strong local reasoning.
+Serious coding lane: Codex/frontier model when correctness, repo mutation, or bug risk matters.
+```
+
+That matches your original idea better than keeping one huge 24k model loaded forever for everything.
+
+## Accepted Facts
+
+Current machine proof says the high-capability local OpenClaw profile works, but it is resource-sensitive:
+
+```text id="g1r1fc"
+qwen3-30b-24k
+20 GB loaded footprint
+100% GPU
+24,576 context
+768 output
+discord + ollama plugins only
+```
+
+That profile is strong but expensive. It leaves only a few GB of VRAM headroom while loaded. 
+
+Ollama is currently configured to keep only one loaded model and one parallel request, which is the right stability setting for this 24 GB GPU when running the 30B model. 
+
+Qwen2.5-Coder 32B is officially positioned as a code model with strong performance across many programming languages, and Qwen3-Coder 30B is positioned as an agentic/code model with 30B total parameters and 3.3B active parameters. Those are plausible coding benchmark candidates for your Python/Bash/PowerShell world, but they still need local runtime testing on your machine. ([Ollama][1])
+
+Codex is a coding agent that can read, edit, run code, fix bugs, and work in cloud/IDE/CLI contexts, so it remains the better choice for higher-risk software work where you want tool execution and stronger guardrails. ([OpenAI Developers][2])
+
+## Decision
+
+I would **not** run two large models at once. I would also not make the 30B OpenClaw model the default personal assistant.
+
+Use one loaded model at a time unless we prove a reason to change that. Models sitting “idle” still occupy VRAM if they are loaded. A model on disk costs almost nothing; a model loaded by Ollama costs VRAM until unloaded or keep-alive expires. With `qwen3-30b-24k` loaded at about 20 GB, adding another meaningful model beside it is asking for instability.
+
+The better design is switching/routing, not simultaneous large-model residency:
+
+```text id="rc9x2l"
+Hermes daily assistant: small/medium local model.
+OpenClaw specialist: load 30B only when needed.
+Codex/frontier: serious coding, risky repo mutation, hard debugging.
+RAG: shared personal knowledge layer for Hermes first.
+```
+
+## NBM
+
+Boundary: `LOCAL_FIRST_MODEL_ARCHITECTURE_STRATEGY_NO_ACTION`
+
+Allowed: answer architecture, model routing, Hermes/OpenClaw separation, RAG timing, Obsidian fit, fine-tuning expectations.
+
+Excluded: no commands, no model pulls, no config changes, no new tools, no Codex run, no RAG implementation yet.
+
+## Deliverable/Command
+
+Here is the model strategy I would use.
+
+For **personal assistant in Discord**, use Hermes with a smaller local model. The assistant job is mostly routing, reminders, summarizing, retrieving notes, light drafting, and asking clarifying questions. It does not need a 30B model all the time. Hermes is a good fit because its own docs describe it as an agent with memory/skills and cross-session learning behavior. ([GitHub][3])
+
+For **OpenClaw/Orchestrator work**, keep the 30B local model available as a specialist, but not always loaded. It is useful for bounded reasoning, command construction, log analysis, worker prompt drafting, and local-first protocol checks. But for repo mutation, difficult bugs, or anything where being wrong is costly, your instinct is correct: use Codex/frontier and keep Roger in the loop.
+
+For **coding models**, yes, Qwen coding models are likely worth testing. Since your stack is Python/Bash/PowerShell, the Qwen coder family is well aligned. But I would benchmark, not assume. The test should be small: ask the coding model to fix a PowerShell quoting issue, write a Bash diagnostic, explain a Python test failure, and produce an Orchestrator worker prompt. Then compare it against your current Qwen3 30B and Codex.
+
+For **multiple models**, the answer is: not two large ones. A small always-on model plus a large model may be possible only if the small model is unloaded before the large one loads, or if the small model is CPU-only/low VRAM. With the current 24k 30B profile, keep `OLLAMA_MAX_LOADED_MODELS=1`. That is not a limitation; it is a stability rule.
+
+For **bounded Orchestrator tasks**, do not assume they are always small. The task itself may be small, but the prompt can become huge once you include repo docs, logs, tool schemas, worker instructions, and prior state. Bounded tasks reduce chaos; they do not automatically reduce token count. The discipline should be: small context packet, one next move, short output, no unnecessary tool surface.
+
+For **Unsloth**, yes, I agree with using it, with one boundary: use it for LoRA/QLoRA experiments on upstream model checkpoints, not directly on Ollama’s quantized runtime artifacts. Unsloth’s docs describe QLoRA as combining LoRA with 4-bit precision to fine-tune large models with reduced resources, and also say full fine-tuning is usually unnecessary when LoRA is done correctly. ([Unsloth - Train and Run Models Locally][4])
+
+For **fine-tuning**, start smaller than 30B. The first useful Orchestrator fine-tune is not “make a genius coder.” It is “make a model that follows Roger’s bounded protocol, classifies tasks, avoids tool overreach, writes clean NBMs, and routes work correctly.” That can start on a 7B or 14B Qwen-class model. Only after dataset format and evals are proven should we consider a 30B adapter.
+
+For **RAG/Obsidian**, implement it before serious fine-tuning. RAG is more immediately useful. It can reduce overhead because instead of stuffing your whole Obsidian vault into context, the system embeds your notes, searches for relevant chunks, and injects only the useful excerpts. Ollama’s embedding docs describe embeddings as vectors stored for semantic search and RAG pipelines, and models like `nomic-embed-text` or `bge-m3` are available as local embedding options. ([Ollama Docs][5])
+
+The Obsidian setup should be personal first: a curated folder, read-only indexing, chunked Markdown, source citations, and no automatic vault mutation. It should work well with Hermes if Hermes can call a local retrieval skill/script. That is exactly the kind of “personal assistant” memory layer where a smaller model plus RAG can beat a big model with no retrieval.
+
+My proposed big-picture architecture:
+
+```text id="9eluvn"
+Hermes:
+Daily personal assistant, Discord-facing, small/medium local model, Obsidian RAG, memory/skills.
+
+OpenClaw:
+Integration lab and local specialist harness, 30B model when needed, plugin tests, Discord proof, controlled tools.
+
+Orchestrator:
+Decision protocol and routing layer: classify task, choose local small / local 30B / Codex-frontier / human operator.
+
+Codex/frontier:
+Serious coding, repo mutation, complex debugging, high-stakes correctness.
+
+Unsloth:
+Training lane for small/medium protocol-following adapters, not the first solution for memory.
+```
+
+My recommendation is to make the next durable product decision this:
+
+```text id="p6epfp"
+Default local-first does not mean default 30B.
+Default local-first means local triage + local memory + local simple tasks.
+Escalation is part of the architecture, not a failure of it.
+```
+
+## RESPONSE_METADATA
+
+```text id="te7cgl"
+active_boundary=LOCAL_FIRST_MODEL_ARCHITECTURE_STRATEGY_NO_ACTION
+mode=coordinator
+changed_files=none
+mutation_status=no mutation
+source_status=fresh web sources used for Hermes/Qwen/Codex/Unsloth/RAG facts; local runtime proof from prior operator output used
+runtime_status=24k/768 OpenClaw profile remains current high-capability working state while loaded
+open_threads=checkpoint output still pending; final POC troubleshooting report required; later Hermes baseline; later Obsidian RAG design; later model benchmark lane; later Unsloth fine-tuning lane; later optional KV-cache minmax experiment; rotate exposed gateway token later
+next_boundary=EVALUATE_KNOWN_GOOD_CHECKPOINT_OUTPUT_OR_START_ARCHITECTURE_LEDGER
+proof_validation_status=architecture recommendation reasoned from current runtime proof and official sources; no new runtime changes performed
+```
+
+[1]: https://ollama.com/library/qwen2.5-coder%3A32b?utm_source=chatgpt.com "qwen2.5-coder:32b"
+[2]: https://developers.openai.com/codex/cloud?utm_source=chatgpt.com "Codex web"
+[3]: https://github.com/nousresearch/hermes-agent?utm_source=chatgpt.com "NousResearch/hermes-agent: The agent that grows with you"
+[4]: https://unsloth.ai/docs/get-started/fine-tuning-llms-guide?utm_source=chatgpt.com "Fine-tuning LLMs Guide | Unsloth Documentation"
+[5]: https://docs.ollama.com/capabilities/embeddings?utm_source=chatgpt.com "Embeddings"
