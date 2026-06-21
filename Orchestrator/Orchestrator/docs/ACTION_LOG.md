@@ -2228,3 +2228,42 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   execution, route execution, or production readiness.
 
 `PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`
+
+## Phase 122 Local-First Model Router Policy Contract
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_122_LOCAL_FIRST_MODEL_ROUTER_POLICY_AND_PROVIDER_ESCALATION_CONTRACT_DOCS_SOURCE_TEST_MUTATION`
+- Created source: `orchestrator/model_router_policy.py`.
+- Created tests:
+  `tests/test_phase_122_local_first_model_router_policy_contract.py`.
+- Created docs: `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/PHASE_122.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: added a deterministic non-executing local-first model/provider
+  routing policy contract that recommends boundary posture for local-first
+  answer, provider/frontier review, worker/Codex, RAG/local-document,
+  scheduler/reminder, web/research, block, or clarification outcomes.
+- Validation: `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_103_domain_general_request_routing_contract`;
+  `python -m unittest tests.test_phase_109_capability_registry_contract`;
+  `python -m unittest tests.test_phase_110_route_validator_capability_registry_integration`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model execution, Ollama, WSL, OpenClaw,
+  Hermes, Discord, installer, runtime/probe execution, web lookup, RAG/local
+  document lookup execution, scheduler/reminder execution, connector execution,
+  Codex dispatch from product code, worker dispatch, route execution,
+  production execution, cleanup/delete/archive, artifact export/package
+  behavior, autonomous writeback, live routing,
+  provider/model/runtime/platform selection, or production readiness is
+  proven.
+- Caveat: Phase 122 is a deterministic policy recommendation contract only;
+  it is not a live router, provider/model selector, worker dispatcher, lookup
+  implementation, scheduler, connector, platform crossing, route execution, or
+  production readiness.
+
+`PHASE122_LOCAL_FIRST_MODEL_ROUTER_POLICY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

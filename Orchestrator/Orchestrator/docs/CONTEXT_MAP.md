@@ -128,6 +128,14 @@ intake and route proposal, interacts with capability registry maturity and
 Evidence / Artifact Proof Context, and does not authorize route admission or
 execution.
 
+Local-first model router policy belongs to this context. It recommends
+boundary posture from structured request metadata only: local-first answer,
+provider/frontier review boundary, worker/Codex boundary, RAG/local-document
+boundary, scheduler/reminder boundary, web/research boundary, block, or
+clarify. It does not execute providers or models, select runtimes or
+platforms, dispatch workers, perform RAG/web/scheduler/connector work, or
+authorize production execution.
+
 ## Route Proposal Source And Admission Lifecycle
 
 Route proposal is not execution. A route proposal source is substrate-agnostic

@@ -2166,3 +2166,49 @@ registered by Phase 121.
 No production readiness is registered by Phase 121.
 
 `PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`
+
+## Phase 122 Local-First Model Router Policy Contract Registration
+
+Boundary:
+
+`PHASE_122_LOCAL_FIRST_MODEL_ROUTER_POLICY_AND_PROVIDER_ESCALATION_CONTRACT_DOCS_SOURCE_TEST_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/model_router_policy.py`
+
+Registered new test files:
+
+- `tests/test_phase_122_local_first_model_router_policy_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/PHASE_122.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing local-first model/router
+policy contract only. Phase 122 registers recommendation output fields,
+local-first answer posture, provider/platform boundary blocking posture,
+worker/Codex boundary posture, RAG/local-document boundary posture,
+scheduler/reminder boundary posture, web/research boundary posture,
+clarification posture, non-proofs, and no-activity flags.
+
+No provider/model execution, Ollama, WSL, OpenClaw, Hermes, Discord,
+installer, runtime/probe execution, web lookup, RAG/local document lookup
+execution, scheduler/reminder execution, connector execution, Codex dispatch
+from product code, worker dispatch, route execution, production execution,
+cleanup/delete/archive, artifact export/package behavior, autonomous
+writeback, live routing, provider/model/runtime/platform selection, or
+production readiness behavior is registered by Phase 122.
+
+No production readiness is registered by Phase 122.
+
+`PHASE122_LOCAL_FIRST_MODEL_ROUTER_POLICY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

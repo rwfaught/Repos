@@ -120,14 +120,15 @@ This file enables controlled progression through the system build.
 119. PHASE_119.md - Manual Review CLI Adapter Contract
 120. PHASE_120.md - Manual Review CLI Module Entrypoint Fix
 121. PHASE_121.md - Manual Review CLI Runbook And Golden Smoke Contract
+122. PHASE_122.md - Local-First Model Router Policy Contract
 
 ---
 
 ## Current Phase
 
-Phase 121 - Manual Review CLI Runbook And Golden Smoke Contract
+Phase 122 - Local-First Model Router Policy Contract
 
-Status: latest locally docs/test-proven phase; Phase 121 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 122 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1339,4 +1340,25 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   or production readiness behavior changed.
 - Marker:
   `PHASE121_MANUAL_REVIEW_CLI_RUNBOOK_GOLDEN_SMOKE_LOCAL_DOCS_TEST_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 122 - Local-First Model Router Policy Contract
+
+- Status: locally source/test/docs-proven; Phase 122 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_122.md`.
+- Behavior: adds a deterministic non-executing local-first model/provider
+  routing policy contract that recommends local-first, provider/frontier
+  review boundary, worker/Codex boundary, RAG/local-document boundary,
+  scheduler/reminder boundary, web/research boundary, block, or clarify
+  posture from structured request metadata.
+- Boundary: no provider/model execution, Ollama, WSL, OpenClaw, Hermes,
+  Discord, installer, runtime/probe execution, web lookup, RAG/local document
+  lookup execution, scheduler/reminder execution, connector execution, Codex
+  dispatch, worker dispatch, route execution, production execution,
+  cleanup/delete/archive, artifact export/package behavior, autonomous
+  writeback, live routing, provider/model/runtime/platform selection, or
+  production readiness behavior changed.
+- Marker:
+  `PHASE122_LOCAL_FIRST_MODEL_ROUTER_POLICY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
