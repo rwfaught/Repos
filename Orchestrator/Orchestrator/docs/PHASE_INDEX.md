@@ -110,14 +110,15 @@ This file enables controlled progression through the system build.
 109. PHASE_109.md - Capability Registry Source Contract And Tests
 110. PHASE_110.md - Route Validator Capability Registry Integration
 111. PHASE_111.md - Route Proposal Source Contract And Admission Pipeline
+112. PHASE_112.md - Prompt To Envelope Inference Boundary And Fixture Doctrine
 
 ---
 
 ## Current Phase
 
-Phase 111 - Route Proposal Source Contract And Admission Pipeline
+Phase 112 - Prompt To Envelope Inference Boundary And Fixture Doctrine
 
-Status: latest locally source/test/docs-proven phase; Phase 111 source snapshot refresh attempted.
+Status: latest locally docs/control-proven phase; Phase 112 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1131,4 +1132,22 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE111_ROUTE_PROPOSAL_SOURCE_CONTRACT_AND_ADMISSION_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 112 - Prompt To Envelope Inference Boundary And Fixture Doctrine
+
+- Status: locally docs/control-proven; Phase 112 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_112.md`.
+- Behavior: adds docs-only doctrine for future prompt-to-envelope inference
+  boundary, conservative confidence/clarification rules, fixture discipline,
+  output shape, and stop conditions.
+- Boundary: docs/control only; no source code, tests, prompt-to-envelope
+  implementation, raw prompt inference implementation, live router, route
+  execution, provider/model/runtime/platform execution, RAG/local lookup,
+  web lookup implementation, scheduler/reminder implementation, connector
+  execution, file mutation, artifact export/package behavior, autonomous
+  writeback, or production task execution behavior changed.
+- Marker:
+  `PHASE112_PROMPT_TO_ENVELOPE_INFERENCE_BOUNDARY_AND_FIXTURE_DOCTRINE_LOCAL_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

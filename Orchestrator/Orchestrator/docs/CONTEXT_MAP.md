@@ -97,6 +97,7 @@ Authority docs/files:
 - `docs/PROJECT_VISION.md`
 - `docs/ORCHESTRATOR_INTERACTION_MODEL.md`
 - `docs/CAPABILITY_REGISTRY.md`
+- `docs/PROMPT_TO_ENVELOPE_INFERENCE.md`
 - `docs/PHASE_103.md`
 - `orchestrator/request_routing.py`
 - `tests/test_phase_103_domain_general_request_routing_contract.py`
@@ -121,6 +122,11 @@ burdens, validation burdens, and stop conditions for route admission. It
 interacts with Evidence / Artifact Proof Context when capability claims depend
 on proof status, but it does not authorize live execution or
 provider/model/substrate selection.
+
+Prompt-to-envelope inference belongs to this context. It feeds structured
+intake and route proposal, interacts with capability registry maturity and
+Evidence / Artifact Proof Context, and does not authorize route admission or
+execution.
 
 ## Route Proposal Source And Admission Lifecycle
 
