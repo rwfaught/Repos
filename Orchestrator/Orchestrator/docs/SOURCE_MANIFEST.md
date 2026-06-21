@@ -1937,3 +1937,49 @@ production readiness behavior is registered by Phase 116.
 No production readiness is registered by Phase 116.
 
 `PHASE116_FIXTURE_TO_BOUNDARY_PACKET_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 117 Coordinator Review Report Contract Registration
+
+Boundary:
+
+`PHASE_117_COORDINATOR_REVIEW_REPORT_CONTRACT_SOURCE_TEST_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/coordinator_review_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_117_coordinator_review_report_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_117.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic coordinator-facing review report contract
+only. Phase 117 registers report dataclasses, report rendering, accepted and
+blocked pipeline summary, packet text preservation, capability assessment
+summary, non-proof preservation, caveat preservation, and no-activity
+preservation.
+
+No live prompt inference, raw prompt-to-route implementation, natural-language
+intent inference, regex-based prompt classifier, model/provider inference, live
+routing, route execution, worker execution, Codex invocation, Relay invocation,
+concrete substrate selection, provider/model execution, provider/model
+selection, service/API/UI, WSL/Ollama, installer, Discord,
+OpenClaw/Hermes/bridge/adapter platform execution, RAG/local document lookup
+implementation, web lookup implementation, reminder/scheduler implementation,
+connector execution, file operation behavior, artifact export/package
+implementation, autonomous writeback, cleanup, deletion, archive, production
+task execution, or production readiness behavior is registered by Phase 117.
+
+No production readiness is registered by Phase 117.
+
+`PHASE117_COORDINATOR_REVIEW_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
