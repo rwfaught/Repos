@@ -118,14 +118,15 @@ This file enables controlled progression through the system build.
 117. PHASE_117.md - Coordinator Review Report Contract
 118. PHASE_118.md - Manual Coordinator Review Runner Contract
 119. PHASE_119.md - Manual Review CLI Adapter Contract
+120. PHASE_120.md - Manual Review CLI Module Entrypoint Fix
 
 ---
 
 ## Current Phase
 
-Phase 119 - Manual Review CLI Adapter Contract
+Phase 120 - Manual Review CLI Module Entrypoint Fix
 
-Status: latest locally source/test/docs-proven phase; Phase 119 source snapshot refresh attempted.
+Status: latest locally source/test/smoke-proven phase; Phase 120 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1295,4 +1296,25 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   or production readiness behavior changed.
 - Marker:
   `PHASE119_MANUAL_REVIEW_CLI_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 120 - Manual Review CLI Module Entrypoint Fix
+
+- Status: locally source/test/smoke-proven; Phase 120 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_120.md`.
+- Behavior: fixes the Phase 119 manual review CLI adapter module entrypoint so
+  `python -m orchestrator.manual_review_cli ...` invokes `main(...)`, prints
+  adapter output, and returns the structured exit code.
+- Boundary: no service/API/UI productization, CLI framework expansion, live
+  prompt inference, natural-language intent inference, regex prompt
+  classifier, live router, route execution, worker execution, Codex or Relay
+  invocation, concrete substrate selection, provider/model execution or
+  selection, RAG/local lookup, web lookup implementation, scheduler/reminder
+  implementation, connector execution, file operation behavior, artifact
+  export/package implementation, autonomous writeback, cleanup, deletion,
+  archive, production task execution, or production readiness behavior
+  changed.
+- Marker:
+  `PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`.
 - Production readiness is not claimed.

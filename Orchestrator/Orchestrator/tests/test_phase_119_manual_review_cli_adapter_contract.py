@@ -134,6 +134,34 @@ class Phase119ManualReviewCliAdapterContractTests(unittest.TestCase):
         self.assertEqual(exit_code, 0)
         self.assertIn("safe_direct_answer", buffer.getvalue())
 
+    def test_module_entrypoint_guard_is_present(self):
+        source = inspect.getsource(manual_review_cli)
+
+        self.assertIn('if __name__ == "__main__":', source)
+        self.assertIn("raise SystemExit(main())", source)
+
+    def test_main_returns_zero_for_safe_direct_answer_fixture(self):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            exit_code = main(["--fixture", "safe_direct_answer"])
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("Assessment", stdout.getvalue())
+        self.assertEqual(stderr.getvalue(), "")
+
+    def test_main_returns_nonzero_for_production_execution_blocked_fixture(self):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            exit_code = main(["--fixture", "production_execution_blocked"])
+
+        self.assertNotEqual(exit_code, 0)
+        self.assertIn("Assessment", stdout.getvalue())
+        self.assertIn("stopped conservatively", stderr.getvalue())
+
     def test_adapter_uses_only_allowed_import_domains(self):
         source = inspect.getsource(manual_review_cli)
 
@@ -156,6 +184,20 @@ class Phase119ManualReviewCliAdapterContractTests(unittest.TestCase):
             "from orchestrator.hermes",
         ):
             self.assertNotIn(forbidden, source)
+
+    def test_entrypoint_fix_preserves_non_execution_non_proofs(self):
+        result = build_manual_review_cli_output(["--fixture", "safe_direct_answer"])
+
+        for non_proof in (
+            "cli_adapter_is_not_service_api_ui_productization",
+            "cli_adapter_is_not_route_execution",
+            "cli_adapter_is_not_worker_execution",
+            "cli_adapter_does_not_select_provider_model_runtime_platform",
+            "cli_adapter_does_not_mutate_files",
+            "cli_adapter_is_not_production_readiness",
+        ):
+            self.assertIn(non_proof, result.non_proofs)
+        self.assertTrue(all(flag is False for flag in result.no_activity_flags.values()))
 
     def test_fixture_rendering_matches_phase_118_runner_report_text(self):
         fixture_id = "safe_coding_report_only"

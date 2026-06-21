@@ -2076,3 +2076,49 @@ registered by Phase 119.
 No production readiness is registered by Phase 119.
 
 `PHASE119_MANUAL_REVIEW_CLI_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 120 Manual Review CLI Module Entrypoint Fix Registration
+
+Boundary:
+
+`PHASE_120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_FIX_SOURCE_TEST_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered changed test files:
+
+- `tests/test_phase_119_manual_review_cli_adapter_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_120.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic module-entrypoint fix only. Phase 120
+registers `python -m orchestrator.manual_review_cli ...` invocation through
+the standard module guard, stdout printing for adapter output, stderr printing
+for adapter error text, and structured exit-code return.
+
+No service/API/UI productization, CLI framework expansion, live prompt
+inference, raw prompt-to-route implementation, natural-language intent
+inference, regex-based prompt classifier, model/provider inference, live
+routing, route execution, worker execution, Codex invocation, Relay invocation,
+concrete substrate selection, provider/model execution, provider/model
+selection, WSL/Ollama, installer, Discord, OpenClaw/Hermes/bridge/adapter
+platform execution, RAG/local document lookup implementation, web lookup
+implementation, reminder/scheduler implementation, connector execution, file
+operation behavior, artifact export/package implementation, autonomous
+writeback, cleanup, deletion, archive, production task execution, or production
+readiness behavior is registered by Phase 120.
+
+No production readiness is registered by Phase 120.
+
+`PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`

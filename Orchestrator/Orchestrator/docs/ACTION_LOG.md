@@ -2145,3 +2145,44 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   production readiness.
 
 `PHASE119_MANUAL_REVIEW_CLI_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 120 Manual Review CLI Module Entrypoint Fix
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_FIX_SOURCE_TEST_MUTATION`
+- Changed source: `orchestrator/manual_review_cli.py`.
+- Changed tests: `tests/test_phase_119_manual_review_cli_adapter_contract.py`.
+- Created docs: `docs/PHASE_120.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: fixed the Phase 119 manual review CLI adapter module entrypoint so
+  `python -m orchestrator.manual_review_cli ...` invokes `main(...)`, prints
+  stdout/stderr output, and returns the structured adapter exit code.
+- Validation: `python -m py_compile orchestrator/manual_review_cli.py
+  orchestrator/manual_review_runner.py orchestrator/coordinator_review_report.py
+  orchestrator/fixture_packet_pipeline.py`;
+  `python -m unittest tests.test_phase_119_manual_review_cli_adapter_contract`;
+  `python -m orchestrator.manual_review_cli --list-fixtures`;
+  `python -m orchestrator.manual_review_cli --fixture safe_direct_answer`;
+  `python -m orchestrator.manual_review_cli --fixture safe_coding_report_only`;
+  `python -m orchestrator.manual_review_cli --fixture production_execution_blocked`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no service/API/UI productization, CLI framework
+  expansion, live prompt inference, raw prompt-to-route implementation,
+  natural-language intent inference, regex classifier, live router, route
+  execution, worker execution, Codex invocation, Relay invocation, concrete
+  substrate selection, provider/model/runtime/platform execution or selection,
+  WSL/Ollama, installer, Discord, OpenClaw/Hermes/bridge/adapter/platform
+  execution, RAG/local document lookup implementation, web lookup
+  implementation, reminder/scheduler implementation, connector execution, file
+  operation behavior, artifact export/package implementation, autonomous
+  writeback, cleanup, deletion, archive, production task execution, or
+  production readiness is proven.
+- Caveat: Phase 120 is a tiny entrypoint fix only; it is not productized
+  coordinator CLI/UI, service/API/UI, dispatch, coordinator acceptance, worker
+  execution, route execution, or production readiness.
+
+`PHASE120_MANUAL_REVIEW_CLI_MODULE_ENTRYPOINT_LOCAL_SOURCE_TEST_SMOKE_PROVEN=PASS`

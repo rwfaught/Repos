@@ -7,6 +7,7 @@ worker dispatch surface, or production execution path.
 
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from typing import Sequence
 
@@ -158,9 +159,13 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
 def main(argv: Sequence[str] | None = None) -> int:
     """Print deterministic adapter output and return an integer exit code."""
 
-    result = build_manual_review_cli_output(argv)
+    result = build_manual_review_cli_output(sys.argv[1:] if argv is None else argv)
     if result.output_text:
         print(result.output_text)
     if result.error_text:
-        print(result.error_text)
+        print(result.error_text, file=sys.stderr)
     return result.exit_code
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
