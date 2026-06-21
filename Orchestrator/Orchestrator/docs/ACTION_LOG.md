@@ -1830,3 +1830,43 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   prompt-to-envelope source/test implementation remains a downstream thread.
 
 `PHASE112_PROMPT_TO_ENVELOPE_INFERENCE_BOUNDARY_AND_FIXTURE_DOCTRINE_LOCAL_DOCS_PROVEN=PASS`
+
+## Phase 113 Prompt To Envelope Fixture Contract
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_113_PROMPT_TO_ENVELOPE_FIXTURE_CONTRACT_SOURCE_TEST_MUTATION`
+- Created source: `orchestrator/prompt_to_envelope.py`.
+- Created tests: `tests/test_phase_113_prompt_to_envelope_fixture_contract.py`.
+- Created docs: `docs/PHASE_113.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: added a deterministic fixture-based prompt-to-envelope source/test
+  contract that classifies explicit fixture metadata, rejects missing metadata
+  and substrate smuggling, preserves non-proofs, and converts accepted fixture
+  decisions to Phase 111 `RequestIntakeRecord` values.
+- Validation: `python -m py_compile orchestrator/prompt_to_envelope.py
+  orchestrator/route_proposal.py orchestrator/request_routing.py
+  orchestrator/capability_registry.py`;
+  `python -m unittest tests.test_phase_113_prompt_to_envelope_fixture_contract`;
+  `python -m unittest tests.test_phase_111_route_proposal_source_contract`;
+  `python -m unittest tests.test_phase_110_route_validator_capability_registry_integration`;
+  `python -m unittest tests.test_phase_103_domain_general_request_routing_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; command
+  status is reported in the Phase 113 worker report.
+- Explicit non-proofs: no live prompt inference, raw prompt-to-route
+  implementation, natural-language intent inference, regex-based prompt
+  classifier, model/provider inference, live router, route execution,
+  provider/model/runtime/platform execution or selection, WSL/Ollama,
+  installer, Discord, OpenClaw/Hermes/bridge/adapter/platform execution,
+  RAG/local document lookup implementation, web lookup implementation,
+  reminder/scheduler implementation, connector execution, file operation
+  behavior, artifact export/package implementation, autonomous writeback,
+  cleanup, deletion, archive, production task execution, or production
+  readiness is proven.
+- Caveat: Phase 113 source/test proof is fixture-contract only; it does not
+  implement a live prompt-to-envelope classifier, route execution, coordinator
+  acceptance, or production readiness.
+
+`PHASE113_PROMPT_TO_ENVELOPE_FIXTURE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

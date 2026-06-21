@@ -111,14 +111,15 @@ This file enables controlled progression through the system build.
 110. PHASE_110.md - Route Validator Capability Registry Integration
 111. PHASE_111.md - Route Proposal Source Contract And Admission Pipeline
 112. PHASE_112.md - Prompt To Envelope Inference Boundary And Fixture Doctrine
+113. PHASE_113.md - Prompt To Envelope Fixture Contract
 
 ---
 
 ## Current Phase
 
-Phase 112 - Prompt To Envelope Inference Boundary And Fixture Doctrine
+Phase 113 - Prompt To Envelope Fixture Contract
 
-Status: latest locally docs/control-proven phase; Phase 112 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 113 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1150,4 +1151,23 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   writeback, or production task execution behavior changed.
 - Marker:
   `PHASE112_PROMPT_TO_ENVELOPE_INFERENCE_BOUNDARY_AND_FIXTURE_DOCTRINE_LOCAL_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 113 - Prompt To Envelope Fixture Contract
+
+- Status: locally source/test/docs-proven; Phase 113 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_113.md`.
+- Behavior: adds a deterministic fixture-based prompt-to-envelope source/test
+  contract that converts explicit fixture metadata into Phase 111 structured
+  intake without parsing raw prompt text as authority.
+- Boundary: no live prompt inference, raw prompt-to-route implementation,
+  natural-language intent inference, regex prompt classifier, live router,
+  route execution, provider/model/runtime/platform selection or execution,
+  RAG/local lookup, web lookup implementation, scheduler/reminder
+  implementation, connector execution, file operation behavior, artifact
+  export/package implementation, autonomous writeback, cleanup, deletion,
+  archive, production task execution, or production readiness behavior changed.
+- Marker:
+  `PHASE113_PROMPT_TO_ENVELOPE_FIXTURE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
