@@ -1799,3 +1799,49 @@ task execution, or production readiness behavior is registered by Phase 113.
 No production readiness is registered by Phase 113.
 
 `PHASE113_PROMPT_TO_ENVELOPE_FIXTURE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 114 End To End Intake Admission Pipeline Registration
+
+Boundary:
+
+`PHASE_114_END_TO_END_NON_EXECUTING_INTAKE_TO_ADMISSION_PIPELINE_SOURCE_TEST_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/intake_admission_pipeline.py`
+
+Registered new test files:
+
+- `tests/test_phase_114_end_to_end_intake_admission_pipeline.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_114.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic non-executing intake-to-admission pipeline
+contract only. Phase 114 registers fixture classification, structured intake,
+candidate route proposal, route validation, route admission, capability
+assessment preservation, no-activity preservation, and non-proof preservation
+as distinct stages.
+
+No live prompt inference, raw prompt-to-route implementation, natural-language
+intent inference, regex-based prompt classifier, model/provider inference, live
+routing, route execution, provider/model execution, provider/model selection,
+provider/model/runtime/platform execution, worker substrate selection,
+WSL/Ollama, installer, Discord, OpenClaw/Hermes/bridge/adapter/platform
+execution, RAG/local document lookup implementation, web lookup
+implementation, reminder/scheduler implementation, connector execution, file
+operation behavior, artifact export/package implementation, autonomous
+writeback, cleanup, deletion, archive, production task execution, or
+production readiness behavior is registered by Phase 114.
+
+No production readiness is registered by Phase 114.
+
+`PHASE114_END_TO_END_INTAKE_ADMISSION_PIPELINE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
