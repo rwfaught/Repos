@@ -2762,3 +2762,57 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   publication does not change product behavior.
 
 `PHASE137_GIT_CHECKPOINT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 140 Git Checkpoint Remote Alignment Ledger Registration
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+- Created docs: `docs/PHASE_138.md`; `docs/PHASE_139.md`;
+  `docs/PHASE_140.md`.
+- Updated docs: `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`;
+  `docs/CONTEXT_MAP.md`; `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`.
+- Registered Phase 138 operator proof:
+  `PHASE138_GIT_CHECKPOINT_LEDGER_REGISTRATION_EXPLICIT_DOCS_COMMIT_OPERATOR_PROOF=PASS`.
+  Explicit docs-only staging committed the Phase 137 git checkpoint ledger
+  registration as
+  `18da1e7 Register git checkpoint ledger phases 135-137`; no root
+  `git add -A` was used; cached diffstat was
+  `9 files changed, 335 insertions(+), 3 deletions(-)`; final status was
+  `## main...origin/main [ahead 1]`.
+- Registered Phase 139 operator proof:
+  `PHASE139_GIT_CHECKPOINT_LEDGER_REGISTRATION_REMOTE_ALIGNMENT_OPERATOR_PROOF=PASS_WITH_ALREADY_UP_TO_DATE_CAVEAT`.
+  Commit `18da1e7` was already present on `origin/main`; `git push origin main`
+  returned `Everything up-to-date`; final product/root statuses were
+  `## main...origin/main`.
+- Validation: `git status --short --branch`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/provider_probe_boundary_packet.py`;
+  `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m py_compile orchestrator/model_provider_catalog.py`;
+  `python -m unittest tests.test_phase_129_provider_probe_packet_cli_draft_adapter_contract`;
+  `python -m unittest tests.test_phase_128_provider_probe_packet_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_127_provider_probe_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_126_provider_catalog_router_envelope_contract`;
+  `python -m unittest tests.test_phase_125_local_first_provider_catalog_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no commit rerun, no push rerun, no git staging, no
+  provider/model/runtime execution, no provider probe, no model probe, no
+  Ollama, no `/api/tags`, no `/api/show`, no `/api/generate`, no `/api/chat`,
+  no generation, no model loadability, no route readiness, no route execution,
+  no worker dispatch, no RAG/local lookup, no web lookup, no
+  scheduler/reminder execution, no connector execution, no production
+  execution, and no production readiness is proven.
+- Caveat: Phase 140 registers checkpoint evidence only; Phase 139 confirmed
+  remote alignment but did not newly advance `origin/main`.
+
+`PHASE140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

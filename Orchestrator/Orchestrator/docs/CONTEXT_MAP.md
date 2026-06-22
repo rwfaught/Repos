@@ -198,6 +198,15 @@ proofs in source docs/ledgers. Commit/push checkpoint means durable git/source
 publication of prior proof ledgers only. It is not provider/model/runtime
 execution, route execution, product behavior, or production readiness.
 
+Remote-alignment checkpoint registration belongs to this context only as
+source publication confirmation language. Phase 138 records a local
+explicit-docs commit checkpoint for the Phase 135 through Phase 137 checkpoint
+ledger chain at `18da1e7`; Phase 139 records that `git push origin main`
+returned `Everything up-to-date`; Phase 140 registers those checkpoint proofs
+in source docs/ledgers. Remote-alignment checkpoint means durable git/source
+publication was confirmed. It is not provider/model/runtime execution, route
+execution, product behavior, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

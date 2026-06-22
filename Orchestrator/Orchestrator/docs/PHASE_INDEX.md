@@ -136,14 +136,17 @@ This file enables controlled progression through the system build.
 135. PHASE_135.md - Provider Proof Ledger Explicit Docs Commit Checkpoint Operator Proof
 136. PHASE_136.md - Provider Proof Ledger Remote Push Checkpoint Operator Proof
 137. PHASE_137.md - Git Checkpoint Ledger Registration
+138. PHASE_138.md - Git Checkpoint Ledger Registration Explicit Docs Commit Operator Proof
+139. PHASE_139.md - Git Checkpoint Ledger Registration Remote Alignment Operator Proof
+140. PHASE_140.md - Git Checkpoint Remote Alignment Ledger Registration
 
 ---
 
 ## Current Phase
 
-Phase 137 - Git Checkpoint Ledger Registration
+Phase 140 - Git Checkpoint Remote Alignment Ledger Registration
 
-Status: latest locally source/test/docs registration phase; Phase 137 source snapshot refresh attempted.
+Status: latest locally source/test/docs registration phase; Phase 140 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1652,4 +1655,47 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   execution, and no production readiness behavior changed.
 - Marker:
   `PHASE137_GIT_CHECKPOINT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 138 - Git Checkpoint Ledger Registration Explicit Docs Commit Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_138.md`.
+- Behavior: registers the explicit docs-only local commit checkpoint for the
+  Phase 137 git checkpoint ledger registration.
+- Boundary: explicit docs staging only; no root `git add -A`; committed
+  `18da1e7 Register git checkpoint ledger phases 135-137`; final status after
+  Phase 138 was `## main...origin/main [ahead 1]`.
+- Marker:
+  `PHASE138_GIT_CHECKPOINT_LEDGER_REGISTRATION_EXPLICIT_DOCS_COMMIT_OPERATOR_PROOF=PASS`.
+- Production readiness is not claimed.
+
+## Phase 139 - Git Checkpoint Ledger Registration Remote Alignment Operator Proof
+
+- Status: operator-output proof accepted for registration with
+  already-up-to-date caveat.
+- Phase doc: `docs/PHASE_139.md`.
+- Behavior: registers that `git push origin main` returned
+  `Everything up-to-date` for commit `18da1e7`.
+- Boundary: remote alignment was confirmed; the command did not newly advance
+  `origin/main`; final product/root statuses were `## main...origin/main`.
+- Marker:
+  `PHASE139_GIT_CHECKPOINT_LEDGER_REGISTRATION_REMOTE_ALIGNMENT_OPERATOR_PROOF=PASS_WITH_ALREADY_UP_TO_DATE_CAVEAT`.
+- Production readiness is not claimed.
+
+## Phase 140 - Git Checkpoint Remote Alignment Ledger Registration
+
+- Status: locally source/test/docs registration; Phase 140 source snapshot
+  refresh attempted.
+- Phase doc: `docs/PHASE_140.md`.
+- Behavior: registers the already-accepted Phase 138 and Phase 139 git
+  checkpoint operator proofs in source docs and ledgers without rerunning
+  commit or push.
+- Boundary: no git staging, no commit, no push, no runtime/probe execution, no
+  provider/model execution, no Ollama, no `/api/tags`, no `/api/show`, no
+  `/api/generate`, no `/api/chat`, no generation, no route execution, no
+  worker dispatch, no RAG/web/scheduler/connector execution, no production
+  execution, and no production readiness behavior changed.
+- Marker:
+  `PHASE140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

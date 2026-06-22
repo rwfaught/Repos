@@ -97,6 +97,12 @@ means source publication of prior proof ledgers only; it does not rerun manual
 review, execute provider probes, invoke models, execute routes, or prove
 production readiness.
 
+Phase 138 and Phase 139 registered git checkpoint and remote-alignment proofs
+for the Phase 135 through Phase 137 checkpoint ledger chain. Remote-alignment
+language means source publication was confirmed; it does not rerun manual
+review, execute provider probes, invoke models, execute routes, or prove
+production readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

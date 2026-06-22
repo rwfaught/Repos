@@ -2675,3 +2675,40 @@ production readiness behavior is registered by Phase 137.
 No production readiness is registered by Phase 137.
 
 `PHASE137_GIT_CHECKPOINT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 140 Git Checkpoint Remote Alignment Ledger Registration
+
+Boundary:
+
+`PHASE_140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_138.md`
+- `docs/PHASE_139.md`
+- `docs/PHASE_140.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: source/docs/ledger registration of already-accepted
+Phase 138 and Phase 139 git checkpoint operator proofs only. Phase 140
+registers that the Phase 135 through Phase 137 checkpoint ledger chain was
+committed locally at `18da1e7` and already aligned with `origin/main`.
+
+No commit rerun, push rerun, git staging, provider/model/runtime execution,
+provider probe, model probe, Ollama, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, generation, model loadability, route readiness,
+route execution, worker dispatch, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, production execution, or
+production readiness behavior is registered by Phase 140.
+
+No production readiness is registered by Phase 140.
+
+`PHASE140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
