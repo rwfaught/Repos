@@ -110,3 +110,8 @@ paperwork that describes authorization, scope, expected evidence, exclusions,
 and stop conditions for a later probe. It does not perform provider/runtime
 imports, probes, availability checks, execution, route execution, or production
 work.
+
+Phase 128 surfaces provider probe packet status in manual review reports. The
+status is blocked by default unless explicit deterministic authorization,
+scope, and expected evidence are supplied. This visibility does not authorize
+or execute a probe.

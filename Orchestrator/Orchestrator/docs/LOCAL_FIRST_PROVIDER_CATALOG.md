@@ -88,6 +88,12 @@ The airlock does not import providers, probe availability, execute models,
 dispatch workers, perform RAG/web/scheduler/connector work, execute routes, or
 prove production readiness.
 
+Phase 128 exposes this airlock status in manual review artifacts. The report
+may show that probe paperwork is blocked, missing requirements, awaiting
+authorization, or draftable through an explicit deterministic path. It still
+does not prove provider availability, model availability, runtime import,
+execution, route execution, or production readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

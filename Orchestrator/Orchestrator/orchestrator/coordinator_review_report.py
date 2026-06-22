@@ -13,6 +13,7 @@ from typing import Any
 
 from orchestrator.fixture_packet_pipeline import FixtureBoundaryPacketPipelineResult
 from orchestrator.model_router_policy import recommend_model_route
+from orchestrator.provider_probe_boundary_packet import build_provider_probe_boundary_packet
 
 
 NO_ACTIVITY_FLAGS = {
@@ -71,6 +72,7 @@ class CoordinatorReviewReport:
     missing_requirements: tuple[str, ...]
     capability_assessment_summary: dict[str, Any]
     router_policy_recommendation: dict[str, Any]
+    provider_probe_packet_status: dict[str, Any]
     packet_text: str
     evidence_status: str
     non_proofs: tuple[str, ...]
@@ -197,6 +199,45 @@ def _router_policy_summary(result: FixtureBoundaryPacketPipelineResult) -> dict[
     }
 
 
+def _provider_probe_packet_request(
+    result: FixtureBoundaryPacketPipelineResult,
+    router_policy: dict[str, Any],
+    provider_probe_packet_request: dict[str, Any] | None,
+) -> dict[str, Any]:
+    request = {
+        "request_id": result.request_id,
+        "source_router_recommendation": router_policy,
+        "requested_probe_kind": "manual_review_future_probe_status",
+        "requested_surface": "provider_runtime_surface",
+        "operator_authorized_probe_boundary": False,
+        "allowed_probe_scope": (),
+        "expected_evidence": (),
+        "stop_conditions": ("manual_review_does_not_authorize_probe_by_default",),
+        "caveats": ("manual_review_probe_packet_status_only",),
+    }
+    if provider_probe_packet_request:
+        request.update(deepcopy(provider_probe_packet_request))
+        request["source_router_recommendation"] = router_policy
+    return request
+
+
+def _provider_probe_packet_summary(probe_result) -> dict[str, Any]:
+    packet = probe_result.packet_draft
+    return {
+        "accepted": probe_result.accepted,
+        "requested_probe_kind": packet.requested_probe_kind if packet is not None else "",
+        "requested_surface": packet.requested_surface if packet is not None else "",
+        "provider_catalog_key": packet.provider_catalog_key if packet is not None else "",
+        "provider_allowed_boundary": packet.provider_allowed_boundary if packet is not None else "",
+        "blocked_conditions": list(probe_result.blocked_conditions),
+        "missing_requirements": list(probe_result.missing_requirements),
+        "recommended_next_action": probe_result.recommended_next_action,
+        "coordinator_acceptance_required": packet.coordinator_acceptance_required if packet is not None else False,
+        "non_proofs": list(probe_result.non_proofs),
+        "activity_flags": dict(probe_result.activity_flags),
+    }
+
+
 def _route_admission(result: FixtureBoundaryPacketPipelineResult) -> str:
     admission = result.intake_admission_result.admission_decision
     if admission is None:
@@ -239,6 +280,7 @@ def _next_boundary(result: FixtureBoundaryPacketPipelineResult) -> str:
 
 def build_coordinator_review_report(
     pipeline_result: FixtureBoundaryPacketPipelineResult,
+    provider_probe_packet_request: dict[str, Any] | None = None,
 ) -> CoordinatorReviewReportResult:
     """Build a deterministic coordinator-facing review report."""
 
@@ -248,11 +290,16 @@ def build_coordinator_review_report(
     packet_kind = pipeline_result.packet_draft.packet_kind if pipeline_result.packet_draft else "no_packet_draft"
     boundary_name = pipeline_result.packet_draft.boundary_name if pipeline_result.packet_draft else ""
     router_policy = _router_policy_summary(pipeline_result)
+    provider_probe_packet = build_provider_probe_boundary_packet(
+        _provider_probe_packet_request(pipeline_result, router_policy, provider_probe_packet_request)
+    )
+    provider_probe_packet_status = _provider_probe_packet_summary(provider_probe_packet)
     non_proofs = _dedupe(
         REPORT_NON_PROOFS
         + pipeline_result.non_proofs
         + tuple(router_policy["non_proofs"])
         + tuple(router_policy["provider_catalog_non_proofs"])
+        + tuple(provider_probe_packet_status["non_proofs"])
     )
     caveats = _dedupe(pipeline_result.caveats + ("review_report_draft_only_not_ratification",))
     flags = dict(NO_ACTIVITY_FLAGS)
@@ -261,6 +308,8 @@ def build_coordinator_review_report(
     for key, value in router_policy["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in router_policy["provider_catalog_activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in provider_probe_packet_status["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
 
     report = CoordinatorReviewReport(
@@ -281,6 +330,7 @@ def build_coordinator_review_report(
         missing_requirements=pipeline_result.missing_requirements,
         capability_assessment_summary=_capability_summary(pipeline_result),
         router_policy_recommendation=router_policy,
+        provider_probe_packet_status=provider_probe_packet_status,
         packet_text=pipeline_result.packet_text,
         evidence_status="deterministic_source_test_report_only_no_runtime_execution",
         non_proofs=non_proofs,
@@ -338,6 +388,19 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         "- missing_requirements="
         f"{', '.join(report.router_policy_recommendation['missing_requirements']) if report.router_policy_recommendation['missing_requirements'] else 'none'}",
         f"- confidence={report.router_policy_recommendation['confidence']}",
+        "",
+        "Provider Probe Packet",
+        f"- accepted={report.provider_probe_packet_status['accepted']}",
+        f"- requested_probe_kind={report.provider_probe_packet_status['requested_probe_kind'] or 'none'}",
+        f"- requested_surface={report.provider_probe_packet_status['requested_surface'] or 'none'}",
+        f"- provider_catalog_key={report.provider_probe_packet_status['provider_catalog_key'] or report.router_policy_recommendation['provider_catalog_key']}",
+        f"- provider_allowed_boundary={report.provider_probe_packet_status['provider_allowed_boundary'] or 'none'}",
+        "- blocked_conditions="
+        f"{', '.join(report.provider_probe_packet_status['blocked_conditions']) if report.provider_probe_packet_status['blocked_conditions'] else 'none'}",
+        "- missing_requirements="
+        f"{', '.join(report.provider_probe_packet_status['missing_requirements']) if report.provider_probe_packet_status['missing_requirements'] else 'none'}",
+        f"- recommended_next_action={report.provider_probe_packet_status['recommended_next_action']}",
+        f"- coordinator_acceptance_required={report.provider_probe_packet_status['coordinator_acceptance_required']}",
         "",
         "NBM",
         f"- {report.next_boundary}",

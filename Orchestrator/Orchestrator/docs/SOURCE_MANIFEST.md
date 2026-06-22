@@ -2450,3 +2450,54 @@ production readiness behavior is registered by Phase 127.
 No production readiness is registered by Phase 127.
 
 `PHASE127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 128 Provider Probe Packet Manual Review Integration Registration
+
+Boundary:
+
+`PHASE_128_PROVIDER_PROBE_BOUNDARY_PACKET_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/coordinator_review_report.py`
+- `orchestrator/manual_review_runner.py`
+
+Registered new test files:
+
+- `tests/test_phase_128_provider_probe_packet_manual_review_integration_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_128.md`
+
+Registered changed documentation/control files:
+
+- `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing manual review integration of
+provider probe packet status only. Phase 128 registers coordinator-visible
+metadata for blocked/missing/awaiting/draftable probe packet posture; it does
+not register runtime/provider probing or execution.
+
+No provider/model execution, provider availability proof, model availability
+proof, provider availability probe, model availability probe, live
+provider/model selection, model selection for execution, provider runtime
+import, Ollama, WSL, OpenClaw, Hermes, Discord, installer, runtime/probe
+execution outside ordinary Python unit-test execution, runtime/platform
+execution, web lookup, RAG/local document lookup execution,
+scheduler/reminder execution, connector execution, Codex dispatch from product
+code, worker dispatch, route execution, production execution, cleanup/delete/
+archive, artifact export/package behavior beyond the requested source refresh,
+autonomous writeback, service/API/UI productization, live routing, or
+production readiness behavior is registered by Phase 128.
+
+No production readiness is registered by Phase 128.
+
+`PHASE128_PROVIDER_PROBE_PACKET_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

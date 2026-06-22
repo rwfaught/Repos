@@ -73,3 +73,14 @@ production readiness.
 
 Future provider/runtime proof remains a separate explicitly authorized
 boundary.
+
+## Manual Review Status
+
+Phase 128 surfaces provider probe packet status in manual review artifacts.
+By default, manual review does not authorize packet drafting; it reports the
+missing authorization, allowed scope, and expected evidence requirements.
+
+An explicit deterministic test/request path may provide authorization, scope,
+and expected evidence to prove that packet paperwork is draftable, but the
+result remains non-executing and coordinator acceptance is still required
+before any future probe boundary.

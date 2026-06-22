@@ -2491,3 +2491,52 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   provider/runtime proof remains unperformed.
 
 `PHASE127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 128 Provider Probe Packet Manual Review Integration
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_128_PROVIDER_PROBE_BOUNDARY_PACKET_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_MUTATION`
+- Created tests:
+  `tests/test_phase_128_provider_probe_packet_manual_review_integration_contract.py`.
+- Created docs: `docs/PHASE_128.md`.
+- Updated source: `orchestrator/coordinator_review_report.py`;
+  `orchestrator/manual_review_runner.py`.
+- Updated docs: `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`;
+  `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: integrated provider probe packet status into deterministic manual
+  review reports and runner artifacts while keeping the default posture blocked
+  without explicit probe-boundary authorization, scope, and expected evidence.
+- Validation: `python -m py_compile orchestrator/provider_probe_boundary_packet.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m unittest tests.test_phase_128_provider_probe_packet_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_127_provider_probe_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_126_provider_catalog_router_envelope_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model execution, provider availability
+  proof, model availability proof, provider availability probe, model
+  availability probe, live provider/model selection, model selection for
+  execution, provider runtime import, Ollama, WSL, OpenClaw, Hermes, Discord,
+  installer, runtime/probe execution outside ordinary Python unit-test
+  execution, runtime/platform execution, web lookup, RAG/local document lookup
+  execution, scheduler/reminder execution, connector execution, Codex dispatch
+  from product code, worker dispatch, route execution, production execution,
+  cleanup/delete/archive, artifact export/package behavior beyond the
+  requested source refresh, autonomous writeback, service/API/UI
+  productization, live routing, or production readiness is proven.
+- Caveat: Phase 128 surfaces probe packet status only; it does not authorize,
+  execute, or prove provider/runtime behavior.
+
+`PHASE128_PROVIDER_PROBE_PACKET_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

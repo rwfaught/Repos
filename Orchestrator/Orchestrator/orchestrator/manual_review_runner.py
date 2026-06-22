@@ -77,6 +77,7 @@ class ManualReviewRunResult:
     review_report_result: CoordinatorReviewReportResult | None
     review_text: str
     router_policy_recommendation: dict[str, Any] | None
+    provider_probe_packet_status: dict[str, Any] | None
     blocked_conditions: tuple[str, ...]
     missing_requirements: tuple[str, ...]
     recommended_next_action: str
@@ -213,8 +214,12 @@ def _dedupe(values: tuple[str, ...]) -> tuple[str, ...]:
 def _result_from_pipeline(
     pipeline_result: FixtureBoundaryPacketPipelineResult,
     fixture_id: str,
+    provider_probe_packet_request: dict[str, Any] | None = None,
 ) -> ManualReviewRunResult:
-    report_result = build_coordinator_review_report(pipeline_result)
+    report_result = build_coordinator_review_report(
+        pipeline_result,
+        provider_probe_packet_request=provider_probe_packet_request,
+    )
     review_text = render_coordinator_review_text(report_result.report)
     return ManualReviewRunResult(
         accepted=report_result.accepted,
@@ -225,6 +230,7 @@ def _result_from_pipeline(
         review_report_result=report_result,
         review_text=review_text,
         router_policy_recommendation=dict(report_result.report.router_policy_recommendation),
+        provider_probe_packet_status=dict(report_result.report.provider_probe_packet_status),
         blocked_conditions=report_result.blocked_conditions,
         missing_requirements=report_result.missing_requirements,
         recommended_next_action=report_result.recommended_next_action,
@@ -244,6 +250,7 @@ def _unknown_fixture_result(fixture_id: str) -> ManualReviewRunResult:
         review_report_result=None,
         review_text="Manual review runner stopped: unknown fixture id. No execution occurred.",
         router_policy_recommendation=None,
+        provider_probe_packet_status=None,
         blocked_conditions=("unknown_builtin_review_fixture",),
         missing_requirements=("known_fixture_id",),
         recommended_next_action="choose_known_builtin_review_fixture",
@@ -266,7 +273,11 @@ def get_builtin_review_fixture(fixture_id: str) -> dict[str, Any] | None:
     return deepcopy(case) if case is not None else None
 
 
-def run_named_fixture_review(fixture_id: str) -> ManualReviewRunResult:
+def run_named_fixture_review(
+    fixture_id: str,
+    *,
+    provider_probe_packet_request: dict[str, Any] | None = None,
+) -> ManualReviewRunResult:
     """Run a named built-in fixture or structured intake through review output."""
 
     case = get_builtin_review_fixture(fixture_id)
@@ -274,14 +285,23 @@ def run_named_fixture_review(fixture_id: str) -> ManualReviewRunResult:
         return _unknown_fixture_result(fixture_id)
 
     if case["kind"] == "structured_intake":
-        return run_structured_intake_review(case["intake"], fixture_id=fixture_id)
-    return run_fixture_review(case["fixture"], fixture_id=fixture_id)
+        return run_structured_intake_review(
+            case["intake"],
+            fixture_id=fixture_id,
+            provider_probe_packet_request=provider_probe_packet_request,
+        )
+    return run_fixture_review(
+        case["fixture"],
+        fixture_id=fixture_id,
+        provider_probe_packet_request=provider_probe_packet_request,
+    )
 
 
 def run_fixture_review(
     fixture: PromptInferenceFixture | dict[str, Any],
     *,
     fixture_id: str | None = None,
+    provider_probe_packet_request: dict[str, Any] | None = None,
 ) -> ManualReviewRunResult:
     """Run an explicit prompt fixture through review report rendering."""
 
@@ -289,6 +309,7 @@ def run_fixture_review(
     return _result_from_pipeline(
         pipeline_result,
         fixture_id or pipeline_result.request_id,
+        provider_probe_packet_request=provider_probe_packet_request,
     )
 
 
@@ -296,6 +317,7 @@ def run_structured_intake_review(
     intake: RequestIntakeRecord | dict[str, Any],
     *,
     fixture_id: str | None = None,
+    provider_probe_packet_request: dict[str, Any] | None = None,
 ) -> ManualReviewRunResult:
     """Run explicit structured intake through review report rendering."""
 
@@ -303,4 +325,5 @@ def run_structured_intake_review(
     return _result_from_pipeline(
         pipeline_result,
         fixture_id or pipeline_result.request_id,
+        provider_probe_packet_request=provider_probe_packet_request,
     )

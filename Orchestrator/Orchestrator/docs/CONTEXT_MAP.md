@@ -159,6 +159,12 @@ perform provider/runtime imports, provider or model availability probes,
 execution, dispatch, lookup, scheduling, connector work, route execution, or
 production readiness proof.
 
+Manual review integration of provider probe packet status belongs to this
+context as coordinator-visible metadata. Default review output is blocked or
+awaiting explicit probe-boundary authorization, scope, and evidence. Rendering
+that status is not probe authorization, provider/runtime import, execution,
+route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

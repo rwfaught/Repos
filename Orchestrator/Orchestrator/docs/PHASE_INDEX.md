@@ -126,14 +126,15 @@ This file enables controlled progression through the system build.
 125. PHASE_125.md - Local-First Provider Catalog And Escalation Matrix
 126. PHASE_126.md - Provider Catalog Backed Router Recommendation Envelope
 127. PHASE_127.md - Provider Runtime Probe Boundary Packet Draft Contract
+128. PHASE_128.md - Provider Probe Packet Manual Review Integration
 
 ---
 
 ## Current Phase
 
-Phase 127 - Provider Runtime Probe Boundary Packet Draft Contract
+Phase 128 - Provider Probe Packet Manual Review Integration
 
-Status: latest locally source/test/docs-proven phase; Phase 127 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 128 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1474,4 +1475,27 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 128 - Provider Probe Packet Manual Review Integration
+
+- Status: locally source/test/docs-proven; Phase 128 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_128.md`.
+- Behavior: integrates provider probe packet status into deterministic manual
+  review reports as coordinator-visible metadata and preserves blocked-by-
+  default posture without probe authorization, scope, and expected evidence.
+- Boundary: no provider/model execution, provider availability proof, model
+  availability proof, provider availability probe, model availability probe,
+  live provider/model selection, model selection for execution, provider
+  runtime import, Ollama, WSL, OpenClaw, Hermes, Discord, installer,
+  runtime/probe execution outside ordinary Python unit tests,
+  runtime/platform execution, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch, worker
+  dispatch, route execution, production execution, cleanup/delete/archive,
+  service/API/UI productization, live routing, artifact export/package behavior
+  beyond the requested source refresh, or production readiness behavior
+  changed.
+- Marker:
+  `PHASE128_PROVIDER_PROBE_PACKET_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
