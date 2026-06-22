@@ -2808,3 +2808,55 @@ execution, or production readiness behavior is registered by Phase 146.
 No production readiness is registered by Phase 146.
 
 `PHASE146_PROVIDER_EVIDENCE_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 149 Provider Evidence Gated Route Selection Readiness Contract
+
+Boundary:
+
+`PHASE_149_PROVIDER_EVIDENCE_GATED_ROUTE_SELECTION_READINESS_CONTRACT_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/route_selection_readiness.py`
+
+Registered changed source files:
+
+- `orchestrator/coordinator_review_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_149.md`
+
+Registered changed documentation/control files:
+
+- `docs/PROVIDER_EVIDENCE_REGISTRY.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: deterministic evidence-gated route-selection readiness
+posture over router/provider recommendation envelope data. The readiness layer
+names a future generation smoke probe boundary while preserving all provider
+selection, provider execution, route execution, generation, and production
+readiness permissions as false.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, model generation, provider/model/runtime
+execution, provider/model selection authority, model correctness, model
+loadability, VRAM sufficiency, route execution, worker dispatch, RAG/local
+lookup, web lookup, scheduler/reminder execution, connector execution,
+service/API/UI productization, production execution, or production readiness
+behavior is registered by Phase 149.
+
+No production readiness is registered by Phase 149.
+
+`PHASE149_PROVIDER_EVIDENCE_GATED_ROUTE_SELECTION_READINESS_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

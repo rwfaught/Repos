@@ -148,3 +148,11 @@ itself. For `local_model_candidate`, the envelope may include read-only
 evidence status, evidence keys/source phases, and model metadata fields. This
 is not provider/model execution, model generation, live routing, route
 execution, provider selection, or production readiness.
+
+Phase 149 adds an evidence-gated route-selection readiness layer that consumes
+the recommendation envelope and reports what remains blocked. For
+`local_model_candidate` with read-only metadata evidence, readiness is
+`blocked_pending_generation_probe_boundary` and `not_ready_for_execution`; the
+named next proof boundary is a future bounded generation smoke probe. This
+layer does not select a provider/model, execute generation, execute a route, or
+prove production readiness.

@@ -113,6 +113,12 @@ recommendation envelope. These fields are reportable policy evidence only and
 do not change provider execution authority, provider selection authority,
 route execution, or production readiness.
 
+Phase 149 may render `Route Selection Readiness` in manual review output. This
+section names blocked readiness and the future proof boundary that would be
+needed before provider/model route selection or execution; it does not execute
+that proof, call a provider/model, generate text, execute a route, or prove
+production readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

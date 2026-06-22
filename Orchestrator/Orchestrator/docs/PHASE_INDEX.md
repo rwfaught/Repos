@@ -141,14 +141,15 @@ This file enables controlled progression through the system build.
 140. PHASE_140.md - Git Checkpoint Remote Alignment Ledger Registration
 143. PHASE_143.md - Provider Evidence Registry Router Report Contract
 146. PHASE_146.md - Provider Evidence Backed Router Recommendation Envelope Contract
+149. PHASE_149.md - Provider Evidence Gated Route Selection Readiness Contract
 
 ---
 
 ## Current Phase
 
-Phase 146 - Provider Evidence Backed Router Recommendation Envelope Contract
+Phase 149 - Provider Evidence Gated Route Selection Readiness Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 146 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 149 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1737,4 +1738,22 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE146_PROVIDER_EVIDENCE_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 149 - Provider Evidence Gated Route Selection Readiness Contract
+
+- Status: locally source/test/docs-proven; Phase 149 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_149.md`.
+- Behavior: adds deterministic evidence-gated route-selection readiness over
+  provider evidence-backed router recommendation envelope data while keeping
+  provider selection, provider execution, route execution, generation, and
+  production readiness permissions false.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model execution, no route execution, no worker dispatch, no
+  RAG/web/scheduler/connector execution, and no production readiness behavior
+  changed.
+- Marker:
+  `PHASE149_PROVIDER_EVIDENCE_GATED_ROUTE_SELECTION_READINESS_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

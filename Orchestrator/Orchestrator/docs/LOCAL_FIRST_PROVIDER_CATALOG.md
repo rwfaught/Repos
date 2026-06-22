@@ -127,6 +127,14 @@ envelopes to carry evidence fields from the registry while preserving
 catalog posture is inspectable policy data only, not an executable or
 selectable provider/model path.
 
+Phase 149 makes the next gate explicit: a `local_model_candidate` may have
+registered evidence and still remain non-selectable and non-executable. The
+route-selection readiness result can name a future generation smoke probe
+boundary, but until that separate boundary is authorized and proven,
+`provider_selection_allowed=false`, `provider_execution_allowed=false`,
+`generation_allowed=false`, `route_execution_allowed=false`, and
+`production_readiness=false`.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

@@ -221,6 +221,12 @@ deterministic evidence posture inside policy data, not runtime provider
 selection, model selection, provider/model execution, route execution, or
 production readiness.
 
+Evidence-gated route-selection readiness language belongs to this context only
+as source/report posture. Phase 149 can name the next proof boundary required
+before local provider/model route selection or execution, without executing
+that boundary or granting provider/model, generation, route-execution, or
+production authority.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

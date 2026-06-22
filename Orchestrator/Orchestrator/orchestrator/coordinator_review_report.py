@@ -15,6 +15,11 @@ from orchestrator.fixture_packet_pipeline import FixtureBoundaryPacketPipelineRe
 from orchestrator.model_router_policy import recommend_model_route
 from orchestrator.provider_evidence_registry import summarize_provider_evidence_for_catalog_key
 from orchestrator.provider_probe_boundary_packet import build_provider_probe_boundary_packet
+from orchestrator.route_selection_readiness import (
+    evaluate_route_selection_readiness,
+    route_selection_readiness_to_dict,
+    summarize_route_selection_readiness,
+)
 
 
 NO_ACTIVITY_FLAGS = {
@@ -73,6 +78,7 @@ class CoordinatorReviewReport:
     missing_requirements: tuple[str, ...]
     capability_assessment_summary: dict[str, Any]
     router_policy_recommendation: dict[str, Any]
+    route_selection_readiness_summary: dict[str, Any]
     provider_evidence_summary: dict[str, Any]
     provider_probe_packet_status: dict[str, Any]
     packet_text: str
@@ -304,6 +310,8 @@ def build_coordinator_review_report(
     boundary_name = pipeline_result.packet_draft.boundary_name if pipeline_result.packet_draft else ""
     router_policy = _router_policy_summary(pipeline_result)
     provider_evidence_summary = summarize_provider_evidence_for_catalog_key(router_policy["provider_catalog_key"])
+    route_selection_readiness = evaluate_route_selection_readiness(router_policy)
+    route_selection_readiness_summary = route_selection_readiness_to_dict(route_selection_readiness)
     provider_probe_packet = build_provider_probe_boundary_packet(
         _provider_probe_packet_request(pipeline_result, router_policy, provider_probe_packet_request)
     )
@@ -314,6 +322,7 @@ def build_coordinator_review_report(
         + tuple(router_policy["non_proofs"])
         + tuple(router_policy["provider_catalog_non_proofs"])
         + tuple(router_policy["provider_evidence_non_proofs"])
+        + tuple(route_selection_readiness_summary["non_proofs"])
         + tuple(provider_evidence_summary["non_proofs"])
         + tuple(provider_probe_packet_status["non_proofs"])
     )
@@ -328,6 +337,8 @@ def build_coordinator_review_report(
     for key, value in router_policy["provider_evidence_activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in provider_evidence_summary["activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in route_selection_readiness_summary["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in provider_probe_packet_status["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
@@ -350,6 +361,7 @@ def build_coordinator_review_report(
         missing_requirements=pipeline_result.missing_requirements,
         capability_assessment_summary=_capability_summary(pipeline_result),
         router_policy_recommendation=router_policy,
+        route_selection_readiness_summary=route_selection_readiness_summary,
         provider_evidence_summary=provider_evidence_summary,
         provider_probe_packet_status=provider_probe_packet_status,
         packet_text=pipeline_result.packet_text,
@@ -417,6 +429,21 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         "- missing_requirements="
         f"{', '.join(report.router_policy_recommendation['missing_requirements']) if report.router_policy_recommendation['missing_requirements'] else 'none'}",
         f"- confidence={report.router_policy_recommendation['confidence']}",
+        "",
+        "Route Selection Readiness",
+        f"- route_selection_readiness={report.route_selection_readiness_summary['route_selection_readiness']}",
+        f"- readiness_status={report.route_selection_readiness_summary['readiness_status']}",
+        f"- provider_evidence_status={report.route_selection_readiness_summary['provider_evidence_status']}",
+        f"- provider_evidence_keys={', '.join(report.route_selection_readiness_summary['provider_evidence_keys']) if report.route_selection_readiness_summary['provider_evidence_keys'] else 'none'}",
+        f"- provider_evidence_source_phases={', '.join(report.route_selection_readiness_summary['provider_evidence_source_phases']) if report.route_selection_readiness_summary['provider_evidence_source_phases'] else 'none'}",
+        f"- next_required_boundary={report.route_selection_readiness_summary['next_required_boundary']}",
+        f"- next_required_proof={report.route_selection_readiness_summary['next_required_proof']}",
+        f"- provider_selection_allowed={report.route_selection_readiness_summary['provider_selection_allowed']}",
+        f"- provider_execution_allowed={report.route_selection_readiness_summary['provider_execution_allowed']}",
+        f"- route_execution_allowed={report.route_selection_readiness_summary['route_execution_allowed']}",
+        f"- generation_allowed={report.route_selection_readiness_summary['generation_allowed']}",
+        f"- production_readiness={report.route_selection_readiness_summary['production_readiness']}",
+        f"- summary={summarize_route_selection_readiness(evaluate_route_selection_readiness(report.router_policy_recommendation))}",
         "",
         "Provider Evidence",
         f"- provider_evidence_status={report.provider_evidence_summary['provider_evidence_status']}",

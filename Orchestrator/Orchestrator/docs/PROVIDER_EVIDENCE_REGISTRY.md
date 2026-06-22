@@ -52,6 +52,11 @@ flags. These fields are evidence posture only and do not grant execution
 authority, provider/model selection authority, route execution authority, or
 production readiness.
 
+Phase 149 allows registry evidence to feed route-selection readiness posture.
+That readiness posture may name the next required proof boundary, but evidence
+does not grant provider/model execution authority, model generation authority,
+route execution authority, or production readiness.
+
 ## Non-Proofs
 
 The registry does not prove provider/model/runtime execution, model
