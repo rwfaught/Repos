@@ -3090,3 +3090,57 @@ readiness behavior is registered by Phase 163.
 No production readiness is registered by Phase 163.
 
 `PHASE163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 165 Route Selection Readiness Recommendation Envelope Review
+
+Boundary:
+
+`PHASE_165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS`
+
+Registered source review result:
+
+- No source-code change required.
+
+Registered new test files:
+
+- `tests/test_phase_165_route_selection_readiness_recommendation_envelope_review_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_165.md`
+
+Registered changed documentation/control files:
+
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/PROVIDER_EVIDENCE_REGISTRY.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: source/test/docs review confirming the current
+recommendation-envelope and route-selection readiness posture after Phase 163.
+The envelope carries registered `qwen3.6:27b` model-list, generation-smoke,
+and `/api/show` metadata evidence. Missing generation-smoke proof and missing
+27b metadata proof are no longer blockers. Readiness remains
+`not_ready_for_execution` and all execution permissions remain false.
+
+Registered caveat: Phase 165 does not add provider evidence or runtime
+behavior. It preserves Phase 159 Retry 1 generation-smoke evidence, Phase 162
+metadata evidence with unknown fields not guessed, the Phase 159 initial
+token-budget/probe-shape failure, and the Phase 155 Retry 3 30b/24k CUDA OOM
+failure.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, provider/model/runtime execution,
+provider/model selection authority, semantic correctness, real workload
+loadability, broad VRAM sufficiency, route execution, worker dispatch,
+RAG/local lookup, web lookup, scheduler/reminder execution, connector
+execution, service/API/UI productization, production execution, or production
+readiness behavior is registered by Phase 165.
+
+No production readiness is registered by Phase 165.
+
+`PHASE165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS_PROVEN=PASS`

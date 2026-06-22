@@ -3189,3 +3189,51 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   `PHASE_164_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW`.
 
 `PHASE163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 165 Route Selection Readiness Recommendation Envelope Review
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS`
+- Source review result: no source-code change required.
+- Created tests:
+  `tests/test_phase_165_route_selection_readiness_recommendation_envelope_review_contract.py`.
+- Created docs: `docs/PHASE_165.md`.
+- Updated docs: `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/PROVIDER_EVIDENCE_REGISTRY.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: reviews and proves the current non-executing
+  recommendation-envelope/readiness posture after Phase 163. The envelope
+  carries registered `qwen3.6:27b` evidence, the generation-smoke and 27b
+  metadata blockers are absent, and readiness remains not executable.
+- Accepted facts preserved: Phase 159 Retry 1 remains the exact accepted
+  `/api/generate` marker smoke proof with `num_predict=96`; Phase 162 remains
+  the accepted `/api/show` metadata visibility proof with unknown fields not
+  guessed; Phase 159 initial failure remains token-budget/probe-shape; Phase
+  155 Retry 3 remains a 30b/24k CUDA OOM failure, not a 27b failure.
+- Readiness impact: readiness remains
+  `future_probe_ready_qwen36_27b_evidence_registered` and
+  `not_ready_for_execution`; all provider selection, provider execution,
+  generation, route execution, and production readiness flags remain false.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_165_route_selection_readiness_recommendation_envelope_review_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_163_qwen36_27b_api_show_metadata_evidence_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_143_provider_evidence_registry_router_report_contract.py" -v`.
+- Explicit non-proofs: no runtime probe was run, no Ollama call was made, no
+  `/api/tags`, `/api/show`, `/api/generate`, or `/api/chat` call was made by
+  this phase, no provider/model/runtime execution, no provider/model
+  selection authority, no semantic correctness, no real workload loadability,
+  no broad VRAM sufficiency, no route execution, no worker dispatch, no
+  RAG/local lookup, no web lookup, no scheduler/reminder execution, no
+  connector execution, no service/API/UI productization, no production
+  execution, and no production readiness is proven.
+- Next recommended boundary:
+  `PHASE_166_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_OPERATOR_REVIEW`.
+
+`PHASE165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS_PROVEN=PASS`

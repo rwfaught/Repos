@@ -158,6 +158,11 @@ visibility with details, license text presence, tensor/model metadata,
 capabilities, and `modified_at` presence. Provider selection, provider
 execution, route execution, and production readiness remain false.
 
+Phase 165 reviews the catalog-backed recommendation-envelope and
+route-selection readiness posture after those evidence registrations. It adds
+no catalog execution authority and confirms that catalog evidence remains
+inspectable policy data only.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

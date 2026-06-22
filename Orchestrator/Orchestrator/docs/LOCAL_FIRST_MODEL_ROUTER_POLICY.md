@@ -173,3 +173,11 @@ blocker is satisfied and readiness moves to a conservative future-probe-ready
 posture for a bounded route-selection readiness/recommendation-envelope
 review. Provider selection, provider execution, generation-now, route
 execution, and production readiness remain false.
+
+Phase 165 reviews that posture at source/test/docs level and confirms no
+source-code change is needed: the recommendation envelope carries the
+registered `qwen3.6:27b` model-list, generation-smoke, and `/api/show`
+metadata evidence, while route execution remains unproven and all execution
+permissions remain false. The next conservative boundary is a manual/operator
+review of the rendered readiness/recommendation envelope, not production
+execution.

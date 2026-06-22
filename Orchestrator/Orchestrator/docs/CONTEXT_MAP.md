@@ -254,6 +254,13 @@ does not prove semantic correctness, real workload loadability, broad VRAM
 sufficiency, route execution, provider/model execution, or production
 readiness.
 
+Route-selection readiness recommendation-envelope review language belongs to
+this context only as non-executing report/review posture. Phase 165 confirms
+that the recommendation envelope carries registered `qwen3.6:27b` evidence and
+that the prior generation-smoke and metadata blockers are no longer present,
+without authorizing provider/model selection, route execution, worker dispatch,
+or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

@@ -1846,3 +1846,26 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 165 - Route Selection Readiness Recommendation Envelope Review
+
+- Status: locally source/test/docs-proven review/alignment only.
+- Phase doc: `docs/PHASE_165.md`.
+- Behavior: reviews the current route-selection readiness and
+  recommendation-envelope posture after Phase 163 and proves that the envelope
+  carries registered `qwen3.6:27b` evidence without granting execution
+  authority.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no runtime call, no route
+  execution, no worker dispatch, no RAG/web/scheduler/connector execution, and
+  no production readiness behavior changed.
+- Readiness impact: missing generation-smoke proof and missing 27b metadata
+  proof are no longer blockers; readiness remains `not_ready_for_execution`
+  with all execution permissions false.
+- Note: Phase 164 is a remote-push/operator checkpoint and is not fabricated
+  as a source phase doc by Phase 165.
+- Next recommended boundary:
+  `PHASE_166_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_OPERATOR_REVIEW`.
+- Marker:
+  `PHASE165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
