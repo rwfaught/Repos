@@ -2400,3 +2400,53 @@ production readiness behavior is registered by Phase 126.
 No production readiness is registered by Phase 126.
 
 `PHASE126_PROVIDER_CATALOG_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 127 Provider Runtime Probe Boundary Packet Draft Contract Registration
+
+Boundary:
+
+`PHASE_127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_CONTRACT_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/provider_probe_boundary_packet.py`
+
+Registered new test files:
+
+- `tests/test_phase_127_provider_probe_boundary_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`
+- `docs/PHASE_127.md`
+
+Registered changed documentation/control files:
+
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing provider/runtime probe
+boundary packet drafting only. Phase 127 registers future-boundary paperwork
+for eligible router/provider recommendation envelopes; it does not register
+runtime/provider probing or execution.
+
+No provider/model execution, provider availability proof, model availability
+proof, provider availability probe, model availability probe, live
+provider/model selection, model selection for execution, provider runtime
+import, Ollama, WSL, OpenClaw, Hermes, Discord, installer, runtime/probe
+execution outside ordinary Python unit-test execution, runtime/platform
+execution, web lookup, RAG/local document lookup execution,
+scheduler/reminder execution, connector execution, Codex dispatch from product
+code, worker dispatch, route execution, production execution, cleanup/delete/
+archive, artifact export/package behavior beyond the requested source refresh,
+autonomous writeback, service/API/UI productization, live routing, or
+production readiness behavior is registered by Phase 127.
+
+No production readiness is registered by Phase 127.
+
+`PHASE127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

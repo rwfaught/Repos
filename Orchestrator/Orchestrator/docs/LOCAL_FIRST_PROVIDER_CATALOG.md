@@ -76,6 +76,18 @@ The selected catalog key is a policy posture key only. It is not concrete
 provider/model/runtime/platform selection, availability proof, route execution,
 or production readiness.
 
+## Probe Boundary Packet Airlock
+
+Phase 127 adds `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md` and
+`orchestrator/provider_probe_boundary_packet.py` as the future probe-boundary
+airlock. The packet draft consumes eligible provider-catalog-backed router
+recommendations and records what a later explicitly authorized probe boundary
+would need to define.
+
+The airlock does not import providers, probe availability, execute models,
+dispatch workers, perform RAG/web/scheduler/connector work, execute routes, or
+prove production readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

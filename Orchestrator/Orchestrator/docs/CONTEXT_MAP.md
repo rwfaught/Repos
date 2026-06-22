@@ -151,6 +151,14 @@ catalog non-proofs, and catalog activity flags as reviewable policy evidence.
 The envelope is not live provider routing, model selection for execution,
 runtime import, worker dispatch, route execution, or production readiness.
 
+Provider/runtime probe boundary packet doctrine belongs to this context as an
+airlock between provider policy and future runtime proof. It drafts authorized
+scope, expected evidence, explicit exclusions, stop conditions, non-proofs, and
+coordinator acceptance requirements for a later probe boundary. It does not
+perform provider/runtime imports, provider or model availability probes,
+execution, dispatch, lookup, scheduling, connector work, route execution, or
+production readiness proof.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

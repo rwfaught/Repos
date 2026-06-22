@@ -103,3 +103,10 @@ posture, catalog non-proofs, and catalog activity flags. These fields remain
 non-executing policy evidence and do not select or run a provider, model,
 runtime, platform, worker, route, lookup, scheduler, connector, or production
 task.
+
+Phase 127 adds a provider/runtime probe boundary packet draft contract. It can
+turn an eligible router/provider recommendation envelope into future-boundary
+paperwork that describes authorization, scope, expected evidence, exclusions,
+and stop conditions for a later probe. It does not perform provider/runtime
+imports, probes, availability checks, execution, route execution, or production
+work.

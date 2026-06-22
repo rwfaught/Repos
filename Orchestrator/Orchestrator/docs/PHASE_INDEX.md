@@ -125,14 +125,15 @@ This file enables controlled progression through the system build.
 124. PHASE_124.md - Phase 120 Entrypoint Validation Compatibility
 125. PHASE_125.md - Local-First Provider Catalog And Escalation Matrix
 126. PHASE_126.md - Provider Catalog Backed Router Recommendation Envelope
+127. PHASE_127.md - Provider Runtime Probe Boundary Packet Draft Contract
 
 ---
 
 ## Current Phase
 
-Phase 126 - Provider Catalog Backed Router Recommendation Envelope
+Phase 127 - Provider Runtime Probe Boundary Packet Draft Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 126 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 127 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1450,4 +1451,27 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE126_PROVIDER_CATALOG_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 127 - Provider Runtime Probe Boundary Packet Draft Contract
+
+- Status: locally source/test/docs-proven; Phase 127 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_127.md`.
+- Behavior: adds a deterministic non-executing provider/runtime probe boundary
+  packet draft contract that prepares future-boundary paperwork for eligible
+  router/provider recommendation envelopes.
+- Boundary: no provider/model execution, provider availability proof, model
+  availability proof, provider availability probe, model availability probe,
+  live provider/model selection, model selection for execution, provider
+  runtime import, Ollama, WSL, OpenClaw, Hermes, Discord, installer,
+  runtime/probe execution outside ordinary Python unit tests,
+  runtime/platform execution, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch, worker
+  dispatch, route execution, production execution, cleanup/delete/archive,
+  service/API/UI productization, live routing, artifact export/package behavior
+  beyond the requested source refresh, or production readiness behavior
+  changed.
+- Marker:
+  `PHASE127_PROVIDER_RUNTIME_PROBE_BOUNDARY_PACKET_DRAFT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
