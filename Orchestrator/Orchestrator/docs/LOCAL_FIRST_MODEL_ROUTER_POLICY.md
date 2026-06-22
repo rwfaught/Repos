@@ -115,3 +115,8 @@ Phase 128 surfaces provider probe packet status in manual review reports. The
 status is blocked by default unless explicit deterministic authorization,
 scope, and expected evidence are supplied. This visibility does not authorize
 or execute a probe.
+
+Phase 129 adds explicit manual review CLI flags for requesting provider probe
+packet paperwork. The flags only pass deterministic metadata into manual
+review; they do not authorize execution, import providers, check availability,
+select models for execution, execute routes, or prove production readiness.

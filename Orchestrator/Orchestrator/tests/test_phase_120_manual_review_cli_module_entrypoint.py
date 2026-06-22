@@ -11,6 +11,7 @@ REQUIRED_SECTIONS = (
     "Deliverable/Command",
     "RESPONSE_METADATA",
     "Router Policy",
+    "Provider Probe Packet",
 )
 
 FORBIDDEN_EXECUTION_CLAIMS = (
@@ -18,6 +19,11 @@ FORBIDDEN_EXECUTION_CLAIMS = (
     "model_executed=true",
     "worker_dispatched=true",
     "codex_dispatched=true",
+    "rag_lookup_performed=true",
+    "web_lookup_performed=true",
+    "scheduler_executed=true",
+    "connector_executed=true",
+    "route_executed=true",
     "route_execution=true",
     "production_readiness=true",
 )

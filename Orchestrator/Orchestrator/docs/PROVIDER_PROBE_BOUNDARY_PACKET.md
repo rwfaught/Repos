@@ -84,3 +84,14 @@ An explicit deterministic test/request path may provide authorization, scope,
 and expected evidence to prove that packet paperwork is draftable, but the
 result remains non-executing and coordinator acceptance is still required
 before any future probe boundary.
+
+## CLI Draft Adapter
+
+Phase 129 adds an explicit manual review CLI adapter path for provider probe
+packet paperwork:
+
+`python -m orchestrator.manual_review_cli --fixture safe_direct_answer --draft-provider-probe-packet --authorize-probe-boundary --probe-kind read_only_future_probe_plan --probe-surface provider_runtime_surface --probe-scope read_only_probe_command_draft --expected-evidence captured_future_probe_output`
+
+The CLI path is deterministic manual review output only. It does not probe a
+provider, import a runtime, execute a model, dispatch a worker, perform lookup,
+schedule work, execute a route, or prove production readiness.

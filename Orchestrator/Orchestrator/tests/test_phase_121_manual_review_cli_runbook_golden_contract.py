@@ -23,6 +23,7 @@ REQUIRED_COMMANDS = (
     "python -m orchestrator.manual_review_cli --fixture safe_direct_answer",
     "python -m orchestrator.manual_review_cli --fixture safe_coding_report_only",
     "python -m orchestrator.manual_review_cli --fixture production_execution_blocked",
+    "python -m orchestrator.manual_review_cli --fixture safe_direct_answer --draft-provider-probe-packet --authorize-probe-boundary --probe-kind read_only_future_probe_plan --probe-surface provider_runtime_surface --probe-scope read_only_probe_command_draft --expected-evidence captured_future_probe_output",
 )
 
 REQUIRED_REVIEW_SECTIONS = (
@@ -32,6 +33,8 @@ REQUIRED_REVIEW_SECTIONS = (
     "NBM",
     "Deliverable/Command",
     "RESPONSE_METADATA",
+    "Router Policy",
+    "Provider Probe Packet",
 )
 
 
@@ -77,6 +80,8 @@ class Phase121ManualReviewCliRunbookGoldenContractTests(unittest.TestCase):
             "route execution",
             "production readiness",
             "service/api/ui",
+            "provider probe packet status does not mean probe authorization",
+            "provider availability proof",
         ):
             self.assertIn(phrase, text)
 

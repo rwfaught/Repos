@@ -2501,3 +2501,59 @@ production readiness behavior is registered by Phase 128.
 No production readiness is registered by Phase 128.
 
 `PHASE128_PROVIDER_PROBE_PACKET_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 129 Provider Probe Packet CLI Draft Adapter Registration
+
+Boundary:
+
+`PHASE_129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_SOURCE_TEST_DOCS_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_129_provider_probe_packet_cli_draft_adapter_contract.py`
+
+Registered changed test files:
+
+- `tests/test_phase_120_manual_review_cli_module_entrypoint.py`
+- `tests/test_phase_121_manual_review_cli_runbook_golden_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_129.md`
+
+Registered changed documentation/control files:
+
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+- `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing manual review CLI adapter
+support for provider probe packet paperwork metadata only. Phase 129 registers
+explicit flags for drafting probe-packet review metadata; it does not register
+runtime/provider probing or execution.
+
+No provider/model execution, provider availability proof, model availability
+proof, provider availability probe, model availability probe, live
+provider/model selection, model selection for execution, provider runtime
+import, Ollama, WSL, OpenClaw, Hermes, Discord, installer, runtime/probe
+execution outside ordinary Python unit-test execution, runtime/platform
+execution, web lookup, RAG/local document lookup execution,
+scheduler/reminder execution, connector execution, Codex dispatch from product
+code, worker dispatch, route execution, production execution, cleanup/delete/
+archive, artifact export/package behavior beyond the requested source refresh,
+autonomous writeback, service/API/UI productization, live routing, or
+production readiness behavior is registered by Phase 129.
+
+No production readiness is registered by Phase 129.
+
+`PHASE129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

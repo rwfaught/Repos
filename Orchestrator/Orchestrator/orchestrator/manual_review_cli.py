@@ -64,10 +64,14 @@ def _help_text() -> str:
         (
             "Manual review adapter commands:",
             "  --list-fixtures",
-            "  --fixture <fixture_id>",
+            "  --fixture <fixture_id> [--draft-provider-probe-packet] [--authorize-probe-boundary]",
+            "      [--probe-kind <value>] [--probe-surface <value>]",
+            "      [--probe-scope <value>] [--expected-evidence <value>] [--stop-condition <value>]",
             "  --help",
             "",
             "This adapter renders deterministic Phase 118 review output only.",
+            "Provider probe packet drafting is paperwork only.",
+            "No probe, provider, model, runtime, worker, RAG, web, scheduler, connector, route, or production execution occurs.",
         )
     )
 
@@ -82,6 +86,7 @@ def _result(
     listed_fixtures: tuple[str, ...] = (),
     accepted: bool = False,
     non_proofs: tuple[str, ...] = CLI_NON_PROOFS,
+    no_activity_flags: dict[str, bool] | None = None,
     caveats: tuple[str, ...] = (),
 ) -> ManualReviewCliResult:
     return ManualReviewCliResult(
@@ -93,8 +98,65 @@ def _result(
         listed_fixtures=listed_fixtures,
         accepted=accepted,
         non_proofs=_dedupe(non_proofs),
-        no_activity_flags=dict(RUNNER_NO_ACTIVITY_FLAGS),
+        no_activity_flags=dict(no_activity_flags or RUNNER_NO_ACTIVITY_FLAGS),
         caveats=_dedupe(caveats),
+    )
+
+
+def _parse_probe_packet_options(args: tuple[str, ...]) -> tuple[dict[str, object] | None, str]:
+    draft_requested = False
+    authorize = False
+    probe_kind = ""
+    probe_surface = ""
+    probe_scope: list[str] = []
+    expected_evidence: list[str] = []
+    stop_conditions: list[str] = []
+
+    index = 0
+    while index < len(args):
+        item = args[index]
+        if item == "--draft-provider-probe-packet":
+            draft_requested = True
+            index += 1
+            continue
+        if item == "--authorize-probe-boundary":
+            authorize = True
+            index += 1
+            continue
+        if item in {"--probe-kind", "--probe-surface", "--probe-scope", "--expected-evidence", "--stop-condition"}:
+            if index + 1 >= len(args) or not args[index + 1]:
+                return None, f"Manual review adapter requires a value after {item}."
+            value = args[index + 1]
+            if item == "--probe-kind":
+                probe_kind = value
+            elif item == "--probe-surface":
+                probe_surface = value
+            elif item == "--probe-scope":
+                probe_scope.append(value)
+            elif item == "--expected-evidence":
+                expected_evidence.append(value)
+            elif item == "--stop-condition":
+                stop_conditions.append(value)
+            index += 2
+            continue
+        return None, f"Manual review adapter received unsupported fixture option: {item}."
+
+    if not draft_requested:
+        if authorize or probe_kind or probe_surface or probe_scope or expected_evidence or stop_conditions:
+            return None, "Probe packet options require --draft-provider-probe-packet."
+        return None, ""
+
+    return (
+        {
+            "requested_probe_kind": probe_kind,
+            "requested_surface": probe_surface,
+            "operator_authorized_probe_boundary": authorize,
+            "allowed_probe_scope": tuple(probe_scope),
+            "expected_evidence": tuple(expected_evidence),
+            "stop_conditions": tuple(stop_conditions),
+            "caveats": ("cli_provider_probe_packet_draft_metadata_only",),
+        },
+        "",
     )
 
 
@@ -123,7 +185,7 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
         )
 
     if args and args[0] == "--fixture":
-        if len(args) != 2 or not args[1]:
+        if len(args) < 2 or not args[1]:
             return _result(
                 exit_code=2,
                 command="fixture",
@@ -132,7 +194,20 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
             )
 
         fixture_id = args[1]
-        review = run_named_fixture_review(fixture_id)
+        provider_probe_packet_request, parse_error = _parse_probe_packet_options(args[2:])
+        if parse_error:
+            return _result(
+                exit_code=2,
+                command="fixture",
+                fixture_id=fixture_id,
+                error_text=parse_error,
+                caveats=("fixture_command_rejected_before_runner_call",),
+            )
+
+        review = run_named_fixture_review(
+            fixture_id,
+            provider_probe_packet_request=provider_probe_packet_request,
+        )
         error_text = ""
         if not review.accepted:
             error_text = "Manual review adapter stopped conservatively for non-accepted fixture review."
@@ -144,6 +219,7 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
             error_text=error_text,
             accepted=review.accepted,
             non_proofs=CLI_NON_PROOFS + review.non_proofs,
+            no_activity_flags=review.no_activity_flags,
             caveats=review.caveats,
         )
 

@@ -94,6 +94,11 @@ authorization, or draftable through an explicit deterministic path. It still
 does not prove provider availability, model availability, runtime import,
 execution, route execution, or production readiness.
 
+Phase 129 exposes the same paperwork-only path through explicit manual review
+CLI flags. CLI visibility does not convert catalog posture into provider
+availability, provider/model/runtime selection, route execution, or production
+readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

@@ -165,6 +165,12 @@ awaiting explicit probe-boundary authorization, scope, and evidence. Rendering
 that status is not probe authorization, provider/runtime import, execution,
 route execution, or production readiness.
 
+Provider probe packet CLI draft adapter language also belongs to this context.
+The CLI may pass explicit paperwork metadata into manual review output, but it
+does not execute probes, import runtimes, select models for execution, dispatch
+workers, perform lookup/scheduling/connector work, execute routes, or prove
+production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

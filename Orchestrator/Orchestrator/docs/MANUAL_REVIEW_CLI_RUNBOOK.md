@@ -20,6 +20,16 @@ Run from the product repo root:
 
 `python -m orchestrator.manual_review_cli --fixture production_execution_blocked`
 
+Default manual review output includes provider probe packet status, but does
+not authorize probe packet drafting.
+
+`python -m orchestrator.manual_review_cli --fixture safe_direct_answer --draft-provider-probe-packet --authorize-probe-boundary --probe-kind read_only_future_probe_plan --probe-surface provider_runtime_surface --probe-scope read_only_probe_command_draft --expected-evidence captured_future_probe_output`
+
+The provider probe packet command is paperwork only. It drafts deterministic
+manual review metadata for a future boundary and does not execute a probe,
+provider, model, runtime, worker, RAG, web, scheduler, connector, route, or
+production behavior.
+
 ## Expected Fixture IDs
 
 - `ambiguous_needs_clarification`
@@ -42,6 +52,8 @@ Successful review text should include these sections:
 - `NBM`
 - `Deliverable/Command`
 - `RESPONSE_METADATA`
+- `Router Policy`
+- `Provider Probe Packet`
 
 ## Exit-Code Posture
 
@@ -58,6 +70,12 @@ Success does not mean coordinator acceptance, worker dispatch, route execution,
 production readiness, provider/model execution, RAG, web lookup,
 scheduler/reminder behavior, connector access, file mutation behavior,
 cleanup/delete/archive, or service/API/UI.
+
+Provider probe packet status does not mean probe authorization, provider availability proof,
+model availability proof, provider runtime import,
+provider/model execution, route execution, or production readiness. If
+authorization, scope, or expected evidence is missing, the status should remain
+blocked/missing requirements.
 
 ## Troubleshooting
 

@@ -127,14 +127,15 @@ This file enables controlled progression through the system build.
 126. PHASE_126.md - Provider Catalog Backed Router Recommendation Envelope
 127. PHASE_127.md - Provider Runtime Probe Boundary Packet Draft Contract
 128. PHASE_128.md - Provider Probe Packet Manual Review Integration
+129. PHASE_129.md - Provider Probe Packet CLI Draft Adapter
 
 ---
 
 ## Current Phase
 
-Phase 128 - Provider Probe Packet Manual Review Integration
+Phase 129 - Provider Probe Packet CLI Draft Adapter
 
-Status: latest locally source/test/docs-proven phase; Phase 128 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 129 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1498,4 +1499,27 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE128_PROVIDER_PROBE_PACKET_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 129 - Provider Probe Packet CLI Draft Adapter
+
+- Status: locally source/test/docs-proven; Phase 129 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_129.md`.
+- Behavior: adds explicit deterministic manual review CLI flags for
+  provider-probe packet paperwork drafting metadata while preserving the
+  existing `--fixture safe_direct_answer` path.
+- Boundary: no provider/model execution, provider availability proof, model
+  availability proof, provider availability probe, model availability probe,
+  live provider/model selection, model selection for execution, provider
+  runtime import, Ollama, WSL, OpenClaw, Hermes, Discord, installer,
+  runtime/probe execution outside ordinary Python unit tests,
+  runtime/platform execution, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch, worker
+  dispatch, route execution, production execution, cleanup/delete/archive,
+  service/API/UI productization, live routing, artifact export/package behavior
+  beyond the requested source refresh, or production readiness behavior
+  changed.
+- Marker:
+  `PHASE129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
