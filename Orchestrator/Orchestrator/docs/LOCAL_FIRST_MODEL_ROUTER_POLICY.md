@@ -120,3 +120,19 @@ Phase 129 adds explicit manual review CLI flags for requesting provider probe
 packet paperwork. The flags only pass deterministic metadata into manual
 review; they do not authorize execution, import providers, check availability,
 select models for execution, execute routes, or prove production readiness.
+
+Phase 130 registers accepted operator output for that CLI paperwork path with
+an exit-code caveat. Phase 131 registers a separate read-only local Ollama
+`/api/tags` availability proof. That proof means provider surface/model-list
+visibility only; it does not prove generation, chat, model correctness,
+loadability, route execution, or production readiness.
+
+Phase 133 registers an accepted operator proof for read-only local Ollama
+`/api/show` metadata visibility for `qwen3-30b-24k:latest`. The visible
+metadata included GGUF, Qwen3 MoE, 30.5B, Q4_K_M, model-info metadata,
+template, parameters, and license presence. Phase 134 registers that proof in
+source docs/ledgers without rerunning it. Metadata visibility remains evidence
+only; it is not generation, `/api/generate`, `/api/chat`, semantic correctness,
+model loadability, VRAM sufficiency, provider/model execution, route
+execution, worker dispatch, RAG/web/scheduler/connector work, or production
+readiness.

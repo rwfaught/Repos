@@ -171,6 +171,25 @@ does not execute probes, import runtimes, select models for execution, dispatch
 workers, perform lookup/scheduling/connector work, execute routes, or prove
 production readiness.
 
+Operator provider proof registration belongs to this context only as evidence
+language. Phase 130 registers CLI paperwork rendering with an exit-code caveat.
+Phase 131 registers read-only local Ollama `/api/tags` provider-surface
+visibility and model list visibility at one point in time. Provider
+availability proof in this context means read-only provider surface visibility
+only; it is not model execution, model correctness, model loadability, route
+execution, worker dispatch, RAG/web/scheduler/connector work, or production
+readiness.
+
+Model metadata proof registration belongs to this context only as evidence
+language. Phase 133 registers read-only local Ollama `/api/show` metadata
+visibility for `qwen3-30b-24k:latest` at one point in time, including GGUF,
+Qwen3 MoE, 30.5B, Q4_K_M, model-info metadata, template, parameters, and
+license presence. Model metadata visibility means candidate metadata
+introspection only; it is not generation, chat, semantic correctness, model
+loadability, VRAM sufficiency, route execution, provider/model/runtime
+execution, worker dispatch, RAG/web/scheduler/connector work, or production
+readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

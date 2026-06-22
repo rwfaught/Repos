@@ -128,14 +128,19 @@ This file enables controlled progression through the system build.
 127. PHASE_127.md - Provider Runtime Probe Boundary Packet Draft Contract
 128. PHASE_128.md - Provider Probe Packet Manual Review Integration
 129. PHASE_129.md - Provider Probe Packet CLI Draft Adapter
+130. PHASE_130.md - Provider Probe Packet CLI Draft Golden Smoke Operator Proof
+131. PHASE_131.md - Read-Only Local Provider Availability Probe Operator Proof
+132. PHASE_132.md - Operator Provider Proof Ledger Registration
+133. PHASE_133.md - Read-Only Local Model Metadata Probe Operator Proof
+134. PHASE_134.md - Read-Only Local Model Metadata Probe Ledger Registration
 
 ---
 
 ## Current Phase
 
-Phase 129 - Provider Probe Packet CLI Draft Adapter
+Phase 134 - Read-Only Local Model Metadata Probe Ledger Registration
 
-Status: latest locally source/test/docs-proven phase; Phase 129 source snapshot refresh attempted.
+Status: latest locally source/test/docs registration phase; Phase 134 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1522,4 +1527,83 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 130 - Provider Probe Packet CLI Draft Golden Smoke Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_130.md`.
+- Behavior: registers Roger's manual review CLI provider-probe packet
+  paperwork command output containing `Router Policy`, `Provider Probe Packet`,
+  `accepted=True`, `provider_catalog_key=local_model_candidate`,
+  `provider_allowed_boundary=future_local_provider_model_probe_boundary`, and
+  `coordinator_acceptance_required=True`.
+- Caveat: explicit command exit code was not separately captured.
+- Marker:
+  `PHASE130_PROVIDER_PROBE_PACKET_CLI_DRAFT_GOLDEN_SMOKE_OPERATOR_OUTPUT_PROVEN=PASS_WITH_EXIT_CODE_NOT_CAPTURED`.
+- Production readiness is not claimed.
+
+## Phase 131 - Read-Only Local Provider Availability Probe Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_131.md`.
+- Behavior: registers a read-only local Ollama `/api/tags` probe at
+  `http://127.0.0.1:11434/api/tags` with status code 200 and nine visible
+  model names.
+- Boundary: read-only provider surface visibility only; no model generation,
+  `/api/generate`, `/api/chat`, route execution, worker dispatch, RAG, web,
+  scheduler, connector, service/API/UI productization, or production readiness
+  proof.
+- Marker:
+  `PHASE131_READ_ONLY_LOCAL_PROVIDER_AVAILABILITY_PROBE_OPERATOR_PROOF=PASS`.
+- Production readiness is not claimed.
+
+## Phase 132 - Operator Provider Proof Ledger Registration
+
+- Status: locally source/test/docs registration; Phase 132 source snapshot
+  refresh attempted.
+- Phase doc: `docs/PHASE_132.md`.
+- Behavior: registers the already-accepted Phase 130 and Phase 131 operator
+  proofs in source docs and ledgers without rerunning either proof and without
+  authorizing Phase 133.
+- Boundary: no runtime/probe execution, no provider/model execution, no
+  `/api/tags` rerun, no `/api/generate`, no `/api/chat`, no provider
+  availability beyond the exact Phase 131 read-only proof, no route execution,
+  no worker dispatch, no RAG/web/scheduler/connector execution, no production
+  execution, and no production readiness behavior changed.
+- Marker:
+  `PHASE132_OPERATOR_PROVIDER_PROOF_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 133 - Read-Only Local Model Metadata Probe Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_133.md`.
+- Behavior: registers a read-only local Ollama `/api/show` metadata probe for
+  `qwen3-30b-24k:latest` with status code 200, GGUF format, Qwen3 MoE family,
+  30.5B parameter size, Q4_K_M quantization, metadata keys, template presence,
+  parameter presence, and license presence.
+- Boundary: read-only model metadata visibility only; no model generation,
+  `/api/generate`, `/api/chat`, semantic correctness, model loadability, VRAM
+  sufficiency, route execution, worker dispatch, RAG, web, scheduler,
+  connector, service/API/UI productization, or production readiness proof.
+- Marker:
+  `PHASE133_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_OPERATOR_PROOF=PASS`.
+- Production readiness is not claimed.
+
+## Phase 134 - Read-Only Local Model Metadata Probe Ledger Registration
+
+- Status: locally source/test/docs registration; Phase 134 source snapshot
+  refresh attempted.
+- Phase doc: `docs/PHASE_134.md`.
+- Behavior: registers the already-accepted Phase 133 read-only `/api/show`
+  metadata proof in source docs and ledgers without rerunning the probe and
+  without authorizing generation or route execution.
+- Boundary: no runtime/probe execution, no provider/model execution, no
+  `/api/tags` rerun, no `/api/show` rerun, no `/api/generate`, no `/api/chat`,
+  no model loadability or route readiness proof, no worker dispatch, no
+  RAG/web/scheduler/connector execution, no production execution, and no
+  production readiness behavior changed.
+- Marker:
+  `PHASE134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

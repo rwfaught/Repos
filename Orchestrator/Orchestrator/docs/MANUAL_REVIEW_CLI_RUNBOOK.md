@@ -77,6 +77,20 @@ provider/model execution, route execution, or production readiness. If
 authorization, scope, or expected evidence is missing, the status should remain
 blocked/missing requirements.
 
+Phase 130 registered an operator golden smoke of the explicit paperwork command
+with expected rendered metadata and clean git status; the command exit code was
+not separately captured. Phase 131 registered a separate read-only local
+Ollama `/api/tags` proof. That provider surface visibility is not generation,
+chat, model correctness, route execution, worker dispatch, or production
+readiness.
+
+Phase 133 registered a separate read-only local Ollama `/api/show` metadata
+proof for `qwen3-30b-24k:latest`; Phase 134 registers that proof in source
+docs/ledgers without rerunning it. Metadata visibility is not generation,
+chat, semantic correctness, model loadability, VRAM sufficiency, route
+execution, worker dispatch, RAG/web/scheduler/connector work, or production
+readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

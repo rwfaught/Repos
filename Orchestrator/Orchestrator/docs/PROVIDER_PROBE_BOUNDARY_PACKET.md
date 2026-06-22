@@ -95,3 +95,16 @@ packet paperwork:
 The CLI path is deterministic manual review output only. It does not probe a
 provider, import a runtime, execute a model, dispatch a worker, perform lookup,
 schedule work, execute a route, or prove production readiness.
+
+Phase 130 registers accepted operator output for this CLI paperwork path, with
+the explicit caveat that the command exit code was not separately captured.
+Phase 131 is separate: it registers a read-only `/api/tags` provider-surface
+availability proof and model-list visibility only. Neither registration turns
+probe packet paperwork into execution authority.
+
+Phase 133 is also separate: it registers a read-only `/api/show` metadata
+proof for `qwen3-30b-24k:latest` only. Phase 134 registers that accepted proof
+in source docs/ledgers without rerunning the probe. Metadata visibility does
+not turn probe packet paperwork into generation authority, chat authority,
+provider/model execution, runtime/platform execution, route execution, or
+production readiness.

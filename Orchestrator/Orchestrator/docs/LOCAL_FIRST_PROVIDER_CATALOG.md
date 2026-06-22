@@ -99,6 +99,22 @@ CLI flags. CLI visibility does not convert catalog posture into provider
 availability, provider/model/runtime selection, route execution, or production
 readiness.
 
+Phase 130 registers operator proof that the CLI paperwork path rendered the
+expected local model candidate metadata, with the command exit code caveat
+preserved. Phase 131 registers read-only `/api/tags` visibility for the local
+Ollama provider surface and nine model names. The catalog interpretation
+remains conservative: list visibility is not model execution, model
+correctness, model loadability, route execution, mutation authority, or
+production readiness.
+
+Phase 133 registers read-only `/api/show` metadata visibility for
+`qwen3-30b-24k:latest`: GGUF, Qwen3 MoE, 30.5B, Q4_K_M, model-info metadata,
+template, parameters, and license presence. Phase 134 registers that accepted
+operator proof in source docs/ledgers without rerunning it. Catalog posture
+remains conservative: metadata visibility is not generation, chat, semantic
+correctness, model loadability, VRAM sufficiency, provider/model/runtime
+execution, route execution, mutation authority, or production readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

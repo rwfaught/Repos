@@ -2592,3 +2592,119 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   provider probe.
 
 `PHASE129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 132 Operator Provider Proof Ledger Registration
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_132_OPERATOR_PROVIDER_PROOF_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+- Created docs: `docs/PHASE_130.md`; `docs/PHASE_131.md`;
+  `docs/PHASE_132.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`; `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`;
+  `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`.
+- Registered Phase 130 operator proof:
+  `PHASE130_PROVIDER_PROBE_PACKET_CLI_DRAFT_GOLDEN_SMOKE_OPERATOR_OUTPUT_PROVEN=PASS_WITH_EXIT_CODE_NOT_CAPTURED`.
+  Roger's CLI paperwork command rendered `Router Policy`,
+  `Provider Probe Packet`, `accepted=True`,
+  `provider_catalog_key=local_model_candidate`,
+  `provider_allowed_boundary=future_local_provider_model_probe_boundary`, and
+  `coordinator_acceptance_required=True`; git status after was
+  `## main...origin/main`.
+- Phase 130 caveat: explicit command exit code was not separately captured.
+- Registered Phase 131 operator proof:
+  `PHASE131_READ_ONLY_LOCAL_PROVIDER_AVAILABILITY_PROBE_OPERATOR_PROOF=PASS`.
+  Roger's read-only PowerShell probe against
+  `http://127.0.0.1:11434/api/tags` returned status code 200, JSON content
+  type, nine model names, and clean git status.
+- Phase 131 accepted meaning: local Ollama provider surface visibility at
+  `/api/tags` was proven at that moment.
+- Validation: `git status --short --branch`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/provider_probe_boundary_packet.py`;
+  `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m py_compile orchestrator/model_provider_catalog.py`;
+  `python -m unittest tests.test_phase_129_provider_probe_packet_cli_draft_adapter_contract`;
+  `python -m unittest tests.test_phase_128_provider_probe_packet_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_127_provider_probe_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_126_provider_catalog_router_envelope_contract`;
+  `python -m unittest tests.test_phase_125_local_first_provider_catalog_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no Phase 130 or Phase 131 rerun, no provider/model
+  execution, no provider availability beyond the exact Phase 131 read-only
+  `/api/tags` proof, no model generation, no `/api/generate`, no `/api/chat`,
+  no model correctness, no model loadability, no VRAM sufficiency, no provider
+  runtime import, no Ollama runtime proof beyond the read-only tags result, no
+  route execution, no worker/Codex dispatch, no RAG/local lookup, no web
+  lookup, no scheduler/reminder execution, no connector execution, no
+  service/API/UI productization, no production execution, and no production
+  readiness is proven.
+- Caveat: Phase 132 does not authorize Phase 133.
+
+`PHASE132_OPERATOR_PROVIDER_PROOF_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 134 Read-Only Local Model Metadata Probe Ledger Registration
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+- Created docs: `docs/PHASE_133.md`; `docs/PHASE_134.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`; `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`;
+  `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`.
+- Registered Phase 133 operator proof:
+  `PHASE133_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_OPERATOR_PROOF=PASS`.
+  Roger's read-only `POST` probe against
+  `http://127.0.0.1:11434/api/show` for
+  `qwen3-30b-24k:latest` returned status code 200, JSON content type,
+  response bytes `70864`, GGUF format, Qwen3 MoE family, 30.5B parameter
+  size, Q4_K_M quantization, model-info metadata, template presence,
+  parameter presence, license presence, and operator result
+  `PASS_CANDIDATE_READ_ONLY_METADATA_VISIBLE`.
+- Phase 133 accepted meaning: local Ollama model metadata visibility at
+  `/api/show` was proven for `qwen3-30b-24k:latest` at that moment.
+- Validation: `git status --short --branch`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/provider_probe_boundary_packet.py`;
+  `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m py_compile orchestrator/model_provider_catalog.py`;
+  `python -m unittest tests.test_phase_129_provider_probe_packet_cli_draft_adapter_contract`;
+  `python -m unittest tests.test_phase_128_provider_probe_packet_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_127_provider_probe_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_126_provider_catalog_router_envelope_contract`;
+  `python -m unittest tests.test_phase_125_local_first_provider_catalog_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no Phase 133 rerun, no runtime/probe execution, no
+  provider/model execution, no `/api/tags` rerun, no `/api/show` rerun, no
+  `/api/generate`, no `/api/chat`, no model generation, no semantic
+  correctness, no model loadability, no VRAM sufficiency, no route execution,
+  no Hermes/OpenClaw/WSL, no worker/Codex dispatch, no RAG/local lookup, no
+  web lookup, no scheduler/reminder execution, no connector execution, no
+  service/API/UI productization, no production execution, and no production
+  readiness is proven.
+- Caveat: Phase 134 registers accepted metadata evidence only and does not
+  authorize deeper provider/runtime/model proof.
+
+`PHASE134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

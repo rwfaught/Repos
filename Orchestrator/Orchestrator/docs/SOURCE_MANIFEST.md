@@ -2557,3 +2557,84 @@ production readiness behavior is registered by Phase 129.
 No production readiness is registered by Phase 129.
 
 `PHASE129_PROVIDER_PROBE_PACKET_CLI_DRAFT_ADAPTER_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 132 Operator Provider Proof Ledger Registration
+
+Boundary:
+
+`PHASE_132_OPERATOR_PROVIDER_PROOF_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_130.md`
+- `docs/PHASE_131.md`
+- `docs/PHASE_132.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: source/docs/ledger registration of already-accepted
+operator proofs only. Phase 132 registers Phase 130 CLI paperwork output and
+Phase 131 read-only local Ollama `/api/tags` provider-surface visibility.
+
+No Phase 130 or Phase 131 rerun, provider/model execution, provider
+availability beyond the exact Phase 131 read-only `/api/tags` proof, model
+generation, `/api/generate`, `/api/chat`, model correctness, model loadability,
+VRAM sufficiency, provider runtime import, Ollama runtime proof beyond the
+read-only tags result, route execution, worker/Codex dispatch, RAG/local
+lookup, web lookup, scheduler/reminder execution, connector execution,
+service/API/UI productization, production execution, or production readiness
+behavior is registered by Phase 132.
+
+No production readiness is registered by Phase 132.
+
+`PHASE132_OPERATOR_PROVIDER_PROOF_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 134 Read-Only Local Model Metadata Probe Ledger Registration
+
+Boundary:
+
+`PHASE_134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_133.md`
+- `docs/PHASE_134.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PROVIDER_PROBE_BOUNDARY_PACKET.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: source/docs/ledger registration of the already-accepted
+Phase 133 read-only local model metadata operator proof only. Phase 134
+registers `/api/show` metadata visibility for `qwen3-30b-24k:latest` without
+rerunning the probe.
+
+No Phase 133 rerun, runtime/probe execution, provider/model execution,
+`/api/tags` rerun, `/api/show` rerun, `/api/generate`, `/api/chat`, model
+generation, semantic correctness, model loadability, VRAM sufficiency, route
+execution, Hermes/OpenClaw/WSL, worker/Codex dispatch, RAG/local lookup, web
+lookup, scheduler/reminder execution, connector execution, service/API/UI
+productization, production execution, or production readiness behavior is
+registered by Phase 134.
+
+No production readiness is registered by Phase 134.
+
+`PHASE134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
