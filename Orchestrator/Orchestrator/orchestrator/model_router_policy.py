@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from orchestrator.capability_registry import assess_required_capabilities
-from orchestrator.model_provider_catalog import provider_posture_for_route
+from orchestrator.model_provider_catalog import ROUTE_TO_PROVIDER_KEY, get_model_provider_catalog_entry
 
 
 NO_ACTIVITY_FLAGS = {
@@ -107,6 +107,17 @@ class ModelRouterPolicyRecommendation:
     request_id: str
     recommended_route: str
     provider_posture: str
+    provider_catalog_key: str
+    provider_tier: str
+    provider_maturity_status: str
+    provider_allowed_boundary: str
+    provider_required_authority: str
+    provider_execution_allowed: bool
+    provider_selection_allowed: bool
+    provider_catalog_escalation_posture: str
+    provider_catalog_fallback: str
+    provider_catalog_non_proofs: tuple[str, ...]
+    provider_catalog_activity_flags: dict[str, bool]
     confidence: float | None
     reason: str
     fallback: str
@@ -176,10 +187,23 @@ def _recommendation(
     missing_requirements: tuple[str, ...] = (),
     capability_non_proofs: tuple[str, ...] = (),
 ) -> ModelRouterPolicyRecommendation:
+    provider_catalog_key = ROUTE_TO_PROVIDER_KEY.get(recommended_route, "provider_blocked_or_unavailable")
+    provider_catalog_entry = get_model_provider_catalog_entry(provider_catalog_key)
     return ModelRouterPolicyRecommendation(
         request_id=request.request_id,
         recommended_route=recommended_route,
-        provider_posture=provider_posture,
+        provider_posture=provider_catalog_entry.provider_posture,
+        provider_catalog_key=provider_catalog_entry.provider_key,
+        provider_tier=provider_catalog_entry.provider_tier,
+        provider_maturity_status=provider_catalog_entry.maturity_status,
+        provider_allowed_boundary=provider_catalog_entry.allowed_boundary,
+        provider_required_authority=provider_catalog_entry.required_authority,
+        provider_execution_allowed=provider_catalog_entry.execution_allowed,
+        provider_selection_allowed=provider_catalog_entry.selection_allowed,
+        provider_catalog_escalation_posture=provider_catalog_entry.escalation_posture,
+        provider_catalog_fallback=provider_catalog_entry.fallback,
+        provider_catalog_non_proofs=provider_catalog_entry.non_proofs,
+        provider_catalog_activity_flags=dict(provider_catalog_entry.activity_flags),
         confidence=request.confidence,
         reason=reason,
         fallback=fallback,
@@ -187,7 +211,7 @@ def _recommendation(
         required_boundary=required_boundary,
         blocked_conditions=_dedupe(blocked_conditions),
         missing_requirements=_dedupe(missing_requirements),
-        non_proofs=_dedupe(ROUTER_POLICY_NON_PROOFS + capability_non_proofs),
+        non_proofs=_dedupe(ROUTER_POLICY_NON_PROOFS + provider_catalog_entry.non_proofs + capability_non_proofs),
         activity_flags=dict(NO_ACTIVITY_FLAGS),
     )
 
@@ -203,7 +227,7 @@ def recommend_model_route(
         return _recommendation(
             empty_request,
             recommended_route="ask_clarification",
-            provider_posture=provider_posture_for_route("ask_clarification"),
+            provider_posture="",
             reason="Structured model router policy request is required.",
             fallback="ask_operator_for_structured_router_policy_fields",
             escalation_posture="clarification_required",
@@ -236,7 +260,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="ask_clarification",
-            provider_posture=provider_posture_for_route("ask_clarification"),
+            provider_posture="",
             reason="Missing or invalid router policy authority prevents recommendation.",
             fallback="ask_operator_for_request_type_confidence_and_capability_authority",
             escalation_posture="clarification_required",
@@ -250,7 +274,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="block",
-            provider_posture=provider_posture_for_route("block"),
+            provider_posture="",
             reason="Production execution capability requires a separate future production boundary.",
             fallback="reject_or_reframe_without_production_execution",
             escalation_posture="blocked_requires_explicit_production_boundary",
@@ -263,7 +287,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="separate_provider_or_platform_boundary_required",
-            provider_posture=provider_posture_for_route("separate_provider_or_platform_boundary_required"),
+            provider_posture="",
             reason="Provider/model/platform/runtime capabilities require separate authority.",
             fallback="ask_operator_for_explicit_provider_or_platform_boundary",
             escalation_posture="escalate_only_if_separate_boundary_authorizes",
@@ -276,7 +300,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="rag_local_document_boundary",
-            provider_posture=provider_posture_for_route("rag_local_document_boundary"),
+            provider_posture="",
             reason="Local document lookup requires a RAG/local-document lookup boundary.",
             fallback="ask_operator_for_document_source_authority",
             escalation_posture="defer_to_rag_local_document_boundary",
@@ -289,7 +313,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="scheduler_reminder_boundary",
-            provider_posture=provider_posture_for_route("scheduler_reminder_boundary"),
+            provider_posture="",
             reason="Reminder requests require scheduler/reminder confirmation and boundary.",
             fallback="ask_operator_for_time_target_and_persistence_confirmation",
             escalation_posture="defer_to_scheduler_reminder_boundary",
@@ -302,7 +326,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="web_research_boundary",
-            provider_posture=provider_posture_for_route("web_research_boundary"),
+            provider_posture="",
             reason="Research/web requests require an explicit web/research boundary.",
             fallback="ask_operator_for_web_research_authority",
             escalation_posture="defer_to_web_research_boundary",
@@ -315,7 +339,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="worker_codex_boundary",
-            provider_posture=provider_posture_for_route("worker_codex_boundary"),
+            provider_posture="",
             reason="Coding and file mutation routes require a bounded worker/Codex boundary.",
             fallback="prepare_human_mediated_worker_packet",
             escalation_posture="worker_boundary_required_before_any_dispatch",
@@ -333,7 +357,7 @@ def recommend_model_route(
         return _recommendation(
             request,
             recommended_route="local_first_answer",
-            provider_posture=provider_posture_for_route("local_first_answer"),
+            provider_posture="",
             reason="Low-risk answer route may stay local-first when direct answer is allowed.",
             fallback="ask_clarification_or_escalate_to_frontier_review_if_authorized",
             escalation_posture="frontier_provider_review_only_if_explicitly_authorized",
@@ -344,7 +368,7 @@ def recommend_model_route(
     return _recommendation(
         request,
         recommended_route="ask_clarification",
-        provider_posture=provider_posture_for_route("ask_clarification"),
+        provider_posture="",
         reason="Router policy cannot safely recommend a downstream posture from current fields.",
         fallback="ask_operator_for_missing_inputs_or_boundary_authority",
         escalation_posture="clarification_required",

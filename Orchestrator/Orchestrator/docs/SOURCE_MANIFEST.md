@@ -2351,3 +2351,52 @@ production readiness behavior is registered by Phase 125.
 No production readiness is registered by Phase 125.
 
 `PHASE125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 126 Provider Catalog Backed Router Recommendation Envelope Registration
+
+Boundary:
+
+`PHASE_126_PROVIDER_CATALOG_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_SOURCE_TEST_DOCS_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/model_router_policy.py`
+- `orchestrator/coordinator_review_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_126_provider_catalog_router_envelope_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_126.md`
+
+Registered changed documentation/control files:
+
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing router/provider
+recommendation envelope enrichment only. Phase 126 registers structured
+provider-catalog fields on router recommendations and compact rendering of
+provider-catalog details in manual review reports.
+
+No provider/model execution, provider availability proof, model availability
+proof, live provider/model selection, model selection for execution, provider
+runtime import, Ollama, WSL, OpenClaw, Hermes, Discord, installer,
+runtime/probe execution outside ordinary Python unit-test execution,
+runtime/platform execution, web lookup, RAG/local document lookup execution,
+scheduler/reminder execution, connector execution, Codex dispatch from product
+code, worker dispatch, route execution, production execution, cleanup/delete/
+archive, artifact export/package behavior beyond the requested source refresh,
+autonomous writeback, service/API/UI productization, live routing, or
+production readiness behavior is registered by Phase 126.
+
+No production readiness is registered by Phase 126.
+
+`PHASE126_PROVIDER_CATALOG_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

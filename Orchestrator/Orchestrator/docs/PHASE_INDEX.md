@@ -124,14 +124,15 @@ This file enables controlled progression through the system build.
 123. PHASE_123.md - Model Router Policy Manual Review Integration
 124. PHASE_124.md - Phase 120 Entrypoint Validation Compatibility
 125. PHASE_125.md - Local-First Provider Catalog And Escalation Matrix
+126. PHASE_126.md - Provider Catalog Backed Router Recommendation Envelope
 
 ---
 
 ## Current Phase
 
-Phase 125 - Local-First Provider Catalog And Escalation Matrix
+Phase 126 - Provider Catalog Backed Router Recommendation Envelope
 
-Status: latest locally source/test/docs-proven phase; Phase 125 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 126 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1426,4 +1427,27 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   behavior changed.
 - Marker:
   `PHASE125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 126 - Provider Catalog Backed Router Recommendation Envelope
+
+- Status: locally source/test/docs-proven; Phase 126 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_126.md`.
+- Behavior: enriches deterministic router recommendations and manual review
+  report rendering with provider-catalog key, tier, maturity, boundary,
+  authority, execution/selection flags, catalog fallback, catalog escalation
+  posture, catalog non-proofs, and catalog activity flags.
+- Boundary: no provider/model execution, provider availability proof, model
+  availability proof, live provider/model selection, model selection for
+  execution, provider runtime import, Ollama, WSL, OpenClaw, Hermes, Discord,
+  installer, runtime/probe execution outside ordinary Python unit tests,
+  runtime/platform execution, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch, worker
+  dispatch, route execution, production execution, cleanup/delete/archive,
+  service/API/UI productization, live routing, artifact export/package behavior
+  beyond the requested source refresh, or production readiness behavior
+  changed.
+- Marker:
+  `PHASE126_PROVIDER_CATALOG_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

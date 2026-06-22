@@ -144,6 +144,13 @@ non-executing catalog entries. Catalog posture is not provider/model/runtime
 availability, provider selection, worker dispatch, boundary crossing, route
 execution, or production readiness.
 
+Provider-catalog-backed router recommendation envelopes also belong to this
+context. They expose catalog key, tier, maturity, boundary, authority,
+execution/selection flags, catalog fallback, catalog escalation posture,
+catalog non-proofs, and catalog activity flags as reviewable policy evidence.
+The envelope is not live provider routing, model selection for execution,
+runtime import, worker dispatch, route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

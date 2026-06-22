@@ -174,6 +174,17 @@ def _router_policy_summary(result: FixtureBoundaryPacketPipelineResult) -> dict[
         "request_id": recommendation.request_id,
         "recommended_route": recommendation.recommended_route,
         "provider_posture": recommendation.provider_posture,
+        "provider_catalog_key": recommendation.provider_catalog_key,
+        "provider_tier": recommendation.provider_tier,
+        "provider_maturity_status": recommendation.provider_maturity_status,
+        "provider_allowed_boundary": recommendation.provider_allowed_boundary,
+        "provider_required_authority": recommendation.provider_required_authority,
+        "provider_execution_allowed": recommendation.provider_execution_allowed,
+        "provider_selection_allowed": recommendation.provider_selection_allowed,
+        "provider_catalog_escalation_posture": recommendation.provider_catalog_escalation_posture,
+        "provider_catalog_fallback": recommendation.provider_catalog_fallback,
+        "provider_catalog_non_proofs": list(recommendation.provider_catalog_non_proofs),
+        "provider_catalog_activity_flags": dict(recommendation.provider_catalog_activity_flags),
         "confidence": recommendation.confidence,
         "reason": recommendation.reason,
         "fallback": recommendation.fallback,
@@ -241,12 +252,15 @@ def build_coordinator_review_report(
         REPORT_NON_PROOFS
         + pipeline_result.non_proofs
         + tuple(router_policy["non_proofs"])
+        + tuple(router_policy["provider_catalog_non_proofs"])
     )
     caveats = _dedupe(pipeline_result.caveats + ("review_report_draft_only_not_ratification",))
     flags = dict(NO_ACTIVITY_FLAGS)
     for key in flags:
         flags[key] = bool(pipeline_result.no_activity_flags.get(key, False))
     for key, value in router_policy["activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in router_policy["provider_catalog_activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
 
     report = CoordinatorReviewReport(
@@ -309,6 +323,13 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         "Router Policy",
         f"- recommended_route={report.router_policy_recommendation['recommended_route']}",
         f"- provider_posture={report.router_policy_recommendation['provider_posture']}",
+        f"- provider_catalog_key={report.router_policy_recommendation['provider_catalog_key']}",
+        f"- provider_tier={report.router_policy_recommendation['provider_tier']}",
+        f"- provider_maturity_status={report.router_policy_recommendation['provider_maturity_status']}",
+        f"- provider_allowed_boundary={report.router_policy_recommendation['provider_allowed_boundary']}",
+        f"- provider_required_authority={report.router_policy_recommendation['provider_required_authority']}",
+        f"- provider_execution_allowed={report.router_policy_recommendation['provider_execution_allowed']}",
+        f"- provider_selection_allowed={report.router_policy_recommendation['provider_selection_allowed']}",
         f"- required_boundary={report.router_policy_recommendation['required_boundary']}",
         f"- escalation_posture={report.router_policy_recommendation['escalation_posture']}",
         f"- fallback={report.router_policy_recommendation['fallback']}",

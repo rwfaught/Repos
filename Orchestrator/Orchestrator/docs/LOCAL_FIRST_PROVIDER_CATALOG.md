@@ -64,6 +64,18 @@ catalog does not import provider runtime modules or prove provider/model,
 runtime, platform, worker, RAG, web, scheduler, connector, route, or production
 execution.
 
+## Router Recommendation Envelope
+
+Phase 126 derives structured router/provider recommendation fields from the
+catalog. The router envelope includes the selected catalog key, tier, maturity
+status, allowed boundary, required authority, execution and selection flags,
+catalog fallback, catalog escalation posture, catalog non-proofs, and catalog
+activity flags.
+
+The selected catalog key is a policy posture key only. It is not concrete
+provider/model/runtime/platform selection, availability proof, route execution,
+or production readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

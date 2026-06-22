@@ -95,3 +95,11 @@ Phase 122 defines the router policy contract, Phase 123 renders it in manual
 review reports, Phase 124 repairs the validation-command mismatch, and Phase
 125 adds a non-executing provider catalog to make provider-tier posture
 auditable before any future provider/runtime proof boundary.
+
+Phase 126 enriches each router recommendation with a provider-catalog-backed
+envelope: catalog key, tier, maturity status, allowed boundary, required
+authority, execution and selection flags, catalog fallback, catalog escalation
+posture, catalog non-proofs, and catalog activity flags. These fields remain
+non-executing policy evidence and do not select or run a provider, model,
+runtime, platform, worker, route, lookup, scheduler, connector, or production
+task.
