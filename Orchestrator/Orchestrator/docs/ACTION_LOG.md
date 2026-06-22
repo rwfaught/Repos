@@ -2816,3 +2816,58 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   remote alignment but did not newly advance `origin/main`.
 
 `PHASE140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 143 Provider Evidence Registry Router Report Contract
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_143_PROVIDER_EVIDENCE_REGISTRY_ROUTER_REPORT_CONTRACT_SOURCE_TEST_DOCS_MUTATION`
+- Created source: `orchestrator/provider_evidence_registry.py`.
+- Updated source: `orchestrator/coordinator_review_report.py`.
+- Created tests:
+  `tests/test_phase_143_provider_evidence_registry_router_report_contract.py`.
+- Created docs: `docs/PHASE_143.md`;
+  `docs/PROVIDER_EVIDENCE_REGISTRY.md`.
+- Updated docs: `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`;
+  `docs/CONTEXT_MAP.md`; `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`.
+- Behavior: adds a deterministic provider evidence registry for accepted
+  Phase 131 `/api/tags` provider-surface visibility and Phase 133 `/api/show`
+  metadata visibility, then renders a `Provider Evidence` report section for
+  local-first review output while preserving provider execution and selection
+  flags as false.
+- Validation: `git status --short --branch`;
+  `python -m py_compile orchestrator/provider_evidence_registry.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m py_compile orchestrator/model_provider_catalog.py`;
+  `python -m py_compile orchestrator/provider_probe_boundary_packet.py`;
+  `python -m unittest tests.test_phase_143_provider_evidence_registry_router_report_contract`;
+  `python -m unittest tests.test_phase_129_provider_probe_packet_cli_draft_adapter_contract`;
+  `python -m unittest tests.test_phase_128_provider_probe_packet_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_127_provider_probe_boundary_packet_contract`;
+  `python -m unittest tests.test_phase_126_provider_catalog_router_envelope_contract`;
+  `python -m unittest tests.test_phase_125_local_first_provider_catalog_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model probe, no Ollama call, no `/api/tags`,
+  no `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model/runtime execution, no model correctness, no model loadability,
+  no VRAM sufficiency, no Hermes/OpenClaw/WSL behavior, no route execution, no
+  worker dispatch, no RAG/local lookup, no web lookup, no scheduler/reminder
+  execution, no connector execution, no service/API/UI productization, no
+  production execution, and no production readiness is proven.
+- Caveat: Phase 141 and Phase 142 remain accepted transport checkpoints in
+  coordinator metadata and were not recursively expanded into source phase docs
+  by Phase 143.
+
+`PHASE143_PROVIDER_EVIDENCE_REGISTRY_ROUTER_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

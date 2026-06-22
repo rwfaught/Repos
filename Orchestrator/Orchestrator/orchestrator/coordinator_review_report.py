@@ -13,6 +13,7 @@ from typing import Any
 
 from orchestrator.fixture_packet_pipeline import FixtureBoundaryPacketPipelineResult
 from orchestrator.model_router_policy import recommend_model_route
+from orchestrator.provider_evidence_registry import summarize_provider_evidence_for_catalog_key
 from orchestrator.provider_probe_boundary_packet import build_provider_probe_boundary_packet
 
 
@@ -72,6 +73,7 @@ class CoordinatorReviewReport:
     missing_requirements: tuple[str, ...]
     capability_assessment_summary: dict[str, Any]
     router_policy_recommendation: dict[str, Any]
+    provider_evidence_summary: dict[str, Any]
     provider_probe_packet_status: dict[str, Any]
     packet_text: str
     evidence_status: str
@@ -290,6 +292,7 @@ def build_coordinator_review_report(
     packet_kind = pipeline_result.packet_draft.packet_kind if pipeline_result.packet_draft else "no_packet_draft"
     boundary_name = pipeline_result.packet_draft.boundary_name if pipeline_result.packet_draft else ""
     router_policy = _router_policy_summary(pipeline_result)
+    provider_evidence_summary = summarize_provider_evidence_for_catalog_key(router_policy["provider_catalog_key"])
     provider_probe_packet = build_provider_probe_boundary_packet(
         _provider_probe_packet_request(pipeline_result, router_policy, provider_probe_packet_request)
     )
@@ -299,6 +302,7 @@ def build_coordinator_review_report(
         + pipeline_result.non_proofs
         + tuple(router_policy["non_proofs"])
         + tuple(router_policy["provider_catalog_non_proofs"])
+        + tuple(provider_evidence_summary["non_proofs"])
         + tuple(provider_probe_packet_status["non_proofs"])
     )
     caveats = _dedupe(pipeline_result.caveats + ("review_report_draft_only_not_ratification",))
@@ -308,6 +312,8 @@ def build_coordinator_review_report(
     for key, value in router_policy["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in router_policy["provider_catalog_activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in provider_evidence_summary["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in provider_probe_packet_status["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
@@ -330,6 +336,7 @@ def build_coordinator_review_report(
         missing_requirements=pipeline_result.missing_requirements,
         capability_assessment_summary=_capability_summary(pipeline_result),
         router_policy_recommendation=router_policy,
+        provider_evidence_summary=provider_evidence_summary,
         provider_probe_packet_status=provider_probe_packet_status,
         packet_text=pipeline_result.packet_text,
         evidence_status="deterministic_source_test_report_only_no_runtime_execution",
@@ -388,6 +395,21 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         "- missing_requirements="
         f"{', '.join(report.router_policy_recommendation['missing_requirements']) if report.router_policy_recommendation['missing_requirements'] else 'none'}",
         f"- confidence={report.router_policy_recommendation['confidence']}",
+        "",
+        "Provider Evidence",
+        f"- provider_evidence_status={report.provider_evidence_summary['provider_evidence_status']}",
+        f"- provider_catalog_key={report.provider_evidence_summary['provider_catalog_key']}",
+        f"- model_name={report.provider_evidence_summary['model_name'] or 'none'}",
+        f"- model_count={report.provider_evidence_summary['model_count']}",
+        f"- metadata_format={report.provider_evidence_summary['metadata_format'] or 'none'}",
+        f"- metadata_family={report.provider_evidence_summary['metadata_family'] or 'none'}",
+        f"- metadata_parameter_size={report.provider_evidence_summary['metadata_parameter_size'] or 'none'}",
+        f"- metadata_quantization_level={report.provider_evidence_summary['metadata_quantization_level'] or 'none'}",
+        f"- accepted_meaning={report.provider_evidence_summary['accepted_meaning']}",
+        "- evidence_visibility_is_not_provider_model_execution",
+        "- evidence_visibility_is_not_model_generation",
+        "- evidence_visibility_is_not_route_execution",
+        "- evidence_visibility_is_not_production_readiness",
         "",
         "Provider Probe Packet",
         f"- accepted={report.provider_probe_packet_status['accepted']}",

@@ -139,14 +139,15 @@ This file enables controlled progression through the system build.
 138. PHASE_138.md - Git Checkpoint Ledger Registration Explicit Docs Commit Operator Proof
 139. PHASE_139.md - Git Checkpoint Ledger Registration Remote Alignment Operator Proof
 140. PHASE_140.md - Git Checkpoint Remote Alignment Ledger Registration
+143. PHASE_143.md - Provider Evidence Registry Router Report Contract
 
 ---
 
 ## Current Phase
 
-Phase 140 - Git Checkpoint Remote Alignment Ledger Registration
+Phase 143 - Provider Evidence Registry Router Report Contract
 
-Status: latest locally source/test/docs registration phase; Phase 140 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 143 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1698,4 +1699,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   execution, and no production readiness behavior changed.
 - Marker:
   `PHASE140_GIT_CHECKPOINT_REMOTE_ALIGNMENT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 143 - Provider Evidence Registry Router Report Contract
+
+- Status: locally source/test/docs-proven; Phase 143 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_143.md`.
+- Behavior: adds a deterministic provider evidence registry and renders
+  accepted Phase 131 and Phase 133 read-only evidence in coordinator/manual
+  review reports as evidence posture only.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model execution, no route execution, no worker dispatch, no
+  RAG/web/scheduler/connector execution, and no production readiness behavior
+  changed.
+- Note: Phase 141 and Phase 142 were accepted transport checkpoints in
+  coordinator metadata and are not recursively expanded into source phase docs
+  by Phase 143.
+- Marker:
+  `PHASE143_PROVIDER_EVIDENCE_REGISTRY_ROUTER_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

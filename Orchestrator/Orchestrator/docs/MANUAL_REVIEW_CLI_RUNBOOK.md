@@ -103,6 +103,11 @@ language means source publication was confirmed; it does not rerun manual
 review, execute provider probes, invoke models, execute routes, or prove
 production readiness.
 
+Phase 143 adds `Provider Evidence` to manual review output when registered
+evidence exists for the router/provider catalog key. This section is
+evidence-only: it does not authorize provider probes, invoke models, execute
+routes, or prove production readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

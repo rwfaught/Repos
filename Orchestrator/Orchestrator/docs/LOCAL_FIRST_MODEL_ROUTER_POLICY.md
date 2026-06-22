@@ -136,3 +136,9 @@ only; it is not generation, `/api/generate`, `/api/chat`, semantic correctness,
 model loadability, VRAM sufficiency, provider/model execution, route
 execution, worker dispatch, RAG/web/scheduler/connector work, or production
 readiness.
+
+Phase 143 adds a deterministic provider evidence registry and renders
+registered provider evidence in manual review output. This evidence does not
+change router recommendations, provider execution authority, provider
+selection authority, runtime selection, route execution, or production
+readiness.

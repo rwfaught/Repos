@@ -115,6 +115,12 @@ remains conservative: metadata visibility is not generation, chat, semantic
 correctness, model loadability, VRAM sufficiency, provider/model/runtime
 execution, route execution, mutation authority, or production readiness.
 
+Phase 143 adds a provider evidence registry for accepted Phase 131 and Phase
+133 read-only visibility proofs. Catalog posture remains conservative:
+evidence visibility does not flip `execution_allowed` or `selection_allowed`
+to true and does not prove provider/model/runtime execution, route execution,
+or production readiness.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

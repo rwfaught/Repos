@@ -207,6 +207,13 @@ in source docs/ledgers. Remote-alignment checkpoint means durable git/source
 publication was confirmed. It is not provider/model/runtime execution, route
 execution, product behavior, or production readiness.
 
+Provider evidence registry language belongs to this context only as structured
+evidence posture. Phase 143 records accepted Phase 131 provider-surface
+visibility and Phase 133 model metadata visibility in deterministic source
+data so coordinator/manual-review reports can display it. Provider evidence
+visibility is structured evidence, not execution authority, provider/model
+selection, runtime execution, route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker
