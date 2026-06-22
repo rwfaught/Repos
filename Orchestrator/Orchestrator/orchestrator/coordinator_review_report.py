@@ -189,6 +189,17 @@ def _router_policy_summary(result: FixtureBoundaryPacketPipelineResult) -> dict[
         "provider_catalog_fallback": recommendation.provider_catalog_fallback,
         "provider_catalog_non_proofs": list(recommendation.provider_catalog_non_proofs),
         "provider_catalog_activity_flags": dict(recommendation.provider_catalog_activity_flags),
+        "provider_evidence_status": recommendation.provider_evidence_status,
+        "provider_evidence_keys": list(recommendation.provider_evidence_keys),
+        "provider_evidence_source_phases": list(recommendation.provider_evidence_source_phases),
+        "provider_evidence_summary": recommendation.provider_evidence_summary,
+        "model_metadata_evidence_name": recommendation.model_metadata_evidence_name,
+        "model_metadata_format": recommendation.model_metadata_format,
+        "model_metadata_family": recommendation.model_metadata_family,
+        "model_metadata_parameter_size": recommendation.model_metadata_parameter_size,
+        "model_metadata_quantization_level": recommendation.model_metadata_quantization_level,
+        "provider_evidence_non_proofs": list(recommendation.provider_evidence_non_proofs),
+        "provider_evidence_activity_flags": dict(recommendation.provider_evidence_activity_flags),
         "confidence": recommendation.confidence,
         "reason": recommendation.reason,
         "fallback": recommendation.fallback,
@@ -302,6 +313,7 @@ def build_coordinator_review_report(
         + pipeline_result.non_proofs
         + tuple(router_policy["non_proofs"])
         + tuple(router_policy["provider_catalog_non_proofs"])
+        + tuple(router_policy["provider_evidence_non_proofs"])
         + tuple(provider_evidence_summary["non_proofs"])
         + tuple(provider_probe_packet_status["non_proofs"])
     )
@@ -312,6 +324,8 @@ def build_coordinator_review_report(
     for key, value in router_policy["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in router_policy["provider_catalog_activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in router_policy["provider_evidence_activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in provider_evidence_summary["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
@@ -387,6 +401,14 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         f"- provider_required_authority={report.router_policy_recommendation['provider_required_authority']}",
         f"- provider_execution_allowed={report.router_policy_recommendation['provider_execution_allowed']}",
         f"- provider_selection_allowed={report.router_policy_recommendation['provider_selection_allowed']}",
+        f"- provider_evidence_status={report.router_policy_recommendation['provider_evidence_status']}",
+        f"- provider_evidence_keys={', '.join(report.router_policy_recommendation['provider_evidence_keys']) if report.router_policy_recommendation['provider_evidence_keys'] else 'none'}",
+        f"- provider_evidence_source_phases={', '.join(report.router_policy_recommendation['provider_evidence_source_phases']) if report.router_policy_recommendation['provider_evidence_source_phases'] else 'none'}",
+        f"- model_metadata_evidence_name={report.router_policy_recommendation['model_metadata_evidence_name'] or 'none'}",
+        f"- model_metadata_format={report.router_policy_recommendation['model_metadata_format'] or 'none'}",
+        f"- model_metadata_family={report.router_policy_recommendation['model_metadata_family'] or 'none'}",
+        f"- model_metadata_parameter_size={report.router_policy_recommendation['model_metadata_parameter_size'] or 'none'}",
+        f"- model_metadata_quantization_level={report.router_policy_recommendation['model_metadata_quantization_level'] or 'none'}",
         f"- required_boundary={report.router_policy_recommendation['required_boundary']}",
         f"- escalation_posture={report.router_policy_recommendation['escalation_posture']}",
         f"- fallback={report.router_policy_recommendation['fallback']}",

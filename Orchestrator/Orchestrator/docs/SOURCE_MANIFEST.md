@@ -2762,3 +2762,49 @@ behavior is registered by Phase 143.
 No production readiness is registered by Phase 143.
 
 `PHASE143_PROVIDER_EVIDENCE_REGISTRY_ROUTER_REPORT_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 146 Provider Evidence Backed Router Recommendation Envelope Contract
+
+Boundary:
+
+`PHASE_146_PROVIDER_EVIDENCE_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_CONTRACT_SOURCE_TEST_DOCS_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/model_router_policy.py`
+- `orchestrator/coordinator_review_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_146.md`
+
+Registered changed documentation/control files:
+
+- `docs/PROVIDER_EVIDENCE_REGISTRY.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: provider evidence registry posture is now surfaced in
+router/provider recommendation envelope data for local-model candidates.
+Provider execution and selection flags remain false.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, model generation, provider/model/runtime
+execution, model correctness, model loadability, VRAM sufficiency, route
+execution, worker dispatch, RAG/local lookup, web lookup, scheduler/reminder
+execution, connector execution, service/API/UI productization, production
+execution, or production readiness behavior is registered by Phase 146.
+
+No production readiness is registered by Phase 146.
+
+`PHASE146_PROVIDER_EVIDENCE_BACKED_ROUTER_RECOMMENDATION_ENVELOPE_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

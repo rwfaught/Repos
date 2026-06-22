@@ -108,6 +108,11 @@ evidence exists for the router/provider catalog key. This section is
 evidence-only: it does not authorize provider probes, invoke models, execute
 routes, or prove production readiness.
 
+Phase 146 also renders provider evidence fields inside the router/provider
+recommendation envelope. These fields are reportable policy evidence only and
+do not change provider execution authority, provider selection authority,
+route execution, or production readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

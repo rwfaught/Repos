@@ -44,6 +44,14 @@ review output may render a `Provider Evidence` section, but that section is not
 probe authorization, model generation, model correctness, model loadability,
 route execution, or production readiness.
 
+Phase 146 feeds the same registry evidence into the router/provider
+recommendation envelope as deterministic policy data. A `local_model_candidate`
+recommendation may carry provider evidence status, evidence keys, source
+phases, model metadata fields, evidence non-proofs, and evidence activity
+flags. These fields are evidence posture only and do not grant execution
+authority, provider/model selection authority, route execution authority, or
+production readiness.
+
 ## Non-Proofs
 
 The registry does not prove provider/model/runtime execution, model

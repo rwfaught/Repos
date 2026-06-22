@@ -121,6 +121,12 @@ evidence visibility does not flip `execution_allowed` or `selection_allowed`
 to true and does not prove provider/model/runtime execution, route execution,
 or production readiness.
 
+Phase 146 allows `local_model_candidate` router/provider recommendation
+envelopes to carry evidence fields from the registry while preserving
+`execution_allowed=false` and `selection_allowed=false`. Evidence-backed
+catalog posture is inspectable policy data only, not an executable or
+selectable provider/model path.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

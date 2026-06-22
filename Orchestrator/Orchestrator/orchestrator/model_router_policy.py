@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+from orchestrator import provider_evidence_registry
 from orchestrator.capability_registry import assess_required_capabilities
 from orchestrator.model_provider_catalog import ROUTE_TO_PROVIDER_KEY, get_model_provider_catalog_entry
 
@@ -118,6 +119,17 @@ class ModelRouterPolicyRecommendation:
     provider_catalog_fallback: str
     provider_catalog_non_proofs: tuple[str, ...]
     provider_catalog_activity_flags: dict[str, bool]
+    provider_evidence_status: str
+    provider_evidence_keys: tuple[str, ...]
+    provider_evidence_source_phases: tuple[str, ...]
+    provider_evidence_summary: str
+    model_metadata_evidence_name: str
+    model_metadata_format: str
+    model_metadata_family: str
+    model_metadata_parameter_size: str
+    model_metadata_quantization_level: str
+    provider_evidence_non_proofs: tuple[str, ...]
+    provider_evidence_activity_flags: dict[str, bool]
     confidence: float | None
     reason: str
     fallback: str
@@ -189,6 +201,9 @@ def _recommendation(
 ) -> ModelRouterPolicyRecommendation:
     provider_catalog_key = ROUTE_TO_PROVIDER_KEY.get(recommended_route, "provider_blocked_or_unavailable")
     provider_catalog_entry = get_model_provider_catalog_entry(provider_catalog_key)
+    provider_evidence = provider_evidence_registry.summarize_provider_evidence_for_catalog_key(
+        provider_catalog_entry.provider_key
+    )
     return ModelRouterPolicyRecommendation(
         request_id=request.request_id,
         recommended_route=recommended_route,
@@ -204,6 +219,17 @@ def _recommendation(
         provider_catalog_fallback=provider_catalog_entry.fallback,
         provider_catalog_non_proofs=provider_catalog_entry.non_proofs,
         provider_catalog_activity_flags=dict(provider_catalog_entry.activity_flags),
+        provider_evidence_status=provider_evidence["provider_evidence_status"],
+        provider_evidence_keys=tuple(provider_evidence["evidence_keys"]),
+        provider_evidence_source_phases=tuple(provider_evidence["source_phases"]),
+        provider_evidence_summary=provider_evidence["accepted_meaning"],
+        model_metadata_evidence_name=provider_evidence["model_name"],
+        model_metadata_format=provider_evidence["metadata_format"],
+        model_metadata_family=provider_evidence["metadata_family"],
+        model_metadata_parameter_size=provider_evidence["metadata_parameter_size"],
+        model_metadata_quantization_level=provider_evidence["metadata_quantization_level"],
+        provider_evidence_non_proofs=tuple(provider_evidence["non_proofs"]),
+        provider_evidence_activity_flags=dict(provider_evidence["activity_flags"]),
         confidence=request.confidence,
         reason=reason,
         fallback=fallback,
@@ -211,7 +237,12 @@ def _recommendation(
         required_boundary=required_boundary,
         blocked_conditions=_dedupe(blocked_conditions),
         missing_requirements=_dedupe(missing_requirements),
-        non_proofs=_dedupe(ROUTER_POLICY_NON_PROOFS + provider_catalog_entry.non_proofs + capability_non_proofs),
+        non_proofs=_dedupe(
+            ROUTER_POLICY_NON_PROOFS
+            + provider_catalog_entry.non_proofs
+            + tuple(provider_evidence["non_proofs"])
+            + capability_non_proofs
+        ),
         activity_flags=dict(NO_ACTIVITY_FLAGS),
     )
 

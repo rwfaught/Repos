@@ -214,6 +214,13 @@ data so coordinator/manual-review reports can display it. Provider evidence
 visibility is structured evidence, not execution authority, provider/model
 selection, runtime execution, route execution, or production readiness.
 
+Evidence-backed router recommendation language belongs to this context only as
+policy-data posture. Phase 146 threads provider evidence fields into
+router/provider recommendation envelopes. Evidence-backed recommendation means
+deterministic evidence posture inside policy data, not runtime provider
+selection, model selection, provider/model execution, route execution, or
+production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

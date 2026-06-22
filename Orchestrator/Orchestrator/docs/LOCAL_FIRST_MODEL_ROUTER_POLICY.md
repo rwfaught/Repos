@@ -142,3 +142,9 @@ registered provider evidence in manual review output. This evidence does not
 change router recommendations, provider execution authority, provider
 selection authority, runtime selection, route execution, or production
 readiness.
+
+Phase 146 adds provider evidence posture to the router recommendation envelope
+itself. For `local_model_candidate`, the envelope may include read-only
+evidence status, evidence keys/source phases, and model metadata fields. This
+is not provider/model execution, model generation, live routing, route
+execution, provider selection, or production readiness.
