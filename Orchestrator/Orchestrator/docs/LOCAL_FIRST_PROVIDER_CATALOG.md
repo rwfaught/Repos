@@ -141,6 +141,12 @@ future proof boundary is explicitly authorized and accepted; packet existence
 does not flip catalog, readiness, generation, route-execution, or production
 authority.
 
+Phase 156 retargets the active future generation smoke probe packet to
+`qwen3.6:27b`. That target has prior model-list visibility only. It does not
+yet have accepted `/api/show` metadata proof or accepted `/api/generate` proof,
+and the Phase 155 Retry 3 CUDA OOM remains a 30b/24k failure rather than a 27b
+failure.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

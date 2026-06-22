@@ -2912,3 +2912,55 @@ execution, or production readiness behavior is registered by Phase 152.
 No production readiness is registered by Phase 152.
 
 `PHASE152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 156 Local Provider Target Alignment 27B
+
+Boundary:
+
+`PHASE_156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/provider_generation_smoke_probe_packet.py`
+
+Registered changed test files:
+
+- `tests/test_phase_152_local_provider_generation_smoke_probe_packet_contract.py`
+
+Registered new test files:
+
+- `tests/test_phase_156_local_provider_target_alignment_27b_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_156.md`
+
+Registered changed documentation/control files:
+
+- `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: source/test/docs retargeting of the active future
+generation smoke probe packet from `qwen3-30b-24k:latest` to `qwen3.6:27b`.
+
+Registered caveat: `qwen3.6:27b` has prior model-list visibility only. No
+accepted 27b `/api/show` metadata proof or `/api/generate` proof is registered
+by Phase 156. Phase 155 Retry 3 remains a 30b/24k CUDA OOM failure, not a 27b
+failure.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, model generation, provider/model/runtime
+execution, 27b metadata proof, 27b generation proof, semantic correctness,
+model loadability, VRAM sufficiency, route execution, worker dispatch,
+RAG/local lookup, web lookup, scheduler/reminder execution, connector
+execution, service/API/UI productization, production execution, or production
+readiness behavior is registered by Phase 156.
+
+No production readiness is registered by Phase 156.
+
+`PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -143,14 +143,15 @@ This file enables controlled progression through the system build.
 146. PHASE_146.md - Provider Evidence Backed Router Recommendation Envelope Contract
 149. PHASE_149.md - Provider Evidence Gated Route Selection Readiness Contract
 152. PHASE_152.md - Local Provider Generation Smoke Probe Packet Contract
+156. PHASE_156.md - Local Provider Target Alignment 27B
 
 ---
 
 ## Current Phase
 
-Phase 152 - Local Provider Generation Smoke Probe Packet Contract
+Phase 156 - Local Provider Target Alignment 27B
 
-Status: latest locally source/test/docs-proven phase; Phase 152 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; no runtime proof claimed.
 
 Production readiness is not claimed.
 
@@ -1777,4 +1778,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   metadata and are not fabricated as source phase docs by Phase 152.
 - Marker:
   `PHASE152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 156 - Local Provider Target Alignment 27B
+
+- Status: locally source/test/docs-proven alignment only.
+- Phase doc: `docs/PHASE_156.md`.
+- Behavior: retargets the active future generation smoke probe packet from
+  `qwen3-30b-24k:latest` to `qwen3.6:27b` after accepted Phase 155 Retry 3
+  30b/24k CUDA OOM evidence.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model execution, no route execution, no worker dispatch, no
+  RAG/web/scheduler/connector execution, and no production readiness behavior
+  changed.
+- Note: Phase 153 and Phase 154 are not fabricated as source phase docs by
+  Phase 156.
+- Next recommended boundary:
+  `PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF`.
+- Marker:
+  `PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

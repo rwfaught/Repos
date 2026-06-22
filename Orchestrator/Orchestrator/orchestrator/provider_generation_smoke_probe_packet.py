@@ -78,14 +78,14 @@ def get_local_provider_generation_smoke_probe_packet() -> ProviderGenerationSmok
 
     return ProviderGenerationSmokeProbePacket(
         packet_key="local_provider_generation_smoke_probe_packet",
-        future_boundary="PHASE_FUTURE_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_OPERATOR_PROOF",
+        future_boundary="PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF",
         provider_catalog_key="local_model_candidate",
-        model_name="qwen3-30b-24k:latest",
+        model_name="qwen3.6:27b",
         endpoint_surface="local_ollama_http",
         endpoint_path="/api/generate",
         method="POST",
         request_shape={
-            "model": "qwen3-30b-24k:latest",
+            "model": "qwen3.6:27b",
             "prompt": "Return exactly: ORCH_PROVIDER_SMOKE_OK",
             "stream": False,
             "output_size": "small",

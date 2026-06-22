@@ -43,8 +43,8 @@ class Phase152LocalProviderGenerationSmokeProbePacketContractTests(unittest.Test
         packet = get_local_provider_generation_smoke_probe_packet()
 
         self.assertEqual(packet.provider_catalog_key, "local_model_candidate")
-        self.assertEqual(packet.model_name, "qwen3-30b-24k:latest")
-        self.assertEqual(packet.future_boundary, "PHASE_FUTURE_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_OPERATOR_PROOF")
+        self.assertEqual(packet.model_name, "qwen3.6:27b")
+        self.assertEqual(packet.future_boundary, "PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF")
 
     def test_api_generate_is_future_endpoint_shape_only(self):
         packet = get_local_provider_generation_smoke_probe_packet()
@@ -69,7 +69,7 @@ class Phase152LocalProviderGenerationSmokeProbePacketContractTests(unittest.Test
     def test_request_shape_is_descriptive_not_executable(self):
         packet = get_local_provider_generation_smoke_probe_packet()
 
-        self.assertEqual(packet.request_shape["model"], "qwen3-30b-24k:latest")
+        self.assertEqual(packet.request_shape["model"], "qwen3.6:27b")
         self.assertEqual(packet.request_shape["prompt"], "Return exactly: ORCH_PROVIDER_SMOKE_OK")
         self.assertIs(packet.request_shape["stream"], False)
         self.assertEqual(packet.request_shape["tool_calls"], "none")
@@ -103,7 +103,7 @@ class Phase152LocalProviderGenerationSmokeProbePacketContractTests(unittest.Test
     def test_packet_serializes_for_reports_without_authority(self):
         packet_dict = provider_generation_smoke_probe_packet_to_dict(get_local_provider_generation_smoke_probe_packet())
 
-        self.assertEqual(packet_dict["request_shape"]["model"], "qwen3-30b-24k:latest")
+        self.assertEqual(packet_dict["request_shape"]["model"], "qwen3.6:27b")
         self.assertFalse(packet_dict["generation_allowed_now"])
         self.assertFalse(packet_dict["provider_execution_allowed"])
         self.assertFalse(packet_dict["route_execution_allowed"])

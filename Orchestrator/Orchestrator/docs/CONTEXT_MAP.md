@@ -232,6 +232,12 @@ only as bounded-proof paperwork. Phase 152 means a future proof can be
 described without being run; it is not provider/model execution, generation,
 route execution, or production readiness.
 
+Local provider target alignment language belongs to this context only as
+source/test/docs retargeting. Phase 156 changes the active future smoke probe
+packet target to `qwen3.6:27b` based on accepted 30b/24k OOM evidence and prior
+27b model-list visibility; it does not add 27b metadata proof, generation
+proof, loadability proof, route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

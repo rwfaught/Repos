@@ -3036,3 +3036,42 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   execution, and no production readiness is proven.
 
 `PHASE152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 156 Local Provider Target Alignment 27B
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/provider_generation_smoke_probe_packet.py`.
+- Updated tests:
+  `tests/test_phase_152_local_provider_generation_smoke_probe_packet_contract.py`.
+- Created tests:
+  `tests/test_phase_156_local_provider_target_alignment_27b_contract.py`.
+- Created docs: `docs/PHASE_156.md`.
+- Updated docs: `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: retargets the active future local provider generation smoke probe
+  packet from `qwen3-30b-24k:latest` to `qwen3.6:27b`.
+- Accepted facts preserved: Phase 155 Retry 3 was a 30b/24k `/api/generate`
+  reachability plus CUDA OOM failure; `qwen3.6:27b` has prior Phase 131
+  model-list visibility only; no accepted 27b `/api/show` metadata proof or
+  `/api/generate` proof exists yet.
+- Validation: `python -m compileall orchestrator`;
+  `python -m pytest tests/test_phase_152_local_provider_generation_smoke_probe_packet_contract.py`;
+  `python -m pytest tests/test_phase_156_local_provider_target_alignment_27b_contract.py`;
+  `python -m pytest tests/test_phase_143_provider_evidence_registry_router_report_contract.py tests/test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py tests/test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py`.
+- Explicit non-proofs: no provider/model probe, no Ollama call, no `/api/tags`,
+  no `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model/runtime execution, no 27b metadata proof, no 27b generation
+  proof, no semantic correctness, no model loadability, no VRAM sufficiency,
+  no route execution, no worker dispatch, no RAG/local lookup, no web lookup,
+  no scheduler/reminder execution, no connector execution, no service/API/UI
+  productization, no production execution, and no production readiness is
+  proven.
+- Next recommended boundary:
+  `PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF`.
+
+`PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -8,7 +8,7 @@ generation smoke probe could be requested later without running that proof now.
 
 ## Future Boundary
 
-`PHASE_FUTURE_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_OPERATOR_PROOF`
+`PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF`
 
 Future execution requires explicit coordinator acceptance. Packet existence is
 not provider selection, provider execution, model generation, route execution,
@@ -17,7 +17,7 @@ or production readiness.
 ## Request Shape
 
 - Provider catalog key: `local_model_candidate`
-- Model: `qwen3-30b-24k:latest`
+- Model: `qwen3.6:27b`
 - Endpoint surface: `local_ollama_http`
 - Endpoint path: `/api/generate`
 - Method: `POST`
@@ -59,6 +59,12 @@ not call `/api/generate`.
 Phase 149 route-selection readiness can name a future generation smoke probe
 boundary. Phase 152 adds the deterministic packet contract for describing that
 future proof. It still does not authorize, run, or accept the proof.
+
+Phase 156 retargets the active packet from `qwen3-30b-24k:latest` to
+`qwen3.6:27b` after Phase 155 Retry 3 proved the 30b/24k target reached
+`/api/generate` but failed model load with CUDA OOM. The 27b target is visible
+in prior Phase 131 model-list evidence only; no accepted 27b `/api/show`
+metadata proof or `/api/generate` proof exists yet.
 
 ## Non-Proofs
 
