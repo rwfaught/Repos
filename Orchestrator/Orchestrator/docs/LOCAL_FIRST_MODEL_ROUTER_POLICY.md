@@ -156,3 +156,9 @@ the recommendation envelope and reports what remains blocked. For
 named next proof boundary is a future bounded generation smoke probe. This
 layer does not select a provider/model, execute generation, execute a route, or
 prove production readiness.
+
+Phase 152 adds a deterministic future provider generation smoke probe packet
+for that readiness boundary. The packet may name `POST /api/generate` as a
+future endpoint shape and `qwen3-30b-24k:latest` as the model candidate, but
+it does not execute the endpoint, generate output, select a provider/model, or
+prove route execution or production readiness.

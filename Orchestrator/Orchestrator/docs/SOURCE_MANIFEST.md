@@ -2860,3 +2860,55 @@ behavior is registered by Phase 149.
 No production readiness is registered by Phase 149.
 
 `PHASE149_PROVIDER_EVIDENCE_GATED_ROUTE_SELECTION_READINESS_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 152 Local Provider Generation Smoke Probe Packet Contract
+
+Boundary:
+
+`PHASE_152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/provider_generation_smoke_probe_packet.py`
+
+Registered changed source files:
+
+- `orchestrator/coordinator_review_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_152_local_provider_generation_smoke_probe_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_152.md`
+- `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`
+
+Registered changed documentation/control files:
+
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: deterministic future local provider generation smoke
+probe packet paperwork. The packet names a future `/api/generate` endpoint
+shape and required operator evidence while preserving all provider selection,
+provider execution, generation-now, route execution, and production readiness
+permissions as false.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, model generation, provider/model/runtime
+execution, provider/model selection authority, model correctness, model
+loadability for real workloads, VRAM sufficiency for real workloads, route
+execution, worker dispatch, RAG/local lookup, web lookup, scheduler/reminder
+execution, connector execution, service/API/UI productization, production
+execution, or production readiness behavior is registered by Phase 152.
+
+No production readiness is registered by Phase 152.
+
+`PHASE152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

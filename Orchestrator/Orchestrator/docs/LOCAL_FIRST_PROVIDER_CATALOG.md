@@ -135,6 +135,12 @@ boundary, but until that separate boundary is authorized and proven,
 `generation_allowed=false`, `route_execution_allowed=false`, and
 `production_readiness=false`.
 
+Phase 152 adds a packet contract for that possible future smoke probe.
+`local_model_candidate` remains non-selectable and non-executable until a
+future proof boundary is explicitly authorized and accepted; packet existence
+does not flip catalog, readiness, generation, route-execution, or production
+authority.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

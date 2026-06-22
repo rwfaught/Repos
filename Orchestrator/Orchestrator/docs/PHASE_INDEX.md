@@ -142,14 +142,15 @@ This file enables controlled progression through the system build.
 143. PHASE_143.md - Provider Evidence Registry Router Report Contract
 146. PHASE_146.md - Provider Evidence Backed Router Recommendation Envelope Contract
 149. PHASE_149.md - Provider Evidence Gated Route Selection Readiness Contract
+152. PHASE_152.md - Local Provider Generation Smoke Probe Packet Contract
 
 ---
 
 ## Current Phase
 
-Phase 149 - Provider Evidence Gated Route Selection Readiness Contract
+Phase 152 - Local Provider Generation Smoke Probe Packet Contract
 
-Status: latest locally source/test/docs-proven phase; Phase 149 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 152 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1756,4 +1757,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   changed.
 - Marker:
   `PHASE149_PROVIDER_EVIDENCE_GATED_ROUTE_SELECTION_READINESS_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 152 - Local Provider Generation Smoke Probe Packet Contract
+
+- Status: locally source/test/docs-proven; Phase 152 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_152.md`.
+- Behavior: adds deterministic future local provider generation smoke probe
+  packet paperwork for `local_model_candidate` and `qwen3-30b-24k:latest`
+  while keeping provider selection, provider execution, route execution,
+  generation-now, and production readiness permissions false.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no model generation, no
+  provider/model execution, no route execution, no worker dispatch, no
+  RAG/web/scheduler/connector execution, and no production readiness behavior
+  changed.
+- Note: Phase 150 and Phase 151 were commit/push checkpoints in coordinator
+  metadata and are not fabricated as source phase docs by Phase 152.
+- Marker:
+  `PHASE152_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_PACKET_CONTRACT_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

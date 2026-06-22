@@ -227,6 +227,11 @@ before local provider/model route selection or execution, without executing
 that boundary or granting provider/model, generation, route-execution, or
 production authority.
 
+Future provider generation smoke probe packet language belongs to this context
+only as bounded-proof paperwork. Phase 152 means a future proof can be
+described without being run; it is not provider/model execution, generation,
+route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

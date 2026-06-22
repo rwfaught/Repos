@@ -119,6 +119,11 @@ needed before provider/model route selection or execution; it does not execute
 that proof, call a provider/model, generate text, execute a route, or prove
 production readiness.
 
+Phase 152 may render `Future Provider Generation Smoke Probe Packet` in manual
+review output. This section is packet paperwork only and must preserve
+`packet_contract_only=true`, `generation_allowed_now=false`, and
+`coordinator_acceptance_required=true`.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for

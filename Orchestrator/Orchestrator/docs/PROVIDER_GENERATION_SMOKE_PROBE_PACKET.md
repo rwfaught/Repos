@@ -1,0 +1,72 @@
+# Provider Generation Smoke Probe Packet
+
+## Purpose
+
+The provider generation smoke probe packet is deterministic paperwork for a
+future manual operator proof. It describes how a bounded local provider
+generation smoke probe could be requested later without running that proof now.
+
+## Future Boundary
+
+`PHASE_FUTURE_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_OPERATOR_PROOF`
+
+Future execution requires explicit coordinator acceptance. Packet existence is
+not provider selection, provider execution, model generation, route execution,
+or production readiness.
+
+## Request Shape
+
+- Provider catalog key: `local_model_candidate`
+- Model: `qwen3-30b-24k:latest`
+- Endpoint surface: `local_ollama_http`
+- Endpoint path: `/api/generate`
+- Method: `POST`
+- Prompt contract: `Return exactly: ORCH_PROVIDER_SMOKE_OK`
+- Stream: `false`
+- Output size: small
+- Tool calls: none
+- External lookup: none
+- Route execution: none
+
+The request shape is descriptive only. It is not a runnable command and does
+not call `/api/generate`.
+
+## Required Operator Evidence
+
+- command boundary markers
+- HTTP status code
+- content type
+- response bytes count
+- finish/done marker if available
+- response text marker `ORCH_PROVIDER_SMOKE_OK`
+- exit code captured separately
+- elapsed time if present
+
+## Acceptance Criteria
+
+- operator captures command boundary markers
+- operator captures HTTP status code
+- operator captures content type
+- operator captures response bytes count
+- operator captures finish/done marker if available
+- response text includes `ORCH_PROVIDER_SMOKE_OK` or a clearly bounded
+  equivalent
+- exit code captured separately
+- elapsed time captured if possible
+
+## Relationship To Phase 149
+
+Phase 149 route-selection readiness can name a future generation smoke probe
+boundary. Phase 152 adds the deterministic packet contract for describing that
+future proof. It still does not authorize, run, or accept the proof.
+
+## Non-Proofs
+
+The packet contract is not provider execution, model execution, generation,
+`/api/generate`, `/api/chat`, route execution, worker dispatch, RAG, scheduler,
+connector execution, service/API/UI productization, or production readiness.
+
+Even if a future smoke probe later passes, that would not prove semantic
+correctness, model loadability for real workloads, VRAM sufficiency for real
+workloads, route execution, worker dispatch, RAG, scheduler, connector,
+service/API/UI productization, or production readiness.

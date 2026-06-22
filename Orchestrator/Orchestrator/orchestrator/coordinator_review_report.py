@@ -14,6 +14,11 @@ from typing import Any
 from orchestrator.fixture_packet_pipeline import FixtureBoundaryPacketPipelineResult
 from orchestrator.model_router_policy import recommend_model_route
 from orchestrator.provider_evidence_registry import summarize_provider_evidence_for_catalog_key
+from orchestrator.provider_generation_smoke_probe_packet import (
+    get_local_provider_generation_smoke_probe_packet,
+    provider_generation_smoke_probe_packet_to_dict,
+    summarize_provider_generation_smoke_probe_packet,
+)
 from orchestrator.provider_probe_boundary_packet import build_provider_probe_boundary_packet
 from orchestrator.route_selection_readiness import (
     evaluate_route_selection_readiness,
@@ -79,6 +84,7 @@ class CoordinatorReviewReport:
     capability_assessment_summary: dict[str, Any]
     router_policy_recommendation: dict[str, Any]
     route_selection_readiness_summary: dict[str, Any]
+    future_provider_generation_smoke_probe_packet: dict[str, Any]
     provider_evidence_summary: dict[str, Any]
     provider_probe_packet_status: dict[str, Any]
     packet_text: str
@@ -312,6 +318,8 @@ def build_coordinator_review_report(
     provider_evidence_summary = summarize_provider_evidence_for_catalog_key(router_policy["provider_catalog_key"])
     route_selection_readiness = evaluate_route_selection_readiness(router_policy)
     route_selection_readiness_summary = route_selection_readiness_to_dict(route_selection_readiness)
+    smoke_probe_packet = get_local_provider_generation_smoke_probe_packet()
+    smoke_probe_packet_summary = provider_generation_smoke_probe_packet_to_dict(smoke_probe_packet)
     provider_probe_packet = build_provider_probe_boundary_packet(
         _provider_probe_packet_request(pipeline_result, router_policy, provider_probe_packet_request)
     )
@@ -323,6 +331,7 @@ def build_coordinator_review_report(
         + tuple(router_policy["provider_catalog_non_proofs"])
         + tuple(router_policy["provider_evidence_non_proofs"])
         + tuple(route_selection_readiness_summary["non_proofs"])
+        + tuple(smoke_probe_packet_summary["non_proofs"])
         + tuple(provider_evidence_summary["non_proofs"])
         + tuple(provider_probe_packet_status["non_proofs"])
     )
@@ -339,6 +348,8 @@ def build_coordinator_review_report(
     for key, value in provider_evidence_summary["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in route_selection_readiness_summary["activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
+    for key, value in smoke_probe_packet_summary["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
     for key, value in provider_probe_packet_status["activity_flags"].items():
         flags[key] = flags.get(key, False) or bool(value)
@@ -362,6 +373,7 @@ def build_coordinator_review_report(
         capability_assessment_summary=_capability_summary(pipeline_result),
         router_policy_recommendation=router_policy,
         route_selection_readiness_summary=route_selection_readiness_summary,
+        future_provider_generation_smoke_probe_packet=smoke_probe_packet_summary,
         provider_evidence_summary=provider_evidence_summary,
         provider_probe_packet_status=provider_probe_packet_status,
         packet_text=pipeline_result.packet_text,
@@ -444,6 +456,22 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         f"- generation_allowed={report.route_selection_readiness_summary['generation_allowed']}",
         f"- production_readiness={report.route_selection_readiness_summary['production_readiness']}",
         f"- summary={summarize_route_selection_readiness(evaluate_route_selection_readiness(report.router_policy_recommendation))}",
+        "",
+        "Future Provider Generation Smoke Probe Packet",
+        f"- packet_contract_only=true",
+        f"- packet_key={report.future_provider_generation_smoke_probe_packet['packet_key']}",
+        f"- future_boundary={report.future_provider_generation_smoke_probe_packet['future_boundary']}",
+        f"- provider_catalog_key={report.future_provider_generation_smoke_probe_packet['provider_catalog_key']}",
+        f"- model_name={report.future_provider_generation_smoke_probe_packet['model_name']}",
+        f"- endpoint_shape={report.future_provider_generation_smoke_probe_packet['method']} {report.future_provider_generation_smoke_probe_packet['endpoint_surface']}{report.future_provider_generation_smoke_probe_packet['endpoint_path']}",
+        f"- prompt_contract={report.future_provider_generation_smoke_probe_packet['prompt_contract']}",
+        f"- coordinator_acceptance_required={report.future_provider_generation_smoke_probe_packet['coordinator_acceptance_required']}",
+        f"- provider_selection_allowed={report.future_provider_generation_smoke_probe_packet['provider_selection_allowed']}",
+        f"- provider_execution_allowed={report.future_provider_generation_smoke_probe_packet['provider_execution_allowed']}",
+        f"- generation_allowed_now={report.future_provider_generation_smoke_probe_packet['generation_allowed_now']}",
+        f"- route_execution_allowed={report.future_provider_generation_smoke_probe_packet['route_execution_allowed']}",
+        f"- production_readiness={report.future_provider_generation_smoke_probe_packet['production_readiness']}",
+        f"- summary={summarize_provider_generation_smoke_probe_packet(get_local_provider_generation_smoke_probe_packet())}",
         "",
         "Provider Evidence",
         f"- provider_evidence_status={report.provider_evidence_summary['provider_evidence_status']}",
