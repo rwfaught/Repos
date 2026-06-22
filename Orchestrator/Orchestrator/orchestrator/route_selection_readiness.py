@@ -15,6 +15,9 @@ from typing import Any
 from orchestrator.model_router_policy import ModelRouterPolicyRecommendation, recommend_model_route
 
 
+GENERATION_SMOKE_EVIDENCE_KEY = "phase_159_retry1_qwen36_27b_generate_marker_smoke"
+
+
 NO_READINESS_ACTIVITY_FLAGS = {
     "provider_selected": False,
     "provider_executed": False,
@@ -124,11 +127,25 @@ def evaluate_route_selection_readiness(request_or_recommendation: Any) -> RouteS
     """Evaluate route-selection readiness without selecting or executing anything."""
 
     recommendation = _coerce_recommendation(request_or_recommendation)
-    blocked_conditions = _dedupe(
-        tuple(recommendation.blocked_conditions)
-        + tuple(recommendation.missing_requirements)
-        + ("generation_smoke_probe_boundary_not_authorized",)
-    )
+    generation_smoke_satisfied = GENERATION_SMOKE_EVIDENCE_KEY in recommendation.provider_evidence_keys
+    if generation_smoke_satisfied:
+        route_selection_readiness = "blocked_pending_qwen36_27b_metadata_proof"
+        blocked_conditions = _dedupe(
+            tuple(recommendation.blocked_conditions)
+            + tuple(recommendation.missing_requirements)
+            + ("qwen36_27b_api_show_metadata_proof_missing",)
+        )
+        next_required_boundary = "future_qwen36_27b_api_show_metadata_proof_boundary"
+        next_required_proof = "bounded_qwen36_27b_api_show_metadata_operator_proof"
+    else:
+        route_selection_readiness = "blocked_pending_generation_probe_boundary"
+        blocked_conditions = _dedupe(
+            tuple(recommendation.blocked_conditions)
+            + tuple(recommendation.missing_requirements)
+            + ("generation_smoke_probe_boundary_not_authorized",)
+        )
+        next_required_boundary = "future_local_provider_generation_smoke_probe_boundary"
+        next_required_proof = "bounded_generation_smoke_probe_operator_proof"
 
     return RouteSelectionReadinessResult(
         request_id=recommendation.request_id,
@@ -137,11 +154,11 @@ def evaluate_route_selection_readiness(request_or_recommendation: Any) -> RouteS
         provider_evidence_status=recommendation.provider_evidence_status,
         provider_evidence_keys=tuple(recommendation.provider_evidence_keys),
         provider_evidence_source_phases=tuple(recommendation.provider_evidence_source_phases),
-        route_selection_readiness="blocked_pending_generation_probe_boundary",
+        route_selection_readiness=route_selection_readiness,
         readiness_status="not_ready_for_execution",
         blocked_conditions=blocked_conditions,
-        next_required_boundary="future_local_provider_generation_smoke_probe_boundary",
-        next_required_proof="bounded_generation_smoke_probe_operator_proof",
+        next_required_boundary=next_required_boundary,
+        next_required_proof=next_required_proof,
         provider_selection_allowed=False,
         provider_execution_allowed=False,
         route_execution_allowed=False,

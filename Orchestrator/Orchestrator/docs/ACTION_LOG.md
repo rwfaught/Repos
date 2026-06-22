@@ -3050,6 +3050,8 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
 - Created docs: `docs/PHASE_156.md`.
 - Updated docs: `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`;
   `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/PROVIDER_EVIDENCE_REGISTRY.md`;
   `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
   `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
   `docs/CONTEXT_MAP.md`.
@@ -3075,3 +3077,56 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   `PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF`.
 
 `PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 160 Local Provider Generation Smoke 27B Evidence
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/provider_evidence_registry.py`;
+  `orchestrator/route_selection_readiness.py`.
+- Updated tests:
+  `tests/test_phase_143_provider_evidence_registry_router_report_contract.py`;
+  `tests/test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py`;
+  `tests/test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py`;
+  `tests/test_phase_156_local_provider_target_alignment_27b_contract.py`.
+- Created tests:
+  `tests/test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py`.
+- Created docs: `docs/PHASE_160.md`.
+- Updated docs: `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: records accepted Phase 159 Retry 1 local Ollama `/api/generate`
+  marker smoke evidence for `qwen3.6:27b` with HTTP `200`, JSON parse success,
+  response field `ORCH_PROVIDER_SMOKE_OK`, `done=true`, `done_reason=stop`,
+  and `num_predict=96`.
+- Accepted facts preserved: the earlier Phase 159 initial failure was a
+  token-budget/probe-shape failure with `num_predict=16`, not a model-load
+  failure; Phase 155 Retry 3 remains a `qwen3-30b-24k:latest` CUDA OOM
+  failure, not a 27b failure.
+- Readiness impact: generation-smoke evidence is now satisfied for the exact
+  accepted Phase 159 Retry 1 request; accepted `qwen3.6:27b` `/api/show`
+  metadata proof remains missing and blocks execution readiness.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_143_provider_evidence_registry_router_report_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_152_local_provider_generation_smoke_probe_packet_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_156_local_provider_target_alignment_27b_contract.py" -v`.
+- Explicit non-proofs: no runtime probe was run, no Ollama call was made, no
+  `/api/tags`, `/api/show`, `/api/generate`, or `/api/chat` call was made by
+  this phase, no provider/model/runtime execution, no provider/model
+  selection authority, no `/api/chat` proof, no accepted 27b `/api/show`
+  metadata proof, no semantic correctness, no real workload loadability, no
+  VRAM sufficiency beyond the exact accepted smoke request, no route
+  execution, no worker dispatch, no RAG/local lookup, no web lookup, no
+  scheduler/reminder execution, no connector execution, no service/API/UI
+  productization, no production execution, and no production readiness is
+  proven.
+- Next recommended boundary:
+  `PHASE_161_QWEN36_27B_API_SHOW_METADATA_OPERATOR_PROOF`.
+
+`PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`

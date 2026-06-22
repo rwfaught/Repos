@@ -78,6 +78,30 @@ class Phase143ProviderEvidenceRegistryRouterReportContractTests(unittest.TestCas
         self.assertTrue(evidence.metadata["parameters_present"])
         self.assertTrue(evidence.metadata["license_present"])
 
+    def test_registry_exposes_phase_159_retry1_27b_generation_smoke_evidence(self):
+        registry = get_provider_evidence_registry()
+        evidence = registry["phase_159_retry1_qwen36_27b_generate_marker_smoke"]
+
+        self.assertEqual(evidence.source_phase, "PHASE_159_RETRY_1_OPERATOR_PROOF")
+        self.assertEqual(evidence.provider_catalog_key, "local_model_candidate")
+        self.assertEqual(evidence.evidence_kind, "model_generation_smoke_marker")
+        self.assertEqual(evidence.evidence_status, "accepted_generation_smoke_marker_visible")
+        self.assertEqual(evidence.endpoint_shape, "http://127.0.0.1:11434/api/generate")
+        self.assertEqual(evidence.method, "POST")
+        self.assertEqual(evidence.status_code, 200)
+        self.assertEqual(evidence.model_name, "qwen3.6:27b")
+        self.assertEqual(evidence.metadata["num_predict"], 96)
+        self.assertEqual(evidence.metadata["response_field"], "ORCH_PROVIDER_SMOKE_OK")
+        self.assertTrue(evidence.metadata["marker_present_in_response_field"])
+        self.assertEqual(
+            evidence.metadata["prior_phase_159_initial_failure"],
+            "FAIL_HTTP_200_LOCAL_PROVIDER_GENERATED_THINKING_ONLY_LENGTH_NO_MARKER",
+        )
+        self.assertEqual(
+            evidence.metadata["prior_phase_155_retry3_30b_failure"],
+            "FAIL_HTTP_500_PROVIDER_MODEL_LOAD_CUDA_OOM_RAW_BODY_CAPTURED_NO_GENERATION_PROOF",
+        )
+
     def test_all_provider_evidence_activity_flags_are_false(self):
         for evidence in get_provider_evidence_registry().values():
             with self.subTest(evidence_key=evidence.evidence_key):
@@ -87,7 +111,6 @@ class Phase143ProviderEvidenceRegistryRouterReportContractTests(unittest.TestCas
         for evidence in get_provider_evidence_for_catalog_key("local_model_candidate"):
             with self.subTest(evidence_key=evidence.evidence_key):
                 for non_proof in (
-                    "provider_evidence_is_not_model_generation",
                     "provider_evidence_is_not_api_generate",
                     "provider_evidence_is_not_api_chat",
                     "provider_evidence_is_not_route_execution",

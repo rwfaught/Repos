@@ -63,8 +63,17 @@ future proof. It still does not authorize, run, or accept the proof.
 Phase 156 retargets the active packet from `qwen3-30b-24k:latest` to
 `qwen3.6:27b` after Phase 155 Retry 3 proved the 30b/24k target reached
 `/api/generate` but failed model load with CUDA OOM. The 27b target is visible
-in prior Phase 131 model-list evidence only; no accepted 27b `/api/show`
-metadata proof or `/api/generate` proof exists yet.
+in prior Phase 131 model-list evidence only; at the Phase 156 point no
+accepted 27b `/api/show` metadata proof or `/api/generate` proof existed yet.
+
+Phase 159 Retry 1 later accepted the `qwen3.6:27b` `/api/generate` marker
+smoke proof with `num_predict=96`, HTTP `200`, JSON parse success, returned
+model `qwen3.6:27b`, response field `ORCH_PROVIDER_SMOKE_OK`, `done=true`,
+and `done_reason=stop`. The earlier Phase 159 initial failure remains a
+token-budget/probe-shape failure from `num_predict=16`, not a model-load
+failure. The Phase 155 Retry 3 CUDA OOM remains a 30b/24k failure, not a 27b
+failure. The remaining conservative next proof is `qwen3.6:27b` `/api/show`
+metadata visibility.
 
 ## Non-Proofs
 

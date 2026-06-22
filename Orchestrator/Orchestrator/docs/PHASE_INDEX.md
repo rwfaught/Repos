@@ -1799,3 +1799,25 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 160 - Local Provider Generation Smoke 27B Evidence
+
+- Status: locally source/test/docs-proven evidence registration only.
+- Phase doc: `docs/PHASE_160.md`.
+- Behavior: records accepted Phase 159 Retry 1 `qwen3.6:27b`
+  `/api/generate` marker smoke evidence in the deterministic provider evidence
+  registry, router/report evidence fields, and route-selection readiness.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no runtime call, no route
+  execution, no worker dispatch, no RAG/web/scheduler/connector execution, and
+  no production readiness behavior changed.
+- Readiness impact: generation-smoke evidence is now satisfied for the exact
+  accepted Phase 159 Retry 1 request; accepted `qwen3.6:27b` `/api/show`
+  metadata proof remains missing and is the next conservative boundary.
+- Note: Phase 157 and Phase 158 are transport checkpoints and are not
+  fabricated as source phase docs by Phase 160.
+- Next recommended boundary:
+  `PHASE_161_QWEN36_27B_API_SHOW_METADATA_OPERATOR_PROOF`.
+- Marker:
+  `PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

@@ -36,6 +36,24 @@ Phase 133 model metadata visibility:
 - Accepted meaning: read-only model metadata visibility existed for
   `qwen3-30b-24k:latest` at that moment.
 
+Phase 159 Retry 1 generation-smoke marker evidence:
+
+- Provider catalog key: `local_model_candidate`
+- Evidence kind: `model_generation_smoke_marker`
+- Evidence status: `accepted_generation_smoke_marker_visible`
+- Surface: `http://127.0.0.1:11434/api/generate`
+- Method: `POST`
+- Model: `qwen3.6:27b`
+- Status: `200`
+- Metadata: `num_predict=96`, JSON parse success, returned model
+  `qwen3.6:27b`, response field `ORCH_PROVIDER_SMOKE_OK`, `done=true`, and
+  `done_reason=stop`.
+- Accepted meaning: bounded generation-smoke marker evidence existed for the
+  exact accepted Phase 159 Retry 1 request.
+- Preserved caveats: the earlier Phase 159 initial failure was a token-budget/
+  probe-shape failure; Phase 155 Retry 3 was a 30b/24k CUDA OOM failure, not a
+  27b failure.
+
 ## Relationship To Router And Reports
 
 The registry is evidence posture only. Router/provider catalog policy remains
@@ -57,10 +75,15 @@ That readiness posture may name the next required proof boundary, but evidence
 does not grant provider/model execution authority, model generation authority,
 route execution authority, or production readiness.
 
+Phase 160 allows readiness to treat the exact accepted 27b generation-smoke
+evidence gate as satisfied. Readiness remains blocked because accepted
+`qwen3.6:27b` `/api/show` metadata proof is still missing.
+
 ## Non-Proofs
 
-The registry does not prove provider/model/runtime execution, model
-generation, `/api/generate`, `/api/chat`, semantic correctness, model
-loadability, VRAM sufficiency, route execution, worker dispatch, RAG/local
-lookup, web lookup, scheduler/reminder execution, connector execution,
-service/API/UI productization, production execution, or production readiness.
+The registry does not prove provider/model/runtime execution, `/api/chat`,
+semantic correctness, model loadability for real workloads, VRAM sufficiency
+for real workloads, route execution, worker dispatch, RAG/local lookup, web
+lookup, scheduler/reminder execution, connector execution, service/API/UI
+productization, production execution, or production readiness. The Phase 159
+Retry 1 record proves only the exact accepted smoke request.

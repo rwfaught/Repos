@@ -238,6 +238,14 @@ packet target to `qwen3.6:27b` based on accepted 30b/24k OOM evidence and prior
 27b model-list visibility; it does not add 27b metadata proof, generation
 proof, loadability proof, route execution, or production readiness.
 
+Local provider generation-smoke evidence language belongs to this context only
+as accepted operator-proof registration. Phase 160 records the accepted Phase
+159 Retry 1 `qwen3.6:27b` `/api/generate` marker smoke proof in source data and
+docs without rerunning it. This satisfies the generation-smoke evidence gate
+for the exact accepted request only; it does not add `qwen3.6:27b` `/api/show`
+metadata proof, `/api/chat` proof, semantic correctness, real workload
+loadability, route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

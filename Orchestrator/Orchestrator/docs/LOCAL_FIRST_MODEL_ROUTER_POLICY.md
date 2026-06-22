@@ -159,6 +159,15 @@ prove production readiness.
 
 Phase 152 adds a deterministic future provider generation smoke probe packet
 for that readiness boundary. The packet may name `POST /api/generate` as a
-future endpoint shape and `qwen3-30b-24k:latest` as the model candidate, but
+future endpoint shape and a local model candidate, but
 it does not execute the endpoint, generate output, select a provider/model, or
 prove route execution or production readiness.
+
+Phase 156 retargets the active future generation smoke probe packet to
+`qwen3.6:27b` after accepted 30b/24k CUDA OOM evidence. Phase 160 registers
+accepted Phase 159 Retry 1 `qwen3.6:27b` `/api/generate` marker smoke evidence
+for the exact accepted request only. Route-selection readiness can now treat
+the generation-smoke gate as satisfied, but accepted `qwen3.6:27b`
+`/api/show` metadata proof remains missing; provider selection, provider
+execution, generation-now, route execution, and production readiness remain
+false.

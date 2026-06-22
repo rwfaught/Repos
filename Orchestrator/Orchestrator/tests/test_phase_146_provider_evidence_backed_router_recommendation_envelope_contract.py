@@ -74,8 +74,10 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
 
         self.assertIn("phase_131_local_ollama_tags_model_list_visibility", recommendation.provider_evidence_keys)
         self.assertIn("phase_133_qwen3_30b_24k_show_metadata_visibility", recommendation.provider_evidence_keys)
+        self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", recommendation.provider_evidence_keys)
         self.assertIn("PHASE_131", recommendation.provider_evidence_source_phases)
         self.assertIn("PHASE_133", recommendation.provider_evidence_source_phases)
+        self.assertIn("PHASE_159_RETRY_1_OPERATOR_PROOF", recommendation.provider_evidence_source_phases)
 
     def test_recommendation_exposes_qwen3_metadata_evidence_fields(self):
         recommendation = recommend_model_route(_local_first_request())
@@ -92,7 +94,7 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         self.assertFalse(recommendation.provider_execution_allowed)
         self.assertFalse(recommendation.provider_selection_allowed)
         self.assertTrue(all(flag is False for flag in recommendation.provider_evidence_activity_flags.values()))
-        self.assertIn("provider_evidence_is_not_model_generation", recommendation.provider_evidence_non_proofs)
+        self.assertIn("provider_evidence_is_not_model_loadability_for_real_workloads", recommendation.provider_evidence_non_proofs)
         self.assertIn("provider_evidence_is_not_route_execution", recommendation.provider_evidence_non_proofs)
         self.assertIn("provider_evidence_is_not_production_readiness", recommendation.provider_evidence_non_proofs)
 
@@ -104,6 +106,7 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         self.assertIn("provider_evidence_status=read_only_metadata_visible", text)
         self.assertIn("phase_131_local_ollama_tags_model_list_visibility", text)
         self.assertIn("phase_133_qwen3_30b_24k_show_metadata_visibility", text)
+        self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", text)
         self.assertIn("model_metadata_evidence_name=qwen3-30b-24k:latest", text)
         self.assertIn("model_metadata_format=gguf", text)
         self.assertIn("model_metadata_family=qwen3moe", text)

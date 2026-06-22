@@ -60,21 +60,23 @@ class Phase149ProviderEvidenceGatedRouteSelectionReadinessContractTests(unittest
 
         self.assertIn("phase_131_local_ollama_tags_model_list_visibility", readiness.provider_evidence_keys)
         self.assertIn("phase_133_qwen3_30b_24k_show_metadata_visibility", readiness.provider_evidence_keys)
+        self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", readiness.provider_evidence_keys)
         self.assertIn("PHASE_131", readiness.provider_evidence_source_phases)
         self.assertIn("PHASE_133", readiness.provider_evidence_source_phases)
+        self.assertIn("PHASE_159_RETRY_1_OPERATOR_PROOF", readiness.provider_evidence_source_phases)
 
-    def test_readiness_blocks_pending_future_generation_smoke_probe_boundary(self):
+    def test_readiness_blocks_pending_27b_metadata_proof_after_smoke_evidence(self):
         readiness = evaluate_route_selection_readiness(_local_first_request())
 
         self.assertEqual(readiness.provider_evidence_status, "read_only_metadata_visible")
-        self.assertEqual(readiness.route_selection_readiness, "blocked_pending_generation_probe_boundary")
+        self.assertEqual(readiness.route_selection_readiness, "blocked_pending_qwen36_27b_metadata_proof")
         self.assertEqual(readiness.readiness_status, "not_ready_for_execution")
-        self.assertIn("generation_smoke_probe_boundary_not_authorized", readiness.blocked_conditions)
+        self.assertIn("qwen36_27b_api_show_metadata_proof_missing", readiness.blocked_conditions)
         self.assertEqual(
             readiness.next_required_boundary,
-            "future_local_provider_generation_smoke_probe_boundary",
+            "future_qwen36_27b_api_show_metadata_proof_boundary",
         )
-        self.assertEqual(readiness.next_required_proof, "bounded_generation_smoke_probe_operator_proof")
+        self.assertEqual(readiness.next_required_proof, "bounded_qwen36_27b_api_show_metadata_operator_proof")
 
     def test_readiness_preserves_all_execution_permissions_false(self):
         readiness = evaluate_route_selection_readiness(_local_first_request())
@@ -102,8 +104,8 @@ class Phase149ProviderEvidenceGatedRouteSelectionReadinessContractTests(unittest
 
         self.assertIn("Route Selection Readiness", result.review_text)
         self.assertEqual(readiness["provider_evidence_status"], "read_only_metadata_visible")
-        self.assertEqual(readiness["route_selection_readiness"], "blocked_pending_generation_probe_boundary")
-        self.assertEqual(readiness["next_required_boundary"], "future_local_provider_generation_smoke_probe_boundary")
+        self.assertEqual(readiness["route_selection_readiness"], "blocked_pending_qwen36_27b_metadata_proof")
+        self.assertEqual(readiness["next_required_boundary"], "future_qwen36_27b_api_show_metadata_proof_boundary")
         self.assertFalse(readiness["provider_selection_allowed"])
         self.assertFalse(readiness["provider_execution_allowed"])
         self.assertFalse(readiness["route_execution_allowed"])

@@ -33,8 +33,8 @@ PROVIDER_EVIDENCE_NON_PROOFS = (
     "provider_evidence_is_not_api_generate",
     "provider_evidence_is_not_api_chat",
     "provider_evidence_is_not_model_correctness",
-    "provider_evidence_is_not_model_loadability",
-    "provider_evidence_is_not_vram_sufficiency",
+    "provider_evidence_is_not_model_loadability_for_real_workloads",
+    "provider_evidence_is_not_vram_sufficiency_for_real_workloads",
     "provider_evidence_is_not_route_execution",
     "provider_evidence_is_not_worker_dispatch",
     "provider_evidence_is_not_rag_lookup",
@@ -124,6 +124,55 @@ _EVIDENCE_RECORDS = (
         accepted_meaning=(
             "Read-only model metadata visibility existed for qwen3-30b-24k:latest "
             "at that moment."
+        ),
+        non_proofs=PROVIDER_EVIDENCE_NON_PROOFS,
+        activity_flags=dict(NO_PROVIDER_EVIDENCE_ACTIVITY_FLAGS),
+    ),
+    ProviderEvidenceRecord(
+        evidence_key="phase_159_retry1_qwen36_27b_generate_marker_smoke",
+        provider_catalog_key="local_model_candidate",
+        evidence_kind="model_generation_smoke_marker",
+        evidence_status="accepted_generation_smoke_marker_visible",
+        source_phase="PHASE_159_RETRY_1_OPERATOR_PROOF",
+        endpoint_shape="http://127.0.0.1:11434/api/generate",
+        method="POST",
+        status_code=200,
+        content_type="application/json; charset=utf-8",
+        model_name="qwen3.6:27b",
+        model_names=(),
+        metadata={
+            "prompt": "Return exactly this marker in your final response and do not explain: ORCH_PROVIDER_SMOKE_OK",
+            "stream": False,
+            "temperature": 0,
+            "num_predict": 96,
+            "curl_exit_code": 0,
+            "json_parse_succeeded": True,
+            "returned_model": "qwen3.6:27b",
+            "response_field": "ORCH_PROVIDER_SMOKE_OK",
+            "done": True,
+            "done_reason": "stop",
+            "marker_present_in_response_field": True,
+            "marker_present_in_thinking_field": True,
+            "marker_present_in_raw_body": True,
+            "final_git_status": "## main...origin/main",
+            "prior_phase_159_initial_failure": (
+                "FAIL_HTTP_200_LOCAL_PROVIDER_GENERATED_THINKING_ONLY_LENGTH_NO_MARKER"
+            ),
+            "prior_phase_159_initial_failure_reason": (
+                "num_predict=16 was too small; output was consumed by thinking; "
+                "response field was empty; done_reason=length; no marker accepted."
+            ),
+            "prior_phase_155_retry3_30b_failure": (
+                "FAIL_HTTP_500_PROVIDER_MODEL_LOAD_CUDA_OOM_RAW_BODY_CAPTURED_NO_GENERATION_PROOF"
+            ),
+            "prior_phase_155_retry3_30b_failure_reason": (
+                "qwen3-30b-24k:latest reached /api/generate and failed model load "
+                "with CUDA OOM; this was not a qwen3.6:27b failure."
+            ),
+        },
+        accepted_meaning=(
+            "Phase 159 Retry 1 accepted a bounded local Ollama /api/generate marker "
+            "smoke proof for qwen3.6:27b with num_predict=96."
         ),
         non_proofs=PROVIDER_EVIDENCE_NON_PROOFS,
         activity_flags=dict(NO_PROVIDER_EVIDENCE_ACTIVITY_FLAGS),

@@ -147,6 +147,15 @@ yet have accepted `/api/show` metadata proof or accepted `/api/generate` proof,
 and the Phase 155 Retry 3 CUDA OOM remains a 30b/24k failure rather than a 27b
 failure.
 
+Phase 160 registers accepted Phase 159 Retry 1 local Ollama `/api/generate`
+marker smoke evidence for `qwen3.6:27b`: HTTP `200`, JSON parse success,
+returned model `qwen3.6:27b`, response field `ORCH_PROVIDER_SMOKE_OK`,
+`done=true`, and `done_reason=stop` with `num_predict=96`. The catalog remains
+conservative: the initial Phase 159 failure is preserved as a token-budget/
+probe-shape failure, Phase 155 Retry 3 remains a 30b/24k CUDA OOM failure, and
+accepted 27b `/api/show` metadata proof is still missing. Provider selection,
+provider execution, route execution, and production readiness remain false.
+
 ## Non-Proofs
 
 The catalog explicitly does not prove provider/model execution,

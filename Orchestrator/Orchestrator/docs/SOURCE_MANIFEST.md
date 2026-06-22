@@ -2939,6 +2939,8 @@ Registered changed documentation/control files:
 
 - `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`
 - `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/PROVIDER_EVIDENCE_REGISTRY.md`
 - `docs/TRACKS_AND_OPEN_THREADS.md`
 - `docs/PHASE_INDEX.md`
 - `docs/ACTION_LOG.md`
@@ -2964,3 +2966,63 @@ readiness behavior is registered by Phase 156.
 No production readiness is registered by Phase 156.
 
 `PHASE156_LOCAL_PROVIDER_TARGET_ALIGNMENT_27B_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 160 Local Provider Generation Smoke 27B Evidence
+
+Boundary:
+
+`PHASE_160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/provider_evidence_registry.py`
+- `orchestrator/route_selection_readiness.py`
+
+Registered changed test files:
+
+- `tests/test_phase_143_provider_evidence_registry_router_report_contract.py`
+- `tests/test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py`
+- `tests/test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py`
+- `tests/test_phase_156_local_provider_target_alignment_27b_contract.py`
+
+Registered new test files:
+
+- `tests/test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_160.md`
+
+Registered changed documentation/control files:
+
+- `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic source/test/docs registration of accepted
+Phase 159 Retry 1 local Ollama `/api/generate` marker smoke evidence for
+`qwen3.6:27b`. Route-selection readiness now treats the generation-smoke
+evidence gate as satisfied for that exact accepted request, while preserving
+accepted `qwen3.6:27b` `/api/show` metadata proof as missing.
+
+Registered caveat: the earlier Phase 159 initial failure remains a
+token-budget/probe-shape failure with `num_predict=16`, not a model-load
+failure. Phase 155 Retry 3 remains a `qwen3-30b-24k:latest` CUDA OOM failure,
+not a 27b failure.
+
+No provider/model probe, Ollama call, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, provider/model/runtime execution,
+provider/model selection authority, `/api/chat` proof, accepted 27b
+`/api/show` metadata proof, semantic correctness, real workload loadability,
+VRAM sufficiency beyond the exact accepted smoke request, route execution,
+worker dispatch, RAG/local lookup, web lookup, scheduler/reminder execution,
+connector execution, service/API/UI productization, production execution, or
+production readiness behavior is registered by Phase 160.
+
+No production readiness is registered by Phase 160.
+
+`PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
