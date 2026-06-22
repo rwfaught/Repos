@@ -2267,3 +2267,52 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   production readiness.
 
 `PHASE122_LOCAL_FIRST_MODEL_ROUTER_POLICY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 123 Model Router Policy Manual Review Integration
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_123_LOCAL_FIRST_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_MUTATION`
+- Changed source: `orchestrator/coordinator_review_report.py`;
+  `orchestrator/manual_review_runner.py`.
+- Created tests:
+  `tests/test_phase_123_model_router_policy_manual_review_integration_contract.py`.
+- Created docs: `docs/PHASE_123.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: integrated the Phase 122 deterministic non-executing model/router
+  policy recommendation into coordinator review reports and manual review
+  runner artifacts as structured recommendation metadata and rendered router
+  policy posture.
+- Validation: `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m py_compile orchestrator/coordinator_review_report.py`;
+  `python -m py_compile orchestrator/manual_review_runner.py`;
+  `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_117_coordinator_review_report_contract`;
+  `python -m unittest tests.test_phase_118_manual_review_runner_contract`;
+  `python -m unittest tests.test_phase_119_manual_review_cli_adapter_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model execution, Ollama, WSL, OpenClaw,
+  Hermes, Discord, installer, runtime/probe execution, web lookup, RAG/local
+  document lookup execution, scheduler/reminder execution, connector execution,
+  Codex dispatch from product code, worker dispatch, route execution,
+  production execution, cleanup/delete/archive, artifact export/package
+  behavior, autonomous writeback, live routing,
+  provider/model/runtime/platform selection, or production readiness is
+  proven.
+- Caveat: Phase 123 displays router policy posture as review evidence only; it
+  is not a live router, provider/model selector, worker dispatcher, lookup
+  implementation, scheduler, connector, platform crossing, route execution, or
+  production readiness.
+- Caveat: requested validation command
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`
+  failed because that standalone test module is absent; Phase 120 entrypoint
+  coverage remains in `tests.test_phase_119_manual_review_cli_adapter_contract`.
+
+`PHASE123_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

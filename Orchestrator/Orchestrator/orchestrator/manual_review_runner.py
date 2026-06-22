@@ -76,6 +76,7 @@ class ManualReviewRunResult:
     pipeline_result: FixtureBoundaryPacketPipelineResult | None
     review_report_result: CoordinatorReviewReportResult | None
     review_text: str
+    router_policy_recommendation: dict[str, Any] | None
     blocked_conditions: tuple[str, ...]
     missing_requirements: tuple[str, ...]
     recommended_next_action: str
@@ -223,6 +224,7 @@ def _result_from_pipeline(
         pipeline_result=pipeline_result,
         review_report_result=report_result,
         review_text=review_text,
+        router_policy_recommendation=dict(report_result.report.router_policy_recommendation),
         blocked_conditions=report_result.blocked_conditions,
         missing_requirements=report_result.missing_requirements,
         recommended_next_action=report_result.recommended_next_action,
@@ -241,6 +243,7 @@ def _unknown_fixture_result(fixture_id: str) -> ManualReviewRunResult:
         pipeline_result=None,
         review_report_result=None,
         review_text="Manual review runner stopped: unknown fixture id. No execution occurred.",
+        router_policy_recommendation=None,
         blocked_conditions=("unknown_builtin_review_fixture",),
         missing_requirements=("known_fixture_id",),
         recommended_next_action="choose_known_builtin_review_fixture",

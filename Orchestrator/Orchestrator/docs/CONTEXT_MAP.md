@@ -136,6 +136,12 @@ clarify. It does not execute providers or models, select runtimes or
 platforms, dispatch workers, perform RAG/web/scheduler/connector work, or
 authorize production execution.
 
+Manual review/report integration may display local-first model router policy
+posture as coordinator-facing evidence. Displayed router posture remains
+non-executing review metadata; it is not provider/model selection, worker
+dispatch, route execution, RAG/web/scheduler/connector work, or production
+readiness.
+
 ## Route Proposal Source And Admission Lifecycle
 
 Route proposal is not execution. A route proposal source is substrate-agnostic

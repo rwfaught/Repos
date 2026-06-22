@@ -2212,3 +2212,48 @@ production readiness behavior is registered by Phase 122.
 No production readiness is registered by Phase 122.
 
 `PHASE122_LOCAL_FIRST_MODEL_ROUTER_POLICY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 123 Model Router Policy Manual Review Integration Registration
+
+Boundary:
+
+`PHASE_123_LOCAL_FIRST_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_MUTATION`
+
+Registered changed source files:
+
+- `orchestrator/coordinator_review_report.py`
+- `orchestrator/manual_review_runner.py`
+
+Registered new test files:
+
+- `tests/test_phase_123_model_router_policy_manual_review_integration_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_123.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing manual review integration
+only. Phase 123 registers router policy recommendation metadata on
+coordinator review reports, rendered router policy posture in review text,
+manual runner preservation of the structured recommendation, and combined
+router policy non-proofs.
+
+No provider/model execution, Ollama, WSL, OpenClaw, Hermes, Discord,
+installer, runtime/probe execution, web lookup, RAG/local document lookup
+execution, scheduler/reminder execution, connector execution, Codex dispatch
+from product code, worker dispatch, route execution, production execution,
+cleanup/delete/archive, artifact export/package behavior, autonomous
+writeback, live routing, provider/model/runtime/platform selection, or
+production readiness behavior is registered by Phase 123.
+
+No production readiness is registered by Phase 123.
+
+`PHASE123_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from orchestrator.fixture_packet_pipeline import FixtureBoundaryPacketPipelineResult
+from orchestrator.model_router_policy import recommend_model_route
 
 
 NO_ACTIVITY_FLAGS = {
@@ -31,6 +32,12 @@ NO_ACTIVITY_FLAGS = {
     "cleanup_performed": False,
     "deletion_performed": False,
     "archive_performed": False,
+    "rag_lookup_performed": False,
+    "web_lookup_performed": False,
+    "scheduler_executed": False,
+    "connector_executed": False,
+    "worker_dispatched": False,
+    "codex_dispatched": False,
 }
 
 REPORT_NON_PROOFS = (
@@ -63,6 +70,7 @@ class CoordinatorReviewReport:
     blocked_conditions: tuple[str, ...]
     missing_requirements: tuple[str, ...]
     capability_assessment_summary: dict[str, Any]
+    router_policy_recommendation: dict[str, Any]
     packet_text: str
     evidence_status: str
     non_proofs: tuple[str, ...]
@@ -96,6 +104,85 @@ def _capability_summary(result: FixtureBoundaryPacketPipelineResult) -> dict[str
         "production_ready_capabilities": list(assessment.get("production_ready_capabilities", [])),
         "authorized_execution": assessment.get("authorized_execution") is True,
         "maturity_statuses": deepcopy(assessment.get("maturity_statuses", {})),
+    }
+
+
+def _router_policy_request(result: FixtureBoundaryPacketPipelineResult) -> dict[str, Any]:
+    admission = result.intake_admission_result
+    intake = admission.intake_record
+    if intake is not None:
+        return {
+            "request_id": intake.request_id,
+            "request_type": intake.request_type,
+            "confidence": intake.confidence,
+            "required_capabilities": list(intake.required_capabilities),
+            "missing_inputs": list(intake.missing_inputs),
+            "risk_level": intake.risk_level,
+            "allowed_to_answer_directly": intake.allowed_to_answer_directly,
+            "allowed_to_mutate_files": intake.allowed_to_mutate_files,
+            "allowed_to_schedule": intake.allowed_to_schedule,
+            "allowed_to_use_local_documents": intake.allowed_to_use_local_documents,
+            "allowed_to_use_web": intake.allowed_to_use_web,
+            "requires_operator_confirmation": intake.requires_operator_confirmation,
+            "requires_external_connector": intake.requires_external_connector,
+        }
+
+    fixture_decision = admission.fixture_decision
+    if fixture_decision is not None:
+        required_capabilities = list(fixture_decision.required_capabilities)
+        blocked = set(fixture_decision.blocked_conditions)
+        if not required_capabilities and "provider_model_runtime_platform_requires_separate_boundary" in blocked:
+            required_capabilities = ["provider_model", "platform_runtime"]
+        if not required_capabilities and "production_execution_blocked" in blocked:
+            required_capabilities = ["production_execution"]
+        return {
+            "request_id": fixture_decision.fixture_id,
+            "request_type": fixture_decision.request_type,
+            "confidence": fixture_decision.confidence,
+            "required_capabilities": required_capabilities,
+            "missing_inputs": list(fixture_decision.missing_inputs),
+            "risk_level": fixture_decision.risk_level,
+            "allowed_to_answer_directly": fixture_decision.allowed_to_answer_directly,
+            "allowed_to_mutate_files": fixture_decision.allowed_to_mutate_files,
+            "allowed_to_schedule": fixture_decision.allowed_to_schedule,
+            "allowed_to_use_local_documents": fixture_decision.allowed_to_use_local_documents,
+            "allowed_to_use_web": fixture_decision.allowed_to_use_web,
+            "requires_operator_confirmation": fixture_decision.requires_operator_confirmation,
+            "requires_external_connector": fixture_decision.requires_external_connector,
+        }
+
+    return {
+        "request_id": result.request_id,
+        "request_type": result.request_type,
+        "confidence": None,
+        "required_capabilities": list(result.capability_assessment.get("requested_capabilities", ())),
+        "missing_inputs": list(result.missing_requirements),
+        "risk_level": "unknown",
+        "allowed_to_answer_directly": False,
+        "allowed_to_mutate_files": False,
+        "allowed_to_schedule": False,
+        "allowed_to_use_local_documents": False,
+        "allowed_to_use_web": False,
+        "requires_operator_confirmation": False,
+        "requires_external_connector": False,
+    }
+
+
+def _router_policy_summary(result: FixtureBoundaryPacketPipelineResult) -> dict[str, Any]:
+    recommendation = recommend_model_route(_router_policy_request(result))
+    return {
+        "request_id": recommendation.request_id,
+        "recommended_route": recommendation.recommended_route,
+        "provider_posture": recommendation.provider_posture,
+        "confidence": recommendation.confidence,
+        "reason": recommendation.reason,
+        "fallback": recommendation.fallback,
+        "escalation_posture": recommendation.escalation_posture,
+        "required_boundary": recommendation.required_boundary,
+        "blocked_conditions": list(recommendation.blocked_conditions),
+        "missing_requirements": list(recommendation.missing_requirements),
+        "non_proofs": list(recommendation.non_proofs),
+        "activity_flags": dict(recommendation.activity_flags),
     }
 
 
@@ -149,11 +236,18 @@ def build_coordinator_review_report(
 
     packet_kind = pipeline_result.packet_draft.packet_kind if pipeline_result.packet_draft else "no_packet_draft"
     boundary_name = pipeline_result.packet_draft.boundary_name if pipeline_result.packet_draft else ""
-    non_proofs = _dedupe(REPORT_NON_PROOFS + pipeline_result.non_proofs)
+    router_policy = _router_policy_summary(pipeline_result)
+    non_proofs = _dedupe(
+        REPORT_NON_PROOFS
+        + pipeline_result.non_proofs
+        + tuple(router_policy["non_proofs"])
+    )
     caveats = _dedupe(pipeline_result.caveats + ("review_report_draft_only_not_ratification",))
     flags = dict(NO_ACTIVITY_FLAGS)
     for key in flags:
         flags[key] = bool(pipeline_result.no_activity_flags.get(key, False))
+    for key, value in router_policy["activity_flags"].items():
+        flags[key] = flags.get(key, False) or bool(value)
 
     report = CoordinatorReviewReport(
         report_id=f"review_{pipeline_result.request_id}",
@@ -172,6 +266,7 @@ def build_coordinator_review_report(
         blocked_conditions=pipeline_result.blocked_conditions,
         missing_requirements=pipeline_result.missing_requirements,
         capability_assessment_summary=_capability_summary(pipeline_result),
+        router_policy_recommendation=router_policy,
         packet_text=pipeline_result.packet_text,
         evidence_status="deterministic_source_test_report_only_no_runtime_execution",
         non_proofs=non_proofs,
@@ -210,6 +305,18 @@ def render_coordinator_review_text(report: CoordinatorReviewReport) -> str:
         f"- {report.decision_summary}",
         f"- Blocked conditions: {', '.join(report.blocked_conditions) if report.blocked_conditions else 'none'}",
         f"- Missing requirements: {', '.join(report.missing_requirements) if report.missing_requirements else 'none'}",
+        "",
+        "Router Policy",
+        f"- recommended_route={report.router_policy_recommendation['recommended_route']}",
+        f"- provider_posture={report.router_policy_recommendation['provider_posture']}",
+        f"- required_boundary={report.router_policy_recommendation['required_boundary']}",
+        f"- escalation_posture={report.router_policy_recommendation['escalation_posture']}",
+        f"- fallback={report.router_policy_recommendation['fallback']}",
+        "- blocked_conditions="
+        f"{', '.join(report.router_policy_recommendation['blocked_conditions']) if report.router_policy_recommendation['blocked_conditions'] else 'none'}",
+        "- missing_requirements="
+        f"{', '.join(report.router_policy_recommendation['missing_requirements']) if report.router_policy_recommendation['missing_requirements'] else 'none'}",
+        f"- confidence={report.router_policy_recommendation['confidence']}",
         "",
         "NBM",
         f"- {report.next_boundary}",
