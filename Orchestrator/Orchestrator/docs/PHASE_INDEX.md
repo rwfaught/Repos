@@ -122,14 +122,15 @@ This file enables controlled progression through the system build.
 121. PHASE_121.md - Manual Review CLI Runbook And Golden Smoke Contract
 122. PHASE_122.md - Local-First Model Router Policy Contract
 123. PHASE_123.md - Model Router Policy Manual Review Integration
+124. PHASE_124.md - Phase 120 Entrypoint Validation Compatibility
 
 ---
 
 ## Current Phase
 
-Phase 123 - Model Router Policy Manual Review Integration
+Phase 124 - Phase 120 Entrypoint Validation Compatibility
 
-Status: latest locally source/test/docs-proven phase; Phase 123 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 124 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1381,4 +1382,24 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   production readiness behavior changed.
 - Marker:
   `PHASE123_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 124 - Phase 120 Entrypoint Validation Compatibility
+
+- Status: locally source/test/docs-proven; Phase 124 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_124.md`.
+- Behavior: adds the missing standalone Phase 120 module-entrypoint unittest
+  module expected by the Phase 123 validation command list, repairing proof
+  hygiene without changing product behavior.
+- Boundary: no provider/model execution, Ollama, WSL, OpenClaw, Hermes,
+  Discord, installer, runtime/probe execution outside ordinary Python unit
+  tests, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch, worker
+  dispatch, route execution, production execution, cleanup/delete/archive,
+  productized CLI/UI/service/API, live routing, artifact export/package
+  behavior beyond the requested source refresh, or production readiness
+  behavior changed.
+- Marker:
+  `PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

@@ -142,6 +142,11 @@ non-executing review metadata; it is not provider/model selection, worker
 dispatch, route execution, RAG/web/scheduler/connector work, or production
 readiness.
 
+Phase 124 adds the missing standalone Phase 120 module-entrypoint validation
+test expected by the Phase 123 validation list. This repairs validation command
+compatibility only; it does not add product behavior or erase the historical
+Phase 123 failed-command caveat.
+
 ## Route Proposal Source And Admission Lifecycle
 
 Route proposal is not execution. A route proposal source is substrate-agnostic

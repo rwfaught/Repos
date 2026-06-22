@@ -2257,3 +2257,44 @@ production readiness behavior is registered by Phase 123.
 No production readiness is registered by Phase 123.
 
 `PHASE123_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 124 Phase 120 Entrypoint Validation Compatibility Registration
+
+Boundary:
+
+`PHASE_124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_AND_PHASE123_PROOF_RECONCILIATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new test files:
+
+- `tests/test_phase_120_manual_review_cli_module_entrypoint.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_124.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: proof-hygiene validation compatibility only. Phase 124
+adds the missing standalone Phase 120 module-entrypoint unittest module
+expected by the Phase 123 validation list and preserves current router policy
+rendering assertions.
+
+No provider/model execution, Ollama, WSL, OpenClaw, Hermes, Discord,
+installer, runtime/probe execution outside ordinary Python unit-test execution,
+web lookup, RAG/local document lookup execution, scheduler/reminder execution,
+connector execution, Codex dispatch from product code, worker dispatch, route
+execution, production execution, cleanup/delete/archive, artifact
+export/package behavior beyond the requested source refresh, autonomous
+writeback, live routing, provider/model/runtime/platform selection,
+service/API/UI productization, or production readiness behavior is registered
+by Phase 124.
+
+No production readiness is registered by Phase 124.
+
+`PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -2316,3 +2316,41 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   coverage remains in `tests.test_phase_119_manual_review_cli_adapter_contract`.
 
 `PHASE123_MODEL_ROUTER_POLICY_MANUAL_REVIEW_INTEGRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 124 Phase 120 Entrypoint Validation Compatibility
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_AND_PHASE123_PROOF_RECONCILIATION_SOURCE_TEST_DOCS_MUTATION`
+- Created tests: `tests/test_phase_120_manual_review_cli_module_entrypoint.py`.
+- Created docs: `docs/PHASE_124.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: added the missing standalone Phase 120 module-entrypoint unittest
+  module expected by the Phase 123 validation list and proved the command now
+  passes against the current Phase 123-rendered review text.
+- Validation: `python -m py_compile orchestrator/manual_review_cli.py`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_117_coordinator_review_report_contract`;
+  `python -m unittest tests.test_phase_118_manual_review_runner_contract`;
+  `python -m unittest tests.test_phase_119_manual_review_cli_adapter_contract`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model execution, Ollama, WSL, OpenClaw,
+  Hermes, Discord, installer, runtime/probe execution outside ordinary Python
+  unit-test execution, web lookup, RAG/local document lookup execution,
+  scheduler/reminder execution, connector execution, Codex dispatch from
+  product code, worker dispatch, route execution, production execution,
+  cleanup/delete/archive, artifact export/package behavior beyond the
+  requested source refresh, autonomous writeback, live routing,
+  provider/model/runtime/platform selection, service/API/UI productization, or
+  production readiness is proven.
+- Caveat: Phase 124 repairs the missing standalone validation module expected
+  by Phase 123, but does not erase the historical Phase 123 failed-command
+  caveat.
+
+`PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
