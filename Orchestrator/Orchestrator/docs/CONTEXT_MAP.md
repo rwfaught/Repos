@@ -190,6 +190,14 @@ loadability, VRAM sufficiency, route execution, provider/model/runtime
 execution, worker dispatch, RAG/web/scheduler/connector work, or production
 readiness.
 
+Git checkpoint registration belongs to this context only as source publication
+language. Phase 135 records a local explicit-docs commit checkpoint for the
+Phase 130 through Phase 134 proof ledgers at `a4c6815`; Phase 136 records the
+remote push checkpoint to `origin/main`; Phase 137 registers those checkpoint
+proofs in source docs/ledgers. Commit/push checkpoint means durable git/source
+publication of prior proof ledgers only. It is not provider/model/runtime
+execution, route execution, product behavior, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

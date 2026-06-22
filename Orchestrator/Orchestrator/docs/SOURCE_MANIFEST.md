@@ -2638,3 +2638,40 @@ registered by Phase 134.
 No production readiness is registered by Phase 134.
 
 `PHASE134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 137 Git Checkpoint Ledger Registration
+
+Boundary:
+
+`PHASE_137_GIT_CHECKPOINT_LEDGER_REGISTRATION_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_135.md`
+- `docs/PHASE_136.md`
+- `docs/PHASE_137.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/MANUAL_REVIEW_CLI_RUNBOOK.md`
+
+Registered behavior: source/docs/ledger registration of already-accepted
+Phase 135 and Phase 136 git checkpoint operator proofs only. Phase 137
+registers that the Phase 130 through Phase 134 provider-proof ledger chain was
+committed locally and pushed to `origin/main` at commit `a4c6815`.
+
+No commit rerun, push rerun, git staging, provider/model/runtime execution,
+provider probe, model probe, Ollama, `/api/tags`, `/api/show`,
+`/api/generate`, `/api/chat`, generation, model loadability, route readiness,
+route execution, worker dispatch, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, production execution, or
+production readiness behavior is registered by Phase 137.
+
+No production readiness is registered by Phase 137.
+
+`PHASE137_GIT_CHECKPOINT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

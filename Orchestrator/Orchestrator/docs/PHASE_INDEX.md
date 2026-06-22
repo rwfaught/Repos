@@ -133,14 +133,17 @@ This file enables controlled progression through the system build.
 132. PHASE_132.md - Operator Provider Proof Ledger Registration
 133. PHASE_133.md - Read-Only Local Model Metadata Probe Operator Proof
 134. PHASE_134.md - Read-Only Local Model Metadata Probe Ledger Registration
+135. PHASE_135.md - Provider Proof Ledger Explicit Docs Commit Checkpoint Operator Proof
+136. PHASE_136.md - Provider Proof Ledger Remote Push Checkpoint Operator Proof
+137. PHASE_137.md - Git Checkpoint Ledger Registration
 
 ---
 
 ## Current Phase
 
-Phase 134 - Read-Only Local Model Metadata Probe Ledger Registration
+Phase 137 - Git Checkpoint Ledger Registration
 
-Status: latest locally source/test/docs registration phase; Phase 134 source snapshot refresh attempted.
+Status: latest locally source/test/docs registration phase; Phase 137 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1606,4 +1609,47 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   production readiness behavior changed.
 - Marker:
   `PHASE134_READ_ONLY_LOCAL_MODEL_METADATA_PROBE_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 135 - Provider Proof Ledger Explicit Docs Commit Checkpoint Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_135.md`.
+- Behavior: registers the explicit docs-only local commit checkpoint for the
+  Phase 130 through Phase 134 provider proof ledger chain.
+- Boundary: explicit docs staging only; no root `git add -A`; committed
+  `a4c6815 Register provider proof ledger phases 130-134`; final status after
+  Phase 135 was `## main...origin/main [ahead 1]`.
+- Marker:
+  `PHASE135_PROVIDER_PROOF_LEDGER_EXPLICIT_DOCS_COMMIT_CHECKPOINT_OPERATOR_PROOF=PASS`.
+- Production readiness is not claimed.
+
+## Phase 136 - Provider Proof Ledger Remote Push Checkpoint Operator Proof
+
+- Status: operator-output proof accepted for registration.
+- Phase doc: `docs/PHASE_136.md`.
+- Behavior: registers the remote push checkpoint for commit `a4c6815` to
+  `origin/main`.
+- Boundary: push range `3e0e9af..a4c6815 main -> main`; final product/root
+  statuses were `## main...origin/main`; no force push or runtime/provider
+  behavior is proven.
+- Marker:
+  `PHASE136_PROVIDER_PROOF_LEDGER_REMOTE_PUSH_CHECKPOINT_OPERATOR_PROOF=PASS`.
+- Production readiness is not claimed.
+
+## Phase 137 - Git Checkpoint Ledger Registration
+
+- Status: locally source/test/docs registration; Phase 137 source snapshot
+  refresh attempted.
+- Phase doc: `docs/PHASE_137.md`.
+- Behavior: registers the already-accepted Phase 135 and Phase 136 git
+  checkpoint operator proofs in source docs and ledgers without rerunning
+  commit or push.
+- Boundary: no git staging, no commit, no push, no runtime/probe execution, no
+  provider/model execution, no Ollama, no `/api/tags`, no `/api/show`, no
+  `/api/generate`, no `/api/chat`, no generation, no route execution, no
+  worker dispatch, no RAG/web/scheduler/connector execution, no production
+  execution, and no production readiness behavior changed.
+- Marker:
+  `PHASE137_GIT_CHECKPOINT_LEDGER_REGISTRATION_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

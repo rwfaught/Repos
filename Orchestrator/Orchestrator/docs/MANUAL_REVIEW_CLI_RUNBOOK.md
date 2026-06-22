@@ -91,6 +91,12 @@ chat, semantic correctness, model loadability, VRAM sufficiency, route
 execution, worker dispatch, RAG/web/scheduler/connector work, or production
 readiness.
 
+Phase 135 and Phase 136 registered git checkpoint proofs for the Phase 130
+through Phase 134 provider-proof ledger chain. Commit/push checkpoint language
+means source publication of prior proof ledgers only; it does not rerun manual
+review, execute provider probes, invoke models, execute routes, or prove
+production readiness.
+
 ## Troubleshooting
 
 - If `python -m orchestrator.manual_review_cli ...` prints nothing, check for
