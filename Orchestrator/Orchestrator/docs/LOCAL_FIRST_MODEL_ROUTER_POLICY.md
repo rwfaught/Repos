@@ -167,7 +167,9 @@ Phase 156 retargets the active future generation smoke probe packet to
 `qwen3.6:27b` after accepted 30b/24k CUDA OOM evidence. Phase 160 registers
 accepted Phase 159 Retry 1 `qwen3.6:27b` `/api/generate` marker smoke evidence
 for the exact accepted request only. Route-selection readiness can now treat
-the generation-smoke gate as satisfied, but accepted `qwen3.6:27b`
-`/api/show` metadata proof remains missing; provider selection, provider
-execution, generation-now, route execution, and production readiness remain
-false.
+the generation-smoke gate as satisfied. Phase 163 registers accepted Phase 162
+`qwen3.6:27b` `/api/show` metadata visibility, so the prior 27b metadata
+blocker is satisfied and readiness moves to a conservative future-probe-ready
+posture for a bounded route-selection readiness/recommendation-envelope
+review. Provider selection, provider execution, generation-now, route
+execution, and production readiness remain false.

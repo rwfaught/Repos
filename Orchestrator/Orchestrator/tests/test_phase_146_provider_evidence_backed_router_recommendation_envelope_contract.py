@@ -66,7 +66,9 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         self.assertTrue(recommendation.provider_evidence_source_phases)
         self.assertEqual(
             recommendation.provider_evidence_summary,
-            "Read-only model metadata visibility existed for qwen3-30b-24k:latest at that moment.",
+            "Phase 162 accepted read-only /api/show metadata visibility for qwen3.6:27b, "
+            "including details, license text presence, tensor/model metadata, capabilities, "
+            "and modified_at presence.",
         )
 
     def test_recommendation_includes_phase_131_and_phase_133_evidence_posture(self):
@@ -75,18 +77,20 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         self.assertIn("phase_131_local_ollama_tags_model_list_visibility", recommendation.provider_evidence_keys)
         self.assertIn("phase_133_qwen3_30b_24k_show_metadata_visibility", recommendation.provider_evidence_keys)
         self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", recommendation.provider_evidence_keys)
+        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", recommendation.provider_evidence_keys)
         self.assertIn("PHASE_131", recommendation.provider_evidence_source_phases)
         self.assertIn("PHASE_133", recommendation.provider_evidence_source_phases)
         self.assertIn("PHASE_159_RETRY_1_OPERATOR_PROOF", recommendation.provider_evidence_source_phases)
+        self.assertIn("PHASE_162_OPERATOR_PROOF", recommendation.provider_evidence_source_phases)
 
-    def test_recommendation_exposes_qwen3_metadata_evidence_fields(self):
+    def test_recommendation_exposes_qwen36_27b_metadata_evidence_fields_without_guessing(self):
         recommendation = recommend_model_route(_local_first_request())
 
-        self.assertEqual(recommendation.model_metadata_evidence_name, "qwen3-30b-24k:latest")
-        self.assertEqual(recommendation.model_metadata_format, "gguf")
-        self.assertEqual(recommendation.model_metadata_family, "qwen3moe")
-        self.assertEqual(recommendation.model_metadata_parameter_size, "30.5B")
-        self.assertEqual(recommendation.model_metadata_quantization_level, "Q4_K_M")
+        self.assertEqual(recommendation.model_metadata_evidence_name, "qwen3.6:27b")
+        self.assertEqual(recommendation.model_metadata_format, "unknown_not_recorded")
+        self.assertEqual(recommendation.model_metadata_family, "unknown_not_recorded")
+        self.assertEqual(recommendation.model_metadata_parameter_size, "unknown_not_recorded")
+        self.assertEqual(recommendation.model_metadata_quantization_level, "unknown_not_recorded")
 
     def test_evidence_visibility_does_not_flip_execution_or_selection_authority(self):
         recommendation = recommend_model_route(_local_first_request())
@@ -107,11 +111,12 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         self.assertIn("phase_131_local_ollama_tags_model_list_visibility", text)
         self.assertIn("phase_133_qwen3_30b_24k_show_metadata_visibility", text)
         self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", text)
-        self.assertIn("model_metadata_evidence_name=qwen3-30b-24k:latest", text)
-        self.assertIn("model_metadata_format=gguf", text)
-        self.assertIn("model_metadata_family=qwen3moe", text)
-        self.assertIn("model_metadata_parameter_size=30.5B", text)
-        self.assertIn("model_metadata_quantization_level=Q4_K_M", text)
+        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", text)
+        self.assertIn("model_metadata_evidence_name=qwen3.6:27b", text)
+        self.assertIn("model_metadata_format=unknown_not_recorded", text)
+        self.assertIn("model_metadata_family=unknown_not_recorded", text)
+        self.assertIn("model_metadata_parameter_size=unknown_not_recorded", text)
+        self.assertIn("model_metadata_quantization_level=unknown_not_recorded", text)
         self.assertIn("evidence_visibility_is_not_provider_model_execution", text)
 
         rendered = text.lower()
@@ -123,7 +128,7 @@ class Phase146ProviderEvidenceBackedRouterRecommendationEnvelopeContractTests(un
         recommendation = result.router_policy_recommendation
 
         self.assertEqual(recommendation["provider_evidence_status"], "read_only_metadata_visible")
-        self.assertEqual(recommendation["model_metadata_format"], "gguf")
+        self.assertEqual(recommendation["model_metadata_format"], "unknown_not_recorded")
         self.assertFalse(recommendation["provider_execution_allowed"])
         self.assertFalse(recommendation["provider_selection_allowed"])
         self.assertTrue(all(flag is False for flag in recommendation["provider_evidence_activity_flags"].values()))

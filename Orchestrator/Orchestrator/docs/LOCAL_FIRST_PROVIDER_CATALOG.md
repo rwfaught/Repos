@@ -153,8 +153,10 @@ returned model `qwen3.6:27b`, response field `ORCH_PROVIDER_SMOKE_OK`,
 `done=true`, and `done_reason=stop` with `num_predict=96`. The catalog remains
 conservative: the initial Phase 159 failure is preserved as a token-budget/
 probe-shape failure, Phase 155 Retry 3 remains a 30b/24k CUDA OOM failure, and
-accepted 27b `/api/show` metadata proof is still missing. Provider selection,
-provider execution, route execution, and production readiness remain false.
+Phase 163 registers accepted Phase 162 `qwen3.6:27b` `/api/show` metadata
+visibility with details, license text presence, tensor/model metadata,
+capabilities, and `modified_at` presence. Provider selection, provider
+execution, route execution, and production readiness remain false.
 
 ## Non-Proofs
 

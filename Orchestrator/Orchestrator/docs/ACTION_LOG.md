@@ -3107,8 +3107,10 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   failure; Phase 155 Retry 3 remains a `qwen3-30b-24k:latest` CUDA OOM
   failure, not a 27b failure.
 - Readiness impact: generation-smoke evidence is now satisfied for the exact
-  accepted Phase 159 Retry 1 request; accepted `qwen3.6:27b` `/api/show`
-  metadata proof remains missing and blocks execution readiness.
+  accepted Phase 159 Retry 1 request. At the Phase 160 point, accepted
+  `qwen3.6:27b` `/api/show` metadata proof remained missing and blocked
+  execution readiness; Phase 163 later registers that metadata proof while
+  preserving execution permissions as false.
 - Validation: `python -m compileall orchestrator`;
   `python -m unittest discover -s tests -p "test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py" -v`;
   `python -m unittest discover -s tests -p "test_phase_143_provider_evidence_registry_router_report_contract.py" -v`;
@@ -3126,7 +3128,64 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   scheduler/reminder execution, no connector execution, no service/API/UI
   productization, no production execution, and no production readiness is
   proven.
-- Next recommended boundary:
+- Next recommended boundary at the Phase 160 point:
   `PHASE_161_QWEN36_27B_API_SHOW_METADATA_OPERATOR_PROOF`.
 
 `PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 163 Qwen3.6 27B API Show Metadata Evidence
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/provider_evidence_registry.py`;
+  `orchestrator/route_selection_readiness.py`.
+- Updated tests:
+  `tests/test_phase_143_provider_evidence_registry_router_report_contract.py`;
+  `tests/test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py`;
+  `tests/test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py`;
+  `tests/test_phase_156_local_provider_target_alignment_27b_contract.py`;
+  `tests/test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py`.
+- Created tests:
+  `tests/test_phase_163_qwen36_27b_api_show_metadata_evidence_contract.py`.
+- Created docs: `docs/PHASE_163.md`.
+- Updated docs: `docs/PROVIDER_GENERATION_SMOKE_PROBE_PACKET.md`;
+  `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/PROVIDER_EVIDENCE_REGISTRY.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: records accepted Phase 162 local Ollama `/api/show` metadata
+  visibility evidence for `qwen3.6:27b` with visible details, license text
+  presence, tensor/model metadata, capabilities `completion`, `vision`,
+  `tools`, and `thinking`, and `modified_at` presence.
+- Accepted facts preserved: Phase 159 Retry 1 remains the exact accepted
+  `/api/generate` marker smoke proof with `num_predict=96`; the earlier Phase
+  159 initial failure remains a token-budget/probe-shape failure; Phase 155
+  Retry 3 remains a 30b/24k CUDA OOM failure, not a 27b failure.
+- Readiness impact: the prior 27b `/api/show` metadata blocker is satisfied;
+  readiness moves to
+  `future_probe_ready_qwen36_27b_evidence_registered` for a future bounded
+  route-selection readiness/recommendation-envelope review. Execution flags
+  remain false.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_163_qwen36_27b_api_show_metadata_evidence_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_160_local_provider_generation_smoke_27b_evidence_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_143_provider_evidence_registry_router_report_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_146_provider_evidence_backed_router_recommendation_envelope_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_149_provider_evidence_gated_route_selection_readiness_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_152_local_provider_generation_smoke_probe_packet_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_156_local_provider_target_alignment_27b_contract.py" -v`.
+- Explicit non-proofs: no runtime probe was run, no Ollama call was made, no
+  `/api/tags`, `/api/show`, `/api/generate`, or `/api/chat` call was made by
+  this phase, no provider/model/runtime execution, no provider/model
+  selection authority, no semantic correctness, no real workload loadability,
+  no broad VRAM sufficiency, no route execution, no worker dispatch, no
+  RAG/local lookup, no web lookup, no scheduler/reminder execution, no
+  connector execution, no service/API/UI productization, no production
+  execution, and no production readiness is proven.
+- Next recommended boundary:
+  `PHASE_164_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW`.
+
+`PHASE163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`

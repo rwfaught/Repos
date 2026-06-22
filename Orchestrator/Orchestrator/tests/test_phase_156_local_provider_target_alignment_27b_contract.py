@@ -17,16 +17,17 @@ class Phase156LocalProviderTargetAlignment27bContractTests(unittest.TestCase):
         self.assertEqual(packet.request_shape["model"], "qwen3.6:27b")
         self.assertEqual(packet.future_boundary, "PHASE_157_LOCAL_PROVIDER_GENERATION_SMOKE_PROBE_27B_OPERATOR_PROOF")
 
-    def test_27b_metadata_remains_missing_after_generation_smoke_evidence(self):
+    def test_27b_metadata_is_now_registered_after_phase_162_operator_proof(self):
         records = get_provider_evidence_for_catalog_key("local_model_candidate")
         summary = summarize_provider_evidence_for_catalog_key("local_model_candidate")
         visible_model_names = tuple(name for record in records for name in record.model_names)
 
         self.assertIn("qwen3.6:27b", visible_model_names)
-        self.assertIsNone(get_model_metadata_evidence("qwen3.6:27b"))
+        self.assertIsNotNone(get_model_metadata_evidence("qwen3.6:27b"))
         self.assertEqual(summary["provider_evidence_status"], "read_only_metadata_visible")
-        self.assertEqual(summary["model_name"], "qwen3-30b-24k:latest")
+        self.assertEqual(summary["model_name"], "qwen3.6:27b")
         self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", summary["evidence_keys"])
+        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", summary["evidence_keys"])
 
     def test_packet_preserves_non_executing_authority_flags(self):
         packet = get_local_provider_generation_smoke_probe_packet()

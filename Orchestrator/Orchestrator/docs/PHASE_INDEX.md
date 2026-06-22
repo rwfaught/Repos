@@ -1812,12 +1812,37 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   execution, no worker dispatch, no RAG/web/scheduler/connector execution, and
   no production readiness behavior changed.
 - Readiness impact: generation-smoke evidence is now satisfied for the exact
-  accepted Phase 159 Retry 1 request; accepted `qwen3.6:27b` `/api/show`
-  metadata proof remains missing and is the next conservative boundary.
+  accepted Phase 159 Retry 1 request. At the Phase 160 point, accepted
+  `qwen3.6:27b` `/api/show` metadata proof remained missing and was the next
+  conservative boundary; Phase 163 later registers that metadata proof while
+  preserving execution permissions as false.
 - Note: Phase 157 and Phase 158 are transport checkpoints and are not
   fabricated as source phase docs by Phase 160.
-- Next recommended boundary:
+- Next recommended boundary at the Phase 160 point:
   `PHASE_161_QWEN36_27B_API_SHOW_METADATA_OPERATOR_PROOF`.
 - Marker:
   `PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 163 - Qwen3.6 27B API Show Metadata Evidence
+
+- Status: locally source/test/docs-proven evidence registration only.
+- Phase doc: `docs/PHASE_163.md`.
+- Behavior: records accepted Phase 162 `qwen3.6:27b` `/api/show` metadata
+  visibility evidence in the deterministic provider evidence registry,
+  router/report evidence fields, and route-selection readiness.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no runtime call, no route
+  execution, no worker dispatch, no RAG/web/scheduler/connector execution, and
+  no production readiness behavior changed.
+- Readiness impact: the prior accepted `qwen3.6:27b` `/api/show` metadata
+  blocker is satisfied; readiness is now
+  `future_probe_ready_qwen36_27b_evidence_registered` for a future bounded
+  route-selection readiness/recommendation-envelope review.
+- Note: Phase 161 and Phase 162 are transport/operator-proof checkpoints and
+  are not fabricated as source phase docs by Phase 163.
+- Next recommended boundary:
+  `PHASE_164_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW`.
+- Marker:
+  `PHASE163_QWEN36_27B_API_SHOW_METADATA_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

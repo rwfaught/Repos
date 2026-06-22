@@ -43,13 +43,14 @@ class Phase160LocalProviderGenerationSmoke27bEvidenceContractTests(unittest.Test
         )
         self.assertIn("not a qwen3.6:27b failure", evidence.metadata["prior_phase_155_retry3_30b_failure_reason"])
 
-    def test_27b_metadata_proof_remains_missing(self):
+    def test_27b_metadata_proof_is_now_registered_without_changing_smoke_evidence(self):
         summary = summarize_provider_evidence_for_catalog_key("local_model_candidate")
 
         self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", summary["evidence_keys"])
-        self.assertIsNone(get_model_metadata_evidence("qwen3.6:27b"))
+        self.assertIsNotNone(get_model_metadata_evidence("qwen3.6:27b"))
+        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", summary["evidence_keys"])
 
-    def test_route_selection_readiness_moves_to_metadata_blocker_only(self):
+    def test_route_selection_readiness_moves_to_future_probe_ready_after_metadata_evidence(self):
         readiness = evaluate_route_selection_readiness(
             {
                 "request_id": "phase160-local-first",
@@ -63,10 +64,20 @@ class Phase160LocalProviderGenerationSmoke27bEvidenceContractTests(unittest.Test
         )
 
         self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", readiness.provider_evidence_keys)
-        self.assertEqual(readiness.route_selection_readiness, "blocked_pending_qwen36_27b_metadata_proof")
-        self.assertIn("qwen36_27b_api_show_metadata_proof_missing", readiness.blocked_conditions)
-        self.assertEqual(readiness.next_required_boundary, "future_qwen36_27b_api_show_metadata_proof_boundary")
-        self.assertEqual(readiness.next_required_proof, "bounded_qwen36_27b_api_show_metadata_operator_proof")
+        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", readiness.provider_evidence_keys)
+        self.assertEqual(
+            readiness.route_selection_readiness,
+            "future_probe_ready_qwen36_27b_evidence_registered",
+        )
+        self.assertNotIn("qwen36_27b_api_show_metadata_proof_missing", readiness.blocked_conditions)
+        self.assertEqual(
+            readiness.next_required_boundary,
+            "future_bounded_route_selection_readiness_recommendation_envelope_review",
+        )
+        self.assertEqual(
+            readiness.next_required_proof,
+            "bounded_route_selection_readiness_recommendation_envelope_review",
+        )
         self.assertFalse(readiness.provider_selection_allowed)
         self.assertFalse(readiness.provider_execution_allowed)
         self.assertFalse(readiness.route_execution_allowed)

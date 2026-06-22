@@ -72,8 +72,12 @@ model `qwen3.6:27b`, response field `ORCH_PROVIDER_SMOKE_OK`, `done=true`,
 and `done_reason=stop`. The earlier Phase 159 initial failure remains a
 token-budget/probe-shape failure from `num_predict=16`, not a model-load
 failure. The Phase 155 Retry 3 CUDA OOM remains a 30b/24k failure, not a 27b
-failure. The remaining conservative next proof is `qwen3.6:27b` `/api/show`
-metadata visibility.
+failure.
+
+Phase 163 later registers the accepted Phase 162 `qwen3.6:27b` `/api/show`
+metadata visibility proof. The generation smoke packet remains historical
+future-boundary paperwork; metadata visibility does not convert the packet
+into provider selection, route execution, or production readiness.
 
 ## Non-Proofs
 

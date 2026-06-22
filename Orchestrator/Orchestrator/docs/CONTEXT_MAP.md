@@ -242,9 +242,17 @@ Local provider generation-smoke evidence language belongs to this context only
 as accepted operator-proof registration. Phase 160 records the accepted Phase
 159 Retry 1 `qwen3.6:27b` `/api/generate` marker smoke proof in source data and
 docs without rerunning it. This satisfies the generation-smoke evidence gate
-for the exact accepted request only; it does not add `qwen3.6:27b` `/api/show`
-metadata proof, `/api/chat` proof, semantic correctness, real workload
-loadability, route execution, or production readiness.
+for the exact accepted request only; it does not add `/api/chat` proof,
+semantic correctness, real workload loadability, route execution, or
+production readiness.
+
+Qwen3.6 27B metadata evidence language belongs to this context only as
+accepted operator-proof registration. Phase 163 records the accepted Phase 162
+`qwen3.6:27b` `/api/show` metadata visibility proof in source data and docs
+without rerunning it. This satisfies the prior 27b metadata blocker only; it
+does not prove semantic correctness, real workload loadability, broad VRAM
+sufficiency, route execution, provider/model execution, or production
+readiness.
 
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains

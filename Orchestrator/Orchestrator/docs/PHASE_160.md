@@ -60,11 +60,12 @@ claiming production readiness.
 
 The deterministic provider evidence registry now includes the accepted Phase
 159 Retry 1 `qwen3.6:27b` generation-smoke marker evidence. Route-selection
-readiness now treats the generation-smoke gate as satisfied, but it remains
-not ready for execution because accepted `qwen3.6:27b` `/api/show` metadata
-proof is still missing.
+readiness treats the generation-smoke gate as satisfied. At the Phase 160
+point, accepted `qwen3.6:27b` `/api/show` metadata proof was still missing;
+Phase 163 later registers that metadata proof while preserving execution
+permissions as false.
 
-The next required proof is:
+The Phase 160 next required proof was:
 `bounded_qwen36_27b_api_show_metadata_operator_proof`.
 
 All provider selection, provider execution, route execution, generation-now,
@@ -96,6 +97,7 @@ service/API/UI productization, or production readiness.
 
 ## Next Boundary Recommendation
 
-`PHASE_161_QWEN36_27B_API_SHOW_METADATA_OPERATOR_PROOF`
+Superseded by Phase 163 source-ledger registration of the accepted Phase 162
+operator proof.
 
 `PHASE160_LOCAL_PROVIDER_GENERATION_SMOKE_27B_EVIDENCE_SOURCE_TEST_DOCS_PROVEN=PASS`

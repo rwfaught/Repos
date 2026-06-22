@@ -102,6 +102,24 @@ class Phase143ProviderEvidenceRegistryRouterReportContractTests(unittest.TestCas
             "FAIL_HTTP_500_PROVIDER_MODEL_LOAD_CUDA_OOM_RAW_BODY_CAPTURED_NO_GENERATION_PROOF",
         )
 
+    def test_registry_exposes_phase_162_27b_show_metadata_evidence(self):
+        evidence = get_model_metadata_evidence("qwen3.6:27b")
+
+        self.assertIsNotNone(evidence)
+        self.assertEqual(evidence.source_phase, "PHASE_162_OPERATOR_PROOF")
+        self.assertEqual(evidence.evidence_status, "read_only_metadata_visible")
+        self.assertEqual(evidence.endpoint_shape, "http://127.0.0.1:11434/api/show")
+        self.assertEqual(evidence.method, "POST")
+        self.assertEqual(evidence.status_code, 200)
+        self.assertEqual(evidence.model_name, "qwen3.6:27b")
+        self.assertTrue(evidence.metadata["metadata_details_visible"])
+        self.assertTrue(evidence.metadata["license_present"])
+        self.assertTrue(evidence.metadata["tensor_metadata_present"])
+        self.assertTrue(evidence.metadata["model_metadata_present"])
+        self.assertEqual(evidence.metadata["capabilities"], ("completion", "vision", "tools", "thinking"))
+        self.assertEqual(evidence.metadata["format"], "unknown_not_recorded")
+        self.assertTrue(evidence.metadata["raw_body_not_copied"])
+
     def test_all_provider_evidence_activity_flags_are_false(self):
         for evidence in get_provider_evidence_registry().values():
             with self.subTest(evidence_key=evidence.evidence_key):
@@ -125,11 +143,11 @@ class Phase143ProviderEvidenceRegistryRouterReportContractTests(unittest.TestCas
         self.assertIn("Provider Evidence", text)
         self.assertIn("provider_evidence_status=read_only_metadata_visible", text)
         self.assertIn("provider_catalog_key=local_model_candidate", text)
-        self.assertIn("model_name=qwen3-30b-24k:latest", text)
-        self.assertIn("metadata_format=gguf", text)
-        self.assertIn("metadata_family=qwen3moe", text)
-        self.assertIn("metadata_parameter_size=30.5B", text)
-        self.assertIn("metadata_quantization_level=Q4_K_M", text)
+        self.assertIn("model_name=qwen3.6:27b", text)
+        self.assertIn("metadata_format=unknown_not_recorded", text)
+        self.assertIn("metadata_family=unknown_not_recorded", text)
+        self.assertIn("metadata_parameter_size=unknown_not_recorded", text)
+        self.assertIn("metadata_quantization_level=unknown_not_recorded", text)
         self.assertIn("evidence_visibility_is_not_provider_model_execution", text)
 
     def test_manual_review_report_remains_non_executing(self):

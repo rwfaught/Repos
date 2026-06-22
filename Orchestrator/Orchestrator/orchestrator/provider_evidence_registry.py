@@ -177,6 +177,41 @@ _EVIDENCE_RECORDS = (
         non_proofs=PROVIDER_EVIDENCE_NON_PROOFS,
         activity_flags=dict(NO_PROVIDER_EVIDENCE_ACTIVITY_FLAGS),
     ),
+    ProviderEvidenceRecord(
+        evidence_key="phase_162_qwen36_27b_show_metadata_visibility",
+        provider_catalog_key="local_model_candidate",
+        evidence_kind="model_metadata_visibility",
+        evidence_status="read_only_metadata_visible",
+        source_phase="PHASE_162_OPERATOR_PROOF",
+        endpoint_shape="http://127.0.0.1:11434/api/show",
+        method="POST",
+        status_code=200,
+        content_type="application/json; charset=utf-8",
+        model_name="qwen3.6:27b",
+        model_names=(),
+        metadata={
+            "metadata_details_visible": True,
+            "license_present": True,
+            "tensor_metadata_present": True,
+            "model_metadata_present": True,
+            "capabilities": ("completion", "vision", "tools", "thinking"),
+            "modified_at_present": True,
+            "format": "unknown_not_recorded",
+            "family": "unknown_not_recorded",
+            "families": "unknown_not_recorded",
+            "parameter_size": "unknown_not_recorded",
+            "quantization_level": "unknown_not_recorded",
+            "raw_body_not_copied": True,
+            "final_git_status": "## main...origin/main",
+        },
+        accepted_meaning=(
+            "Phase 162 accepted read-only /api/show metadata visibility for "
+            "qwen3.6:27b, including details, license text presence, tensor/model "
+            "metadata, capabilities, and modified_at presence."
+        ),
+        non_proofs=PROVIDER_EVIDENCE_NON_PROOFS,
+        activity_flags=dict(NO_PROVIDER_EVIDENCE_ACTIVITY_FLAGS),
+    ),
 )
 
 _EVIDENCE_BY_KEY = {record.evidence_key: record for record in _EVIDENCE_RECORDS}
@@ -207,7 +242,10 @@ def summarize_provider_evidence_for_catalog_key(provider_catalog_key: str) -> di
     """Return a report-friendly evidence summary without execution authority."""
 
     records = get_provider_evidence_for_catalog_key(provider_catalog_key)
-    metadata_record = next((record for record in records if record.evidence_kind == "model_metadata_visibility"), None)
+    metadata_record = next(
+        (record for record in reversed(records) if record.evidence_kind == "model_metadata_visibility"),
+        None,
+    )
     surface_record = next(
         (record for record in records if record.evidence_kind == "provider_surface_model_list_visibility"),
         None,

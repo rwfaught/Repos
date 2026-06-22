@@ -54,6 +54,23 @@ Phase 159 Retry 1 generation-smoke marker evidence:
   probe-shape failure; Phase 155 Retry 3 was a 30b/24k CUDA OOM failure, not a
   27b failure.
 
+Phase 162 qwen3.6 27B model metadata visibility:
+
+- Provider catalog key: `local_model_candidate`
+- Evidence kind: `model_metadata_visibility`
+- Evidence status: `read_only_metadata_visible`
+- Surface: `http://127.0.0.1:11434/api/show`
+- Method: `POST`
+- Model: `qwen3.6:27b`
+- Status: `200`
+- Metadata: visible details, license text presence, tensor/model metadata,
+  capabilities `completion`, `vision`, `tools`, and `thinking`, and
+  `modified_at` presence.
+- Unknown fields: family, parameter size, and quantization are
+  `unknown_not_recorded`; they are not guessed from the large raw body.
+- Accepted meaning: read-only `/api/show` metadata visibility existed for
+  `qwen3.6:27b` at that moment.
+
 ## Relationship To Router And Reports
 
 The registry is evidence posture only. Router/provider catalog policy remains
@@ -76,8 +93,11 @@ does not grant provider/model execution authority, model generation authority,
 route execution authority, or production readiness.
 
 Phase 160 allows readiness to treat the exact accepted 27b generation-smoke
-evidence gate as satisfied. Readiness remains blocked because accepted
-`qwen3.6:27b` `/api/show` metadata proof is still missing.
+evidence gate as satisfied. Phase 163 allows readiness to treat the accepted
+`qwen3.6:27b` `/api/show` metadata evidence gate as satisfied. Readiness moves
+to a conservative future-probe-ready posture for a bounded route-selection
+readiness/recommendation-envelope review, while all execution authorities
+remain false.
 
 ## Non-Proofs
 

@@ -16,6 +16,7 @@ from orchestrator.model_router_policy import ModelRouterPolicyRecommendation, re
 
 
 GENERATION_SMOKE_EVIDENCE_KEY = "phase_159_retry1_qwen36_27b_generate_marker_smoke"
+QWEN36_27B_METADATA_EVIDENCE_KEY = "phase_162_qwen36_27b_show_metadata_visibility"
 
 
 NO_READINESS_ACTIVITY_FLAGS = {
@@ -128,7 +129,13 @@ def evaluate_route_selection_readiness(request_or_recommendation: Any) -> RouteS
 
     recommendation = _coerce_recommendation(request_or_recommendation)
     generation_smoke_satisfied = GENERATION_SMOKE_EVIDENCE_KEY in recommendation.provider_evidence_keys
-    if generation_smoke_satisfied:
+    qwen36_27b_metadata_satisfied = QWEN36_27B_METADATA_EVIDENCE_KEY in recommendation.provider_evidence_keys
+    if generation_smoke_satisfied and qwen36_27b_metadata_satisfied:
+        route_selection_readiness = "future_probe_ready_qwen36_27b_evidence_registered"
+        blocked_conditions = _dedupe(tuple(recommendation.blocked_conditions) + tuple(recommendation.missing_requirements))
+        next_required_boundary = "future_bounded_route_selection_readiness_recommendation_envelope_review"
+        next_required_proof = "bounded_route_selection_readiness_recommendation_envelope_review"
+    elif generation_smoke_satisfied:
         route_selection_readiness = "blocked_pending_qwen36_27b_metadata_proof"
         blocked_conditions = _dedupe(
             tuple(recommendation.blocked_conditions)
