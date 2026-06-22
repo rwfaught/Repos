@@ -2298,3 +2298,56 @@ by Phase 124.
 No production readiness is registered by Phase 124.
 
 `PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 125 Local-First Provider Catalog And Escalation Matrix Registration
+
+Boundary:
+
+`PHASE_125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_SOURCE_TEST_DOCS_MUTATION`
+
+Registered new source files:
+
+- `orchestrator/model_provider_catalog.py`
+
+Registered changed source files:
+
+- `orchestrator/model_router_policy.py`
+
+Registered new test files:
+
+- `tests/test_phase_125_local_first_provider_catalog_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `docs/PHASE_125.md`
+
+Registered changed documentation/control files:
+
+- `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic non-executing provider catalog and
+escalation matrix only. Phase 125 registers catalog entries for local model
+candidate, frontier provider candidate, worker/Codex boundary, RAG/local
+document boundary, scheduler/reminder boundary, web/research boundary, and
+blocked/unavailable provider posture. Existing router posture strings are
+catalog-backed without changing the router into live provider/model selection.
+
+No provider/model execution, provider availability proof, model availability
+proof, live provider/model selection, Ollama, WSL, OpenClaw, Hermes, Discord,
+installer, runtime/probe execution outside ordinary Python unit-test execution,
+runtime/platform execution, web lookup, RAG/local document lookup execution,
+scheduler/reminder execution, connector execution, Codex dispatch from product
+code, worker dispatch, route execution, production execution, cleanup/delete/
+archive, artifact export/package behavior beyond the requested source refresh,
+autonomous writeback, service/API/UI productization, live routing, or
+production readiness behavior is registered by Phase 125.
+
+No production readiness is registered by Phase 125.
+
+`PHASE125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`

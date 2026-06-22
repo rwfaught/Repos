@@ -123,14 +123,15 @@ This file enables controlled progression through the system build.
 122. PHASE_122.md - Local-First Model Router Policy Contract
 123. PHASE_123.md - Model Router Policy Manual Review Integration
 124. PHASE_124.md - Phase 120 Entrypoint Validation Compatibility
+125. PHASE_125.md - Local-First Provider Catalog And Escalation Matrix
 
 ---
 
 ## Current Phase
 
-Phase 124 - Phase 120 Entrypoint Validation Compatibility
+Phase 125 - Local-First Provider Catalog And Escalation Matrix
 
-Status: latest locally source/test/docs-proven phase; Phase 124 source snapshot refresh attempted.
+Status: latest locally source/test/docs-proven phase; Phase 125 source snapshot refresh attempted.
 
 Production readiness is not claimed.
 
@@ -1402,4 +1403,27 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
   behavior changed.
 - Marker:
   `PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
+
+## Phase 125 - Local-First Provider Catalog And Escalation Matrix
+
+- Status: locally source/test/docs-proven; Phase 125 source snapshot refresh
+  attempted.
+- Phase doc: `docs/PHASE_125.md`.
+- Behavior: adds a deterministic non-executing provider catalog and escalation
+  matrix for local model candidates, frontier provider candidates,
+  worker/Codex boundary posture, RAG/local-document boundary posture,
+  scheduler/reminder boundary posture, web/research boundary posture, and
+  blocked/unavailable provider posture.
+- Boundary: no provider/model execution, provider availability proof, model
+  availability proof, live provider/model selection, Ollama, WSL, OpenClaw,
+  Hermes, Discord, installer, runtime/probe execution outside ordinary Python
+  unit tests, runtime/platform execution, web lookup, RAG/local document lookup
+  execution, scheduler/reminder execution, connector execution, Codex dispatch,
+  worker dispatch, route execution, production execution, cleanup/delete/
+  archive, service/API/UI productization, live routing, artifact export/package
+  behavior beyond the requested source refresh, or production readiness
+  behavior changed.
+- Marker:
+  `PHASE125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.

@@ -136,6 +136,14 @@ clarify. It does not execute providers or models, select runtimes or
 platforms, dispatch workers, perform RAG/web/scheduler/connector work, or
 authorize production execution.
 
+Local-first provider catalog doctrine belongs to this context as provider-tier
+policy evidence. It defines local model candidate, frontier provider candidate,
+worker/Codex boundary, RAG/local-document boundary, scheduler/reminder
+boundary, web/research boundary, and blocked/unavailable provider posture as
+non-executing catalog entries. Catalog posture is not provider/model/runtime
+availability, provider selection, worker dispatch, boundary crossing, route
+execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

@@ -12,6 +12,12 @@ web/research handling, or block/clarify.
 The policy does not execute providers, models, workers, RAG, web lookup,
 schedulers, connectors, runtimes, platforms, or production behavior.
 
+Phase 125 adds `docs/LOCAL_FIRST_PROVIDER_CATALOG.md` and
+`orchestrator/model_provider_catalog.py` as the provider-tier catalog behind
+these posture strings. The catalog makes local-first, frontier, worker, RAG,
+scheduler, web, and blocked-provider boundaries inspectable, but it does not
+turn the router policy into live provider/model selection or execution.
+
 ## Recommendation Fields
 
 Each recommendation records:
@@ -56,6 +62,11 @@ as a separately authorized boundary and never as implicit provider/model
 execution. Coding/file work moves to a worker boundary only as a required
 boundary recommendation; the policy does not dispatch a worker or invoke Codex.
 
+Provider catalog entries distinguish local-first preference, actual
+provider/model execution authority, frontier escalation authority, worker/Codex
+dispatch authority, and RAG/web/scheduler boundary authority. All catalog
+execution and activity flags remain false.
+
 ## Non-Proofs
 
 The policy preserves non-proofs including:
@@ -79,3 +90,8 @@ It does not infer raw natural-language intent, validate route envelopes, admit
 execution, select providers/models/runtimes/platforms, or override capability
 registry maturity. It uses structured route/request metadata as evidence for a
 recommended next boundary only.
+
+Phase 122 defines the router policy contract, Phase 123 renders it in manual
+review reports, Phase 124 repairs the validation-command mismatch, and Phase
+125 adds a non-executing provider catalog to make provider-tier posture
+auditable before any future provider/runtime proof boundary.

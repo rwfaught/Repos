@@ -2354,3 +2354,46 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   caveat.
 
 `PHASE124_PHASE120_ENTRYPOINT_VALIDATION_COMPATIBILITY_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 125 Local-First Provider Catalog And Escalation Matrix
+
+- Timestamp: 2026-06-21
+- Boundary:
+  `PHASE_125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_SOURCE_TEST_DOCS_MUTATION`
+- Created source: `orchestrator/model_provider_catalog.py`.
+- Created tests: `tests/test_phase_125_local_first_provider_catalog_contract.py`.
+- Created docs: `docs/LOCAL_FIRST_PROVIDER_CATALOG.md`;
+  `docs/PHASE_125.md`.
+- Updated source: `orchestrator/model_router_policy.py`.
+- Updated docs: `docs/LOCAL_FIRST_MODEL_ROUTER_POLICY.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CONTEXT_MAP.md`.
+- Behavior: added a deterministic non-executing provider-tier catalog and
+  escalation matrix, then backed existing router posture strings with catalog
+  entries without changing router behavior into live provider/model selection
+  or execution.
+- Validation: `python -m py_compile orchestrator/model_provider_catalog.py`;
+  `python -m py_compile orchestrator/model_router_policy.py`;
+  `python -m unittest tests.test_phase_125_local_first_provider_catalog_contract`;
+  `python -m unittest tests.test_phase_122_local_first_model_router_policy_contract`;
+  `python -m unittest tests.test_phase_123_model_router_policy_manual_review_integration_contract`;
+  `python -m unittest tests.test_phase_120_manual_review_cli_module_entrypoint`;
+  `python -m unittest tests.test_phase_121_manual_review_cli_runbook_golden_contract`.
+- Source snapshot refresh: `C:\Users\accou\Desktop\Repos\Source
+  Files\Update-SourceFiles.ps1` was run after successful validation; generated
+  ZIP files were not staged.
+- Explicit non-proofs: no provider/model execution, provider availability
+  proof, model availability proof, live provider/model selection, Ollama, WSL,
+  OpenClaw, Hermes, Discord, installer, runtime/probe execution outside
+  ordinary Python unit-test execution, runtime/platform execution, web lookup,
+  RAG/local document lookup execution, scheduler/reminder execution, connector
+  execution, Codex dispatch from product code, worker dispatch, route
+  execution, production execution, cleanup/delete/archive, artifact
+  export/package behavior beyond the requested source refresh, autonomous
+  writeback, service/API/UI productization, live routing, or production
+  readiness is proven.
+- Caveat: Phase 125 is catalog/source-test-docs policy only; future
+  provider/runtime proof remains a separate boundary.
+
+`PHASE125_LOCAL_FIRST_PROVIDER_CATALOG_AND_ESCALATION_MATRIX_LOCAL_SOURCE_TEST_DOCS_PROVEN=PASS`
