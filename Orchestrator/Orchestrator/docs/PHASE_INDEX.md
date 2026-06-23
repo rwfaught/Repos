@@ -2195,3 +2195,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
 - Marker:
   `PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 212 - Route Mediated Provider Smoke Live Transport Adapter
+
+- Status: locally source/test/docs-proven live transport adapter path only.
+- Phase doc: `docs/PHASE_212.md`.
+- Source: `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Tests:
+  `tests/test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py`;
+  `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`;
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Behavior: adds a guarded live Ollama transport adapter path for a later
+  operator route-mediated provider smoke proof. The path requires the live
+  execution flag, route/provider/Ollama allow flags, exact 30B target, exact
+  route marker, exact prompt, production-readiness false, and a caller-supplied
+  output path.
+- Request body facts: `model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`; `stream=false`;
+  `options.num_ctx=4096`; `options.num_predict=64`; `options.temperature=0`.
+- Fake/injected classification:
+  `test_injected_live_transport_shape_valid_not_runtime_proof`.
+- Runtime classification reserved for later actual live HTTP evidence:
+  `route_mediated_provider_smoke_runtime_marker_pass`.
+- Boundary: Phase 212 source/test acceptance does not run provider/model/Ollama
+  or HTTP and does not prove route-mediated runtime execution.
+- Current gap: actual live route-mediated provider execution remains unproven
+  and current success remains unmet for this path.
+- Marker:
+  `PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

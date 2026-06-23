@@ -221,6 +221,19 @@ It is successful when its current governance, control surfaces, execution flow, 
 
 That is the bar.
 
+## Phase 212 Route-Mediated Provider Smoke Gap Note
+
+Phase 212 adds a guarded live Ollama transport adapter path for a future
+route-mediated provider smoke proof.
+
+This does not change the current success bar and does not prove actual
+route-mediated provider execution. Phase 212 source/test validation uses
+injected transport only and does not run provider/model/Ollama/HTTP.
+
+Current success remains unmet for the route-mediated provider runtime path
+until a later operator boundary produces actual live execution evidence with a
+persisted, reviewable artifact and honest classification.
+
 
 ## Phase 80 Live Proof Update
 

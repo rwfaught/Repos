@@ -3813,3 +3813,60 @@ cleanup/delete/archive, production execution, or production readiness behavior
 is registered by Phase 208.
 
 `PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 212 Route Mediated Provider Smoke Live Transport Adapter
+
+Boundary:
+
+`PHASE_212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/route_mediated_provider_smoke_runner.py`
+- `orchestrator/route_mediated_provider_smoke_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py`
+
+Registered changed test files:
+
+- `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`
+- `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_212.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+
+Registered behavior: guarded live Ollama transport adapter path for a later
+operator route-mediated provider smoke proof. The adapter has stdlib transport
+available only after explicit live guards pass; tests use injected transport
+only and do not perform HTTP/Ollama execution.
+
+Registered adapter facts: `phase=PHASE_212`,
+`artifact_kind=route_mediated_provider_smoke_live_transport_adapter_contract`,
+`route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`disallowed_model=qwen3.6:35b-a3b`,
+`fallback_candidate=qwen3.6:27b`, `ollama_url=http://127.0.0.1:11434`,
+and `production_readiness=false`.
+
+Registered request-body facts: `stream=false`, `options.num_ctx=4096`,
+`options.num_predict=64`, and `options.temperature=0`.
+
+No provider/model/Ollama/HTTP execution, route runtime execution, worker
+dispatch, WSL/OpenClaw/Hermes/Discord, export/package, cleanup/delete/archive,
+production execution, route-mediated runtime proof, or production readiness
+behavior is registered by Phase 212 source/test acceptance.
+
+`PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

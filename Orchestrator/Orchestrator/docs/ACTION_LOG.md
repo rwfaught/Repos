@@ -3776,3 +3776,52 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   execution, or production readiness proof.
 
 `PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 212 Route Mediated Provider Smoke Live Transport Adapter
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS`
+- Updated source:
+  `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Created tests:
+  `tests/test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py`.
+- Updated tests:
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`;
+  `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`.
+- Created docs: `docs/PHASE_212.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`;
+  `docs/CURRENT_SUCCESS_CRITERION.md`.
+- Behavior: adds a guarded live Ollama transport adapter path for a later
+  operator route-mediated provider smoke proof.
+- Adapter artifact facts: `phase=PHASE_212`;
+  `artifact_kind=route_mediated_provider_smoke_live_transport_adapter_contract`;
+  `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`;
+  `fallback_candidate=qwen3.6:27b`; `production_readiness=false`.
+- Request body facts: `stream=false`; `options.num_ctx=4096`;
+  `options.num_predict=64`; `options.temperature=0`.
+- Guard behavior: rejects missing live execution flag, missing allow flags,
+  missing live execution mode, `qwen3.6:35b-a3b`, `qwen3.6:27b` as active
+  target, wrong marker, wrong prompt, production-readiness claims, and missing
+  output path.
+- Classification posture: fake/injected transport validation is
+  `test_injected_live_transport_shape_valid_not_runtime_proof`; runtime
+  classification `route_mediated_provider_smoke_runtime_marker_pass` is
+  reserved for later actual live HTTP evidence.
+- Validation: `python -m unittest discover -s tests -p "test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_206_route_mediated_provider_smoke_runner_contract.py" -v`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_runner.py`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_cli.py`;
+  `git diff --check`; `git diff --cached --check`.
+- Explicit non-proofs: no provider/model/Ollama/HTTP execution, no route
+  runtime execution, no worker dispatch, no WSL/OpenClaw/Hermes/Discord, no
+  production execution, no route-mediated runtime proof, and no production
+  readiness proof.
+
+`PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -16,14 +16,12 @@ from orchestrator.route_mediated_provider_smoke_runner import (
 
 FORBIDDEN_SOURCE_SNIPPETS = (
     "import requests",
-    "urllib.request",
     "http.client",
     "import subprocess",
     "import socket",
     "import openai",
     "import ollama",
     "orchestrator.ollama_provider",
-    "api/generate",
     "api/chat",
 )
 

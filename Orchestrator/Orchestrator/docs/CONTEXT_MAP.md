@@ -351,6 +351,15 @@ route-mediated smoke proof, but fake injected validation is not runtime proof.
 The first actual route-mediated runtime proof still requires a later operator
 artifact with captured execution evidence.
 
+Phase 212 belongs to this context as a guarded live Ollama transport adapter
+path only. It defines the future `/api/generate` request body, URL shape,
+operator flags, artifact shape, and reserved runtime classification for a
+later route-mediated provider smoke proof. Phase 212 source/test validation
+uses injected transport only; it does not run provider/model/Ollama/HTTP,
+route runtime, worker dispatch, platform behavior, or production behavior.
+Fake injected transport validation is not runtime proof, and current success
+remains unmet until actual route-mediated provider execution is proven.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

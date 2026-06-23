@@ -338,6 +338,11 @@ fresh artifact proof.
   boundary. It can call only an injected provider callable after explicit
   route/provider/execution-mode/model/marker guards pass; fake injected tests
   are not runtime proof.
+- Phase 212 adds a guarded live Ollama transport adapter path for a later
+  operator boundary. Source/tests use injected transport only; no provider,
+  model, Ollama, HTTP, or route runtime execution is performed. Fake injected
+  transport validation is not runtime proof, and the runtime classification is
+  reserved for later actual live HTTP evidence.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

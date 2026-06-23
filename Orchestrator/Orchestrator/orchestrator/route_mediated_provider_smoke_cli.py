@@ -15,8 +15,11 @@ from typing import Sequence
 from orchestrator.route_mediated_provider_smoke_runner import (
     EXECUTION_MODE,
     FUTURE_ROUTE_MARKER,
+    LIVE_OLLAMA_EXECUTION_MODE,
     ROUTE_PROOF_TARGET_MODEL,
+    DEFAULT_OLLAMA_URL,
     build_route_mediated_provider_smoke_dry_artifact,
+    execute_route_mediated_provider_smoke_with_live_ollama_transport,
     execute_route_mediated_provider_smoke_with_injected_provider,
     reject_future_runtime_execution_request,
     review_route_mediated_provider_smoke_capture,
@@ -31,11 +34,13 @@ def _help_text() -> str:
             "  --dry-run [--write-artifact --out-dir <path>]",
             "  --review-captured <json-file> [--write-artifact --out-dir <path>]",
             "  --execute-route-smoke --allow-route-execution --allow-provider-call --out-dir <path>",
+            "  --execute-live-ollama-route-smoke --allow-route-execution --allow-provider-call --allow-ollama-http --out-dir <path> [--ollama-url <url>]",
             "  --help",
             "",
             "Default mode is dry artifact shape only.",
             "Phase 206 does not authorize route/provider/model/runtime execution.",
             "Phase 208 runtime-shaped flags require an injected provider callable.",
+            "Phase 212 live Ollama flags are for a later operator boundary.",
         )
     )
 
@@ -44,6 +49,7 @@ def run_route_mediated_provider_smoke_cli(
     argv: Sequence[str] | None = None,
     *,
     provider_callable: object | None = None,
+    live_transport_callable: object | None = None,
 ) -> dict[str, object]:
     """Run deterministic CLI logic without runtime/provider execution."""
 
@@ -60,6 +66,38 @@ def run_route_mediated_provider_smoke_cli(
             "error_text": "--write-artifact requires --out-dir.",
             "payload": {},
         }
+
+    live_flag_names = (
+        "--execute-live-ollama-route-smoke",
+        "--allow-ollama-http",
+        "--ollama-url",
+    )
+    if any(flag in args for flag in live_flag_names):
+        if not out_dir:
+            return {
+                "exit_code": 2,
+                "output_text": _help_text(),
+                "error_text": "Live Ollama route-smoke adapter requires --out-dir.",
+                "payload": {},
+            }
+        result = execute_route_mediated_provider_smoke_with_live_ollama_transport(
+            transport_callable=live_transport_callable,
+            execute_live_ollama_route_smoke="--execute-live-ollama-route-smoke" in args,
+            allow_route_execution="--allow-route-execution" in args,
+            allow_provider_call="--allow-provider-call" in args,
+            allow_ollama_http="--allow-ollama-http" in args,
+            execution_mode=LIVE_OLLAMA_EXECUTION_MODE if "--execute-live-ollama-route-smoke" in args else "",
+            target_model=ROUTE_PROOF_TARGET_MODEL,
+            route_marker=FUTURE_ROUTE_MARKER,
+            ollama_url=_option_value(args, "--ollama-url") or DEFAULT_OLLAMA_URL,
+            output_path=out_dir,
+        )
+        return _cli_result(
+            result.payload,
+            0 if result.accepted else 2,
+            result.written_path,
+            "" if result.accepted else "Live Ollama route-mediated provider smoke execution was rejected by guards.",
+        )
 
     if "--execute-route-smoke" in args or "--allow-route-execution" in args or "--allow-provider-call" in args:
         if not out_dir:
