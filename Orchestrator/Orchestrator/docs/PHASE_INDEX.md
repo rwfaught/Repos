@@ -2478,3 +2478,41 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   current-success broadening, or production readiness is added.
 - Marker:
   `PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 259 - Record Phase 258 Operator Smoke Proof
+
+- Status: docs-only registration of accepted Phase 258 read-only operator
+  smoke proof.
+- Phase doc: `docs/PHASE_259.md`.
+- Boundary:
+  `PHASE_259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY`.
+- Accepted source state: HEAD = origin/main =
+  `46ee6d3bc938287b10d0de0827fc9c317ae61455`; latest commit
+  `46ee6d3 Tolerate UTF-8 BOM in general-answer input`.
+- Accepted product capsule: SHA256
+  `355BD84373E317DEE2D15483F48675972BF0C4AC9F62EBB8184DA4EB666A249A`;
+  `SizeBytes=2,264,111`; `EntryCount=1105`;
+  `TopLevelPrefix=Orchestrator`.
+- Accepted proof:
+  `PHASE_258_GENERAL_ANSWER_BOM_ARTIFACT_CLI_OPERATOR_SMOKE_READONLY_RERUN=PASS`.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase258_bom_artifact_cli_smoke_rerun_20260623_074613`.
+- Artifact path:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase258_bom_artifact_cli_smoke_rerun_20260623_074613\bom_valid_general_answer_review_artifact.json`.
+- Smoke result lines: `BomValidRealInputArtifactSmoke=PASS`;
+  `BomUnsafeRejectedSmoke=PASS`; `FixtureSafeDirectLightweightReport=PASS`;
+  `FixtureSafeCodingNoLightweightReport=PASS`; `FinalGitStatusLineCount=0`;
+  `RepoMutationPerformed=False`; `RuntimeExecution=False`;
+  `ProviderExecution=False`; `ModelExecution=False`.
+- Behavior proven: a PowerShell-created UTF-8 BOM structured local
+  `general_answer` JSON input can be accepted by the CLI and persisted as a
+  review artifact; unsafe BOM input is rejected; fixture behavior remains
+  intact for `safe_direct_answer` and `safe_coding_source_test_mutation`.
+- Boundary: docs-only proof registration; no semantic answer correctness,
+  model-backed generation, provider/model/runtime execution, live route
+  execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector execution, worker/Codex dispatch from product code,
+  service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness is added.
+- Marker:
+  `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.

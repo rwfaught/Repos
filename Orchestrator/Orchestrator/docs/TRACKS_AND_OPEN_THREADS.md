@@ -432,13 +432,21 @@ fresh artifact proof.
   RAG/local lookup, web lookup, scheduler/reminder execution, connector
   execution, worker/Codex dispatch, service/API/UI, export/package, production
   work, production readiness, or current-success broadening.
+- Phase 259 records the accepted Phase 258 read-only operator smoke rerun:
+  `PHASE_258_GENERAL_ANSWER_BOM_ARTIFACT_CLI_OPERATOR_SMOKE_READONLY_RERUN=PASS`.
+- Phase 259 closes the narrow BOM-tolerance repair/smoke scope by registering
+  that a PowerShell-created UTF-8 BOM structured local `general_answer` JSON
+  input was accepted and persisted as a review artifact, unsafe BOM input was
+  rejected, `safe_direct_answer` still surfaced the lightweight report,
+  `safe_coding_source_test_mutation` still did not surface it, and the smoke
+  ended with `FinalGitStatusLineCount=0`.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
   `DEFERRED_VALID` after Phase 256 implementation.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE` triage status:
-  `DEFERRED_VALID` after Phase 257 implementation and Phase 258
-  operator-smoke-driven BOM-tolerance hardening; later default surfacing,
-  local-first answer/fallback policy, service/API/UI, and live answer
-  generation remain separate.
+  `DEFERRED_VALID` after Phase 257 implementation, Phase 258
+  operator-smoke-driven BOM-tolerance hardening, and Phase 259 proof
+  registration; later default surfacing, local-first answer/fallback policy,
+  service/API/UI, and live answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
@@ -475,6 +483,8 @@ fresh artifact proof.
 `PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
 
 ### Autonomy Tier Policy
 
