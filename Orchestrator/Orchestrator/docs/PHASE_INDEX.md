@@ -1917,3 +1917,29 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE172_RETRY3_TINY_VERTICAL_TRACER_DRY_ARTIFACT_OPERATOR_PROOF_ACCEPTED=PASS`.
 - Production readiness is not claimed.
+
+## Phase 176 - Tiny Vertical Tracer Dry Report CLI Adapter
+
+- Status: locally source/test/docs-proven CLI-compatible adapter over the dry
+  report only.
+- Phase doc: `docs/PHASE_176.md`.
+- Runbook: `docs/TINY_VERTICAL_TRACER_CLI_RUNBOOK.md`.
+- Behavior: adds `orchestrator/tiny_vertical_tracer_cli.py` as a
+  standard-library command surface over the Phase 169 tiny vertical tracer dry
+  report, supporting help, fixture listing, stdout rendering, JSON formatting,
+  and caller-supplied JSON dry artifact writing.
+- Boundary: accepts only `safe_direct_answer`; unknown fixtures and
+  `--write-artifact` without `--out-dir` are rejected conservatively before
+  artifact writing. No provider/model/runtime probe, Ollama, `/api/tags`,
+  `/api/show`, `/api/generate`, `/api/chat`, route execution, worker dispatch,
+  WSL/OpenClaw/Hermes/Discord, RAG/web/scheduler/connector execution,
+  service/API/UI behavior, cleanup/delete/archive, or production readiness is
+  added.
+- Artifact impact: `--write-artifact --out-dir <caller_supplied_dir>` writes
+  only the Phase 169 JSON dry artifact into the caller-supplied directory and
+  preserves `test_dry_artifact_persistence_not_route_execution`.
+- Next recommended boundary:
+  `PHASE_177_TINY_VERTICAL_TRACER_CLI_ADAPTER_OPERATOR_SMOKE`.
+- Marker:
+  `PHASE176_TINY_VERTICAL_TRACER_DRY_REPORT_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

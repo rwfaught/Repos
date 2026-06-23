@@ -272,9 +272,15 @@ Tiny vertical tracer dry artifact operator-proof language belongs to this
 context only as accepted proof registration. Phase 172 Retry 3 proves the dry
 artifact can be generated and inspected from current pushed source into a temp
 directory, preserving the actual `written_path` contract and all non-execution
-posture. It does not add provider/model execution, route execution, worker
-dispatch, export/package behavior, service/API/UI productization, or
-production readiness.
+posture.
+
+Tiny vertical tracer CLI adapter language belongs to this context only as a
+deterministic command-surface wrapper over the Phase 169 dry report. Phase 176
+adds help, fixture listing, stdout rendering, JSON formatting, and
+caller-supplied JSON dry artifact writing for `safe_direct_answer` only. It is
+not provider/model execution, route execution, live routing, worker dispatch,
+service/API/UI productization, cleanup/delete/archive behavior, or production
+readiness.
 
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains

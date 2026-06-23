@@ -3324,3 +3324,50 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   proof, and no production readiness proof.
 
 `PHASE172_RETRY3_TINY_VERTICAL_TRACER_DRY_ARTIFACT_OPERATOR_PROOF_ACCEPTED=PASS`
+
+## Phase 176 Tiny Vertical Tracer Dry Report CLI Adapter
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_176_TINY_VERTICAL_TRACER_DRY_REPORT_CLI_ADAPTER_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/tiny_vertical_tracer_cli.py`.
+- Created tests:
+  `tests/test_phase_176_tiny_vertical_tracer_cli_adapter_contract.py`.
+- Created docs: `docs/TINY_VERTICAL_TRACER_CLI_RUNBOOK.md`;
+  `docs/PHASE_176.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: adds a standard-library CLI-compatible adapter over the Phase 169
+  tiny vertical tracer dry report with help, fixture listing, stdout rendering,
+  JSON formatting, and caller-supplied JSON dry artifact writing.
+- Accepted facts preserved: output carries `phase=PHASE_169`,
+  `artifact_kind=tiny_vertical_tracer_dry_report`,
+  `fixture_id=safe_direct_answer`, `recommended_route=local_first_answer`,
+  `provider_catalog_key=local_model_candidate`,
+  `model_metadata_evidence_name=qwen3.6:27b`,
+  `route_selection_readiness=future_probe_ready_qwen36_27b_evidence_registered`,
+  `readiness_status=not_ready_for_execution`, and
+  `outcome_classification=dry_vertical_flow_reviewable_not_executable`.
+- Artifact posture: `--write-artifact --out-dir <caller_supplied_dir>` writes
+  only the Phase 169 JSON dry artifact into the caller-supplied directory and
+  preserves `test_dry_artifact_persistence_not_route_execution`.
+- Execution posture: provider selection, provider execution, route execution,
+  generation, and production readiness booleans remain false; provider/model/
+  runtime/route/worker/platform/product activity flags remain false except
+  dry artifact persistence in the written-artifact case.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_176_tiny_vertical_tracer_cli_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_169_tiny_vertical_tracer_bullet_dry_report_artifact_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_119_manual_review_cli_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_120_manual_review_cli_module_entrypoint.py" -v`;
+  `git diff --check`; `git status --short --branch`.
+- Explicit non-proofs: no provider/model execution, no route execution, no
+  live routing, no worker dispatch, no Codex dispatch inside the product
+  harness, no Ollama/WSL/OpenClaw/Hermes/Discord, no RAG/web/scheduler/
+  connector behavior, no service/API/UI productization, no semantic
+  correctness proof, no model loadability proof, no cleanup/delete/archive, no
+  production execution, and no production readiness proof.
+- Next recommended boundary:
+  `PHASE_177_TINY_VERTICAL_TRACER_CLI_ADAPTER_OPERATOR_SMOKE`.
+
+`PHASE176_TINY_VERTICAL_TRACER_DRY_REPORT_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
