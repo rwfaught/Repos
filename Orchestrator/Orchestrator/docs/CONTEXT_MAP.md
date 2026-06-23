@@ -290,6 +290,16 @@ provider/model execution, route execution, live routing, API endpoint
 execution, product-harness Codex dispatch, worker dispatch, RAG/web/scheduler/
 connector behavior, service/API/UI productization, or production readiness.
 
+Supervised provider-call tracer language belongs to this context only as a
+future-boundary packet contract until an operator proof is separately accepted.
+Phase 183 records the endpoint URL, model name, prompt contract, marker,
+request parameters, required future boundary, and pure captured-result
+classifier as source/test/docs data only. Endpoint strings are not endpoint
+execution; model names are not model execution; prior smoke evidence is not
+current loadability proof; and even a future marker-smoke pass would not prove
+semantic correctness, real workload sufficiency, route execution, or
+production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

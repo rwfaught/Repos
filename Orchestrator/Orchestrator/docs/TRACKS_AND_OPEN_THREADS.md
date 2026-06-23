@@ -302,8 +302,11 @@ fresh artifact proof.
 - Phase 179 accepts PowerShell operator smoke proof that the Phase 176 tiny
   vertical tracer CLI adapter works as a dry deterministic command surface
   without adding execution authority.
+- Phase 183 defines a supervised provider-call tracer packet contract and pure
+  captured-result classifier for a future operator-run marker smoke, without
+  adding HTTP/provider/model execution authority.
 - The next conservative provider boundary is
-  `PHASE_180_TINY_VERTICAL_TRACER_CLI_OPERATOR_SMOKE_PROOF_SOURCE_DOCS`.
+  `PHASE_184_SUPERVISED_PROVIDER_CALL_TRACER_OPERATOR_PROOF`.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

@@ -1967,3 +1967,29 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Next recommended boundary:
   `PHASE_180_TINY_VERTICAL_TRACER_CLI_OPERATOR_SMOKE_PROOF_SOURCE_DOCS`.
 - Production readiness is not claimed.
+
+## Phase 183 - Supervised Provider Call Tracer Packet Contract
+
+- Status: locally source/test/docs-proven packet contract only.
+- Phase doc: `docs/PHASE_183.md`.
+- Runbook: `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`.
+- Behavior: adds a deterministic standard-library supervised provider-call
+  tracer packet for a future operator-run local provider marker smoke through
+  the product harness, plus a pure caller-supplied captured-result classifier.
+- Packet facts: `phase=PHASE_183`,
+  `artifact_kind=supervised_provider_call_tracer_packet_contract`,
+  `fixture_id=safe_direct_answer`, `source_tracer_phase=PHASE_169`,
+  `adapter_phase=PHASE_176`, `operator_smoke_phase=PHASE_179`,
+  `provider_catalog_key=local_model_candidate`, `model_name=qwen3.6:27b`,
+  `endpoint_shape=POST local_ollama_http/api/generate`, and
+  `expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+- Boundary: endpoint URL is a string only; no HTTP/Ollama/provider/model call,
+  route execution, live routing, worker dispatch, product-harness Codex
+  dispatch, OpenClaw/Hermes/WSL/Discord, RAG/web/scheduler/connector behavior,
+  service/API/UI behavior, cleanup/delete/archive, or production readiness is
+  added.
+- Next recommended boundary:
+  `PHASE_184_SUPERVISED_PROVIDER_CALL_TRACER_OPERATOR_PROOF`.
+- Marker:
+  `PHASE183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

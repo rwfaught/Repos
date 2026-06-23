@@ -3419,3 +3419,61 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   proof, and no production readiness proof.
 
 `PHASE_179_TINY_VERTICAL_TRACER_CLI_OPERATOR_SMOKE_PROOF=PASS`
+
+## Phase 183 Supervised Provider Call Tracer Packet Contract
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/supervised_provider_call_tracer.py`.
+- Created tests:
+  `tests/test_phase_183_supervised_provider_call_tracer_packet_contract.py`.
+- Created docs: `docs/PHASE_183.md`;
+  `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: defines the first supervised provider-call tracer packet contract
+  for a future operator-run local provider marker smoke through the product
+  harness, without executing it.
+- Packet facts registered: `phase=PHASE_183`;
+  `artifact_kind=supervised_provider_call_tracer_packet_contract`;
+  `fixture_id=safe_direct_answer`; `source_tracer_phase=PHASE_169`;
+  `adapter_phase=PHASE_176`; `operator_smoke_phase=PHASE_179`;
+  `provider_catalog_key=local_model_candidate`; `model_name=qwen3.6:27b`;
+  `endpoint_shape=POST local_ollama_http/api/generate`;
+  `endpoint_url=http://127.0.0.1:11434/api/generate` as string-only data;
+  `prompt_contract=Return exactly: ORCH_PROVIDER_SMOKE_OK`;
+  `expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+- Request data registered: `stream=false`; `num_predict=96`;
+  `temperature=0`.
+- Future boundary registered:
+  `future_supervised_provider_call_tracer_operator_proof`.
+- Future proof registered:
+  `captured_http_status_json_response_marker_and_no_route_execution`.
+- Current readiness:
+  `packet_ready_for_future_operator_boundary_not_execution`.
+- Evidence keys registered:
+  `phase_159_retry1_qwen36_27b_generate_marker_smoke`;
+  `phase_162_qwen36_27b_show_metadata_visibility`.
+- Execution authority registered false: `provider_selection_allowed=false`;
+  `provider_execution_allowed=false`; `route_execution_allowed=false`;
+  `generation_allowed=false`; `production_readiness=false`.
+- Classifier behavior: PASS only for caller-supplied captured data with
+  HTTP 200, JSON parse success, returned model `qwen3.6:27b`, response text
+  containing `ORCH_PROVIDER_SMOKE_OK`, and `done=True`; conservative failure
+  classifications cover missing fields, non-200 status, JSON parse failure,
+  wrong model, missing marker, and `done=False`.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_183_supervised_provider_call_tracer_packet_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_176_tiny_vertical_tracer_cli_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_169_tiny_vertical_tracer_bullet_dry_report_artifact_contract.py" -v`;
+  `git diff --check`; `git status --short --branch`.
+- Explicit non-proofs: no HTTP/Ollama/provider/model execution, no route
+  execution, no live routing, no API endpoint execution, no product-harness
+  Codex dispatch, no worker dispatch, no OpenClaw/Hermes/WSL/Discord, no
+  RAG/web/scheduler/connector behavior, no semantic correctness proof, no
+  real workload proof, no service/API/UI productization proof, no
+  cleanup/delete/archive, no production execution, and no production readiness
+  proof.
+
+`PHASE183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
