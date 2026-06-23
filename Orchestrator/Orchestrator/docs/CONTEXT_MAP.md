@@ -615,3 +615,19 @@ The Orchestrator product track distinguishes accepted phase/checkpoint labels fr
 PHASE_XXX labels are named acceptance boundaries. Dedicated docs/PHASE_XXX.md files are durable source documentation artifacts and are not guaranteed for every accepted boundary.
 
 Future sessions should inspect PHASE_INDEX.md, ACTION_LOG.md, source manifests, commit history, operator proof, capsule metadata, and current handoff before treating a missing phase doc as a missing phase.
+
+## Phase 217 Live Transport Failure Artifact Context
+
+Phase 217 belongs to the provider/model substrate context as source/test/docs
+failure-shape handling for the Phase 212 live route-mediated provider smoke
+transport path.
+
+It records that transport exceptions after live guards pass should produce a
+structured JSON-safe artifact classified as
+`live_ollama_transport_exception_not_runtime_proof`. That artifact may record
+route-boundary entry and attempted `/api/generate` transport shape, but it is
+not provider/model/Ollama/HTTP execution proof without response evidence.
+
+Phase 216 remains failed, and current success for this path remains unmet until
+a future live artifact classifies as
+`route_mediated_provider_smoke_runtime_marker_pass`.

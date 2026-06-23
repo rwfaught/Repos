@@ -16,6 +16,7 @@ from orchestrator.route_mediated_provider_smoke_runner import (
     EXECUTION_MODE,
     FUTURE_ROUTE_MARKER,
     LIVE_OLLAMA_EXECUTION_MODE,
+    LIVE_TRANSPORT_FAILURE_CLASSIFICATION,
     ROUTE_PROOF_TARGET_MODEL,
     DEFAULT_OLLAMA_URL,
     build_route_mediated_provider_smoke_dry_artifact,
@@ -96,7 +97,11 @@ def run_route_mediated_provider_smoke_cli(
             result.payload,
             0 if result.accepted else 2,
             result.written_path,
-            "" if result.accepted else "Live Ollama route-mediated provider smoke execution was rejected by guards.",
+            ""
+            if result.accepted
+            else "Live Ollama transport failed; structured failure artifact written."
+            if result.classification == LIVE_TRANSPORT_FAILURE_CLASSIFICATION
+            else "Live Ollama route-mediated provider smoke execution was rejected by guards.",
         )
 
     if "--execute-route-smoke" in args or "--allow-route-execution" in args or "--allow-provider-call" in args:

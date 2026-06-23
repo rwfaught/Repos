@@ -33,6 +33,8 @@ EXECUTION_ADAPTER_PHASE = "PHASE_208"
 EXECUTION_ADAPTER_ARTIFACT_KIND = "route_mediated_provider_smoke_execution_adapter_contract"
 LIVE_TRANSPORT_ADAPTER_PHASE = "PHASE_212"
 LIVE_TRANSPORT_ADAPTER_ARTIFACT_KIND = "route_mediated_provider_smoke_live_transport_adapter_contract"
+LIVE_TRANSPORT_FAILURE_PHASE = "PHASE_217"
+LIVE_TRANSPORT_FAILURE_CLASSIFICATION = "live_ollama_transport_exception_not_runtime_proof"
 PROMPT = f"Return exactly: {FUTURE_ROUTE_MARKER}"
 DEFAULT_MODE = "dry_artifact_shape_only"
 EXECUTION_MODE = "route_mediated_provider_smoke_execution"
@@ -295,7 +297,16 @@ def execute_route_mediated_provider_smoke_with_live_ollama_transport(
         return rejection
 
     transport = transport_callable or _stdlib_ollama_generate_transport
-    provider_result = transport(ollama_url=ollama_url, request_body=request_body)
+    try:
+        provider_result = transport(ollama_url=ollama_url, request_body=request_body)
+    except Exception as exc:
+        return _live_transport_exception_result(
+            exc,
+            ollama_url=ollama_url,
+            request_body=request_body,
+            injected_transport=transport_callable is not None,
+            output_path=output_path,
+        )
     captured_result = _captured_result_from_live_transport_result(
         provider_result,
         ollama_url=ollama_url,
@@ -525,6 +536,59 @@ def _captured_result_from_live_transport_result(
     }
 
 
+def _captured_result_from_live_transport_exception(
+    exc: Exception,
+    *,
+    ollama_url: str,
+    request_body: dict[str, Any],
+    injected_transport: bool,
+) -> dict[str, Any]:
+    exception_type = type(exc).__name__
+    exception_message = _sanitize_exception_message(exc)
+    exception_evidence = {
+        "exception_type": exception_type,
+        "exception_message": exception_message,
+    }
+    return {
+        "request_intake_harness_evidence": {
+            "source": "phase_217_live_transport_failure_artifact",
+            "mode": "test_injected_transport" if injected_transport else "live_ollama_transport",
+        },
+        "route_recommendation_readiness_evidence": {"target_model": ROUTE_PROOF_TARGET_MODEL},
+        "explicit_route_execution_boundary_evidence": {"execution_mode": LIVE_OLLAMA_EXECUTION_MODE},
+        "provider_call_through_route_path_evidence": {
+            "transport": "injected_live_transport_callable" if injected_transport else "stdlib_urllib_ollama_generate",
+            "ollama_url": ollama_url,
+            "endpoint_shape": f"POST local_ollama_http{OLLAMA_GENERATE_PATH}",
+            "transport_call_attempted": True,
+            **exception_evidence,
+        },
+        "captured_http_status_json_model_marker_evidence": {
+            "http_status": None,
+            "json_parse_success": False,
+            "returned_model": "",
+            "response_text": "",
+            "done": None,
+            "marker_present": False,
+            "request_body_redacted_or_safe": request_body,
+            **exception_evidence,
+        },
+        "persisted_artifact_path_evidence": {"pending_until_write": True},
+        "displayed_reviewable_outcome_evidence": {
+            "reviewable_failure_payload_built": True,
+            "no_runtime_proof_accepted": True,
+            **exception_evidence,
+        },
+        "marker": FUTURE_ROUTE_MARKER,
+        "returned_model": "",
+        "production_readiness": False,
+    }
+
+
+def _sanitize_exception_message(exc: Exception) -> str:
+    return " ".join(str(exc).replace("\r", " ").replace("\n", " ").split())
+
+
 def _phase_208_artifact_from_phase_206_artifact(
     artifact: RouteMediatedProviderSmokeArtifact,
     *,
@@ -585,6 +649,71 @@ def _phase_212_artifact_from_phase_206_artifact(
             "production_readiness": False,
         }
     )
+
+
+def _live_transport_exception_result(
+    exc: Exception,
+    *,
+    ollama_url: str,
+    request_body: dict[str, Any],
+    injected_transport: bool,
+    output_path: str | Path,
+) -> RouteMediatedProviderSmokeResult:
+    captured_result = _captured_result_from_live_transport_exception(
+        exc,
+        ollama_url=ollama_url,
+        request_body=request_body,
+        injected_transport=injected_transport,
+    )
+    runner_result = review_route_mediated_provider_smoke_capture(captured_result)
+    artifact = _phase_212_artifact_from_phase_206_artifact(
+        runner_result.artifact,
+        classification=LIVE_TRANSPORT_FAILURE_CLASSIFICATION,
+        accepted=False,
+        ollama_url=ollama_url,
+        request_body=request_body,
+        phase_206_runner_review=runner_result.artifact.route_path_packet_review,
+        phase_208_adapter_review={
+            "phase": EXECUTION_ADAPTER_PHASE,
+            "not_invoked_by_phase_217": True,
+            "fake_injected_provider_path_distinct_from_live_transport_path": True,
+        },
+        activity_flags=_flags(
+            caller_supplied_capture_reviewed=True,
+            future_runtime_execution_requested=True,
+            provider_call_allowed=True,
+            request_intake_executed=True,
+            route_recommended=True,
+            route_readiness_executed=True,
+            route_executed=True,
+            provider_executed=False,
+            model_executed=False,
+            generation_performed=False,
+            api_generate_called=True,
+            ollama_executed=False,
+            outcome_displayed=True,
+        ),
+    )
+    artifact = RouteMediatedProviderSmokeArtifact(
+        **{
+            **asdict(artifact),
+            "phase": LIVE_TRANSPORT_FAILURE_PHASE,
+            "mode": "live_ollama_transport_failure_artifact",
+            "route_path_packet_review": {
+                **artifact.route_path_packet_review,
+                "phase_217_live_transport_failure_classification": LIVE_TRANSPORT_FAILURE_CLASSIFICATION,
+                "phase_217_live_transport_failure_accepted": False,
+                "no_runtime_proof_accepted": True,
+            },
+        }
+    )
+    result = RouteMediatedProviderSmokeResult(
+        accepted=False,
+        classification=LIVE_TRANSPORT_FAILURE_CLASSIFICATION,
+        artifact=artifact,
+        payload=route_mediated_provider_smoke_artifact_to_dict(artifact),
+    )
+    return _write_result_payload(result, output_path, "phase_217_route_mediated_provider_smoke_live_transport_failure_artifact.json")
 
 
 def _live_ollama_request_body(

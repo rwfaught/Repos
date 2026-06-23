@@ -2225,3 +2225,39 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
 - Marker:
   `PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 217 - Route Mediated Provider Smoke Live Transport Failure Artifact
+
+- Status: locally source/test/docs-proven structured live transport failure
+  artifact handling only.
+- Phase doc: `docs/PHASE_217.md`.
+- Source: `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Tests:
+  `tests/test_phase_217_route_mediated_provider_smoke_live_transport_failure_artifact_contract.py`;
+  `tests/test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py`;
+  `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`;
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Behavior: catches exceptions raised by the Phase 212 live transport call after
+  live guards pass and writes a JSON-safe failure artifact instead of leaving
+  only raw traceback evidence.
+- Failure classification:
+  `live_ollama_transport_exception_not_runtime_proof`.
+- Failure artifact facts: `phase=PHASE_217`; `accepted=false`;
+  `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`; `fallback_candidate=qwen3.6:27b`;
+  `production_readiness=false`; HTTP status unavailable; JSON parse not
+  successful; returned model and response text empty; marker not present; and
+  exception type/message recorded.
+- Boundary: Phase 217 source/test acceptance does not run
+  provider/model/Ollama/HTTP and does not prove route-mediated runtime
+  execution.
+- Phase 216 remains failed; Phase 217 only makes future transport failures
+  structured and reviewable.
+- Current gap: a future retry must still perform the live route-mediated smoke;
+  current success remains unmet until an actual live artifact classifies as
+  `route_mediated_provider_smoke_runtime_marker_pass`.
+- Marker:
+  `PHASE217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

@@ -234,6 +234,21 @@ Current success remains unmet for the route-mediated provider runtime path
 until a later operator boundary produces actual live execution evidence with a
 persisted, reviewable artifact and honest classification.
 
+Phase 217 adds structured failure artifacts for live transport exceptions in
+the Phase 212 route-mediated provider smoke path. It is source/test/docs only
+and does not run provider, model, Ollama, HTTP, route runtime, worker dispatch,
+or production behavior.
+
+Phase 216 remains failed and is not accepted as runtime proof. The Phase 217
+failure classification
+`live_ollama_transport_exception_not_runtime_proof` records failure shape only:
+HTTP status is unavailable, JSON parse did not succeed, no returned model or
+response text exists, and the route marker is not present in response evidence.
+
+A future retry must still perform the live route-mediated smoke. Current
+success remains unmet for this path until an actual live artifact classifies as
+`route_mediated_provider_smoke_runtime_marker_pass`.
+
 
 ## Phase 80 Live Proof Update
 

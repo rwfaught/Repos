@@ -518,6 +518,8 @@ fresh artifact proof.
 - Platform installer is not the product repo.
 - Model output is not proof.
 - Route validation is not execution.
+- A Phase 217 live transport failure artifact is failure-shape evidence, not a
+  route-mediated runtime marker pass.
 - Memory is not proof.
 - RAG, local docs, and reminders are intended tracks but are not implemented
   maturely yet.

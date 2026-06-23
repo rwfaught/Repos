@@ -3825,3 +3825,50 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness proof.
 
 `PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 217 Route Mediated Provider Smoke Live Transport Failure Artifact
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS`
+- Updated source:
+  `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Created tests:
+  `tests/test_phase_217_route_mediated_provider_smoke_live_transport_failure_artifact_contract.py`.
+- Created docs: `docs/PHASE_217.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`;
+  `docs/CURRENT_SUCCESS_CRITERION.md`.
+- Behavior: converts exceptions raised by the Phase 212 live transport call
+  into structured JSON-safe failure artifacts after live guards pass.
+- Failure classification:
+  `live_ollama_transport_exception_not_runtime_proof`.
+- Failure artifact facts: `phase=PHASE_217`; `accepted=false`;
+  `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`; `fallback_candidate=qwen3.6:27b`;
+  `production_readiness=false`; endpoint shape `POST local_ollama_http/api/generate`;
+  request body fields remain `stream=false`, `options.num_ctx=4096`,
+  `options.num_predict=64`, and `options.temperature=0`; captured evidence
+  records unavailable HTTP status, failed JSON parse, no returned model, no
+  response text, no marker, and exception type/message.
+- CLI behavior: with `--out-dir`, live transport exceptions write the failure
+  artifact, return nonzero, and emit concise failure text instead of
+  traceback-only evidence.
+- Validation: `python -m unittest discover -s tests -p "test_phase_217_route_mediated_provider_smoke_live_transport_failure_artifact_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_212_route_mediated_provider_smoke_live_transport_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_206_route_mediated_provider_smoke_runner_contract.py" -v`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_runner.py`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_cli.py`;
+  `git diff --check`; `git diff --cached --check`.
+- Explicit non-proofs: no provider/model/Ollama/HTTP execution, no route
+  runtime execution, no worker dispatch, no WSL/OpenClaw/Hermes/Discord, no
+  production execution, no route-mediated runtime proof, and no production
+  readiness proof.
+- Phase 216 remains failed; a future retry must still perform the live
+  route-mediated smoke. A failure artifact is evidence of failure shape, not a
+  route-mediated runtime marker pass.
+
+`PHASE217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`

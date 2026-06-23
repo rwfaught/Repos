@@ -3870,3 +3870,55 @@ production execution, route-mediated runtime proof, or production readiness
 behavior is registered by Phase 212 source/test acceptance.
 
 `PHASE212_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 217 Route Mediated Provider Smoke Live Transport Failure Artifact
+
+Boundary:
+
+`PHASE_217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/route_mediated_provider_smoke_runner.py`
+- `orchestrator/route_mediated_provider_smoke_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_217_route_mediated_provider_smoke_live_transport_failure_artifact_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_217.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+
+Registered behavior: structured JSON-safe failure artifact handling for
+exceptions raised by the Phase 212 live transport call after live guards pass.
+
+Registered failure facts: `phase=PHASE_217`,
+`classification=live_ollama_transport_exception_not_runtime_proof`,
+`accepted=false`, `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`disallowed_model=qwen3.6:35b-a3b`, `fallback_candidate=qwen3.6:27b`,
+`production_readiness=false`, HTTP status unavailable, JSON parse false,
+empty returned model, empty response text, no marker present, and exception
+type/message recorded.
+
+No provider/model/Ollama/HTTP execution, route runtime execution, worker
+dispatch, WSL/OpenClaw/Hermes/Discord, export/package, cleanup/delete/archive,
+production execution, route-mediated runtime proof, or production readiness
+behavior is registered by Phase 217 source/test acceptance.
+
+Phase 216 remains failed. Phase 217 registers failure-shape evidence only; a
+future retry still must produce an actual live
+`route_mediated_provider_smoke_runtime_marker_pass` artifact before this path
+can satisfy current success.
+
+`PHASE217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
