@@ -343,11 +343,19 @@ fresh artifact proof.
   model, Ollama, HTTP, or route runtime execution is performed. Fake injected
   transport validation is not runtime proof, and the runtime classification is
   reserved for later actual live HTTP evidence.
+- Phase 228 registers accepted Phase 216 Retry 3 operator proof for exactly
+  one route-mediated live Ollama `/api/generate` marker-smoke call through the
+  live transport CLI. The accepted artifact classifies as
+  `route_mediated_provider_smoke_runtime_marker_pass` for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M` and
+  `ORCH_ROUTE_PROVIDER_SMOKE_OK` only.
 - No live provider/model routing, provider/model execution, runtime/platform
-  execution, model generation, `/api/generate`, `/api/chat`, model loadability,
-  VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,
-  RAG/web/scheduler execution, route execution, or production readiness is
-  proven.
+  execution beyond the exact Phase 228 marker-smoke boundary, model
+  generation beyond the exact accepted marker response, `/api/chat`, model
+  loadability, VRAM sufficiency beyond the exact accepted smoke request,
+  provider runtime import, worker dispatch, RAG/web/scheduler execution, route
+  execution beyond the exact Phase 228 marker-smoke boundary, or production
+  readiness is proven.
 - Future deeper provider/runtime/model proof remains a separate explicit
   boundary.
 - Coding must remain one route among many, not the product identity.
@@ -520,6 +528,10 @@ fresh artifact proof.
 - Route validation is not execution.
 - A Phase 217 live transport failure artifact is failure-shape evidence, not a
   route-mediated runtime marker pass.
+- Phase 228 proves only the accepted narrow route-mediated provider
+  marker-smoke runtime path; it is not semantic correctness, real workload,
+  long-context, sustained-load, production readiness, Hermes/OpenClaw behavior,
+  or `qwen3.6:35b-a3b` authorization proof.
 - Memory is not proof.
 - RAG, local docs, and reminders are intended tracks but are not implemented
   maturely yet.

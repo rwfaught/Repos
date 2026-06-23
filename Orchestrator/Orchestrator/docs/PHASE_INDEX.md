@@ -2261,3 +2261,43 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
 - Marker:
   `PHASE217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 228 - Route Mediated Provider Smoke Live Runtime Proof Registration
+
+- Status: docs-registered accepted operator proof for a narrow live
+  route-mediated provider marker-smoke runtime pass.
+- Phase doc: `docs/PHASE_228.md`.
+- Registered proof label:
+  `PHASE_216_RETRY3_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_OPERATOR_PROOF=PASS`.
+- Source commit before proof: `a336b36acd9cb75942ab9781395a0a9f6949c52b`.
+- Boundary: exactly one live local Ollama `/api/generate` call through the
+  route-mediated live transport CLI, with target
+  `qwen3:30b-a3b-instruct-2507-q4_K_M`, marker
+  `ORCH_ROUTE_PROVIDER_SMOKE_OK`, prompt
+  `Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`, `stream=false`,
+  `options.num_ctx=4096`, `options.num_predict=64`, and
+  `options.temperature=0`.
+- Registered artifact facts: `phase=PHASE_212`;
+  `artifact_kind=route_mediated_provider_smoke_live_transport_adapter_contract`;
+  `mode=live_ollama_transport_review_only`;
+  `classification=route_mediated_provider_smoke_runtime_marker_pass`;
+  `accepted=true`; `production_readiness=false`.
+- Captured evidence: HTTP `200`; JSON parse success `true`; returned model
+  `qwen3:30b-a3b-instruct-2507-q4_K_M`; response text
+  `ORCH_ROUTE_PROVIDER_SMOKE_OK`; `done=true`; `done_reason=stop`;
+  `marker_present=true`.
+- Success artifact SHA-256:
+  `4706cbd610183fcf760f33eebccd9fbe49ee64f3cb4bd8b645089350df948861`.
+- CLI stdout SHA-256:
+  `c4d93f12bd30e6b828fc4618633fd88195df87b0d9cbb5759cfd65e8c7efc211`.
+- CLI stderr SHA-256:
+  `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+- Activity flags register route/provider/model/Ollama `/api/generate`
+  execution for this narrow proof only; Hermes, OpenClaw, Discord, WSL, worker
+  dispatch, and production execution were false.
+- Caveats: not semantic correctness proof, real workload sufficiency proof,
+  long-context proof, sustained-load proof, production readiness proof, or
+  Hermes/OpenClaw behavior proof. It does not authorize
+  `qwen3.6:35b-a3b`.
+- Marker:
+  `PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`.

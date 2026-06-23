@@ -628,6 +628,24 @@ structured JSON-safe artifact classified as
 route-boundary entry and attempted `/api/generate` transport shape, but it is
 not provider/model/Ollama/HTTP execution proof without response evidence.
 
-Phase 216 remains failed, and current success for this path remains unmet until
-a future live artifact classifies as
+Before the later Phase 228 registration, Phase 216 remained failed and current
+success for this path remained unmet until a future live artifact classified as
 `route_mediated_provider_smoke_runtime_marker_pass`.
+
+## Phase 228 Route Mediated Provider Smoke Runtime Proof Context
+
+Phase 228 belongs to the provider/model substrate context as documentation
+registration of the accepted Phase 216 Retry 3 operator proof:
+
+`PHASE_216_RETRY3_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_OPERATOR_PROOF=PASS`
+
+It records exactly one live local Ollama `/api/generate` call through the
+route-mediated live transport CLI for
+`qwen3:30b-a3b-instruct-2507-q4_K_M`, marker
+`ORCH_ROUTE_PROVIDER_SMOKE_OK`, and the Phase 212 artifact classification
+`route_mediated_provider_smoke_runtime_marker_pass`.
+
+The route-mediated provider marker-smoke runtime gap is closed only for that
+narrow target/prompt/options/artifact boundary. It is not semantic correctness,
+real workload sufficiency, long-context, sustained-load, production readiness,
+Hermes/OpenClaw behavior, or `qwen3.6:35b-a3b` authorization proof.

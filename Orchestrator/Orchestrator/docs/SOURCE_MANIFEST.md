@@ -3922,3 +3922,57 @@ future retry still must produce an actual live
 can satisfy current success.
 
 `PHASE217_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_TRANSPORT_FAILURE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 228 Route Mediated Provider Smoke Live Runtime Proof Registration
+
+Boundary:
+
+`PHASE_228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_SOURCE_DOCS`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_228.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+
+Registered accepted proof:
+`PHASE_216_RETRY3_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_OPERATOR_PROOF=PASS`.
+
+Registered proof facts: source commit before proof
+`a336b36acd9cb75942ab9781395a0a9f6949c52b`; exactly one live local Ollama
+`/api/generate` call through route-mediated live transport CLI; target model
+`qwen3:30b-a3b-instruct-2507-q4_K_M`; disallowed model
+`qwen3.6:35b-a3b`; route marker `ORCH_ROUTE_PROVIDER_SMOKE_OK`; prompt
+`Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`; `stream=false`;
+`options.num_ctx=4096`; `options.num_predict=64`; `options.temperature=0`;
+CLI exit code `0`.
+
+Registered artifact facts: `phase=PHASE_212`,
+`artifact_kind=route_mediated_provider_smoke_live_transport_adapter_contract`,
+`mode=live_ollama_transport_review_only`,
+`classification=route_mediated_provider_smoke_runtime_marker_pass`,
+`accepted=true`, and `production_readiness=false`.
+
+Registered captured evidence: HTTP `200`, JSON parse success `true`, returned
+model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response text
+`ORCH_ROUTE_PROVIDER_SMOKE_OK`, `done=true`, `done_reason=stop`, and
+`marker_present=true`.
+
+Registered artifact hashes: success artifact
+`4706cbd610183fcf760f33eebccd9fbe49ee64f3cb4bd8b645089350df948861`; CLI
+stdout `c4d93f12bd30e6b828fc4618633fd88195df87b0d9cbb5759cfd65e8c7efc211`;
+CLI stderr `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+No semantic correctness proof, real workload sufficiency proof, long-context
+proof, sustained-load proof, production readiness proof, Hermes/OpenClaw
+behavior proof, worker dispatch proof, or authorization for `qwen3.6:35b-a3b`
+is registered by Phase 228.
+
+`PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`

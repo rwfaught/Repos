@@ -806,3 +806,25 @@ scheduling, web lookup, autonomous writeback, export/upload, production task
 execution, or production readiness.
 
 `PHASE105_OPEN_THREAD_TRIAGE_AND_STARTUP_LOAD_DISCIPLINE_LOCAL_DOCS_PROVEN=PASS`
+
+## Phase 228 Route-Mediated Provider Marker-Smoke Runtime Registration
+
+Phase 228 registers the accepted operator proof:
+
+`PHASE_216_RETRY3_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_OPERATOR_PROOF=PASS`
+
+For the provider/model route-mediated marker-smoke path only, the previously
+open runtime-marker gap is now closed by a single live local Ollama
+`/api/generate` call through the route-mediated live transport CLI. The
+accepted artifact is classified as
+`route_mediated_provider_smoke_runtime_marker_pass`, with HTTP `200`, JSON
+parse success, returned model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response
+text `ORCH_ROUTE_PROVIDER_SMOKE_OK`, `done=true`, and marker present.
+
+This does not broaden the current success criterion into production readiness
+or general provider competence. It does not prove semantic correctness, real
+workload sufficiency, long-context behavior, sustained-load stability, Hermes
+behavior, OpenClaw behavior, Discord behavior, WSL behavior, worker dispatch,
+or `qwen3.6:35b-a3b` suitability.
+
+`PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`
