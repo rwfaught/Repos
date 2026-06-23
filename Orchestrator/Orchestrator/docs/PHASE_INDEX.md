@@ -2516,3 +2516,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   current-success broadening, or production readiness is added.
 - Marker:
   `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 260 - General Answer Review Artifact Write Notice
+
+- Status: locally source/test/docs-proven artifact-write UX notice for the
+  structured local `general_answer` real-input review artifact path.
+- Phase doc: `docs/PHASE_260.md`.
+- Boundary:
+  `PHASE_260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS`.
+- Source: `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_260_general_answer_review_artifact_write_notice_contract.py`.
+- Behavior: when `--general-answer-input <input_json_path>
+  --write-review-json <artifact_json_path>` successfully writes the
+  caller-supplied review JSON artifact, stdout/result output includes
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Preserved behavior: the notice is absent when `--write-review-json` is
+  omitted, input is rejected before artifact writing, artifact writing fails,
+  or fixture mode is used; normal UTF-8 input, UTF-8 BOM input, malformed
+  JSON, unreadable paths, non-object JSON, wrong request type, unsafe
+  execution requests, high or unknown risk, invalid artifact path, and fixture
+  behavior remain conservative.
+- Boundary: no artifact schema change, default output location,
+  semantic answer generation, answer correctness proof, provider/model/runtime
+  execution, live route execution, RAG/local lookup, web lookup,
+  scheduler/reminder execution, connector execution, worker/Codex dispatch
+  from product code, service/API/UI behavior, export/package behavior,
+  production work, current-success broadening, or production readiness is
+  added.
+- Marker:
+  `PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`.

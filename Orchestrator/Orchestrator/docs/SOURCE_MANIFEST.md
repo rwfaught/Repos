@@ -4378,3 +4378,64 @@ production work, current-success broadening, or production readiness behavior
 is registered by Phase 259.
 
 `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 260 General Answer Review Artifact Write Notice
+
+Boundary:
+
+`PHASE_260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_260_general_answer_review_artifact_write_notice_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_260.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic CLI stdout/result notice after successful
+caller-supplied review JSON artifact writing for structured local
+`general_answer` input.
+
+Registered CLI output:
+
+- `Review JSON Artifact Written: <artifact_json_path>`
+
+Registered accepted behavior: safe low/routine-risk structured
+`general_answer` input can still persist the existing manual review/lightweight
+report-only result as JSON at the supplied path, and successful persistence now
+surfaces the caller-supplied artifact path in stdout/result output.
+
+Registered notice exclusion behavior: the successful artifact-written notice is
+absent when `--write-review-json` is omitted, input is rejected before artifact
+writing, artifact writing fails, or fixture mode is used.
+
+Registered preserved behavior: normal UTF-8 input, UTF-8 BOM input, malformed
+JSON, unreadable paths, non-object JSON, wrong request type, unsafe execution
+requests, high or unknown risk, invalid artifact path, and fixtures remain
+covered by the existing conservative behavior.
+
+Registered artifact posture: the artifact path remains caller-supplied only;
+no default output location is invented; artifact schema remains unchanged.
+
+No semantic answer correctness, semantic answer generation,
+provider/model/runtime execution, WSL/Ollama execution, Hermes/OpenClaw/Discord
+behavior, live route execution, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch from product code, service/API/UI behavior, project-script execution,
+source refresh, export/package, cleanup/delete/archive, commit, push,
+production task execution, current-success broadening, or production readiness
+behavior is registered by Phase 260.
+
+`PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`

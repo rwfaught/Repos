@@ -368,6 +368,13 @@ def _write_review_artifact(path_text: str, payload: dict[str, Any]) -> str:
     return ""
 
 
+def _append_review_artifact_written_notice(output_text: str, artifact_path: str) -> str:
+    notice = f"Review JSON Artifact Written: {artifact_path}"
+    if not output_text:
+        return notice
+    return "\n".join((output_text, notice))
+
+
 def _run_general_answer_input(path_text: str, artifact_path: str = "") -> ManualReviewCliResult:
     value, read_error = _read_json_object(path_text)
     if read_error:
@@ -429,6 +436,17 @@ def _run_general_answer_input(path_text: str, artifact_path: str = "") -> Manual
                 no_activity_flags=result.no_activity_flags,
                 caveats=result.caveats + ("review_json_artifact_write_failed",),
             )
+        result = _result(
+            exit_code=result.exit_code,
+            command=result.command,
+            fixture_id=result.fixture_id,
+            output_text=_append_review_artifact_written_notice(result.output_text, artifact_path),
+            error_text=result.error_text,
+            accepted=result.accepted,
+            non_proofs=result.non_proofs,
+            no_activity_flags=result.no_activity_flags,
+            caveats=result.caveats + ("review_json_artifact_written_notice_rendered",),
+        )
     return result
 
 

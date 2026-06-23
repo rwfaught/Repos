@@ -440,13 +440,23 @@ fresh artifact proof.
   rejected, `safe_direct_answer` still surfaced the lightweight report,
   `safe_coding_source_test_mutation` still did not surface it, and the smoke
   ended with `FinalGitStatusLineCount=0`.
+- Phase 260 adds artifact-write UX/surfacing for the real-input
+  `general_answer` path: after a caller-supplied `--write-review-json`
+  artifact is successfully written, CLI stdout/result output includes
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Phase 260 preserves report-only semantics and does not add semantic answer
+  generation, answer correctness proof, provider/model/runtime execution,
+  RAG/local lookup, web lookup, scheduler/reminder execution, connector
+  execution, worker/Codex dispatch, service/API/UI behavior, export/package,
+  production work, production readiness, or current-success broadening.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
   `DEFERRED_VALID` after Phase 256 implementation.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE` triage status:
   `DEFERRED_VALID` after Phase 257 implementation, Phase 258
   operator-smoke-driven BOM-tolerance hardening, and Phase 259 proof
-  registration; later default surfacing, local-first answer/fallback policy,
-  service/API/UI, and live answer generation remain separate.
+  registration; Phase 260 adds artifact-write UX/surfacing only. Later default
+  surfacing, local-first answer/fallback policy, service/API/UI, and live
+  answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
@@ -485,6 +495,8 @@ fresh artifact proof.
 `PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+`PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 ### Autonomy Tier Policy
 

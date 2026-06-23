@@ -4183,3 +4183,43 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production readiness.
 
 `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 260 General Answer Review Artifact Write Notice
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_260_general_answer_review_artifact_write_notice_contract.py`.
+- Created docs: `docs/PHASE_260.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: adds a deterministic CLI stdout/result notice only after a
+  caller-supplied review JSON artifact is successfully written:
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Accepted input: safe low/routine-risk structured local `general_answer`
+  input still routes through the existing non-executing manual review and
+  lightweight report lane; successful caller-supplied artifact persistence now
+  has visible output.
+- Notice exclusion behavior: no notice appears when `--write-review-json` is
+  omitted, input is rejected before artifact writing, artifact writing fails,
+  or fixture mode is used.
+- Existing behavior preserved: normal UTF-8 input, UTF-8 BOM input, malformed
+  JSON, unreadable paths, non-object JSON, wrong request type, unsafe
+  execution requests, high or unknown risk, invalid artifact paths,
+  `safe_direct_answer`, and `safe_coding_source_test_mutation`.
+- Artifact posture: artifact path remains caller-supplied only; no default
+  output location is invented; artifact schema remains unchanged.
+- Open-thread update: broader general-answer usability remains open; Phase 260
+  records artifact-write UX/surfacing only; autonomy-tier policy remains
+  `DEFERRED_VALID`.
+- Explicit non-proofs: not semantic answer correctness proof, not semantic
+  answer generation, not provider/model/runtime execution, not live route
+  execution, not RAG/local lookup, not web lookup, not scheduler/reminder
+  execution, not connector execution, not worker/Codex dispatch from product
+  code, not service/API/UI productization, not export/package behavior, not
+  production work, not current-success broadening, and not production
+  readiness.
+
+`PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`
