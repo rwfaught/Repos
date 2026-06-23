@@ -309,8 +309,17 @@ fresh artifact proof.
   `qwen3.6:35b-a3b` based on Phase 186 Retry 4 current inventory visibility
   only. The prior `qwen3.6:27b` marker-smoke and metadata evidence are not
   transferred to `qwen3.6:35b-a3b`.
+- Phase 190 accepts constrained one-call 30B marker-smoke viability for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M` only; it does not prove route
+  execution, semantic correctness, real workload sufficiency, long-context
+  behavior, sustained-load stability, or production readiness.
+- Phase 191 disallows `qwen3.6:35b-a3b` for current laptop target selection
+  based on Roger's operational lockup evidence and retargets the supervised
+  provider-call tracer packet to
+  `qwen3:30b-a3b-instruct-2507-q4_K_M`. `qwen3.6:27b` remains the safer
+  fallback candidate.
 - The next conservative provider boundary is
-  `PHASE_188_SUPERVISED_PROVIDER_CALL_TRACER_35B_A3B_OPERATOR_PROOF`.
+  `PHASE_192_SUPERVISED_PROVIDER_CALL_TRACER_30B_OPERATOR_PROOF`.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

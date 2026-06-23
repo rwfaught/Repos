@@ -3493,3 +3493,103 @@ by Phase 187.
 No production readiness is registered by Phase 187.
 
 `PHASE187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 190 30B Provider Viability Marker Smoke
+
+Boundary:
+
+`PHASE_190_30B_PROVIDER_VIABILITY_MARKER_SMOKE`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_190.md`
+
+Registered accepted viability facts: HTTP `200`, JSON parse success `true`,
+returned model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response text
+`ORCH_30B_VIABILITY_OK`, `done=true`, `done_reason=stop`, duration `9394ms`,
+marker present `true`, and classification `pass_30b_marker_smoke_viability`.
+
+Registered artifact caveat: Phase 190 Retry 1 backfilled
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase190_30b_provider_viability\phase_190_30b_provider_viability_probe.json`
+with no provider call.
+
+Registered GPU caveat: before memory `0MiB / 24463MiB`, after memory
+`18302MiB / 24463MiB`; process attribution was not proven by the `nvidia-smi`
+process table.
+
+No route execution, semantic correctness, real workload sufficiency,
+long-context behavior, sustained-load stability, product tracer
+`ORCH_PROVIDER_SMOKE_OK` marker proof, or production readiness is registered
+by Phase 190.
+
+## Phase 191 Supervised Provider Call Tracer Target Reconciliation To 30B
+
+Boundary:
+
+`PHASE_191_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_TO_30B_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/supervised_provider_call_tracer.py`
+
+Registered changed test files:
+
+- `tests/test_phase_183_supervised_provider_call_tracer_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_190.md`
+- `docs/PHASE_191.md`
+
+Registered changed documentation/control files:
+
+- `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: source/test/docs reconciliation of the supervised
+provider-call tracer packet target from disallowed `qwen3.6:35b-a3b` to
+`qwen3:30b-a3b-instruct-2507-q4_K_M`.
+
+Registered packet facts: `phase=PHASE_191`,
+`artifact_kind=supervised_provider_call_tracer_packet_contract`,
+`original_packet_phase=PHASE_183`,
+`target_reconciliation_phase=PHASE_191`,
+`inventory_evidence_phase=PHASE_190`,
+`provider_catalog_key=local_model_candidate`,
+`model_name=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`endpoint_shape=POST local_ollama_http/api/generate`,
+`endpoint_url=http://127.0.0.1:11434/api/generate` as string-only data,
+`prompt_contract=Return exactly: ORCH_PROVIDER_SMOKE_OK`, and
+`expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+
+Registered request data: `stream=false`, `num_predict=96`, `num_ctx=4096`,
+and `temperature=0`.
+
+Registered target posture:
+
+- `qwen3.6:35b-a3b` is disallowed for current laptop target selection due to
+  Roger's operational evidence that it locks up the laptop.
+- `qwen3.6:27b` remains the safer fallback candidate based on prior smoother
+  operation and earlier accepted marker-smoke and metadata evidence.
+- Phase 190 proves only constrained 30B marker-smoke viability for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M`.
+- The next product tracer proof still needs a supervised
+  `ORCH_PROVIDER_SMOKE_OK` marker call.
+
+Registered false execution authority: `provider_selection_allowed=false`,
+`provider_execution_allowed=false`, `route_execution_allowed=false`,
+`generation_allowed=false`, and `production_readiness=false`.
+
+No route execution, semantic correctness, real workload sufficiency,
+long-context behavior, sustained-load stability, HTTP/Ollama/provider/model
+execution by this phase, worker dispatch, service/API/UI productization,
+cleanup/delete/archive, production execution, or production readiness behavior
+is registered by Phase 191.
+
+No production readiness is registered by Phase 191.
+
+`PHASE191_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_TO_30B_SOURCE_TEST_DOCS_PROVEN=PASS`

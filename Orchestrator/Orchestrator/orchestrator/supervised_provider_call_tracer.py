@@ -12,38 +12,40 @@ from dataclasses import asdict, dataclass
 from typing import Any
 
 
-PHASE = "PHASE_187"
+PHASE = "PHASE_191"
 ARTIFACT_KIND = "supervised_provider_call_tracer_packet_contract"
 FIXTURE_ID = "safe_direct_answer"
 ORIGINAL_PACKET_PHASE = "PHASE_183"
-TARGET_RECONCILIATION_PHASE = "PHASE_187"
-INVENTORY_EVIDENCE_PHASE = "PHASE_186_RETRY4"
+TARGET_RECONCILIATION_PHASE = "PHASE_191"
+INVENTORY_EVIDENCE_PHASE = "PHASE_190"
 SOURCE_TRACER_PHASE = "PHASE_169"
 ADAPTER_PHASE = "PHASE_176"
 OPERATOR_SMOKE_PHASE = "PHASE_179"
 PROVIDER_CATALOG_KEY = "local_model_candidate"
-MODEL_NAME = "qwen3.6:35b-a3b"
-RETIRED_PACKET_TARGET = "qwen3.6:27b"
+MODEL_NAME = "qwen3:30b-a3b-instruct-2507-q4_K_M"
+DISALLOWED_PACKET_TARGET = "qwen3.6:35b-a3b"
+FALLBACK_PACKET_TARGET = "qwen3.6:27b"
 ENDPOINT_SHAPE = "POST local_ollama_http/api/generate"
 ENDPOINT_URL = "http://127.0.0.1:11434/api/generate"
 PROMPT_CONTRACT = "Return exactly: ORCH_PROVIDER_SMOKE_OK"
 EXPECTED_MARKER = "ORCH_PROVIDER_SMOKE_OK"
 FUTURE_BOUNDARY = "future_supervised_provider_call_tracer_operator_proof"
 FUTURE_PROOF = "captured_http_status_json_response_marker_and_no_route_execution"
-CURRENT_READINESS = "target_reconciliation_complete_future_marker_smoke_required"
-INVENTORY_EVIDENCE_KEY = "phase_186_retry4_qwen36_35b_a3b_inventory_visibility_only"
+CURRENT_READINESS = "target_reconciled_to_30b_viability_candidate_future_product_marker_smoke_required"
+VIABILITY_EVIDENCE_KEY = "phase_190_qwen3_30b_a3b_instruct_2507_q4_K_M_marker_smoke_viability_only"
 
 
 SUPERVISED_PROVIDER_CALL_TRACER_NON_PROOFS = (
     "supervised_provider_call_tracer_is_packet_contract_only",
     "endpoint_string_is_not_endpoint_execution",
     "model_name_is_not_model_execution",
-    "phase_186_retry4_inventory_visibility_is_not_marker_smoke_proof",
-    "qwen36_35b_a3b_has_no_supervised_marker_smoke_proof_yet",
-    "qwen36_27b_marker_smoke_evidence_is_not_transferred_to_qwen36_35b_a3b",
+    "phase_190_30b_marker_smoke_viability_is_not_product_tracer_proof",
+    "qwen36_35b_a3b_disallowed_for_laptop_target_selection",
+    "qwen36_27b_remains_safer_fallback_candidate",
     "future_smoke_pass_would_not_prove_semantic_correctness",
-    "future_smoke_pass_would_not_prove_real_workload_loadability",
-    "future_smoke_pass_would_not_prove_real_workload_vram_sufficiency",
+    "future_smoke_pass_would_not_prove_real_workload_sufficiency",
+    "future_smoke_pass_would_not_prove_long_context_behavior",
+    "future_smoke_pass_would_not_prove_sustained_load_stability",
     "future_smoke_pass_would_not_prove_route_execution",
     "future_smoke_pass_would_not_prove_production_readiness",
 )
@@ -151,7 +153,7 @@ def _dedupe(values: tuple[str, ...]) -> tuple[str, ...]:
 def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTracerPacket:
     """Build the deterministic future operator packet without execution."""
 
-    provider_evidence_keys = (INVENTORY_EVIDENCE_KEY,)
+    provider_evidence_keys = (VIABILITY_EVIDENCE_KEY,)
     accepted_facts = (
         f"phase={PHASE}",
         f"artifact_kind={ARTIFACT_KIND}",
@@ -164,7 +166,8 @@ def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTrac
         f"operator_smoke_phase={OPERATOR_SMOKE_PHASE}",
         f"provider_catalog_key={PROVIDER_CATALOG_KEY}",
         f"model_name={MODEL_NAME}",
-        f"retired_packet_target={RETIRED_PACKET_TARGET}",
+        f"disallowed_packet_target={DISALLOWED_PACKET_TARGET}",
+        f"fallback_packet_target={FALLBACK_PACKET_TARGET}",
         f"endpoint_shape={ENDPOINT_SHAPE}",
         "endpoint_url_registered_as_string_only",
         f"prompt_contract={PROMPT_CONTRACT}",
@@ -172,26 +175,36 @@ def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTrac
         f"required_future_boundary={FUTURE_BOUNDARY}",
         f"required_future_proof={FUTURE_PROOF}",
         f"current_readiness={CURRENT_READINESS}",
-        "phase_186_retry4_api_version_http_200_ollama_0_30_10",
-        "phase_186_retry4_api_tags_http_200",
-        "phase_186_retry4_qwen36_27b_absent_from_inventory",
-        "phase_186_retry4_qwen36_35b_a3b_present_in_inventory",
+        "phase_190_30b_viability_http_status=200",
+        "phase_190_30b_viability_json_parse_success=True",
+        f"phase_190_30b_viability_returned_model={MODEL_NAME}",
+        "phase_190_30b_viability_response_text=ORCH_30B_VIABILITY_OK",
+        "phase_190_30b_viability_done=True",
+        "phase_190_30b_viability_done_reason=stop",
+        "phase_190_30b_viability_duration_ms=9394",
+        "phase_190_30b_viability_marker_present=True",
+        "phase_190_30b_viability_classification=pass_30b_marker_smoke_viability",
+        "phase_190_artifact_backfilled_without_provider_call",
+        "phase_190_gpu_before_memory=0MiB / 24463MiB",
+        "phase_190_gpu_after_memory=18302MiB / 24463MiB",
+        "phase_190_gpu_process_attribution_not_proven_by_nvidia_smi_process_table",
     )
     caveats = (
         "packet_contract_only",
         "endpoint_string_is_not_endpoint_execution",
         "model_name_is_not_model_execution",
-        "phase_186_retry4_inventory_visibility_is_not_marker_smoke_proof",
-        "qwen36_35b_a3b_requires_future_supervised_marker_smoke_proof",
-        "qwen36_27b_marker_smoke_evidence_not_transferred_to_qwen36_35b_a3b",
+        "phase_190_proves_only_constrained_30b_marker_smoke_viability_call",
+        "phase_190_viability_marker_is_not_product_tracer_marker",
+        "qwen36_35b_a3b_disallowed_due_to_roger_operational_lockup_evidence",
+        "qwen36_27b_remains_safer_fallback_candidate_based_on_prior_smoother_operation_and_accepted_marker_smoke_metadata_evidence",
         "future_operator_must_capture_status_json_marker_and_no_route_execution",
     )
     missing_requirements = (
-        "future_operator_run_not_performed_by_phase_187",
+        "future_operator_run_not_performed_by_phase_191",
         "captured_http_status_missing_until_future_operator_boundary",
         "captured_json_response_missing_until_future_operator_boundary",
         "captured_marker_missing_until_future_operator_boundary",
-        "qwen36_35b_a3b_supervised_marker_smoke_proof_missing_until_future_boundary",
+        "product_tracer_ORCH_PROVIDER_SMOKE_OK_marker_proof_missing_until_future_boundary",
     )
     return SupervisedProviderCallTracerPacket(
         phase=PHASE,
@@ -212,6 +225,7 @@ def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTrac
         request_parameters={
             "stream": False,
             "num_predict": 96,
+            "num_ctx": 4096,
             "temperature": 0,
         },
         required_future_boundary=FUTURE_BOUNDARY,
@@ -267,6 +281,7 @@ def render_supervised_provider_call_tracer_packet_text(
         f"- provider_evidence_keys={', '.join(packet.provider_evidence_keys)}",
         f"- stream={str(packet.request_parameters['stream']).lower()}",
         f"- num_predict={packet.request_parameters['num_predict']}",
+        f"- num_ctx={packet.request_parameters['num_ctx']}",
         "",
         "Decision",
         "Do not execute. Register packet contract only.",
@@ -405,7 +420,9 @@ def classify_supervised_provider_call_tracer_result(
         accepted_facts=accepted_facts,
         caveats=(
             "future_smoke_pass_would_not_prove_semantic_correctness",
-            "future_smoke_pass_would_not_prove_real_workload_loadability",
+            "future_smoke_pass_would_not_prove_real_workload_sufficiency",
+            "future_smoke_pass_would_not_prove_long_context_behavior",
+            "future_smoke_pass_would_not_prove_sustained_load_stability",
             "future_smoke_pass_would_not_prove_production_readiness",
         ),
     )

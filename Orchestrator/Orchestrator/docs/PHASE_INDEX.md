@@ -2022,3 +2022,52 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 190 - 30B Provider Viability Marker Smoke
+
+- Status: accepted constrained marker-smoke viability evidence documented.
+- Phase doc: `docs/PHASE_190.md`.
+- Behavior: records accepted one-call 30B marker-smoke viability for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M` with HTTP `200`, JSON parse success
+  `true`, returned model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response text
+  `ORCH_30B_VIABILITY_OK`, `done=true`, `done_reason=stop`, duration
+  `9394ms`, marker present `true`, and classification
+  `pass_30b_marker_smoke_viability`.
+- Artifact caveat: Phase 190 Retry 1 backfilled
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase190_30b_provider_viability\phase_190_30b_provider_viability_probe.json`
+  without a provider call.
+- GPU caveat: before memory `0MiB / 24463MiB`, after memory
+  `18302MiB / 24463MiB`, and process attribution was not proven by the
+  `nvidia-smi` process table.
+- Boundary: no route execution, semantic correctness, real workload
+  sufficiency, long-context behavior, sustained-load stability, product tracer
+  proof, or production readiness is proven.
+
+## Phase 191 - Supervised Provider Call Tracer Target Reconciliation To 30B
+
+- Status: locally source/test/docs-proven target reconciliation only.
+- Phase doc: `docs/PHASE_191.md`.
+- Runbook: `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`.
+- Behavior: retargets the supervised provider-call tracer packet from
+  `qwen3.6:35b-a3b` to `qwen3:30b-a3b-instruct-2507-q4_K_M`.
+- Packet facts: `phase=PHASE_191`,
+  `artifact_kind=supervised_provider_call_tracer_packet_contract`,
+  `original_packet_phase=PHASE_183`,
+  `target_reconciliation_phase=PHASE_191`,
+  `inventory_evidence_phase=PHASE_190`,
+  `provider_catalog_key=local_model_candidate`,
+  `model_name=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+  `endpoint_shape=POST local_ollama_http/api/generate`, and
+  `expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+- Target posture: `qwen3.6:35b-a3b` is disallowed for current laptop target
+  selection due to Roger's operational lockup evidence; `qwen3.6:27b` remains
+  the safer fallback candidate based on prior smoother operation and earlier
+  accepted marker-smoke and metadata evidence.
+- Boundary: Phase 190 proves only constrained 30B marker-smoke viability; it
+  does not prove route execution, semantic correctness, real workload
+  sufficiency, long-context behavior, sustained-load stability, or production
+  readiness. The product tracer still needs a future supervised
+  `ORCH_PROVIDER_SMOKE_OK` marker call.
+- Marker:
+  `PHASE191_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_TO_30B_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

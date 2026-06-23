@@ -308,6 +308,17 @@ current inventory visibility showed `qwen3.6:27b` absent and
 proof, does not transfer prior 27b evidence to 35b-a3b, and does not authorize
 provider/model execution, route execution, or production readiness.
 
+Phase 191 supersedes that laptop target selection without rewriting the
+historical Phase 187 record. `qwen3.6:35b-a3b` is disallowed for current
+laptop target selection based on Roger's operational evidence that it locks up
+the laptop. Phase 190 proves only constrained 30B marker-smoke viability for
+`qwen3:30b-a3b-instruct-2507-q4_K_M`; it does not prove route execution,
+semantic correctness, real workload sufficiency, long-context behavior,
+sustained-load stability, or production readiness. Phase 191 retargets the
+packet to that 30B candidate while preserving `qwen3.6:27b` as the safer
+fallback candidate based on prior smoother operation and earlier accepted
+marker-smoke and metadata evidence.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker
