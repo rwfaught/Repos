@@ -339,6 +339,12 @@ model, runtime, HTTP endpoint, worker, WSL, Ollama, Hermes, OpenClaw, Discord,
 or production behavior. Current success remains unmet for route-mediated
 provider execution.
 
+Phase 206 belongs to this context as a controlled route-mediated provider
+smoke runner/CLI seam only. It prepares dry artifact shape creation,
+caller-supplied captured-result review, caller-supplied artifact writing, and
+explicit rejection of provider-call flags. It does not run route/provider/
+model/runtime behavior and does not prove route-mediated provider execution.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

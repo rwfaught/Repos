@@ -3692,3 +3692,44 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   sustained-load, Hermes/OpenClaw behavior, or production readiness proof.
 
 `PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 206 Route Mediated Provider Smoke Runner Contract
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS`
+- Created source:
+  `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Created tests:
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Created docs: `docs/PHASE_206.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: adds deterministic dry artifact preparation, caller-supplied
+  captured-result review, caller-supplied artifact writing, and safe CLI seam
+  for a future route-mediated provider smoke proof.
+- Artifact facts registered: `phase=PHASE_206`;
+  `artifact_kind=route_mediated_provider_smoke_runner_contract`;
+  `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`;
+  `fallback_candidate=qwen3.6:27b`; `production_readiness=false`.
+- CLI safety registered: default mode is dry-run/artifact-shape only;
+  `--allow-provider-call` is rejected during Phase 206.
+- Reviewer behavior: accepts only complete caller-supplied route-mediated shape
+  with route marker `ORCH_ROUTE_PROVIDER_SMOKE_OK`, returned 30B target model,
+  and all Phase 202 route-path evidence fields present; rejects direct marker
+  `ORCH_PROVIDER_SMOKE_OK`, wrong model, missing route evidence, and production
+  readiness claims.
+- Validation: `python -m unittest discover -s tests -p "test_phase_206_route_mediated_provider_smoke_runner_contract.py" -v`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_runner.py`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_cli.py`;
+  `git diff --check`; `git diff --cached --check`.
+- Explicit non-proofs: no route/provider/model/runtime execution,
+  HTTP/Ollama calls, `/api/generate`, `/api/chat`, worker dispatch,
+  WSL/OpenClaw/Hermes/Discord, export/package, cleanup/delete/archive,
+  production execution, or production readiness proof.
+
+`PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`

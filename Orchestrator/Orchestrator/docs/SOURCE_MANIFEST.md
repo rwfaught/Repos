@@ -3715,3 +3715,50 @@ WSL/OpenClaw/Hermes/Discord, export/package, cleanup/delete/archive, production
 execution, or production readiness behavior is registered by Phase 202.
 
 `PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 206 Route Mediated Provider Smoke Runner Contract
+
+Boundary:
+
+`PHASE_206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS`
+
+Registered new source files:
+
+- `orchestrator/route_mediated_provider_smoke_runner.py`
+- `orchestrator/route_mediated_provider_smoke_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_206.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic runner/CLI seam for dry artifact
+preparation, caller-supplied captured-result review, caller-supplied artifact
+writing, and explicit rejection of runtime provider-call flags during Phase
+206.
+
+Registered artifact facts: `phase=PHASE_206`,
+`artifact_kind=route_mediated_provider_smoke_runner_contract`,
+`route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`disallowed_model=qwen3.6:35b-a3b`,
+`fallback_candidate=qwen3.6:27b`, and `production_readiness=false`.
+
+No route/provider/model/runtime execution, HTTP/Ollama calls, `/api/generate`,
+`/api/chat`, worker dispatch, WSL/OpenClaw/Hermes/Discord, export/package,
+cleanup/delete/archive, production execution, or production readiness behavior
+is registered by Phase 206.
+
+`PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -2145,3 +2145,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
 - Marker:
   `PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 206 - Route Mediated Provider Smoke Runner Contract
+
+- Status: locally source/test/docs-proven runner/CLI seam only.
+- Phase doc: `docs/PHASE_206.md`.
+- Source: `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Tests: `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Behavior: adds a deterministic dry artifact/review runner and CLI seam for a
+  future route-mediated provider smoke proof, using
+  `ORCH_ROUTE_PROVIDER_SMOKE_OK` and target
+  `qwen3:30b-a3b-instruct-2507-q4_K_M`.
+- Safety: default CLI mode is dry-run/artifact shape only; caller-supplied
+  captured-result review is review-only; `--allow-provider-call` is rejected
+  during Phase 206.
+- Reviewer behavior: rejects direct marker `ORCH_PROVIDER_SMOKE_OK`, wrong
+  returned model, missing route evidence, and production readiness claims.
+- Boundary: no route/provider/model/runtime execution, HTTP/Ollama calls,
+  worker dispatch, WSL/OpenClaw/Hermes/Discord, export/package,
+  cleanup/delete/archive, or production execution is performed.
+- Current gap: route-mediated provider execution with persisted/displayed
+  outcome remains unproven.
+- Marker:
+  `PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

@@ -330,6 +330,10 @@ fresh artifact proof.
   readiness, explicit route execution boundary, provider call through route
   path, captured response, persisted artifact path, and displayed/reviewable
   outcome evidence before route-mediated execution can be claimed.
+- Phase 206 adds the controlled runner/CLI/artifact seam for a future
+  route-mediated provider smoke proof, with dry-run default behavior,
+  caller-supplied captured-result review, and explicit rejection of provider
+  call flags during this phase.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,
