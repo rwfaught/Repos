@@ -128,7 +128,7 @@ class Phase206RouteMediatedProviderSmokeRunnerContractTests(unittest.TestCase):
     def test_cli_rejects_provider_call_flag_and_reviews_caller_supplied_capture(self):
         rejected = run_route_mediated_provider_smoke_cli(("--allow-provider-call",))
         self.assertEqual(rejected["exit_code"], 2)
-        self.assertIn("not authorized", rejected["error_text"])
+        self.assertIn("requires --out-dir", rejected["error_text"])
 
         with tempfile.TemporaryDirectory() as temp_dir:
             capture_path = Path(temp_dir) / "capture.json"

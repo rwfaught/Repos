@@ -334,6 +334,10 @@ fresh artifact proof.
   route-mediated provider smoke proof, with dry-run default behavior,
   caller-supplied captured-result review, and explicit rejection of provider
   call flags during this phase.
+- Phase 208 adds a guarded execution adapter path for a future operator
+  boundary. It can call only an injected provider callable after explicit
+  route/provider/execution-mode/model/marker guards pass; fake injected tests
+  are not runtime proof.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

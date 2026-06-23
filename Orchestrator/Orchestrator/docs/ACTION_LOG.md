@@ -3733,3 +3733,46 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production execution, or production readiness proof.
 
 `PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 208 Route Mediated Provider Smoke Execution Adapter
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS`
+- Updated source:
+  `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Created tests:
+  `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`.
+- Updated tests:
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Created docs: `docs/PHASE_208.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: adds a guarded execution adapter that reaches only an injected
+  provider callable after explicit allow-route, allow-provider, execution-mode,
+  target-model, route-marker, and production-readiness guards pass.
+- Adapter artifact facts: `phase=PHASE_208`;
+  `artifact_kind=route_mediated_provider_smoke_execution_adapter_contract`;
+  `route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`;
+  `target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`;
+  `fallback_candidate=qwen3.6:27b`; `production_readiness=false`.
+- Guard behavior: rejects missing allow flags, missing execution mode,
+  `qwen3.6:35b-a3b`, `qwen3.6:27b` as active target, wrong marker,
+  production-readiness claims, and missing provider callable.
+- CLI behavior: default help/dry-run/review remains non-executing; runtime
+  shaped path requires `--execute-route-smoke`, `--allow-route-execution`,
+  `--allow-provider-call`, and `--out-dir`.
+- Validation: `python -m unittest discover -s tests -p "test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_206_route_mediated_provider_smoke_runner_contract.py" -v`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_runner.py`;
+  `python -m py_compile orchestrator/route_mediated_provider_smoke_cli.py`;
+  `git diff --check`; `git diff --cached --check`.
+- Explicit non-proofs: fake/injected provider validation is not runtime proof;
+  no live provider/model/runtime execution, HTTP/Ollama calls, route runtime
+  execution, worker dispatch, WSL/OpenClaw/Hermes/Discord, production
+  execution, or production readiness proof.
+
+`PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -2170,3 +2170,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
 - Marker:
   `PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 208 - Route Mediated Provider Smoke Execution Adapter
+
+- Status: locally source/test/docs-proven guarded execution adapter only.
+- Phase doc: `docs/PHASE_208.md`.
+- Source: `orchestrator/route_mediated_provider_smoke_runner.py`;
+  `orchestrator/route_mediated_provider_smoke_cli.py`.
+- Tests:
+  `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`;
+  `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`.
+- Behavior: adds an explicit guarded adapter path that can call only an
+  injected provider callable when route execution, provider call, execution
+  mode, target model, marker, and production-readiness guards pass.
+- Fake/injected classification:
+  `fake_route_mediated_provider_smoke_shape_valid_not_runtime_proof`.
+- Runtime classification reserved for a future operator artifact:
+  `route_mediated_provider_smoke_runtime_marker_pass`.
+- Boundary: no real provider/model/runtime execution, HTTP/Ollama calls,
+  route runtime execution, worker dispatch, WSL/OpenClaw/Hermes/Discord,
+  export/package, cleanup/delete/archive, or production execution is
+  performed.
+- Current gap: route-mediated provider runtime execution remains unproven.
+- Marker:
+  `PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

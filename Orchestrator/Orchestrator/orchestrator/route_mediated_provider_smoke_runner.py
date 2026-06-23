@@ -28,8 +28,11 @@ from orchestrator.route_path_proof_packet import (
 
 PHASE = "PHASE_206"
 ARTIFACT_KIND = "route_mediated_provider_smoke_runner_contract"
+EXECUTION_ADAPTER_PHASE = "PHASE_208"
+EXECUTION_ADAPTER_ARTIFACT_KIND = "route_mediated_provider_smoke_execution_adapter_contract"
 PROMPT = f"Return exactly: {FUTURE_ROUTE_MARKER}"
 DEFAULT_MODE = "dry_artifact_shape_only"
+EXECUTION_MODE = "route_mediated_provider_smoke_execution"
 
 
 ROUTE_MEDIATED_PROVIDER_SMOKE_NON_PROOFS = (
@@ -40,6 +43,7 @@ ROUTE_MEDIATED_PROVIDER_SMOKE_NON_PROOFS = (
     "route_mediated_provider_smoke_runner_is_not_http_or_ollama_call",
     "route_mediated_provider_smoke_runner_is_not_worker_dispatch",
     "route_mediated_provider_smoke_runner_is_not_production_readiness",
+    "source_test_acceptance_is_not_runtime_proof",
 ) + ROUTE_PATH_PROOF_NON_PROOFS
 
 NO_RUNNER_ACTIVITY_FLAGS = {
@@ -162,6 +166,173 @@ def build_route_mediated_provider_smoke_dry_artifact() -> RouteMediatedProviderS
         classification="dry_artifact_shape_only_not_runtime_proof",
         artifact=artifact,
         payload=payload,
+    )
+
+
+def execute_route_mediated_provider_smoke_with_injected_provider(
+    *,
+    provider_callable: Any | None,
+    allow_route_execution: bool = False,
+    allow_provider_call: bool = False,
+    execution_mode: str = "",
+    target_model: str = ROUTE_PROOF_TARGET_MODEL,
+    route_marker: str = FUTURE_ROUTE_MARKER,
+    production_readiness: bool = False,
+    output_path: str | Path | None = None,
+) -> RouteMediatedProviderSmokeResult:
+    """Run the guarded fake/injected execution adapter without live transport.
+
+    The callable is dependency-injected by a later operator/test harness. This
+    function never imports or constructs a provider transport on its own.
+    """
+
+    rejection = _execution_adapter_rejection(
+        allow_route_execution=allow_route_execution,
+        allow_provider_call=allow_provider_call,
+        execution_mode=execution_mode,
+        target_model=target_model,
+        route_marker=route_marker,
+        production_readiness=production_readiness,
+        provider_callable=provider_callable,
+    )
+    if rejection:
+        return rejection
+
+    provider_result = provider_callable(model=target_model, prompt=PROMPT)
+    captured_result = _captured_result_from_provider_result(provider_result)
+    runner_result = review_route_mediated_provider_smoke_capture(captured_result)
+    classification = (
+        "fake_route_mediated_provider_smoke_shape_valid_not_runtime_proof"
+        if runner_result.accepted
+        else runner_result.classification
+    )
+    artifact = _phase_208_artifact_from_phase_206_artifact(
+        runner_result.artifact,
+        classification=classification,
+        accepted=runner_result.accepted,
+        activity_flags=_flags(
+            caller_supplied_capture_reviewed=True,
+            future_runtime_execution_requested=True,
+            provider_call_allowed=True,
+            request_intake_executed=True,
+            route_recommended=True,
+            route_readiness_executed=True,
+            route_executed=True,
+            provider_executed=True,
+            model_executed=True,
+            generation_performed=True,
+            api_generate_called=True,
+            outcome_displayed=True,
+        ),
+    )
+    payload = route_mediated_provider_smoke_artifact_to_dict(artifact)
+    result = RouteMediatedProviderSmokeResult(
+        accepted=runner_result.accepted,
+        classification=classification,
+        artifact=artifact,
+        payload=payload,
+    )
+    if output_path is not None:
+        return _write_result_payload(result, output_path, "phase_208_route_mediated_provider_smoke_execution_adapter_artifact.json")
+    return result
+
+
+def _execution_adapter_rejection(
+    *,
+    allow_route_execution: bool,
+    allow_provider_call: bool,
+    execution_mode: str,
+    target_model: str,
+    route_marker: str,
+    production_readiness: bool,
+    provider_callable: Any | None,
+) -> RouteMediatedProviderSmokeResult | None:
+    if not allow_route_execution:
+        return _phase_208_rejected_result("missing_allow_route_execution")
+    if not allow_provider_call:
+        return _phase_208_rejected_result("missing_allow_provider_call")
+    if execution_mode != EXECUTION_MODE:
+        return _phase_208_rejected_result("missing_explicit_route_smoke_execution_mode")
+    if target_model == DISALLOWED_MODEL:
+        return _phase_208_rejected_result("disallowed_35b_target_rejected")
+    if target_model == FALLBACK_CANDIDATE:
+        return _phase_208_rejected_result("fallback_candidate_not_active_target")
+    if target_model != ROUTE_PROOF_TARGET_MODEL:
+        return _phase_208_rejected_result("wrong_target_model")
+    if route_marker != FUTURE_ROUTE_MARKER:
+        return _phase_208_rejected_result("wrong_route_marker")
+    if production_readiness is True:
+        return _phase_208_rejected_result("production_readiness_claim_rejected")
+    if provider_callable is None:
+        return _phase_208_rejected_result("provider_callable_required")
+    return None
+
+
+def _phase_208_rejected_result(classification: str) -> RouteMediatedProviderSmokeResult:
+    base = build_route_mediated_provider_smoke_dry_artifact().artifact
+    artifact = _phase_208_artifact_from_phase_206_artifact(
+        base,
+        classification=classification,
+        accepted=False,
+        activity_flags=_flags(future_runtime_execution_requested=True),
+    )
+    return RouteMediatedProviderSmokeResult(
+        accepted=False,
+        classification=classification,
+        artifact=artifact,
+        payload=route_mediated_provider_smoke_artifact_to_dict(artifact),
+    )
+
+
+def _captured_result_from_provider_result(provider_result: dict[str, Any]) -> dict[str, Any]:
+    response_text = str(provider_result.get("response_text", provider_result.get("response", "")))
+    returned_model = str(provider_result.get("returned_model", provider_result.get("model", "")))
+    marker = str(provider_result.get("marker", response_text))
+    return {
+        "request_intake_harness_evidence": {"source": "phase_208_injected_adapter", "mode": "fake_injected"},
+        "route_recommendation_readiness_evidence": {"target_model": ROUTE_PROOF_TARGET_MODEL},
+        "explicit_route_execution_boundary_evidence": {"execution_mode": EXECUTION_MODE},
+        "provider_call_through_route_path_evidence": {"transport": "injected_provider_callable"},
+        "captured_http_status_json_model_marker_evidence": {
+            "http_status": provider_result.get("http_status"),
+            "json_parse_success": provider_result.get("json_parse_success"),
+            "returned_model": returned_model,
+            "response_text": response_text,
+            "done": provider_result.get("done"),
+            "done_reason": provider_result.get("done_reason"),
+            "marker_present": FUTURE_ROUTE_MARKER in response_text or marker == FUTURE_ROUTE_MARKER,
+        },
+        "persisted_artifact_path_evidence": {"pending_or_caller_supplied": True},
+        "displayed_reviewable_outcome_evidence": {"reviewable_payload_built": True},
+        "marker": marker,
+        "returned_model": returned_model,
+        "production_readiness": False,
+    }
+
+
+def _phase_208_artifact_from_phase_206_artifact(
+    artifact: RouteMediatedProviderSmokeArtifact,
+    *,
+    classification: str,
+    accepted: bool,
+    activity_flags: dict[str, bool],
+) -> RouteMediatedProviderSmokeArtifact:
+    return RouteMediatedProviderSmokeArtifact(
+        **{
+            **asdict(artifact),
+            "phase": EXECUTION_ADAPTER_PHASE,
+            "artifact_kind": EXECUTION_ADAPTER_ARTIFACT_KIND,
+            "mode": "fake_injected_execution_review_only" if accepted else "guarded_execution_adapter_rejected",
+            "route_path_packet_review": {
+                **artifact.route_path_packet_review,
+                "phase_206_runner_review": artifact.route_path_packet_review,
+                "adapter_classification": classification,
+                "adapter_accepted": accepted,
+                "source_test_acceptance_is_not_runtime_proof": True,
+            },
+            "activity_flags": activity_flags,
+            "production_readiness": False,
+        }
     )
 
 
@@ -301,18 +472,27 @@ def write_route_mediated_provider_smoke_artifact(
         if captured_result is not None
         else build_route_mediated_provider_smoke_dry_artifact()
     )
+    return _write_result_payload(result, output_path, "phase_206_route_mediated_provider_smoke_artifact.json")
+
+
+def _write_result_payload(
+    result: RouteMediatedProviderSmokeResult,
+    output_path: str | Path,
+    default_filename: str,
+) -> RouteMediatedProviderSmokeResult:
     target = Path(output_path)
     if target.exists() and target.is_dir():
-        target = target / "phase_206_route_mediated_provider_smoke_artifact.json"
+        target = target / default_filename
     elif not target.suffix:
         target.mkdir(parents=True, exist_ok=True)
-        target = target / "phase_206_route_mediated_provider_smoke_artifact.json"
+        target = target / default_filename
     else:
         target.parent.mkdir(parents=True, exist_ok=True)
 
     payload = dict(result.payload)
     payload["activity_flags"] = dict(payload["activity_flags"])
     payload["activity_flags"]["artifact_persisted"] = True
+    payload["persisted_artifact_path_evidence"] = {"path": str(target)}
     target.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return RouteMediatedProviderSmokeResult(
         accepted=result.accepted,

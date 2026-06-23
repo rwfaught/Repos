@@ -3762,3 +3762,54 @@ cleanup/delete/archive, production execution, or production readiness behavior
 is registered by Phase 206.
 
 `PHASE206_ROUTE_MEDIATED_PROVIDER_SMOKE_RUNNER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 208 Route Mediated Provider Smoke Execution Adapter
+
+Boundary:
+
+`PHASE_208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/route_mediated_provider_smoke_runner.py`
+- `orchestrator/route_mediated_provider_smoke_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_208_route_mediated_provider_smoke_execution_adapter_contract.py`
+
+Registered changed test files:
+
+- `tests/test_phase_206_route_mediated_provider_smoke_runner_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_208.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: guarded route-mediated provider smoke execution adapter
+for a future operator boundary. The adapter can call only a dependency-injected
+provider callable after explicit guards pass; this phase does not add or run a
+live provider transport.
+
+Registered adapter facts: `phase=PHASE_208`,
+`artifact_kind=route_mediated_provider_smoke_execution_adapter_contract`,
+`route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`prompt=Return exactly: ORCH_ROUTE_PROVIDER_SMOKE_OK`,
+`target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`disallowed_model=qwen3.6:35b-a3b`,
+`fallback_candidate=qwen3.6:27b`, and `production_readiness=false`.
+
+No live provider/model/runtime execution, HTTP/Ollama calls, route runtime
+execution, worker dispatch, WSL/OpenClaw/Hermes/Discord, export/package,
+cleanup/delete/archive, production execution, or production readiness behavior
+is registered by Phase 208.
+
+`PHASE208_ROUTE_MEDIATED_PROVIDER_SMOKE_EXECUTION_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

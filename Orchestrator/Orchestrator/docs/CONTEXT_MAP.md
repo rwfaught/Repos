@@ -345,6 +345,12 @@ caller-supplied captured-result review, caller-supplied artifact writing, and
 explicit rejection of provider-call flags. It does not run route/provider/
 model/runtime behavior and does not prove route-mediated provider execution.
 
+Phase 208 belongs to this context as a guarded execution adapter seam only. It
+adds explicit guard checks and dependency injection for a future operator
+route-mediated smoke proof, but fake injected validation is not runtime proof.
+The first actual route-mediated runtime proof still requires a later operator
+artifact with captured execution evidence.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

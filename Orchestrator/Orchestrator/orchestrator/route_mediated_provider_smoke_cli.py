@@ -13,7 +13,11 @@ from pathlib import Path
 from typing import Sequence
 
 from orchestrator.route_mediated_provider_smoke_runner import (
+    EXECUTION_MODE,
+    FUTURE_ROUTE_MARKER,
+    ROUTE_PROOF_TARGET_MODEL,
     build_route_mediated_provider_smoke_dry_artifact,
+    execute_route_mediated_provider_smoke_with_injected_provider,
     reject_future_runtime_execution_request,
     review_route_mediated_provider_smoke_capture,
     write_route_mediated_provider_smoke_artifact,
@@ -26,17 +30,21 @@ def _help_text() -> str:
             "Route-mediated provider smoke runner commands:",
             "  --dry-run [--write-artifact --out-dir <path>]",
             "  --review-captured <json-file> [--write-artifact --out-dir <path>]",
-            "  --allow-provider-call",
+            "  --execute-route-smoke --allow-route-execution --allow-provider-call --out-dir <path>",
             "  --help",
             "",
             "Default mode is dry artifact shape only.",
             "Phase 206 does not authorize route/provider/model/runtime execution.",
-            "--allow-provider-call is rejected during Phase 206.",
+            "Phase 208 runtime-shaped flags require an injected provider callable.",
         )
     )
 
 
-def run_route_mediated_provider_smoke_cli(argv: Sequence[str] | None = None) -> dict[str, object]:
+def run_route_mediated_provider_smoke_cli(
+    argv: Sequence[str] | None = None,
+    *,
+    provider_callable: object | None = None,
+) -> dict[str, object]:
     """Run deterministic CLI logic without runtime/provider execution."""
 
     args = tuple(argv or ())
@@ -53,9 +61,29 @@ def run_route_mediated_provider_smoke_cli(argv: Sequence[str] | None = None) -> 
             "payload": {},
         }
 
-    if "--allow-provider-call" in args:
-        result = reject_future_runtime_execution_request(allow_provider_call=True)
-        return _cli_result(result.payload, 2, result.written_path, "Provider calls are not authorized by Phase 206.")
+    if "--execute-route-smoke" in args or "--allow-route-execution" in args or "--allow-provider-call" in args:
+        if not out_dir:
+            return {
+                "exit_code": 2,
+                "output_text": _help_text(),
+                "error_text": "Route-smoke execution adapter requires --out-dir.",
+                "payload": {},
+            }
+        result = execute_route_mediated_provider_smoke_with_injected_provider(
+            provider_callable=provider_callable,
+            allow_route_execution="--allow-route-execution" in args,
+            allow_provider_call="--allow-provider-call" in args,
+            execution_mode=EXECUTION_MODE if "--execute-route-smoke" in args else "",
+            target_model=ROUTE_PROOF_TARGET_MODEL,
+            route_marker=FUTURE_ROUTE_MARKER,
+            output_path=out_dir,
+        )
+        return _cli_result(
+            result.payload,
+            0 if result.accepted else 2,
+            result.written_path,
+            "" if result.accepted else "Route-mediated provider smoke execution was rejected by guards.",
+        )
 
     if "--review-captured" in args:
         captured_path = _option_value(args, "--review-captured")
