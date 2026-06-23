@@ -1892,3 +1892,28 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE169_TINY_VERTICAL_TRACER_BULLET_DRY_REPORT_ARTIFACT_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 172 - Tiny Vertical Tracer Dry Artifact Operator Proof
+
+- Status: accepted operator proof registered in source docs.
+- Phase doc: `docs/PHASE_172.md`.
+- Behavior: registers accepted Phase 172 Retry 3 proof that the Phase 169 tiny
+  vertical tracer dry artifact can be generated and inspected from current
+  pushed source while writing only to a temp directory.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no runtime call, no route
+  execution, no worker dispatch, no WSL/OpenClaw/Hermes/Discord, no
+  export/package/cleanup/delete/archive, and no production readiness behavior
+  changed.
+- Retry history preserved: Retry 0 command-shape mismatch; Retry 1
+  import-root/PYTHONPATH issue; Retry 2 incorrect `.path` assumption versus
+  actual `written_path`; Retry 3 PASS.
+- Accepted proof marker:
+  `PHASE_172_RETRY3_DRY_ARTIFACT_PROOF=PASS`.
+- Final accepted HEAD:
+  `e30895869bf1361d05cabeecfab082165ad4299c`.
+- Next recommended boundary:
+  `PHASE_173_TINY_VERTICAL_TRACER_DRY_ARTIFACT_OPERATOR_PROOF_SOURCE_DOCS`.
+- Marker:
+  `PHASE172_RETRY3_TINY_VERTICAL_TRACER_DRY_ARTIFACT_OPERATOR_PROOF_ACCEPTED=PASS`.
+- Production readiness is not claimed.
