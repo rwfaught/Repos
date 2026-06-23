@@ -299,8 +299,11 @@ fresh artifact proof.
 - Phase 176 adds a CLI-compatible adapter over the Phase 169 tiny vertical
   tracer dry report, including caller-supplied JSON dry artifact writing for
   `safe_direct_answer` only, without adding execution authority.
+- Phase 179 accepts PowerShell operator smoke proof that the Phase 176 tiny
+  vertical tracer CLI adapter works as a dry deterministic command surface
+  without adding execution authority.
 - The next conservative provider boundary is
-  `PHASE_177_TINY_VERTICAL_TRACER_CLI_ADAPTER_OPERATOR_SMOKE`.
+  `PHASE_180_TINY_VERTICAL_TRACER_CLI_OPERATOR_SMOKE_PROOF_SOURCE_DOCS`.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

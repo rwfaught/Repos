@@ -282,6 +282,14 @@ not provider/model execution, route execution, live routing, worker dispatch,
 service/API/UI productization, cleanup/delete/archive behavior, or production
 readiness.
 
+Tiny vertical tracer CLI operator-smoke language belongs to this context only
+as accepted dry command-surface proof registration. Phase 179 proves the Phase
+176 CLI adapter commands worked from PowerShell, including conservative
+rejection cases and caller-supplied temp JSON persistence. It does not add
+provider/model execution, route execution, live routing, API endpoint
+execution, product-harness Codex dispatch, worker dispatch, RAG/web/scheduler/
+connector behavior, service/API/UI productization, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker
