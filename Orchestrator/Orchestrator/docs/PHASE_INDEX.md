@@ -2452,3 +2452,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   current-success broadening, or production readiness is added.
 - Marker:
   `PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 258 - General Answer JSON BOM Tolerance
+
+- Status: locally source/test/docs-proven UTF-8 BOM tolerance for structured
+  local `general_answer` JSON input.
+- Phase doc: `docs/PHASE_258.md`.
+- Boundary:
+  `PHASE_258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS`.
+- Source: `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_258_general_answer_json_bom_tolerance_contract.py`.
+- Behavior: reads `--general-answer-input <json_path>` with UTF-8 BOM
+  tolerance so normal UTF-8 and BOM-prefixed structured local JSON enter the
+  same existing conservative report-only path.
+- Preserved behavior: malformed JSON, unreadable paths, non-object JSON,
+  unsafe input, wrong request type, high/unknown risk, mutation,
+  scheduler/reminder, RAG/local lookup, web lookup, connector,
+  provider/model/runtime execution, production-readiness requests, and invalid
+  artifact paths remain conservatively rejected.
+- Boundary: no semantic answer generation, answer correctness proof,
+  provider/model/runtime execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker/Codex
+  dispatch, service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness is added.
+- Marker:
+  `PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`.

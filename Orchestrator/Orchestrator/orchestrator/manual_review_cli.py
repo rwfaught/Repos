@@ -210,7 +210,7 @@ def _read_json_object(path_text: str) -> tuple[dict[str, Any] | None, str]:
         return None, "Manual review adapter requires a JSON path after --general-answer-input."
 
     try:
-        raw_text = Path(path_text).read_text(encoding="utf-8")
+        raw_text = Path(path_text).read_text(encoding="utf-8-sig")
     except OSError as exc:
         return None, f"Manual review adapter could not read general-answer input: {exc.__class__.__name__}."
 

@@ -4244,3 +4244,58 @@ archive, commit, push, production task execution, current-success broadening,
 or production readiness behavior is registered by Phase 257.
 
 `PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 258 General Answer JSON BOM Tolerance
+
+Boundary:
+
+`PHASE_258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_258_general_answer_json_bom_tolerance_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_258.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: UTF-8 BOM tolerance for operator-provided structured
+local `general_answer` JSON input files read by `--general-answer-input`.
+
+Registered CLI option:
+
+- `--general-answer-input <json_path> [--write-review-json <artifact_json_path>]`
+
+Registered accepted behavior: normal UTF-8 and UTF-8 BOM-prefixed safe
+low/routine-risk structured `general_answer` JSON input enter the existing
+non-executing structured intake path, preserve report-only/manual-review-only
+semantics, and can persist the existing Phase 257 JSON artifact when an
+explicit caller-supplied artifact path is provided.
+
+Registered rejection behavior: malformed JSON, unreadable paths, non-object
+JSON, missing structured fields, wrong request type, high/critical or
+unknown/non-low risk, mutation, scheduling/reminder, RAG/local lookup, web
+lookup, connector, provider/model/runtime execution, production-readiness
+claims, and invalid artifact paths remain rejected or blocked conservatively.
+
+No semantic correctness proof, semantic answer generation,
+provider/model/runtime execution, WSL/Ollama execution, Hermes/OpenClaw/Discord
+behavior, live route execution, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch, service/API/UI behavior, project-script execution, source refresh,
+export/package, cleanup/delete/archive, commit, push, production task
+execution, current-success broadening, or production readiness behavior is
+registered by Phase 258.
+
+`PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`

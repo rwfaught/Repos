@@ -4101,3 +4101,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   not production work, and not production readiness.
 
 `PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 258 General Answer JSON BOM Tolerance
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_258_general_answer_json_bom_tolerance_contract.py`.
+- Created docs: `docs/PHASE_258.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: hardens structured local `general_answer` JSON input reading so
+  normal UTF-8 files and UTF-8 BOM-prefixed files both work with
+  `--general-answer-input <input_json> --write-review-json <artifact_json>`.
+- Accepted input: safe low/routine-risk structured local `general_answer`
+  input still routes through the existing non-executing manual review and
+  lightweight report lane, and can still persist the report-only review result
+  to the caller-supplied artifact path.
+- Rejection behavior: malformed JSON, unreadable paths, non-object JSON,
+  missing fields, wrong request type, high/critical or unknown/non-low risk,
+  mutation, scheduling/reminder, RAG/local lookup, web lookup, connector,
+  provider/model/runtime execution, production-readiness claims, and invalid
+  artifact paths remain rejected or blocked conservatively.
+- Existing behavior preserved: Phase 256 no-persistence real-input behavior
+  and Phase 257 caller-supplied artifact persistence behavior remain intact.
+- Explicit non-proofs: not semantic answer correctness proof, not semantic
+  answer generation, not provider/model/runtime execution, not live route
+  execution, not RAG/local lookup, not web lookup, not scheduler/reminder
+  execution, not connector execution, not worker/Codex dispatch, not
+  service/API/UI productization, not export/package behavior, not production
+  work, and not production readiness.
+
+`PHASE258_GENERAL_ANSWER_JSON_BOM_TOLERANCE_SOURCE_TEST_DOCS_PROVEN=PASS`
