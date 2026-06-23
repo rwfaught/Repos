@@ -329,6 +329,16 @@ worker dispatch, `/api/chat`, semantic correctness, real workload
 sufficiency, long-context behavior, sustained-load stability, service/API/UI
 productization, Hermes/OpenClaw behavior, or production readiness.
 
+Phase 202 belongs to this context as a route-path proof packet contract only.
+It defines the future evidence required to move from direct provider marker
+smoke to route-mediated provider marker smoke: request intake/harness, route
+recommendation/readiness, explicit route execution boundary, provider call
+through route path, captured response, persisted artifact path, and
+displayed/reviewable outcome. Phase 202 does not execute a route, provider,
+model, runtime, HTTP endpoint, worker, WSL, Ollama, Hermes, OpenClaw, Discord,
+or production behavior. Current success remains unmet for route-mediated
+provider execution.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

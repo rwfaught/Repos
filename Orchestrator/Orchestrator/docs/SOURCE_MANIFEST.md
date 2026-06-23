@@ -3656,3 +3656,62 @@ Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
 Added docs/PHASE_198.md and clarified phase-label taxonomy/checkpoint-gap doctrine in the durable docs ledger.
 
 This note records that phase labels and phase docs are intentionally not one-to-one. Transport checkpoints, push proofs, source-refresh/upload proofs, retry attempts, and coordinator metadata checkpoints may be accepted without standalone docs/PHASE_XXX.md files.
+
+## Phase 202 Route Path Proof Packet Contract
+
+Boundary:
+
+`PHASE_202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered new source files:
+
+- `orchestrator/route_path_proof_packet.py`
+
+Registered new test files:
+
+- `tests/test_phase_202_route_path_proof_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_202.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: deterministic route-path proof packet contract defining
+the smallest future proof needed to move from direct captured provider marker
+smoke to route-mediated provider marker smoke.
+
+Registered packet facts: `phase=PHASE_202`,
+`artifact_kind=route_path_proof_packet_contract`,
+`prior_direct_marker_proof_phase=PHASE_194`,
+`route_proof_target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+`disallowed_model=qwen3.6:35b-a3b`,
+`fallback_candidate=qwen3.6:27b`,
+`prior_direct_marker=ORCH_PROVIDER_SMOKE_OK`, and
+`future_route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`.
+
+Registered required future proof fields:
+
+- Request intake/harness evidence
+- Route recommendation/readiness evidence
+- Explicit route execution boundary evidence
+- Provider call through route path evidence
+- Captured HTTP/status/JSON/model/marker evidence
+- Persisted artifact path evidence
+- Displayed/reviewable outcome evidence
+
+Registered false execution authority: `route_execution_allowed=false`,
+`provider_execution_allowed=false`, `generation_allowed=false`, and
+`production_readiness=false`.
+
+No route/provider/model/runtime execution, HTTP/Ollama calls, worker dispatch,
+WSL/OpenClaw/Hermes/Discord, export/package, cleanup/delete/archive, production
+execution, or production readiness behavior is registered by Phase 202.
+
+`PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

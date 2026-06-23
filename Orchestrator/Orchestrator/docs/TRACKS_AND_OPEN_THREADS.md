@@ -324,6 +324,12 @@ fresh artifact proof.
   lines are not accepted for classifier/proof artifact status.
 - Phase 195 registers the Phase 194 proof in docs/ledgers only and does not
   authorize follow-on work.
+- Phase 202 adds a deterministic route-path proof packet contract for the
+  future move from direct provider marker smoke to route-mediated provider
+  marker smoke. It requires request intake/harness, route recommendation/
+  readiness, explicit route execution boundary, provider call through route
+  path, captured response, persisted artifact path, and displayed/reviewable
+  outcome evidence before route-mediated execution can be claimed.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

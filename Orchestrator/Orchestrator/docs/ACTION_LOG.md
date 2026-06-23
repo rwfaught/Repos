@@ -3647,3 +3647,48 @@ Preserved rule: do not renumber old phases and do not fabricate filler phase doc
 Phase 197 caveat preserved: operator command printed PASS after a required-entry path check failed; coordinator capsule inspection recovered source-refresh posture because the uploaded capsule root was Orchestrator/, not Orchestrator/Orchestrator/.
 
 Non-proofs preserved: no route execution, no live routing, no provider/model execution, no /api/chat, no semantic correctness, no sustained-load behavior, no long-context behavior, no service/API/UI productization, no Hermes/OpenClaw behavior, and no production readiness.
+
+## Phase 202 Route Path Proof Packet Contract
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/route_path_proof_packet.py`.
+- Created tests: `tests/test_phase_202_route_path_proof_packet_contract.py`.
+- Created docs: `docs/PHASE_202.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: defines a deterministic route-path proof packet contract for the
+  smallest future proof needed to move from direct captured provider marker
+  smoke to route-mediated provider marker smoke.
+- Packet facts registered: `phase=PHASE_202`;
+  `artifact_kind=route_path_proof_packet_contract`;
+  `prior_direct_marker_proof_phase=PHASE_194`;
+  `route_proof_target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`;
+  `disallowed_model=qwen3.6:35b-a3b`;
+  `fallback_candidate=qwen3.6:27b`;
+  `prior_direct_marker=ORCH_PROVIDER_SMOKE_OK`;
+  `future_route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`.
+- Required future proof registered: request intake/harness evidence; route
+  recommendation/readiness evidence; explicit route execution boundary
+  evidence; provider call through route path evidence; captured
+  HTTP/status/JSON/model/marker evidence; persisted artifact path evidence;
+  displayed/reviewable outcome evidence.
+- Reviewer behavior: rejects overclaiming route execution from direct provider
+  smoke with classification
+  `direct_provider_marker_not_route_mediated_proof`.
+- Execution authority registered false: `route_execution_allowed=false`;
+  `provider_execution_allowed=false`; `generation_allowed=false`;
+  `production_readiness=false`.
+- Validation: `python -m pytest tests/test_phase_202_route_path_proof_packet_contract.py`
+  could not run because local Python reported `No module named pytest`;
+  `python -m unittest discover -s tests -p "test_phase_202_route_path_proof_packet_contract.py" -v`;
+  `python -m py_compile orchestrator/route_path_proof_packet.py`;
+  `git diff --check`; `git diff --cached --check`.
+- Explicit non-proofs: packet contract is not route execution; route
+  recommendation is not execution; provider target string is not model
+  execution; prior direct provider smoke is not route-mediated proof; no
+  `/api/chat`, semantic correctness, real workload sufficiency, long-context,
+  sustained-load, Hermes/OpenClaw behavior, or production readiness proof.
+
+`PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

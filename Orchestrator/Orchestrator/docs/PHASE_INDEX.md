@@ -2115,3 +2115,33 @@ Kind: docs/ledger doctrine clarification.
 Summary: Clarifies that PHASE_XXX is an accepted-boundary namespace, not a guarantee of a matching docs/PHASE_XXX.md file. Product/source mutation phases usually receive dedicated phase docs; transport checkpoints and proof-only boundaries may be recorded in ledgers, handoffs, and coordinator metadata without standalone phase docs.
 
 Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and should not be treated as missing source work without corroborating ledger evidence.
+
+## Phase 202 - Route Path Proof Packet Contract
+
+- Status: locally source/test/docs-proven packet contract only.
+- Phase doc: `docs/PHASE_202.md`.
+- Behavior: adds a deterministic, pure route-path proof packet contract that
+  defines the smallest future proof needed to move from direct captured
+  provider marker smoke to route-mediated provider marker smoke.
+- Source: `orchestrator/route_path_proof_packet.py`.
+- Tests: `tests/test_phase_202_route_path_proof_packet_contract.py`.
+- Packet facts: `phase=PHASE_202`,
+  `artifact_kind=route_path_proof_packet_contract`,
+  `prior_direct_marker_proof_phase=PHASE_194`,
+  `route_proof_target_model=qwen3:30b-a3b-instruct-2507-q4_K_M`,
+  `disallowed_model=qwen3.6:35b-a3b`,
+  `fallback_candidate=qwen3.6:27b`, and
+  `future_route_marker=ORCH_ROUTE_PROVIDER_SMOKE_OK`.
+- Future proof fields: request intake/harness evidence, route
+  recommendation/readiness evidence, explicit route execution boundary
+  evidence, provider call through route path evidence, captured
+  HTTP/status/JSON/model/marker evidence, persisted artifact path evidence,
+  and displayed/reviewable outcome evidence.
+- Boundary: no route/provider/model/runtime execution, HTTP/Ollama calls,
+  worker dispatch, WSL/OpenClaw/Hermes/Discord, export/package,
+  cleanup/delete/archive, or production execution is performed.
+- Current gap: direct provider marker smoke exists, but route-mediated provider
+  execution with persisted/displayed outcome is still unproven.
+- Marker:
+  `PHASE202_ROUTE_PATH_PROOF_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
