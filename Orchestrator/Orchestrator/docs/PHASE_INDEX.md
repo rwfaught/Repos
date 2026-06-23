@@ -2328,3 +2328,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   production readiness is added.
 - Marker:
   `PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 243 - General Answer Lightweight Report Manual Review Integration
+
+- Status: locally source/test/docs-proven manual review integration.
+- Phase doc: `docs/PHASE_243.md`.
+- Source: `orchestrator/manual_review_runner.py`.
+- Tests:
+  `tests/test_phase_243_general_answer_lightweight_report_manual_review_integration_contract.py`.
+- Behavior: integrates the Phase 235 deterministic lightweight `general_answer`
+  report-only contract into the manual review runner surface for accepted
+  low-risk direct-answer cases.
+- Manual review behavior: `run_named_fixture_review("safe_direct_answer")`
+  preserves existing manual review and router policy output, exposes
+  `lightweight_answer_report_payload`, and renders a labeled
+  `Lightweight General Answer Report` section.
+- Payload facts: `phase=PHASE_235`;
+  `artifact_kind=general_answer_lightweight_report_only_contract`;
+  `request_type=general_answer`; `production_readiness=false`.
+- Boundary: no provider/model/runtime execution, live router proof,
+  RAG/local lookup, web lookup, scheduler/reminder execution, connector
+  execution, worker/Codex dispatch, WSL/Ollama, Hermes/OpenClaw/Discord,
+  export/package, cleanup/delete/archive, production execution, service/API/UI
+  behavior, semantic answer-quality proof, or production readiness is added.
+- Marker:
+  `PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`.

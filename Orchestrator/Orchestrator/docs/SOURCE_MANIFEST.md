@@ -4026,3 +4026,53 @@ Hermes/OpenClaw/Discord, export/package, cleanup/delete/archive, production
 execution, or production readiness behavior is registered by Phase 235.
 
 `PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 243 General Answer Lightweight Report Manual Review Integration
+
+Boundary:
+
+`PHASE_243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_runner.py`
+
+Registered new test files:
+
+- `tests/test_phase_243_general_answer_lightweight_report_manual_review_integration_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_243.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic manual review runner integration for the
+Phase 235 lightweight `general_answer` report-only artifact.
+
+Registered integrated payload facts: `phase=PHASE_235`,
+`artifact_kind=general_answer_lightweight_report_only_contract`,
+`request_type=general_answer`, and `production_readiness=false`.
+
+Registered rendering behavior: accepted low-risk direct-answer manual review
+output includes a labeled `Lightweight General Answer Report` section while
+preserving existing manual review and router policy output.
+
+Registered negative behavior: non-general-answer cases, including
+`safe_coding_source_test_mutation`, do not receive an accepted lightweight
+answer report payload; blocked direct-answer-like cases do not smuggle
+acceptance.
+
+No semantic correctness proof, model-backed generation, provider/model/runtime
+execution, live router proof, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch, WSL/Ollama, Hermes/OpenClaw/Discord, export/package,
+cleanup/delete/archive, production execution, service/API/UI behavior, or
+production readiness behavior is registered by Phase 243.
+
+`PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -401,10 +401,17 @@ fresh artifact proof.
 - The lane produces a reviewable artifact with accepted facts, blocked
   conditions, missing requirements, caveats, non-proofs, all-false activity
   flags, and an operator-visible next action.
+- Phase 243 surfaces that Phase 235 payload and rendered report section inside
+  manual review output for accepted low-risk direct-answer cases while
+  preserving router policy posture.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
   production readiness.
+- Phase 243 is not semantic answer quality proof, model-backed generation,
+  provider/runtime execution, live router proof, RAG/local lookup, web lookup,
+  scheduler/reminder execution, connector execution, worker/Codex dispatch,
+  service/API/UI productization, or production readiness.
 - An optional persistence policy is needed.
 - A local-first answer/fallback policy is needed.
 - Triage status: `DEFERRED_VALID` unless the lightweight answer lane is ranked

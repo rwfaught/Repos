@@ -3952,3 +3952,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness.
 
 `PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 243 General Answer Lightweight Report Manual Review Integration
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/manual_review_runner.py`.
+- Created tests:
+  `tests/test_phase_243_general_answer_lightweight_report_manual_review_integration_contract.py`.
+- Created docs: `docs/PHASE_243.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: surfaces the Phase 235 deterministic lightweight `general_answer`
+  report-only payload and rendered section in manual review results for the
+  accepted low-risk `safe_direct_answer` case.
+- Existing posture preserved: manual review report output and router policy
+  posture remain present; the lightweight report complements them and does not
+  replace router policy.
+- Report facts: integrated payload preserves `phase=PHASE_235`,
+  `artifact_kind=general_answer_lightweight_report_only_contract`,
+  `request_type=general_answer`, and `production_readiness=false`.
+- Negative behavior: `safe_coding_source_test_mutation` and blocked
+  direct-answer-like cases do not receive an accepted lightweight answer
+  report.
+- Activity flags remain false for represented runtime/provider/model/Ollama/
+  Hermes/OpenClaw/Discord/RAG/web/scheduler/connector/worker/Codex/export/
+  package/cleanup/delete/archive/production surfaces.
+- Explicit non-proofs: not semantic correctness proof, not model-backed
+  generation, not provider/runtime execution, not live router proof, not
+  RAG/local lookup, not web lookup, not scheduler/reminder execution, not
+  connector execution, not worker/Codex dispatch, not service/API/UI
+  productization, and not production readiness.
+
+`PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -21,6 +21,7 @@ from orchestrator.fixture_packet_pipeline import (
     run_fixture_to_boundary_packet_pipeline,
     run_structured_intake_to_boundary_packet_pipeline,
 )
+from orchestrator.lightweight_answer_report import build_lightweight_general_answer_report
 from orchestrator.prompt_to_envelope import PromptInferenceFixture
 from orchestrator.route_proposal import RequestIntakeRecord
 
@@ -78,6 +79,7 @@ class ManualReviewRunResult:
     review_text: str
     router_policy_recommendation: dict[str, Any] | None
     provider_probe_packet_status: dict[str, Any] | None
+    lightweight_answer_report_payload: dict[str, Any] | None
     blocked_conditions: tuple[str, ...]
     missing_requirements: tuple[str, ...]
     recommended_next_action: str
@@ -211,6 +213,70 @@ def _dedupe(values: tuple[str, ...]) -> tuple[str, ...]:
     return tuple(dict.fromkeys(item for item in values if item))
 
 
+def _direct_answer_allowed(pipeline_result: FixtureBoundaryPacketPipelineResult) -> bool:
+    admission = pipeline_result.intake_admission_result
+    if admission.intake_record is not None:
+        return admission.intake_record.allowed_to_answer_directly
+    if admission.fixture_decision is not None:
+        return admission.fixture_decision.allowed_to_answer_directly
+    return False
+
+
+def _lightweight_general_answer_request(
+    pipeline_result: FixtureBoundaryPacketPipelineResult,
+    report_result: CoordinatorReviewReportResult,
+) -> dict[str, Any]:
+    admission = pipeline_result.intake_admission_result
+    if admission.intake_record is not None:
+        summary = admission.intake_record.observed_request_summary
+        risk_level = admission.intake_record.risk_level
+    elif admission.fixture_decision is not None:
+        summary = "Fixture metadata converted to structured direct-answer review; raw prompt not inferred."
+        risk_level = admission.fixture_decision.risk_level
+    else:
+        summary = "Manual review general_answer request."
+        risk_level = "unknown"
+
+    return {
+        "request_id": pipeline_result.request_id,
+        "request_type": pipeline_result.request_type,
+        "risk_level": risk_level,
+        "user_intent_summary": summary,
+        "accepted_facts": (
+            f"manual_review_fixture_or_intake={pipeline_result.fixture_or_intake_source}",
+            f"route_admission={report_result.report.route_admission}",
+            "manual_review_router_policy_preserved=true",
+        ),
+        "caveats": report_result.caveats,
+        "recommended_next_action": "surface_lightweight_general_answer_report_for_manual_review",
+    }
+
+
+def _maybe_build_lightweight_answer_report(
+    pipeline_result: FixtureBoundaryPacketPipelineResult,
+    report_result: CoordinatorReviewReportResult,
+) -> tuple[dict[str, Any] | None, str, tuple[str, ...], tuple[str, ...]]:
+    if (
+        not report_result.accepted
+        or pipeline_result.request_type != "general_answer"
+        or not _direct_answer_allowed(pipeline_result)
+    ):
+        return None, "", (), ()
+
+    lightweight_result = build_lightweight_general_answer_report(
+        _lightweight_general_answer_request(pipeline_result, report_result)
+    )
+    if not lightweight_result.accepted:
+        return lightweight_result.payload, lightweight_result.rendered_text, (), tuple(lightweight_result.report.caveats)
+
+    return (
+        lightweight_result.payload,
+        lightweight_result.rendered_text,
+        tuple(lightweight_result.report.non_proofs),
+        tuple(lightweight_result.report.caveats),
+    )
+
+
 def _result_from_pipeline(
     pipeline_result: FixtureBoundaryPacketPipelineResult,
     fixture_id: str,
@@ -221,6 +287,15 @@ def _result_from_pipeline(
         provider_probe_packet_request=provider_probe_packet_request,
     )
     review_text = render_coordinator_review_text(report_result.report)
+    (
+        lightweight_answer_report_payload,
+        lightweight_answer_report_text,
+        lightweight_answer_report_non_proofs,
+        lightweight_answer_report_caveats,
+    ) = _maybe_build_lightweight_answer_report(pipeline_result, report_result)
+    if lightweight_answer_report_text:
+        review_text = review_text + "\n\n" + lightweight_answer_report_text
+
     return ManualReviewRunResult(
         accepted=report_result.accepted,
         fixture_id=fixture_id,
@@ -231,12 +306,13 @@ def _result_from_pipeline(
         review_text=review_text,
         router_policy_recommendation=dict(report_result.report.router_policy_recommendation),
         provider_probe_packet_status=dict(report_result.report.provider_probe_packet_status),
+        lightweight_answer_report_payload=lightweight_answer_report_payload,
         blocked_conditions=report_result.blocked_conditions,
         missing_requirements=report_result.missing_requirements,
         recommended_next_action=report_result.recommended_next_action,
-        non_proofs=_dedupe(RUNNER_NON_PROOFS + report_result.non_proofs),
+        non_proofs=_dedupe(RUNNER_NON_PROOFS + report_result.non_proofs + lightweight_answer_report_non_proofs),
         no_activity_flags=dict(report_result.no_activity_flags),
-        caveats=_dedupe(report_result.caveats),
+        caveats=_dedupe(report_result.caveats + lightweight_answer_report_caveats),
     )
 
 
@@ -251,6 +327,7 @@ def _unknown_fixture_result(fixture_id: str) -> ManualReviewRunResult:
         review_text="Manual review runner stopped: unknown fixture id. No execution occurred.",
         router_policy_recommendation=None,
         provider_probe_packet_status=None,
+        lightweight_answer_report_payload=None,
         blocked_conditions=("unknown_builtin_review_fixture",),
         missing_requirements=("known_fixture_id",),
         recommended_next_action="choose_known_builtin_review_fixture",
