@@ -7,15 +7,19 @@ worker dispatch surface, or production execution path.
 
 from __future__ import annotations
 
+import json
 import sys
 from dataclasses import dataclass
-from typing import Sequence
+from pathlib import Path
+from typing import Any, Sequence
 
 from orchestrator.manual_review_runner import (
     NO_ACTIVITY_FLAGS as RUNNER_NO_ACTIVITY_FLAGS,
     list_builtin_review_fixtures,
     run_named_fixture_review,
+    run_structured_intake_review,
 )
+from orchestrator.route_proposal import RequestIntakeRecord
 
 
 CLI_NON_PROOFS = (
@@ -39,6 +43,32 @@ CLI_NON_PROOFS = (
     "cli_adapter_does_not_execute_production_work",
     "cli_adapter_is_not_production_readiness",
 )
+
+GENERAL_ANSWER_BLOCKING_FLAGS = {
+    "requires_file_mutation": "requires_file_mutation",
+    "allowed_to_mutate_files": "requires_file_mutation",
+    "requires_mutation": "requires_file_mutation",
+    "requires_scheduling": "requires_scheduling",
+    "allowed_to_schedule": "requires_scheduling",
+    "requires_reminder": "requires_scheduling",
+    "requires_local_documents": "requires_local_documents_or_rag",
+    "requires_rag_lookup": "requires_local_documents_or_rag",
+    "allowed_to_use_local_documents": "requires_local_documents_or_rag",
+    "requires_web_lookup": "requires_web_lookup",
+    "allowed_to_use_web": "requires_web_lookup",
+    "requires_external_connector": "requires_external_connector",
+    "requires_connector": "requires_external_connector",
+    "requires_provider_execution": "requires_provider_model_or_runtime_execution",
+    "requires_model_execution": "requires_provider_model_or_runtime_execution",
+    "requires_runtime_execution": "requires_provider_model_or_runtime_execution",
+    "provider_execution_required": "requires_provider_model_or_runtime_execution",
+    "model_execution_required": "requires_provider_model_or_runtime_execution",
+    "runtime_execution_required": "requires_provider_model_or_runtime_execution",
+    "production_readiness": "claims_production_readiness",
+    "claims_production_readiness": "claims_production_readiness",
+}
+
+LOW_RISK_GENERAL_ANSWER_VALUES = {"low", "routine"}
 
 
 @dataclass(frozen=True)
@@ -64,12 +94,14 @@ def _help_text() -> str:
         (
             "Manual review adapter commands:",
             "  --list-fixtures",
+            "  --general-answer-input <json_path>",
             "  --fixture <fixture_id> [--draft-provider-probe-packet] [--authorize-probe-boundary]",
             "      [--probe-kind <value>] [--probe-surface <value>]",
             "      [--probe-scope <value>] [--expected-evidence <value>] [--stop-condition <value>]",
             "  --help",
             "",
             "This adapter renders deterministic Phase 118 review output only.",
+            "General answer input accepts structured local JSON only.",
             "Provider probe packet drafting is paperwork only.",
             "No probe, provider, model, runtime, worker, RAG, web, scheduler, connector, route, or production execution occurs.",
         )
@@ -160,6 +192,168 @@ def _parse_probe_packet_options(args: tuple[str, ...]) -> tuple[dict[str, object
     )
 
 
+def _text(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def _string_tuple(value: Any) -> tuple[str, ...]:
+    if not isinstance(value, (list, tuple)):
+        return ()
+    return tuple(text for text in (_text(item) for item in value) if text)
+
+
+def _read_json_object(path_text: str) -> tuple[dict[str, Any] | None, str]:
+    if not path_text:
+        return None, "Manual review adapter requires a JSON path after --general-answer-input."
+
+    try:
+        raw_text = Path(path_text).read_text(encoding="utf-8")
+    except OSError as exc:
+        return None, f"Manual review adapter could not read general-answer input: {exc.__class__.__name__}."
+
+    try:
+        value = json.loads(raw_text)
+    except json.JSONDecodeError as exc:
+        return None, f"Manual review adapter rejected malformed JSON: line {exc.lineno} column {exc.colno}."
+
+    if not isinstance(value, dict):
+        return None, "Manual review adapter requires a structured JSON object."
+    return value, ""
+
+
+def _general_answer_input_blockers(value: dict[str, Any]) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    missing: list[str] = []
+    blocked: list[str] = []
+
+    request_id = _text(value.get("request_id"))
+    request_type = _text(value.get("request_type"))
+    intent = _text(value.get("user_intent_summary"))
+    risk_level = _text(value.get("risk_level")).lower()
+
+    if not request_id:
+        missing.append("request_id")
+    if not intent:
+        missing.append("user_intent_summary")
+    if request_type != "general_answer":
+        blocked.append("wrong_request_type")
+    if risk_level not in LOW_RISK_GENERAL_ANSWER_VALUES:
+        if risk_level in {"high", "critical"}:
+            blocked.append("high_or_critical_risk")
+        else:
+            blocked.append("not_low_risk_general_answer")
+
+    for field, blocker in GENERAL_ANSWER_BLOCKING_FLAGS.items():
+        if value.get(field) is True and blocker not in blocked:
+            blocked.append(blocker)
+
+    return tuple(missing), tuple(blocked)
+
+
+def _general_answer_rejection_result(
+    *,
+    error_text: str,
+    caveat: str,
+    output_text: str = "",
+) -> ManualReviewCliResult:
+    return _result(
+        exit_code=2,
+        command="general-answer-input",
+        output_text=output_text,
+        error_text=error_text,
+        caveats=(caveat, "general_answer_input_rejected_before_runner_call"),
+    )
+
+
+def _structured_general_answer_intake(value: dict[str, Any]) -> RequestIntakeRecord:
+    request_id = _text(value.get("request_id"))
+    intent = _text(value.get("user_intent_summary"))
+    caveats = _dedupe(
+        _string_tuple(value.get("caveats"))
+        + (
+            "real_input_report_only_cli_adapter=true",
+            "structured_json_input_only",
+            "manual_review_only_non_executing",
+        )
+    )
+    return RequestIntakeRecord(
+        request_id=request_id,
+        observed_request_summary=intent,
+        request_type="general_answer",
+        confidence=0.9,
+        required_capabilities=("direct_answer",),
+        missing_inputs=(),
+        risk_level=_text(value.get("risk_level")).lower(),
+        execution_policy="report_only_manual_review_only_non_executing",
+        recommended_next_action=_text(value.get("recommended_next_action"))
+        or "surface_lightweight_general_answer_report_for_manual_review",
+        requires_operator_confirmation=False,
+        requires_external_connector=False,
+        allowed_to_answer_directly=True,
+        allowed_to_mutate_files=False,
+        allowed_to_schedule=False,
+        allowed_to_use_local_documents=False,
+        allowed_to_use_web=False,
+        reasoning_summary_for_operator=(
+            "Operator supplied structured low-risk general_answer JSON; "
+            "adapter performs no raw prompt inference and no execution."
+        ),
+        caveats=caveats,
+        intake_source="operator_structured_general_answer_input_file",
+    )
+
+
+def _run_general_answer_input(path_text: str) -> ManualReviewCliResult:
+    value, read_error = _read_json_object(path_text)
+    if read_error:
+        return _general_answer_rejection_result(
+            error_text=read_error,
+            caveat="general_answer_input_file_rejected_before_runner_call",
+        )
+
+    assert value is not None
+    missing, blocked = _general_answer_input_blockers(value)
+    if missing or blocked:
+        parts = []
+        if blocked:
+            parts.append("blocked_conditions=" + ",".join(blocked))
+        if missing:
+            parts.append("missing_requirements=" + ",".join(missing))
+        detail = "; ".join(parts)
+        return _general_answer_rejection_result(
+            error_text=f"Manual review adapter rejected structured general-answer input: {detail}.",
+            caveat="unsafe_or_incomplete_general_answer_input_rejected_before_runner_call",
+            output_text="\n".join(
+                (
+                    "Structured General Answer Input Rejected",
+                    f"- {detail}",
+                    "- runner_review_started=false",
+                    "- accepted_lightweight_report=false",
+                )
+            ),
+        )
+
+    review = run_structured_intake_review(
+        _structured_general_answer_intake(value),
+        fixture_id=_text(value.get("request_id")),
+    )
+    error_text = ""
+    if not review.accepted:
+        error_text = "Manual review adapter stopped conservatively for non-accepted structured general-answer input."
+    return _result(
+        exit_code=0 if review.accepted else 1,
+        command="general-answer-input",
+        fixture_id=_text(value.get("request_id")),
+        output_text=review.review_text,
+        error_text=error_text,
+        accepted=review.accepted,
+        non_proofs=CLI_NON_PROOFS + review.non_proofs,
+        no_activity_flags=review.no_activity_flags,
+        caveats=review.caveats + ("general_answer_input_loaded_from_structured_local_json",),
+    )
+
+
 def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualReviewCliResult:
     """Build deterministic CLI-compatible output without mutating state."""
 
@@ -183,6 +377,14 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
             listed_fixtures=fixtures,
             caveats=("fixture_listing_does_not_run_fixture",),
         )
+
+    if args and args[0] == "--general-answer-input":
+        if len(args) != 2:
+            return _general_answer_rejection_result(
+                error_text="Manual review adapter requires exactly one JSON path after --general-answer-input.",
+                caveat="general_answer_input_path_count_rejected_before_runner_call",
+            )
+        return _run_general_answer_input(args[1])
 
     if args and args[0] == "--fixture":
         if len(args) < 2 or not args[1]:

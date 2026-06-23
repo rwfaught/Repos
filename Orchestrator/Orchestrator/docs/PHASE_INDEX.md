@@ -2388,3 +2388,35 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   production readiness.
 - Marker:
   `PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`.
+
+## Phase 256 - General Answer Real Input Report-Only CLI Adapter
+
+- Status: locally source/test/docs-proven real structured-input CLI adapter.
+- Phase doc: `docs/PHASE_256.md`.
+- Boundary:
+  `PHASE_256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS`.
+- Source: `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_256_general_answer_real_input_report_only_cli_adapter_contract.py`.
+- Behavior: adds `--general-answer-input <json_path>` to the manual review CLI
+  so a real operator-provided structured local JSON `general_answer` input can
+  enter the existing report-only manual review/lightweight answer lane.
+- Accepted input behavior: low/routine-risk structured `general_answer` JSON is
+  converted into the existing non-executing structured intake path with direct
+  answer allowed, mutation/scheduling/local-document/web/connector/provider/
+  model/runtime execution disabled, and report-only/manual-review-only policy.
+- Output behavior: accepted safe input preserves existing manual review output
+  shape and renders the Phase 235 `Lightweight General Answer Report` section.
+- Rejection behavior: malformed JSON, missing/unreadable path, non-object JSON,
+  missing `request_id`, missing `user_intent_summary`, wrong request type,
+  high/critical or unknown/non-low risk, mutation, scheduling/reminder,
+  RAG/local lookup, web lookup, connector, provider/model/runtime execution,
+  and production-readiness claims return conservative nonzero results without
+  accepted lightweight answer reports.
+- Boundary: no semantic answer-quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker/Codex
+  dispatch, service/API/UI behavior, export/package, production work, or
+  production readiness is added.
+- Marker:
+  `PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.

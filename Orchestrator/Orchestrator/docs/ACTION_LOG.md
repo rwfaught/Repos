@@ -4026,3 +4026,38 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   ratification, or production readiness.
 
 `PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`
+
+## Phase 256 General Answer Real Input Report-Only CLI Adapter
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_256_general_answer_real_input_report_only_cli_adapter_contract.py`.
+- Created docs: `docs/PHASE_256.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: adds deterministic `--general-answer-input <json_path>` support
+  for real operator-provided structured local JSON `general_answer` input.
+- Accepted input: low/routine-risk structured `general_answer` input is routed
+  through the existing non-executing structured intake/manual review path and
+  surfaces the Phase 235 lightweight general-answer report section.
+- Rejection behavior: malformed JSON, missing/unreadable path, non-object JSON,
+  missing `request_id`, missing `user_intent_summary`, wrong request type,
+  high/critical or unknown/non-low risk, mutation, scheduling/reminder,
+  RAG/local lookup, web lookup, connector, provider/model/runtime execution,
+  and production-readiness claims are rejected or blocked conservatively and
+  do not receive accepted lightweight answer reports.
+- Existing behavior preserved: `--help`, `--list-fixtures`,
+  `--fixture <fixture_id>`, existing provider probe packet drafting options,
+  `safe_direct_answer` lightweight report rendering, and
+  `safe_coding_source_test_mutation` lightweight report exclusion.
+- Explicit non-proofs: not semantic answer correctness proof, not
+  model-backed generation, not provider/runtime/platform execution, not live
+  route execution, not RAG/local lookup, not web lookup, not
+  scheduler/reminder execution, not connector execution, not worker/Codex
+  dispatch, not service/API/UI productization, not export/package behavior,
+  not production work, and not production readiness.
+
+`PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

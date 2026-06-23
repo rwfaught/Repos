@@ -76,6 +76,8 @@ fresh artifact proof.
 | `PRODUCT_RAG_LOCAL_DOCUMENT_LOOKUP` | Ground answers and work in indexed local documents with inspectable sources. | Intended product track only; no mature RAG subsystem is accepted. | Unproven/unimplemented at mature product level. | `PROJECT_VISION.md`; future RAG phase docs; this ledger | No mature ingestion/indexing, retrieval interface, citation/source artifact contract, grounding verifier, or stale-source policy. | Define document authority, ingestion boundaries, retrieval contract, and citation artifact semantics. | Local files existing on disk are not retrieval, grounding, or freshness proof. |
 | `PRODUCT_REMINDER_SCHEDULER_AUTOMATION` | Support persisted reminders and scheduled operator-facing automation. | Intended product track only; no accepted scheduler/reminder service exists. | Unproven/unimplemented. | Future reminder/scheduler phase docs; this ledger | No time parser, persisted reminder model, service loop, notification backend, update/cancel semantics, or restart-survival proof. | Define reminder record, time semantics, lifecycle, and persistence before adding a scheduler loop. | A parsed date or one-shot timer is not a durable reminder system. |
 | `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT` | Provide a lightweight report-only lane for simple questions without forcing coding workflow overhead. | Phase 235 adds a deterministic structured low-risk `general_answer` report-only artifact contract. | Local source/test/docs contract proof only; no semantic answer quality, model-backed generation, live router, persistence policy, service/API/UI, or production readiness proof. | `docs/PHASE_235.md`; `orchestrator/lightweight_answer_report.py`; `tests/test_phase_235_general_answer_lightweight_report_only_contract.py`; `PROJECT_VISION.md`; this ledger | Optional persistence policy, local-first answer/fallback policy, service/API/UI surface, and any live answer generation remain open. | Define persistence/default surfacing or local-first answer/fallback policy under a separate boundary. | Report-only must not silently gain execution, persistence, model generation, retrieval, scheduling, connector, worker-dispatch, or production semantics. |
+| `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` | Allow a real operator-provided structured `general_answer` input file to enter the existing report-only lane. | Phase 256 adds deterministic `--general-answer-input <json_path>` support for structured local JSON through the existing manual review CLI and lightweight report lane. | Local source/test/docs proof only; no semantic answer quality, answer generation, provider/model/runtime execution, live routing, service/API/UI, or production readiness proof. | `docs/PHASE_256.md`; `orchestrator/manual_review_cli.py`; `tests/test_phase_256_general_answer_real_input_report_only_cli_adapter_contract.py`; this ledger | Persistence/default surfacing, local-first answer/fallback policy, service/API/UI surface, live answer generation, and autonomy-tier policy remain open. | Use only as report-only structured local input unless a later boundary ranks productized answer surfacing. | Real input is not raw-prompt inference, model generation, semantic correctness, provider/runtime execution, retrieval, scheduling, connector work, worker dispatch, or production readiness. |
+| `PRODUCT_AUTONOMY_TIER_POLICY` | Later define when Orchestrator can proceed without interrupting Roger, using risk tiers such as read-only, docs/test mutation, scoped source mutation, runtime/provider execution, and sensitive human-approval-required actions. | Deferred policy thread only; Phase 256 registers the need but does not implement autonomy-tier behavior. | `DEFERRED_VALID`; no source behavior, route behavior, execution behavior, or approval policy change is proven. | `PROJECT_VISION.md`; `docs/CONTEXT_MAP.md`; this ledger; future autonomy-tier phase docs | Define tier names, permission burdens, stop conditions, validation expectations, and human approval requirements before any behavior change. | Future docs/control policy boundary first; implementation only after explicit coordinator authorization. | Do not infer autonomy authority from report-only input plumbing; risk-tier language is not permission to proceed without Roger. |
 | `PLATFORM_INSTALLER_OPENCLAW` | Maintain the separate installer/runtime/OpenClaw infrastructure track and its evidence. | Platform authority remains in the sibling package and memory capsule; no Phase 102 platform mutation or live claim occurred. | External documentary reference only for Phase 102; current runtime behavior requires fresh operator output. | External `ORCHESTRATOR_OPENCLAW_MEMORY_CAPSULE.md`; platform package docs; this ledger for product-side separation | Keep platform separate unless explicitly integrated; decide standalone installer versus product infrastructure dependency; later document standalone run path. | Under an explicit platform boundary, inspect current authority docs and fresh operator output before deciding integration posture. | Platform installer is not the product repo; historical runtime proof is not current runtime truth. |
 | `PRODUCT_EXPORT_ARTIFACT_PROOF` | Produce and verify product artifacts without confusing source state, export, and upload acceptance. | Phase 101 export and upload are externally accepted with the SHA-256 recorded above. | External artifact proof accepted; Phase 102 itself is not exported or uploaded. | `SOURCE_MANIFEST.md`; `ACTION_LOG.md`; phase docs; external operator logs; this ledger | Automate artifact verification eventually; export/upload proof often remains external until next reconciliation. | Add bounded artifact verification automation only after explicit ranking and authorization. | Export PASS is not upload PASS; in-repo text cannot self-prove the hash of a later export. |
 | `PRODUCT_PERSISTENCE_ATOMICITY_LOCKING` | Make persisted task/artifact state crash-consistent and concurrency-safe. | Separate persistence writes remain; Phase 101 has best-effort rollback for one finalization path. | Narrow rollback behavior is source/test proven; no general transaction proof. | `PHASE_101.md`; persistence implementation/docs when inspected; this ledger | No full atomicity/locking; task and artifact writes can be separate; need crash consistency, concurrency policy, and migration/versioning strategy. | Define persistence invariants and locking/transaction policy before broadening concurrent or service execution. | One-path rollback is not a general transaction system. |
@@ -410,6 +412,15 @@ fresh artifact proof.
 - Phase 249 also registers exclusion evidence that
   `safe_coding_source_test_mutation` does not surface the lightweight section,
   and that repo short status stayed empty after the smoke run.
+- Phase 256 adds a real operator-provided structured local JSON input adapter:
+  `--general-answer-input <json_path>`.
+- Phase 256 routes accepted safe low/routine-risk structured `general_answer`
+  input through the existing non-executing manual review/lightweight report
+  lane and preserves the same report-only output posture.
+- `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
+  `ACTIVE_NBM_CANDIDATE` for the current Phase 256 implementation boundary;
+  later persistence/default surfacing, local-first answer/fallback policy,
+  service/API/UI, and live answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
@@ -423,12 +434,30 @@ fresh artifact proof.
   web lookup, scheduler/reminder execution, connector behavior, worker/Codex
   dispatch, service/API/UI productization, coordinator ratification, or
   production readiness.
+- Phase 256 is not semantic answer quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, raw prompt
+  inference, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector behavior, worker/Codex dispatch, service/API/UI productization,
+  export/package behavior, production work, or production readiness.
 - An optional persistence policy is needed.
 - A local-first answer/fallback policy is needed.
 - Triage status: `DEFERRED_VALID` unless the lightweight answer lane is ranked
   highest.
 
 `PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`
+
+`PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Autonomy Tier Policy
+
+- Triage status: `DEFERRED_VALID`.
+- Purpose: later define when Orchestrator can proceed without interrupting
+  Roger, using risk tiers such as read-only, docs/test mutation, scoped source
+  mutation, runtime/provider execution, and sensitive
+  human-approval-required actions.
+- Caveat: Phase 256 does not implement autonomy-tier behavior.
+- A future coordinator must explicitly authorize any autonomy-tier docs/control
+  policy or implementation boundary before behavior changes.
 
 ### Platform / Installer / OpenClaw
 
