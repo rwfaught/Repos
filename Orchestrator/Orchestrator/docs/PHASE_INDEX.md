@@ -1993,3 +1993,32 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 187 - Supervised Provider Call Tracer Target Reconciliation
+
+- Status: locally source/test/docs-proven target reconciliation only.
+- Phase doc: `docs/PHASE_187.md`.
+- Runbook: `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`.
+- Behavior: retargets the supervised provider-call tracer packet from
+  `qwen3.6:27b` to `qwen3.6:35b-a3b` after Phase 186 Retry 4 current
+  inventory visibility showed `qwen3.6:27b` absent and `qwen3.6:35b-a3b`
+  present.
+- Packet facts: `phase=PHASE_187`,
+  `artifact_kind=supervised_provider_call_tracer_packet_contract`,
+  `original_packet_phase=PHASE_183`,
+  `target_reconciliation_phase=PHASE_187`,
+  `inventory_evidence_phase=PHASE_186_RETRY4`,
+  `provider_catalog_key=local_model_candidate`,
+  `model_name=qwen3.6:35b-a3b`,
+  `endpoint_shape=POST local_ollama_http/api/generate`, and
+  `expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+- Boundary: Phase 186 Retry 4 inventory visibility is inventory evidence only;
+  no `qwen3.6:35b-a3b` marker-smoke proof exists yet, no prior
+  `qwen3.6:27b` evidence is transferred, and no HTTP/Ollama/provider/model
+  execution, route execution, worker dispatch, service/API/UI behavior, or
+  production readiness is added.
+- Next recommended boundary:
+  `PHASE_188_SUPERVISED_PROVIDER_CALL_TRACER_35B_A3B_OPERATOR_PROOF`.
+- Marker:
+  `PHASE187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.

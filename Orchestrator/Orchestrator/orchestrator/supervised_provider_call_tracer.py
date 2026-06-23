@@ -12,30 +12,35 @@ from dataclasses import asdict, dataclass
 from typing import Any
 
 
-PHASE = "PHASE_183"
+PHASE = "PHASE_187"
 ARTIFACT_KIND = "supervised_provider_call_tracer_packet_contract"
 FIXTURE_ID = "safe_direct_answer"
+ORIGINAL_PACKET_PHASE = "PHASE_183"
+TARGET_RECONCILIATION_PHASE = "PHASE_187"
+INVENTORY_EVIDENCE_PHASE = "PHASE_186_RETRY4"
 SOURCE_TRACER_PHASE = "PHASE_169"
 ADAPTER_PHASE = "PHASE_176"
 OPERATOR_SMOKE_PHASE = "PHASE_179"
 PROVIDER_CATALOG_KEY = "local_model_candidate"
-MODEL_NAME = "qwen3.6:27b"
+MODEL_NAME = "qwen3.6:35b-a3b"
+RETIRED_PACKET_TARGET = "qwen3.6:27b"
 ENDPOINT_SHAPE = "POST local_ollama_http/api/generate"
 ENDPOINT_URL = "http://127.0.0.1:11434/api/generate"
 PROMPT_CONTRACT = "Return exactly: ORCH_PROVIDER_SMOKE_OK"
 EXPECTED_MARKER = "ORCH_PROVIDER_SMOKE_OK"
 FUTURE_BOUNDARY = "future_supervised_provider_call_tracer_operator_proof"
 FUTURE_PROOF = "captured_http_status_json_response_marker_and_no_route_execution"
-CURRENT_READINESS = "packet_ready_for_future_operator_boundary_not_execution"
-GENERATION_EVIDENCE_KEY = "phase_159_retry1_qwen36_27b_generate_marker_smoke"
-METADATA_EVIDENCE_KEY = "phase_162_qwen36_27b_show_metadata_visibility"
+CURRENT_READINESS = "target_reconciliation_complete_future_marker_smoke_required"
+INVENTORY_EVIDENCE_KEY = "phase_186_retry4_qwen36_35b_a3b_inventory_visibility_only"
 
 
 SUPERVISED_PROVIDER_CALL_TRACER_NON_PROOFS = (
     "supervised_provider_call_tracer_is_packet_contract_only",
     "endpoint_string_is_not_endpoint_execution",
     "model_name_is_not_model_execution",
-    "prior_smoke_evidence_is_not_current_loadability_proof",
+    "phase_186_retry4_inventory_visibility_is_not_marker_smoke_proof",
+    "qwen36_35b_a3b_has_no_supervised_marker_smoke_proof_yet",
+    "qwen36_27b_marker_smoke_evidence_is_not_transferred_to_qwen36_35b_a3b",
     "future_smoke_pass_would_not_prove_semantic_correctness",
     "future_smoke_pass_would_not_prove_real_workload_loadability",
     "future_smoke_pass_would_not_prove_real_workload_vram_sufficiency",
@@ -83,6 +88,9 @@ class SupervisedProviderCallTracerPacket:
     phase: str
     artifact_kind: str
     fixture_id: str
+    original_packet_phase: str
+    target_reconciliation_phase: str
+    inventory_evidence_phase: str
     source_tracer_phase: str
     adapter_phase: str
     operator_smoke_phase: str
@@ -143,16 +151,20 @@ def _dedupe(values: tuple[str, ...]) -> tuple[str, ...]:
 def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTracerPacket:
     """Build the deterministic future operator packet without execution."""
 
-    provider_evidence_keys = (GENERATION_EVIDENCE_KEY, METADATA_EVIDENCE_KEY)
+    provider_evidence_keys = (INVENTORY_EVIDENCE_KEY,)
     accepted_facts = (
         f"phase={PHASE}",
         f"artifact_kind={ARTIFACT_KIND}",
         f"fixture_id={FIXTURE_ID}",
+        f"original_packet_phase={ORIGINAL_PACKET_PHASE}",
+        f"target_reconciliation_phase={TARGET_RECONCILIATION_PHASE}",
+        f"inventory_evidence_phase={INVENTORY_EVIDENCE_PHASE}",
         f"source_tracer_phase={SOURCE_TRACER_PHASE}",
         f"adapter_phase={ADAPTER_PHASE}",
         f"operator_smoke_phase={OPERATOR_SMOKE_PHASE}",
         f"provider_catalog_key={PROVIDER_CATALOG_KEY}",
         f"model_name={MODEL_NAME}",
+        f"retired_packet_target={RETIRED_PACKET_TARGET}",
         f"endpoint_shape={ENDPOINT_SHAPE}",
         "endpoint_url_registered_as_string_only",
         f"prompt_contract={PROMPT_CONTRACT}",
@@ -160,24 +172,34 @@ def build_supervised_provider_call_tracer_packet() -> SupervisedProviderCallTrac
         f"required_future_boundary={FUTURE_BOUNDARY}",
         f"required_future_proof={FUTURE_PROOF}",
         f"current_readiness={CURRENT_READINESS}",
+        "phase_186_retry4_api_version_http_200_ollama_0_30_10",
+        "phase_186_retry4_api_tags_http_200",
+        "phase_186_retry4_qwen36_27b_absent_from_inventory",
+        "phase_186_retry4_qwen36_35b_a3b_present_in_inventory",
     )
     caveats = (
         "packet_contract_only",
         "endpoint_string_is_not_endpoint_execution",
         "model_name_is_not_model_execution",
-        "prior_smoke_evidence_is_not_current_loadability_proof",
+        "phase_186_retry4_inventory_visibility_is_not_marker_smoke_proof",
+        "qwen36_35b_a3b_requires_future_supervised_marker_smoke_proof",
+        "qwen36_27b_marker_smoke_evidence_not_transferred_to_qwen36_35b_a3b",
         "future_operator_must_capture_status_json_marker_and_no_route_execution",
     )
     missing_requirements = (
-        "future_operator_run_not_performed_by_phase_183",
+        "future_operator_run_not_performed_by_phase_187",
         "captured_http_status_missing_until_future_operator_boundary",
         "captured_json_response_missing_until_future_operator_boundary",
         "captured_marker_missing_until_future_operator_boundary",
+        "qwen36_35b_a3b_supervised_marker_smoke_proof_missing_until_future_boundary",
     )
     return SupervisedProviderCallTracerPacket(
         phase=PHASE,
         artifact_kind=ARTIFACT_KIND,
         fixture_id=FIXTURE_ID,
+        original_packet_phase=ORIGINAL_PACKET_PHASE,
+        target_reconciliation_phase=TARGET_RECONCILIATION_PHASE,
+        inventory_evidence_phase=INVENTORY_EVIDENCE_PHASE,
         source_tracer_phase=SOURCE_TRACER_PHASE,
         adapter_phase=ADAPTER_PHASE,
         operator_smoke_phase=OPERATOR_SMOKE_PHASE,

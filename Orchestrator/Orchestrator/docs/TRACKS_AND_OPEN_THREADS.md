@@ -305,8 +305,12 @@ fresh artifact proof.
 - Phase 183 defines a supervised provider-call tracer packet contract and pure
   captured-result classifier for a future operator-run marker smoke, without
   adding HTTP/provider/model execution authority.
+- Phase 187 reconciles the supervised provider-call tracer target to
+  `qwen3.6:35b-a3b` based on Phase 186 Retry 4 current inventory visibility
+  only. The prior `qwen3.6:27b` marker-smoke and metadata evidence are not
+  transferred to `qwen3.6:35b-a3b`.
 - The next conservative provider boundary is
-  `PHASE_184_SUPERVISED_PROVIDER_CALL_TRACER_OPERATOR_PROOF`.
+  `PHASE_188_SUPERVISED_PROVIDER_CALL_TRACER_35B_A3B_OPERATOR_PROOF`.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

@@ -115,21 +115,24 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
         payload = supervised_provider_call_tracer_packet_to_dict(packet)
 
         expected = {
-            "phase": "PHASE_183",
+            "phase": "PHASE_187",
             "artifact_kind": "supervised_provider_call_tracer_packet_contract",
             "fixture_id": "safe_direct_answer",
+            "original_packet_phase": "PHASE_183",
+            "target_reconciliation_phase": "PHASE_187",
+            "inventory_evidence_phase": "PHASE_186_RETRY4",
             "source_tracer_phase": "PHASE_169",
             "adapter_phase": "PHASE_176",
             "operator_smoke_phase": "PHASE_179",
             "provider_catalog_key": "local_model_candidate",
-            "model_name": "qwen3.6:27b",
+            "model_name": "qwen3.6:35b-a3b",
             "endpoint_shape": "POST local_ollama_http/api/generate",
             "endpoint_url": "http://127.0.0.1:11434/api/generate",
             "prompt_contract": "Return exactly: ORCH_PROVIDER_SMOKE_OK",
             "expected_marker": "ORCH_PROVIDER_SMOKE_OK",
             "required_future_boundary": "future_supervised_provider_call_tracer_operator_proof",
             "required_future_proof": "captured_http_status_json_response_marker_and_no_route_execution",
-            "current_readiness": "packet_ready_for_future_operator_boundary_not_execution",
+            "current_readiness": "target_reconciliation_complete_future_marker_smoke_required",
         }
         for key, value in expected.items():
             with self.subTest(key=key):
@@ -137,11 +140,32 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
         self.assertEqual(payload["request_parameters"]["stream"], False)
         self.assertEqual(payload["request_parameters"]["num_predict"], 96)
 
-    def test_packet_carries_required_qwen36_27b_evidence_keys(self):
+    def test_packet_carries_phase_186_retry4_inventory_visibility_only(self):
         packet = build_supervised_provider_call_tracer_packet()
 
-        self.assertIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", packet.provider_evidence_keys)
-        self.assertIn("phase_162_qwen36_27b_show_metadata_visibility", packet.provider_evidence_keys)
+        self.assertEqual(
+            packet.provider_evidence_keys,
+            ("phase_186_retry4_qwen36_35b_a3b_inventory_visibility_only",),
+        )
+        self.assertIn(
+            "phase_186_retry4_qwen36_35b_a3b_present_in_inventory",
+            packet.accepted_facts,
+        )
+        self.assertIn(
+            "phase_186_retry4_qwen36_27b_absent_from_inventory",
+            packet.accepted_facts,
+        )
+
+    def test_packet_does_not_transfer_qwen36_27b_marker_smoke_evidence_to_35b(self):
+        packet = build_supervised_provider_call_tracer_packet()
+        payload_text = repr(supervised_provider_call_tracer_packet_to_dict(packet))
+
+        self.assertNotIn("phase_159_retry1_qwen36_27b_generate_marker_smoke", packet.provider_evidence_keys)
+        self.assertNotIn("phase_162_qwen36_27b_show_metadata_visibility", packet.provider_evidence_keys)
+        self.assertIn("qwen36_27b_marker_smoke_evidence_not_transferred_to_qwen36_35b_a3b", packet.caveats)
+        self.assertIn("qwen36_35b_a3b_requires_future_supervised_marker_smoke_proof", packet.caveats)
+        self.assertIn("qwen36_35b_a3b_supervised_marker_smoke_proof_missing_until_future_boundary", packet.missing_requirements)
+        self.assertIn("qwen3.6:35b-a3b", payload_text)
 
     def test_packet_preserves_all_execution_authority_false(self):
         payload = supervised_provider_call_tracer_packet_to_dict(build_supervised_provider_call_tracer_packet())
@@ -181,12 +205,12 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, source)
 
-    def test_classifier_returns_pass_for_synthetic_accepted_phase_159_retry1_shape(self):
+    def test_classifier_returns_pass_for_synthetic_future_35b_marker_smoke_shape(self):
         review = classify_supervised_provider_call_tracer_result(
             {
                 "http_status": 200,
                 "json_parse_success": True,
-                "returned_model": "qwen3.6:27b",
+                "returned_model": "qwen3.6:35b-a3b",
                 "response_text": "ORCH_PROVIDER_SMOKE_OK",
                 "done": True,
                 "done_reason": "stop",
@@ -197,17 +221,17 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
         self.assertEqual(review.classification, "captured_marker_smoke_pass_not_route_execution")
         self.assertTrue(review.accepted)
         self.assertIn("http_status=200", review.accepted_facts)
-        self.assertIn("returned_model=qwen3.6:27b", review.accepted_facts)
+        self.assertIn("returned_model=qwen3.6:35b-a3b", review.accepted_facts)
         self.assertIn("response_text_contains=ORCH_PROVIDER_SMOKE_OK", review.accepted_facts)
 
     def test_classifier_returns_conservative_failure_classifications(self):
         cases = (
             (
-                {"http_status": 500, "json_parse_success": True, "returned_model": "qwen3.6:27b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": True},
+                {"http_status": 500, "json_parse_success": True, "returned_model": "qwen3.6:35b-a3b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": True},
                 "non_200_http_status",
             ),
             (
-                {"http_status": 200, "json_parse_success": False, "returned_model": "qwen3.6:27b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": True},
+                {"http_status": 200, "json_parse_success": False, "returned_model": "qwen3.6:35b-a3b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": True},
                 "json_parse_failure",
             ),
             (
@@ -215,11 +239,11 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
                 "wrong_model",
             ),
             (
-                {"http_status": 200, "json_parse_success": True, "returned_model": "qwen3.6:27b", "response_text": "no marker", "done": True},
+                {"http_status": 200, "json_parse_success": True, "returned_model": "qwen3.6:35b-a3b", "response_text": "no marker", "done": True},
                 "missing_marker",
             ),
             (
-                {"http_status": 200, "json_parse_success": True, "returned_model": "qwen3.6:27b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": False},
+                {"http_status": 200, "json_parse_success": True, "returned_model": "qwen3.6:35b-a3b", "response_text": "ORCH_PROVIDER_SMOKE_OK", "done": False},
                 "incomplete_done_false",
             ),
             (
@@ -236,12 +260,28 @@ class Phase183SupervisedProviderCallTracerPacketContractTests(unittest.TestCase)
                 self.assertFalse(review.accepted)
                 self.assertTrue(review.blocked_conditions or review.missing_requirements)
 
-    def test_even_pass_classifier_output_preserves_non_execution_non_proofs(self):
+    def test_classifier_rejects_retired_qwen36_27b_returned_model(self):
         review = classify_supervised_provider_call_tracer_result(
             {
                 "http_status": 200,
                 "json_parse_success": True,
                 "returned_model": "qwen3.6:27b",
+                "response_text": "ORCH_PROVIDER_SMOKE_OK",
+                "done": True,
+            }
+        )
+
+        self.assertEqual(review.status, "FAIL")
+        self.assertEqual(review.classification, "wrong_model")
+        self.assertFalse(review.accepted)
+        self.assertIn("returned_model=qwen3.6:27b", review.accepted_facts)
+
+    def test_even_pass_classifier_output_preserves_non_execution_non_proofs(self):
+        review = classify_supervised_provider_call_tracer_result(
+            {
+                "http_status": 200,
+                "json_parse_success": True,
+                "returned_model": "qwen3.6:35b-a3b",
                 "response_text": "prefix ORCH_PROVIDER_SMOKE_OK suffix",
                 "done": True,
                 "done_reason": "stop",

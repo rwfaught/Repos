@@ -3424,3 +3424,72 @@ is registered by Phase 183.
 No production readiness is registered by Phase 183.
 
 `PHASE183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 187 Supervised Provider Call Tracer Target Reconciliation
+
+Boundary:
+
+`PHASE_187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/supervised_provider_call_tracer.py`
+
+Registered changed test files:
+
+- `tests/test_phase_183_supervised_provider_call_tracer_packet_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_187.md`
+
+Registered changed documentation/control files:
+
+- `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: source/test/docs reconciliation of the supervised
+provider-call tracer packet target from `qwen3.6:27b` to
+`qwen3.6:35b-a3b` based on Phase 186 Retry 4 current inventory visibility.
+
+Registered Phase 186 Retry 4 inventory facts: `/api/version` returned HTTP
+200 with version `0.30.10`; `/api/tags` returned HTTP 200; `qwen3.6:27b` was
+absent; `qwen3.6:35b-a3b` was present; no `/api/generate` was run; no model
+execution occurred.
+
+Registered packet facts: `phase=PHASE_187`,
+`artifact_kind=supervised_provider_call_tracer_packet_contract`,
+`original_packet_phase=PHASE_183`,
+`target_reconciliation_phase=PHASE_187`,
+`inventory_evidence_phase=PHASE_186_RETRY4`,
+`provider_catalog_key=local_model_candidate`, `model_name=qwen3.6:35b-a3b`,
+`endpoint_shape=POST local_ollama_http/api/generate`,
+`endpoint_url=http://127.0.0.1:11434/api/generate` as string-only data,
+`prompt_contract=Return exactly: ORCH_PROVIDER_SMOKE_OK`, and
+`expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+
+Registered evidence posture:
+
+- `phase_186_retry4_qwen36_35b_a3b_inventory_visibility_only`
+- Prior `qwen3.6:27b` marker-smoke and metadata evidence is not transferred
+  to `qwen3.6:35b-a3b`.
+- `qwen3.6:35b-a3b` still needs a future supervised marker-smoke proof.
+
+Registered false execution authority: `provider_selection_allowed=false`,
+`provider_execution_allowed=false`, `route_execution_allowed=false`,
+`generation_allowed=false`, and `production_readiness=false`.
+
+No `qwen3.6:35b-a3b` marker-smoke proof, HTTP/Ollama/provider/model
+execution, route execution, live routing, API endpoint execution,
+product-harness Codex dispatch, worker dispatch, semantic correctness proof,
+real workload proof, service/API/UI productization proof, cleanup/delete/
+archive, production execution, or production readiness behavior is registered
+by Phase 187.
+
+No production readiness is registered by Phase 187.
+
+`PHASE187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS_PROVEN=PASS`

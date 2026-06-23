@@ -3477,3 +3477,57 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   proof.
 
 `PHASE183_SUPERVISED_PROVIDER_CALL_TRACER_PACKET_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 187 Supervised Provider Call Tracer Target Reconciliation
+
+- Timestamp: 2026-06-22
+- Boundary:
+  `PHASE_187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/supervised_provider_call_tracer.py`.
+- Updated tests:
+  `tests/test_phase_183_supervised_provider_call_tracer_packet_contract.py`.
+- Created docs: `docs/PHASE_187.md`.
+- Updated docs: `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: reconciles the supervised provider-call tracer packet target from
+  `qwen3.6:27b` to `qwen3.6:35b-a3b` based on Phase 186 Retry 4 inventory
+  visibility only.
+- Phase 186 Retry 4 inventory facts registered: `/api/version` returned
+  HTTP 200 with version `0.30.10`; `/api/tags` returned HTTP 200;
+  `qwen3.6:27b` was absent; `qwen3.6:35b-a3b` was present; no
+  `/api/generate` was run; no model execution occurred.
+- Packet facts registered: `phase=PHASE_187`;
+  `artifact_kind=supervised_provider_call_tracer_packet_contract`;
+  `original_packet_phase=PHASE_183`;
+  `target_reconciliation_phase=PHASE_187`;
+  `inventory_evidence_phase=PHASE_186_RETRY4`;
+  `provider_catalog_key=local_model_candidate`; `model_name=qwen3.6:35b-a3b`;
+  `endpoint_shape=POST local_ollama_http/api/generate`;
+  `endpoint_url=http://127.0.0.1:11434/api/generate` as string-only data;
+  `prompt_contract=Return exactly: ORCH_PROVIDER_SMOKE_OK`;
+  `expected_marker=ORCH_PROVIDER_SMOKE_OK`.
+- Evidence posture registered:
+  `phase_186_retry4_qwen36_35b_a3b_inventory_visibility_only`; no
+  `qwen3.6:27b` marker-smoke or metadata evidence is transferred to
+  `qwen3.6:35b-a3b`.
+- Classifier behavior: PASS now requires caller-supplied captured data with
+  HTTP 200, JSON parse success, returned model `qwen3.6:35b-a3b`, response
+  text containing `ORCH_PROVIDER_SMOKE_OK`, and `done=True`; returned model
+  `qwen3.6:27b` is a wrong-model failure for this packet.
+- Execution authority registered false: `provider_selection_allowed=false`;
+  `provider_execution_allowed=false`; `route_execution_allowed=false`;
+  `generation_allowed=false`; `production_readiness=false`.
+- Validation: `python -m compileall orchestrator`;
+  `python -m unittest discover -s tests -p "test_phase_183_supervised_provider_call_tracer_packet_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_176_tiny_vertical_tracer_cli_adapter_contract.py" -v`;
+  `python -m unittest discover -s tests -p "test_phase_169_tiny_vertical_tracer_bullet_dry_report_artifact_contract.py" -v`;
+  `git diff --check`; `git status --short --branch`.
+- Explicit non-proofs: no `qwen3.6:35b-a3b` marker-smoke proof, no
+  HTTP/Ollama/provider/model execution, no route execution, no live routing,
+  no API endpoint execution, no product-harness Codex dispatch, no worker
+  dispatch, no semantic correctness proof, no real workload proof, no
+  service/API/UI productization proof, no cleanup/delete/archive, no
+  production execution, and no production readiness proof.
+
+`PHASE187_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_SOURCE_TEST_DOCS_PROVEN=PASS`

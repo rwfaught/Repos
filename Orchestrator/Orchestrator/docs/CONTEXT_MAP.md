@@ -300,6 +300,14 @@ current loadability proof; and even a future marker-smoke pass would not prove
 semantic correctness, real workload sufficiency, route execution, or
 production readiness.
 
+Supervised provider-call tracer target reconciliation belongs to this context
+only as source/test/docs target alignment. Phase 187 retargets the Phase 183
+packet from `qwen3.6:27b` to `qwen3.6:35b-a3b` because Phase 186 Retry 4
+current inventory visibility showed `qwen3.6:27b` absent and
+`qwen3.6:35b-a3b` present. That inventory visibility is not marker-smoke
+proof, does not transfer prior 27b evidence to 35b-a3b, and does not authorize
+provider/model execution, route execution, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker
