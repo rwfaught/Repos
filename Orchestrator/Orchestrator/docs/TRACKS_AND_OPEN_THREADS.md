@@ -449,12 +449,22 @@ fresh artifact proof.
   RAG/local lookup, web lookup, scheduler/reminder execution, connector
   execution, worker/Codex dispatch, service/API/UI behavior, export/package,
   production work, production readiness, or current-success broadening.
+- Phase 261 records the accepted Phase 260 read-only operator smoke:
+  `PHASE_260_GENERAL_ANSWER_ARTIFACT_WRITE_NOTICE_CLI_OPERATOR_SMOKE_READONLY=PASS`.
+- Phase 261 closes the narrow artifact-write notice smoke scope by registering
+  that successful caller-supplied review JSON artifact persistence printed
+  `Review JSON Artifact Written: <artifact_json_path>`, created the artifact,
+  included the exact caller-supplied path, omitted the notice when
+  `--write-review-json` was omitted, omitted the notice for unsafe/rejected
+  input, preserved fixture lightweight-report behavior and no-notice behavior,
+  and ended with `FinalGitStatusLineCount=0`.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
   `DEFERRED_VALID` after Phase 256 implementation.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE` triage status:
   `DEFERRED_VALID` after Phase 257 implementation, Phase 258
   operator-smoke-driven BOM-tolerance hardening, and Phase 259 proof
-  registration; Phase 260 adds artifact-write UX/surfacing only. Later default
+  registration; Phase 260 adds artifact-write UX/surfacing only, and Phase 261
+  closes the narrow artifact-write notice smoke registration. Later default
   surfacing, local-first answer/fallback policy, service/API/UI, and live
   answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
@@ -497,6 +507,8 @@ fresh artifact proof.
 `PHASE259_RECORD_PHASE_258_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
 
 `PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
 
 ### Autonomy Tier Policy
 

@@ -2546,3 +2546,50 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 261 - Record Phase 260 Operator Smoke Proof
+
+- Status: docs-only registration of accepted Phase 260 read-only operator
+  smoke proof.
+- Phase doc: `docs/PHASE_261.md`.
+- Boundary:
+  `PHASE_261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY`.
+- Accepted source state: HEAD = origin/main =
+  `2ba1279640e26b255163129d7dbe96c04db8a5aa`; latest commit
+  `2ba1279 Surface general-answer review artifact path`.
+- Accepted product capsule: SHA256
+  `01ECA3728E94046306172C0B4274408ACF2A21FD995078FC0EFDA20D64785685`;
+  `SizeBytes=2,285,467`; `EntryCount=1109`;
+  `TopLevelPrefix=Orchestrator`.
+- Accepted proof:
+  `PHASE_260_GENERAL_ANSWER_ARTIFACT_WRITE_NOTICE_CLI_OPERATOR_SMOKE_READONLY=PASS`.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase260_artifact_notice_cli_smoke_fixed_20260623_080253`.
+- Artifact path:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase260_artifact_notice_cli_smoke_fixed_20260623_080253\valid_general_answer_review_artifact.json`.
+- Smoke result lines: `ArtifactNoticeSmoke=PASS`; `ArtifactCreated=PASS`;
+  `ArtifactNoticeIncludesExactPath=PASS`;
+  `NoArtifactNoticeWhenOmitted=PASS`; `UnsafeNoArtifactNotice=PASS`;
+  `FixtureSafeDirectLightweightReport=PASS`;
+  `FixtureSafeDirectNoArtifactNotice=PASS`;
+  `FixtureSafeCodingNoLightweightReport=PASS`;
+  `FixtureSafeCodingNoArtifactNotice=PASS`; `FinalGitStatusLineCount=0`;
+  `RepoMutationPerformed=False`; `RuntimeExecution=False`;
+  `ProviderExecution=False`; `ModelExecution=False`.
+- Behavior proven: successful caller-supplied review JSON artifact persistence
+  prints `Review JSON Artifact Written: <artifact_json_path>`, creates the
+  artifact, includes the exact caller-supplied artifact path, omits the notice
+  when `--write-review-json` is omitted, omits the notice for unsafe/rejected
+  input, and preserves fixture lightweight-report behavior and no-notice
+  behavior.
+- Boundary: docs-only proof registration; no semantic answer correctness,
+  model-backed generation, provider/model/runtime execution, live route
+  execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector execution, worker/Codex dispatch from product code,
+  service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness is added.
+- Open-thread status: the Phase 260 artifact-write notice smoke is closed for
+  its narrow scope; broader `general_answer` usability remains open;
+  `PRODUCT_AUTONOMY_TIER_POLICY` remains `DEFERRED_VALID`.
+- Marker:
+  `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
