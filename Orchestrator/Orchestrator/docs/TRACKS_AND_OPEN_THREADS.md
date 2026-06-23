@@ -318,8 +318,12 @@ fresh artifact proof.
   provider-call tracer packet to
   `qwen3:30b-a3b-instruct-2507-q4_K_M`. `qwen3.6:27b` remains the safer
   fallback candidate.
-- The next conservative provider boundary is
-  `PHASE_192_SUPERVISED_PROVIDER_CALL_TRACER_30B_OPERATOR_PROOF`.
+- Phase 194 accepts captured product marker smoke for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M` with `ORCH_PROVIDER_SMOKE_OK`; Retry 3
+  is the accepted classifier/proof artifact backfill, and earlier final PASS
+  lines are not accepted for classifier/proof artifact status.
+- Phase 195 registers the Phase 194 proof in docs/ledgers only and does not
+  authorize follow-on work.
 - No live provider/model routing, provider/model execution, runtime/platform
   execution, model generation, `/api/generate`, `/api/chat`, model loadability,
   VRAM sufficiency beyond the exact accepted smoke request, provider runtime import, worker dispatch,

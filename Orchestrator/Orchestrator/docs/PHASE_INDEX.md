@@ -2071,3 +2071,35 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE191_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_TO_30B_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 194 - Supervised Provider Call Tracer 30B Product Marker Operator Proof
+
+- Status: accepted operator proof with Retry 3 classifier artifact backfill.
+- Phase doc: `docs/PHASE_194.md`.
+- Behavior: records accepted supervised product marker smoke for
+  `qwen3:30b-a3b-instruct-2507-q4_K_M` with prompt
+  `Return exactly: ORCH_PROVIDER_SMOKE_OK`, HTTP `200`, JSON parse success
+  `true`, returned model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response text
+  `ORCH_PROVIDER_SMOKE_OK`, `done=true`, `done_reason=stop`, duration
+  `448ms`, and marker present `true`.
+- Retry history: initial proof artifact failed due to syntax error; Retry 1
+  failed because Python ran from temp and could not import `orchestrator`;
+  Retry 2 failed by serializing `SupervisedProviderCallTracerReview` directly;
+  Retry 3 succeeded with `PYTHONPATH`, `review.to_dict()`, and actual
+  classifier assertion.
+- Accepted artifact:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase194_supervised_provider_call_tracer_30b_product_marker\phase_194_retry3_supervised_provider_call_tracer_30b_product_marker_proof.json`.
+- Classifier result:
+  `captured_marker_smoke_pass_not_route_execution`.
+- Caveat: GPU memory was already `18302MiB / 24463MiB` before the call, so
+  cold-load timing is not proven.
+- Boundary: proves captured product marker smoke only; no route execution,
+  live routing, worker dispatch, `/api/chat`, semantic correctness, real
+  workload sufficiency, long-context behavior, sustained-load stability,
+  service/API/UI productization, Hermes/OpenClaw behavior, or production
+  readiness is proven.
+- Marker:
+  `PHASE194_SUPERVISED_PROVIDER_CALL_TRACER_30B_PRODUCT_MARKER_OPERATOR_PROOF=PASS_WITH_RETRY3_CLASSIFIER_ARTIFACT_BACKFILL`.
+- Accepted stop point:
+  `PHASE_194_RETRY3_PRODUCT_MARKER_CLASSIFIER_ARTIFACT_BACKFILL_NO_PROVIDER_CALL=PASS`.
+- Production readiness is not claimed.

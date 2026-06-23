@@ -319,6 +319,16 @@ packet to that 30B candidate while preserving `qwen3.6:27b` as the safer
 fallback candidate based on prior smoother operation and earlier accepted
 marker-smoke and metadata evidence.
 
+Phase 194 belongs to this context as accepted captured product marker smoke
+for `qwen3:30b-a3b-instruct-2507-q4_K_M` with
+`ORCH_PROVIDER_SMOKE_OK`. The accepted classifier/proof artifact backfill is
+Retry 3 only; initial Phase 194, Retry 1, and Retry 2 final PASS lines are not
+accepted for classifier/proof artifact status. Phase 194 proves captured
+product marker smoke only and does not prove route execution, live routing,
+worker dispatch, `/api/chat`, semantic correctness, real workload
+sufficiency, long-context behavior, sustained-load stability, service/API/UI
+productization, Hermes/OpenClaw behavior, or production readiness.
+
 Manual review/report integration may display local-first model router policy
 posture as coordinator-facing evidence. Displayed router posture remains
 non-executing review metadata; it is not provider/model selection, worker

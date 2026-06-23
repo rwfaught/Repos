@@ -3593,3 +3593,58 @@ is registered by Phase 191.
 No production readiness is registered by Phase 191.
 
 `PHASE191_SUPERVISED_PROVIDER_CALL_TRACER_TARGET_RECONCILIATION_TO_30B_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 195 Phase 194 Product Marker Proof Documentation Registration
+
+Boundary:
+
+`PHASE_195_SUPERVISED_PROVIDER_CALL_TRACER_30B_PRODUCT_MARKER_PROOF_DOCS`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_194.md`
+
+Registered changed documentation/control files:
+
+- `docs/SUPERVISED_PROVIDER_CALL_TRACER_RUNBOOK.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered accepted Phase 194 status:
+
+`PHASE194_SUPERVISED_PROVIDER_CALL_TRACER_30B_PRODUCT_MARKER_OPERATOR_PROOF=PASS_WITH_RETRY3_CLASSIFIER_ARTIFACT_BACKFILL`
+
+Registered accepted stop point:
+
+`PHASE_194_RETRY3_PRODUCT_MARKER_CLASSIFIER_ARTIFACT_BACKFILL_NO_PROVIDER_CALL=PASS`
+
+Registered product marker facts: product marker `ORCH_PROVIDER_SMOKE_OK`,
+prompt `Return exactly: ORCH_PROVIDER_SMOKE_OK`, model
+`qwen3:30b-a3b-instruct-2507-q4_K_M`, HTTP `200`, JSON parse success `true`,
+returned model `qwen3:30b-a3b-instruct-2507-q4_K_M`, response text
+`ORCH_PROVIDER_SMOKE_OK`, `done=true`, `done_reason=stop`, duration `448ms`,
+and marker present `true`.
+
+Registered proof artifact:
+
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase194_supervised_provider_call_tracer_30b_product_marker\phase_194_retry3_supervised_provider_call_tracer_30b_product_marker_proof.json`
+
+Registered retry caveat: the initial Phase 194 provider call succeeded but
+embedded Python proof artifact creation failed due to syntax error; Retry 1
+failed due to temp-dir import; Retry 2 fixed `PYTHONPATH` but failed by
+serializing `SupervisedProviderCallTracerReview` directly; Retry 3 succeeded
+with `PYTHONPATH`, `review.to_dict()`, and actual classifier assertion.
+
+Only Retry 3 is accepted for classifier/proof artifact backfill. Final PASS
+lines from initial Phase 194, Retry 1, and Retry 2 are not accepted.
+
+Registered GPU caveat: before the call, GPU memory was already
+`18302MiB / 24463MiB`, so cold-load timing is not proven.
+
+No route execution, live routing, worker dispatch, `/api/chat`, semantic
+correctness, real workload sufficiency, long-context behavior, sustained-load
+stability, service/API/UI productization, Hermes/OpenClaw behavior, production
+execution, or production readiness behavior is registered by Phase 195.

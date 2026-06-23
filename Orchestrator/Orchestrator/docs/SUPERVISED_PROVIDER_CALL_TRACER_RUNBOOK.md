@@ -118,12 +118,62 @@ these are true:
 - `response_text` contains `ORCH_PROVIDER_SMOKE_OK`
 - `done=True`
 
-The next product tracer proof still needs a supervised
-`ORCH_PROVIDER_SMOKE_OK` marker call for the product contract. The Phase 190
-`ORCH_30B_VIABILITY_OK` marker is viability evidence only.
+Phase 194 records the accepted supervised `ORCH_PROVIDER_SMOKE_OK` product
+marker smoke for this packet. The Phase 190 `ORCH_30B_VIABILITY_OK` marker
+remains viability evidence only.
 
 Even a PASS classification remains a marker-smoke classification only and
 keeps `route_execution_allowed=false` and `production_readiness=false`.
+
+## Phase 194 Accepted Product Marker Proof
+
+Phase 194 accepted a supervised product marker result for
+`qwen3:30b-a3b-instruct-2507-q4_K_M` with product marker
+`ORCH_PROVIDER_SMOKE_OK`.
+
+Captured provider result:
+
+- HTTP status: `200`
+- JSON parse success: `true`
+- Returned model: `qwen3:30b-a3b-instruct-2507-q4_K_M`
+- Response text: `ORCH_PROVIDER_SMOKE_OK`
+- Done: `true`
+- Done reason: `stop`
+- Duration: `448ms`
+- Marker present: `true`
+
+Accepted status:
+
+`PHASE194_SUPERVISED_PROVIDER_CALL_TRACER_30B_PRODUCT_MARKER_OPERATOR_PROOF=PASS_WITH_RETRY3_CLASSIFIER_ARTIFACT_BACKFILL`
+
+Current accepted stop point:
+
+`PHASE_194_RETRY3_PRODUCT_MARKER_CLASSIFIER_ARTIFACT_BACKFILL_NO_PROVIDER_CALL=PASS`
+
+Proof artifact path:
+
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase194_supervised_provider_call_tracer_30b_product_marker\phase_194_retry3_supervised_provider_call_tracer_30b_product_marker_proof.json`
+
+Retry history is part of the accepted record: the initial provider call
+succeeded but embedded Python proof artifact creation failed due to syntax
+error; Retry 1 failed on import from a temp directory; Retry 2 failed by
+serializing `SupervisedProviderCallTracerReview` directly; Retry 3 succeeded
+by setting `PYTHONPATH`, using `review.to_dict()`, and asserting the actual
+classifier label `captured_marker_smoke_pass_not_route_execution`.
+
+Do not accept final PASS lines from the initial Phase 194 attempt, Retry 1, or
+Retry 2 as classifier/proof-artifact acceptance. Only Retry 3 is accepted for
+classifier/proof artifact backfill.
+
+Before the product marker call, GPU memory was already
+`18302MiB / 24463MiB`, so the model was likely already resident from the
+earlier 30B viability probe. Do not overclaim cold-load timing.
+
+Phase 194 proves captured product marker smoke only. It does not prove route
+execution, live routing, worker dispatch, `/api/chat`, semantic correctness,
+real workload sufficiency, long-context behavior, sustained-load stability,
+service/API/UI productization, production readiness, or Hermes/OpenClaw
+behavior from this product track.
 
 ## Failure Classifications
 
