@@ -2301,3 +2301,30 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `qwen3.6:35b-a3b`.
 - Marker:
   `PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`.
+
+## Phase 235 - General Answer Lightweight Report-Only Contract
+
+- Status: locally source/test/docs-proven report-only lane contract.
+- Phase doc: `docs/PHASE_235.md`.
+- Source: `orchestrator/lightweight_answer_report.py`.
+- Tests:
+  `tests/test_phase_235_general_answer_lightweight_report_only_contract.py`.
+- Behavior: adds a deterministic lightweight `general_answer` report-only
+  artifact builder and renderer for structured low-risk requests.
+- Artifact facts: `phase=PHASE_235`;
+  `artifact_kind=general_answer_lightweight_report_only_contract`;
+  `request_type=general_answer`; accepted reports classify as
+  `general_answer_lightweight_report_only_accepted`; blocked reports classify
+  as `general_answer_lightweight_report_only_blocked`;
+  `production_readiness=false`.
+- Acceptance: requires `request_id`, `request_type=general_answer`,
+  `user_intent_summary`, and low/routine risk, with no mutation, scheduling,
+  local documents/RAG, web lookup, connector, provider/model/runtime execution,
+  or production-readiness requirement.
+- Boundary: no runtime/provider/model execution, live router, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker
+  dispatch, Codex dispatch, WSL/Ollama, Hermes/OpenClaw/Discord,
+  export/package, cleanup/delete/archive, production task execution, or
+  production readiness is added.
+- Marker:
+  `PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

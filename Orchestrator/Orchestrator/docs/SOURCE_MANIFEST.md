@@ -3976,3 +3976,53 @@ behavior proof, worker dispatch proof, or authorization for `qwen3.6:35b-a3b`
 is registered by Phase 228.
 
 `PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`
+
+## Phase 235 General Answer Lightweight Report-Only Contract
+
+Boundary:
+
+`PHASE_235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered new source files:
+
+- `orchestrator/lightweight_answer_report.py`
+
+Registered new test files:
+
+- `tests/test_phase_235_general_answer_lightweight_report_only_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_235.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+
+Registered behavior: deterministic lightweight `general_answer` report-only
+artifact contract for structured low-risk requests.
+
+Registered artifact facts: `phase=PHASE_235`,
+`artifact_kind=general_answer_lightweight_report_only_contract`,
+`request_type=general_answer`,
+`outcome_classification=general_answer_lightweight_report_only_accepted` for
+accepted requests, `general_answer_lightweight_report_only_blocked` for blocked
+requests, and `production_readiness=false`.
+
+Registered blocking behavior: missing `request_id`, missing
+`user_intent_summary`, wrong request type, high/critical risk, required
+mutation, scheduling/reminder, local documents/RAG, web lookup, external
+connector, provider/model/runtime execution, and production-readiness claims
+are blocked.
+
+No semantic correctness proof, model-backed generation, provider/model/runtime
+execution, live router proof, RAG/local lookup, web lookup, scheduler/reminder
+execution, connector execution, worker dispatch, Codex dispatch, WSL/Ollama,
+Hermes/OpenClaw/Discord, export/package, cleanup/delete/archive, production
+execution, or production readiness behavior is registered by Phase 235.
+
+`PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

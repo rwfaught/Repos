@@ -3919,3 +3919,36 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   root cause.
 
 `PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`
+
+## Phase 235 General Answer Lightweight Report-Only Contract
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/lightweight_answer_report.py`.
+- Created tests:
+  `tests/test_phase_235_general_answer_lightweight_report_only_contract.py`.
+- Created docs: `docs/PHASE_235.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/CURRENT_SUCCESS_CRITERION.md`.
+- Behavior: adds a deterministic report-only artifact contract for structured
+  low-risk `general_answer` requests.
+- Report facts: `phase=PHASE_235`;
+  `artifact_kind=general_answer_lightweight_report_only_contract`;
+  `request_type=general_answer`;
+  `outcome_classification=general_answer_lightweight_report_only_accepted`
+  for accepted requests; blocked requests classify as
+  `general_answer_lightweight_report_only_blocked`;
+  `production_readiness=false`.
+- Blocking behavior: rejects or blocks missing `request_id`, missing
+  `user_intent_summary`, wrong request type, high/critical risk, mutation,
+  scheduling/reminder, local documents/RAG, web lookup, connector,
+  provider/model/runtime execution, and production-readiness claims.
+- Explicit non-proofs: not semantic correctness proof, not model-backed
+  generation, not provider/runtime execution, not live router proof, not
+  RAG/local lookup, not web lookup, not scheduler/reminder execution, not
+  connector execution, not worker/Codex dispatch, and not production
+  readiness.
+
+`PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

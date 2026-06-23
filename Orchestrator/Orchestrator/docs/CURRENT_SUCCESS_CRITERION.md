@@ -828,3 +828,18 @@ behavior, OpenClaw behavior, Discord behavior, WSL behavior, worker dispatch,
 or `qwen3.6:35b-a3b` suitability.
 
 `PHASE228_ROUTE_MEDIATED_PROVIDER_SMOKE_LIVE_RUNTIME_PROOF_REGISTRATION_DOCS_PROVEN=PASS`
+
+## Phase 235 General Answer Lightweight Report-Only Scope Note
+
+Phase 235 adds a deterministic lightweight `general_answer` report-only
+contract for structured low-risk requests.
+
+This does not broaden the current success criterion into general semantic
+answer quality, model-backed generation, live routing, RAG/local lookup, web
+lookup, scheduler/reminder execution, connector execution, worker dispatch,
+Codex dispatch, service/API/UI productization, or production readiness.
+
+The present-tense success bar remains coding-task focused unless a later
+explicit boundary changes it.
+
+`PHASE235_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_ONLY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
