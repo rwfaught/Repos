@@ -4061,3 +4061,43 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   not production work, and not production readiness.
 
 `PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 257 General Answer Real Input Review Artifact Persistence
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS`
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_257_general_answer_real_input_review_artifact_persistence_contract.py`.
+- Created docs: `docs/PHASE_257.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: adds explicit caller-supplied JSON artifact persistence for
+  real-input `general_answer` manual review output through
+  `--write-review-json <artifact_json_path>`.
+- Accepted input: safe low/routine-risk structured local `general_answer`
+  input still routes through the existing non-executing manual review and
+  lightweight report lane, and can now persist the review result to the
+  caller-supplied artifact path.
+- Artifact facts: persisted JSON records Phase 257 artifact identity,
+  request identity/type, accepted/blocked status, CLI status, manual review
+  text, lightweight report presence/payload, non-proofs, caveats,
+  no-activity flags, report-only status, and explicit false execution flags.
+- Rejection behavior: malformed JSON, missing input path, invalid artifact
+  path, missing fields, wrong request type, high/critical or unknown/non-low
+  risk, mutation, scheduling/reminder, RAG/local lookup, web lookup,
+  connector, provider/model/runtime execution, and production-readiness claims
+  are rejected or blocked conservatively without accepted lightweight answer
+  reports or misleading success artifacts.
+- Existing behavior preserved: no persistence is performed unless
+  `--write-review-json` is supplied; fixture review remains stdout-only;
+  existing Phase 256 no-persistence real-input behavior remains intact.
+- Explicit non-proofs: not semantic answer correctness proof, not
+  model-backed generation, not provider/runtime/platform execution, not live
+  route execution, not RAG/local lookup, not web lookup, not
+  scheduler/reminder execution, not connector execution, not worker/Codex
+  dispatch, not service/API/UI productization, not export/package behavior,
+  not production work, and not production readiness.
+
+`PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -4183,3 +4183,64 @@ archive, commit, push, production task execution, current-success broadening,
 or production readiness behavior is registered by Phase 256.
 
 `PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 257 General Answer Real Input Review Artifact Persistence
+
+Boundary:
+
+`PHASE_257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_257_general_answer_real_input_review_artifact_persistence_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_257.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic standard-library JSON artifact persistence
+for real operator-provided structured local `general_answer` input review
+results, using an explicit caller-supplied path.
+
+Registered CLI option:
+
+- `--write-review-json <artifact_json_path>`
+
+Registered accepted behavior: safe low/routine-risk structured
+`general_answer` input can persist the existing manual review/lightweight
+report-only result as JSON at the supplied path.
+
+Registered artifact shape: Phase 257 artifact identity, request identity/type,
+accepted/blocked status, CLI status, manual review text, lightweight report
+presence/payload, non-proofs, caveats, no-activity flags,
+`production_readiness=false`, `source_input_kind`, `report_only=true`, and
+explicit false runtime/provider/model/RAG/web/scheduler/connector/worker/
+Codex/service flags.
+
+Registered rejection behavior: malformed JSON, missing input path, invalid
+artifact path, non-object JSON, missing structured fields, wrong request type,
+high/critical or unknown/non-low risk, mutation, scheduling/reminder,
+RAG/local lookup, web lookup, connector, provider/model/runtime execution, and
+production-readiness claims are rejected or blocked conservatively without
+accepted lightweight answer reports or misleading success artifacts.
+
+No semantic correctness proof, answer generation, provider/model/runtime
+execution, WSL/Ollama execution, Hermes/OpenClaw/Discord behavior, live route
+execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+connector execution, worker dispatch, Codex dispatch, service/API/UI behavior,
+project-script execution, source refresh, export/package, cleanup/delete/
+archive, commit, push, production task execution, current-success broadening,
+or production readiness behavior is registered by Phase 257.
+
+`PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -94,7 +94,7 @@ def _help_text() -> str:
         (
             "Manual review adapter commands:",
             "  --list-fixtures",
-            "  --general-answer-input <json_path>",
+            "  --general-answer-input <json_path> [--write-review-json <artifact_json_path>]",
             "  --fixture <fixture_id> [--draft-provider-probe-packet] [--authorize-probe-boundary]",
             "      [--probe-kind <value>] [--probe-surface <value>]",
             "      [--probe-scope <value>] [--expected-evidence <value>] [--stop-condition <value>]",
@@ -102,6 +102,7 @@ def _help_text() -> str:
             "",
             "This adapter renders deterministic Phase 118 review output only.",
             "General answer input accepts structured local JSON only.",
+            "Review JSON persistence requires a caller-supplied artifact path.",
             "Provider probe packet drafting is paperwork only.",
             "No probe, provider, model, runtime, worker, RAG, web, scheduler, connector, route, or production execution occurs.",
         )
@@ -304,7 +305,70 @@ def _structured_general_answer_intake(value: dict[str, Any]) -> RequestIntakeRec
     )
 
 
-def _run_general_answer_input(path_text: str) -> ManualReviewCliResult:
+def _parse_general_answer_input_options(args: tuple[str, ...]) -> tuple[str, str, str]:
+    if len(args) < 2 or not args[1]:
+        return "", "", "Manual review adapter requires exactly one JSON path after --general-answer-input."
+
+    input_path = args[1]
+    artifact_path = ""
+    index = 2
+    while index < len(args):
+        item = args[index]
+        if item == "--write-review-json":
+            if artifact_path:
+                return "", "", "Manual review adapter received duplicate --write-review-json."
+            if index + 1 >= len(args) or not args[index + 1]:
+                return "", "", "Manual review adapter requires a JSON path after --write-review-json."
+            artifact_path = args[index + 1]
+            index += 2
+            continue
+        return "", "", f"Manual review adapter received unsupported general-answer option: {item}."
+
+    return input_path, artifact_path, ""
+
+
+def _review_artifact_payload(review, result: ManualReviewCliResult) -> dict[str, Any]:
+    lightweight_payload = review.lightweight_answer_report_payload
+    return {
+        "phase": "PHASE_257",
+        "artifact_kind": "general_answer_real_input_review_artifact_persistence",
+        "request_id": review.request_id,
+        "request_type": review.request_type,
+        "accepted": bool(review.accepted),
+        "blocked": not bool(review.accepted),
+        "cli_result_status": "accepted" if result.exit_code == 0 and result.accepted else "blocked_or_rejected",
+        "exit_code_intent": result.exit_code,
+        "manual_review_text": review.review_text,
+        "lightweight_answer_report_present": lightweight_payload is not None,
+        "lightweight_answer_report_payload": lightweight_payload,
+        "non_proofs": list(result.non_proofs),
+        "caveats": list(result.caveats),
+        "no_activity_flags": dict(result.no_activity_flags),
+        "production_readiness": False,
+        "source_input_kind": "structured_local_general_answer_json",
+        "report_only": True,
+        "runtime_execution": False,
+        "provider_execution": False,
+        "model_execution": False,
+        "rag_lookup": False,
+        "web_lookup": False,
+        "scheduler_execution": False,
+        "connector_execution": False,
+        "worker_dispatch": False,
+        "codex_dispatch": False,
+        "service_api_ui": False,
+    }
+
+
+def _write_review_artifact(path_text: str, payload: dict[str, Any]) -> str:
+    try:
+        Path(path_text).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    except OSError as exc:
+        return f"Manual review adapter could not write review JSON artifact: {exc.__class__.__name__}."
+    return ""
+
+
+def _run_general_answer_input(path_text: str, artifact_path: str = "") -> ManualReviewCliResult:
     value, read_error = _read_json_object(path_text)
     if read_error:
         return _general_answer_rejection_result(
@@ -341,7 +405,7 @@ def _run_general_answer_input(path_text: str) -> ManualReviewCliResult:
     error_text = ""
     if not review.accepted:
         error_text = "Manual review adapter stopped conservatively for non-accepted structured general-answer input."
-    return _result(
+    result = _result(
         exit_code=0 if review.accepted else 1,
         command="general-answer-input",
         fixture_id=_text(value.get("request_id")),
@@ -352,6 +416,20 @@ def _run_general_answer_input(path_text: str) -> ManualReviewCliResult:
         no_activity_flags=review.no_activity_flags,
         caveats=review.caveats + ("general_answer_input_loaded_from_structured_local_json",),
     )
+    if artifact_path:
+        write_error = _write_review_artifact(artifact_path, _review_artifact_payload(review, result))
+        if write_error:
+            return _result(
+                exit_code=2,
+                command="general-answer-input",
+                fixture_id=_text(value.get("request_id")),
+                error_text=write_error,
+                accepted=False,
+                non_proofs=result.non_proofs,
+                no_activity_flags=result.no_activity_flags,
+                caveats=result.caveats + ("review_json_artifact_write_failed",),
+            )
+    return result
 
 
 def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualReviewCliResult:
@@ -379,12 +457,13 @@ def build_manual_review_cli_output(argv: Sequence[str] | None = None) -> ManualR
         )
 
     if args and args[0] == "--general-answer-input":
-        if len(args) != 2:
+        input_path, artifact_path, parse_error = _parse_general_answer_input_options(args)
+        if parse_error:
             return _general_answer_rejection_result(
-                error_text="Manual review adapter requires exactly one JSON path after --general-answer-input.",
+                error_text=parse_error,
                 caveat="general_answer_input_path_count_rejected_before_runner_call",
             )
-        return _run_general_answer_input(args[1])
+        return _run_general_answer_input(input_path, artifact_path)
 
     if args and args[0] == "--fixture":
         if len(args) < 2 or not args[1]:

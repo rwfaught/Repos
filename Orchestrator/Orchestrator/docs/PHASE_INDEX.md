@@ -2420,3 +2420,35 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   production readiness is added.
 - Marker:
   `PHASE256_GENERAL_ANSWER_REAL_INPUT_REPORT_ONLY_CLI_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 257 - General Answer Real Input Review Artifact Persistence
+
+- Status: locally source/test/docs-proven caller-supplied review artifact
+  persistence.
+- Phase doc: `docs/PHASE_257.md`.
+- Boundary:
+  `PHASE_257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS`.
+- Source: `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_257_general_answer_real_input_review_artifact_persistence_contract.py`.
+- Behavior: adds `--write-review-json <artifact_json_path>` for
+  `--general-answer-input <input_json_path>` so the existing real-input
+  report-only manual review result can be persisted as caller-supplied JSON.
+- Artifact behavior: accepted safe input writes JSON with Phase 257 artifact
+  identity, request identity/type, accepted/blocked status, CLI status, manual
+  review text, lightweight report presence/payload, non-proofs, caveats,
+  no-activity flags, explicit report-only status, and false runtime/provider/
+  model/RAG/web/scheduler/connector/worker/Codex/service flags.
+- Rejection behavior: malformed JSON, missing input path, invalid artifact
+  path, missing structured fields, wrong request type, high/critical or
+  unknown/non-low risk, mutation, scheduling/reminder, RAG/local lookup, web
+  lookup, connector, provider/model/runtime execution, and production
+  readiness claims return conservative nonzero results without accepted
+  lightweight answer reports or misleading success artifacts.
+- Boundary: no semantic answer-quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker/Codex
+  dispatch, service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness is added.
+- Marker:
+  `PHASE257_GENERAL_ANSWER_REAL_INPUT_REVIEW_ARTIFACT_PERSISTENCE_SOURCE_TEST_DOCS_PROVEN=PASS`.
