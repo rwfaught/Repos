@@ -1869,3 +1869,26 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Marker:
   `PHASE165_ROUTE_SELECTION_READINESS_RECOMMENDATION_ENVELOPE_REVIEW_SOURCE_TEST_DOCS_PROVEN=PASS`.
 - Production readiness is not claimed.
+
+## Phase 169 - Tiny Vertical Tracer Bullet Dry Report Artifact Contract
+
+- Status: locally source/test/docs-proven dry artifact contract only.
+- Phase doc: `docs/PHASE_169.md`.
+- Behavior: adds a deterministic tiny vertical tracer dry report artifact over
+  the existing `safe_direct_answer` in-process harness spine, carrying
+  intake/admission, boundary packet/manual review, router recommendation,
+  `qwen3.6:27b` provider evidence envelope, route-selection readiness,
+  coordinator review report, caller-supplied JSON persistence, and conservative
+  outcome classification.
+- Boundary: no provider/model/runtime probes, no Ollama, no `/api/tags`, no
+  `/api/show`, no `/api/generate`, no `/api/chat`, no runtime call, no route
+  execution, no worker dispatch, no WSL/OpenClaw/Hermes/Discord, no
+  RAG/web/scheduler/connector execution, no export/package/cleanup/delete/
+  archive, and no production readiness behavior changed.
+- Artifact impact: persistence is caller-supplied test/dry artifact JSON only;
+  no default repo `data/` write or production artifact creation is registered.
+- Next recommended boundary:
+  `PHASE_170_TINY_VERTICAL_TRACER_DRY_REPORT_OPERATOR_REVIEW`.
+- Marker:
+  `PHASE169_TINY_VERTICAL_TRACER_BULLET_DRY_REPORT_ARTIFACT_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+- Production readiness is not claimed.
