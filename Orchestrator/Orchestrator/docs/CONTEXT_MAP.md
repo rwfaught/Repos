@@ -574,3 +574,13 @@ It does not implement:
 The Phase 103 contract may name request types, required route-envelope fields,
 permissions, capabilities, caveats, and no-activity flags. It does not execute
 those capabilities or prove that any future route is productized.
+
+## Phase Label Taxonomy Context
+
+Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+The Orchestrator product track distinguishes accepted phase/checkpoint labels from dedicated phase documentation files.
+
+PHASE_XXX labels are named acceptance boundaries. Dedicated docs/PHASE_XXX.md files are durable source documentation artifacts and are not guaranteed for every accepted boundary.
+
+Future sessions should inspect PHASE_INDEX.md, ACTION_LOG.md, source manifests, commit history, operator proof, capsule metadata, and current handoff before treating a missing phase doc as a missing phase.

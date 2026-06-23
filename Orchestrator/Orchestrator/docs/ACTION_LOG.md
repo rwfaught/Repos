@@ -3633,3 +3633,17 @@ Caveat: artifact output was live model-backed but prospective/noisy, not exact b
   behavior, sustained-load stability, service/API/UI productization,
   production readiness, or Hermes/OpenClaw behavior proof from this product
   track.
+
+## PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+Accepted doctrine clarification: PHASE_XXX labels represent named acceptance boundaries, not guaranteed one-to-one docs/PHASE_XXX.md files.
+
+Clarified that transport checkpoints, push proofs, source-refresh/upload proofs, retry attempts, and coordinator metadata checkpoints may be real accepted states without standalone phase docs.
+
+Preserved rule: do not renumber old phases and do not fabricate filler phase docs solely to make docs/PHASE_*.md contiguous.
+
+Phase 197 caveat preserved: operator command printed PASS after a required-entry path check failed; coordinator capsule inspection recovered source-refresh posture because the uploaded capsule root was Orchestrator/, not Orchestrator/Orchestrator/.
+
+Non-proofs preserved: no route execution, no live routing, no provider/model execution, no /api/chat, no semantic correctness, no sustained-load behavior, no long-context behavior, no service/API/UI productization, no Hermes/OpenClaw behavior, and no production readiness.

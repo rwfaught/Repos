@@ -3648,3 +3648,11 @@ No route execution, live routing, worker dispatch, `/api/chat`, semantic
 correctness, real workload sufficiency, long-context behavior, sustained-load
 stability, service/API/UI productization, Hermes/OpenClaw behavior, production
 execution, or production readiness behavior is registered by Phase 195.
+
+## Phase 198 Source Manifest Note
+
+Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+Added docs/PHASE_198.md and clarified phase-label taxonomy/checkpoint-gap doctrine in the durable docs ledger.
+
+This note records that phase labels and phase docs are intentionally not one-to-one. Transport checkpoints, push proofs, source-refresh/upload proofs, retry attempts, and coordinator metadata checkpoints may be accepted without standalone docs/PHASE_XXX.md files.

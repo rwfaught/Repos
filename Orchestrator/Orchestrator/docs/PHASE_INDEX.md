@@ -2103,3 +2103,15 @@ PHASE86_RATIFIED_DIRECT_LIVE_OLLAMA_SMOKE_MANUAL_TEST_ENVIRONMENT
 - Accepted stop point:
   `PHASE_194_RETRY3_PRODUCT_MARKER_CLASSIFIER_ARTIFACT_BACKFILL_NO_PROVIDER_CALL=PASS`.
 - Production readiness is not claimed.
+
+## PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+Status: PASS_REPORTED_LOCAL_COMMIT_PENDING_REMOTE_PUSH
+
+Kind: docs/ledger doctrine clarification.
+
+Summary: Clarifies that PHASE_XXX is an accepted-boundary namespace, not a guarantee of a matching docs/PHASE_XXX.md file. Product/source mutation phases usually receive dedicated phase docs; transport checkpoints and proof-only boundaries may be recorded in ledgers, handoffs, and coordinator metadata without standalone phase docs.
+
+Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and should not be treated as missing source work without corroborating ledger evidence.

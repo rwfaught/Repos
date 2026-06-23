@@ -880,3 +880,19 @@ That means:
 - preserve metadata discipline in ordinary orchestration responses
 
 Progress in this project should feel like a staircase, not a conveyor belt.
+
+## Phase Label Taxonomy And Checkpoint Gap Doctrine
+
+Marker: PHASE_198_PHASE_LABEL_TAXONOMY_AND_CHECKPOINT_GAP_CLARIFICATION_DOCS
+
+A `PHASE_XXX` label identifies a named acceptance boundary that changes official project state. It does not guarantee that a dedicated `docs/PHASE_XXX.md` file exists.
+
+The project recognizes several phase/checkpoint kinds:
+
+- Product/source phase: durable source, test, contract, or product documentation mutation. These usually deserve a dedicated phase doc.
+- Docs/ledger phase: durable documentation or audit-state mutation. These may deserve a dedicated phase doc when the doctrine or status needs durable explanation.
+- Proof phase: accepted evidence about behavior, provider viability, artifact validity, operator output, or classification. These may be documented in a phase doc or only in ledgers depending on durability needs.
+- Transport checkpoint: remote push proof, source-refresh proof, upload-ready proof, or capsule proof. These usually should be recorded in ledgers and handoffs, not fabricated into standalone phase docs.
+- Retry/backfill phase: corrective attempt under an existing boundary. These should preserve failed-attempt caveats and should normally be documented under the parent or ledger record.
+
+Non-contiguous `docs/PHASE_*.md` filenames are expected. Missing phase-doc numbers are not automatically defects. Do not renumber old phases. Do not create filler phase docs solely to make the folder look contiguous.
