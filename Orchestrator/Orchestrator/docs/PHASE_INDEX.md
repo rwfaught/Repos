@@ -2353,3 +2353,38 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   behavior, semantic answer-quality proof, or production readiness is added.
 - Marker:
   `PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 249 - General Answer Lightweight Report CLI Operator Smoke
+
+- Status: accepted read-only CLI operator smoke proof registered in docs.
+- Phase doc: `docs/PHASE_249.md`.
+- Boundary:
+  `PHASE_249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY`.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase249_general_answer_cli_smoke_20260623_055318`.
+- Source HEAD:
+  `389d4a7d4fa854d0ccc010be0315fea4e4f7e786`.
+- Behavior proven: the existing deterministic manual review CLI surfaces the
+  Phase 243 lightweight general-answer report section for `safe_direct_answer`
+  and does not surface that section for `safe_coding_source_test_mutation`.
+- Summary facts: `ListFixturesExit=0`; `SafeDirectAnswerExit=0`;
+  `SafeCodingSourceTestMutationExit=0`; `ListHasSafeDirectAnswer=True`;
+  `DirectHasAllRequiredPatterns=True`; `MissingDirectPatterns=`;
+  `CodingHasLightweightSection=False`; `StatusShortAfterEmpty=True`.
+- Required direct-answer patterns proven present:
+  `Lightweight General Answer Report`, `PHASE_235`,
+  `general_answer_lightweight_report_only_contract`, and
+  `production_readiness`.
+- Non-authorizations preserved: no runtime/provider/platform authorization, no
+  model/provider authorization, no WSL/Ollama authorization, no
+  Hermes/OpenClaw/Discord authorization, no RAG/web/scheduler/connector
+  authorization, no worker/Codex dispatch authorization, no project-script
+  authorization, no commit/push/source-refresh authorization, and no
+  production-execution authorization.
+- Caveat / non-proofs: proves deterministic local CLI rendering behavior for existing
+  fixtures only; not semantic answer correctness, model-backed generation,
+  provider/runtime execution, live route execution, RAG/web/scheduler/
+  connector behavior, worker/Codex dispatch, service/API/UI productization, or
+  production readiness.
+- Marker:
+  `PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`.

@@ -4076,3 +4076,55 @@ cleanup/delete/archive, production execution, service/API/UI behavior, or
 production readiness behavior is registered by Phase 243.
 
 `PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 249 General Answer Lightweight Report CLI Operator Smoke Registration
+
+Boundary:
+
+`PHASE_250_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_SMOKE_PROOF_REGISTRATION_SOURCE_DOCS`
+
+Registered accepted proof boundary:
+
+`PHASE_249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_249.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: docs/ledger registration only of accepted read-only CLI
+smoke proof for the existing manual review CLI lightweight `general_answer`
+report section.
+
+Registered proof source:
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase249_general_answer_cli_smoke_20260623_055318`
+at HEAD `389d4a7d4fa854d0ccc010be0315fea4e4f7e786`.
+
+Registered summary facts: `ListFixturesExit=0`; `SafeDirectAnswerExit=0`;
+`SafeCodingSourceTestMutationExit=0`; `ListHasSafeDirectAnswer=True`;
+`DirectHasAllRequiredPatterns=True`; `MissingDirectPatterns=`;
+`CodingHasLightweightSection=False`; `StatusShortAfterEmpty=True`.
+
+Registered direct-answer patterns: `Lightweight General Answer Report`;
+`PHASE_235`; `general_answer_lightweight_report_only_contract`;
+`production_readiness`.
+
+Registered exclusion proof: `safe_coding_source_test_mutation` did not surface
+the lightweight report section.
+
+No code/source behavior changes, semantic answer quality proof, model-backed
+generation, provider/model/runtime/platform execution, live route execution,
+RAG/local lookup, web lookup, scheduler/reminder execution, connector
+execution, worker dispatch, Codex dispatch, WSL/Ollama,
+Hermes/OpenClaw/Discord, service/API/UI behavior, project script behavior,
+source refresh, export/package, cleanup/delete/archive, production execution,
+commit, push, coordinator ratification, or production readiness behavior is
+registered by Phase 249.
+
+`PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`

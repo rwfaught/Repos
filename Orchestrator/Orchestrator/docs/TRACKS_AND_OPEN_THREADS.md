@@ -404,6 +404,12 @@ fresh artifact proof.
 - Phase 243 surfaces that Phase 235 payload and rendered report section inside
   manual review output for accepted low-risk direct-answer cases while
   preserving router policy posture.
+- Phase 249 registers accepted read-only CLI smoke evidence that the existing
+  manual review CLI surfaces the lightweight report section for
+  `safe_direct_answer`.
+- Phase 249 also registers exclusion evidence that
+  `safe_coding_source_test_mutation` does not surface the lightweight section,
+  and that repo short status stayed empty after the smoke run.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
@@ -412,10 +418,17 @@ fresh artifact proof.
   provider/runtime execution, live router proof, RAG/local lookup, web lookup,
   scheduler/reminder execution, connector execution, worker/Codex dispatch,
   service/API/UI productization, or production readiness.
+- Phase 249 is not semantic answer quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector behavior, worker/Codex
+  dispatch, service/API/UI productization, coordinator ratification, or
+  production readiness.
 - An optional persistence policy is needed.
 - A local-first answer/fallback policy is needed.
 - Triage status: `DEFERRED_VALID` unless the lightweight answer lane is ranked
   highest.
+
+`PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`
 
 ### Platform / Installer / OpenClaw
 

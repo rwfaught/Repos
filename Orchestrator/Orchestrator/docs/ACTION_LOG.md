@@ -3986,3 +3986,43 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   productization, and not production readiness.
 
 `PHASE243_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_MANUAL_REVIEW_INTEGRATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 249 General Answer Lightweight Report CLI Operator Smoke Registration
+
+- Timestamp: 2026-06-23
+- Registration boundary:
+  `PHASE_250_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_SMOKE_PROOF_REGISTRATION_SOURCE_DOCS`
+- Registered accepted proof boundary:
+  `PHASE_249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY`.
+- Created docs: `docs/PHASE_249.md`.
+- Updated docs: `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase249_general_answer_cli_smoke_20260623_055318`.
+- Source HEAD: `389d4a7d4fa854d0ccc010be0315fea4e4f7e786`.
+- Summary facts: `ListFixturesExit=0`; `SafeDirectAnswerExit=0`;
+  `SafeCodingSourceTestMutationExit=0`; `ListHasSafeDirectAnswer=True`;
+  `DirectHasAllRequiredPatterns=True`; `MissingDirectPatterns=`;
+  `CodingHasLightweightSection=False`; `StatusShortAfterEmpty=True`.
+- Required direct-answer patterns proven present:
+  `Lightweight General Answer Report`; `PHASE_235`;
+  `general_answer_lightweight_report_only_contract`;
+  `production_readiness`.
+- Coding-fixture exclusion proof: `safe_coding_source_test_mutation` did not
+  surface the lightweight report section.
+- Repo cleanliness proof: the Phase 249 smoke recorded empty short status after
+  the smoke run.
+- Non-authorizations preserved:
+  `RuntimeProviderPlatformAuthorized=False`; `ModelProviderAuthorized=False`;
+  `WSLOllamaAuthorized=False`; `HermesOpenClawDiscordAuthorized=False`;
+  `RagWebSchedulerConnectorAuthorized=False`;
+  `WorkerCodexDispatchAuthorized=False`; `ProjectScriptsAuthorized=False`;
+  `CommitAuthorized=False`; `PushAuthorized=False`;
+  `SourceRefreshAuthorized=False`; `ProductionExecutionAuthorized=False`.
+- Explicit non-proofs: not semantic answer quality proof, model-backed
+  generation, provider/runtime/platform execution, live route execution,
+  RAG/local lookup, web lookup, scheduler/reminder execution, connector
+  behavior, worker/Codex dispatch, service/API/UI productization, coordinator
+  ratification, or production readiness.
+
+`PHASE249_GENERAL_ANSWER_LIGHTWEIGHT_REPORT_CLI_OPERATOR_SMOKE_READONLY_PROVEN=PASS`
