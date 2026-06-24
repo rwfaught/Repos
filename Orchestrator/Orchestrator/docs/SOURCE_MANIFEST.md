@@ -4505,3 +4505,70 @@ production work, current-success broadening, or production readiness behavior
 is registered by Phase 261.
 
 `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 263 General Answer Artifact Persistence Policy
+
+Boundary:
+
+`PHASE_263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS`
+
+Registered new source files:
+
+- `orchestrator/general_answer_artifact_policy.py`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_263_general_answer_artifact_persistence_policy_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_263.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic artifact persistence/default-surfacing
+policy for structured local `general_answer` review artifacts.
+
+Registered helper:
+
+- `build_general_answer_artifact_persistence_policy(write_review_json_path)`
+
+Registered policy: artifact persistence is opt-in only via caller-supplied
+`--write-review-json <artifact_json_path>`; no default artifact path is
+currently created; successful artifact-write notice appears only after
+successful caller-supplied artifact persistence.
+
+Registered artifact integration: successful structured local `general_answer`
+review artifacts include `artifact_persistence_policy`.
+
+Registered preserved CLI output:
+
+- `Review JSON Artifact Written: <artifact_json_path>`
+
+Registered preserved behavior: no artifact file is created when
+`--write-review-json` is omitted; no successful artifact notice appears when
+persistence is omitted, input is rejected, artifact writing fails, or fixture
+mode is used; normal UTF-8 input, UTF-8 BOM input, malformed JSON, unreadable
+paths, non-object JSON, wrong request type, unsafe execution requests, high or
+unknown risk, invalid artifact path, and fixtures remain covered by existing
+conservative behavior.
+
+No semantic answer correctness, semantic answer generation,
+provider/model/runtime execution, WSL/Ollama execution, Hermes/OpenClaw/Discord
+behavior, live route execution, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch from product code, service/API/UI behavior, project-script execution,
+source refresh, export/package, cleanup/delete/archive, commit, push,
+production task execution, current-success broadening, or production readiness
+behavior is registered by Phase 263.
+
+`PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`

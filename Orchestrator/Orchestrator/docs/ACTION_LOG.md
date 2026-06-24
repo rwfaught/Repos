@@ -4277,3 +4277,47 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production readiness.
 
 `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 263 General Answer Artifact Persistence Policy
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/general_answer_artifact_policy.py`.
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_263_general_answer_artifact_persistence_policy_contract.py`.
+- Created docs: `docs/PHASE_263.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: codifies deterministic artifact persistence/default-surfacing
+  policy for structured local `general_answer` review artifacts.
+- Policy: artifact persistence is opt-in only via caller-supplied
+  `--write-review-json <artifact_json_path>`; no default artifact path is
+  created; successful artifact-write notice appears only after successful
+  caller-supplied artifact persistence.
+- Artifact integration: successful structured local `general_answer` review
+  artifacts include `artifact_persistence_policy`.
+- Preserved notice wording:
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Existing behavior preserved: no artifact file is created when
+  `--write-review-json` is omitted; no notice appears when persistence is
+  omitted, input is rejected, artifact writing fails, or fixture mode is used;
+  normal UTF-8 input, UTF-8 BOM input, malformed JSON, unreadable paths,
+  non-object JSON, wrong request type, unsafe execution requests, high or
+  unknown risk, invalid artifact paths, `safe_direct_answer`, and
+  `safe_coding_source_test_mutation` remain conservative.
+- Open-thread update: artifact persistence/default-surfacing policy is codified
+  for current explicit caller-supplied path behavior; broader
+  `general_answer` usability remains open; `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Explicit non-proofs: not semantic answer correctness proof, not semantic
+  answer generation, not provider/model/runtime execution, not live route
+  execution, not RAG/local lookup, not web lookup, not scheduler/reminder
+  execution, not connector execution, not worker/Codex dispatch from product
+  code, not service/API/UI productization, not export/package behavior, not
+  production work, not current-success broadening, and not production
+  readiness.
+
+`PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`

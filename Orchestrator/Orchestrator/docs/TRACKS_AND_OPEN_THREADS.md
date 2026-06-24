@@ -458,15 +458,22 @@ fresh artifact proof.
   `--write-review-json` was omitted, omitted the notice for unsafe/rejected
   input, preserved fixture lightweight-report behavior and no-notice behavior,
   and ended with `FinalGitStatusLineCount=0`.
+- Phase 263 defines and codifies the artifact persistence/default-surfacing
+  policy for structured local `general_answer` review artifacts: persistence is
+  opt-in only through caller-supplied `--write-review-json
+  <artifact_json_path>`, no default artifact path is created, and the
+  successful artifact-write notice appears only after successful
+  caller-supplied persistence.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
   `DEFERRED_VALID` after Phase 256 implementation.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE` triage status:
   `DEFERRED_VALID` after Phase 257 implementation, Phase 258
   operator-smoke-driven BOM-tolerance hardening, and Phase 259 proof
   registration; Phase 260 adds artifact-write UX/surfacing only, and Phase 261
-  closes the narrow artifact-write notice smoke registration. Later default
-  surfacing, local-first answer/fallback policy, service/API/UI, and live
-  answer generation remain separate.
+  closes the narrow artifact-write notice smoke registration; Phase 263
+  codifies the opt-in persistence/default-surfacing policy without enabling a
+  default artifact path. Later local-first answer/fallback policy,
+  service/API/UI, and live answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
   execution, connector execution, worker dispatch, Codex dispatch, or
@@ -491,7 +498,14 @@ fresh artifact proof.
   connector behavior, worker/Codex dispatch, service/API/UI productization,
   export/package behavior, production work, current-success broadening, or
   production readiness.
-- An optional persistence policy is needed.
+- Phase 263 is not semantic answer quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, raw prompt
+  inference, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector behavior, worker/Codex dispatch, service/API/UI productization,
+  export/package behavior, production work, current-success broadening, or
+  production readiness.
+- The artifact persistence/default-surfacing policy is codified for the
+  current explicit caller-supplied path behavior.
 - A local-first answer/fallback policy is needed.
 - Triage status: `DEFERRED_VALID` unless the lightweight answer lane is ranked
   highest.
@@ -509,6 +523,8 @@ fresh artifact proof.
 `PHASE260_GENERAL_ANSWER_REVIEW_ARTIFACT_WRITE_NOTICE_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+`PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 ### Autonomy Tier Policy
 

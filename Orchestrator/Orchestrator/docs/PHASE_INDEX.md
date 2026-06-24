@@ -2593,3 +2593,43 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `PRODUCT_AUTONOMY_TIER_POLICY` remains `DEFERRED_VALID`.
 - Marker:
   `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 263 - General Answer Artifact Persistence Policy
+
+- Status: locally source/test/docs-proven artifact persistence/default-surfacing
+  policy for structured local `general_answer` review artifacts.
+- Phase doc: `docs/PHASE_263.md`.
+- Boundary:
+  `PHASE_263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS`.
+- Source:
+  `orchestrator/general_answer_artifact_policy.py`;
+  `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_263_general_answer_artifact_persistence_policy_contract.py`.
+- Policy: artifact persistence is opt-in only via caller-supplied
+  `--write-review-json <artifact_json_path>`; no default artifact path is
+  currently created; the successful artifact-write notice appears only after
+  successful caller-supplied artifact persistence.
+- Behavior: successful structured local `general_answer` review artifacts now
+  include `artifact_persistence_policy` while preserving the existing notice:
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Preserved behavior: no artifact file is created when `--write-review-json`
+  is omitted; no successful artifact notice appears when persistence is
+  omitted, input is rejected, artifact writing fails, or fixture mode is used;
+  normal UTF-8 input, UTF-8 BOM input, malformed JSON, unreadable paths,
+  non-object JSON, wrong request type, unsafe execution requests, high or
+  unknown risk, invalid artifact paths, and fixture behavior remain
+  conservative.
+- Boundary: no semantic answer generation, answer correctness proof,
+  provider/model/runtime execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker/Codex
+  dispatch from product code, service/API/UI behavior, export/package
+  behavior, production work, current-success broadening, or production
+  readiness is added.
+- Open-thread status: artifact persistence/default-surfacing policy is codified
+  for the current explicit caller-supplied path behavior; broader
+  `general_answer` usability remains open; `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Marker:
+  `PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`.

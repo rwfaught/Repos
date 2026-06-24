@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
 
+from orchestrator.general_answer_artifact_policy import build_general_answer_artifact_persistence_policy
 from orchestrator.manual_review_runner import (
     NO_ACTIVITY_FLAGS as RUNNER_NO_ACTIVITY_FLAGS,
     list_builtin_review_fixtures,
@@ -327,7 +328,11 @@ def _parse_general_answer_input_options(args: tuple[str, ...]) -> tuple[str, str
     return input_path, artifact_path, ""
 
 
-def _review_artifact_payload(review, result: ManualReviewCliResult) -> dict[str, Any]:
+def _review_artifact_payload(
+    review,
+    result: ManualReviewCliResult,
+    artifact_path: str = "",
+) -> dict[str, Any]:
     lightweight_payload = review.lightweight_answer_report_payload
     return {
         "phase": "PHASE_257",
@@ -357,6 +362,7 @@ def _review_artifact_payload(review, result: ManualReviewCliResult) -> dict[str,
         "worker_dispatch": False,
         "codex_dispatch": False,
         "service_api_ui": False,
+        "artifact_persistence_policy": build_general_answer_artifact_persistence_policy(artifact_path),
     }
 
 
@@ -424,7 +430,7 @@ def _run_general_answer_input(path_text: str, artifact_path: str = "") -> Manual
         caveats=review.caveats + ("general_answer_input_loaded_from_structured_local_json",),
     )
     if artifact_path:
-        write_error = _write_review_artifact(artifact_path, _review_artifact_payload(review, result))
+        write_error = _write_review_artifact(artifact_path, _review_artifact_payload(review, result, artifact_path))
         if write_error:
             return _result(
                 exit_code=2,
