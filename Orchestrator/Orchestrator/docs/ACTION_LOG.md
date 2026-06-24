@@ -4427,3 +4427,60 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness.
 
 `PHASE265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 266 Record Phase 265 Operator Smoke Proof
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY`
+- Created docs: `docs/PHASE_266.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- No source code or tests changed.
+- Accepted starting state: HEAD = origin/main =
+  `d2b73086601fa0b70713a50aad166901a6ac824d`; latest accepted commit
+  `d2b7308 Codify general-answer local-first policy`.
+- Accepted product capsule: SHA256
+  `8EF2707F9EFEED19641C9839589EA74ECF6F59DAB26ABDA3D18D6622C3B5B3EF`;
+  `SizeBytes=2,324,781`; `EntryCount=1121`;
+  `TopLevelPrefix=Orchestrator`.
+- Accepted corrected operator smoke proof:
+  `PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_POLICY_CLI_OPERATOR_SMOKE_READONLY_RERUN=PASS`.
+- Prior failed smoke classification:
+  `PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_POLICY_CLI_OPERATOR_SMOKE_READONLY=FAILED_SCRIPT_EXPECTATION`.
+- Failure interpretation: the prior Phase 265 smoke failed because of a script
+  expectation issue and is not treated as product failure; the script expected
+  a clarify artifact from input rejected by the CLI adapter before policy
+  classification.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase265_local_first_policy_cli_smoke_rerun_20260623_223111`.
+- Accepted artifact path:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase265_local_first_policy_cli_smoke_rerun_20260623_223111\valid_general_answer_review_artifact.json`.
+- Registered proof: a real persisted structured local `general_answer` review
+  artifact includes both `artifact_persistence_policy` and
+  `general_answer_local_first_policy`; the local-first recommended posture is
+  `local_report_only_answer_candidate`; fallback posture is `manual_review`;
+  the policy remains report-only; execution and answer generation are not
+  authorized; omitted persistence has no notice and no default artifact;
+  unsafe/rejected input has no notice and no artifact.
+- Registered fixture proof: `safe_direct_answer` still surfaces the
+  lightweight report and does not print the artifact notice;
+  `safe_coding_source_test_mutation` still does not surface the lightweight
+  report and does not print the artifact notice.
+- Registered repo posture: the smoke was read-only with respect to the repo
+  and ended with `FinalGitStatusLineCount=0`; smoke result lines included
+  `RepoMutationPerformed=False`, `RuntimeExecution=False`,
+  `ProviderExecution=False`, and `ModelExecution=False`.
+- Open-thread update: the Phase 265 local-first/fallback policy smoke is
+  closed for its narrow scope; broader `general_answer` usability remains
+  open; `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Explicit non-proofs: no semantic answer correctness, answer generation,
+  model-backed generation, provider/model/runtime execution, live route
+  execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector execution, worker/Codex dispatch from product code,
+  service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness.
+
+`PHASE266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`

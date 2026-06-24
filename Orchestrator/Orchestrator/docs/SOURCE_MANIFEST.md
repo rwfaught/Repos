@@ -4704,3 +4704,88 @@ production task execution, current-success broadening, or production readiness
 behavior is registered by Phase 265.
 
 `PHASE265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 266 Record Phase 265 Operator Smoke Proof
+
+Boundary:
+
+`PHASE_266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_266.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered source/test posture: no source code or tests changed.
+
+Accepted starting state: HEAD = origin/main =
+`d2b73086601fa0b70713a50aad166901a6ac824d`; latest accepted commit
+`d2b7308 Codify general-answer local-first policy`.
+
+Accepted product capsule: SHA256
+`8EF2707F9EFEED19641C9839589EA74ECF6F59DAB26ABDA3D18D6622C3B5B3EF`;
+`SizeBytes=2,324,781`; `EntryCount=1121`; `TopLevelPrefix=Orchestrator`.
+
+Accepted corrected operator smoke proof:
+
+`PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_POLICY_CLI_OPERATOR_SMOKE_READONLY_RERUN=PASS`
+
+Prior failed smoke classification:
+
+`PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_POLICY_CLI_OPERATOR_SMOKE_READONLY=FAILED_SCRIPT_EXPECTATION`
+
+Registered interpretation: the prior Phase 265 smoke failed because of a
+script expectation issue and is not treated as product failure. The smoke
+script expected a clarify artifact from input rejected by the CLI adapter
+before policy classification.
+
+Proof root:
+
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase265_local_first_policy_cli_smoke_rerun_20260623_223111`
+
+Accepted artifact path:
+
+`C:\Users\accou\AppData\Local\Temp\orchestrator_phase265_local_first_policy_cli_smoke_rerun_20260623_223111\valid_general_answer_review_artifact.json`
+
+Registered smoke result lines: `LocalFirstPolicySmoke=PASS`;
+`ArtifactCreated=PASS`; `ArtifactPersistencePolicyPayloadPresent=PASS`;
+`GeneralAnswerLocalFirstPolicyPayloadPresent=PASS`;
+`LocalFirstRecommendedPosture=local_report_only_answer_candidate`;
+`LocalFirstFallbackPosture=manual_review`; `LocalFirstReportOnly=True`;
+`LocalFirstExecutionAuthorized=False`;
+`LocalFirstAnswerGenerationAuthorized=False`;
+`NoArtifactNoticeWhenOmitted=PASS`;
+`NoDefaultArtifactCreatedWhenOmitted=PASS`; `UnsafeNoArtifactNotice=PASS`;
+`UnsafeArtifactAbsent=PASS`; `FixtureSafeDirectLightweightReport=PASS`;
+`FixtureSafeDirectNoArtifactNotice=PASS`;
+`FixtureSafeCodingNoLightweightReport=PASS`;
+`FixtureSafeCodingNoArtifactNotice=PASS`; `FinalGitStatusLineCount=0`;
+`RepoMutationPerformed=False`; `RuntimeExecution=False`;
+`ProviderExecution=False`; `ModelExecution=False`.
+
+Registered proof: a real persisted structured local `general_answer` review
+artifact includes both `artifact_persistence_policy` and
+`general_answer_local_first_policy`, the local-first recommended posture is
+`local_report_only_answer_candidate`, fallback posture is `manual_review`, the
+policy remains report-only, execution and answer generation are not
+authorized, omitted persistence has no notice and no default artifact,
+unsafe/rejected input has no notice and no artifact, fixture behavior remains
+intact, and the smoke was read-only with respect to the repo with
+`FinalGitStatusLineCount=0`.
+
+No semantic answer correctness, answer generation, model-backed generation,
+provider/model/runtime execution, WSL/Ollama execution, Hermes/OpenClaw/Discord
+behavior, live route execution, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch from product code, service/API/UI behavior, project-script execution,
+source refresh, export/package, cleanup/delete/archive, commit, push,
+production task execution, current-success broadening, or production readiness
+behavior is registered by Phase 266.
+
+`PHASE266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
