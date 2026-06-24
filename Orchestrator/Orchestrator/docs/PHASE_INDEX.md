@@ -2688,3 +2688,44 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
 - Marker:
   `PHASE264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 265 - General Answer Local-First Fallback Policy
+
+- Status: locally source/test/docs-proven local-first/fallback policy metadata
+  for structured local `general_answer` review artifacts.
+- Phase doc: `docs/PHASE_265.md`.
+- Boundary:
+  `PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS`.
+- Source:
+  `orchestrator/general_answer_local_first_policy.py`;
+  `orchestrator/manual_review_cli.py`.
+- Tests:
+  `tests/test_phase_265_general_answer_local_first_fallback_policy_contract.py`.
+- Policy: low-risk structured `general_answer` requests with accepted local
+  facts become `local_report_only_answer_candidate`; missing accepted facts or
+  user intent details become `clarify_before_answer`; provider/model/runtime/
+  RAG/web/scheduler/connector/worker/Codex/service/API/UI requests become
+  `blocked_execution_request`; high or unknown risk becomes
+  `manual_review_or_block`; non-`general_answer` requests become
+  `not_applicable`.
+- Behavior: successful caller-supplied structured local `general_answer`
+  review artifacts now include `general_answer_local_first_policy` while
+  preserving `artifact_persistence_policy` and the exact successful notice:
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Preserved behavior: no artifact file is created when `--write-review-json`
+  is omitted; rejected/unsafe input does not write an artifact or successful
+  notice; fixture behavior remains unchanged; normal UTF-8 and UTF-8 BOM input
+  remain supported through the existing conservative path.
+- Boundary: no semantic answer generation, answer correctness proof,
+  provider/model/runtime execution, live route execution, RAG/local lookup,
+  web lookup, scheduler/reminder execution, connector execution, worker/Codex
+  dispatch from product code, service/API/UI behavior, export/package
+  behavior, production work, current-success broadening, or production
+  readiness is added.
+- Open-thread status: local-first/fallback policy is codified for the current
+  structured local report-only artifact lane; broader `general_answer`
+  usability remains open; `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Marker:
+  `PHASE265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`.

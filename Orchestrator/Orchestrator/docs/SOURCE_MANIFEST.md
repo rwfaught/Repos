@@ -4641,3 +4641,66 @@ production work, current-success broadening, or production readiness behavior
 is registered by Phase 264.
 
 `PHASE264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 265 General Answer Local-First Fallback Policy
+
+Boundary:
+
+`PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS`
+
+Registered new source files:
+
+- `orchestrator/general_answer_local_first_policy.py`
+
+Registered changed source files:
+
+- `orchestrator/manual_review_cli.py`
+
+Registered new test files:
+
+- `tests/test_phase_265_general_answer_local_first_fallback_policy_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_265.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered behavior: deterministic non-executing local-first/fallback policy
+metadata for structured local `general_answer` requests.
+
+Registered helper:
+
+- `build_general_answer_local_first_fallback_policy(request)`
+
+Registered policy outcomes: `local_report_only_answer_candidate` for low-risk
+structured `general_answer` requests with accepted local facts;
+`clarify_before_answer` for missing accepted facts or user intent details;
+`blocked_execution_request` for provider/model/runtime/RAG/web/scheduler/
+connector/worker/Codex/service/API/UI requests; `manual_review_or_block` for
+high or unknown risk; `not_applicable` for non-`general_answer` requests.
+
+Registered artifact integration: successful caller-supplied structured local
+`general_answer` review artifacts include `general_answer_local_first_policy`.
+
+Registered preserved behavior: the existing `artifact_persistence_policy`
+payload remains unchanged; the successful artifact-write notice remains
+`Review JSON Artifact Written: <artifact_json_path>`; fixture behavior remains
+unchanged; omitted persistence creates no artifact and no notice; rejected
+input writes no artifact or success notice.
+
+No semantic answer correctness, semantic answer generation,
+provider/model/runtime execution, WSL/Ollama execution, Hermes/OpenClaw/Discord
+behavior, live route execution, RAG/local lookup, web lookup,
+scheduler/reminder execution, connector execution, worker dispatch, Codex
+dispatch from product code, service/API/UI behavior, project-script execution,
+source refresh, export/package, cleanup/delete/archive, commit, push,
+production task execution, current-success broadening, or production readiness
+behavior is registered by Phase 265.
+
+`PHASE265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`

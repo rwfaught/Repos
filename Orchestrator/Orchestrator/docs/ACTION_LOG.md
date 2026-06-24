@@ -4383,3 +4383,47 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production readiness.
 
 `PHASE264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 265 General Answer Local-First Fallback Policy
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS`
+- Created source: `orchestrator/general_answer_local_first_policy.py`.
+- Updated source: `orchestrator/manual_review_cli.py`.
+- Created tests:
+  `tests/test_phase_265_general_answer_local_first_fallback_policy_contract.py`.
+- Created docs: `docs/PHASE_265.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- Behavior: codifies deterministic local-first/fallback policy metadata for
+  structured local `general_answer` requests.
+- Policy: low-risk structured `general_answer` requests with accepted local
+  facts become `local_report_only_answer_candidate`; missing accepted facts or
+  user intent details become `clarify_before_answer`; requests requiring
+  provider/model/runtime/RAG/web/scheduler/connector/worker/Codex/service/
+  API/UI behavior become `blocked_execution_request`; high or unknown risk
+  becomes `manual_review_or_block`; non-`general_answer` requests become
+  `not_applicable`.
+- Artifact integration: successful caller-supplied structured local
+  `general_answer` review artifacts include
+  `general_answer_local_first_policy`.
+- Preserved behavior: existing `artifact_persistence_policy` payload is not
+  changed; fixture output remains unchanged; omitted `--write-review-json`
+  creates no artifact and no notice; rejected input writes no artifact; the
+  successful notice remains exactly
+  `Review JSON Artifact Written: <artifact_json_path>`.
+- Open-thread update: local-first/fallback policy is codified for the current
+  structured local report-only artifact lane; broader `general_answer`
+  usability remains open; `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Explicit non-proofs: not semantic answer correctness proof, not semantic
+  answer generation, not provider/model/runtime execution, not live route
+  execution, not RAG/local lookup, not web lookup, not scheduler/reminder
+  execution, not connector execution, not worker/Codex dispatch from product
+  code, not service/API/UI productization, not export/package behavior, not
+  production work, not current-success broadening, and not production
+  readiness.
+
+`PHASE265_GENERAL_ANSWER_LOCAL_FIRST_FALLBACK_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
