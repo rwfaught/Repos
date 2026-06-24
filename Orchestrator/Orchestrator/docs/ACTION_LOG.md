@@ -4321,3 +4321,65 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness.
 
 `PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 264 Record Phase 263 Operator Smoke Proof
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY`
+- Created docs: `docs/PHASE_264.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- No source code or tests changed.
+- Accepted starting state: HEAD = origin/main =
+  `a8010a4e963300bd2c5ac137b12f25bdd25b4246`; latest commit
+  `a8010a4 Codify general-answer artifact persistence policy`.
+- Accepted product capsule: SHA256
+  `3E16BDF2A7F5DCB1CA1EBE417783E9297B257D512AE1DB7D2AAA1CBC181CC4CD`;
+  `SizeBytes=2,301,159`; `EntryCount=1115`;
+  `TopLevelPrefix=Orchestrator`.
+- Accepted operator smoke proof:
+  `PHASE_263_GENERAL_ANSWER_ARTIFACT_POLICY_CLI_OPERATOR_SMOKE_READONLY=PASS`.
+- Proof root:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase263_artifact_policy_cli_smoke_20260623_215020`.
+- Artifact path:
+  `C:\Users\accou\AppData\Local\Temp\orchestrator_phase263_artifact_policy_cli_smoke_20260623_215020\valid_general_answer_review_artifact.json`.
+- Accepted smoke result lines: `ArtifactPolicySmoke=PASS`;
+  `ArtifactCreated=PASS`; `ArtifactPolicyPayloadPresent=PASS`;
+  `ArtifactPolicyOptInCallerSupplied=PASS`;
+  `ArtifactPolicyNoDefaultPath=PASS`;
+  `ArtifactNoticeIncludesExactPath=PASS`;
+  `NoArtifactNoticeWhenOmitted=PASS`;
+  `NoDefaultArtifactCreatedWhenOmitted=PASS`;
+  `UnsafeNoArtifactNotice=PASS`; `UnsafeArtifactAbsent=PASS`;
+  `FixtureSafeDirectLightweightReport=PASS`;
+  `FixtureSafeDirectNoArtifactNotice=PASS`;
+  `FixtureSafeCodingNoLightweightReport=PASS`;
+  `FixtureSafeCodingNoArtifactNotice=PASS`; `FinalGitStatusLineCount=0`;
+  `RepoMutationPerformed=False`; `RuntimeExecution=False`;
+  `ProviderExecution=False`; `ModelExecution=False`.
+- Registered proof: a real persisted structured local `general_answer` review
+  artifact includes `artifact_persistence_policy`; the policy payload is
+  present and records opt-in caller-supplied persistence; no default artifact
+  path is enabled; the successful artifact-write notice includes the exact
+  artifact path; omitted persistence creates no notice and no default artifact;
+  unsafe/rejected input has no notice and no artifact.
+- Registered fixture proof: `safe_direct_answer` still surfaces the
+  lightweight report and does not print the artifact notice;
+  `safe_coding_source_test_mutation` still does not surface the lightweight
+  report and does not print the artifact notice.
+- Registered repo posture: the smoke was read-only with respect to the repo
+  and ended with `FinalGitStatusLineCount=0`.
+- Open-thread update: the Phase 263 artifact persistence policy smoke is
+  closed for its narrow scope; broader `general_answer` usability remains open;
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Explicit non-proofs: no semantic answer correctness, model-backed
+  generation, provider/model/runtime execution, live route execution,
+  RAG/local lookup, web lookup, scheduler/reminder execution, connector
+  execution, worker/Codex dispatch from product code, service/API/UI behavior,
+  export/package behavior, production work, current-success broadening, or
+  production readiness.
+
+`PHASE264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`

@@ -464,6 +464,16 @@ fresh artifact proof.
   <artifact_json_path>`, no default artifact path is created, and the
   successful artifact-write notice appears only after successful
   caller-supplied persistence.
+- Phase 264 records the accepted Phase 263 read-only operator smoke:
+  `PHASE_263_GENERAL_ANSWER_ARTIFACT_POLICY_CLI_OPERATOR_SMOKE_READONLY=PASS`.
+- Phase 264 closes the narrow artifact persistence policy smoke registration
+  by recording that a real persisted structured local `general_answer` review
+  artifact includes `artifact_persistence_policy`, the payload is present and
+  opt-in caller-supplied, no default artifact path is enabled, the notice
+  includes the exact artifact path, omitted persistence has no notice and no
+  default artifact, unsafe/rejected input has no notice and no artifact,
+  fixture lightweight-report/no-notice behavior remains intact, and the smoke
+  ended with `FinalGitStatusLineCount=0`.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER` triage status:
   `DEFERRED_VALID` after Phase 256 implementation.
 - `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE` triage status:
@@ -472,7 +482,8 @@ fresh artifact proof.
   registration; Phase 260 adds artifact-write UX/surfacing only, and Phase 261
   closes the narrow artifact-write notice smoke registration; Phase 263
   codifies the opt-in persistence/default-surfacing policy without enabling a
-  default artifact path. Later local-first answer/fallback policy,
+  default artifact path; Phase 264 closes the narrow artifact persistence
+  policy smoke registration. Later local-first answer/fallback policy,
   service/API/UI, and live answer generation remain separate.
 - Phase 235 is not semantic answer quality proof, model-backed generation,
   live router proof, RAG/local lookup, web lookup, scheduler/reminder
@@ -504,6 +515,12 @@ fresh artifact proof.
   connector behavior, worker/Codex dispatch, service/API/UI productization,
   export/package behavior, production work, current-success broadening, or
   production readiness.
+- Phase 264 is not semantic answer quality proof, model-backed generation,
+  provider/runtime/platform execution, live route execution, raw prompt
+  inference, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector behavior, worker/Codex dispatch, service/API/UI productization,
+  export/package behavior, production work, current-success broadening, or
+  production readiness.
 - The artifact persistence/default-surfacing policy is codified for the
   current explicit caller-supplied path behavior.
 - A local-first answer/fallback policy is needed.
@@ -525,6 +542,8 @@ fresh artifact proof.
 `PHASE261_RECORD_PHASE_260_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
 
 `PHASE263_GENERAL_ANSWER_ARTIFACT_PERSISTENCE_POLICY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE264_RECORD_PHASE_263_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
 
 ### Autonomy Tier Policy
 
