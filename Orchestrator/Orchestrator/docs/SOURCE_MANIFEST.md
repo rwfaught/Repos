@@ -5077,3 +5077,46 @@ behavior, autonomous AI coding behavior, production readiness,
 integration, export/upload, commit, or push is registered by Phase 273.
 
 `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 274 Operator-Facing Bounded Coding Task Packet
+
+Boundary:
+
+`PRODUCT_PHASE_274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_WORKER`
+
+Registered changed source:
+
+- `orchestrator/operator_coding_task_packet.py`
+
+Registered changed tests:
+
+- `tests/test_phase_274_operator_facing_bounded_coding_task_packet.py`
+
+Registered changed docs:
+
+- `docs/PHASE_274.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 274 adds `run_operator_coding_task_packet(packet)`,
+a narrow operator-facing bounded coding-task packet surface that validates a
+structured task packet, permits only deterministic `local_file` behavior, saves
+the task, executes it through the existing engine, reloads the result, and
+returns current-success review/readback plus operator-visible next action.
+
+Registered validation:
+
+- `python -m py_compile orchestrator/operator_coding_task_packet.py tests/test_phase_274_operator_facing_bounded_coding_task_packet.py`
+- `python -m unittest tests.test_phase_274_operator_facing_bounded_coding_task_packet -v`
+- Targeted Phase 78/91/92/95/97/98/99/100/101/272/274 current-spine unittest
+  regression
+- `git diff --check`
+
+No semantic correctness, live provider/model behavior, runtime/platform
+behavior, autonomous AI coding behavior, production readiness, model-backed
+generation, `general_answer` resumption, service/API/UI behavior,
+export/upload, commit, or push is registered by Phase 274.
+
+`PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`

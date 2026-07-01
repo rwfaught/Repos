@@ -4665,3 +4665,29 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   LightRAG integration, export/upload, commit, or push is added.
 
 `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 274 Operator-Facing Bounded Coding Task Packet
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PRODUCT_PHASE_274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_WORKER`
+- Source changed: `orchestrator/operator_coding_task_packet.py`.
+- Test changed:
+  `tests/test_phase_274_operator_facing_bounded_coding_task_packet.py`.
+- Docs changed: `docs/PHASE_274.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: a structured operator-provided bounded coding-task
+  packet can enter a narrow packet surface, be validated for bounded file
+  scope and explicit success criteria, run through deterministic `local_file`
+  behavior using existing task persistence and engine execution, and return
+  current-success review/readback with operator-visible next action.
+- Validation passed: Phase 274 py_compile; dedicated Phase 274 unittest;
+  targeted Phase 78/91/92/95/97/98/99/100/101/272/274 current-spine
+  regression; `git diff --check`.
+- Explicit non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, model-backed generation, `general_answer` resumption,
+  service/API/UI behavior, export/upload, commit, or push is added.
+
+`PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -150,18 +150,18 @@ This file enables controlled progression through the system build.
 271. PHASE_271.md - Path Containment POSIX Absolute Repair
 272. PHASE_272.md - Integrated Coding Task Current Spine Proof
 273. PHASE_273.md - Current Success Satisfaction And Next Success Bar
+274. PHASE_274.md - Operator-Facing Bounded Coding Task Packet
 
 ---
 
 ## Current Phase
 
-Phase 273 - Current Success Satisfaction And Next Success Bar
+Phase 274 - Operator-Facing Bounded Coding Task Packet
 
-Status: latest docs-only decision registration; the prior bounded coding-task
-current success criterion is satisfied at deterministic integrated proof level
-after Phase 272, and the next success bar is operator-facing bounded
-coding-task proof through a stable control surface or repeatable boundary
-packet.
+Status: latest source/test/docs registration; a narrow operator-facing bounded
+coding-task packet surface accepts structured task packets, validates bounded
+scope, runs deterministic `local_file` behavior through the existing current
+spine, and returns current-success review/readback.
 
 Production readiness is not claimed.
 
@@ -2925,3 +2925,25 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   LightRAG integration, export/upload, commit, or push is added.
 - Marker:
   `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 274 - Operator-Facing Bounded Coding Task Packet
+
+- Status: source/test/docs registration of a narrow operator-facing bounded
+  coding-task packet surface.
+- Source changed: `orchestrator/operator_coding_task_packet.py`.
+- Test changed:
+  `tests/test_phase_274_operator_facing_bounded_coding_task_packet.py`.
+- Behavior: accepts a structured operator-provided bounded coding-task packet,
+  validates required fields, named file scope, explicit success criteria,
+  `filesystem_mutation`, and `local_file`, rejects provider/model/runtime/
+  platform requests, then reuses task persistence, engine execution, artifact
+  persistence, verifier result persistence, and current-success review.
+- Validation: Phase 274 py_compile; dedicated Phase 274 unittest; targeted
+  Phase 78/91/92/95/97/98/99/100/101/272/274 current-spine regression; and
+  `git diff --check` all passed.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, model-backed generation, `general_answer` resumption,
+  service/API/UI behavior, export/upload, commit, or push is added.
+- Marker:
+  `PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`.

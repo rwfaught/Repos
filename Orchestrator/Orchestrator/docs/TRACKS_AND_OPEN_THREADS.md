@@ -822,3 +822,28 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`
+
+## Operator-Facing Bounded Coding Task Packet Status
+
+- Phase 274 adds a narrow operator-facing bounded coding-task packet surface for
+  the next success bar defined in Phase 273.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: a structured packet can now provide
+  operator task framing, named file scope, explicit success criteria, and
+  expected output, then flow through deterministic `local_file` behavior,
+  persisted task state, execution artifact, verifier result, current-success
+  review/readback, and clear operator-visible next action.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: the prior deterministic integrated proof
+  remains satisfied; Phase 274 moves the next bar from an internal test proof
+  toward a stable repeatable packet surface.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 274 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 274 does not resume or mutate the `general_answer` lane.
+- `SCRIPT_RELIABILITY`: remains open; future evidence-bearing command batches
+  should stay small, timestamped, and native-command-safe.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 274 does not
+  prove or invoke OpenClaw, Hermes, Obsidian, LightRAG, WSL, Ollama, Discord,
+  installer, runtime, provider/model, service/API/UI, or production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`
