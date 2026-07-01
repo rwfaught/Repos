@@ -4484,3 +4484,56 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   current-success broadening, or production readiness.
 
 `PHASE266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 268 General Answer Lane Pause And Handoff
+
+- Timestamp: 2026-06-23
+- Boundary:
+  `PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY`
+- Created docs: `docs/PHASE_268.md`.
+- Updated docs: `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- No source code or tests changed.
+- Accepted checkpoint:
+  `PHASE_267_GENERAL_ANSWER_TRACK_CHECKPOINT_READONLY=PASS`.
+- Accepted starting state: HEAD = origin/main =
+  `5928ea6dc7f311c38f73762dd56c692c7fc6a6d5`; latest accepted commit
+  `5928ea6 Record local-first policy smoke proof`.
+- Accepted product capsule: SHA256
+  `80CECCA012B394399FF7497DB4266756DCD36661E0ADBF18CED34AF65F1C35B8`;
+  `SizeBytes=2,328,638`; `EntryCount=1122`;
+  `TopLevelPrefix=Orchestrator`.
+- Registered repo posture: git status was clean at the accepted checkpoint.
+- Registered closed narrow scopes: Phase 256 structured local
+  `general_answer` input CLI adapter; Phase 257 explicit caller-supplied
+  review JSON artifact persistence; Phase 258 UTF-8 BOM tolerance; Phase 259
+  accepted Phase 258 operator-smoke registration; Phase 260 artifact-write
+  notice behavior; Phase 261 accepted Phase 260 operator-smoke registration;
+  Phase 263 opt-in artifact persistence/default-surfacing policy with no
+  default artifact path; Phase 264 accepted Phase 263 operator-smoke
+  registration; Phase 265 deterministic local-first/fallback policy metadata;
+  Phase 266 corrected Phase 265 smoke proof and prior
+  `FAILED_SCRIPT_EXPECTATION` classification as script expectation, not
+  product failure.
+- Registered checkpoint interpretation: Phase 267 found the lane coherent, but
+  remaining work is broader than narrow report-only policy increments.
+- Open-thread update: broader `general_answer` usability remains open,
+  including productized answer surfacing/readback, real answer synthesis/report
+  assembly, semantic answer correctness, service/API/UI-facing read-only
+  surfacing, default artifact behavior beyond explicit caller-supplied path,
+  live answer generation, and model/provider/runtime/RAG/web/scheduler/
+  connector behavior if separately authorized.
+- Deferred-valid preservation: `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Recommended posture: pause `general_answer` lane mutation until a coordinator
+  explicitly ranks whether to continue productized `general_answer` work or
+  return to the coding-task current success criterion.
+- Explicit non-proofs: no semantic answer correctness, answer generation,
+  model-backed generation, provider/model/runtime execution, live route
+  execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector execution, worker/Codex dispatch from product code,
+  service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness.
+
+`PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`

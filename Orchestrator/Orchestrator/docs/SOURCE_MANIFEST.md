@@ -4789,3 +4789,81 @@ production task execution, current-success broadening, or production readiness
 behavior is registered by Phase 266.
 
 `PHASE266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 268 General Answer Lane Pause And Handoff
+
+Boundary:
+
+`PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_268.md`
+
+Registered changed documentation/control files:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered source/test posture:
+
+- No source code files changed.
+- No test files changed.
+
+Registered accepted checkpoint:
+
+`PHASE_267_GENERAL_ANSWER_TRACK_CHECKPOINT_READONLY=PASS`
+
+Registered accepted starting state:
+
+- HEAD = origin/main =
+  `5928ea6dc7f311c38f73762dd56c692c7fc6a6d5`
+- Latest accepted commit:
+  `5928ea6 Record local-first policy smoke proof`
+- Accepted product capsule SHA256:
+  `80CECCA012B394399FF7497DB4266756DCD36661E0ADBF18CED34AF65F1C35B8`
+- Product capsule size: `2,328,638` bytes
+- Product capsule entry count: `1122`
+- Product capsule top-level prefix: `Orchestrator`
+- Git status was clean.
+
+Registered closed narrow scopes: Phase 256 structured local `general_answer`
+input CLI adapter; Phase 257 explicit caller-supplied review JSON artifact
+persistence; Phase 258 UTF-8 BOM tolerance; Phase 259 accepted Phase 258
+operator-smoke registration; Phase 260 artifact-write notice behavior; Phase
+261 accepted Phase 260 operator-smoke registration; Phase 263 opt-in artifact
+persistence/default-surfacing policy with no default artifact path; Phase 264
+accepted Phase 263 operator-smoke registration; Phase 265 deterministic
+local-first/fallback policy metadata; Phase 266 corrected Phase 265 smoke
+proof and classified the prior failed smoke as `FAILED_SCRIPT_EXPECTATION`,
+not product failure.
+
+Registered pause posture: Phase 267 found the lane coherent but remaining work
+broader than narrow report-only policy increments, so Phase 268 pauses
+`general_answer` lane mutation until a coordinator explicitly ranks whether to
+continue productized `general_answer` work or return to the coding-task current
+success criterion.
+
+Registered open-thread posture: broader `general_answer` usability remains
+open, including productized answer surfacing/readback, real answer
+synthesis/report assembly, semantic answer correctness, service/API/UI-facing
+read-only surfacing, default artifact behavior beyond explicit caller-supplied
+path, live answer generation, and model/provider/runtime/RAG/web/scheduler/
+connector behavior if separately authorized.
+
+Registered deferred-valid posture:
+
+- `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`
+- `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`
+- `PRODUCT_AUTONOMY_TIER_POLICY`
+
+No semantic answer correctness, answer generation, model-backed generation,
+provider/model/runtime execution, live route execution, RAG/local lookup, web
+lookup, scheduler/reminder execution, connector execution, worker/Codex
+dispatch from product code, service/API/UI behavior, export/package behavior,
+production work, current-success broadening, or production readiness behavior
+is registered by Phase 268.
+
+`PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`

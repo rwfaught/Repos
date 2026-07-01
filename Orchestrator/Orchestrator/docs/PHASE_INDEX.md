@@ -144,14 +144,16 @@ This file enables controlled progression through the system build.
 149. PHASE_149.md - Provider Evidence Gated Route Selection Readiness Contract
 152. PHASE_152.md - Local Provider Generation Smoke Probe Packet Contract
 156. PHASE_156.md - Local Provider Target Alignment 27B
+268. PHASE_268.md - General Answer Lane Pause And Handoff
 
 ---
 
 ## Current Phase
 
-Phase 156 - Local Provider Target Alignment 27B
+Phase 268 - General Answer Lane Pause And Handoff
 
-Status: latest locally source/test/docs-proven phase; no runtime proof claimed.
+Status: latest docs-only registration; no product behavior change and no
+runtime proof claimed.
 
 Production readiness is not claimed.
 
@@ -2775,3 +2777,40 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
 - Marker:
   `PHASE266_RECORD_PHASE_265_OPERATOR_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 268 - General Answer Lane Pause And Handoff
+
+- Status: docs-only registration of accepted Phase 267 read-only checkpoint and
+  structured local `general_answer` lane pause.
+- Phase doc: `docs/PHASE_268.md`.
+- Boundary:
+  `PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY`.
+- Accepted checkpoint:
+  `PHASE_267_GENERAL_ANSWER_TRACK_CHECKPOINT_READONLY=PASS`.
+- Accepted source state: HEAD = origin/main =
+  `5928ea6dc7f311c38f73762dd56c692c7fc6a6d5`; latest accepted commit
+  `5928ea6 Record local-first policy smoke proof`.
+- Accepted product capsule: SHA256
+  `80CECCA012B394399FF7497DB4266756DCD36661E0ADBF18CED34AF65F1C35B8`;
+  `SizeBytes=2,328,638`; `EntryCount=1122`;
+  `TopLevelPrefix=Orchestrator`.
+- Registered posture: Phase 256 through Phase 266 closed only narrow
+  structured local `general_answer` report-only, persistence, BOM, notice,
+  artifact-policy, local-first/fallback, and operator-smoke registration
+  scopes; Phase 267 found the lane coherent but remaining work broader than
+  narrow report-only policy increments.
+- Open-thread status: broader `general_answer` usability remains open;
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ADAPTER`,
+  `PRODUCT_GENERAL_ANSWER_REAL_INPUT_ARTIFACT_PERSISTENCE`, and
+  `PRODUCT_AUTONOMY_TIER_POLICY` remain `DEFERRED_VALID`.
+- Recommended posture: pause `general_answer` lane mutation until a coordinator
+  explicitly ranks whether to continue productized `general_answer` work or
+  return to the coding-task current success criterion.
+- Boundary: no semantic answer correctness, answer generation,
+  model-backed generation, provider/model/runtime execution, live route
+  execution, RAG/local lookup, web lookup, scheduler/reminder execution,
+  connector execution, worker/Codex dispatch from product code,
+  service/API/UI behavior, export/package behavior, production work,
+  current-success broadening, or production readiness is added.
+- Marker:
+  `PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`.
