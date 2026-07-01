@@ -4537,3 +4537,44 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   current-success broadening, or production readiness.
 
 `PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 269 Project Continuity Evidence Protocol
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE_269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY`
+- Created docs: `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`;
+  `docs/PHASE_269.md`.
+- Updated docs: `docs/STARTUP_BRIEF.md`; `docs/ORCHESTRATOR_METHOD.md`;
+  `docs/ORCHESTRATOR_INTERACTION_MODEL.md`; `docs/CONTEXT_MAP.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`.
+- No source code or tests changed.
+- Accepted starting state: HEAD = origin/main =
+  `4a67478aca34e4728640e431f5040f8feeb67627`; latest commit
+  `4a67478 Record general-answer lane pause checkpoint`.
+- Accepted product capsule: SHA256
+  `2E00379A83BFB660AB3F26AC6C147FEC7C2BEB120B23F29F145F1BB7C66C66AD`;
+  `SizeBytes=2324808`; `EntryCount=1123`;
+  `TopLevelPrefixes=Orchestrator`; `HasPhase268=True`;
+  `HasGitDirectory=False`.
+- Prior transport closure:
+  `PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_TRANSPORT_CLOSED=PASS`.
+- Registered protocol: command batches should capture start timestamp, finish
+  timestamp, elapsed time, exit code, visible output, durable logs, artifact
+  paths, and explicit non-proofs; run artifacts should live outside the
+  worktree unless explicitly source artifacts; re-entry should prove live repo,
+  source capsule, HEAD/origin, clean status, phase markers, open threads,
+  freshness, path normalization, and stale-state cautions.
+- Registered evidence vocabulary: repo proof, source capsule proof,
+  uploaded-source proof, operator terminal proof, worker report, accepted fact,
+  open thread, and non-proof remain distinct.
+- Open implementation thread: future wrapper/tooling remains unimplemented and
+  requires a separate ranked boundary.
+- Explicit non-proofs: no wrapper script, runtime/provider/model/platform
+  execution, source capsule refresh, export/package, cleanup/delete/archive,
+  commit, push, WSL/Ollama/Hermes/OpenClaw/Discord, service/API/UI behavior,
+  production work, production readiness, or cross-project runtime-fact transfer
+  proof is added.
+
+`PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`

@@ -109,6 +109,27 @@ No additional product behavior is created by this document.
 
 ---
 
+## Project Continuity Evidence Protocol
+
+Re-entry, handoff, evidence closure, and approval/mutation boundaries should
+use `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md` when command output,
+capsules, logs, or worker reports become evidence.
+
+The protocol requires actors to distinguish live repo proof, source capsule
+proof, uploaded-source proof, operator terminal proof, worker report, accepted
+fact, open thread, and non-proof. It also requires command batches to preserve
+start timestamps, finish timestamps, elapsed time, exit codes, visible output,
+durable logs, and artifact paths when those batches support proof.
+
+Approval to run, mutate, probe, export, package, commit, or push still belongs
+to the active boundary. Continuity evidence records what happened and how it
+was observed; it does not create new permission.
+
+Project-specific runtime facts do not cross from one project into another as
+proof without an explicit integration boundary.
+
+---
+
 ## Human-Mediated Worker Relay
 
 - Produce worker packets only after orientation and ranking.

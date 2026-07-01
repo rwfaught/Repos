@@ -145,15 +145,16 @@ This file enables controlled progression through the system build.
 152. PHASE_152.md - Local Provider Generation Smoke Probe Packet Contract
 156. PHASE_156.md - Local Provider Target Alignment 27B
 268. PHASE_268.md - General Answer Lane Pause And Handoff
+269. PHASE_269.md - Project Continuity Evidence Protocol
 
 ---
 
 ## Current Phase
 
-Phase 268 - General Answer Lane Pause And Handoff
+Phase 269 - Project Continuity Evidence Protocol
 
-Status: latest docs-only registration; no product behavior change and no
-runtime proof claimed.
+Status: latest docs-only governance registration; no wrapper/tooling
+implementation, product behavior change, or runtime proof claimed.
 
 Production readiness is not claimed.
 
@@ -2814,3 +2815,35 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   current-success broadening, or production readiness is added.
 - Marker:
   `PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 269 - Project Continuity Evidence Protocol
+
+- Status: docs-only governance registration of the portable Project Continuity
+  Evidence Protocol.
+- Phase doc: `docs/PHASE_269.md`.
+- Protocol doc: `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`.
+- Boundary:
+  `PHASE_269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY`.
+- Accepted source state: HEAD = origin/main =
+  `4a67478aca34e4728640e431f5040f8feeb67627`; latest accepted commit
+  `4a67478 Record general-answer lane pause checkpoint`.
+- Accepted product capsule: SHA256
+  `2E00379A83BFB660AB3F26AC6C147FEC7C2BEB120B23F29F145F1BB7C66C66AD`;
+  `SizeBytes=2324808`; `EntryCount=1123`;
+  `TopLevelPrefixes=Orchestrator`; `HasPhase268=True`;
+  `HasGitDirectory=False`.
+- Accepted prior transport closure:
+  `PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_TRANSPORT_CLOSED=PASS`.
+- Registered protocol scope: project-neutral evidence vocabulary, source
+  authority classes, command batch evidence requirements, run artifact
+  location rules, re-entry proof checklist, evidence capsule rules, handoff
+  requirements, redaction/secret exclusions, PowerShell/Bash parity, path
+  normalization, lock/stale-state cautions, non-proofs, cross-project adoption,
+  and the rule that project-specific runtime facts do not transfer across
+  project boundaries without an integration boundary.
+- Boundary: no wrapper script, source code, tests, runtime/provider/model/
+  platform probes, source capsule refresh, export/package, commit, push,
+  cleanup/delete/archive, WSL/Ollama/Hermes/OpenClaw/Discord, service/API/UI,
+  production work, or production readiness is added.
+- Marker:
+  `PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`.

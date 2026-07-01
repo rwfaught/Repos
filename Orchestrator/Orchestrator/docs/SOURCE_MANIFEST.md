@@ -4867,3 +4867,68 @@ production work, current-success broadening, or production readiness behavior
 is registered by Phase 268.
 
 `PHASE268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 269 Project Continuity Evidence Protocol
+
+Boundary:
+
+`PHASE_269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY`
+
+Registered new documentation/control files:
+
+- `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`
+- `docs/PHASE_269.md`
+
+Registered changed documentation/control files:
+
+- `docs/STARTUP_BRIEF.md`
+- `docs/ORCHESTRATOR_METHOD.md`
+- `docs/ORCHESTRATOR_INTERACTION_MODEL.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Registered source/test posture:
+
+- No source code files changed.
+- No test files changed.
+
+Registered accepted starting state:
+
+- HEAD = origin/main =
+  `4a67478aca34e4728640e431f5040f8feeb67627`
+- Latest accepted commit:
+  `4a67478 Record general-answer lane pause checkpoint`
+- Accepted product capsule SHA256:
+  `2E00379A83BFB660AB3F26AC6C147FEC7C2BEB120B23F29F145F1BB7C66C66AD`
+- Product capsule size: `2324808` bytes
+- Product capsule entry count: `1123`
+- Product capsule top-level prefixes: `Orchestrator`
+- Product capsule has Phase 268: `True`
+- Product capsule has git directory: `False`
+- Prior transport closure:
+  `PHASE_268_GENERAL_ANSWER_LANE_PAUSE_AND_HANDOFF_DOCS_ONLY_TRANSPORT_CLOSED=PASS`
+
+Registered protocol scope: Project Continuity Evidence Protocol defines
+project-neutral evidence vocabulary, source authority classes, command batch
+evidence requirements, run artifact location rules, re-entry proof checklist,
+evidence capsule rules, handoff requirements, redaction/secret exclusions,
+PowerShell and Bash parity expectations, path normalization cautions,
+lock/stale-state cautions, non-proofs, cross-project adoption path, and the
+explicit rule that project-specific runtime facts do not transfer across
+project boundaries without an integration boundary.
+
+Registered open implementation thread: Phase 269 is docs-only governance, not
+wrapper/tooling implementation. Any command-batch wrapper, automation, capsule
+refresh, export/package behavior, or runtime proof requires a later explicit
+boundary.
+
+No wrapper script, project-script behavior, runtime/provider/model/platform
+execution, WSL/Ollama/Hermes/OpenClaw/Discord behavior, source capsule refresh,
+export/package, cleanup/delete/archive, commit, push, service/API/UI behavior,
+production task execution, production readiness, or cross-project runtime-fact
+transfer proof is registered by Phase 269.
+
+`PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`

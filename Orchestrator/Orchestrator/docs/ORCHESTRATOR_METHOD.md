@@ -272,11 +272,16 @@ Before opening a fix, classify the issue as one of:
 ## 12. Re-entry is docs-first and repo-truth-governed
 
 Restart discipline is governed by `docs/REENTRY_PROTOCOL_01.md`.
+Project continuity evidence discipline is governed by
+`docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`.
 
 Operational requirements on re-entry:
 - orient from the docs stack first
 - treat active repo evidence as authoritative over conversational continuity
 - request a fresh snapshot or targeted fresh files whenever current code state is load-bearing for judgment
+- preserve command-batch start timestamps, finish timestamps, elapsed time,
+  exit codes, visible output, durable logs, artifact locations, source/capsule
+  freshness, and explicit non-proofs when those outputs become evidence
 
 Why this matters:
 otherwise the project wastes energy on false urgency while remaining bounded only in appearance.
@@ -856,6 +861,21 @@ Until the system can perform its own orchestration workflow, the ChatGPT-human-C
 
 Keep this relay explicit rather than pretending the system has autonomy it does not yet possess.
 Any migration of relay functions into repo behavior requires a phase/fix boundary.
+
+## 32. Project Continuity Evidence Rule
+
+Command batches, re-entry, and handoffs that become project evidence should
+follow `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`.
+
+Use the protocol to keep live repo proof, source capsule proof,
+uploaded-source proof, operator terminal proof, worker reports, accepted facts,
+open threads, and non-proofs separate. Run artifacts and logs should live
+outside the git worktree unless a boundary explicitly makes them source
+artifacts.
+
+Do not transfer runtime facts from Orchestrator, Obsidian/LightRAG/Hermes,
+Blender, OpenClaw, or another project into a different project as proof unless
+an explicit integration boundary accepts them there.
 
 ---
 

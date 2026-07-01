@@ -20,6 +20,7 @@ ALWAYS_READ_CONTROL:
 - `PROJECT_VISION.md`
 - `docs/CONTEXT_MAP.md`
 - `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`
+- `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`
 - `REENTRY_PROTOCOL_01.md`
 
 CURRENT_STATE:
@@ -172,3 +173,8 @@ without replacing the active coordination ledger.
 Open-thread triage statuses and startup-load classes are maintained in
 `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`. Coordinator sessions must triage visible
 open threads before ranking NBMs.
+
+Project continuity, command-batch evidence, durable run artifacts, re-entry
+proof checklists, evidence capsules, redaction, shell parity, and
+project-boundary runtime-fact transfer are governed by
+`docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`.

@@ -33,7 +33,7 @@ separate.
 | --- | --- | --- | --- |
 | Constitutional direction | Defines what Orchestrator is trying to become and what growth must preserve. | `docs/PROJECT_VISION.md` | Long-range direction, not present capability proof. |
 | Present success bar | Defines what a successful run means today. | `docs/CURRENT_SUCCESS_CRITERION.md` | Present-tense product bar, not a roadmap or phase authorization. |
-| Coordinator/governance method | Defines ranking, approval, handoff, review, closure, re-entry discipline, open-thread triage, and startup-load discipline. | `docs/ORCHESTRATOR_METHOD.md`; `docs/ORCHESTRATOR_INTERACTION_MODEL.md`; `docs/STARTUP_BRIEF.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` | Governs process semantics, not runtime behavior. |
+| Coordinator/governance method | Defines ranking, approval, handoff, review, closure, re-entry discipline, open-thread triage, startup-load discipline, and project continuity evidence discipline. | `docs/ORCHESTRATOR_METHOD.md`; `docs/ORCHESTRATOR_INTERACTION_MODEL.md`; `docs/STARTUP_BRIEF.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`; `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md` | Governs process semantics and evidence vocabulary, not runtime behavior. |
 | Active product state/open threads | Preserves accepted track state, open threads, proof posture, triage status, and drift warnings. | `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` | Active coordination ledger and triage protocol; this context map does not complete its open threads. |
 | Evidence/history stack | Records ordered phase history, action logs, source identity, artifact caveats, and accepted proof claims. | `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; phase docs | Evidence/history authorities; not mandatory full-load startup payloads unless the boundary requires phase history, source registration, proof, or reconciliation. |
 | Language/context architecture | Defines bounded contexts, owned terms, and do-not-confuse rules for docs. | `docs/CONTEXT_MAP.md` | Clarifies language authority only; it does not clean up historical docs by itself. |
@@ -83,6 +83,44 @@ proves only the documentation language/context map.
   registration, proof, or reconciliation.
 - `EXTERNAL_TRACK_PACKAGE`: platform/OpenClaw/Hermes/model/RAG package docs.
   Read only when that track or an integration boundary is in scope.
+
+### Project Continuity Evidence Context
+
+Purpose: govern portable re-entry proof, command-batch evidence, durable run
+artifact placement, evidence capsules, source authority classification,
+handoff requirements, redaction, shell parity, and project-boundary runtime
+fact separation.
+
+Owned language: repo proof, source capsule proof, uploaded-source proof,
+operator terminal proof, worker report, accepted fact, open thread, non-proof,
+source authority class, run artifact, source capsule freshness, integration
+boundary.
+
+Authority docs/files:
+
+- `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`
+- `docs/ORCHESTRATOR_METHOD.md`
+- `docs/ORCHESTRATOR_INTERACTION_MODEL.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Non-authority / do-not-confuse warnings:
+
+- Command logs are evidence records, not permission to mutate or execute.
+- Source capsules may lag live repo state and require freshness checks.
+- Worker reports are not coordinator acceptance or artifact proof by
+  themselves.
+- Run artifacts should not be placed under the git worktree unless a boundary
+  explicitly makes them source artifacts.
+- Project-specific runtime facts do not transfer across Orchestrator,
+  Obsidian/LightRAG/Hermes, Blender, OpenClaw, or future project boundaries
+  without an explicit integration boundary.
+
+Current proof posture: Phase 269 adds docs-only governance and ledger
+registration for the protocol. It does not implement wrapper tooling, run
+runtime/provider/model/platform probes, refresh source capsules, export,
+package, commit, push, or prove service/API/UI behavior.
 
 ### Request Intake / Routing Context
 
