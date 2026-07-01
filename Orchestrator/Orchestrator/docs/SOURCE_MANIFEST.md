@@ -5162,3 +5162,49 @@ generation, `general_answer` resumption, service/API/UI behavior,
 scheduler/reminder behavior, or connector behavior is registered by Phase 275.
 
 `PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 277 Packet CLI Operator Runbook Golden Smoke
+
+Boundary:
+
+`PRODUCT_PHASE_277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- `tests/test_phase_277_packet_cli_operator_runbook_golden_smoke.py`
+
+Registered new documentation/control files:
+
+- `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`
+- `docs/PHASE_277.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 277 adds an operator-facing runbook and a
+source/test/docs golden-smoke contract for
+`python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`.
+The runbook includes a complete minimal valid JSON packet, PowerShell-first
+temp/run directory instructions, expected deterministic success and
+blocked/error shapes, output fields that matter to the operator, timestamp
+discipline, current lockouts, and non-proofs. The test parses the runbook JSON
+packet, writes it to a temp JSON file, invokes the actual CLI main path, and
+verifies deterministic parseable JSON, `local_file` behavior, persisted temp
+task/artifact/verifier files, false no-activity flags, and non-proof caveats.
+
+No semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, production readiness, model-backed generation,
+`general_answer` resumption, service/API/UI behavior, scheduler/reminder
+behavior, connector behavior, WSL/Ollama/OpenClaw/Hermes/Discord/installer
+behavior, or full patch workflow production readiness behavior is registered
+by Phase 277.
+
+`PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`

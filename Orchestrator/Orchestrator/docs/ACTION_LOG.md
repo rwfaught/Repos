@@ -4717,3 +4717,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   is added.
 
 `PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 277 Packet CLI Operator Runbook Golden Smoke
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PRODUCT_PHASE_277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS`
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_277.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Test changed:
+  `tests/test_phase_277_packet_cli_operator_runbook_golden_smoke.py`.
+- Source changed: none.
+- Registered behavior: an operator-facing runbook now documents the Phase 275
+  packet CLI command, a complete minimal valid JSON packet, PowerShell-first
+  temp/run directory instructions, expected success and blocked/error JSON
+  shapes, current lockouts, timestamp discipline, and non-proofs. The golden
+  smoke parses the runbook JSON packet, writes it to a temp JSON file, invokes
+  the actual CLI main path with `--packet-json`, and verifies deterministic
+  parseable JSON, `local_file` behavior, inspectable temp artifacts, false
+  runtime/provider/model/platform activity flags, and current non-proof
+  caveats.
+- Explicit non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  model-backed generation, `general_answer` resumption, service/API/UI
+  behavior, scheduler/reminder behavior, connector behavior, WSL/Ollama/
+  OpenClaw/Hermes/Discord/installer behavior, or full patch workflow
+  production readiness is added.
+
+`PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -872,3 +872,30 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet CLI Operator Runbook Golden Smoke Status
+
+- Phase 277 adds an operator-facing runbook and golden-smoke test for the
+  Phase 275 packet CLI.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: Roger now has a documented
+  PowerShell-first local JSON packet path for
+  `python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`
+  plus a test-backed minimal packet example and deterministic JSON output
+  interpretation.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: the proof remains deterministic,
+  bounded, and `local_file` only; Phase 277 improves operator legibility and
+  smoke reproducibility, not semantic task correctness.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 277 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 277 does not resume or mutate the `general_answer` lane.
+- `SCRIPT_RELIABILITY`: Phase 277 documents timestamp, elapsed-time, exit-code,
+  visible-output, and temp run-directory discipline for evidence-bearing
+  packet CLI batches.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 277 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`

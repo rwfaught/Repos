@@ -152,16 +152,17 @@ This file enables controlled progression through the system build.
 273. PHASE_273.md - Current Success Satisfaction And Next Success Bar
 274. PHASE_274.md - Operator-Facing Bounded Coding Task Packet
 275. PHASE_275.md - Operator Coding Task Packet CLI File Input Adapter
+277. PHASE_277.md - Packet CLI Operator Runbook Golden Smoke
 
 ---
 
 ## Current Phase
 
-Phase 275 - Operator Coding Task Packet CLI File Input Adapter
+Phase 277 - Packet CLI Operator Runbook Golden Smoke
 
-Status: latest source/test/docs registration; a deterministic CLI/file-input
-adapter reads a local JSON packet file, calls the Phase 274 operator coding
-task packet surface, and prints deterministic JSON output.
+Status: latest source/test/docs registration; an operator-facing runbook and
+golden-smoke test prove a minimal local JSON packet can be written, passed to
+the Phase 275 CLI, and inspected through deterministic local_file JSON output.
 
 Production readiness is not claimed.
 
@@ -2970,3 +2971,26 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   is added.
 - Marker:
   `PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 277 - Packet CLI Operator Runbook Golden Smoke
+
+- Status: source/test/docs registration of an operator-facing runbook and
+  golden-smoke test for the Phase 275 packet CLI.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_277.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Test changed:
+  `tests/test_phase_277_packet_cli_operator_runbook_golden_smoke.py`.
+- Source changed: none.
+- Behavior: the runbook contains the module invocation and a complete minimal
+  valid JSON packet. The golden-smoke test parses the runbook packet, writes it
+  to a temp JSON file, invokes the actual CLI main path with `--packet-json`,
+  and verifies deterministic parseable JSON, `local_file` behavior, persisted
+  temp artifacts, false no-activity flags, and non-proof caveats.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  model-backed generation, `general_answer` resumption, service/API/UI
+  behavior, scheduler/reminder behavior, connector behavior, or full
+  production patch workflow is added.
+- Marker:
+  `PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`.
