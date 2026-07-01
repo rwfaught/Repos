@@ -4747,3 +4747,35 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production readiness is added.
 
 `PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 279 Packet CLI Runbook Execution Persistence Honesty Repair
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PRODUCT_PHASE_279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS`
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_277.md`; `docs/PHASE_279.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Test changed:
+  `tests/test_phase_279_packet_cli_runbook_execution_persistence_honesty.py`.
+- Source changed: none.
+- Accepted Phase 278 observation: the packet CLI ran and returned deterministic
+  JSON with `execution_provider=local_file` and false runtime/provider/model/
+  platform flags, but generated repo-local files under `outputs/`,
+  `data/tasks/`, `data/artifacts/`, and `data/verifier_results/`; therefore a
+  repo-read-only smoke framing is false.
+- Registered repair: the runbook now says the packet CLI is an execution and
+  persistence surface, may dirty `git status`, must run only under an explicit
+  persistence/mutation boundary, and requires generated files to be inspected,
+  accepted, or cleaned only under a later explicit boundary.
+- Registered script discipline: operator-pasted command batches must not use
+  `exit`; the PowerShell pattern uses timestamps, elapsed time, PASS/FAIL
+  lines, generated-path inspection output, and natural completion.
+- Explicit non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  service/API/UI behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, cleanup/delete/archive behavior, source capsule
+  freshness before export, or full patch workflow readiness is added.
+
+`PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

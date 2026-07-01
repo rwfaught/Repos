@@ -899,3 +899,29 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet CLI Execution Persistence Honesty Repair Status
+
+- Phase 279 repairs the Phase 277 packet CLI runbook posture after Phase 278
+  operator observation showed the CLI execution is not repo-read-only.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the packet CLI remains a useful
+  operator-facing bounded coding-task control surface, but it must be treated
+  as an execution/persistence surface that may create repo-local durable files
+  under `outputs/`, `data/tasks/`, `data/artifacts/`, and
+  `data/verifier_results/`.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; Phase 279 improves honesty of
+  the operator runbook and tests, not semantic task correctness.
+- `SCRIPT_RELIABILITY`: Phase 279 adds no-exit operator-pasted command
+  discipline with timestamps, elapsed time, PASS/FAIL accumulation, generated
+  path reporting, and natural completion.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 279 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 279 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 279 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

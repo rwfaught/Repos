@@ -153,16 +153,17 @@ This file enables controlled progression through the system build.
 274. PHASE_274.md - Operator-Facing Bounded Coding Task Packet
 275. PHASE_275.md - Operator Coding Task Packet CLI File Input Adapter
 277. PHASE_277.md - Packet CLI Operator Runbook Golden Smoke
+279. PHASE_279.md - Packet CLI Runbook Execution Persistence Honesty Repair
 
 ---
 
 ## Current Phase
 
-Phase 277 - Packet CLI Operator Runbook Golden Smoke
+Phase 279 - Packet CLI Runbook Execution Persistence Honesty Repair
 
-Status: latest source/test/docs registration; an operator-facing runbook and
-golden-smoke test prove a minimal local JSON packet can be written, passed to
-the Phase 275 CLI, and inspected through deterministic local_file JSON output.
+Status: latest source/test/docs registration; the packet CLI runbook now
+honestly describes the command as an execution and persistence surface that may
+create repo-local durable task, artifact, verifier, and output records.
 
 Production readiness is not claimed.
 
@@ -2993,4 +2994,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   behavior, scheduler/reminder behavior, connector behavior, or full
   production patch workflow is added.
 - Marker:
-  `PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 279 - Packet CLI Runbook Execution Persistence Honesty Repair
+
+- Status: source/test/docs registration repairing the Phase 277 packet CLI
+  runbook persistence posture.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_277.md`; `docs/PHASE_279.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Test changed:
+  `tests/test_phase_279_packet_cli_runbook_execution_persistence_honesty.py`.
+- Source changed: none.
+- Behavior: the runbook no longer presents the packet CLI as repo-read-only.
+  It states that successful execution may persist repo-local files under
+  `outputs/`, `data/tasks/`, `data/artifacts/`, and
+  `data/verifier_results/`; preserves `local_file` and non-proof caveats; and
+  includes no-exit PowerShell operator script discipline.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  service/API/UI behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, cleanup/delete/archive behavior, source capsule
+  freshness before export, or full patch workflow readiness is added.
+- Marker:
+  `PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`.

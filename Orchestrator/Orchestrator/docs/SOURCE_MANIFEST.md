@@ -5208,3 +5208,45 @@ behavior, or full patch workflow production readiness behavior is registered
 by Phase 277.
 
 `PHASE277_PACKET_CLI_OPERATOR_RUNBOOK_GOLDEN_SMOKE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 279 Packet CLI Runbook Execution Persistence Honesty Repair
+
+Boundary:
+
+`PRODUCT_PHASE_279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- `tests/test_phase_279_packet_cli_runbook_execution_persistence_honesty.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_279.md`
+
+Registered changed documentation/control files:
+
+- `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`
+- `docs/PHASE_277.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered posture repair: the packet CLI runbook now describes
+`python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`
+as an execution and persistence surface, not a repo-read-only smoke. Successful
+execution may create repo-local durable files under `outputs/`, `data/tasks/`,
+`data/artifacts/`, and `data/verifier_results/`, and operators must inspect,
+accept, or clean generated files only under explicit later boundaries.
+
+No semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, production readiness, service/API/UI behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+cleanup/delete/archive behavior, source capsule freshness before export, or full
+patch workflow readiness behavior is registered by Phase 279.
+
+`PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

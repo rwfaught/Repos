@@ -2,14 +2,17 @@
 
 ## Purpose
 
-This runbook gives an operator-facing golden-smoke path for the Phase 275
-packet CLI:
+This runbook gives an operator-facing command path for the Phase 275 packet
+CLI:
 
 `python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`
 
-It shows how to write a minimal local JSON packet, run the CLI by hand, and
-read the deterministic JSON output without reconstructing packet schema from
-tests or coordinator memory.
+The packet CLI is an execution and persistence surface. A successful invocation
+runs deterministic `local_file` behavior and may create repo-local durable
+task, artifact, verifier, and output records. It is not a read-only repo smoke.
+Run it only under an explicit persistence or mutation boundary where generated
+repo-local files are expected, inspected, accepted, or cleaned under a later
+explicit boundary.
 
 ## Command Syntax
 
@@ -18,6 +21,10 @@ python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>
 ```
 
 The CLI accepts only `--packet-json <path>`.
+
+Operator-pasted command batches for this runbook must not use `exit`,
+especially not `exit 1`. For expected boundary failures, prefer accumulated
+PASS/FAIL lines and natural script completion instead of `throw`.
 
 ## Minimal Packet
 
@@ -40,18 +47,41 @@ The CLI accepts only `--packet-json <path>`.
 }
 ```
 
-## PowerShell Golden Smoke
+## Persistence Posture
 
-From the product repo root:
+A successful packet CLI execution may persist repo-local generated files under:
+
+- `outputs/`
+- `data/tasks/`
+- `data/artifacts/`
+- `data/verifier_results/`
+
+Deterministic `local_file` behavior is local filesystem behavior. It is not
+model-backed coding, live provider generation, autonomous AI coding, or semantic
+task adequacy proof.
+
+Deterministic `local_file` behavior is not model-backed coding and is not
+semantic task adequacy proof.
+
+Because the packet writes files, a successful run can leave `git status` dirty.
+Do not frame this command as a repo-read-only smoke. The operator should inspect
+the generated paths and then accept them, leave them for a follow-up boundary,
+or clean them only under a later explicit cleanup/delete boundary.
+
+## PowerShell Execution And Persistence Pattern
+
+From the product repo root, under an explicit persistence or mutation boundary:
 
 ```powershell
 $StartedAt = Get-Date -Format o
 $Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+$Failures = New-Object System.Collections.Generic.List[string]
 $RunStamp = Get-Date -Format 'yyyyMMdd_HHmmss'
 $RunDir = Join-Path $env:TEMP "orchestrator_phase277_packet_cli_$RunStamp"
-New-Item -ItemType Directory -Force -Path $RunDir | Out-Null
 $PacketPath = Join-Path $RunDir "packet.json"
 $OutputPath = Join-Path $RunDir "cli-output.json"
+
+New-Item -ItemType Directory -Force -Path $RunDir | Out-Null
 
 @'
 {
@@ -75,25 +105,66 @@ $OutputPath = Join-Path $RunDir "cli-output.json"
 python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath |
   Tee-Object -FilePath $OutputPath
 
-$ExitCode = $LASTEXITCODE
+$CliExitCode = $LASTEXITCODE
+if ($CliExitCode -ne 0) {
+  $Failures.Add("CLI exit code was $CliExitCode")
+}
+
+try {
+  $CliJson = Get-Content -LiteralPath $OutputPath -Raw | ConvertFrom-Json
+  if ($CliJson.accepted -ne $true) { $Failures.Add("accepted was not true") }
+  if ($CliJson.blocked -ne $false) { $Failures.Add("blocked was not false") }
+  if ($CliJson.execution_provider -ne "local_file") {
+    $Failures.Add("execution_provider was not local_file")
+  }
+  if ($CliJson.no_activity_flags.model_executed -ne $false) {
+    $Failures.Add("model_executed was not false")
+  }
+  if ($CliJson.no_activity_flags.runtime_executed -ne $false) {
+    $Failures.Add("runtime_executed was not false")
+  }
+  if ($CliJson.no_activity_flags.platform_invoked -ne $false) {
+    $Failures.Add("platform_invoked was not false")
+  }
+} catch {
+  $Failures.Add("CLI output was not parseable JSON: $($_.Exception.Message)")
+}
+
+$GeneratedRepoPaths = @(
+  "outputs/phase277_golden_smoke.txt",
+  "data/tasks/task_phase277_golden_smoke.json",
+  "data/artifacts",
+  "data/verifier_results"
+)
+
 $Stopwatch.Stop()
 $FinishedAt = Get-Date -Format o
+
 "StartedAt=$StartedAt"
 "FinishedAt=$FinishedAt"
 "ElapsedMs=$($Stopwatch.ElapsedMilliseconds)"
-"ExitCode=$ExitCode"
+"CliExitCode=$CliExitCode"
 "RunDir=$RunDir"
 "PacketPath=$PacketPath"
 "OutputPath=$OutputPath"
+"GeneratedRepoPathsToInspect=$($GeneratedRepoPaths -join '; ')"
+
+if ($Failures.Count -eq 0) {
+  "PHASE277_PACKET_CLI_EXECUTION_PERSISTENCE_SMOKE=PASS"
+} else {
+  "PHASE277_PACKET_CLI_EXECUTION_PERSISTENCE_SMOKE=FAIL"
+  $Failures | ForEach-Object { "Failure=$_" }
+  "OperatorAction=inspect output JSON, generated repo-local files, and boundary authorization before retrying"
+}
 ```
 
-Keep the start timestamp, finish timestamp, elapsed time, exit code, visible
-CLI output, and run directory path together for any evidence-bearing script
-batch.
+Keep the start timestamp, finish timestamp, elapsed time, CLI exit code,
+visible CLI output, run directory path, and generated repo-local paths together
+for any evidence-bearing script batch.
 
 ## Output Fields That Matter
 
-For a successful local golden smoke, inspect:
+For a successful local execution, inspect:
 
 - `accepted`: should be `true`
 - `blocked`: should be `false`
@@ -123,8 +194,9 @@ The successful shape is deterministic parseable JSON with:
 - `no_activity_flags.runtime_executed=false`
 - `no_activity_flags.platform_invoked=false`
 - `no_activity_flags.live_provider_invoked=false`
-- `non_proofs` containing `no_live_provider_model_proof` and
-  `no_runtime_platform_proof`
+- `non_proofs` containing `no_semantic_correctness_proof`,
+  `no_live_provider_model_proof`, `no_runtime_platform_proof`,
+  `no_autonomous_ai_coding_proof`, and `no_production_readiness_proof`
 
 ## Expected Blocked Or Error Shape
 
@@ -152,14 +224,11 @@ cleanup/delete/archive behavior, or production-readiness claims.
 
 ## Non-Proofs
 
-This golden smoke proves only a source/test/docs-backed operator runbook and
-deterministic CLI contract for a local JSON packet using `local_file`.
+This runbook proves only a source/test/docs-backed description of the packet CLI
+as an execution and persistence surface with deterministic `local_file`
+behavior.
 
 It does not prove semantic correctness, live provider/model execution,
 runtime/platform behavior, autonomous AI coding, production readiness, service
 or API or UI behavior, scheduler/reminder behavior, connector behavior,
 `general_answer` resumption, or the full production patch workflow.
-
-Deterministic `local_file` behavior is local filesystem behavior. It is not
-model-backed coding, live provider generation, autonomous coding, or semantic
-task adequacy proof.

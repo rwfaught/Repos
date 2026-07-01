@@ -51,12 +51,18 @@ Production source:
 
 ## Proof Scope
 
-This phase proves a source/test/docs-backed operator runbook and golden-smoke
+This phase proved a source/test/docs-backed operator runbook and golden-smoke
 contract for the packet CLI. The golden smoke parses the runbook packet,
 writes it to a local temp JSON file, invokes the actual CLI main path with
 `--packet-json`, and verifies deterministic parseable JSON, `local_file`
-behavior, inspectable persisted temp artifacts, false no-activity flags, and
-current non-proof caveats.
+behavior, inspectable persisted artifacts in patched temp directories, false
+no-activity flags, and current non-proof caveats.
+
+Phase 279 later corrected the operator-facing posture: the actual packet CLI is
+an execution and persistence surface and may create repo-local durable files
+under `outputs/`, `data/tasks/`, `data/artifacts/`, and
+`data/verifier_results/`. Phase 277 must not be read as a repo-read-only
+operator smoke claim.
 
 ## Non-Proofs
 
