@@ -5041,3 +5041,39 @@ behavior, autonomous AI coding behavior, production readiness, `general_answer`
 resumption, export/upload, commit, or push is registered by Phase 272.
 
 `PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`
+
+## Phase 273 Current Success Satisfaction And Next Success Bar
+
+Boundary:
+
+`PRODUCT_PHASE_273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY`
+
+Registered changed docs:
+
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+- `docs/PHASE_273.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- None.
+
+Registered decision: the prior bounded coding-task current success criterion is
+satisfied at deterministic integrated proof level after Phase 272.
+
+Registered next success bar: operator-facing bounded coding-task proof through
+a stable control surface or repeatable boundary packet.
+
+No semantic correctness, live provider/model behavior, runtime/platform
+behavior, autonomous AI coding behavior, production readiness,
+`general_answer` behavior/resumption, OpenClaw/Hermes/Obsidian/LightRAG
+integration, export/upload, commit, or push is registered by Phase 273.
+
+`PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`

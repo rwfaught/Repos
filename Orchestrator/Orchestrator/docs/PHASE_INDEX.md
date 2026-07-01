@@ -149,17 +149,19 @@ This file enables controlled progression through the system build.
 270. PHASE_270.md - Current Success Review Artifact Directory Alias Repair
 271. PHASE_271.md - Path Containment POSIX Absolute Repair
 272. PHASE_272.md - Integrated Coding Task Current Spine Proof
+273. PHASE_273.md - Current Success Satisfaction And Next Success Bar
 
 ---
 
 ## Current Phase
 
-Phase 272 - Integrated Coding Task Current Spine Proof
+Phase 273 - Current Success Satisfaction And Next Success Bar
 
-Status: latest test/docs integrated current-spine proof registration; bounded
-filesystem-mutation task state, execution artifact, verifier result,
-current-success review, and operator-visible response options are validated
-through deterministic local test-safe behavior.
+Status: latest docs-only decision registration; the prior bounded coding-task
+current success criterion is satisfied at deterministic integrated proof level
+after Phase 272, and the next success bar is operator-facing bounded
+coding-task proof through a stable control surface or repeatable boundary
+packet.
 
 Production readiness is not claimed.
 
@@ -2904,3 +2906,22 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 273 - Current Success Satisfaction And Next Success Bar
+
+- Status: docs-only decision registration.
+- Decision: the prior bounded coding-task current success criterion is
+  satisfied at deterministic integrated proof level after Phase 272.
+- Next success bar: operator-facing bounded coding-task proof through a stable
+  control surface or repeatable boundary packet.
+- Docs changed: `docs/CURRENT_SUCCESS_CRITERION.md`; `docs/PHASE_273.md`;
+  `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Source changed: none.
+- Tests changed: none.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, `general_answer` behavior/resumption, OpenClaw/Hermes/Obsidian/
+  LightRAG integration, export/upload, commit, or push is added.
+- Marker:
+  `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`.

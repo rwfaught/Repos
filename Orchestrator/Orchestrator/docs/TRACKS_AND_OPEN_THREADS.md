@@ -794,3 +794,31 @@ fresh artifact proof.
   readiness, `general_answer` resumption, export/upload, commit, or push.
 
 `PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`
+
+## Current Success Satisfaction And Next Bar
+
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: Phase 272 satisfies the deterministic
+  integrated proof gap for the prior bounded coding-task current success
+  criterion. This satisfaction is deterministic and local; it is not semantic
+  correctness, live provider/model behavior, autonomous AI coding, runtime/
+  platform behavior, or production readiness.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the next success bar is
+  operator-facing bounded coding-task proof through a stable control surface or
+  repeatable boundary packet. It should include operator-provided bounded task
+  framing, named file scope, explicit success criteria, persisted task state,
+  execution artifact, verifier result, current-success review/readback, and a
+  clear operator-visible next action.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: Phase 97-101 component proof remains
+  valid and Phase 272 keeps the targeted current-spine regression green, but an
+  integrated production patch workflow remains unproven unless separately
+  ranked and authorized.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 273 does not resume or mutate the `general_answer` lane.
+- `SCRIPT_RELIABILITY`: remains open; future evidence-bearing command batches
+  should stay small, timestamped, and native-command-safe.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains a separate track. Phase 273 does
+  not import platform runtime facts or prove OpenClaw, Hermes, Obsidian, or
+  LightRAG integration.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`

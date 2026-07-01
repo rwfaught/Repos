@@ -221,6 +221,61 @@ It is successful when its current governance, control surfaces, execution flow, 
 
 That is the bar.
 
+## Phase 273 Current Success Satisfaction Status
+
+The previous current success criterion is now satisfied at deterministic
+integrated proof level after Phase 272.
+
+The proof basis is Phase 272:
+
+- persisted task state
+- deterministic local engine execution
+- execution artifact
+- verifier result
+- current-success review over actual persisted records
+- operator-visible response options
+
+This satisfaction is narrow. It does not prove:
+
+- semantic correctness
+- live provider/model behavior
+- runtime/platform behavior
+- autonomous AI coding
+- production readiness
+- `general_answer` behavior
+- OpenClaw/Hermes/Obsidian/LightRAG integration
+
+`PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`
+
+## Next Success Bar
+
+The next product success bar is:
+
+operator-facing bounded coding-task proof through a stable control surface or
+repeatable boundary packet.
+
+The next bar should require:
+
+- an operator-provided bounded coding task specification or packet
+- named file scope
+- explicit success criteria
+- persisted task state
+- execution artifact
+- verifier result
+- current-success review/readback
+- clear operator-visible next action
+- no ambiguity about what was executed, what was only recommended, and what
+  remains unproven
+
+The next bar does not yet require:
+
+- live model/provider execution
+- autonomous coding
+- semantic correctness proof
+- production readiness
+- runtime/platform/OpenClaw/Hermes work
+- `general_answer` resumption
+
 ## Phase 212 Route-Mediated Provider Smoke Gap Note
 
 Phase 212 adds a guarded live Ollama transport adapter path for a future
