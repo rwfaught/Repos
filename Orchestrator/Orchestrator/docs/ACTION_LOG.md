@@ -4578,3 +4578,40 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   proof is added.
 
 `PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 270 Current Success Review Artifact Directory Alias Repair
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE_270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS`
+- Source changed: `orchestrator/current_success_result_review.py`.
+- Registered repair: current-success artifact lookup uses
+  `record_path(ARTIFACTS_DIR, artifact_id, label="artifact id")`.
+- Validation registered: Phase 78 current-success review checks passed before
+  this registration; current re-entry also passed compile and targeted
+  coding-spine regression validation.
+- Explicit non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, export/upload, commit, or push is added.
+
+`PHASE270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 271 Path Containment POSIX Absolute Repair
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE_271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_AND_CURRENT_SPINE_VALIDATION_WORKER`
+- Source changed: `orchestrator/paths.py`.
+- Registered repair: `resolve_declared_project_path()` detects POSIX-style
+  absolute declared paths with `PurePosixPath(...).is_absolute()` so
+  `/tmp/outside.txt` is rejected as `Declared project path must be relative.`
+  on Windows before broad project-root containment handling.
+- Validation passed:
+  `python -m py_compile orchestrator/paths.py orchestrator/current_success_result_review.py`;
+  four formerly failing absolute-path tests for Phases 97, 98, 99, and 101;
+  targeted Phase 78/91/92/95/97/98/99/100/101 coding-spine regression.
+- Explicit non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, export/upload, commit, or push is added.
+
+`PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

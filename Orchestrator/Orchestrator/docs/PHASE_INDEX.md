@@ -146,15 +146,18 @@ This file enables controlled progression through the system build.
 156. PHASE_156.md - Local Provider Target Alignment 27B
 268. PHASE_268.md - General Answer Lane Pause And Handoff
 269. PHASE_269.md - Project Continuity Evidence Protocol
+270. PHASE_270.md - Current Success Review Artifact Directory Alias Repair
+271. PHASE_271.md - Path Containment POSIX Absolute Repair
 
 ---
 
 ## Current Phase
 
-Phase 269 - Project Continuity Evidence Protocol
+Phase 271 - Path Containment POSIX Absolute Repair
 
-Status: latest docs-only governance registration; no wrapper/tooling
-implementation, product behavior change, or runtime proof claimed.
+Status: latest source/test/docs coding-spine re-entry registration; Phase 270
+current-success review artifact-directory alias repair and Phase 271 POSIX-style
+absolute declared path contract repair are locally validated.
 
 Production readiness is not claimed.
 
@@ -2847,3 +2850,34 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   production work, or production readiness is added.
 - Marker:
   `PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 270 - Current Success Review Artifact Directory Alias Repair
+
+- Status: source/test/docs registration of the current-success review artifact
+  directory seam repair.
+- Source changed: `orchestrator/current_success_result_review.py`.
+- Validation: Phase 78 current-success review checks passed before this
+  registration; current re-entry also passed `py_compile` for
+  `orchestrator/paths.py` and `orchestrator/current_success_result_review.py`
+  plus the targeted Phase 78/91/92/95/97/98/99/100/101 coding-spine unittest
+  regression.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, export/upload, commit, or push is added.
+- Marker:
+  `PHASE270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 271 - Path Containment POSIX Absolute Repair
+
+- Status: source/test/docs registration of the POSIX-style absolute declared
+  project path diagnostic repair.
+- Source changed: `orchestrator/paths.py`.
+- Validation: `python -m py_compile orchestrator/paths.py
+  orchestrator/current_success_result_review.py`; four formerly failing
+  absolute-path tests for Phases 97, 98, 99, and 101; and the targeted Phase
+  78/91/92/95/97/98/99/100/101 coding-spine unittest regression all passed.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, export/upload, commit, or push is added.
+- Marker:
+  `PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`.

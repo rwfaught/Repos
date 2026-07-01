@@ -761,3 +761,19 @@ fresh artifact proof.
   maturely yet.
 
 `PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`
+
+## Current Coding-Spine Re-Entry Status
+
+- Phase 270 preserves the current-success review artifact directory seam
+  repair in `orchestrator/current_success_result_review.py`.
+- Phase 271 repairs POSIX-style absolute declared project path detection in
+  `orchestrator/paths.py`.
+- Targeted Phase 78/91/92/95/97/98/99/100/101 coding-spine regression passed
+  locally during this re-entry, with one symlink-environment skip.
+- This is source/test/docs validation only; it is not semantic correctness
+  proof, live provider/model proof, runtime/platform proof, autonomous AI
+  coding proof, production readiness proof, export/upload, commit, or push.
+
+`PHASE270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

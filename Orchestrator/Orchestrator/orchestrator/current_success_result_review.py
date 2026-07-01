@@ -8,6 +8,7 @@ import orchestrator.artifact_store as artifact_store
 import orchestrator.run_manager as run_manager
 from orchestrator.paths import (
     DATA_DIR,
+    ARTIFACTS_DIR,
     VERIFIER_RESULTS_DIR,
     record_path,
     validate_record_id,
@@ -62,7 +63,7 @@ def _artifact_path(artifact_id: str) -> Path | None:
     if not artifact_id:
         return None
     try:
-        return artifact_store.artifact_path(artifact_id)
+        return record_path(ARTIFACTS_DIR, artifact_id, label="artifact id")
     except ValueError:
         return None
 

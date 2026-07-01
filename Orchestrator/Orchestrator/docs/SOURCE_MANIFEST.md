@@ -4932,3 +4932,69 @@ production task execution, production readiness, or cross-project runtime-fact
 transfer proof is registered by Phase 269.
 
 `PHASE269_PROJECT_CONTINUITY_EVIDENCE_PROTOCOL_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 270 Current Success Review Artifact Directory Alias Repair
+
+Boundary:
+
+`PHASE_270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/current_success_result_review.py`
+
+Registered changed docs:
+
+- `docs/PHASE_270.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered repair: current-success review artifact lookup now uses the
+canonical artifacts directory seam through `record_path(ARTIFACTS_DIR,
+artifact_id, label="artifact id")`.
+
+Registered validation: Phase 78 current-success review checks passed before
+this registration; current re-entry compile and targeted coding-spine
+regression validation also passed.
+
+No test files changed. No semantic correctness, live provider/model behavior,
+runtime/platform behavior, autonomous AI coding behavior, production readiness,
+export/upload, commit, or push is registered by Phase 270.
+
+`PHASE270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 271 Path Containment POSIX Absolute Repair
+
+Boundary:
+
+`PHASE_271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_AND_CURRENT_SPINE_VALIDATION_WORKER`
+
+Registered changed source:
+
+- `orchestrator/paths.py`
+
+Registered changed docs:
+
+- `docs/PHASE_271.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered repair: `resolve_declared_project_path()` checks
+`PurePosixPath(target).is_absolute()` so POSIX-style absolute paths are rejected
+with the relative-path diagnostic before broad root-containment handling.
+
+Registered validation:
+
+- `python -m py_compile orchestrator/paths.py orchestrator/current_success_result_review.py`
+- Four formerly failing absolute-path tests for Phases 97, 98, 99, and 101
+- Targeted Phase 78/91/92/95/97/98/99/100/101 coding-spine regression
+
+No test files changed. No semantic correctness, live provider/model behavior,
+runtime/platform behavior, autonomous AI coding behavior, production readiness,
+export/upload, commit, or push is registered by Phase 271.
+
+`PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`

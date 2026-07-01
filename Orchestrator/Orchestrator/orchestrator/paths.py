@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from pathlib import PureWindowsPath
+from pathlib import PurePosixPath, PureWindowsPath
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = PROJECT_ROOT / "docs"
@@ -65,7 +65,11 @@ def resolve_declared_project_path(path: str) -> Path:
         raise ValueError("Declared project path must not be empty.")
 
     candidate = Path(target)
-    if candidate.is_absolute() or PureWindowsPath(target).is_absolute():
+    if (
+        candidate.is_absolute()
+        or PureWindowsPath(target).is_absolute()
+        or PurePosixPath(target).is_absolute()
+    ):
         raise ValueError("Declared project path must be relative.")
     if any(part == ".." for part in candidate.parts) or any(
         part == ".." for part in PureWindowsPath(target).parts
