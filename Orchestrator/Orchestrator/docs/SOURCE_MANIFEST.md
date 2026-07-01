@@ -5120,3 +5120,45 @@ generation, `general_answer` resumption, service/API/UI behavior,
 export/upload, commit, or push is registered by Phase 274.
 
 `PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 275 Operator Coding Task Packet CLI File Input Adapter
+
+Boundary:
+
+`PRODUCT_PHASE_275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/operator_coding_task_packet_cli.py`
+
+Registered changed tests:
+
+- `tests/test_phase_275_operator_coding_task_packet_cli_file_input_adapter.py`
+
+Registered changed docs:
+
+- `docs/PHASE_275.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 275 adds a deterministic
+`--packet-json <path>` CLI/file-input adapter over the Phase 274 operator
+coding-task packet surface. The adapter reads a local JSON packet file, calls
+`run_operator_coding_task_packet(packet)`, and prints deterministic JSON output.
+
+Registered validation:
+
+- `python -m py_compile orchestrator/operator_coding_task_packet_cli.py tests/test_phase_275_operator_coding_task_packet_cli_file_input_adapter.py`
+- `python -m unittest tests.test_phase_275_operator_coding_task_packet_cli_file_input_adapter -v`
+- Targeted Phase 78/91/92/95/97/98/99/100/101/272/274/275 current-spine
+  unittest regression
+- `git diff --check`
+
+No semantic correctness, live provider/model behavior, runtime/platform
+behavior, autonomous AI coding behavior, production readiness, model-backed
+generation, `general_answer` resumption, service/API/UI behavior,
+scheduler/reminder behavior, or connector behavior is registered by Phase 275.
+
+`PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`

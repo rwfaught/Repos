@@ -151,17 +151,17 @@ This file enables controlled progression through the system build.
 272. PHASE_272.md - Integrated Coding Task Current Spine Proof
 273. PHASE_273.md - Current Success Satisfaction And Next Success Bar
 274. PHASE_274.md - Operator-Facing Bounded Coding Task Packet
+275. PHASE_275.md - Operator Coding Task Packet CLI File Input Adapter
 
 ---
 
 ## Current Phase
 
-Phase 274 - Operator-Facing Bounded Coding Task Packet
+Phase 275 - Operator Coding Task Packet CLI File Input Adapter
 
-Status: latest source/test/docs registration; a narrow operator-facing bounded
-coding-task packet surface accepts structured task packets, validates bounded
-scope, runs deterministic `local_file` behavior through the existing current
-spine, and returns current-success review/readback.
+Status: latest source/test/docs registration; a deterministic CLI/file-input
+adapter reads a local JSON packet file, calls the Phase 274 operator coding
+task packet surface, and prints deterministic JSON output.
 
 Production readiness is not claimed.
 
@@ -2947,3 +2947,26 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   service/API/UI behavior, export/upload, commit, or push is added.
 - Marker:
   `PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 275 - Operator Coding Task Packet CLI File Input Adapter
+
+- Status: source/test/docs registration of a deterministic CLI/file-input
+  adapter over the Phase 274 packet surface.
+- Source changed: `orchestrator/operator_coding_task_packet_cli.py`.
+- Test changed:
+  `tests/test_phase_275_operator_coding_task_packet_cli_file_input_adapter.py`.
+- Behavior: accepts only `--packet-json <path>`, reads a local UTF-8-sig JSON
+  packet file, rejects missing/unreadable files, malformed JSON, and non-object
+  JSON before packet execution, calls `run_operator_coding_task_packet` for
+  JSON-object packets, and prints deterministic JSON with sorted keys,
+  two-space indentation, and a trailing newline.
+- Validation: Phase 275 py_compile; dedicated Phase 275 unittest; targeted
+  Phase 78/91/92/95/97/98/99/100/101/272/274/275 current-spine regression; and
+  `git diff --check` all passed.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, model-backed generation, `general_answer` resumption,
+  service/API/UI behavior, scheduler/reminder behavior, or connector behavior
+  is added.
+- Marker:
+  `PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`.

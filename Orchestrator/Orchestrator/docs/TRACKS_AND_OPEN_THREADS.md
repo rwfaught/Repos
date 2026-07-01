@@ -847,3 +847,28 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE274_OPERATOR_FACING_BOUNDED_CODING_TASK_PACKET_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Operator Coding Task Packet CLI File Input Adapter Status
+
+- Phase 275 adds a deterministic CLI/file-input adapter over the Phase 274
+  operator coding-task packet surface.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: a local JSON packet file can now enter
+  the existing Phase 274 packet surface through
+  `python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`,
+  with deterministic JSON printed to stdout for operator review.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: the deterministic current-spine proof
+  remains local and bounded; Phase 275 adds a command entry path, not semantic
+  task correctness.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 275 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 275 does not resume or mutate the `general_answer` lane.
+- `SCRIPT_RELIABILITY`: remains open; future evidence-bearing command batches
+  should stay small, timestamped, and native-command-safe.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 275 does not
+  prove or invoke OpenClaw, Hermes, Obsidian, LightRAG, WSL, Ollama, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE275_OPERATOR_CODING_TASK_PACKET_CLI_FILE_INPUT_ADAPTER_SOURCE_TEST_DOCS_PROVEN=PASS`
