@@ -148,16 +148,18 @@ This file enables controlled progression through the system build.
 269. PHASE_269.md - Project Continuity Evidence Protocol
 270. PHASE_270.md - Current Success Review Artifact Directory Alias Repair
 271. PHASE_271.md - Path Containment POSIX Absolute Repair
+272. PHASE_272.md - Integrated Coding Task Current Spine Proof
 
 ---
 
 ## Current Phase
 
-Phase 271 - Path Containment POSIX Absolute Repair
+Phase 272 - Integrated Coding Task Current Spine Proof
 
-Status: latest source/test/docs coding-spine re-entry registration; Phase 270
-current-success review artifact-directory alias repair and Phase 271 POSIX-style
-absolute declared path contract repair are locally validated.
+Status: latest test/docs integrated current-spine proof registration; bounded
+filesystem-mutation task state, execution artifact, verifier result,
+current-success review, and operator-visible response options are validated
+through deterministic local test-safe behavior.
 
 Production readiness is not claimed.
 
@@ -2881,3 +2883,24 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   readiness, export/upload, commit, or push is added.
 - Marker:
   `PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 272 - Integrated Coding Task Current Spine Proof
+
+- Status: test/docs registration of an integrated current-spine proof for the
+  bounded coding-task current success criterion.
+- Test changed:
+  `tests/test_phase_272_integrated_coding_task_current_spine_proof.py`.
+- Source changed: none.
+- Validation: `python -m py_compile
+  tests/test_phase_272_integrated_coding_task_current_spine_proof.py`;
+  dedicated Phase 272 unittest; targeted Phase 78/91/92/95/97/98/99/100/101/272
+  current-spine unittest regression; and `git diff --check` all passed.
+- Proof coverage: persisted task state, deterministic local engine execution,
+  execution artifact, persisted verifier result, current-success review over
+  actual persisted records, and operator-visible response options.
+- Non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, `general_answer` resumption, export/upload, commit, or push is
+  added.
+- Marker:
+  `PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`.

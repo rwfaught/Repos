@@ -777,3 +777,20 @@ fresh artifact proof.
 `PHASE270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Integrated Current-Spine Proof Status
+
+- Phase 272 adds an integrated current-spine test for the bounded coding-task
+  current success criterion.
+- The test covers persisted task state, deterministic local test-safe engine
+  execution, execution artifact persistence, verifier result persistence,
+  current-success review over actual persisted records, and operator-visible
+  response options.
+- No source files changed; the proof is test/docs only.
+- This closes the immediate missing integrated proof gap after Phase 270/271
+  for the deterministic local current-spine path.
+- It does not prove semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, `general_answer` resumption, export/upload, commit, or push.
+
+`PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`

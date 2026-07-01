@@ -4998,3 +4998,46 @@ runtime/platform behavior, autonomous AI coding behavior, production readiness,
 export/upload, commit, or push is registered by Phase 271.
 
 `PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 272 Integrated Coding Task Current Spine Proof
+
+Boundary:
+
+`PRODUCT_PHASE_272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_WORKER`
+
+Registered changed tests:
+
+- `tests/test_phase_272_integrated_coding_task_current_spine_proof.py`
+
+Registered changed docs:
+
+- `docs/PHASE_272.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered changed source:
+
+- None.
+
+Registered proof: Phase 272 adds a focused integrated test that creates a
+bounded filesystem-mutation task in tempfile isolation, saves it through
+`run_manager.save_task`, executes it through `engine.process_task_by_id` using
+the deterministic local `local_file` provider, verifies the persisted task,
+artifact, and verifier result, then calls `review_current_success_task_result`
+over the actual persisted records and checks operator-visible response options.
+
+Registered validation:
+
+- `python -m py_compile tests/test_phase_272_integrated_coding_task_current_spine_proof.py`
+- `python -m unittest tests.test_phase_272_integrated_coding_task_current_spine_proof -v`
+- Targeted Phase 78/91/92/95/97/98/99/100/101/272 current-spine unittest
+  regression
+- `git diff --check`
+
+No semantic correctness, live provider/model behavior, runtime/platform
+behavior, autonomous AI coding behavior, production readiness, `general_answer`
+resumption, export/upload, commit, or push is registered by Phase 272.
+
+`PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`

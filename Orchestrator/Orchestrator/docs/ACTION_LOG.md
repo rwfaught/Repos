@@ -4615,3 +4615,29 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness, export/upload, commit, or push is added.
 
 `PHASE271_PATH_CONTAINMENT_POSIX_ABSOLUTE_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 272 Integrated Coding Task Current Spine Proof
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PRODUCT_PHASE_272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_WORKER`
+- Test changed:
+  `tests/test_phase_272_integrated_coding_task_current_spine_proof.py`.
+- Source files changed: none.
+- Registered proof: a tempfile-isolated bounded filesystem-mutation task is
+  saved, executed through `engine.process_task_by_id(...,
+  provider_name="local_file")`, persisted with completed task state, execution
+  artifact, and verifier result, then inspected through
+  `review_current_success_task_result`.
+- Proof coverage: persisted task state, deterministic local test-safe engine
+  execution, execution artifact, persisted verifier result, current-success
+  review over actual persisted records, and operator-visible response options.
+- Validation passed: Phase 272 py_compile; dedicated Phase 272 unittest;
+  targeted Phase 78/91/92/95/97/98/99/100/101/272 current-spine regression;
+  `git diff --check`.
+- Explicit non-proofs: no semantic correctness, live provider/model behavior,
+  runtime/platform behavior, autonomous AI coding behavior, production
+  readiness, `general_answer` resumption, export/upload, commit, or push is
+  added.
+
+`PHASE272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_PROVEN=PASS`
