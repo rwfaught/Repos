@@ -1447,3 +1447,25 @@ fresh artifact proof.
   separation remain open.
 
 `PHASE305_AUTHORIZED_BOUNDED_APPLY_ATTEMPT_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Authorized Bounded Apply Result Verification Status
+
+- Phase 307 adds mechanical verification for bounded authorized apply-attempt
+  results.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators can now mechanically verify
+  apply-attempt result evidence before any later finalization boundary.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: verification remains separate from
+  Phase 101-style finalization and preserves not-finalized posture.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; mechanical verification is
+  not semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 307 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 307 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Apply-result verification
+  helps the control spine, but finalization and domain separation remain open.
+
+`PHASE307_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_SOURCE_TEST_DOCS_PROVEN=PASS`

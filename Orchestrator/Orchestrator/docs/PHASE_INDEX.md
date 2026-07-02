@@ -3560,3 +3560,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   workflow, or Backbone V0 declaration is added.
 - Marker:
   `PHASE305_AUTHORIZED_BOUNDED_APPLY_ATTEMPT_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 307 - Authorized Bounded Apply Result Verification
+
+- Status: source/test/docs mechanical verification for bounded authorized
+  apply-attempt results.
+- Source added:
+  `orchestrator/authorized_bounded_apply_result_verification.py`.
+- Test added:
+  `tests/test_phase_307_authorized_bounded_apply_result_verification.py`.
+- Docs changed: `docs/PHASE_307.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: authorized bounded apply-attempt verification checks apply-attempt,
+  authorization, draft, candidate, packet, bounded file, Phase 99 hash, and
+  structured payload evidence; preserves failed/blocked reason codes; blocks
+  unexpected files and existing finalization evidence.
+- Proof scope: source/test/docs mechanical verification only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  patch task finalization, integrated production workflow, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE307_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
