@@ -3288,3 +3288,34 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 294 - Promoted Candidate To Draft Patch Proposal Artifact
+
+- Status: source/test/docs registration of draft-only patch proposal artifact
+  creation from a promoted packet-derived candidate.
+- Source changed:
+  `orchestrator/promoted_candidate_draft_patch_proposal.py`.
+- Test changed:
+  `tests/test_phase_294_promoted_candidate_to_draft_patch_proposal_artifact.py`.
+- Docs changed: `docs/PHASE_294.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: a promoted `candidate_only` artifact with matching Phase 290
+  promotion evidence and structured patch payload can persist a
+  `draft_patch_proposal` artifact marked `draft_only`,
+  `not_authorized_for_apply`, and `not_applied`. Missing notes, unpromoted,
+  rejected, deferred, stale/mismatched, unsafe-id, missing-payload, and
+  smuggled claim inputs block deterministically.
+- Phase 293 assessment: a safe artifact-only seam exists through a new
+  draft-only artifact surface. The existing Phase 97 proposal schema remains
+  a reference and Phase 98-101 authorization/apply modules remain blocked.
+- Non-proofs: no actual apply authorization, patch apply execution, semantic
+  correctness, live provider/model execution, runtime/platform behavior,
+  autonomous AI coding, model-backed generation, production readiness,
+  service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder
+  behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive
+  authority, integrated production patch workflow readiness, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

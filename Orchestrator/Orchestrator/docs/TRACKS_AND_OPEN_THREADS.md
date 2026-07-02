@@ -1181,3 +1181,36 @@ fresh artifact proof.
   the capsule refresh output.
 
 `PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
+
+## Promoted Candidate Draft Patch Proposal Artifact Status
+
+- Phase 293 read-only assessment found a safe artifact-only seam for draft
+  proposal creation if the bridge uses a new draft-only artifact surface and
+  leaves native apply authorization/apply modules untouched.
+- Phase 294 adds deterministic `draft_patch_proposal` artifact creation from a
+  promoted packet-derived candidate with complete structured patch evidence.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: promoted candidates can now become
+  draft-only proposal artifacts when a caller supplies a draft note/reason and
+  matching promotion evidence.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 294 does not create actual apply authorization, does not apply patches,
+  and does not claim a production patch workflow.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; draft proposal creation is
+  evidence organization, not semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: draft creation and blocked outputs preserve exact
+  reason codes, source evidence links, non-proofs, and no-apply/
+  no-authorization fields.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 294 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 294 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Source ZIP hygiene caveat remains: `srczip` may include `__pycache__`/`.pyc`,
+  while official product capsule proof should come from the capsule refresh
+  output.
+- Backbone V0 remains an open thread only. Actual apply authorization, bounded
+  apply, apply-result verification, finalization, and domain separation remain
+  future boundaries.
+
+`PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`

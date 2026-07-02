@@ -5695,3 +5695,43 @@ or integrated production patch workflow readiness behavior is registered by
 Phase 292.
 
 `PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 294 Promoted Candidate To Draft Patch Proposal Artifact
+
+Boundary:
+
+`PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/promoted_candidate_draft_patch_proposal.py`
+
+Registered changed tests:
+
+- `tests/test_phase_294_promoted_candidate_to_draft_patch_proposal_artifact.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_294.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 294 adds a deterministic draft-only artifact bridge
+from promoted packet-derived candidates to draft patch proposal evidence. The
+draft artifact is explicitly `draft_only`, `not_authorized_for_apply`, and
+`not_applied`.
+
+No actual apply authorization, patch apply execution, semantic correctness,
+live provider/model execution, runtime/platform behavior, autonomous AI coding,
+model-backed generation, production readiness, service/API/UI/dashboard/auth/
+deployment behavior, scheduler/reminder behavior, connector behavior,
+`general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+cleanup/delete/archive authority, integrated production patch workflow
+readiness, or Backbone V0 declaration is registered by Phase 294.
+
+`PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -5104,3 +5104,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   added.
 
 `PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 294 Promoted Candidate To Draft Patch Proposal Artifact
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/promoted_candidate_draft_patch_proposal.py`.
+- Test changed:
+  `tests/test_phase_294_promoted_candidate_to_draft_patch_proposal_artifact.py`.
+- Docs changed: `docs/PHASE_294.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: promoted packet-derived candidates with matching
+  promotion records and complete structured patch payload can create durable
+  draft-only patch proposal artifacts. The artifacts preserve source packet,
+  run, task, execution artifact, verifier result, current-success review,
+  operator acceptance, eligibility, candidate, promotion, note/reason, caveat,
+  and non-proof links.
+- Registered blocking: missing draft note, unpromoted/rejected/deferred
+  promotion records, stale or mismatched promotion evidence, missing structured
+  patch payload, unsafe draft ids, provider/model/runtime/platform smuggling,
+  semantic/autonomous/production claim smuggling, and apply-authorization/apply
+  smuggling block without creating a draft.
+- Explicit non-proofs: no actual apply authorization, patch apply execution,
+  semantic correctness, live provider/model execution, runtime/platform
+  behavior, autonomous AI coding, model-backed generation, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+
+`PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
