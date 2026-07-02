@@ -5228,3 +5228,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   is added.
 
 `PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 299 Draft Patch Proposal Operator Apply Authorization Record
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_record.py`.
+- Test changed:
+  `tests/test_phase_299_draft_patch_proposal_operator_apply_authorization_record.py`.
+- Docs changed: `docs/PHASE_299.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: explicit operator decisions can now persist
+  authorization-only records for eligible draft patch proposals. Supported
+  decisions are `authorize_apply`, `reject_apply_authorization`, and
+  `defer_apply_authorization`. The records preserve the Phase 296 eligibility
+  readback and the packet/candidate/promotion/draft evidence chain.
+- Explicit non-proofs: no patch apply execution, apply result record creation,
+  patch task finalization, semantic correctness, live provider/model
+  execution, runtime/platform behavior, autonomous AI coding, model-backed
+  generation, production readiness, service/API/UI/dashboard/auth/deployment
+  behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+
+`PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`

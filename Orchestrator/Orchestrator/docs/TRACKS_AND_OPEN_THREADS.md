@@ -1297,3 +1297,30 @@ fresh artifact proof.
   apply, apply-result verification, finalization, and domain separation.
 
 `PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
+
+## Draft Patch Proposal Operator Apply Authorization Record Status
+
+- Phase 299 adds explicit operator apply-authorization records for eligible
+  draft patch proposals.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the bridge can now persist an
+  operator decision after Phase 296 eligibility readback while preserving the
+  packet, candidate, promotion, draft, and eligibility evidence chain.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: advanced by authorization record
+  persistence only. Phase 299 does not execute patch apply, create apply
+  results, or finalize tasks.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; authorization records are not
+  semantic correctness proof or task adequacy proof.
+- `SCRIPT_RELIABILITY`: records preserve exact decision status, note/reason,
+  linked evidence, caveats, non-proofs, and no apply/apply-result/finalization
+  activity flags.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 299 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 299 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. The control loop is approaching
+  Backbone criteria but still lacks bounded apply execution, apply-result
+  verification, finalization, and domain separation.
+
+`PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
