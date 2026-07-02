@@ -36,6 +36,7 @@ _READ_ONLY_FLAGS = {
 
 
 ACCEPTANCE_RECORDS_DIR = DATA_DIR / "acceptance_records"
+PACKET_OPERATOR_DECISION_RECORDS_DIR = DATA_DIR / "packet_operator_decision_records"
 
 
 _STATUS_CLASSIFICATIONS = {
@@ -177,6 +178,62 @@ def _latest_acceptance_record_summary(task_id: str) -> dict[str, Any]:
         "provider_caveat_acknowledged": bool(payload.get("provider_caveat_acknowledged")),
     }
 
+def _latest_operator_decision_summary(task_id: str) -> dict[str, Any]:
+    if not PACKET_OPERATOR_DECISION_RECORDS_DIR.exists():
+        return {
+            "operator_decision_record_present": False,
+            "operator_decision": "",
+            "accepted": False,
+            "rejected": False,
+            "operator_decision_record_id": "",
+            "operator_decision_record_path": "",
+        }
+
+    records: list[dict[str, Any]] = []
+    for path in sorted(PACKET_OPERATOR_DECISION_RECORDS_DIR.glob("packet_decision_*.json")):
+        payload = _read_json(path)
+        if not isinstance(payload, dict):
+            continue
+        if _normalize_string(payload.get("task_id")) != task_id:
+            continue
+        records.append({"path": path, "payload": payload})
+
+    if not records:
+        return {
+            "operator_decision_record_present": False,
+            "operator_decision": "",
+            "accepted": False,
+            "rejected": False,
+            "operator_decision_record_id": "",
+            "operator_decision_record_path": "",
+        }
+
+    records.sort(key=lambda record: _normalize_string(record["payload"].get("decided_at")), reverse=True)
+    latest = records[0]
+    payload = latest["payload"]
+    decision = _normalize_string(payload.get("operator_decision"))
+
+    return {
+        "operator_decision_record_present": True,
+        "operator_decision": decision,
+        "accepted": decision == "accepted",
+        "rejected": decision == "rejected",
+        "operator_decision_record_id": _normalize_string(payload.get("operator_decision_record_id")),
+        "operator_decision_record_path": str(latest["path"]),
+        "decided_at": _normalize_string(payload.get("decided_at")),
+        "operator_note_present": bool(_normalize_string(payload.get("operator_note"))),
+        "packet_id": _normalize_string(payload.get("packet_id")),
+        "run_id": _normalize_string(payload.get("run_id")),
+        "execution_artifact_id": _normalize_string(payload.get("execution_artifact_id")),
+        "verifier_result_path": _normalize_string(payload.get("verifier_result_path")),
+        "current_success_review_classification": _normalize_string(
+            payload.get("current_success_review_classification")
+        ),
+        "rejection_is_not_automatic_product_failure": bool(
+            payload.get("rejection_is_not_automatic_product_failure")
+        ),
+    }
+
 def _response_options_for(classification: str) -> list[dict[str, Any]]:
     base = [
         {
@@ -270,6 +327,7 @@ def _blocked(task_id: str, reason: str, detail: str, blocked_conditions: list[st
         "artifact_summary": {},
         "verification_summary": {},
         "acceptance_summary": _latest_acceptance_record_summary(task_id) if task_id else {"acceptance_record_present": False, "accepted": False, "acceptance_record_id": "", "acceptance_record_path": ""},
+        "operator_decision_summary": _latest_operator_decision_summary(task_id) if task_id else {"operator_decision_record_present": False, "operator_decision": "", "accepted": False, "rejected": False, "operator_decision_record_id": "", "operator_decision_record_path": ""},
         "operator_response_surface": "blocked_current_success_result_options",
         "response_options": _response_options_for("blocked"),
         "next_action": "repair_or_provide_required_task_result_records_before_current_success_review",
@@ -385,6 +443,7 @@ def review_current_success_task_result(review_input: dict[str, Any]) -> dict[str
         "artifact_summary": artifact,
         "verification_summary": verification,
         "acceptance_summary": _latest_acceptance_record_summary(task.id),
+        "operator_decision_summary": _latest_operator_decision_summary(task.id),
         "operator_response_surface": operator_surface,
         "response_options": _response_options_for(classification),
         "next_action": (

@@ -179,6 +179,30 @@ For a successful local execution, inspect:
   and production-readiness activity false
 - `non_proofs`: should include the current non-proof caveats
 
+## Operator Decision Record
+
+After inspecting a completed packet CLI result and its current-success review,
+an operator can record an explicit bounded decision with:
+
+```text
+python main.py packet-result-operator-decide <decision_input_json_path>
+```
+
+The input JSON must include `operator_decision` as `accepted` or `rejected`, a
+valid `task_id`, and an `operator_note` or `reason`. `packet_id` may be supplied
+when known. The command persists a local decision record and does not execute,
+mutate, verify, call a provider, call a model, invoke a runtime, or claim
+production readiness.
+
+Acceptance records only the operator decision under stated caveats. It does not
+prove semantic correctness, autonomous AI coding, model-backed generation, live
+provider/model execution, runtime/platform behavior, or production readiness.
+Rejection preserves the operator decision and reason without automatically
+mutating the task into product failure.
+
+The latest decision is surfaced in current-success readback under
+`operator_decision_summary`.
+
 ## Expected Success Shape
 
 The successful shape is deterministic parseable JSON with:

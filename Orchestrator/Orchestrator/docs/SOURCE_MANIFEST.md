@@ -5309,3 +5309,49 @@ cleanup/delete/archive behavior beyond the exact scoped Phase 280 cleanup, or
 full patch workflow readiness behavior is registered by Phase 281.
 
 `PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 283 Packet CLI Operator Acceptance Record
+
+Boundary:
+
+`PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/operator_packet_result_decision.py`
+- `orchestrator/current_success_result_review.py`
+- `main.py`
+
+Registered changed tests:
+
+- `tests/test_phase_283_packet_cli_operator_acceptance_record.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_283.md`
+
+Registered changed documentation/control files:
+
+- `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 283 adds `record_packet_result_operator_decision`
+and the `packet-result-operator-decide` main command for explicit operator
+`accepted` or `rejected` packet result decisions. Current-success readback now
+surfaces the latest packet operator decision in `operator_decision_summary`.
+
+Registered persistence posture: live decision records are durable JSON records
+under `data/packet_operator_decision_records/`. Tests use temporary stores and
+do not require repo-local generated packet residue.
+
+No semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, model-backed generation, production readiness,
+service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder behavior,
+connector behavior, `general_answer` resumption, platform/OpenClaw/Hermes/
+LightRAG behavior, cleanup/delete/archive authority, or integrated production
+patch workflow readiness behavior is registered by Phase 283.
+
+`PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -953,3 +953,30 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Packet CLI Operator Acceptance Record Status
+
+- Phase 283 adds a local operator decision record surface for completed packet
+  CLI results.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the packet CLI path now has a
+  bounded record step for explicit operator `accepted` or `rejected` decisions
+  after current-success review and evidence inspection.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: current-success readback surfaces the
+  latest packet operator decision in `operator_decision_summary`; this improves
+  operator traceability, not semantic task correctness.
+- `SCRIPT_RELIABILITY`: the new file-input command is deterministic JSON input
+  through `python main.py packet-result-operator-decide
+  <decision_input_json_path>` and preserves false no-activity flags.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 283 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 283 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 283 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Rejection is preserved as an operator decision and reason; it is not
+  automatic product failure or task-status mutation.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -72,6 +72,7 @@ from orchestrator.case_packet_task_execution_result_review import review_case_pa
 from orchestrator.case_packet_task_execution_result_response_options import surface_case_packet_task_execution_result_response_options
 from orchestrator.current_success_result_review import review_current_success_task_result
 from orchestrator.current_success_acceptance import record_current_success_result_acceptance
+from orchestrator.operator_packet_result_decision import record_packet_result_operator_decision
 from orchestrator.state import load_state, save_state
 from verifiers.registry import run_check
 
@@ -343,6 +344,19 @@ def run_current_success_result_accept() -> None:
         return
 
     result = record_current_success_result_acceptance(payload)
+    print(json.dumps(result, indent=2))
+
+
+def run_packet_result_operator_decide() -> None:
+    if len(sys.argv) < 3:
+        print("Usage: python main.py packet-result-operator-decide <decision_input_json_path>")
+        return
+
+    payload = _read_json_object_input(sys.argv[2], "Packet result operator decision")
+    if payload is None:
+        return
+
+    result = record_packet_result_operator_decision(payload)
     print(json.dumps(result, indent=2))
 
 def run_case_packet_create() -> None:
@@ -2028,6 +2042,10 @@ def main() -> None:
         run_current_success_result_accept()
         return
 
+    if command == "packet-result-operator-decide":
+        run_packet_result_operator_decide()
+        return
+
     if command == "case-packet-create":
         run_case_packet_create()
         return
@@ -2141,7 +2159,7 @@ def main() -> None:
         return
 
     print(
-        "Usage: python main.py <init|status|new-run|next|verify|intake-judge|intake-handoff-admit|case-packet-seed-review|case-packet-creation-authorize|case-packet-persist-authorized|case-packet-task-candidate-review|case-packet-task-creation-authorize|case-packet-task-create-authorized|case-packet-task-execution-candidates|case-packet-task-execution-authorize|case-packet-task-execute-authorized|case-packet-task-execution-result-review|case-packet-task-execution-result-options|current-success-result-review|current-success-result-accept|case-packet-create|case-packet-show|case-packet-summary|case-packet-validate|case-packet-init|case-packet-append|case-packet-orient|recommendations|recommendation-summary|recommendation-actions|recommendation-proposals|recommendation-drafts|recommendation-outcomes|recommendation-resolution|recommendation-archive|recommendation-accept|recommendation-create|recommendation-lineage|recommendation-created-tasks|recommendation-confirm|confirmed-recommendation-tasks|ready-recommendation-tasks|ready-execution-candidates|recommendation-execution-results|recommendation-result-options|create-followup-review|create-repair-task|execute-ready-candidate>"
+        "Usage: python main.py <init|status|new-run|next|verify|intake-judge|intake-handoff-admit|case-packet-seed-review|case-packet-creation-authorize|case-packet-persist-authorized|case-packet-task-candidate-review|case-packet-task-creation-authorize|case-packet-task-create-authorized|case-packet-task-execution-candidates|case-packet-task-execution-authorize|case-packet-task-execute-authorized|case-packet-task-execution-result-review|case-packet-task-execution-result-options|current-success-result-review|current-success-result-accept|packet-result-operator-decide|case-packet-create|case-packet-show|case-packet-summary|case-packet-validate|case-packet-init|case-packet-append|case-packet-orient|recommendations|recommendation-summary|recommendation-actions|recommendation-proposals|recommendation-drafts|recommendation-outcomes|recommendation-resolution|recommendation-archive|recommendation-accept|recommendation-create|recommendation-lineage|recommendation-created-tasks|recommendation-confirm|confirmed-recommendation-tasks|ready-recommendation-tasks|ready-execution-candidates|recommendation-execution-results|recommendation-result-options|create-followup-review|create-repair-task|execute-ready-candidate>"
     )
 
 

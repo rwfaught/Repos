@@ -4828,3 +4828,40 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   scoped Phase 280 cleanup, or full patch workflow readiness is added.
 
 `PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 283 Packet CLI Operator Acceptance Record
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS`
+- Source changed: `orchestrator/operator_packet_result_decision.py`;
+  `orchestrator/current_success_result_review.py`; `main.py`.
+- Test changed:
+  `tests/test_phase_283_packet_cli_operator_acceptance_record.py`.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_283.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: a local standard-library-only decision surface records
+  explicit operator `accepted` or `rejected` decisions for completed packet CLI
+  current-success results. Records include decision id, packet id when
+  supplied, task id, run id, execution artifact id, verifier result path,
+  current-success classification, operator decision, note/reason, timestamp,
+  caveats, non-proofs, and false no-activity flags.
+- Blocking behavior: missing note/reason, missing or invalid task id,
+  unsupported decision value, not-ready current-success review, missing
+  task/artifact/verifier evidence, and provider/model/runtime/platform
+  smuggling are blocked.
+- Readback behavior: current-success review now surfaces the latest packet
+  operator decision under `operator_decision_summary` while preserving older
+  Phase 81 `acceptance_summary` behavior.
+- Rejection posture: rejection is preserved as operator decision and reason,
+  not automatic product failure or task-status mutation.
+- Explicit non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+  or integrated production patch workflow readiness is added.
+
+`PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

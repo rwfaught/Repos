@@ -3045,4 +3045,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `general_answer` resumption, cleanup/delete/archive behavior beyond the exact
   scoped Phase 280 cleanup, or full patch workflow readiness is added.
 - Marker:
-  `PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+`PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 283 - Packet CLI Operator Acceptance Record
+
+- Status: source/test/docs registration of a deterministic local operator
+  decision record surface for completed packet CLI results.
+- Source changed: `orchestrator/operator_packet_result_decision.py`;
+  `orchestrator/current_success_result_review.py`; `main.py`.
+- Test changed:
+  `tests/test_phase_283_packet_cli_operator_acceptance_record.py`.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_283.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: `python main.py packet-result-operator-decide
+  <decision_input_json_path>` records explicit operator `accepted` or
+  `rejected` decisions for a completed current-success packet result, requires
+  an operator note and valid task id, links packet/task/run/artifact/verifier/
+  current-success evidence, blocks not-ready or missing evidence, blocks
+  provider/model/runtime/platform smuggling, and surfaces the latest decision
+  in current-success readback as `operator_decision_summary`.
+- Rejection posture: rejection is preserved as operator decision and reason,
+  not automatic product failure or task-status mutation.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+  or integrated production patch workflow readiness is added.
+- Marker:
+  `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.
