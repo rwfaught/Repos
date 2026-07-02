@@ -1156,3 +1156,28 @@ fresh artifact proof.
   integrated production patch workflow proof.
 
 `PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet To Patch Bridge Operator Runbook Status
+
+- Phase 292 adds `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators have a compact bridge
+  runbook for acceptance, eligibility, candidate creation, and promotion gates.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; the runbook preserves that
+  the bridge does not create proposals, authorize apply, apply patches, or
+  prove integrated production workflow readiness.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; docs clarify that bridge
+  evidence is not semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: the runbook records timestamp, elapsed-time, PASS/FAIL,
+  visible path, PowerShell, bash/zsh, WSL `powershell.exe`, and no-exit command
+  batch expectations.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 292 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 292 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Source ZIP hygiene caveat is documented: `srczip` may include
+  `__pycache__`/`.pyc`, while official product capsule proof should come from
+  the capsule refresh output.
+
+`PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`

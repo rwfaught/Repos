@@ -5652,3 +5652,46 @@ LightRAG behavior, cleanup/delete/archive authority, or integrated production
 patch workflow readiness behavior is registered by Phase 291.
 
 `PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 292 Packet To Patch Bridge Operator Runbook
+
+Boundary:
+
+`PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- None.
+
+Registered new documentation/control files:
+
+- `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`
+- `docs/PHASE_292.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered docs-only behavior: Phase 292 documents the operator-facing
+packet-to-patch bridge, including acceptance, eligibility, candidate creation,
+promotion/rejection/defer, patch proposal boundary, patch apply blocking,
+evidence fields, timestamps, shell expectations, non-proofs, no-authorization
+caveats, and source ZIP hygiene caveat.
+
+No source behavior, patch proposal creation, patch apply authorization, patch
+application, semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+or integrated production patch workflow readiness behavior is registered by
+Phase 292.
+
+`PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`

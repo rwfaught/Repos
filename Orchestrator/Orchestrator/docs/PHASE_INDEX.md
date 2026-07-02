@@ -3262,3 +3262,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 292 - Packet To Patch Bridge Operator Runbook
+
+- Status: docs-only operator runbook registration for the packet-to-patch
+  bridge.
+- Source changed: none.
+- Tests changed: none.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_292.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: no product behavior changed. The runbook explains packet result
+  acceptance, eligibility readback, candidate artifact creation,
+  promotion/rejection/defer gate, where patch proposal begins, where patch
+  apply remains blocked, required evidence, timestamps, shell expectations,
+  non-proofs, no apply authorization from acceptance/candidate/promotion, and
+  source ZIP hygiene caveats.
+- Non-proofs: no source behavior, patch proposal creation, patch apply
+  authorization, patch application, semantic correctness, live provider/model
+  execution, runtime/platform behavior, autonomous AI coding, model-backed
+  generation, production readiness, service/API/UI/dashboard/auth/deployment
+  behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, or integrated production patch workflow readiness is
+  added.
+- Marker:
+  `PHASE292_PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`.
