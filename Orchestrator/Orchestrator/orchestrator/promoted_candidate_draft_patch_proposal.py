@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 from uuid import uuid4
 
@@ -12,7 +12,12 @@ from orchestrator.packet_result_patch_proposal_candidate import (
 from orchestrator.patch_proposal_candidate_promotion import (
     load_patch_proposal_candidate_promotion_record,
 )
-from orchestrator.paths import DATA_DIR, record_path, validate_record_id
+from orchestrator.paths import (
+    DATA_DIR,
+    record_path,
+    resolve_declared_project_path,
+    validate_record_id,
+)
 
 
 DRAFT_PATCH_PROPOSALS_DIR = DATA_DIR / "draft_patch_proposals"
@@ -75,6 +80,26 @@ _SMUGGLED_CLAIM_FIELDS = {
     "patch_applied": "patch_apply_claim_rejected",
 }
 
+_SMUGGLED_TEXT_CLAIMS = {
+    "provider": "provider_model_runtime_platform_claim_rejected",
+    "model": "provider_model_runtime_platform_claim_rejected",
+    "runtime": "provider_model_runtime_platform_claim_rejected",
+    "platform": "provider_model_runtime_platform_claim_rejected",
+    "ollama": "provider_model_runtime_platform_claim_rejected",
+    "semantic correctness": "semantic_correctness_claim_is_non_proof",
+    "semantically correct": "semantic_correctness_claim_is_non_proof",
+    "autonomous coding": "autonomous_ai_coding_claim_rejected",
+    "autonomous ai coding": "autonomous_ai_coding_claim_rejected",
+    "production ready": "production_readiness_claim_rejected",
+    "production-readiness": "production_readiness_claim_rejected",
+    "production readiness": "production_readiness_claim_rejected",
+    "authorize apply": "patch_apply_authorization_claim_rejected",
+    "authorized for apply": "patch_apply_authorization_claim_rejected",
+    "apply authorization": "patch_apply_authorization_claim_rejected",
+    "apply patch": "patch_apply_claim_rejected",
+    "patch applied": "patch_apply_claim_rejected",
+}
+
 
 def _normalize_text(value: Any) -> str:
     if value is None:
@@ -84,6 +109,10 @@ def _normalize_text(value: Any) -> str:
 
 def _as_mapping(value: Any) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
+
+
+def _as_sequence(value: Any) -> list[Any]:
+    return value if isinstance(value, list) else []
 
 
 def _blocked(
@@ -161,6 +190,21 @@ def _load_promotion(draft_input: dict[str, Any]) -> tuple[dict[str, Any] | None,
     if promotion:
         return promotion, None
 
+    promotion_records = [
+        record
+        for record in _as_sequence(draft_input.get("promotion_records"))
+        if isinstance(record, dict)
+    ]
+    if promotion_records:
+        return sorted(
+            promotion_records,
+            key=lambda record: _normalize_text(
+                record.get("created_at")
+                or record.get("timestamp")
+                or record.get("promotion_timestamp")
+            ),
+        )[-1], None
+
     promotion_id = _normalize_text(
         draft_input.get("promotion_record_id") or draft_input.get("promotion_id")
     )
@@ -193,6 +237,12 @@ def _claim_blocks(*payloads: dict[str, Any]) -> list[str]:
             present = value if isinstance(value, bool) else bool(_normalize_text(value))
             if present:
                 blocks.append(reason_code)
+        for value in payload.values():
+            if isinstance(value, str):
+                normalized_value = value.casefold()
+                for needle, reason_code in _SMUGGLED_TEXT_CLAIMS.items():
+                    if needle in normalized_value:
+                        blocks.append(reason_code)
     return sorted(set(blocks))
 
 
@@ -202,6 +252,53 @@ def _missing_patch_fields(payload: dict[str, Any]) -> list[str]:
         for field_name in _STRUCTURED_PATCH_FIELDS
         if not payload.get(field_name)
     ]
+
+
+def _patch_path_blocks(payload: dict[str, Any]) -> tuple[list[str], list[str]]:
+    missing: list[str] = []
+    blocked: list[str] = []
+    proposed_changes = payload.get("proposed_changes")
+    if not isinstance(proposed_changes, list) or not proposed_changes:
+        return ["proposed_patch_evidence_payload.proposed_changes"], [
+            "structured_patch_payload_missing"
+        ]
+    for index, change in enumerate(proposed_changes):
+        if not isinstance(change, dict):
+            missing.append(f"proposed_patch_evidence_payload.proposed_changes.{index}")
+            blocked.append("ambiguous_patch_payload_rejected")
+            continue
+        path = _normalize_text(change.get("path"))
+        if not path:
+            missing.append(
+                f"proposed_patch_evidence_payload.proposed_changes.{index}.path"
+            )
+            blocked.append("ambiguous_patch_payload_rejected")
+            continue
+        if PurePosixPath(path).is_absolute() or PureWindowsPath(path).is_absolute():
+            missing.append(
+                f"proposed_patch_evidence_payload.proposed_changes.{index}.path"
+            )
+            blocked.append("absolute_patch_path_rejected")
+            continue
+        if "\\" in path:
+            missing.append(
+                f"proposed_patch_evidence_payload.proposed_changes.{index}.path"
+            )
+            blocked.append("unsafe_patch_path_rejected")
+            continue
+        try:
+            resolve_declared_project_path(path)
+        except ValueError as error:
+            missing.append(
+                f"proposed_patch_evidence_payload.proposed_changes.{index}.path"
+            )
+            if "absolute" in str(error):
+                blocked.append("absolute_patch_path_rejected")
+            elif "parent traversal" in str(error) or "outside" in str(error):
+                blocked.append("path_traversal_rejected")
+            else:
+                blocked.append("unsafe_patch_path_rejected")
+    return missing, blocked
 
 
 def create_promoted_candidate_draft_patch_proposal(
@@ -271,6 +368,22 @@ def create_promoted_candidate_draft_patch_proposal(
     if eligibility.get("status") != "eligible":
         missing.append("eligible_candidate")
         blocked.append("eligible_candidate_required")
+    current_success = _as_mapping(candidate.get("current_success_review_reference"))
+    if not current_success:
+        missing.append("current_success_review_reference")
+        blocked.append("current_success_reference_required")
+    elif not current_success.get("ready_for_operator_review") or _normalize_text(
+        current_success.get("classification")
+        or current_success.get("final_outcome_classification")
+    ) != "completed_current_state_success":
+        missing.append("current_success_completed_success_reference")
+        blocked.append("current_success_reference_not_ready")
+    if not _normalize_text(candidate.get("operator_decision_record_id")):
+        missing.append("operator_decision_record_id")
+        blocked.append("operator_decision_reference_required")
+    if not _normalize_text(candidate.get("operator_decision_record_path")):
+        missing.append("operator_decision_record_path")
+        blocked.append("operator_decision_reference_required")
     if not candidate.get("no_apply_authorization") or candidate.get("patch_apply_authorized"):
         missing.append("no_apply_authorization")
         blocked.append("apply_authorization_smuggling_rejected")
@@ -307,17 +420,32 @@ def create_promoted_candidate_draft_patch_proposal(
     ):
         candidate_value = _normalize_text(candidate.get(field_name))
         promotion_value = _normalize_text(promotion.get(field_name))
+        if not candidate_value:
+            missing.append(field_name)
+            blocked.append("candidate_source_reference_required")
+        if not promotion_value:
+            missing.append(f"promotion_{field_name}")
+            blocked.append("promotion_source_reference_required")
         if candidate_value and promotion_value and candidate_value != promotion_value:
             mismatch_fields.append(field_name)
     if mismatch_fields:
         missing.extend([f"matching_{field_name}" for field_name in mismatch_fields])
         blocked.append("promotion_candidate_evidence_mismatch")
+    for field_name in ("task_id", "run_id"):
+        current_value = _normalize_text(current_success.get(field_name))
+        candidate_value = _normalize_text(candidate.get(f"source_{field_name}"))
+        if current_value and candidate_value and current_value != candidate_value:
+            missing.append(f"matching_current_success_{field_name}")
+            blocked.append("current_success_reference_mismatch")
 
     patch_payload = _as_mapping(candidate.get("proposed_patch_evidence_payload"))
     missing_patch = _missing_patch_fields(patch_payload)
     if missing_patch:
         missing.extend(missing_patch)
         blocked.append("structured_patch_payload_missing")
+    path_missing, path_blocked = _patch_path_blocks(patch_payload)
+    missing.extend(path_missing)
+    blocked.extend(path_blocked)
 
     claim_blocks = _claim_blocks(draft_input, candidate, promotion, patch_payload)
     if claim_blocks:

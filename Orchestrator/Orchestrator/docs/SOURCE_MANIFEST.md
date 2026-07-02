@@ -5735,3 +5735,43 @@ cleanup/delete/archive authority, integrated production patch workflow
 readiness, or Backbone V0 declaration is registered by Phase 294.
 
 `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 295 Draft Patch Proposal Negative Edge Contract
+
+Boundary:
+
+`PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/promoted_candidate_draft_patch_proposal.py`
+
+Registered changed tests:
+
+- `tests/test_phase_295_draft_patch_proposal_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_295.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 295 hardens negative-edge handling for draft patch
+proposal creation. Blocked cases return deterministic reason codes, preserve
+draft-only/no-apply posture, and do not perform cleanup, deletion, archive,
+provider/model/runtime/platform execution, apply authorization, or patch apply.
+
+No actual apply authorization, patch apply execution, semantic correctness,
+live provider/model execution, runtime/platform behavior, autonomous AI coding,
+model-backed generation, production readiness, service/API/UI/dashboard/auth/
+deployment behavior, scheduler/reminder behavior, connector behavior,
+`general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+cleanup/delete/archive authority, integrated production patch workflow
+readiness, or Backbone V0 declaration is registered by Phase 295.
+
+`PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

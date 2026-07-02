@@ -5138,3 +5138,36 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Backbone V0 declaration is added.
 
 `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 295 Draft Patch Proposal Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/promoted_candidate_draft_patch_proposal.py`.
+- Test changed:
+  `tests/test_phase_295_draft_patch_proposal_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_295.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered coverage: missing candidate, rejected/deferred promotion, missing
+  promotion note, latest rejected/deferred promotion beating older promote
+  records, stale or mismatched task/artifact/verifier/current-success/operator
+  references, missing eligibility/current-success/operator references, missing
+  or ambiguous patch payloads, path traversal, POSIX absolute paths, Windows
+  absolute paths, Windows separator handling, provider/model/runtime/platform
+  smuggling, semantic correctness smuggling, autonomous coding smuggling,
+  production-readiness smuggling, apply-authorization smuggling, attempted
+  apply claim smuggling, generated residue reporting, exact reason codes, no
+  cleanup/delete/archive, and no provider/model/runtime/platform claims.
+- Explicit non-proofs: no actual apply authorization, patch apply execution,
+  semantic correctness, live provider/model execution, runtime/platform
+  behavior, autonomous AI coding, model-backed generation, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+
+`PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

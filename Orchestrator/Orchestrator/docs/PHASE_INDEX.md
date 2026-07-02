@@ -3319,3 +3319,32 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 295 - Draft Patch Proposal Negative Edge Contract
+
+- Status: source/test/docs registration of negative-edge hardening around
+  promoted-candidate draft patch proposal creation.
+- Source changed:
+  `orchestrator/promoted_candidate_draft_patch_proposal.py`.
+- Test changed:
+  `tests/test_phase_295_draft_patch_proposal_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_295.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing candidate, rejected/deferred/latest non-promote promotion,
+  missing promotion note, stale or mismatched source links, missing
+  current-success/eligibility/operator references, ambiguous patch payload,
+  unsafe proposed patch paths, generated residue reporting, and
+  provider/model/runtime/platform, semantic, autonomous, production-readiness,
+  apply-authorization, and apply claim smuggling block deterministically with
+  exact reason codes.
+- Non-proofs: no actual apply authorization, patch apply execution, semantic
+  correctness, live provider/model execution, runtime/platform behavior,
+  autonomous AI coding, model-backed generation, production readiness,
+  service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder
+  behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive
+  authority, integrated production patch workflow readiness, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

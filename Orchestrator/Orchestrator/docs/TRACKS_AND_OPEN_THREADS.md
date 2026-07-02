@@ -1214,3 +1214,30 @@ fresh artifact proof.
   future boundaries.
 
 `PHASE294_PROMOTED_CANDIDATE_TO_DRAFT_PATCH_PROPOSAL_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Draft Patch Proposal Negative Edge Contract Status
+
+- Phase 295 hardens negative-edge coverage around promoted-candidate draft
+  patch proposal creation.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: missing, rejected, deferred, stale,
+  mismatched, unsafe-path, generated-residue, and smuggled-claim draft inputs
+  now have explicit regression coverage.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 295 blocks edge cases only and does not create actual apply
+  authorization or apply patches.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge blocking is not
+  semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: blocked outputs preserve exact reason codes,
+  non-proofs, no-cleanup/no-delete/no-archive, and no-apply/no-authorization
+  fields.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 295 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 295 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. Actual apply authorization, bounded
+  apply, apply-result verification, finalization, and domain separation remain
+  future boundaries.
+
+`PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
