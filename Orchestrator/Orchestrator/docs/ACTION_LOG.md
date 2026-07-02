@@ -5504,3 +5504,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   declaration is added.
 
 `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 312 Verified Bounded Apply Task Finalization Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/verified_bounded_apply_task_finalization.py`.
+- Test added:
+  `tests/test_phase_312_verified_bounded_apply_task_finalization_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_312.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic negative-edge handling for missing,
+  failed, blocked, mismatched, malformed, duplicate, unbounded, unexpected,
+  unsupported-status, smuggled-claim, and Phase 284 residue finalization
+  inputs.
+- Proof scope: source/test/docs negative-edge finalization behavior only.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder/connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/archive
+  authority, integrated production patch workflow readiness, or Backbone V0
+  declaration is added.
+
+`PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

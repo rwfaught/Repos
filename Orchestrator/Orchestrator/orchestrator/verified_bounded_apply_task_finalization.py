@@ -235,10 +235,13 @@ def _validate_verification(verification: dict[str, Any]) -> str:
         return "verification_already_finalized_or_not_marked_open"
     if verification.get("unexpected_files"):
         return "unexpected_files_block_finalization"
-    files = verification.get("files_observed") or verification.get("files_expected")
-    if not isinstance(files, list) or not files:
+    expected_files = verification.get("files_expected")
+    observed_files = verification.get("files_observed")
+    if not isinstance(expected_files, list) or not expected_files:
+        return "expected_files_missing"
+    if not isinstance(observed_files, list) or not observed_files:
         return "mechanically_verified_files_missing"
-    for path in files:
+    for path in observed_files:
         try:
             resolve_declared_project_path(_normalize_text(path))
         except (TypeError, ValueError):
@@ -251,6 +254,10 @@ def _validate_verification(verification: dict[str, Any]) -> str:
         verification.get("draft_proposal_id")
     ):
         return "draft_proposal_id_mismatch"
+    if _as_mapping(chain.get("phase_284_generated_residue_guard")).get(
+        "generated_residue_detected"
+    ):
+        return "phase_284_generated_residue_guard_reported"
     claim_reason = _claim_reason(verification)
     if claim_reason:
         return claim_reason
@@ -263,11 +270,17 @@ def finalize_verified_bounded_apply_task(
     verification_record: dict[str, Any] | None = None,
     finalization_note: str,
     existing_finalizations: list[dict[str, Any]] | None = None,
+    requested_finalization_status: str = FINALIZATION_COMPLETED,
     persist: bool = True,
 ) -> dict[str, Any]:
     note = _normalize_text(finalization_note)
     if not note:
         return _blocked(reason_code="finalization_note_required")
+    if _normalize_text(requested_finalization_status) != FINALIZATION_COMPLETED:
+        return _blocked(
+            reason_code="unsupported_finalization_status",
+            finalization_note=note,
+        )
     note_reason = _claim_reason(note)
     if note_reason:
         return _blocked(reason_code=note_reason, finalization_note=note)

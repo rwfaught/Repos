@@ -3657,3 +3657,26 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 312 - Verified Bounded Apply Task Finalization Negative Edge Contract
+
+- Status: source/test/docs hardening of verified bounded apply task
+  finalization negative and edge cases.
+- Source changed:
+  `orchestrator/verified_bounded_apply_task_finalization.py`.
+- Test added:
+  `tests/test_phase_312_verified_bounded_apply_task_finalization_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_312.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing, failed, blocked, mismatched, malformed, duplicate,
+  unbounded, unexpected, unsupported-status, smuggled-claim, and Phase 284
+  residue finalization inputs block deterministically.
+- Proof scope: source/test/docs negative-edge finalization behavior only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  integrated production workflow readiness, or Backbone V0 declaration is
+  added.
+- Marker:
+  `PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

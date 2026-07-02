@@ -1537,3 +1537,27 @@ fresh artifact proof.
   requires separate architecture assessment and domain-separation criteria.
 
 `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Verified Bounded Apply Task Finalization Negative Edge Status
+
+- Phase 312 hardens negative and edge cases around verified bounded apply task
+  finalization records.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: malformed, stale, duplicate,
+  smuggled, unbounded, unexpected, or residue-tainted finalization inputs now
+  block deterministically.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: finalization negative-edge hardening
+  preserves caveats and non-proofs.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge finalization is
+  not semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 312 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 312 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The code-patching loop may
+  be approaching a complete vertical control loop, but Backbone V0 still
+  requires separate architecture assessment and domain-separation criteria.
+
+`PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

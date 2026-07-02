@@ -6257,3 +6257,42 @@ integrated production patch workflow readiness, or Backbone V0 declaration is
 registered by Phase 311.
 
 `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 312 Verified Bounded Apply Task Finalization Negative Edge Contract
+
+Boundary:
+
+`PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/verified_bounded_apply_task_finalization.py`
+
+Registered changed tests:
+
+- `tests/test_phase_312_verified_bounded_apply_task_finalization_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_312.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 312 hardens deterministic negative-edge behavior
+for verified bounded apply task finalization records while preserving
+non-proof boundaries.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, or Backbone V0 declaration is
+registered by Phase 312.
+
+`PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
