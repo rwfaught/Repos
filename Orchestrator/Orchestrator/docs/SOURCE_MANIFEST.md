@@ -5775,3 +5775,44 @@ cleanup/delete/archive authority, integrated production patch workflow
 readiness, or Backbone V0 declaration is registered by Phase 295.
 
 `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 296 Draft Patch Proposal Apply Authorization Eligibility Readback
+
+Boundary:
+
+`PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/draft_patch_proposal_apply_authorization_eligibility.py`
+
+Registered changed tests:
+
+- `tests/test_phase_296_draft_patch_proposal_apply_authorization_eligibility_readback.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_296.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 296 adds deterministic authorization eligibility
+readback for draft patch proposals. It can return `authorization_eligible` only
+when the draft remains draft-only, not authorized, not applied, and has
+consistent linked candidate, promotion, accepted packet, current-success, and
+structured patch evidence.
+
+No actual apply authorization, patch apply execution, semantic correctness,
+live provider/model execution, runtime/platform behavior, autonomous AI coding,
+model-backed generation, production readiness, service/API/UI/dashboard/auth/
+deployment behavior, scheduler/reminder behavior, connector behavior,
+`general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+cleanup/delete/archive authority, integrated production patch workflow
+readiness, or Backbone V0 declaration is registered by Phase 296.
+
+`PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

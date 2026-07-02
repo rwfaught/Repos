@@ -3348,3 +3348,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 296 - Draft Patch Proposal Apply Authorization Eligibility Readback
+
+- Status: source/test/docs registration of eligibility-only readback for draft
+  patch proposals.
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_eligibility.py`.
+- Test changed:
+  `tests/test_phase_296_draft_patch_proposal_apply_authorization_eligibility_readback.py`.
+- Docs changed: `docs/PHASE_296.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: a Phase 294 draft-only patch proposal with consistent candidate,
+  promotion, eligibility, current-success, accepted packet, and structured
+  patch evidence can return `authorization_eligible`. Missing draft evidence,
+  existing authorization/apply flags, missing promoted-candidate links,
+  evidence mismatches, accepted-decision mismatches, missing or ambiguous patch
+  payloads, latest negative promotion decisions, unsafe ids, and smuggled
+  provider/model/runtime/platform/semantic/autonomous/production/apply claims
+  return deterministic `authorization_blocked` readbacks.
+- Non-proofs: no actual apply authorization, patch apply execution, semantic
+  correctness, live provider/model execution, runtime/platform behavior,
+  autonomous AI coding, model-backed generation, production readiness,
+  service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder
+  behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive
+  authority, integrated production patch workflow readiness, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

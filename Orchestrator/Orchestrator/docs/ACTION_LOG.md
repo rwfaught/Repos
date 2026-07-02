@@ -5171,3 +5171,32 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Backbone V0 declaration is added.
 
 `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 296 Draft Patch Proposal Apply Authorization Eligibility Readback
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_eligibility.py`.
+- Test changed:
+  `tests/test_phase_296_draft_patch_proposal_apply_authorization_eligibility_readback.py`.
+- Docs changed: `docs/PHASE_296.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: Phase 296 adds an eligibility-only readback over Phase
+  294 draft patch proposal artifacts. It checks draft-only/no-apply posture,
+  candidate, promotion, accepted packet, current-success, structured patch
+  payload, evidence consistency, latest negative promotion decisions, unsafe
+  ids, and smuggled provider/model/runtime/platform/semantic/autonomous/
+  production/apply claims.
+- Explicit non-proofs: no actual apply authorization, patch apply execution,
+  semantic correctness, live provider/model execution, runtime/platform
+  behavior, autonomous AI coding, model-backed generation, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+
+`PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

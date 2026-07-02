@@ -1241,3 +1241,32 @@ fresh artifact proof.
   future boundaries.
 
 `PHASE295_DRAFT_PATCH_PROPOSAL_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Draft Patch Proposal Apply Authorization Eligibility Readback Status
+
+- Phase 296 adds deterministic eligibility-only readback for Phase 294 draft
+  patch proposal artifacts.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: promoted candidates that already
+  became draft-only proposal artifacts can now be checked for later operator
+  apply-authorization eligibility when their evidence chain remains complete
+  and consistent.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 296 determines eligibility only and does not create actual apply
+  authorization or apply patches.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; authorization eligibility
+  readback is not semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: readbacks preserve exact reason codes, missing
+  evidence lists, linked evidence, caveats, non-proofs, explicit
+  no-authorization and no-apply statements, and no provider/model/runtime/
+  platform/apply activity flags.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 296 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 296 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. Actual apply authorization, bounded
+  apply, apply-result verification, finalization, and domain separation remain
+  future boundaries.
+
+`PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
