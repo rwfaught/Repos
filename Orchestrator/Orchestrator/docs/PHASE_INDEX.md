@@ -3704,4 +3704,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   integrated production workflow readiness, or Backbone V0 declaration is
   added.
 - Marker:
-  `PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 316 - Backbone V0 Abstraction Scaffold
+
+- Status: source/test/docs domain-neutral Backbone scaffold added beside the
+  existing code-patching vertical loop.
+- Source added:
+  `orchestrator/backbone_control_loop.py`.
+- Test added:
+  `tests/test_phase_316_backbone_v0_abstraction_scaffold.py`.
+- Docs changed: `docs/PHASE_316.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: neutral stage vocabulary, stage records, adapter descriptors,
+  linked evidence chains, non-proofs, activity flags, domain payload separation,
+  and deterministic incomplete reason codes are available without executing an
+  adapter.
+- Proof scope: source/test/docs Backbone scaffold behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  patch-loop migration, or integrated production workflow readiness is added.
+- Marker:
+  `PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`.

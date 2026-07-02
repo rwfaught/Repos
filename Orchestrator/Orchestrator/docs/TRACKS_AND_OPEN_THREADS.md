@@ -1584,3 +1584,26 @@ fresh artifact proof.
   separation remains unproven.
 
 `PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Abstraction Scaffold Status
+
+- Phase 316 adds a minimal domain-neutral Backbone scaffold beside the existing
+  code-patching loop.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 316 does not
+  execute or migrate the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+  Phase 316 only gives later phases neutral vocabulary and adapter descriptors
+  for mapping bounded contexts.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; the scaffold is not semantic
+  correctness proof, production readiness proof, or task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 316 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 316 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The scaffold makes later
+  Backbone abstraction possible, but declaration, adapter mapping, and
+  cross-domain proof remain future boundaries.
+
+`PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`

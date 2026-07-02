@@ -687,3 +687,18 @@ The route-mediated provider marker-smoke runtime gap is closed only for that
 narrow target/prompt/options/artifact boundary. It is not semantic correctness,
 real workload sufficiency, long-context, sustained-load, production readiness,
 Hermes/OpenClaw behavior, or `qwen3.6:35b-a3b` authorization proof.
+
+## Phase 316 Backbone Scaffold Context
+
+Phase 316 belongs to the source/test/docs control-loop abstraction context. It
+adds a domain-neutral Backbone scaffold beside the existing code-patching
+vertical loop.
+
+The code-patching loop remains its own bounded context. Phase 316 only provides
+neutral stage vocabulary, stage-record contracts, adapter descriptors, linked
+evidence-chain fields, non-proof fields, and deterministic incomplete reason
+codes for later mapping work.
+
+Phase 316 does not declare Backbone V0, execute adapters, migrate patch-loop
+behavior, prove semantic correctness, prove production readiness, or prove
+provider/model/runtime/platform behavior.
