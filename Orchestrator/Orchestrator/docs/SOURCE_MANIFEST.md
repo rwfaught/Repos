@@ -5982,3 +5982,42 @@ integrated production patch workflow readiness, or Backbone V0 declaration is
 registered by Phase 301.
 
 `PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 303 Authorized Draft Patch Proposal Bounded Apply Execution
+
+Boundary:
+
+`PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/authorized_draft_patch_apply.py`
+
+Registered changed tests:
+
+- `tests/test_phase_303_authorized_draft_patch_proposal_bounded_apply_execution.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_303.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 303 adds bounded apply-attempt execution from an
+explicit Phase 299/301 apply-authorization record to the existing Phase 99
+bounded apply engine, preserving not-verified and not-finalized posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, apply-result verification,
+patch task finalization, or Backbone V0 declaration is registered by Phase 303.
+
+`PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`

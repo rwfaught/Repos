@@ -1377,3 +1377,26 @@ fresh artifact proof.
   verification, finalization, and domain separation.
 
 `PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Authorized Draft Patch Bounded Apply Attempt Status
+
+- Phase 303 adds bounded apply-attempt execution from explicit Phase 299/301
+  apply-authorization records.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the bridge can now move from active
+  apply authorization to a bounded apply attempt through the existing Phase 99
+  apply engine.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: apply attempts remain separate from
+  Phase 100-style apply-result verification and Phase 101-style finalization.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; bounded apply is not semantic
+  correctness proof, production readiness proof, or task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 303 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 303 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The packet/result/candidate/
+  proposal/authorization/apply/verification/finalization model is closer, but
+  still lacks apply-result verification, finalization, and domain separation.
+
+`PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`

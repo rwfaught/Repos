@@ -3488,4 +3488,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   archive authority, integrated production patch workflow readiness, or
   Backbone V0 declaration is added.
 - Marker:
-  `PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 303 - Authorized Draft Patch Proposal Bounded Apply Execution
+
+- Status: source/test/docs registration of bounded apply-attempt execution
+  from explicit Phase 299/301 apply authorization.
+- Source added: `orchestrator/authorized_draft_patch_apply.py`.
+- Test added:
+  `tests/test_phase_303_authorized_draft_patch_proposal_bounded_apply_execution.py`.
+- Docs changed: `docs/PHASE_303.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: active `authorize_apply` records can create a bounded apply
+  attempt through the existing Phase 99 apply engine after latest-readback,
+  draft, eligibility, evidence-chain, payload, and target checks pass.
+- Proof scope: deterministic source/test/docs behavior for bounded apply
+  attempts and blocked negative cases. The attempt remains not verified and not
+  finalized.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  apply-result verification, patch task finalization, integrated production
+  workflow, or Backbone V0 declaration is added.
+- Marker:
+  `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`.

@@ -5311,3 +5311,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Backbone V0 declaration is added.
 
 `PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 303 Authorized Draft Patch Proposal Bounded Apply Execution
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS`
+- Source added: `orchestrator/authorized_draft_patch_apply.py`.
+- Test added:
+  `tests/test_phase_303_authorized_draft_patch_proposal_bounded_apply_execution.py`.
+- Docs changed: `docs/PHASE_303.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: bounded apply-attempt execution from explicit Phase
+  299/301 authorization records to the Phase 99 apply engine, with active
+  latest authorization, draft, eligibility, evidence-chain, payload, target,
+  and smuggling checks.
+- Proof scope: source/test/docs bounded apply-attempt adapter behavior. Apply
+  attempts remain not verified, not finalized, semantic-correctness-not-proven,
+  and production-readiness-not-proven.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder/connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/archive
+  authority, apply-result verification, patch task finalization, integrated
+  production patch workflow readiness, or Backbone V0 declaration is added.
+
+`PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`
