@@ -3608,3 +3608,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 309 - Authorized Bounded Apply Result Verification Readback And Runbook
+
+- Status: source/test/docs readback for apply-result verification artifacts
+  plus operator runbook update.
+- Source changed:
+  `orchestrator/authorized_bounded_apply_result_verification.py`.
+- Test added:
+  `tests/test_phase_309_authorized_bounded_apply_result_verification_readback.py`.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_309.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: operators can read verification id, apply attempt id,
+  authorization id, draft proposal id, verification status, reason code, files
+  expected, files observed, unexpected files, mechanical verification status,
+  caveats, non-proofs, and no-finalization fields.
+- Proof scope: source/test/docs verification readback and runbook behavior
+  only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  patch task finalization, integrated production workflow, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.

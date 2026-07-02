@@ -255,11 +255,48 @@ An apply attempt is not semantic correctness proof. It is not production
 readiness proof. It is not apply-result verification. It is not patch task
 finalization. Bounded apply attempt readback is not patch task finalization.
 
+Phase 307 mechanical verification checks apply-attempt result evidence after a
+bounded apply attempt. It verifies evidence-chain links, expected and observed
+bounded files, Phase 99 hash evidence, structured patch payload evidence,
+failed/blocked reason preservation, unexpected files, missing files, content
+mismatches, and existing finalization evidence.
+
+Phase 308 hardens negative and edge cases around that verification boundary.
+Missing, stale, rejected, deferred, mismatched, malformed, unbounded,
+unexpected, smuggled, finalized, and Phase 284 residue verification inputs
+block or fail deterministically.
+
+Phase 309 verification readback shows:
+
+- verification id
+- apply attempt id
+- authorization id
+- draft proposal id
+- verification status
+- exact reason code
+- files expected
+- files observed
+- unexpected files
+- `patch_verified_mechanically`
+- `semantic_correctness_not_proven`
+- `production_readiness_not_proven`
+- `not_finalized`
+- `no_finalization_in_this_phase`
+- caveats
+- non-proofs
+- timestamp
+
+Mechanical verification is not semantic correctness proof. It is not production
+readiness proof. It is not patch task finalization. It does not claim
+autonomous AI coding, provider/model/runtime/platform execution, or integrated
+production patch workflow readiness.
+
 Before a Phase 100-style verification boundary, evidence must show the apply
 attempt artifact, exact changed files, before/after causal hashes or equivalent
 apply-result evidence, and a separate verification decision. Before a Phase
 101-style finalization boundary, evidence must show verified apply results plus
-an explicit finalization gate. Both remain later separate boundaries.
+an explicit finalization gate. Phase 307/308/309 verification evidence is still
+not a Phase 101-style finalization record.
 
 ## Where Patch Proposal Begins
 
@@ -326,6 +363,8 @@ The packet-to-patch bridge does not prove:
 - promotion, draft creation, or authorization eligibility readback
 - bounded apply attempt as semantic correctness, production readiness,
   verification, or finalization
+- mechanical verification or verification readback as semantic correctness,
+  production readiness, autonomous AI coding, or finalization
 - integrated production patch workflow readiness
 - Backbone V0
 - apply-authorization readback as apply execution
@@ -347,5 +386,6 @@ Use the official product zipper for capsule proof:
 ## Backbone V0 Open Thread
 
 The control loop is approaching Backbone V0 criteria, but Backbone V0 remains
-open. Still missing are apply-result verification, finalization, and domain
-separation.
+open. Apply-result verification/readback now exists as source/test/docs
+behavior, but finalization and domain separation still block any Backbone V0
+declaration.

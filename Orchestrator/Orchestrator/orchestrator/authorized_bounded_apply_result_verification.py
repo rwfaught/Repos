@@ -3,9 +3,11 @@ from __future__ import annotations
 import hashlib
 import json
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
+from orchestrator import artifact_store
 from orchestrator.authorized_draft_patch_apply import (
     AUTHORIZED_DRAFT_PATCH_APPLY_ATTEMPT_ARTIFACT_TYPE,
     load_authorized_draft_patch_apply_attempt,
@@ -544,3 +546,152 @@ def verify_authorized_bounded_apply_result(
         patch_verified_mechanically=True,
         **common,
     )
+
+
+def _verification_path(verification_id: str) -> Path:
+    return artifact_store.artifact_path(
+        validate_record_id(verification_id, label="verification id")
+    )
+
+
+def load_authorized_bounded_apply_result_verification(
+    verification_id: str,
+) -> dict[str, Any]:
+    safe_verification_id = validate_record_id(
+        verification_id,
+        label="verification id",
+    )
+    payload = json.loads(
+        _verification_path(safe_verification_id).read_text(encoding="utf-8")
+    )
+    if payload.get("artifact_type") != AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_ARTIFACT_TYPE:
+        raise ValueError(
+            "Stored artifact is not an authorized bounded apply result verification."
+        )
+    if payload.get("verification_id") != safe_verification_id:
+        raise ValueError("Stored verification id does not match.")
+    return payload
+
+
+def _readback_blocked(
+    *,
+    reason_code: str,
+    detail: str = "",
+    verification_id: str = "",
+    apply_attempt_id: str = "",
+    authorization_id: str = "",
+    draft_proposal_id: str = "",
+) -> dict[str, Any]:
+    return {
+        "authorized_bounded_apply_result_verification_readback_surface": True,
+        "verification_id": verification_id,
+        "apply_attempt_id": apply_attempt_id,
+        "authorization_id": authorization_id,
+        "draft_proposal_id": draft_proposal_id,
+        "verification_status": VERIFICATION_BLOCKED,
+        "reason_code": reason_code,
+        "detail": detail,
+        "files_expected": [],
+        "files_observed": [],
+        "unexpected_files": [],
+        "patch_verified_mechanically": False,
+        "semantic_correctness_not_proven": True,
+        "production_readiness_not_proven": True,
+        "not_finalized": True,
+        "no_finalization_in_this_phase": True,
+        "patch_task_finalized": False,
+        "no_finalization_claimed": True,
+        "provider_executed": False,
+        "model_executed": False,
+        "runtime_executed": False,
+        "platform_invoked": False,
+        "caveats": ["verification_readback_only_no_finalization"],
+        "non_proofs": list(_NON_PROOFS),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def read_authorized_bounded_apply_result_verification_status(
+    verification_id: str | None = None,
+    *,
+    verification_record: dict[str, Any] | None = None,
+    verification_records: list[dict[str, Any]] | None = None,
+    apply_attempt_id: str | None = None,
+    authorization_id: str | None = None,
+    draft_proposal_id: str | None = None,
+) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    if verification_record is not None:
+        records = [verification_record]
+    elif verification_records is not None:
+        records = [record for record in verification_records if isinstance(record, dict)]
+    elif verification_id:
+        try:
+            records = [load_authorized_bounded_apply_result_verification(verification_id)]
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            return _readback_blocked(
+                reason_code="verification_record_missing",
+                detail=str(error),
+                verification_id=_normalize_text(verification_id),
+                apply_attempt_id=_normalize_text(apply_attempt_id),
+                authorization_id=_normalize_text(authorization_id),
+                draft_proposal_id=_normalize_text(draft_proposal_id),
+            )
+    else:
+        return _readback_blocked(reason_code="verification_record_required")
+
+    requested_attempt_id = _normalize_text(apply_attempt_id)
+    requested_authorization_id = _normalize_text(authorization_id)
+    requested_draft_id = _normalize_text(draft_proposal_id)
+    filtered = []
+    for record in records:
+        if record.get("artifact_type") != AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_ARTIFACT_TYPE:
+            continue
+        if requested_attempt_id and _normalize_text(record.get("apply_attempt_id")) != requested_attempt_id:
+            continue
+        if requested_authorization_id and _normalize_text(record.get("authorization_id")) != requested_authorization_id:
+            continue
+        if requested_draft_id and _normalize_text(record.get("draft_proposal_id")) != requested_draft_id:
+            continue
+        filtered.append(record)
+
+    if not filtered:
+        return _readback_blocked(
+            reason_code="verification_record_missing",
+            verification_id=_normalize_text(verification_id),
+            apply_attempt_id=requested_attempt_id,
+            authorization_id=requested_authorization_id,
+            draft_proposal_id=requested_draft_id,
+        )
+
+    latest = sorted(
+        filtered,
+        key=lambda record: _normalize_text(record.get("timestamp") or record.get("created_at")),
+    )[-1]
+    return {
+        "authorized_bounded_apply_result_verification_readback_surface": True,
+        "verification_id": _normalize_text(latest.get("verification_id")),
+        "apply_attempt_id": _normalize_text(latest.get("apply_attempt_id")),
+        "authorization_id": _normalize_text(latest.get("authorization_id")),
+        "draft_proposal_id": _normalize_text(latest.get("draft_proposal_id")),
+        "verification_status": _normalize_text(latest.get("verification_status")),
+        "reason_code": _normalize_text(latest.get("reason_code")),
+        "files_expected": list(latest.get("files_expected", [])),
+        "files_observed": list(latest.get("files_observed", [])),
+        "unexpected_files": list(latest.get("unexpected_files", [])),
+        "patch_verified_mechanically": latest.get("patch_verified_mechanically") is True,
+        "semantic_correctness_not_proven": latest.get("semantic_correctness_not_proven") is True,
+        "production_readiness_not_proven": latest.get("production_readiness_not_proven") is True,
+        "not_finalized": latest.get("not_finalized") is True,
+        "no_finalization_in_this_phase": latest.get("no_finalization_in_this_phase") is True,
+        "patch_task_finalized": False,
+        "no_finalization_claimed": True,
+        "provider_executed": False,
+        "model_executed": False,
+        "runtime_executed": False,
+        "platform_invoked": False,
+        "caveats": list(latest.get("caveats", [])),
+        "non_proofs": list(latest.get("non_proofs", _NON_PROOFS)),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "phase_307_verification_reference": latest,
+    }

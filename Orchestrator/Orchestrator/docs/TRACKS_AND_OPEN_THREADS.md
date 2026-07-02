@@ -1492,3 +1492,25 @@ fresh artifact proof.
   remain open.
 
 `PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Authorized Bounded Apply Result Verification Readback Status
+
+- Phase 309 adds readback for authorized bounded apply-result verification
+  artifacts and updates the operator runbook.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators can now inspect mechanical
+  verification status before any later finalization boundary.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: verification readback preserves that
+  mechanical verification remains separate from Phase 101-style finalization.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; readback is not semantic
+  correctness proof, production readiness proof, or task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 309 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 309 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Apply-result verification
+  readback helps the control spine, but finalization and domain separation
+  remain open.
+
+`PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
