@@ -1052,3 +1052,31 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`
+
+## Packet Result To Patch Proposal Eligibility Status
+
+- Phase 288 adds a deterministic eligibility/readback contract for deciding
+  whether a completed accepted packet CLI result has enough structured evidence
+  to become a later patch proposal candidate.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: accepted packet result records can
+  now be read against execution artifact, verifier, current-success, operator
+  decision, and structured patch-candidate evidence before any candidate
+  artifact boundary.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 288 does not create a patch proposal, create a candidate artifact,
+  authorize apply, or apply a patch.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; eligibility is a
+  source/test/docs readback classification and not semantic task correctness.
+- `SCRIPT_RELIABILITY`: the surface is deterministic local JSON/dict-like
+  readback with exact missing evidence, linked evidence, reason codes,
+  non-proofs, and no-apply/no-authorization fields.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 288 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 288 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Operator packet acceptance is not patch authorization, and eligibility is not
+  patch authorization.
+
+`PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

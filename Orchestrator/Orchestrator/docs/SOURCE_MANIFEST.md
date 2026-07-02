@@ -5482,3 +5482,46 @@ or integrated production patch workflow readiness behavior is registered by
 Phase 286.
 
 `PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 288 Packet Result To Patch Proposal Eligibility Contract
+
+Boundary:
+
+`PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/packet_result_patch_proposal_eligibility.py`
+
+Registered changed tests:
+
+- `tests/test_phase_288_packet_result_to_patch_proposal_eligibility_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_288.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 288 adds a readback-only eligibility contract for
+determining whether a completed accepted packet result has enough structured
+evidence to become a later patch proposal candidate. It returns deterministic
+`eligible`, `ineligible`, or `blocked` shapes with reason codes, missing
+evidence, linked evidence, caveats, non-proofs, timestamp, path-safe ids, and
+explicit no-apply/no-authorization fields.
+
+No patch proposal creation, candidate artifact creation, patch apply
+authorization, patch application, semantic correctness, live provider/model
+execution, runtime/platform behavior, autonomous AI coding, model-backed
+generation, production readiness, service/API/UI/dashboard/auth/deployment
+behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive
+authority, or integrated production patch workflow readiness behavior is
+registered by Phase 288.
+
+`PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

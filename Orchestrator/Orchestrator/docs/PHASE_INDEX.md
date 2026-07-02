@@ -3148,3 +3148,32 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 288 - Packet Result To Patch Proposal Eligibility Contract
+
+- Status: source/test/docs registration of a deterministic eligibility/readback
+  contract for packet-result to patch-proposal-candidate readiness.
+- Source changed:
+  `orchestrator/packet_result_patch_proposal_eligibility.py`.
+- Test changed:
+  `tests/test_phase_288_packet_result_to_patch_proposal_eligibility_contract.py`.
+- Docs changed: `docs/PHASE_288.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: the readback surface returns `eligible`, `ineligible`, or
+  `blocked` with exact reason codes, missing evidence, linked evidence,
+  caveats, non-proofs, timestamp, path-safe ids, and explicit no-apply/
+  no-authorization fields. Eligibility requires completed packet result
+  evidence, existing execution artifact and verifier result paths,
+  current-success readiness, latest accepted operator decision with note,
+  evidence-link consistency, and structured patch-candidate evidence.
+- Non-proofs: no patch proposal creation, candidate artifact creation, patch
+  apply authorization, patch application, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/
+  auth/deployment behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+  cleanup/delete/archive authority, or integrated production patch workflow
+  readiness is added.
+- Marker:
+  `PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
