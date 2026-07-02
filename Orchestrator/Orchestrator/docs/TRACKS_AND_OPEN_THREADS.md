@@ -1469,3 +1469,26 @@ fresh artifact proof.
   helps the control spine, but finalization and domain separation remain open.
 
 `PHASE307_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Authorized Bounded Apply Result Verification Negative Edge Status
+
+- Phase 308 hardens negative and edge cases around authorized bounded
+  apply-result verification.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: malformed or stale verification
+  inputs now block or fail before any finalization boundary.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: negative-edge hardening preserves that
+  verification remains separate from Phase 101-style finalization.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge verification is
+  not semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 308 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 308 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Verification negative-edge
+  hardening helps the control spine, but finalization and domain separation
+  remain open.
+
+`PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

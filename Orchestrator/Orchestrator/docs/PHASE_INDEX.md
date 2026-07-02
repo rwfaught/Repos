@@ -3584,3 +3584,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE307_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 308 - Authorized Bounded Apply Result Verification Negative Edge Contract
+
+- Status: source/test/docs hardening of apply-result verification negative and
+  edge cases.
+- Source changed:
+  `orchestrator/authorized_bounded_apply_result_verification.py`.
+- Test added:
+  `tests/test_phase_308_authorized_bounded_apply_result_verification_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_308.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing/stale/mismatched evidence, malformed payloads, unbounded or
+  unexpected paths, missing expected files, content mismatches, smuggled proof
+  claims, finalization evidence, and Phase 284 residue reports block or fail
+  deterministically.
+- Proof scope: source/test/docs negative-edge verification behavior only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  patch task finalization, integrated production workflow, or Backbone V0
+  declaration is added.
+- Marker:
+  `PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

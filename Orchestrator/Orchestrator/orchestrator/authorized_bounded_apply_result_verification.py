@@ -34,6 +34,46 @@ _NON_PROOFS = [
     "no_autonomous_ai_coding_proof",
     "no_provider_model_runtime_platform_proof",
 ]
+_AUTHORIZED_STATUS = "authorized_for_later_bounded_apply"
+_AUTHORIZE_APPLY = "authorize_apply"
+_SMUGGLED_FIELD_REASONS = {
+    "provider": "provider_model_runtime_platform_claim_rejected",
+    "provider_name": "provider_model_runtime_platform_claim_rejected",
+    "model": "provider_model_runtime_platform_claim_rejected",
+    "model_name": "provider_model_runtime_platform_claim_rejected",
+    "runtime": "provider_model_runtime_platform_claim_rejected",
+    "runtime_name": "provider_model_runtime_platform_claim_rejected",
+    "platform": "provider_model_runtime_platform_claim_rejected",
+    "platform_name": "provider_model_runtime_platform_claim_rejected",
+    "semantic_correctness": "semantic_correctness_claim_is_non_proof",
+    "semantic_correctness_claimed": "semantic_correctness_claim_is_non_proof",
+    "semantic_correctness_proven": "semantic_correctness_claim_is_non_proof",
+    "production_ready": "production_readiness_claim_rejected",
+    "production_readiness": "production_readiness_claim_rejected",
+    "production_readiness_claimed": "production_readiness_claim_rejected",
+    "production_readiness_proven": "production_readiness_claim_rejected",
+    "autonomous_ai_coding": "autonomous_ai_coding_claim_rejected",
+    "autonomous_ai_coding_claimed": "autonomous_ai_coding_claim_rejected",
+    "patch_task_finalized": "finalization_smuggling_rejected",
+    "finalized": "finalization_smuggling_rejected",
+    "completed": "finalization_smuggling_rejected",
+    "verification_satisfied": "verification_smuggling_rejected",
+}
+_SMUGGLED_TEXT_REASONS = {
+    "provider": "provider_model_runtime_platform_claim_rejected",
+    "model": "provider_model_runtime_platform_claim_rejected",
+    "runtime": "provider_model_runtime_platform_claim_rejected",
+    "platform": "provider_model_runtime_platform_claim_rejected",
+    "ollama": "provider_model_runtime_platform_claim_rejected",
+    "semantic correctness": "semantic_correctness_claim_is_non_proof",
+    "semantically correct": "semantic_correctness_claim_is_non_proof",
+    "production ready": "production_readiness_claim_rejected",
+    "production readiness": "production_readiness_claim_rejected",
+    "autonomous ai coding": "autonomous_ai_coding_claim_rejected",
+    "autonomous coding": "autonomous_ai_coding_claim_rejected",
+    "finalized": "finalization_smuggling_rejected",
+    "finalization": "finalization_smuggling_rejected",
+}
 
 
 def _normalize_text(value: Any) -> str:
@@ -54,6 +94,57 @@ def _path_identity(path: str) -> str:
 
 def _sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _claim_reason(payload: Any) -> str:
+    if isinstance(payload, dict):
+        for field, reason in _SMUGGLED_FIELD_REASONS.items():
+            value = payload.get(field)
+            present = value if isinstance(value, bool) else bool(_normalize_text(value))
+            if present:
+                return reason
+        for key, value in payload.items():
+            if key in {
+                "artifact_type",
+                "source",
+                "non_proofs",
+                "caveats",
+                "reason_code",
+                "detail",
+                "timestamp",
+                "created_at",
+                "expected_before",
+                "replacement_after",
+                "description",
+                "authorization_decision",
+                "operator_decision",
+                "operator_authorization_note",
+                "operator_authorization_reason",
+                "explicit_semantic_correctness_not_proven_statement",
+                "explicit_production_readiness_not_proven_statement",
+            }:
+                continue
+            reason = _claim_reason(value)
+            if reason:
+                return reason
+    elif isinstance(payload, list):
+        for value in payload:
+            reason = _claim_reason(value)
+            if reason:
+                return reason
+    elif isinstance(payload, str):
+        normalized = payload.casefold()
+        if (
+            "not proven" in normalized
+            or "non-proof" in normalized
+            or "no proof" in normalized
+            or "does not prove" in normalized
+        ):
+            return ""
+        for needle, reason in _SMUGGLED_TEXT_REASONS.items():
+            if needle in normalized:
+                return reason
+    return ""
 
 
 def _block(
@@ -187,6 +278,10 @@ def _chain_reason(
     promotion = _as_mapping(draft.get("phase_290_promotion_reference"))
     packet = _as_mapping(draft.get("phase_288_eligibility_reference"))
 
+    if _normalize_text(authorization.get("authorization_decision")) != _AUTHORIZE_APPLY:
+        return "apply_authorization_not_authorize_apply"
+    if _normalize_text(authorization.get("authorization_status")) != _AUTHORIZED_STATUS:
+        return "latest_apply_authorization_not_active"
     if _normalize_text(authorization.get("authorization_id")) != authorization_id:
         return "authorization_link_missing"
     if _normalize_text(authorization.get("draft_proposal_id")) != _normalize_text(
@@ -230,6 +325,10 @@ def _chain_reason(
         draft.get("source_task_id")
     ):
         return "packet_task_id_mismatch"
+    if _as_mapping(draft.get("phase_284_generated_residue_guard")).get(
+        "generated_residue_detected"
+    ):
+        return "phase_284_generated_residue_guard_reported"
     return ""
 
 
@@ -291,6 +390,14 @@ def verify_authorized_bounded_apply_result(
         attempt = apply_attempt_record
 
     attempt_id = _normalize_text(attempt.get("apply_attempt_id"))
+    if apply_attempt_id and attempt_id and validate_record_id(
+        apply_attempt_id,
+        label="apply attempt id",
+    ) != attempt_id:
+        return _block(
+            reason_code="apply_attempt_id_mismatch",
+            apply_attempt_id=attempt_id,
+        )
     authorization_id = _normalize_text(
         attempt.get("source_authorization_id") or attempt.get("authorization_id")
     )
@@ -324,6 +431,16 @@ def verify_authorized_bounded_apply_result(
             )
     else:
         authorization = authorization_record
+
+    smuggled_reason = _claim_reason(attempt) or _claim_reason(authorization)
+    if smuggled_reason:
+        return _block(
+            reason_code=smuggled_reason,
+            apply_attempt_id=attempt_id,
+            authorization_id=authorization_id,
+            draft_proposal_id=draft_id,
+            evidence_chain=evidence_chain,
+        )
 
     operations, operation_reason = _expected_operations(authorization)
     expected_files = list(dict.fromkeys(operation["file_path"] for operation in operations))

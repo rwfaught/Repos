@@ -5422,3 +5422,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness, or Backbone V0 declaration is added.
 
 `PHASE307_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 308 Authorized Bounded Apply Result Verification Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/authorized_bounded_apply_result_verification.py`.
+- Test added:
+  `tests/test_phase_308_authorized_bounded_apply_result_verification_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_308.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic negative-edge handling for missing,
+  stale, rejected, deferred, mismatched, malformed, unbounded, unexpected,
+  content-mismatched, smuggled, finalized, and Phase 284 residue apply-result
+  verification inputs.
+- Proof scope: source/test/docs negative-edge verification behavior only.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder/connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/archive
+  authority, patch task finalization, integrated production patch workflow
+  readiness, or Backbone V0 declaration is added.
+
+`PHASE308_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
