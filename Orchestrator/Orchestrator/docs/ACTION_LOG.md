@@ -5613,3 +5613,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production workflow readiness is added.
 
 `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 318 Backbone Mapping Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_318_backbone_mapping_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_318.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic negative-edge handling for missing stage,
+  unknown stage, wrong bounded context, missing evidence, mismatched stage
+  order, adapter execution claims, Backbone V0 claims, patch-loop migration
+  claims, and patch-specific native-field leakage.
+- Proof scope: source/test/docs mapping negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, adapter execution, patch-loop migration, or integrated
+  production workflow readiness is added.
+
+`PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -6416,3 +6416,43 @@ adapter execution, patch-loop migration, integrated production workflow
 readiness, or Backbone V0 declaration is registered by Phase 317.
 
 `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 318 Backbone Mapping Negative Edge Contract
+
+Boundary:
+
+`PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_code_patching_adapter_mapping.py`
+
+Registered changed tests:
+
+- `tests/test_phase_318_backbone_mapping_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_318.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 318 hardens deterministic negative-edge behavior for
+the code-patching Backbone mapping layer while preserving non-proof boundaries,
+adapter-execution-disabled posture, patch-loop-not-migrated posture, and
+Backbone V0-not-declared posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+adapter execution, patch-loop migration, integrated production workflow
+readiness, or Backbone V0 declaration is registered by Phase 318.
+
+`PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

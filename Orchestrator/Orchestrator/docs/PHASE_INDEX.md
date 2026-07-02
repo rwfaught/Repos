@@ -3754,3 +3754,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   readiness is added.
 - Marker:
   `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 318 - Backbone Mapping Negative Edge Contract
+
+- Status: source/test/docs hardening of Backbone mapping negative and edge
+  cases.
+- Source changed:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_318_backbone_mapping_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_318.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing, unknown, wrong-context, missing-evidence, order-mismatch,
+  adapter-execution, Backbone V0, patch-loop migration, and patch-specific
+  native-field leakage inputs produce deterministic incomplete reason codes.
+- Proof scope: source/test/docs mapping negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  adapter execution, patch-loop migration, or integrated production workflow
+  readiness is added.
+- Marker:
+  `PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

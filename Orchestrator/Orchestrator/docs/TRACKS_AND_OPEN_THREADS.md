@@ -1630,3 +1630,27 @@ fresh artifact proof.
   cross-domain proof, and production readiness remain future boundaries.
 
 `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone Mapping Negative Edge Status
+
+- Phase 318 hardens negative and edge cases around the code-patching Backbone
+  mapping layer.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 318 does not
+  execute the code-patching loop or broaden patch-loop behavior.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. Bad,
+  missing, mismatched, or smuggled mapping records now fail closed with
+  deterministic reason codes.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; mapping negative-edge
+  hardening is not semantic correctness proof, production readiness proof, or
+  task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 318 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 318 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Negative-edge hardening helps
+  the mapping seam, but declaration, cross-domain proof, and production
+  readiness remain future boundaries.
+
+`PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

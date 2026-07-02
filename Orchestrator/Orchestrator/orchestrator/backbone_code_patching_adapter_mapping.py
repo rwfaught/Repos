@@ -40,6 +40,30 @@ CODE_PATCHING_MAPPING_REASON_CODES = {
     "bounded_context_missing": "bounded_context_missing",
     "source_evidence_missing": "source_evidence_missing",
     "phase_evidence_missing": "phase_evidence_missing",
+    "stage_order_mismatch": "stage_order_mismatch",
+    "backbone_v0_claim_rejected": "backbone_v0_claim_rejected",
+    "patch_loop_migration_claim_rejected": "patch_loop_migration_claim_rejected",
+    "adapter_execution_claim_rejected": "adapter_execution_claim_rejected",
+    "patch_specific_native_field_rejected": "patch_specific_native_field_rejected",
+}
+
+PATCH_SPECIFIC_MAPPING_FIELDS = (
+    "source_modules",
+    "phase_docs",
+    "phase_tests",
+    "domain_payload",
+    "patch_loop_role",
+    "patch_module",
+    "patch_file",
+    "diff",
+    "hash",
+)
+
+_FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
+    "backbone_v0_declared": "backbone_v0_claim_rejected",
+    "patch_loop_migrated": "patch_loop_migration_claim_rejected",
+    "adapter_execution_allowed": "adapter_execution_claim_rejected",
+    "adapter_executed": "adapter_execution_claim_rejected",
 }
 
 
@@ -227,9 +251,14 @@ def ordered_code_patching_backbone_stage_mappings() -> tuple[CodePatchingBackbon
 def validate_code_patching_backbone_stage_mapping(
     mapping: CodePatchingBackboneStageMapping | dict[str, Any],
 ) -> dict[str, Any]:
-    data = mapping.as_dict() if isinstance(mapping, CodePatchingBackboneStageMapping) else dict(mapping)
+    data = (
+        mapping.as_dict()
+        if isinstance(mapping, CodePatchingBackboneStageMapping)
+        else dict(mapping)
+    )
     reason_code = _first_mapping_reason(data)
     status = CODE_PATCHING_MAPPING_INCOMPLETE if reason_code else CODE_PATCHING_MAPPING_COMPLETE
+    non_proofs = list(data.get("non_proofs") or CODE_PATCHING_MAPPING_NON_PROOFS)
     return {
         "code_patching_backbone_stage_mapping_validation": True,
         "status": status,
@@ -240,32 +269,88 @@ def validate_code_patching_backbone_stage_mapping(
         "source_modules": list(data.get("source_modules") or []),
         "phase_docs": list(data.get("phase_docs") or []),
         "phase_tests": list(data.get("phase_tests") or []),
-        "domain_payload_keys": sorted(str(key) for key in dict(data.get("domain_payload") or {}).keys()),
+        "domain_payload_keys": sorted(
+            str(key) for key in dict(data.get("domain_payload") or {}).keys()
+        ),
         "backbone_native_evidence_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
-        "non_proofs": list(data.get("non_proofs") or []),
+        "patch_specific_mapping_fields": list(PATCH_SPECIFIC_MAPPING_FIELDS),
+        "non_proofs": non_proofs,
         "backbone_v0_declared": BACKBONE_V0_DECLARED,
         "adapter_execution_allowed": CODE_PATCHING_BACKBONE_ADAPTER.execution_allowed,
         "patch_loop_migrated": False,
     }
 
 
-def read_code_patching_backbone_mapping_status() -> dict[str, Any]:
-    mappings = ordered_code_patching_backbone_stage_mappings()
+def validate_ordered_code_patching_backbone_stage_mappings(
+    mappings: tuple[CodePatchingBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_code_patching_backbone_stage_mappings() if mappings is None else mappings
+    )
+    stage_names = [
+        mapping.stage_name if isinstance(mapping, CodePatchingBackboneStageMapping)
+        else str(dict(mapping).get("stage_name") or "")
+        for mapping in selected_mappings
+    ]
+    expected_stage_names = list(ordered_backbone_stage_names())
+    validations = [
+        validate_code_patching_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    order_reason = (
+        CODE_PATCHING_MAPPING_REASON_CODES["stage_order_mismatch"]
+        if stage_names != expected_stage_names
+        else ""
+    )
+    incomplete_reason_codes = [
+        validation["reason_code"] for validation in validations if validation["reason_code"]
+    ]
+    if order_reason:
+        incomplete_reason_codes.append(order_reason)
+    return {
+        "code_patching_backbone_ordered_mapping_validation": True,
+        "stage_names": stage_names,
+        "expected_stage_names": expected_stage_names,
+        "all_stage_names_match_backbone": not order_reason,
+        "mapping_count": len(selected_mappings),
+        "complete": not incomplete_reason_codes,
+        "status": (
+            CODE_PATCHING_MAPPING_COMPLETE
+            if not incomplete_reason_codes
+            else CODE_PATCHING_MAPPING_INCOMPLETE
+        ),
+        "reason_code": order_reason,
+        "incomplete_reason_codes": incomplete_reason_codes,
+        "non_proofs": list(CODE_PATCHING_MAPPING_NON_PROOFS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "adapter_execution_allowed": CODE_PATCHING_BACKBONE_ADAPTER.execution_allowed,
+        "patch_loop_migrated": False,
+    }
+
+
+def read_code_patching_backbone_mapping_status(
+    mappings: tuple[CodePatchingBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    mappings = list(
+        ordered_code_patching_backbone_stage_mappings() if mappings is None else mappings
+    )
     validations = [validate_code_patching_backbone_stage_mapping(mapping) for mapping in mappings]
+    ordered_validation = validate_ordered_code_patching_backbone_stage_mappings(mappings)
     return {
         "code_patching_backbone_mapping_status": CODE_PATCHING_BACKBONE_MAPPING_STATUS,
         "bounded_context": CODE_PATCHING_BOUNDED_CONTEXT,
         "adapter": CODE_PATCHING_BACKBONE_ADAPTER.as_dict(),
         "adapter_execution_allowed": CODE_PATCHING_BACKBONE_ADAPTER.execution_allowed,
-        "stage_names": [mapping.stage_name for mapping in mappings],
+        "stage_names": ordered_validation["stage_names"],
         "expected_stage_names": list(ordered_backbone_stage_names()),
-        "all_stage_names_match_backbone": [mapping.stage_name for mapping in mappings]
-        == list(ordered_backbone_stage_names()),
+        "all_stage_names_match_backbone": ordered_validation["all_stage_names_match_backbone"],
         "mapping_count": len(mappings),
-        "complete": all(validation["complete"] for validation in validations),
-        "incomplete_reason_codes": [
-            validation["reason_code"] for validation in validations if validation["reason_code"]
-        ],
+        "incomplete_mapping_count": sum(
+            1 for validation in validations if not validation["complete"]
+        ),
+        "complete": all(validation["complete"] for validation in validations)
+        and ordered_validation["complete"],
+        "incomplete_reason_codes": ordered_validation["incomplete_reason_codes"],
         "non_proofs": list(CODE_PATCHING_MAPPING_NON_PROOFS),
         "backbone_v0_declared": BACKBONE_V0_DECLARED,
         "patch_loop_migrated": False,
@@ -284,8 +369,37 @@ def _first_mapping_reason(data: dict[str, Any]) -> str:
         return CODE_PATCHING_MAPPING_REASON_CODES["unknown_stage_name"]
     if str(data.get("bounded_context") or "").strip() != CODE_PATCHING_BOUNDED_CONTEXT:
         return CODE_PATCHING_MAPPING_REASON_CODES["bounded_context_missing"]
+    claim_reason = _forbidden_claim_reason(data)
+    if claim_reason:
+        return claim_reason
+    native_leak_reason = _patch_specific_native_field_reason(data)
+    if native_leak_reason:
+        return native_leak_reason
     if not data.get("source_modules"):
         return CODE_PATCHING_MAPPING_REASON_CODES["source_evidence_missing"]
     if not data.get("phase_docs") and not data.get("phase_tests"):
         return CODE_PATCHING_MAPPING_REASON_CODES["phase_evidence_missing"]
+    return ""
+
+
+def _forbidden_claim_reason(data: dict[str, Any]) -> str:
+    for field_name, reason_code in _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS.items():
+        if data.get(field_name) is True:
+            return CODE_PATCHING_MAPPING_REASON_CODES[reason_code]
+    return ""
+
+
+def _patch_specific_native_field_reason(data: dict[str, Any]) -> str:
+    native_fields = {
+        str(field_name)
+        for field_name in data.get(
+            "backbone_native_evidence_fields",
+            BACKBONE_NATIVE_EVIDENCE_FIELDS,
+        )
+    }
+    for field_name in PATCH_SPECIFIC_MAPPING_FIELDS:
+        if field_name in native_fields:
+            return CODE_PATCHING_MAPPING_REASON_CODES[
+                "patch_specific_native_field_rejected"
+            ]
     return ""
