@@ -702,3 +702,13 @@ codes for later mapping work.
 Phase 316 does not declare Backbone V0, execute adapters, migrate patch-loop
 behavior, prove semantic correctness, prove production readiness, or prove
 provider/model/runtime/platform behavior.
+
+## Phase 317 Backbone Code-Patching Mapping Context
+
+Phase 317 belongs to the source/test/docs control-loop abstraction context. It
+maps the existing code-patching bounded context to the Phase 316 neutral
+Backbone scaffold vocabulary by source/doc/test evidence strings only.
+
+The mapping seam is descriptive. It does not execute adapters, migrate
+patch-loop behavior, declare Backbone V0, prove semantic correctness, prove
+production readiness, or prove provider/model/runtime/platform behavior.

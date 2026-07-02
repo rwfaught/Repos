@@ -3729,3 +3729,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   patch-loop migration, or integrated production workflow readiness is added.
 - Marker:
   `PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 317 - Backbone Scaffold Code-Patching Adapter Mapping
+
+- Status: source/test/docs mapping from the existing code-patching bounded
+  context to the Phase 316 neutral Backbone scaffold vocabulary.
+- Source added:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_317_backbone_code_patching_adapter_mapping.py`.
+- Docs changed: `docs/PHASE_317.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/CONTEXT_MAP.md`.
+- Behavior: ordered Backbone stages map to code-patching source/doc/test
+  evidence strings, code-patching remains a bounded context, adapter execution
+  is false, readback status is available, and missing mapping fields produce
+  deterministic reason codes.
+- Proof scope: source/test/docs mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  adapter execution, patch-loop migration, or integrated production workflow
+  readiness is added.
+- Marker:
+  `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.

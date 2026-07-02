@@ -5586,3 +5586,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness is added.
 
 `PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 317 Backbone Scaffold Code-Patching Adapter Mapping
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_317_backbone_code_patching_adapter_mapping.py`.
+- Docs changed: `docs/PHASE_317.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/CONTEXT_MAP.md`.
+- Registered behavior: ordered mapping from each Phase 316 neutral Backbone
+  stage to code-patching source/doc/test evidence strings with a non-executing
+  code-patching adapter descriptor, readback status, and deterministic missing
+  mapping reason codes.
+- Proof scope: source/test/docs mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, adapter execution, patch-loop migration, or integrated
+  production workflow readiness is added.
+
+`PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`

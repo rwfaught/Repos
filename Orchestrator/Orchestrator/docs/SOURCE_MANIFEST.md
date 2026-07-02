@@ -6375,3 +6375,44 @@ patch-loop migration, integrated production workflow readiness, or Backbone V0
 declaration is registered by Phase 316.
 
 `PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 317 Backbone Scaffold Code-Patching Adapter Mapping
+
+Boundary:
+
+`PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_code_patching_adapter_mapping.py`
+
+Registered changed tests:
+
+- `tests/test_phase_317_backbone_code_patching_adapter_mapping.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_317.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: Phase 317 maps the existing code-patching bounded context
+to Phase 316 neutral Backbone vocabulary with static source/doc/test evidence
+strings, a non-executing adapter descriptor, readback status, and deterministic
+missing mapping reason codes.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+adapter execution, patch-loop migration, integrated production workflow
+readiness, or Backbone V0 declaration is registered by Phase 317.
+
+`PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`

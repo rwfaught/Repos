@@ -1607,3 +1607,26 @@ fresh artifact proof.
   cross-domain proof remain future boundaries.
 
 `PHASE316_BACKBONE_V0_ABSTRACTION_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone Code-Patching Adapter Mapping Status
+
+- Phase 317 maps the existing code-patching bounded context to the neutral
+  Backbone scaffold vocabulary introduced in Phase 316.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 317 does not
+  execute the code-patching loop or broaden patch-loop behavior.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  mapping uses source/doc/test evidence strings and a non-executing adapter
+  descriptor only.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; the mapping is not semantic
+  correctness proof, production readiness proof, or task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 317 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 317 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The mapping shows that the
+  scaffold can describe the code-patching bounded context, but declaration,
+  cross-domain proof, and production readiness remain future boundaries.
+
+`PHASE317_BACKBONE_SCAFFOLD_CODE_PATCHING_ADAPTER_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
