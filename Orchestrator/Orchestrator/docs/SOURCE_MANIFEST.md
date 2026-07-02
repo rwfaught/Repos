@@ -5611,3 +5611,44 @@ cleanup/delete/archive authority, or integrated production patch workflow
 readiness behavior is registered by Phase 290.
 
 `PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 291 Packet To Patch Bridge Negative Edge Contract
+
+Boundary:
+
+`PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- `tests/test_phase_291_packet_to_patch_bridge_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_291.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 291 adds negative-edge test coverage for the
+packet-to-patch bridge. Missing, rejected, stale, mismatched, unsafe-path,
+smuggled-claim, apply-smuggling, generated-residue, and missing-record cases
+return deterministic blocked/ineligible/rejected shapes with exact reason codes
+and no cleanup/delete/archive/apply behavior.
+
+No patch proposal creation, patch apply authorization, patch application,
+semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, model-backed generation, production readiness,
+service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder behavior,
+connector behavior, `general_answer` resumption, platform/OpenClaw/Hermes/
+LightRAG behavior, cleanup/delete/archive authority, or integrated production
+patch workflow readiness behavior is registered by Phase 291.
+
+`PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

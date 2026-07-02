@@ -5047,3 +5047,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production patch workflow readiness is added.
 
 `PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 291 Packet To Patch Bridge Negative Edge Contract
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed: none.
+- Test changed:
+  `tests/test_phase_291_packet_to_patch_bridge_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_291.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered coverage: missing accepted decision, rejected/latest rejected
+  decision, deferred/rejected candidate, mismatched task/artifact/verifier
+  links, missing current-success/eligibility/candidate/promotion records,
+  path traversal, POSIX absolute paths, Windows absolute paths, Windows
+  separators, provider/model/runtime/platform smuggling, semantic correctness
+  smuggling, production-readiness smuggling, apply-authorization smuggling,
+  attempted apply, generated residue reporting, exact reason codes, no
+  cleanup/delete/archive, and no provider/model/runtime/platform claims.
+- Explicit non-proofs: no patch proposal creation, patch apply authorization,
+  patch application, semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, or integrated production patch workflow readiness is
+  added.
+
+`PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

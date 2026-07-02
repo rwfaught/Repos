@@ -3236,3 +3236,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   workflow readiness is added.
 - Marker:
   `PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 291 - Packet To Patch Bridge Negative Edge Contract
+
+- Status: source/test/docs registration of negative-edge coverage across the
+  Phase 288-290 packet-to-patch bridge.
+- Source changed: none.
+- Test changed:
+  `tests/test_phase_291_packet_to_patch_bridge_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_291.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: negative cases for missing/rejected decisions, mismatched source
+  links, missing records, unsafe paths, provider/model/runtime/platform
+  smuggling, semantic/production/apply claim smuggling, generated residue, and
+  attempted apply return deterministic blocked/ineligible/rejected shapes with
+  exact reason codes and no cleanup/delete/archive/apply behavior.
+- Non-proofs: no patch proposal creation, patch apply authorization, patch
+  application, semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, or integrated production patch workflow readiness is
+  added.
+- Marker:
+  `PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

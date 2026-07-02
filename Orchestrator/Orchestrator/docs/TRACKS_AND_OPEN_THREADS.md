@@ -1132,3 +1132,27 @@ fresh artifact proof.
   application.
 
 `PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet To Patch Bridge Negative Edge Contract Status
+
+- Phase 291 hardens negative-edge coverage across the packet-to-patch bridge.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: missing, rejected, stale,
+  mismatched, unsafe-path, and smuggled-claim bridge inputs now have explicit
+  regression coverage.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 291 proves blocking/error coverage only and does not create proposals,
+  authorize apply, or apply patches.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge blocking is not
+  semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: blocked/ineligible/rejected outputs preserve exact
+  reason codes, non-proofs, and no-apply/no-cleanup/no-provider flags.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 291 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 291 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Negative-edge coverage is not patch authorization, patch application, or
+  integrated production patch workflow proof.
+
+`PHASE291_PACKET_TO_PATCH_BRIDGE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
