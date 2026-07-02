@@ -1514,3 +1514,26 @@ fresh artifact proof.
   remain open.
 
 `PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Verified Bounded Apply Task Finalization Record Status
+
+- Phase 311 adds deterministic finalization records for mechanically verified
+  bounded apply results.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: mechanically verified bounded apply
+  results can now persist a linked finalization record.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: finalization records preserve caveats
+  and non-proofs and do not claim semantic correctness or production
+  readiness.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; finalization is not semantic
+  correctness proof, production readiness proof, or task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 311 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 311 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The code-patching loop may
+  be approaching a complete vertical control loop, but Backbone V0 still
+  requires separate architecture assessment and domain-separation criteria.
+
+`PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`

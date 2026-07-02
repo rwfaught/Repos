@@ -3633,3 +3633,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 311 - Verified Bounded Apply Task Finalization Record
+
+- Status: source/test/docs finalization-record creation for mechanically
+  verified bounded apply results.
+- Source added:
+  `orchestrator/verified_bounded_apply_task_finalization.py`.
+- Test added:
+  `tests/test_phase_311_verified_bounded_apply_task_finalization_record.py`.
+- Docs changed: `docs/PHASE_311.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: mechanically verified bounded apply results can create durable
+  finalization records with full evidence-chain links, bounded verified files,
+  a required note, duplicate blocking, caveats, and non-proofs.
+- Proof scope: source/test/docs deterministic finalization-record behavior
+  only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  integrated production workflow readiness, or Backbone V0 declaration is
+  added.
+- Marker:
+  `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`.

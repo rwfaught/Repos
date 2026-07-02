@@ -6218,3 +6218,42 @@ integrated production patch workflow readiness, patch task finalization, or
 Backbone V0 declaration is registered by Phase 309.
 
 `PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 311 Verified Bounded Apply Task Finalization Record
+
+Boundary:
+
+`PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS`
+
+Registered new source:
+
+- `orchestrator/verified_bounded_apply_task_finalization.py`
+
+Registered changed tests:
+
+- `tests/test_phase_311_verified_bounded_apply_task_finalization_record.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_311.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 311 creates deterministic finalization records for
+mechanically verified bounded apply results while preserving non-proof
+boundaries.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, or Backbone V0 declaration is
+registered by Phase 311.
+
+`PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`

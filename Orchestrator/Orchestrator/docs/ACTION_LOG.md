@@ -5477,3 +5477,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness, or Backbone V0 declaration is added.
 
 `PHASE309_AUTHORIZED_BOUNDED_APPLY_RESULT_VERIFICATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 311 Verified Bounded Apply Task Finalization Record
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/verified_bounded_apply_task_finalization.py`.
+- Test added:
+  `tests/test_phase_311_verified_bounded_apply_task_finalization_record.py`.
+- Docs changed: `docs/PHASE_311.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic finalization-record persistence for
+  mechanically verified bounded apply results with evidence-chain links,
+  bounded verified files, required note, duplicate blocking, caveats, and
+  explicit non-proofs.
+- Proof scope: source/test/docs finalization-record behavior only.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder/connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/archive
+  authority, integrated production patch workflow readiness, or Backbone V0
+  declaration is added.
+
+`PHASE311_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
