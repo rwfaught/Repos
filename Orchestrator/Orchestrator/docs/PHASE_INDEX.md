@@ -3075,3 +3075,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   or integrated production patch workflow readiness is added.
 - Marker:
   `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 284 - Packet CLI Pre-Run And Residue Guard
+
+- Status: source/test/docs registration of a detection-only packet CLI
+  generated residue guard.
+- Source changed: `orchestrator/packet_cli_residue_guard.py`;
+  `orchestrator/operator_coding_task_packet_cli.py`.
+- Test changed:
+  `tests/test_phase_284_packet_cli_pre_run_residue_guard.py`.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_284.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: `inspect_packet_cli_generated_residue` and
+  `python -m orchestrator.operator_coding_task_packet_cli --residue-guard`
+  report exact known generated residue paths under `outputs/`, `data/tasks/`,
+  `data/artifacts/`, and `data/verifier_results/`; report clean when no known
+  residue is present; and preserve report-only false cleanup/delete/archive and
+  provider/model/runtime/platform activity flags.
+- Non-proofs: no cleanup/delete/archive authority, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior, or
+  integrated production patch workflow readiness is added.
+- Marker:
+  `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`.

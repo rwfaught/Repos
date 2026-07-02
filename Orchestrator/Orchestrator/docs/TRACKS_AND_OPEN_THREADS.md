@@ -980,3 +980,28 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet CLI Pre-Run Residue Guard Status
+
+- Phase 284 adds a detection-only packet CLI generated residue guard.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators can inspect known
+  generated residue before a packet CLI runbook execution with
+  `python -m orchestrator.operator_coding_task_packet_cli --residue-guard`.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; the guard reports residue
+  paths and does not affect current-success classification.
+- `SCRIPT_RELIABILITY`: the guard returns deterministic JSON and preserves
+  report-only false cleanup/delete/archive and provider/model/runtime/platform
+  activity flags.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 284 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 284 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 284 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- No cleanup/delete/archive authority is added; reported residue requires a
+  later explicit acceptance or cleanup boundary.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`

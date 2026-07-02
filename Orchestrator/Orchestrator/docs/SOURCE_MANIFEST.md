@@ -5355,3 +5355,50 @@ LightRAG behavior, cleanup/delete/archive authority, or integrated production
 patch workflow readiness behavior is registered by Phase 283.
 
 `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 284 Packet CLI Pre-Run And Residue Guard
+
+Boundary:
+
+`PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/packet_cli_residue_guard.py`
+- `orchestrator/operator_coding_task_packet_cli.py`
+
+Registered changed tests:
+
+- `tests/test_phase_284_packet_cli_pre_run_residue_guard.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_284.md`
+
+Registered changed documentation/control files:
+
+- `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 284 adds a report-only guard for known packet CLI
+generated residue and exposes it through
+`python -m orchestrator.operator_coding_task_packet_cli --residue-guard`.
+
+Registered residue classes:
+
+- `outputs/`
+- `data/tasks/`
+- `data/artifacts/`
+- `data/verifier_results/`
+
+No cleanup/delete/archive authority, semantic correctness, live provider/model
+execution, runtime/platform behavior, autonomous AI coding, model-backed
+generation, production readiness, service/API/UI/dashboard/auth/deployment
+behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+resumption, platform/OpenClaw/Hermes/LightRAG behavior, or integrated
+production patch workflow readiness behavior is registered by Phase 284.
+
+`PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -4865,3 +4865,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   or integrated production patch workflow readiness is added.
 
 `PHASE283_PACKET_CLI_OPERATOR_ACCEPTANCE_RECORD_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 284 Packet CLI Pre-Run And Residue Guard
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS`
+- Source changed: `orchestrator/packet_cli_residue_guard.py`;
+  `orchestrator/operator_coding_task_packet_cli.py`.
+- Test changed:
+  `tests/test_phase_284_packet_cli_pre_run_residue_guard.py`.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_284.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: a detection-only residue guard reports exact known
+  packet CLI generated paths under `outputs/`, `data/tasks/`,
+  `data/artifacts/`, and `data/verifier_results/`. The packet CLI exposes the
+  guard through `--residue-guard`.
+- Registered blocking/non-action posture: the guard does not delete, archive,
+  clean, execute, call providers, call models, invoke runtimes/platforms, or
+  claim cleanup authority.
+- Explicit non-proofs: no cleanup/delete/archive authority, semantic
+  correctness, live provider/model execution, runtime/platform behavior,
+  autonomous AI coding, model-backed generation, production readiness,
+  service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder
+  behavior, connector behavior, `general_answer` resumption, platform/OpenClaw/
+  Hermes/LightRAG behavior, or integrated production patch workflow readiness is
+  added.
+
+`PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`

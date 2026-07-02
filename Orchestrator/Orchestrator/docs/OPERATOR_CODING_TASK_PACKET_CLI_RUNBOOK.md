@@ -26,6 +26,18 @@ Operator-pasted command batches for this runbook must not use `exit`,
 especially not `exit 1`. For expected boundary failures, prefer accumulated
 PASS/FAIL lines and natural script completion instead of `throw`.
 
+Before an operator smoke or packet CLI runbook execution, generated residue can
+be inspected without cleanup authority:
+
+```text
+python -m orchestrator.operator_coding_task_packet_cli --residue-guard
+```
+
+This readback reports exact known generated paths under `outputs/`,
+`data/tasks/`, `data/artifacts/`, and `data/verifier_results/`. It does not
+delete, archive, clean, execute, call a provider, call a model, invoke a
+runtime, or claim cleanup authority.
+
 ## Minimal Packet
 
 ```json

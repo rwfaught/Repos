@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Sequence
 
 from orchestrator.operator_coding_task_packet import run_operator_coding_task_packet
+from orchestrator.packet_cli_residue_guard import inspect_packet_cli_generated_residue
 
 
 _NO_ACTIVITY_FLAGS = {
@@ -96,23 +97,29 @@ def _read_packet_json(path_text: str) -> tuple[dict[str, Any] | None, dict[str, 
     return value, None
 
 
-def _parse_args(argv: Sequence[str]) -> tuple[str, dict[str, Any] | None]:
+def _parse_args(argv: Sequence[str]) -> tuple[str, str, dict[str, Any] | None]:
     args = tuple(argv)
     if len(args) == 2 and args[0] == "--packet-json" and args[1]:
-        return args[1], None
-    return "", _blocked(
+        return "packet_json", args[1], None
+    if len(args) == 1 and args[0] == "--residue-guard":
+        return "residue_guard", "", None
+    return "", "", _blocked(
         blocked_conditions=["unsupported_or_missing_cli_arguments"],
-        detail="Usage: python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>",
+        detail="Usage: python -m orchestrator.operator_coding_task_packet_cli --packet-json <path> | --residue-guard",
         missing_requirements=["packet_json_path"],
     )
 
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
-    packet_path, argument_error = _parse_args(args)
+    mode, packet_path, argument_error = _parse_args(args)
     if argument_error is not None:
         _print_json(argument_error)
         return 2
+
+    if mode == "residue_guard":
+        _print_json(inspect_packet_cli_generated_residue())
+        return 0
 
     packet, read_error = _read_packet_json(packet_path)
     if read_error is not None:
