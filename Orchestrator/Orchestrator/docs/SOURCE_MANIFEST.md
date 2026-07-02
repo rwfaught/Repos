@@ -5250,3 +5250,62 @@ cleanup/delete/archive behavior, source capsule freshness before export, or full
 patch workflow readiness behavior is registered by Phase 279.
 
 `PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 281 Record Packet CLI Operator Persistence Smoke Proof
+
+Boundary:
+
+`PRODUCT_PHASE_281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- None.
+
+Registered new documentation/control files:
+
+- `docs/PHASE_281.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered accepted proof:
+
+- `PHASE280_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_MUTATION_ALLOWED_1=PASS`
+- `PHASE280_SCOPED_PERSISTENCE_SMOKE_RESIDUE_CLEANUP_NON_EXITING_1=PASS`
+
+Registered generated evidence:
+
+- `data\tasks\task_phase277_golden_smoke.json` SHA256
+  `31DDD9CCF4616A8879EF1A282EA313374DD566AEEA0522C9CE58B017EA72A33F`
+- `data\artifacts\artifact_db87dae3.json` SHA256
+  `75C17DC7B348F35A05FBE324F37D4862507B6306304B4185D0AF81F1BD1165C8`
+- `data\verifier_results\task_phase277_golden_smoke_20260701T235655165602Z.json`
+  SHA256
+  `20A33D3D4C544CD9D675CC36870E3272CB2018F440E33761220AB8117AD78F9F`
+- `outputs\phase277_golden_smoke.txt` SHA256
+  `438FBBC64666EC72D75B0A3D1288C22DA1B0F397EAA09CD64FB5A5E605B6CD84`
+
+Registered cleanup archive:
+
+`C:\Users\accou\AppData\Local\Orchestrator\Runs\20260701_185812_PRODUCT_PHASE_280_SCOPED_PERSISTENCE_SMOKE_RESIDUE_CLEANUP_NON_EXITING_1\archived_phase280_persistence_smoke_residue`
+
+Registered interpretation: Phase 281 records accepted operator proof only. It
+does not change product behavior. It records that deterministic `local_file`
+packet CLI execution under an explicit persistence/mutation boundary produced
+repo-local evidence and that exact residue cleanup returned the repo to clean.
+
+No semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, production readiness, service/API/UI behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+cleanup/delete/archive behavior beyond the exact scoped Phase 280 cleanup, or
+full patch workflow readiness behavior is registered by Phase 281.
+
+`PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`

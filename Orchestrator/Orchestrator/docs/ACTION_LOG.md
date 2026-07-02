@@ -4779,3 +4779,52 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   freshness before export, or full patch workflow readiness is added.
 
 `PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 281 Record Packet CLI Operator Persistence Smoke Proof
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PRODUCT_PHASE_281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY`
+- Docs changed: `docs/PHASE_281.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Source changed: none.
+- Tests changed: none.
+- Accepted Phase 280 operator persistence-smoke proof:
+  `PHASE280_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_MUTATION_ALLOWED_1=PASS`.
+- Accepted Phase 280 cleanup proof:
+  `PHASE280_SCOPED_PERSISTENCE_SMOKE_RESIDUE_CLEANUP_NON_EXITING_1=PASS`.
+- Registered proof timing: persistence smoke ran from
+  `2026-07-01T18:56:54.4213837-05:00` to
+  `2026-07-01T18:56:55.4601095-05:00`; scoped cleanup ran from
+  `2026-07-01T18:58:12.6750052-05:00` to
+  `2026-07-01T18:58:13.1912225-05:00`.
+- Registered proof basis: HEAD and origin/main were
+  `e598f60b8910daff4ca907930236e15716d3b263`; capsule SHA256 was
+  `50819449D17692F4CC9561218D2FB27E18354598CE3AD6E1CD15C8D77BE36FE9`;
+  CLI exit code was `0`; stdout JSON parse passed; `local_file` appeared;
+  runtime/provider/model/platform executed-true flags were absent; runtime,
+  live-provider/model, and production non-proofs were preserved.
+- Registered generated evidence and SHA256 values:
+  `data\tasks\task_phase277_golden_smoke.json` =
+  `31DDD9CCF4616A8879EF1A282EA313374DD566AEEA0522C9CE58B017EA72A33F`;
+  `data\artifacts\artifact_db87dae3.json` =
+  `75C17DC7B348F35A05FBE324F37D4862507B6306304B4185D0AF81F1BD1165C8`;
+  `data\verifier_results\task_phase277_golden_smoke_20260701T235655165602Z.json` =
+  `20A33D3D4C544CD9D675CC36870E3272CB2018F440E33761220AB8117AD78F9F`;
+  `outputs\phase277_golden_smoke.txt` =
+  `438FBBC64666EC72D75B0A3D1288C22DA1B0F397EAA09CD64FB5A5E605B6CD84`.
+- Registered cleanup: exact generated files were archived and removed under
+  `C:\Users\accou\AppData\Local\Orchestrator\Runs\20260701_185812_PRODUCT_PHASE_280_SCOPED_PERSISTENCE_SMOKE_RESIDUE_CLEANUP_NON_EXITING_1\archived_phase280_persistence_smoke_residue`;
+  final cleanup status was `git_status_after_cleanup=CLEAN`.
+- Script discipline preserved: future operator-pasted command batches must not
+  use `exit`, should avoid `throw` for expected boundary failures, and should
+  use printed PASS/FAIL, failure accumulation, timestamps, elapsed time, and
+  natural completion.
+- Explicit non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  service/API/UI behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, cleanup/delete/archive behavior beyond the exact
+  scoped Phase 280 cleanup, or full patch workflow readiness is added.
+
+`PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`

@@ -154,16 +154,19 @@ This file enables controlled progression through the system build.
 275. PHASE_275.md - Operator Coding Task Packet CLI File Input Adapter
 277. PHASE_277.md - Packet CLI Operator Runbook Golden Smoke
 279. PHASE_279.md - Packet CLI Runbook Execution Persistence Honesty Repair
+281. PHASE_281.md - Record Packet CLI Operator Persistence Smoke Proof
 
 ---
 
 ## Current Phase
 
-Phase 279 - Packet CLI Runbook Execution Persistence Honesty Repair
+Phase 281 - Record Packet CLI Operator Persistence Smoke Proof
 
-Status: latest source/test/docs registration; the packet CLI runbook now
-honestly describes the command as an execution and persistence surface that may
-create repo-local durable task, artifact, verifier, and output records.
+Status: latest docs-only registration; accepted Phase 280 operator proof shows
+the packet CLI runbook packet executed under an explicit persistence/mutation
+boundary, produced repo-local task/artifact/verifier/output evidence, preserved
+non-proof flags, and then cleaned the exact generated residue under scoped
+cleanup.
 
 Production readiness is not claimed.
 
@@ -3019,3 +3022,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   freshness before export, or full patch workflow readiness is added.
 - Marker:
   `PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 281 - Record Packet CLI Operator Persistence Smoke Proof
+
+- Status: docs-only registration of accepted Phase 280 packet CLI operator
+  persistence-smoke proof and scoped cleanup proof.
+- Docs changed: `docs/PHASE_281.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Source changed: none.
+- Tests changed: none.
+- Behavior registered: Phase 280 operator proof showed
+  `python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`
+  can run under an explicit persistence/mutation boundary with
+  `cli_exit_code=0`, parseable JSON stdout, deterministic `local_file`
+  behavior, repo-local generated task/artifact/verifier/output evidence, and
+  preserved runtime/provider/model/platform non-proof posture. The exact
+  generated residue was archived and removed by the accepted scoped cleanup.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, production readiness,
+  service/API/UI behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, cleanup/delete/archive behavior beyond the exact
+  scoped Phase 280 cleanup, or full patch workflow readiness is added.
+- Marker:
+  `PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`.

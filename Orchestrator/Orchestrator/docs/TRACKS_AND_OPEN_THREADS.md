@@ -925,3 +925,31 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE279_PACKET_CLI_RUNBOOK_EXECUTION_PERSISTENCE_HONESTY_REPAIR_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet CLI Operator Persistence Smoke Proof Status
+
+- Phase 281 records accepted Phase 280 operator proof that the packet CLI
+  runbook packet executed under an explicit persistence/mutation boundary.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the packet CLI has accepted operator
+  persistence-smoke proof for deterministic `local_file` execution through the
+  documented packet path, parseable JSON stdout, repo-local generated
+  task/artifact/verifier/output evidence, and preserved non-proof flags.
+- `SCRIPT_RELIABILITY`: Phase 281 preserves the no-exit discipline for future
+  operator-pasted command batches: no `exit`, avoid `throw` for expected
+  boundary failures, use printed PASS/FAIL, failure accumulation, timestamps,
+  elapsed time, and natural completion.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; Phase 281 records operator
+  proof of the packet CLI persistence path, not semantic task correctness.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 281 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 281 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 281 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Accepted cleanup proof is limited to the exact Phase 280 generated files and
+  archive directory; it is not general cleanup/delete/archive authority.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE281_RECORD_PACKET_CLI_OPERATOR_PERSISTENCE_SMOKE_PROOF_DOCS_ONLY_PROVEN=PASS`
