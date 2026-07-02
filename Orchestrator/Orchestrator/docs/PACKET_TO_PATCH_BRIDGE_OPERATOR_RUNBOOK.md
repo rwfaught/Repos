@@ -224,6 +224,43 @@ Phase 301 readback shows:
 The readback is for operator visibility before a future bounded apply
 boundary. It is not apply execution.
 
+## Bounded Apply Attempt And Readback
+
+Phase 303 can create a bounded apply attempt from an active Phase 299
+`authorize_apply` record after Phase 301 latest-authorization readback confirms
+that the authorization is active. Phase 304 hardens the negative edges around
+missing, rejected, deferred, stale, mismatched, malformed, unsafe, duplicated,
+or smuggled apply attempts.
+
+Phase 305 readback shows:
+
+- apply attempt id
+- draft proposal id
+- authorization id
+- bounded apply status: `applied`, `failed`, or `blocked`
+- files attempted
+- exact reason code if blocked or failed
+- linked evidence chain
+- bounded target information
+- `patch_not_verified`
+- `not_finalized`
+- `semantic_correctness_not_proven`
+- `production_readiness_not_proven`
+- `no_finalization_in_this_phase`
+- caveats
+- non-proofs
+- timestamp
+
+An apply attempt is not semantic correctness proof. It is not production
+readiness proof. It is not apply-result verification. It is not patch task
+finalization. Bounded apply attempt readback is not patch task finalization.
+
+Before a Phase 100-style verification boundary, evidence must show the apply
+attempt artifact, exact changed files, before/after causal hashes or equivalent
+apply-result evidence, and a separate verification decision. Before a Phase
+101-style finalization boundary, evidence must show verified apply results plus
+an explicit finalization gate. Both remain later separate boundaries.
+
 ## Where Patch Proposal Begins
 
 The existing patch proposal spine begins at the separately proven patch
@@ -248,6 +285,7 @@ The following do not authorize apply:
 - draft patch proposal creation
 - authorization eligibility readback
 - operator apply-authorization status readback
+- bounded apply attempt readback
 
 ## Timestamps
 
@@ -286,6 +324,8 @@ The packet-to-patch bridge does not prove:
 - cleanup/delete/archive authority
 - patch apply authorization from acceptance, eligibility, candidate creation,
 - promotion, draft creation, or authorization eligibility readback
+- bounded apply attempt as semantic correctness, production readiness,
+  verification, or finalization
 - integrated production patch workflow readiness
 - Backbone V0
 - apply-authorization readback as apply execution
@@ -307,5 +347,5 @@ Use the official product zipper for capsule proof:
 ## Backbone V0 Open Thread
 
 The control loop is approaching Backbone V0 criteria, but Backbone V0 remains
-open. Still missing are actual apply authorization, bounded apply,
-apply-result verification, finalization, and domain separation.
+open. Still missing are apply-result verification, finalization, and domain
+separation.

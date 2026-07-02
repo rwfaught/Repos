@@ -3536,4 +3536,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   apply-result verification, patch task finalization, integrated production
   workflow, or Backbone V0 declaration is added.
 - Marker:
-  `PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 305 - Authorized Bounded Apply Attempt Readback And Runbook
+
+- Status: source/test/docs readback for bounded apply-attempt artifacts plus
+  operator runbook update.
+- Source changed: `orchestrator/authorized_draft_patch_apply.py`.
+- Test added:
+  `tests/test_phase_305_authorized_bounded_apply_attempt_readback.py`.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_305.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: operators can read apply attempt id, draft proposal id,
+  authorization id, bounded apply status, files attempted, reason code, linked
+  evidence chain, bounded target information, caveats, non-proofs, and
+  no-verification/no-finalization fields.
+- Proof scope: source/test/docs readback and runbook behavior only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  apply-result verification, patch task finalization, integrated production
+  workflow, or Backbone V0 declaration is added.
+- Marker:
+  `PHASE305_AUTHORIZED_BOUNDED_APPLY_ATTEMPT_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.

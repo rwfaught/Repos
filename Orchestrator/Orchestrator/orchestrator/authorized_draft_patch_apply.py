@@ -620,3 +620,126 @@ def load_authorized_draft_patch_apply_attempt(attempt_id: str) -> dict[str, Any]
     if payload.get("apply_attempt_id") != safe_attempt_id:
         raise ValueError("Stored apply attempt id does not match.")
     return payload
+
+
+def read_authorized_draft_patch_apply_attempt_status(
+    apply_attempt_id: str | None = None,
+    *,
+    apply_attempt_record: dict[str, Any] | None = None,
+    apply_attempt_records: list[dict[str, Any]] | None = None,
+    draft_proposal_id: str | None = None,
+    authorization_id: str | None = None,
+) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    if apply_attempt_record is not None:
+        records = [apply_attempt_record]
+    elif apply_attempt_records is not None:
+        records = [record for record in apply_attempt_records if isinstance(record, dict)]
+    elif apply_attempt_id:
+        try:
+            records = [load_authorized_draft_patch_apply_attempt(apply_attempt_id)]
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            return _readback_blocked(
+                reason_code="apply_attempt_record_missing",
+                detail=str(error),
+                apply_attempt_id=_normalize_text(apply_attempt_id),
+                draft_proposal_id=_normalize_text(draft_proposal_id),
+                authorization_id=_normalize_text(authorization_id),
+            )
+    else:
+        return _readback_blocked(reason_code="apply_attempt_record_required")
+
+    requested_draft_id = _normalize_text(draft_proposal_id)
+    requested_authorization_id = _normalize_text(authorization_id)
+    filtered = []
+    for record in records:
+        if record.get("artifact_type") != AUTHORIZED_DRAFT_PATCH_APPLY_ATTEMPT_ARTIFACT_TYPE:
+            continue
+        if requested_draft_id and _normalize_text(record.get("draft_proposal_id")) != requested_draft_id:
+            continue
+        if requested_authorization_id and _normalize_text(
+            record.get("source_authorization_id") or record.get("authorization_id")
+        ) != requested_authorization_id:
+            continue
+        filtered.append(record)
+
+    if not filtered:
+        return _readback_blocked(
+            reason_code="apply_attempt_record_missing",
+            apply_attempt_id=_normalize_text(apply_attempt_id),
+            draft_proposal_id=requested_draft_id,
+            authorization_id=requested_authorization_id,
+        )
+
+    latest = sorted(
+        filtered,
+        key=lambda record: _normalize_text(record.get("timestamp") or record.get("created_at")),
+    )[-1]
+    return {
+        "authorized_bounded_apply_attempt_readback_surface": True,
+        "apply_attempt_id": _normalize_text(latest.get("apply_attempt_id")),
+        "draft_proposal_id": _normalize_text(latest.get("draft_proposal_id")),
+        "authorization_id": _normalize_text(
+            latest.get("source_authorization_id") or latest.get("authorization_id")
+        ),
+        "bounded_apply_status": _normalize_text(latest.get("apply_status")) or "blocked",
+        "apply_status": _normalize_text(latest.get("apply_status")) or "blocked",
+        "files_attempted": list(latest.get("files_attempted", [])),
+        "reason_code": _normalize_text(latest.get("reason_code")),
+        "linked_evidence_chain": _as_mapping(latest.get("linked_evidence_chain")),
+        "bounded_target_information": _as_mapping(latest.get("bounded_target_information")),
+        "patch_not_verified": latest.get("patch_not_verified") is True,
+        "not_finalized": latest.get("not_finalized") is True,
+        "semantic_correctness_not_proven": latest.get("semantic_correctness_not_proven") is True,
+        "production_readiness_not_proven": latest.get("production_readiness_not_proven") is True,
+        "no_finalization_in_this_phase": latest.get("no_finalization_in_this_phase") is True,
+        "patch_task_finalized": False,
+        "verification_satisfied": False,
+        "apply_result_verified": False,
+        "provider_executed": False,
+        "model_executed": False,
+        "runtime_executed": False,
+        "platform_invoked": False,
+        "caveats": list(latest.get("caveats", [])),
+        "non_proofs": list(latest.get("non_proofs", _NON_PROOFS)),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "phase_303_apply_attempt_reference": latest,
+    }
+
+
+def _readback_blocked(
+    *,
+    reason_code: str,
+    detail: str = "",
+    apply_attempt_id: str = "",
+    draft_proposal_id: str = "",
+    authorization_id: str = "",
+) -> dict[str, Any]:
+    return {
+        "authorized_bounded_apply_attempt_readback_surface": True,
+        "apply_attempt_id": apply_attempt_id,
+        "draft_proposal_id": draft_proposal_id,
+        "authorization_id": authorization_id,
+        "bounded_apply_status": "blocked",
+        "apply_status": "blocked",
+        "files_attempted": [],
+        "reason_code": reason_code,
+        "detail": detail,
+        "linked_evidence_chain": {},
+        "bounded_target_information": {},
+        "patch_not_verified": True,
+        "not_finalized": True,
+        "semantic_correctness_not_proven": True,
+        "production_readiness_not_proven": True,
+        "no_finalization_in_this_phase": True,
+        "patch_task_finalized": False,
+        "verification_satisfied": False,
+        "apply_result_verified": False,
+        "provider_executed": False,
+        "model_executed": False,
+        "runtime_executed": False,
+        "platform_invoked": False,
+        "caveats": ["readback_only_no_apply_execution"],
+        "non_proofs": list(_NON_PROOFS),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
