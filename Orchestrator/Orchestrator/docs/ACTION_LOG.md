@@ -4925,3 +4925,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   or integrated production patch workflow readiness is added.
 
 `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 286 Packet CLI Operator Smoke Runbook Minimization
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY`
+- Source changed: none.
+- Tests changed: none.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_286.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered docs-only change: the runbook now makes native PowerShell,
+  zsh/bash, and WSL `powershell.exe` context explicit and shortens the native
+  PowerShell evidence batch by consolidating repeated JSON checks.
+- Preserved discipline: timestamps, elapsed time, PASS/FAIL lines, generated
+  path reporting, visible output paths, no `exit`, no `throw` for expected
+  boundary failures, execution/persistence posture, and non-proof caveats remain
+  documented.
+- Explicit non-proofs: no source behavior, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder behavior, connector behavior,
+  `general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+  cleanup/delete/archive authority, or integrated production patch workflow
+  readiness is added.
+
+`PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`

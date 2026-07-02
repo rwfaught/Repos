@@ -3126,3 +3126,25 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   or integrated production patch workflow readiness is added.
 - Marker:
   `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 286 - Packet CLI Operator Smoke Runbook Minimization
+
+- Status: docs-only minimization of the packet CLI operator smoke runbook.
+- Source changed: none.
+- Tests changed: none.
+- Docs changed: `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`;
+  `docs/PHASE_286.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: no product behavior changed. The runbook keeps the packet CLI
+  execution/persistence posture and no-exit PowerShell evidence discipline
+  while reducing repeated checks and making native PowerShell, zsh/bash, and
+  WSL `powershell.exe` context explicit.
+- Non-proofs: no source behavior, semantic correctness, live provider/model
+  execution, runtime/platform behavior, autonomous AI coding, model-backed
+  generation, production readiness, service/API/UI/dashboard/auth/deployment
+  behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, or integrated production patch workflow readiness is
+  added.
+- Marker:
+  `PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`.

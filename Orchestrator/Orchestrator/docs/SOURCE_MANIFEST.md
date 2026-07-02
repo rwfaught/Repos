@@ -5442,3 +5442,43 @@ LightRAG behavior, cleanup/delete/archive authority, or integrated production
 patch workflow readiness behavior is registered by Phase 285.
 
 `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 286 Packet CLI Operator Smoke Runbook Minimization
+
+Boundary:
+
+`PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY`
+
+Registered changed source:
+
+- None.
+
+Registered changed tests:
+
+- None.
+
+Registered new documentation/control files:
+
+- `docs/PHASE_286.md`
+
+Registered changed documentation/control files:
+
+- `docs/OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered docs-only behavior: Phase 286 minimizes the packet CLI operator
+smoke runbook, preserves evidence discipline, and makes shell context explicit
+without changing source behavior.
+
+No source behavior, semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+or integrated production patch workflow readiness behavior is registered by
+Phase 286.
+
+`PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`

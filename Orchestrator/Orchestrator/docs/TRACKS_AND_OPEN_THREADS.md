@@ -1029,3 +1029,26 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet CLI Operator Smoke Runbook Minimization Status
+
+- Phase 286 minimizes the operator packet CLI smoke runbook without changing
+  source behavior.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: the documented packet CLI smoke path
+  remains available with shorter native PowerShell evidence collection and
+  explicit shell context for native PowerShell, zsh/bash, and WSL
+  `powershell.exe`.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; Phase 286 only edits docs.
+- `SCRIPT_RELIABILITY`: timestamps, elapsed time, PASS/FAIL lines, generated
+  path reporting, no-exit discipline, and non-proof caveats remain documented.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 286 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 286 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 286 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE286_PACKET_CLI_OPERATOR_SMOKE_RUNBOOK_MINIMIZATION_DOCS_ONLY_PROVEN=PASS`

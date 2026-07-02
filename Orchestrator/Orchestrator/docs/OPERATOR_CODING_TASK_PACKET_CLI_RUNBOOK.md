@@ -16,8 +16,23 @@ explicit boundary.
 
 ## Command Syntax
 
+Native PowerShell:
+
 ```powershell
 python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>
+```
+
+zsh/bash:
+
+```text
+python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>
+```
+
+From WSL, call native Windows PowerShell explicitly only when you need the
+Windows environment:
+
+```text
+powershell.exe -NoProfile -Command "python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>"
 ```
 
 The CLI accepts only `--packet-json <path>`.
@@ -80,18 +95,24 @@ Do not frame this command as a repo-read-only smoke. The operator should inspect
 the generated paths and then accept them, leave them for a follow-up boundary,
 or clean them only under a later explicit cleanup/delete boundary.
 
-## PowerShell Execution And Persistence Pattern
+## Native PowerShell Execution And Persistence Pattern
 
 From the product repo root, under an explicit persistence or mutation boundary:
 
 ```powershell
 $StartedAt = Get-Date -Format o
-$Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $Failures = New-Object System.Collections.Generic.List[string]
+$Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 $RunStamp = Get-Date -Format 'yyyyMMdd_HHmmss'
 $RunDir = Join-Path $env:TEMP "orchestrator_phase277_packet_cli_$RunStamp"
 $PacketPath = Join-Path $RunDir "packet.json"
 $OutputPath = Join-Path $RunDir "cli-output.json"
+$GeneratedRepoPaths = @(
+  "outputs/phase277_golden_smoke.txt",
+  "data/tasks/task_phase277_golden_smoke.json",
+  "data/artifacts",
+  "data/verifier_results"
+)
 
 New-Item -ItemType Directory -Force -Path $RunDir | Out-Null
 
@@ -118,36 +139,24 @@ python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath
   Tee-Object -FilePath $OutputPath
 
 $CliExitCode = $LASTEXITCODE
-if ($CliExitCode -ne 0) {
-  $Failures.Add("CLI exit code was $CliExitCode")
-}
+if ($CliExitCode -ne 0) { $Failures.Add("CLI exit code was $CliExitCode") }
 
 try {
   $CliJson = Get-Content -LiteralPath $OutputPath -Raw | ConvertFrom-Json
-  if ($CliJson.accepted -ne $true) { $Failures.Add("accepted was not true") }
-  if ($CliJson.blocked -ne $false) { $Failures.Add("blocked was not false") }
-  if ($CliJson.execution_provider -ne "local_file") {
-    $Failures.Add("execution_provider was not local_file")
-  }
-  if ($CliJson.no_activity_flags.model_executed -ne $false) {
-    $Failures.Add("model_executed was not false")
-  }
-  if ($CliJson.no_activity_flags.runtime_executed -ne $false) {
-    $Failures.Add("runtime_executed was not false")
-  }
-  if ($CliJson.no_activity_flags.platform_invoked -ne $false) {
-    $Failures.Add("platform_invoked was not false")
+  $Checks = @(
+    @("accepted", $CliJson.accepted -eq $true),
+    @("blocked_false", $CliJson.blocked -eq $false),
+    @("execution_provider_local_file", $CliJson.execution_provider -eq "local_file"),
+    @("model_executed_false", $CliJson.no_activity_flags.model_executed -eq $false),
+    @("runtime_executed_false", $CliJson.no_activity_flags.runtime_executed -eq $false),
+    @("platform_invoked_false", $CliJson.no_activity_flags.platform_invoked -eq $false)
+  )
+  foreach ($Check in $Checks) {
+    if (-not $Check[1]) { $Failures.Add("$($Check[0]) check failed") }
   }
 } catch {
   $Failures.Add("CLI output was not parseable JSON: $($_.Exception.Message)")
 }
-
-$GeneratedRepoPaths = @(
-  "outputs/phase277_golden_smoke.txt",
-  "data/tasks/task_phase277_golden_smoke.json",
-  "data/artifacts",
-  "data/verifier_results"
-)
 
 $Stopwatch.Stop()
 $FinishedAt = Get-Date -Format o
