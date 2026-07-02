@@ -5816,3 +5816,45 @@ cleanup/delete/archive authority, integrated production patch workflow
 readiness, or Backbone V0 declaration is registered by Phase 296.
 
 `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 297 Draft Patch Proposal Authorization Bridge Operator Runbook
+
+Boundary:
+
+`PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY`
+
+Registered changed source:
+
+- none
+
+Registered changed tests:
+
+- none
+
+Registered new documentation/control files:
+
+- `docs/PHASE_297.md`
+
+Registered changed documentation/control files:
+
+- `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: no product behavior changed. Phase 297 documents the
+operator-facing promoted-candidate-to-draft-proposal-to-authorization-
+eligibility bridge and preserves the boundary that eligibility is not actual
+authorization.
+
+No source behavior, test behavior, semantic correctness, autonomous AI coding,
+model-backed generation, provider/model/runtime execution, runtime/platform
+behavior, production readiness, service/API/UI/dashboard/auth/deployment
+behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive
+authority, actual apply authorization, patch apply execution, integrated
+production patch workflow readiness, or Backbone V0 declaration is registered
+by Phase 297.
+
+`PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`

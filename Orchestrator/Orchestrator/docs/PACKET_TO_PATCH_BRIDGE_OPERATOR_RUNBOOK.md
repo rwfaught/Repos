@@ -3,7 +3,8 @@
 ## Scope
 
 This runbook covers the packet-result-to-patch-proposal bridge proven by
-Phases 288-291.
+Phases 288-291 and the promoted-candidate-to-draft-proposal-to-authorization
+eligibility bridge proven by Phases 294-296.
 
 The bridge is local, deterministic, and evidence-only. It does not create an
 authorized patch proposal, does not authorize apply, and does not apply a
@@ -96,17 +97,99 @@ Promotion requires a valid `candidate_only` artifact and a non-empty operator
 note/reason.
 
 Accepted packet decisions alone cannot promote a candidate. Candidate
-promotion is not patch apply authorization and does not create a draft patch
-proposal in the current source state.
+promotion is not patch apply authorization.
+
+## Draft Patch Proposal Artifact
+
+Phase 294 can create a `draft_patch_proposal` artifact from a promoted
+`candidate_only` artifact when the promotion record, candidate evidence, current
+success reference, accepted packet evidence, operator decision reference, and
+structured patch evidence are complete and consistent.
+
+The draft proposal artifact is marked:
+
+- `draft_only`
+- `not_authorized_for_apply`
+- `not_applied`
+
+Draft patch proposal artifacts preserve:
+
+- draft proposal id
+- source candidate id
+- source promotion record id
+- source packet id
+- source run id
+- source task id
+- source execution artifact id/path
+- source verifier result path
+- current-success review reference
+- operator decision record id/path
+- Phase 288 eligibility reference
+- Phase 289 candidate reference
+- Phase 290 promotion reference
+- structured patch payload
+- linked evidence
+- caveats
+- non-proofs
+- timestamp
+- no-apply/no-authorization flags
+
+Draft creation is not apply authorization. Draft creation does not apply a
+patch. Draft creation does not prove semantic correctness, autonomous AI
+coding, model/provider/runtime execution, or production readiness.
+
+## Authorization Eligibility Readback
+
+Phase 296 authorization eligibility readback returns one of:
+
+- `authorization_eligible`
+- `authorization_ineligible`
+- `authorization_blocked`
+
+Authorization eligibility requires:
+
+- draft proposal exists
+- draft proposal status is `draft_only`
+- draft proposal is `not_authorized_for_apply`
+- draft proposal is `not_applied`
+- draft links to promoted candidate
+- promoted candidate links to candidate artifact
+- candidate links to accepted packet result
+- accepted packet result links to task/artifact/verifier/current-success/
+  operator acceptance
+- all evidence links are consistent
+- structured patch payload is present and unambiguous
+- no residue guard blocking condition is present, if guard integration exists
+- no provider/model/runtime/platform execution claim is present
+- no semantic correctness proof claim is present
+- no production-readiness claim is present
+- no existing apply authorization exists
+- no apply has already occurred
+
+The readback includes:
+
+- draft proposal id
+- authorization eligibility status
+- reason code
+- exact missing evidence list
+- linked evidence list
+- caveats
+- non-proofs
+- explicit no-authorization statement
+- explicit no-apply statement
+- timestamp
+
+Authorization eligibility is not authorization. It only determines whether the
+draft proposal has enough structured evidence for a later explicit operator
+apply-authorization decision.
 
 ## Where Patch Proposal Begins
 
 The existing patch proposal spine begins at the separately proven patch
-proposal modules and phase boundaries. The packet bridge does not automatically
-enter that spine.
+proposal modules and phase boundaries. The packet bridge and draft proposal
+bridge do not automatically enter that spine.
 
-A later explicit boundary is required to connect a promoted candidate to a
-draft or authorized patch proposal artifact.
+A later explicit boundary is required to create actual apply authorization.
 
 ## Where Patch Apply Remains Blocked
 
@@ -121,6 +204,8 @@ The following do not authorize apply:
 - candidate promotion
 - candidate rejection
 - candidate defer
+- draft patch proposal creation
+- authorization eligibility readback
 
 ## Timestamps
 
@@ -158,11 +243,22 @@ The packet-to-patch bridge does not prove:
 - platform/OpenClaw/Hermes/LightRAG behavior
 - cleanup/delete/archive authority
 - patch apply authorization from acceptance, eligibility, candidate creation,
-  or promotion
+- promotion, draft creation, or authorization eligibility readback
 - integrated production patch workflow readiness
+- Backbone V0
 
 ## Source ZIP Hygiene Caveat
 
 The operator `srczip` flow may include generated `__pycache__` or `.pyc`
 entries depending on packaging. Product capsule proof should come from the
 official product capsule refresh output, not source upload hash alone.
+
+Generated product capsule ZIP files under the outer Git root are packaging
+artifacts. They are not product source, docs, tests, data records, manifests,
+or proof of runtime behavior.
+
+## Backbone V0 Open Thread
+
+The control loop is approaching Backbone V0 criteria, but Backbone V0 remains
+open. Still missing are actual apply authorization, bounded apply,
+apply-result verification, finalization, and domain separation.

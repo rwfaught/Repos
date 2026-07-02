@@ -3378,3 +3378,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   declaration is added.
 - Marker:
   `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 297 - Draft Patch Proposal Authorization Bridge Operator Runbook
+
+- Status: docs-only registration of operator runbook language for the promoted
+  candidate to draft proposal to authorization eligibility bridge.
+- Source changed: none.
+- Tests changed: none.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_297.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: no product behavior changed. The runbook explains promoted
+  candidates, draft proposal artifacts, `draft_only`,
+  `not_authorized_for_apply`, `not_applied`, authorization eligibility
+  readback, required evidence fields, timestamps, shell context, source ZIP
+  hygiene, and why packet acceptance, candidate promotion, draft creation, and
+  eligibility readback are not actual apply authorization.
+- Non-proofs: no source behavior, test behavior, actual apply authorization,
+  patch apply execution, semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+- Marker:
+  `PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`.

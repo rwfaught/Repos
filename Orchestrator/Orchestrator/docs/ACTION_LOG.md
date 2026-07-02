@@ -5200,3 +5200,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Backbone V0 declaration is added.
 
 `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 297 Draft Patch Proposal Authorization Bridge Operator Runbook
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY`
+- Source changed: none.
+- Tests changed: none.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_297.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: no product behavior changed. The operator runbook now
+  documents promoted candidates, draft patch proposal artifacts, draft-only/
+  no-authorization/no-apply posture, authorization eligibility readback,
+  required evidence fields, timestamps, shell context, source ZIP hygiene,
+  non-proofs, no actual apply authorization in this campaign, no actual patch
+  apply in this campaign, and the Backbone V0 open thread.
+- Explicit non-proofs: no source behavior, test behavior, semantic
+  correctness, autonomous AI coding, model-backed generation,
+  provider/model/runtime execution, runtime/platform behavior, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, actual apply authorization, patch apply execution,
+  integrated production patch workflow readiness, or Backbone V0 declaration
+  is added.
+
+`PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`

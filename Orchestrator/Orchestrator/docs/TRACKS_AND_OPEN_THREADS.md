@@ -1270,3 +1270,30 @@ fresh artifact proof.
   future boundaries.
 
 `PHASE296_DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATION_ELIGIBILITY_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Draft Patch Proposal Authorization Bridge Runbook Status
+
+- Phase 297 updates the operator runbook for the promoted-candidate to draft
+  proposal to authorization eligibility bridge.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: documentation now names the bridge
+  evidence chain from accepted packet to candidate to promotion to draft
+  proposal to eligibility readback.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 297 documents that
+  packet acceptance, candidate promotion, draft creation, and authorization
+  eligibility readback are not actual apply authorization.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; docs preserve that the bridge
+  is not semantic correctness proof or task adequacy proof.
+- `SCRIPT_RELIABILITY`: runbook language includes required evidence fields,
+  timestamps, shell context, explicit no-authorization/no-apply posture, and
+  source ZIP hygiene.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 297 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 297 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. The control loop is approaching
+  Backbone V0 criteria but still lacks actual apply authorization, bounded
+  apply, apply-result verification, finalization, and domain separation.
+
+`PHASE297_DRAFT_PATCH_PROPOSAL_AUTHORIZATION_BRIDGE_OPERATOR_RUNBOOK_DOCS_ONLY_PROVEN=PASS`
