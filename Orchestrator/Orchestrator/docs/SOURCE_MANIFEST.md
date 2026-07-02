@@ -5525,3 +5525,47 @@ authority, or integrated production patch workflow readiness behavior is
 registered by Phase 288.
 
 `PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 289 Packet Result Patch Proposal Candidate Artifact
+
+Boundary:
+
+`PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/packet_result_patch_proposal_candidate.py`
+
+Registered changed tests:
+
+- `tests/test_phase_289_packet_result_patch_proposal_candidate_artifact.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_289.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 289 adds a deterministic candidate artifact writer
+that persists a `candidate_only` packet-result patch proposal candidate only
+after Phase 288 eligibility is `eligible` and a non-empty candidate note/reason
+is supplied. The artifact preserves source packet, run, task, execution
+artifact, verifier result, current-success review, operator decision,
+eligibility readback, proposed patch evidence payload, caveats, non-proofs,
+timestamp, and no-apply/no-authorization fields.
+
+No patch proposal creation, patch apply authorization, patch application,
+candidate promotion, semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+or integrated production patch workflow readiness behavior is registered by
+Phase 289.
+
+`PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`

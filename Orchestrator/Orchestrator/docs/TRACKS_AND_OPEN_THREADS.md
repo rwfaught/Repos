@@ -1080,3 +1080,29 @@ fresh artifact proof.
   patch authorization.
 
 `PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet Result Patch Proposal Candidate Artifact Status
+
+- Phase 289 persists candidate-only artifacts from Phase 288 eligible accepted
+  packet results.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: eligible accepted packet results can
+  now produce a durable candidate-only evidence artifact when a caller supplies
+  a candidate note/reason.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 289 does not create a patch proposal, authorize apply, apply a patch,
+  or promote a candidate.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; candidate persistence is
+  evidence organization, not semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: blocked and persisted outputs are deterministic
+  JSON/dict-like shapes with exact reason codes, source evidence links,
+  non-proofs, and no-apply/no-authorization fields.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 289 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 289 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Candidate creation is not patch authorization and is not a patch apply
+  request.
+
+`PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`

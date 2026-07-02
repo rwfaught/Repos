@@ -3177,3 +3177,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   readiness is added.
 - Marker:
   `PHASE288_PACKET_RESULT_TO_PATCH_PROPOSAL_ELIGIBILITY_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 289 - Packet Result Patch Proposal Candidate Artifact
+
+- Status: source/test/docs registration of candidate-only artifact persistence
+  from an eligible accepted packet result.
+- Source changed:
+  `orchestrator/packet_result_patch_proposal_candidate.py`.
+- Test changed:
+  `tests/test_phase_289_packet_result_patch_proposal_candidate_artifact.py`.
+- Docs changed: `docs/PHASE_289.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: the writer requires a Phase 288 eligible readback and a non-empty
+  candidate note/reason, then persists a `candidate_only` artifact linking the
+  packet, run, task, execution artifact, verifier result, current-success
+  review, operator decision, eligibility readback, and proposed patch evidence
+  payload. Ineligible, rejected, mismatched, missing-note, and unsafe
+  candidate-id inputs block deterministically.
+- Non-proofs: no patch proposal creation, patch apply authorization, patch
+  application, candidate promotion, semantic correctness, live provider/model
+  execution, runtime/platform behavior, autonomous AI coding, model-backed
+  generation, production readiness, service/API/UI/dashboard/auth/deployment
+  behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, or integrated production patch workflow readiness is
+  added.
+- Marker:
+  `PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
