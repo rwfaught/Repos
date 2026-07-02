@@ -665,3 +665,93 @@ def load_draft_patch_proposal_apply_authorization_record(
     if payload.get("authorization_id") != safe_id:
         raise ValueError("Stored authorization id does not match.")
     return payload
+
+
+def _authorization_records_for_draft(draft_proposal_id: str) -> list[dict[str, Any]]:
+    safe_draft_id = validate_record_id(draft_proposal_id, label="draft proposal id")
+    records: list[dict[str, Any]] = []
+    if not DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATIONS_DIR.exists():
+        return records
+    for path in DRAFT_PATCH_PROPOSAL_APPLY_AUTHORIZATIONS_DIR.glob("*.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if (
+            payload.get("artifact_type") == "draft_patch_proposal_apply_authorization_record"
+            and _normalize_text(payload.get("draft_proposal_id")) == safe_draft_id
+        ):
+            records.append(payload)
+    return records
+
+
+def read_draft_patch_proposal_apply_authorization_status(
+    draft_proposal_id: str,
+    *,
+    authorization_records: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    safe_draft_id = validate_record_id(draft_proposal_id, label="draft proposal id")
+    records = (
+        [
+            record
+            for record in authorization_records
+            if isinstance(record, dict)
+            and _normalize_text(record.get("draft_proposal_id")) == safe_draft_id
+        ]
+        if authorization_records is not None
+        else _authorization_records_for_draft(safe_draft_id)
+    )
+
+    records = sorted(
+        records,
+        key=lambda record: _normalize_text(record.get("timestamp") or record.get("created_at")),
+    )
+    latest = records[-1] if records else {}
+    decision = _normalize_text(latest.get("authorization_decision"))
+    status = _normalize_text(latest.get("authorization_status")) or "blocked"
+    active = status == _AUTHORIZED_STATUS and decision == AUTHORIZE_APPLY
+    rejected = status == _REJECTED_STATUS or decision == REJECT_APPLY_AUTHORIZATION
+    deferred = status == _DEFERRED_STATUS or decision == DEFER_APPLY_AUTHORIZATION
+
+    return {
+        "draft_patch_proposal_apply_authorization_readback_surface": True,
+        "draft_proposal_id": safe_draft_id,
+        "latest_authorization_decision": decision,
+        "authorization_decision": decision,
+        "authorization_id": _normalize_text(latest.get("authorization_id")),
+        "authorization_timestamp": _normalize_text(
+            latest.get("timestamp") or latest.get("created_at")
+        ),
+        "operator_authorization_note": _normalize_text(
+            latest.get("operator_authorization_note")
+            or latest.get("operator_authorization_reason")
+        ),
+        "authorization_status": status,
+        "authorization_active": active,
+        "authorization_rejected": rejected,
+        "authorization_deferred": deferred,
+        "authorization_blocked": not records,
+        "reason_code": (
+            "latest_apply_authorization_record_found"
+            if records
+            else "apply_authorization_record_missing"
+        ),
+        "linked_evidence": list(latest.get("linked_evidence", [])),
+        "eligibility_record": _as_mapping(latest.get("eligibility_record")),
+        "phase_299_authorization_reference": latest,
+        "patch_not_applied": True,
+        "no_apply_execution_in_this_phase": True,
+        "patch_applied": False,
+        "apply_result_created": False,
+        "patch_task_finalized": False,
+        "caveats": list(latest.get("caveats", [])),
+        "non_proofs": list(_NON_PROOFS),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "provider_executed": False,
+        "model_executed": False,
+        "runtime_executed": False,
+        "platform_invoked": False,
+        "semantic_correctness_claimed": False,
+        "production_readiness_claimed": False,
+        "autonomous_ai_coding_claimed": False,
+    }

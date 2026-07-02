@@ -3463,3 +3463,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   Backbone V0 declaration is added.
 - Marker:
   `PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 301 - Patch Apply Authorization Readback And Runbook Docs
+
+- Status: source/test/docs registration of latest authorization status
+  readback plus operator runbook updates.
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_record.py`.
+- Test changed:
+  `tests/test_phase_301_patch_apply_authorization_readback.py`.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_301.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: operators can read the latest authorization decision, record id,
+  timestamp, note/reason, evidence chain, active/rejected/deferred/blocked
+  status, `patch_not_applied`, `no_apply_execution_in_this_phase`, caveats,
+  and non-proofs for a draft patch proposal.
+- Non-proofs: no patch apply execution, apply result record creation, patch
+  task finalization, semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+- Marker:
+  `PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`.

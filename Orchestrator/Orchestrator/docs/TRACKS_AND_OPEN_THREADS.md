@@ -1351,3 +1351,29 @@ fresh artifact proof.
   verification, finalization, and domain separation.
 
 `PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Patch Apply Authorization Readback And Runbook Status
+
+- Phase 301 adds latest authorization status readback for draft patch
+  proposals and updates the operator runbook.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators can now see the latest
+  authorization decision and evidence chain before any later bounded apply
+  boundary.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged beyond readback. Phase 301
+  does not execute patch apply, create apply results, or finalize tasks.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; readback is not semantic
+  correctness proof or task adequacy proof.
+- `SCRIPT_RELIABILITY`: readbacks expose active/rejected/deferred/blocked
+  status, patch-not-applied posture, no-apply-execution posture, caveats, and
+  non-proofs.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 301 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 301 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. The control loop is approaching
+  Backbone criteria but still lacks bounded apply execution, apply-result
+  verification, finalization, and domain separation.
+
+`PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`

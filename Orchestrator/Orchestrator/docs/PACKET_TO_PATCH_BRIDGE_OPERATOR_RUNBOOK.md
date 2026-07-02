@@ -183,6 +183,47 @@ Authorization eligibility is not authorization. It only determines whether the
 draft proposal has enough structured evidence for a later explicit operator
 apply-authorization decision.
 
+## Operator Apply-Authorization Record
+
+Phase 299 can persist an operator apply-authorization record after a clean
+Phase 296 authorization eligibility readback.
+
+Supported decisions are:
+
+- `authorize_apply`
+- `reject_apply_authorization`
+- `defer_apply_authorization`
+
+`authorize_apply` authorizes a later bounded apply attempt only. It does not
+apply the patch, does not create an apply result, does not finalize the task,
+does not prove semantic correctness, and does not prove production readiness.
+
+Reject and defer decisions preserve the operator decision and reason without
+authorizing apply.
+
+Phase 300 hardens negative edges around missing, mismatched, unsafe,
+duplicate, rejected, deferred, and smuggled authorization evidence. It also
+preserves that no apply execution, apply result, or finalization occurs.
+
+## Authorization Status Readback
+
+Phase 301 readback shows:
+
+- draft proposal id
+- latest authorization decision
+- authorization id
+- authorization timestamp
+- operator authorization note/reason
+- linked evidence chain
+- whether authorization is active, rejected, deferred, or blocked
+- `patch_not_applied`
+- `no_apply_execution_in_this_phase`
+- caveats
+- non-proofs
+
+The readback is for operator visibility before a future bounded apply
+boundary. It is not apply execution.
+
 ## Where Patch Proposal Begins
 
 The existing patch proposal spine begins at the separately proven patch
@@ -206,6 +247,7 @@ The following do not authorize apply:
 - candidate defer
 - draft patch proposal creation
 - authorization eligibility readback
+- operator apply-authorization status readback
 
 ## Timestamps
 
@@ -246,6 +288,7 @@ The packet-to-patch bridge does not prove:
 - promotion, draft creation, or authorization eligibility readback
 - integrated production patch workflow readiness
 - Backbone V0
+- apply-authorization readback as apply execution
 
 ## Source ZIP Hygiene Caveat
 
@@ -256,6 +299,10 @@ official product capsule refresh output, not source upload hash alone.
 Generated product capsule ZIP files under the outer Git root are packaging
 artifacts. They are not product source, docs, tests, data records, manifests,
 or proof of runtime behavior.
+
+Use the official product zipper for capsule proof:
+
+`C:\Users\accou\Desktop\Repos\Powershell Scripts\Zip-OrchestratorProductRepo.ps1`
 
 ## Backbone V0 Open Thread
 

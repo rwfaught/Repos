@@ -5941,3 +5941,44 @@ integrated production patch workflow readiness, or Backbone V0 declaration is
 registered by Phase 300.
 
 `PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 301 Patch Apply Authorization Readback And Runbook Docs
+
+Boundary:
+
+`PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/draft_patch_proposal_apply_authorization_record.py`
+
+Registered changed tests:
+
+- `tests/test_phase_301_patch_apply_authorization_readback.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_301.md`
+
+Registered changed documentation/control files:
+
+- `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 301 adds latest authorization status readback for
+draft patch proposals and updates the operator runbook. The readback preserves
+patch-not-applied and no-apply-execution posture.
+
+No patch apply execution, apply result record creation, patch task
+finalization, semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, or Backbone V0 declaration is
+registered by Phase 301.
+
+`PHASE301_PATCH_APPLY_AUTHORIZATION_READBACK_AND_RUNBOOK_DOCS_SOURCE_TEST_DOCS_PROVEN=PASS`
