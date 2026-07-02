@@ -6296,3 +6296,42 @@ integrated production patch workflow readiness, or Backbone V0 declaration is
 registered by Phase 312.
 
 `PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 313 Verified Bounded Apply Task Finalization Readback And Runbook
+
+Boundary:
+
+`PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/verified_bounded_apply_task_finalization.py`
+
+Registered changed tests:
+
+- `tests/test_phase_313_verified_bounded_apply_task_finalization_readback.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_313.md`
+
+Registered changed documentation/control files:
+
+- `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 313 adds verified bounded apply task finalization
+readback and operator runbook guidance while preserving non-proof boundaries.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, or Backbone V0 declaration is
+registered by Phase 313.
+
+`PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`

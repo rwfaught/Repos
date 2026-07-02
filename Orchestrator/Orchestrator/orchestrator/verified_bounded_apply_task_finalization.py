@@ -409,3 +409,116 @@ def load_verified_bounded_apply_task_finalization(finalization_id: str) -> dict[
     if payload.get("finalization_id") != safe_id:
         raise ValueError("Stored finalization id does not match.")
     return payload
+
+
+def _readback_blocked(
+    *,
+    reason_code: str,
+    detail: str = "",
+    finalization_id: str = "",
+    verification_id: str = "",
+    apply_attempt_id: str = "",
+) -> dict[str, Any]:
+    return {
+        "verified_bounded_apply_task_finalization_readback_surface": True,
+        "finalization_id": finalization_id,
+        "finalization_status": FINALIZATION_BLOCKED,
+        "reason_code": reason_code,
+        "detail": detail,
+        "verification_id": verification_id,
+        "apply_attempt_id": apply_attempt_id,
+        "authorization_id": "",
+        "draft_proposal_id": "",
+        "candidate_id": "",
+        "packet_task_artifact_verifier_current_success_references": {},
+        "files_mechanically_verified": [],
+        "operator_or_system_finalization_note": "",
+        "semantic_correctness_not_proven": True,
+        "production_readiness_not_proven": True,
+        "model_provider_runtime_not_proven": True,
+        "autonomous_ai_coding_not_proven": True,
+        "backbone_v0_not_declared": True,
+        "caveats": ["finalization_readback_only"],
+        "non_proofs": list(_NON_PROOFS),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def read_verified_bounded_apply_task_finalization_status(
+    finalization_id: str | None = None,
+    *,
+    finalization_record: dict[str, Any] | None = None,
+    finalization_records: list[dict[str, Any]] | None = None,
+    verification_id: str | None = None,
+    apply_attempt_id: str | None = None,
+) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    if finalization_record is not None:
+        records = [finalization_record]
+    elif finalization_records is not None:
+        records = [record for record in finalization_records if isinstance(record, dict)]
+    elif finalization_id:
+        try:
+            records = [load_verified_bounded_apply_task_finalization(finalization_id)]
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            return _readback_blocked(
+                reason_code="finalization_record_missing",
+                detail=str(error),
+                finalization_id=_normalize_text(finalization_id),
+                verification_id=_normalize_text(verification_id),
+                apply_attempt_id=_normalize_text(apply_attempt_id),
+            )
+    else:
+        return _readback_blocked(reason_code="finalization_record_required")
+
+    requested_verification_id = _normalize_text(verification_id)
+    requested_attempt_id = _normalize_text(apply_attempt_id)
+    filtered = []
+    for record in records:
+        if record.get("artifact_type") != VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_ARTIFACT_TYPE:
+            continue
+        if requested_verification_id and _normalize_text(record.get("verification_id")) != requested_verification_id:
+            continue
+        if requested_attempt_id and _normalize_text(record.get("apply_attempt_id")) != requested_attempt_id:
+            continue
+        filtered.append(record)
+
+    if not filtered:
+        return _readback_blocked(
+            reason_code="finalization_record_missing",
+            finalization_id=_normalize_text(finalization_id),
+            verification_id=requested_verification_id,
+            apply_attempt_id=requested_attempt_id,
+        )
+
+    latest = sorted(
+        filtered,
+        key=lambda record: _normalize_text(record.get("timestamp") or record.get("created_at")),
+    )[-1]
+    return {
+        "verified_bounded_apply_task_finalization_readback_surface": True,
+        "finalization_id": _normalize_text(latest.get("finalization_id")),
+        "finalization_status": _normalize_text(latest.get("finalization_status")),
+        "reason_code": _normalize_text(latest.get("reason_code")),
+        "verification_id": _normalize_text(latest.get("verification_id")),
+        "apply_attempt_id": _normalize_text(latest.get("apply_attempt_id")),
+        "authorization_id": _normalize_text(latest.get("authorization_id")),
+        "draft_proposal_id": _normalize_text(latest.get("draft_proposal_id")),
+        "candidate_id": _normalize_text(latest.get("candidate_id")),
+        "packet_task_artifact_verifier_current_success_references": _as_mapping(
+            latest.get("packet_task_artifact_verifier_current_success_references")
+        ),
+        "files_mechanically_verified": list(latest.get("files_mechanically_verified", [])),
+        "operator_or_system_finalization_note": _normalize_text(
+            latest.get("operator_or_system_finalization_note")
+        ),
+        "semantic_correctness_not_proven": latest.get("semantic_correctness_not_proven") is True,
+        "production_readiness_not_proven": latest.get("production_readiness_not_proven") is True,
+        "model_provider_runtime_not_proven": latest.get("model_provider_runtime_not_proven") is True,
+        "autonomous_ai_coding_not_proven": latest.get("autonomous_ai_coding_not_proven") is True,
+        "backbone_v0_not_declared": latest.get("backbone_v0_not_declared") is True,
+        "caveats": list(latest.get("caveats", [])),
+        "non_proofs": list(latest.get("non_proofs", _NON_PROOFS)),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "phase_311_finalization_reference": latest,
+    }

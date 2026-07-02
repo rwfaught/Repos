@@ -1561,3 +1561,26 @@ fresh artifact proof.
   requires separate architecture assessment and domain-separation criteria.
 
 `PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Verified Bounded Apply Task Finalization Readback Status
+
+- Phase 313 adds readback for verified bounded apply task finalization records
+  and updates the operator runbook.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: operators can now inspect finalization
+  status for the bounded code-patching evidence chain.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: finalization readback preserves
+  caveats, non-proofs, and Backbone V0-not-declared posture.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; finalization readback is not
+  semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 313 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 313 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The code-patching loop may
+  now be complete enough for a separate declaration assessment, but domain
+  separation remains unproven.
+
+`PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -3680,3 +3680,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   added.
 - Marker:
   `PHASE312_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 313 - Verified Bounded Apply Task Finalization Readback And Runbook
+
+- Status: source/test/docs readback for verified bounded apply task
+  finalization records plus operator runbook update.
+- Source changed:
+  `orchestrator/verified_bounded_apply_task_finalization.py`.
+- Test added:
+  `tests/test_phase_313_verified_bounded_apply_task_finalization_readback.py`.
+- Docs changed: `docs/PACKET_TO_PATCH_BRIDGE_OPERATOR_RUNBOOK.md`;
+  `docs/PHASE_313.md`; `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`;
+  `docs/SOURCE_MANIFEST.md`; `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: operators can read finalization id, finalization status,
+  verification/apply/authorization/draft/candidate/packet/task links, files
+  mechanically verified, finalization note/reason, caveats, non-proofs, and
+  Backbone V0-not-declared posture.
+- Proof scope: source/test/docs finalization readback and runbook behavior
+  only.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  integrated production workflow readiness, or Backbone V0 declaration is
+  added.
+- Marker:
+  `PHASE313_VERIFIED_BOUNDED_APPLY_TASK_FINALIZATION_READBACK_AND_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.

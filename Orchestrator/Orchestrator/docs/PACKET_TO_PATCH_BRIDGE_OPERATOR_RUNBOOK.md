@@ -291,6 +291,40 @@ readiness proof. It is not patch task finalization. It does not claim
 autonomous AI coding, provider/model/runtime/platform execution, or integrated
 production patch workflow readiness.
 
+Phase 311 finalization records close only the bounded patch task under
+mechanically verified apply-result evidence. The record links to the
+verification id, apply attempt id, authorization id, draft proposal id,
+candidate id, packet/task/artifact/verifier/current-success references, files
+mechanically verified, and a required finalization note/reason.
+
+Phase 312 hardens negative and edge cases around finalization records. Missing,
+failed, blocked, mismatched, duplicate, unbounded, unexpected, unsupported,
+smuggled, and Phase 284 residue finalization inputs block deterministically.
+
+Phase 313 finalization readback shows:
+
+- finalization id
+- finalization status
+- verification id
+- apply attempt id
+- authorization id
+- draft proposal id
+- candidate/packet/task references
+- files mechanically verified
+- finalization note/reason
+- `semantic_correctness_not_proven`
+- `production_readiness_not_proven`
+- `model_provider_runtime_not_proven`
+- `backbone_v0_not_declared`
+- caveats
+- non-proofs
+- timestamp
+
+Finalization is not semantic correctness proof. It is not production readiness
+proof. It is not autonomous AI coding proof. It is not provider/model/runtime
+execution proof. It is not Backbone V0. The finalization record closes the
+bounded code-patching evidence chain only.
+
 Before a Phase 100-style verification boundary, evidence must show the apply
 attempt artifact, exact changed files, before/after causal hashes or equivalent
 apply-result evidence, and a separate verification decision. Before a Phase
@@ -365,6 +399,9 @@ The packet-to-patch bridge does not prove:
   verification, or finalization
 - mechanical verification or verification readback as semantic correctness,
   production readiness, autonomous AI coding, or finalization
+- finalization or finalization readback as semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime execution, or
+  Backbone V0
 - integrated production patch workflow readiness
 - Backbone V0
 - apply-authorization readback as apply execution
@@ -387,5 +424,6 @@ Use the official product zipper for capsule proof:
 
 The control loop is approaching Backbone V0 criteria, but Backbone V0 remains
 open. Apply-result verification/readback now exists as source/test/docs
-behavior, but finalization and domain separation still block any Backbone V0
-declaration.
+behavior, and finalization records/readback now exist as source/test/docs
+behavior. A separate Backbone V0 declaration assessment is still required, and
+domain separation remains unproven.
