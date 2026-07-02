@@ -3512,4 +3512,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   apply-result verification, patch task finalization, integrated production
   workflow, or Backbone V0 declaration is added.
 - Marker:
-  `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 304 - Authorized Draft Patch Apply Negative Edge Contract
+
+- Status: source/test/docs hardening of authorized draft patch apply negative
+  and edge cases.
+- Source changed: `orchestrator/authorized_draft_patch_apply.py`.
+- Test added:
+  `tests/test_phase_304_authorized_draft_patch_apply_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_304.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: latest reject/defer, mismatched links, missing eligibility,
+  malformed payloads, unsupported operations, unsafe paths, smuggled proofs,
+  duplicate apply attempts, and Phase 284 residue reports block with
+  deterministic reason codes.
+- Proof scope: source/test/docs negative-edge contract for bounded apply
+  attempts. Blocked/failed attempts remain not verified and not finalized.
+- Non-proofs: no semantic correctness, provider/model/runtime/platform,
+  autonomous AI coding, production readiness, service/API/UI/dashboard/auth,
+  deployment, scheduler/connector, `general_answer`, cleanup/delete/archive,
+  apply-result verification, patch task finalization, integrated production
+  workflow, or Backbone V0 declaration is added.
+- Marker:
+  `PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

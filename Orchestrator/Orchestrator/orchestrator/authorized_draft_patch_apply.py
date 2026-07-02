@@ -249,6 +249,8 @@ def _operations_from_payload(payload: dict[str, Any]) -> tuple[list[dict[str, st
             if "parent traversal" in text or "outside" in text:
                 return [], "path_traversal_rejected"
             return [], "unbounded_target_path_rejected"
+        if "\\" in file_path:
+            return [], "unsafe_patch_path_rejected"
         operations.append(
             {
                 "operation_id": operation_id,
@@ -288,6 +290,61 @@ def _validate_chain(
         return draft, "candidate_link_missing"
     if not draft.get("source_packet_id"):
         return draft, "accepted_packet_result_link_missing"
+    candidate = _as_mapping(draft.get("phase_289_candidate_reference"))
+    promotion = _as_mapping(draft.get("phase_290_promotion_reference"))
+    packet_eligibility = _as_mapping(draft.get("phase_288_eligibility_reference"))
+    current_success = _as_mapping(draft.get("current_success_review_reference"))
+    if not candidate:
+        return draft, "candidate_link_missing"
+    if not promotion:
+        return draft, "promotion_link_missing"
+    if not packet_eligibility:
+        return draft, "accepted_packet_result_link_missing"
+    if not current_success:
+        return draft, "current_success_reference_missing"
+    if _normalize_text(candidate.get("candidate_id")) != _normalize_text(
+        draft.get("source_candidate_id")
+    ):
+        return draft, "candidate_id_mismatch"
+    if _normalize_text(promotion.get("candidate_id")) != _normalize_text(
+        draft.get("source_candidate_id")
+    ):
+        return draft, "promotion_candidate_id_mismatch"
+    for field_name in (
+        "source_packet_id",
+        "source_run_id",
+        "source_task_id",
+        "source_execution_artifact_id",
+        "source_execution_artifact_path",
+        "source_verifier_result_path",
+        "operator_decision_record_id",
+    ):
+        draft_value = _normalize_text(draft.get(field_name))
+        if _normalize_text(candidate.get(field_name)) != draft_value:
+            return draft, f"candidate_{field_name}_mismatch"
+        promotion_value = _normalize_text(promotion.get(field_name))
+        if promotion_value and promotion_value != draft_value:
+            return draft, f"promotion_{field_name}_mismatch"
+    if _normalize_text(packet_eligibility.get("task_id")) != _normalize_text(
+        draft.get("source_task_id")
+    ):
+        return draft, "packet_task_id_mismatch"
+    if _normalize_text(packet_eligibility.get("packet_id")) != _normalize_text(
+        draft.get("source_packet_id")
+    ):
+        return draft, "packet_id_mismatch"
+    if _normalize_text(current_success.get("task_id")) != _normalize_text(
+        draft.get("source_task_id")
+    ):
+        return draft, "current_success_task_id_mismatch"
+    if _normalize_text(current_success.get("run_id")) != _normalize_text(
+        draft.get("source_run_id")
+    ):
+        return draft, "current_success_run_id_mismatch"
+    if _as_mapping(draft.get("phase_284_generated_residue_guard")).get(
+        "generated_residue_detected"
+    ):
+        return draft, "phase_284_generated_residue_guard_reported"
     eligibility = _as_mapping(
         authorization.get("phase_296_authorization_eligibility_reference")
         or authorization.get("eligibility_record")
@@ -300,6 +357,24 @@ def _validate_chain(
     if claim_reason:
         return draft, claim_reason
     return draft, ""
+
+
+def _duplicate_apply_attempt_reason(
+    *,
+    authorization_id: str,
+    draft_proposal_id: str,
+    existing_apply_attempts: list[dict[str, Any]] | None,
+) -> str:
+    for attempt in existing_apply_attempts or []:
+        if not isinstance(attempt, dict):
+            continue
+        same_authorization = _normalize_text(
+            attempt.get("source_authorization_id") or attempt.get("authorization_id")
+        ) == authorization_id
+        same_draft = _normalize_text(attempt.get("draft_proposal_id")) == draft_proposal_id
+        if same_authorization or same_draft:
+            return "existing_apply_attempt_rejected"
+    return ""
 
 
 def _write_bridge_artifacts(
@@ -377,6 +452,7 @@ def execute_authorized_draft_patch_apply(
     *,
     authorization_record: dict[str, Any] | None = None,
     authorization_records: list[dict[str, Any]] | None = None,
+    existing_apply_attempts: list[dict[str, Any]] | None = None,
     apply_engine: Callable[..., dict[str, Any]] = apply_authorized_patch,
 ) -> dict[str, Any]:
     safe_authorization_id = validate_record_id(authorization_id, label="authorization id")
@@ -410,6 +486,18 @@ def execute_authorized_draft_patch_apply(
     if chain_reason:
         return _blocked(
             reason_code=chain_reason,
+            authorization_id=safe_authorization_id,
+            draft_proposal_id=draft_id,
+            evidence_chain=evidence_chain,
+        )
+    duplicate_reason = _duplicate_apply_attempt_reason(
+        authorization_id=safe_authorization_id,
+        draft_proposal_id=draft_id,
+        existing_apply_attempts=existing_apply_attempts,
+    )
+    if duplicate_reason:
+        return _blocked(
+            reason_code=duplicate_reason,
             authorization_id=safe_authorization_id,
             draft_proposal_id=draft_id,
             evidence_chain=evidence_chain,

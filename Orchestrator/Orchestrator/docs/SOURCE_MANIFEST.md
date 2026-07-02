@@ -6021,3 +6021,42 @@ integrated production patch workflow readiness, apply-result verification,
 patch task finalization, or Backbone V0 declaration is registered by Phase 303.
 
 `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 304 Authorized Draft Patch Apply Negative Edge Contract
+
+Boundary:
+
+`PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/authorized_draft_patch_apply.py`
+
+Registered changed tests:
+
+- `tests/test_phase_304_authorized_draft_patch_apply_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_304.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 304 hardens deterministic negative-edge behavior
+around authorized draft patch bounded apply attempts and preserves exact reason
+codes with not-verified and not-finalized posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, apply-result verification,
+patch task finalization, or Backbone V0 declaration is registered by Phase 304.
+
+`PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

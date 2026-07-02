@@ -1400,3 +1400,27 @@ fresh artifact proof.
   still lacks apply-result verification, finalization, and domain separation.
 
 `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Authorized Draft Patch Apply Negative Edge Status
+
+- Phase 304 hardens the authorized draft patch apply-attempt boundary with
+  deterministic negative-edge reason codes.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: malformed or stale apply attempts now
+  block before bounded apply execution.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: negative-edge hardening preserves that
+  apply attempts remain separate from Phase 100-style verification and Phase
+  101-style finalization.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge blocking is not
+  semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 304 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 304 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Apply negative-edge hardening
+  helps the control spine, but apply-result verification, finalization, and
+  domain separation remain open.
+
+`PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -5339,3 +5339,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production patch workflow readiness, or Backbone V0 declaration is added.
 
 `PHASE303_AUTHORIZED_DRAFT_PATCH_PROPOSAL_BOUNDED_APPLY_EXECUTION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 304 Authorized Draft Patch Apply Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed: `orchestrator/authorized_draft_patch_apply.py`.
+- Test added:
+  `tests/test_phase_304_authorized_draft_patch_apply_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_304.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: negative-edge hardening for latest reject/defer,
+  mismatched authorization/draft/candidate/task/packet/artifact/current-success
+  references, missing eligibility, ambiguous/unsupported payloads, unsafe
+  paths, smuggled claims, duplicate attempts, and Phase 284 residue reports.
+- Proof scope: source/test/docs negative-edge apply-attempt contract. No
+  blocked or failed attempt verifies apply results or finalizes a patch task.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder/connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/archive
+  authority, apply-result verification, patch task finalization, integrated
+  production patch workflow readiness, or Backbone V0 declaration is added.
+
+`PHASE304_AUTHORIZED_DRAFT_PATCH_APPLY_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
