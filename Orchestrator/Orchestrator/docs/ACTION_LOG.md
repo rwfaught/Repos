@@ -5015,3 +5015,35 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness is added.
 
 `PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 290 Patch Proposal Candidate Operator Promotion Gate
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/patch_proposal_candidate_promotion.py`.
+- Test changed:
+  `tests/test_phase_290_patch_proposal_candidate_operator_promotion_gate.py`.
+- Docs changed: `docs/PHASE_290.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: valid packet-derived `candidate_only` artifacts can
+  receive explicit operator promotion, rejection, or defer records with
+  non-empty operator notes/reasons.
+- Registered blocking: missing promotion decisions, missing notes/reasons,
+  ineligible candidates, non-candidate-only statuses, missing candidate source
+  evidence, already-applied candidates, and apply-authorization smuggling block
+  without creating a promotion record.
+- Conservative integration choice: Phase 290 persists promotion records only
+  and does not create a draft patch proposal.
+- Explicit non-proofs: no draft patch proposal creation, authorized patch
+  proposal creation, patch apply authorization, patch application, semantic
+  correctness, live provider/model execution, runtime/platform behavior,
+  autonomous AI coding, model-backed generation, production readiness,
+  service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder
+  behavior, connector behavior, `general_answer` resumption, platform/OpenClaw/
+  Hermes/LightRAG behavior, cleanup/delete/archive authority, or integrated
+  production patch workflow readiness is added.
+
+`PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`

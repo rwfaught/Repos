@@ -5569,3 +5569,45 @@ or integrated production patch workflow readiness behavior is registered by
 Phase 289.
 
 `PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 290 Patch Proposal Candidate Operator Promotion Gate
+
+Boundary:
+
+`PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/patch_proposal_candidate_promotion.py`
+
+Registered changed tests:
+
+- `tests/test_phase_290_patch_proposal_candidate_operator_promotion_gate.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_290.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 290 adds a deterministic operator promotion gate
+for packet-derived patch proposal candidates. Valid `candidate_only` artifacts
+can receive promotion, rejection, or defer records with non-empty operator
+notes/reasons. Promotion records preserve candidate and source evidence and
+explicitly remain not-authorized-for-apply.
+
+No draft patch proposal creation, authorized patch proposal creation, patch
+apply authorization, patch application, semantic correctness, live
+provider/model execution, runtime/platform behavior, autonomous AI coding,
+model-backed generation, production readiness, service/API/UI/dashboard/auth/
+deployment behavior, scheduler/reminder behavior, connector behavior,
+`general_answer` resumption, platform/OpenClaw/Hermes/LightRAG behavior,
+cleanup/delete/archive authority, or integrated production patch workflow
+readiness behavior is registered by Phase 290.
+
+`PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`

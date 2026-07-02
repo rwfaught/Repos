@@ -1106,3 +1106,29 @@ fresh artifact proof.
   request.
 
 `PHASE289_PACKET_RESULT_PATCH_PROPOSAL_CANDIDATE_ARTIFACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Patch Proposal Candidate Operator Promotion Gate Status
+
+- Phase 290 adds explicit promotion, rejection, and defer records for
+  packet-derived patch proposal candidates.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: candidate-only artifacts can now
+  receive a separate operator promotion gate decision when the operator supplies
+  a note/reason.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: adjacent but still not integrated;
+  Phase 290 does not create a draft patch proposal, create an authorized patch
+  proposal, authorize apply, or apply a patch.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; promotion records are
+  evidence routing records, not semantic correctness or task adequacy proof.
+- `SCRIPT_RELIABILITY`: promotion, rejection, defer, and blocked outputs are
+  deterministic JSON/dict-like shapes with exact reason codes, source evidence
+  links, non-proofs, and no-apply/no-authorization fields.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 290 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 290 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Candidate promotion is not patch apply authorization and is not patch
+  application.
+
+`PHASE290_PATCH_PROPOSAL_CANDIDATE_OPERATOR_PROMOTION_GATE_SOURCE_TEST_DOCS_PROVEN=PASS`
