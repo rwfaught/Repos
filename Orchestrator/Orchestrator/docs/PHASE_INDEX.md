@@ -3433,3 +3433,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   Backbone V0 declaration is added.
 - Marker:
   `PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 300 - Patch Apply Authorization Record Negative Edge Contract
+
+- Status: source/test/docs registration of negative-edge hardening for
+  operator apply-authorization records.
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_record.py`.
+- Test changed:
+  `tests/test_phase_300_patch_apply_authorization_record_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_300.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing draft evidence, non-draft-only/already-authorized/
+  already-applied drafts, missing or unclean Phase 296 eligibility readbacks,
+  evidence mismatches, rejected/deferred candidate evidence, unsupported
+  authorization decisions, missing notes, unsafe structured patch payloads,
+  duplicate authorization records, path traversal/absolute ids, claim
+  smuggling, apply-execution smuggling, apply-result smuggling, finalization
+  smuggling, and generated residue reporting are covered with deterministic
+  reason codes and no apply/apply-result/finalization side effects.
+- Non-proofs: no patch apply execution, apply result record creation, patch
+  task finalization, semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+- Marker:
+  `PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

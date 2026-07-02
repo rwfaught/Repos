@@ -1324,3 +1324,30 @@ fresh artifact proof.
   verification, finalization, and domain separation.
 
 `PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Patch Apply Authorization Record Negative Edge Status
+
+- Phase 300 hardens negative-edge behavior around operator
+  apply-authorization records.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: authorization record creation now has
+  deterministic blocked/reject/defer coverage for missing, mismatched, unsafe,
+  duplicate, and smuggled evidence.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged beyond authorization record
+  hardening. Phase 300 does not execute patch apply, create apply results, or
+  finalize tasks.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; authorization record
+  hardening is not semantic correctness proof or task adequacy proof.
+- `SCRIPT_RELIABILITY`: blocked outputs preserve exact reason codes,
+  no-cleanup/no-delete/no-archive behavior, non-proofs, and no apply/
+  apply-result/finalization activity flags.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 300 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 300 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Backbone V0 remains an open thread only. The control loop is approaching
+  Backbone criteria but still lacks bounded apply execution, apply-result
+  verification, finalization, and domain separation.
+
+`PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -5900,3 +5900,44 @@ integrated production patch workflow readiness, or Backbone V0 declaration is
 registered by Phase 299.
 
 `PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 300 Patch Apply Authorization Record Negative Edge Contract
+
+Boundary:
+
+`PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/draft_patch_proposal_apply_authorization_record.py`
+
+Registered changed tests:
+
+- `tests/test_phase_300_patch_apply_authorization_record_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_300.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 300 adds deterministic negative-edge handling for
+operator apply-authorization records. Blocked cases return exact reason codes
+and preserve no-apply, no-apply-result, no-finalization, no-cleanup, and
+non-proof posture.
+
+No patch apply execution, apply result record creation, patch task
+finalization, semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+integrated production patch workflow readiness, or Backbone V0 declaration is
+registered by Phase 300.
+
+`PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -31,6 +31,13 @@ _STRUCTURED_PATCH_FIELDS = ("proposed_changes", "unified_diff", "rationale")
 _AUTHORIZED_STATUS = "authorized_for_later_bounded_apply"
 _REJECTED_STATUS = "apply_authorization_rejected"
 _DEFERRED_STATUS = "apply_authorization_deferred"
+_PROMOTED_STATUS = "candidate_ready_for_later_patch_proposal_boundary"
+_PROMOTE_DECISION = "promote_to_patch_proposal_candidate_ready"
+_ACCEPTED_PACKET_DECISIONS = {
+    "accept_packet_result",
+    "accepted",
+    "operator_accepted",
+}
 
 _NO_ACTIVITY_FLAGS = {
     "operator_apply_authorization_record_created": False,
@@ -297,6 +304,87 @@ def _duplicate_blocks(
     return [], []
 
 
+def _draft_evidence_blocks(draft: dict[str, Any]) -> tuple[list[str], list[str]]:
+    candidate = _as_mapping(draft.get("phase_289_candidate_reference"))
+    promotion = _as_mapping(draft.get("phase_290_promotion_reference"))
+    packet_eligibility = _as_mapping(draft.get("phase_288_eligibility_reference"))
+    current_success = _as_mapping(draft.get("current_success_review_reference"))
+
+    missing: list[str] = []
+    blocked: list[str] = []
+
+    if candidate and candidate.get("candidate_status") != "candidate_only":
+        missing.append("candidate_status_candidate_only")
+        blocked.append("candidate_only_status_required")
+    if promotion and (
+        promotion.get("promotion_status") != _PROMOTED_STATUS
+        or promotion.get("operator_decision") != _PROMOTE_DECISION
+    ):
+        missing.append("promoted_candidate_decision")
+        blocked.append("latest_negative_candidate_promotion_decision")
+    if current_success and (
+        current_success.get("classification") != "completed_current_state_success"
+        or not current_success.get("ready_for_operator_review")
+    ):
+        missing.append("current_success_completed_success_reference")
+        blocked.append("current_success_reference_not_ready")
+
+    accepted_decision = _normalize_text(
+        candidate.get("operator_decision")
+        or packet_eligibility.get("operator_decision")
+        or packet_eligibility.get("accepted_packet_decision")
+    )
+    if accepted_decision and accepted_decision not in _ACCEPTED_PACKET_DECISIONS:
+        missing.append("accepted_packet_decision")
+        blocked.append("accepted_packet_decision_mismatch")
+
+    for field_name in (
+        "source_candidate_id",
+        "source_packet_id",
+        "source_run_id",
+        "source_task_id",
+        "source_execution_artifact_id",
+        "source_execution_artifact_path",
+        "source_verifier_result_path",
+        "operator_decision_record_id",
+    ):
+        draft_value = _normalize_text(draft.get(field_name))
+        candidate_value = _normalize_text(
+            candidate.get(
+                "candidate_id" if field_name == "source_candidate_id" else field_name
+            )
+        )
+        if candidate and draft_value and candidate_value and draft_value != candidate_value:
+            missing.append(f"matching_candidate_{field_name}")
+            blocked.append("candidate_evidence_mismatch")
+
+    for field_name in (
+        "candidate_id",
+        "source_packet_id",
+        "source_run_id",
+        "source_task_id",
+        "source_execution_artifact_id",
+        "source_execution_artifact_path",
+        "source_verifier_result_path",
+        "operator_decision_record_id",
+    ):
+        draft_field = "source_candidate_id" if field_name == "candidate_id" else field_name
+        draft_value = _normalize_text(draft.get(draft_field))
+        promotion_value = _normalize_text(promotion.get(field_name))
+        if promotion and draft_value and promotion_value and draft_value != promotion_value:
+            missing.append(f"matching_promotion_{field_name}")
+            blocked.append("candidate_evidence_mismatch")
+
+    for field_name in ("task_id", "run_id"):
+        draft_value = _normalize_text(draft.get(f"source_{field_name}"))
+        current_value = _normalize_text(current_success.get(field_name))
+        if current_success and draft_value and current_value and draft_value != current_value:
+            missing.append(f"matching_current_success_{field_name}")
+            blocked.append("current_success_reference_mismatch")
+
+    return missing, blocked
+
+
 def _eligibility_matches_draft(
     draft: dict[str, Any],
     eligibility: dict[str, Any],
@@ -365,8 +453,11 @@ def create_draft_patch_proposal_apply_authorization_record(
         or authorization_input.get("eligibility")
     )
     if not eligibility:
-        eligibility = evaluate_draft_patch_proposal_apply_authorization_eligibility(
-            {"draft_proposal": draft}
+        return _blocked(
+            reason_code="authorization_eligibility_required",
+            draft=draft,
+            missing_requirements=["authorization_eligibility"],
+            blocked_conditions=["authorization_eligibility_required"],
         )
 
     candidate = _as_mapping(draft.get("phase_289_candidate_reference"))
@@ -409,6 +500,9 @@ def create_draft_patch_proposal_apply_authorization_record(
     if not current_success:
         missing.append("current_success_review_reference")
         blocked.append("current_success_reference_missing")
+    evidence_missing, evidence_blocked = _draft_evidence_blocks(draft)
+    missing.extend(evidence_missing)
+    blocked.extend(evidence_blocked)
 
     patch_missing, patch_blocked = _patch_payload_blocks(patch_payload)
     missing.extend(patch_missing)

@@ -5256,3 +5256,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Backbone V0 declaration is added.
 
 `PHASE299_DRAFT_PATCH_PROPOSAL_OPERATOR_APPLY_AUTHORIZATION_RECORD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 300 Patch Apply Authorization Record Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/draft_patch_proposal_apply_authorization_record.py`.
+- Test changed:
+  `tests/test_phase_300_patch_apply_authorization_record_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_300.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: Phase 300 hardens authorization record negative and
+  edge cases for missing/unclean eligibility, mismatched evidence, rejected or
+  deferred candidate evidence, unsafe patch payloads, duplicate records,
+  smuggled provider/model/runtime/platform/semantic/autonomous/production/
+  apply/apply-result/finalization claims, and generated residue reporting.
+- Explicit non-proofs: no patch apply execution, apply result record creation,
+  patch task finalization, semantic correctness, live provider/model
+  execution, runtime/platform behavior, autonomous AI coding, model-backed
+  generation, production readiness, service/API/UI/dashboard/auth/deployment
+  behavior, scheduler/reminder behavior, connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/
+  archive authority, integrated production patch workflow readiness, or
+  Backbone V0 declaration is added.
+
+`PHASE300_PATCH_APPLY_AUTHORIZATION_RECORD_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
