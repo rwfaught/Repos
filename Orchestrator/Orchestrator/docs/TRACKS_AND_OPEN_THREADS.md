@@ -1005,3 +1005,27 @@ fresh artifact proof.
 - Coding remains one route among many, not the entire product identity.
 
 `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Packet Schema Negative Edge Contract Status
+
+- Phase 285 hardens packet schema negative contracts and deterministic blocked
+  JSON shapes.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: packet execution is now guarded
+  against reused task ids, Windows backslash declared paths, unsupported
+  provider/policy values, provider/model/runtime/platform smuggling, unsafe
+  paths, malformed JSON, non-object JSON, and missing or empty required fields.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; Phase 285 is a schema/error
+  contract hardening and does not change current-success proof meaning.
+- `SCRIPT_RELIABILITY`: blocked CLI/direct shapes preserve no-proof and
+  no-activity flags for invalid packets.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged; Phase 285 does not prove an
+  integrated production patch workflow or live model-generated proposal.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 285 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 285 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- Coding remains one route among many, not the entire product identity.
+
+`PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

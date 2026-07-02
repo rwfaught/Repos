@@ -3101,3 +3101,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   integrated production patch workflow readiness is added.
 - Marker:
   `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 285 - Packet Schema Negative Edge Contract
+
+- Status: source/test/docs registration of packet schema negative edge
+  hardening and deterministic blocked/error JSON shapes.
+- Source changed: `orchestrator/operator_coding_task_packet.py`.
+- Test changed:
+  `tests/test_phase_285_packet_schema_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_285.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: malformed packet JSON, non-object JSON, direct non-object input,
+  missing fields, empty `expected_output`, reused task ids, Windows backslash
+  paths, POSIX absolute paths, parent traversal, provider/model/runtime/
+  platform smuggling, unsupported execution policy, and unsupported provider
+  name all produce deterministic blocked/error shapes with no-proof and
+  no-activity flags preserved.
+- Non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+  or integrated production patch workflow readiness is added.
+- Marker:
+  `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

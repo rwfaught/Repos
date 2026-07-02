@@ -5402,3 +5402,43 @@ resumption, platform/OpenClaw/Hermes/LightRAG behavior, or integrated
 production patch workflow readiness behavior is registered by Phase 284.
 
 `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 285 Packet Schema Negative Edge Contract
+
+Boundary:
+
+`PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/operator_coding_task_packet.py`
+
+Registered changed tests:
+
+- `tests/test_phase_285_packet_schema_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_285.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 285 blocks reused task ids before persistence and
+blocks Windows backslash declared paths. The negative test contract covers
+malformed/non-object JSON, missing fields, empty expected output, path safety,
+provider/runtime/model/platform smuggling, unsupported policy/provider, and
+deterministic blocked JSON shapes across CLI/direct paths.
+
+No semantic correctness, live provider/model execution, runtime/platform
+behavior, autonomous AI coding, model-backed generation, production readiness,
+service/API/UI/dashboard/auth/deployment behavior, scheduler/reminder behavior,
+connector behavior, `general_answer` resumption, platform/OpenClaw/Hermes/
+LightRAG behavior, cleanup/delete/archive authority, or integrated production
+patch workflow readiness behavior is registered by Phase 285.
+
+`PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

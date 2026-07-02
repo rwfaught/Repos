@@ -5,7 +5,7 @@ from typing import Any
 from orchestrator import engine
 import orchestrator.run_manager as run_manager
 from orchestrator.current_success_result_review import review_current_success_task_result
-from orchestrator.paths import resolve_declared_project_path, validate_record_id
+from orchestrator.paths import record_path, resolve_declared_project_path, validate_record_id
 from orchestrator.task_schema import FILESYSTEM_MUTATION_EXECUTION_POLICY, Task
 
 
@@ -182,7 +182,17 @@ def _validate_packet(packet: Any) -> tuple[dict[str, Any] | None, dict[str, Any]
             blocked_conditions.append(f"{label.replace(' ', '_')}_invalid")
             details.append(str(error))
 
+    if task_id and "task_id_invalid" not in blocked_conditions:
+        task_path = record_path(run_manager.TASKS_DIR, task_id, label="task id")
+        if task_path.exists():
+            blocked_conditions.append("task_id_already_exists")
+            details.append("Task id already has a persisted task record.")
+
     for declared_path in files_in_scope:
+        if "\\" in declared_path:
+            blocked_conditions.append("declared_file_path_invalid")
+            details.append("Declared project path must use forward slashes.")
+            continue
         try:
             resolve_declared_project_path(declared_path)
         except ValueError as error:

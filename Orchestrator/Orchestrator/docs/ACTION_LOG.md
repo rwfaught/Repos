@@ -4895,3 +4895,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   added.
 
 `PHASE284_PACKET_CLI_PRE_RUN_AND_RESIDUE_GUARD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 285 Packet Schema Negative Edge Contract
+
+- Timestamp: 2026-07-01
+- Boundary:
+  `PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed: `orchestrator/operator_coding_task_packet.py`.
+- Test changed:
+  `tests/test_phase_285_packet_schema_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_285.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered hardening: reused task ids are blocked before persistence, and
+  Windows backslash declared paths are blocked so packet file paths remain
+  project-relative forward-slash paths.
+- Registered negative contract coverage: malformed packet JSON, non-object
+  JSON, direct non-object input, missing required fields, empty
+  `expected_output`, reused task ids, Windows path separators, POSIX absolute
+  paths, parent traversal, provider/model/runtime/platform smuggling,
+  unsupported execution policy, unsupported provider name, no-proof/no-activity
+  flag preservation, and CLI/direct blocked-condition parity for invalid packet
+  ids.
+- Explicit non-proofs: no semantic correctness, live provider/model execution,
+  runtime/platform behavior, autonomous AI coding, model-backed generation,
+  production readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/reminder behavior, connector behavior, `general_answer` resumption,
+  platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+  or integrated production patch workflow readiness is added.
+
+`PHASE285_PACKET_SCHEMA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
