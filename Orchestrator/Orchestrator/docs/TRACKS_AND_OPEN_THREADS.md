@@ -1836,3 +1836,25 @@ fresh artifact proof.
   `PHASE329_BACKBONE_MULTI_FIXTURE_CRITERIA_READINESS_ASSESSMENT_READONLY`.
 
 `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Criteria Scaffold Status
+
+- Phase 331 adds deterministic Backbone V0 criteria machinery without declaring
+  Backbone V0.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; criteria evaluation reads
+  static mapping/readback evidence only and does not execute the code-patching
+  loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 331 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 331 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Phase 331 defines criteria
+  machinery only; future declaration/export claims still require a separate
+  boundary and official clean capsule proof. The next authorized campaign move
+  is:
+  `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`.
+
+`PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`

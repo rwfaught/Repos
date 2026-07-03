@@ -3988,3 +3988,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   execution, or integrated production workflow readiness is added.
 - Marker:
   `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 331 - Backbone V0 Criteria Scaffold
+
+- Status: source/test/docs Backbone V0 criteria machinery added without
+  declaring Backbone V0.
+- Source added:
+  `orchestrator/backbone_v0_criteria.py`.
+- Test added:
+  `tests/test_phase_331_backbone_v0_criteria_scaffold.py`.
+- Phase doc added:
+  `docs/PHASE_331.md`.
+- Behavior: deterministic criteria evaluation reads current static Backbone
+  scaffold, code-patching mapping, research-claim fixture, and PKMS fixture
+  evidence; records thirteen declaration prerequisites; reports current
+  criteria-definition satisfaction; keeps declaration blocked; and requires
+  official clean capsule proof before any future declaration/export claim.
+- Proof scope: source/test/docs criteria-definition behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment behavior, live Obsidian vault
+  access, live PKMS mutation, live business-data mutation, real domain
+  execution, or official clean capsule proof is added.
+- Marker:
+  `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`.

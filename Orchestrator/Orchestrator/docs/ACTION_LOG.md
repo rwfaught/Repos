@@ -5875,3 +5875,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Phase 328.
 
 `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 331 Backbone V0 Criteria Scaffold
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_v0_criteria.py`.
+- Test added:
+  `tests/test_phase_331_backbone_v0_criteria_scaffold.py`.
+- Phase doc added:
+  `docs/PHASE_331.md`.
+- Registered behavior: deterministic Backbone V0 criteria evaluation records
+  current scaffold, real product bounded-context mapping, two non-patch fixture
+  mappings, ordered stage coverage, negative-edge coverage, readback,
+  decision-boundary coverage, non-proof preservation, adapter-disabled posture,
+  real-domain non-execution, official clean capsule requirement, and semantic/
+  production non-proof posture.
+- Proof scope: source/test/docs criteria-definition behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment behavior, live Obsidian vault
+  access, live PKMS mutation, live business-data mutation, real domain
+  execution, official clean capsule proof, or declaration/export proof is
+  registered by Phase 331.
+
+`PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`

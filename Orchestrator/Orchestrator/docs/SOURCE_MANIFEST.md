@@ -6779,3 +6779,40 @@ criteria, integrated production workflow readiness, or Backbone V0 declaration
 is registered by Phase 328.
 
 `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 331 Backbone V0 Criteria Scaffold
+
+Boundary:
+
+`PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_v0_criteria.py`
+
+Registered changed tests:
+
+- `tests/test_phase_331_backbone_v0_criteria_scaffold.py`
+
+Registered changed docs:
+
+- `docs/PHASE_331.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+
+Registered behavior: Phase 331 adds deterministic Backbone V0 criteria
+machinery without declaring Backbone V0. Criteria evaluation records current
+static source/test/docs satisfaction for the criteria-definition checklist while
+keeping declaration blocked and official clean capsule proof absent.
+
+Registered non-proofs: no semantic correctness, production readiness,
+autonomous AI coding, live provider/model execution, runtime/platform
+execution, service/API/UI/dashboard/auth/deployment behavior, live Obsidian
+vault access, live PKMS mutation, live business-data mutation, real domain
+execution, official clean capsule proof, declaration/export proof, or Backbone
+V0 declaration is registered by Phase 331.
+
+`PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -725,3 +725,14 @@ operator authorization, and verification evidence as strings. It does not
 access live Obsidian vaults, mutate live PKMS notes, execute adapters, prove
 real backlink/frontmatter correctness, create Backbone V0 criteria, or declare
 Backbone V0.
+
+## Phase 331 Backbone V0 Criteria Context
+
+Phase 331 belongs to the source/test/docs Backbone criteria context. It defines
+criteria machinery for a future Backbone V0 declaration without making that
+declaration.
+
+Criteria evidence is static source/test/docs readback only. Criteria
+satisfaction is not semantic correctness, production readiness, autonomous AI
+coding, provider/model/runtime/platform execution, live domain integration,
+official clean capsule proof, or declaration/export proof.
