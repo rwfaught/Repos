@@ -1816,3 +1816,23 @@ fresh artifact proof.
   `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS`.
 
 `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone PKMS Note Operation Fixture Readback Decision Boundary Status
+
+- Phase 328 adds deterministic operator readback and decision-boundary
+  assessment for the static fake `pkms_note_operation_fixture` Backbone mapping.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 328 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  PKMS fixture readback is static fixture evidence only.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 328 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 328 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Phase 328 does not create a
+  Backbone V0 criteria phase. The next authorized campaign move is read-only:
+  `PHASE329_BACKBONE_MULTI_FIXTURE_CRITERIA_READINESS_ASSESSMENT_READONLY`.
+
+`PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

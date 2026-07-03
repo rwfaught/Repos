@@ -73,6 +73,29 @@ PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS = (
     "fixture_stage_role",
 )
 
+PKMS_NOTE_FIXTURE_OPERATOR_READBACK_FIELDS = (
+    "backbone_v0_declared",
+    "adapter_execution_allowed",
+    "live_vault_access_allowed",
+    "note_mutation_allowed",
+    "real_backlink_frontmatter_correctness_proven",
+    "bounded_context",
+    "mapped_stage_names",
+    "stage_statuses",
+    "status_counts",
+    "complete_mapping_count",
+    "fixture_evidence_strings",
+    "backbone_native_fields",
+    "pkms_specific_fields",
+    "non_proofs",
+    "possible_negative_edge_reason_codes",
+    "recommended_next_boundary",
+)
+
+PKMS_NOTE_FIXTURE_RECOMMENDED_NEXT_BOUNDARY = (
+    "PHASE329_BACKBONE_MULTI_FIXTURE_CRITERIA_READINESS_ASSESSMENT_READONLY"
+)
+
 _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
     "backbone_v0_declared": "backbone_v0_claim_rejected",
     "adapter_execution_allowed": "adapter_execution_claim_rejected",
@@ -301,6 +324,109 @@ def read_pkms_note_fixture_backbone_mapping_status(
         "production_readiness_claimed": False,
         "provider_model_runtime_platform_execution_claimed": False,
         "autonomous_ai_coding_claimed": False,
+    }
+
+
+def read_pkms_note_fixture_backbone_operator_readback(
+    mappings: tuple[PkmsNoteFixtureBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_pkms_note_fixture_backbone_stage_mappings()
+        if mappings is None
+        else mappings
+    )
+    validations = [
+        validate_pkms_note_fixture_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    ordered_validation = validate_ordered_pkms_note_fixture_backbone_stage_mappings(
+        selected_mappings
+    )
+    stage_statuses = [
+        {
+            "stage_name": validation["stage_name"],
+            "status": validation["status"],
+            "complete": validation["complete"],
+            "blocked": False,
+            "not_applicable": False,
+            "reason_code": validation["reason_code"],
+        }
+        for validation in validations
+    ]
+    incomplete_count = sum(1 for validation in validations if not validation["complete"])
+    return {
+        "pkms_note_fixture_backbone_operator_readback": True,
+        "readback_fields": list(PKMS_NOTE_FIXTURE_OPERATOR_READBACK_FIELDS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "adapter_execution_allowed": PKMS_NOTE_FIXTURE_ADAPTER.execution_allowed,
+        "adapters_executable_through_mapping": False,
+        "live_vault_access_allowed": False,
+        "live_vault_accessed": False,
+        "note_mutation_allowed": False,
+        "live_pkms_note_mutated": False,
+        "real_backlink_frontmatter_correctness_proven": False,
+        "bounded_context": PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT,
+        "mapped_stage_names": ordered_validation["stage_names"],
+        "expected_backbone_stage_names": list(ordered_backbone_stage_names()),
+        "stage_statuses": stage_statuses,
+        "complete_mapping_count": len(selected_mappings) - incomplete_count,
+        "status_counts": {
+            "complete": len(selected_mappings) - incomplete_count,
+            "mapped": len(selected_mappings) - incomplete_count,
+            "incomplete": incomplete_count,
+            "blocked": 0,
+            "not_applicable": 0,
+        },
+        "fixture_evidence_strings": {
+            "fixture_sources": sorted(
+                {
+                    fixture_source
+                    for mapping in selected_mappings
+                    for fixture_source in (
+                        mapping.fixture_sources
+                        if isinstance(mapping, PkmsNoteFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("fixture_sources") or ())
+                    )
+                }
+            ),
+            "phase_docs": sorted(
+                {
+                    phase_doc
+                    for mapping in selected_mappings
+                    for phase_doc in (
+                        mapping.phase_docs
+                        if isinstance(mapping, PkmsNoteFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_docs") or ())
+                    )
+                }
+            ),
+            "phase_tests": sorted(
+                {
+                    phase_test
+                    for mapping in selected_mappings
+                    for phase_test in (
+                        mapping.phase_tests
+                        if isinstance(mapping, PkmsNoteFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_tests") or ())
+                    )
+                }
+            ),
+            "evidence_is_fake_fixture_only": True,
+            "evidence_is_reference_only": True,
+        },
+        "backbone_native_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
+        "pkms_specific_fields": list(PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS),
+        "non_proofs": list(PKMS_NOTE_FIXTURE_NON_PROOFS),
+        "possible_negative_edge_reason_codes": sorted(
+            PKMS_NOTE_FIXTURE_REASON_CODES.values()
+        ),
+        "blocked_conditions": list(ordered_validation["incomplete_reason_codes"]),
+        "recommended_next_boundary": PKMS_NOTE_FIXTURE_RECOMMENDED_NEXT_BOUNDARY,
+        "semantic_correctness_claimed": False,
+        "production_readiness_claimed": False,
+        "provider_model_runtime_platform_execution_claimed": False,
+        "autonomous_ai_coding_claimed": False,
+        "official_capsule_proof_current": False,
     }
 
 

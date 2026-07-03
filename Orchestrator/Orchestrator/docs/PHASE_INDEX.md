@@ -3960,3 +3960,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   capsule proof.
 - Marker:
   `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 328 - Backbone PKMS Note Operation Fixture Readback Decision Boundary
+
+- Status: source/test/docs operator readback and decision-boundary assessment
+  added for the static fake PKMS note-operation fixture mapping.
+- Source changed:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Source added:
+  `orchestrator/backbone_pkms_note_fixture_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_328_backbone_pkms_note_fixture_readback_decision_boundary.py`.
+- Phase doc added:
+  `docs/PHASE_328.md`.
+- Behavior: readback and decision-boundary functions report static PKMS fixture
+  mapping status, block declaration/criteria/execution/live-access/mutation/
+  claim surfaces, preserve non-proofs, and recommend read-only Phase 329
+  multi-fixture criteria-readiness assessment.
+- Proof scope: source/test/docs fixture readback and decision-boundary behavior
+  only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, no semantic
+  correctness, no live provider/model execution, no live Obsidian/PKMS access,
+  no live note mutation, no real backlink/frontmatter correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  `general_answer`, official capsule proof, adapter execution, real domain
+  execution, or integrated production workflow readiness is added.
+- Marker:
+  `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.

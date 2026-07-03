@@ -5843,3 +5843,35 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Phase 327.
 
 `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 328 Backbone PKMS Note Operation Fixture Readback Decision Boundary
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Source added:
+  `orchestrator/backbone_pkms_note_fixture_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_328_backbone_pkms_note_fixture_readback_decision_boundary.py`.
+- Phase doc added:
+  `docs/PHASE_328.md`.
+- Registered behavior: deterministic operator readback and decision-boundary
+  assessment for the static fake `pkms_note_operation_fixture` mapping blocks
+  Backbone V0 declaration, Backbone V0 criteria creation, adapter execution,
+  live vault access, live note mutation, real domain execution, backlink/
+  frontmatter correctness claims, semantic/production claims,
+  provider/runtime/platform claims, `general_answer` resumption, and
+  unauthorized official capsule generation; recommends read-only Phase 329.
+- Proof scope: source/test/docs fixture readback and decision-boundary behavior
+  only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, semantic
+  correctness, production readiness, autonomous AI coding, live Obsidian/PKMS
+  access, live note mutation, real backlink/frontmatter correctness,
+  provider/model/runtime/platform execution, adapter execution, service/API/UI/
+  dashboard/auth/deployment behavior, official capsule proof, real domain
+  execution, or integrated production workflow readiness is registered by
+  Phase 328.
+
+`PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
