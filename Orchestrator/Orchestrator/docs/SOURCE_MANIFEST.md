@@ -7435,3 +7435,58 @@ verification after local commit, and a separate capsule-proof boundary for
 official capsule claims.
 
 `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 355 Product Task Packet Lifecycle State Readback
+
+Boundary:
+
+`PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`
+
+Changed files:
+
+- `orchestrator/product_task_packet_lifecycle_state_readback.py`
+- `tests/test_phase_355_product_task_packet_lifecycle_state_readback.py`
+- `docs/PHASE_355.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Accepted facts: current verified `origin/main` is
+`feb335085121362347eb2c4abb0f88e2685cfaae`; Phase 349, Phase 351, Phase 352,
+and Phase 354 source basis is preserved; Phase 354 push/ref verification is
+accepted; Source Files refresh after Phase 351 was not official clean capsule
+proof; Phase 335 remains the only accepted official clean capsule proof unless
+explicitly superseded.
+
+Registered behavior: Phase 355 adds a pure deterministic source-level
+lifecycle-state readback for product task packets. It records lifecycle states,
+transition doctrine, invalid transitions, lifecycle gates, stop conditions,
+false activity flags, required report caveats, source/capsule/Git truth
+separation, and the recommended next boundary. It is source/test/docs readback
+only.
+
+Recommended next boundary:
+
+`PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+
+Registered non-proofs: no runtime/provider/model/platform execution, no
+service/API/UI/dashboard/auth/deployment behavior, no WSL/Ollama/OpenClaw/
+Hermes/LightRAG/Discord/installer execution, no `general_answer` resumption, no
+worker dispatch, no patch workflow implementation, no patch application, no
+routing implementation, no provider policy implementation, no provider/model
+execution, no domain-general intake implementation, no lifecycle transition
+execution, no live task creation, no live task execution, no live mutation, no
+live business-data/Obsidian/PKMS access, no adapter execution, no real domain
+execution, no Source Files refresh, no capsule/export/package refresh, no
+semantic correctness, no production readiness, no autonomous AI coding
+authority, no push, and no official capsule proof beyond Phase 335 is
+registered by Phase 355.
+
+Lifecycle-state doctrine: boundary before allowlist, allowlist before mutation,
+validation before commit, coordinator review before push/ref verification,
+remote-ref verification does not prove production readiness, handoff on context
+saturation, separate Source Files authorization, separate capsule-proof
+boundary, and separate runtime/provider authorization.
+
+`PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -4499,3 +4499,51 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   appears.
 - Marker:
   `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 355 - Product Task Packet Lifecycle State Readback
+
+- Status: source/test/docs deterministic lifecycle-state readback added for
+  product task packets.
+- Boundary:
+  `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_lifecycle_state_readback.py`.
+- Test added:
+  `tests/test_phase_355_product_task_packet_lifecycle_state_readback.py`.
+- Phase doc added:
+  `docs/PHASE_355.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `feb335085121362347eb2c4abb0f88e2685cfaae`; Phase 349, Phase 351,
+  Phase 352, and Phase 354 markers remain the source basis; Phase 354 push/ref
+  verification is accepted; Source Files refresh after Phase 351 was not
+  official clean capsule proof; Phase 335 remains the only accepted official
+  clean capsule proof unless explicitly superseded.
+- Behavior: records pure deterministic source-level lifecycle-state data for
+  product task packet states, transition doctrine, invalid transitions,
+  lifecycle gates, stop conditions, false activity flags, required report
+  caveats, source/capsule/Git truth separation, and the recommended next
+  boundary.
+- Proof scope: source/test/docs lifecycle state readback only.
+- Recommended next boundary:
+  `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Lifecycle-state doctrine: boundary before allowlist, allowlist before
+  mutation, validation before commit, coordinator review before push/ref
+  verification, remote-ref verification does not prove production readiness,
+  handoff on context saturation, and separate authorization for Source Files,
+  capsule/export/package proof, runtime/provider/model/platform work, and
+  service/API/UI/dashboard/auth/deployment work.
+- Non-proofs: no product task creation, task execution, transition execution,
+  live mutation, worker dispatch, patch workflow implementation, patch
+  application, routing implementation, provider policy implementation,
+  provider/model execution, domain-general intake implementation, parser/
+  runner/dispatcher, CLI, service/API/UI/dashboard/auth/deployment behavior,
+  runtime/provider/model/platform execution, `general_answer` resumption,
+  Source Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, autonomous AI coding authority, live business-data/
+  Obsidian/PKMS access, adapter execution, real domain execution, push, or
+  official capsule proof beyond Phase 335 is registered by Phase 355.
+- Marker:
+  `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
