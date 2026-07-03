@@ -5669,3 +5669,32 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production workflow readiness is added.
 
 `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 320 Backbone Mapping Operator Decision Boundary
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_mapping_operator_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_320_backbone_mapping_operator_decision_boundary.py`.
+- Docs changed: `docs/PHASE_320.md`;
+  `docs/BACKBONE_MAPPING_OPERATOR_RUNBOOK.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic decision-boundary assessment for the
+  Backbone/code-patching mapping that consumes Phase 319 readback, blocks
+  declaration/execution/migration/claim surfaces, exposes deferred decisions,
+  preserves non-proofs, and recommends a read-only non-code-patching fixture
+  assessment as the next boundary.
+- Proof scope: source/test/docs operator decision-boundary behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, official capsule proof, adapter execution, patch-loop
+  migration, or integrated production workflow readiness is added.
+
+`PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`

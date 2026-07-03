@@ -3805,3 +3805,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   readiness is added.
 - Marker:
   `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 320 - Backbone Mapping Operator Decision Boundary
+
+- Status: source/test/docs operator decision-boundary assessment added for the
+  Backbone/code-patching mapping layer.
+- Source added:
+  `orchestrator/backbone_mapping_operator_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_320_backbone_mapping_operator_decision_boundary.py`.
+- Docs changed: `docs/PHASE_320.md`;
+  `docs/BACKBONE_MAPPING_OPERATOR_RUNBOOK.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: deterministic decision surface consumes the Phase 319 readback and
+  exposes allowed, blocked, and deferred decisions while preserving non-proofs,
+  Backbone V0 false posture, adapter-execution-disabled posture, and
+  patch-loop-not-migrated posture.
+- Proof scope: source/test/docs operator decision-boundary behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  official capsule proof, adapter execution, patch-loop migration, or
+  integrated production workflow readiness is added.
+- Marker:
+  `PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`.

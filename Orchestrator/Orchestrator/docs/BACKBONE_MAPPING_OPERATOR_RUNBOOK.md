@@ -104,3 +104,14 @@ Recommended next boundary:
 
 That boundary should assess declaration readiness without executing adapters,
 migrating the patch loop, or making production-readiness claims.
+
+## Phase 320 Decision Boundary
+
+Phase 320 adds a deterministic decision surface over the Phase 319 readback.
+It blocks Backbone V0 declaration, adapter execution, patch-loop migration,
+semantic correctness claims, production-readiness claims, provider/runtime
+claims, `general_answer` resumption, and unauthorized capsule generation.
+
+The next safe move is a read-only non-code-patching fixture/mapping assessment:
+
+`PHASE321_BACKBONE_NON_PATCH_FIXTURE_MAPPING_ASSESSMENT_READONLY`

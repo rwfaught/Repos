@@ -4939,7 +4939,7 @@ Boundary:
 
 `PHASE_270_CURRENT_SUCCESS_REVIEW_ARTIFACT_DIR_ALIAS_REPAIR_SOURCE_TEST_DOCS`
 
-Registered changed source:
+Registered added source:
 
 - `orchestrator/current_success_result_review.py`
 
@@ -5005,7 +5005,7 @@ Boundary:
 
 `PRODUCT_PHASE_272_INTEGRATED_CODING_TASK_CURRENT_SPINE_PROOF_TEST_DOCS_WORKER`
 
-Registered changed tests:
+Registered added tests:
 
 - `tests/test_phase_272_integrated_coding_task_current_spine_proof.py`
 
@@ -6496,3 +6496,45 @@ adapter execution, patch-loop migration, integrated production workflow
 readiness, or Backbone V0 declaration is registered by Phase 319.
 
 `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 320 Backbone Mapping Operator Decision Boundary
+
+Boundary:
+
+`PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_mapping_operator_decision_boundary.py`
+
+Registered changed tests:
+
+- `tests/test_phase_320_backbone_mapping_operator_decision_boundary.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_320.md`
+
+Registered changed documentation/control files:
+
+- `docs/BACKBONE_MAPPING_OPERATOR_RUNBOOK.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 320 adds a deterministic operator decision-boundary
+assessment over the Phase 319 readback while preserving no-Backbone-V0,
+no-adapter-execution, no-patch-loop-migration, and no-official-capsule-proof
+posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+official capsule proof, adapter execution, patch-loop migration, integrated
+production workflow readiness, or Backbone V0 declaration is registered by
+Phase 320.
+
+`PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`

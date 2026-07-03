@@ -1679,3 +1679,28 @@ fresh artifact proof.
   production readiness remain future boundaries.
 
 `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone Mapping Operator Decision Boundary Status
+
+- Phase 320 adds a deterministic decision-boundary assessment over the Phase
+  319 operator readback.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 320 does not
+  execute the code-patching loop or broaden patch-loop behavior.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  decision surface blocks declaration, execution, migration, and claim surfaces
+  while recommending a read-only non-code-patching fixture/mapping assessment.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; operator decision-boundary
+  assessment is not semantic correctness proof, production readiness proof, or
+  task adequacy proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 320 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 320 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The decision boundary
+  explicitly blocks declaration and requires future non-code-patching mapping
+  assessment plus future official clean capsule proof before any declaration or
+  export claim.
+
+`PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`
