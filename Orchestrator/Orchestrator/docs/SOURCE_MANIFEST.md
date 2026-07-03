@@ -6816,3 +6816,39 @@ execution, official clean capsule proof, declaration/export proof, or Backbone
 V0 declaration is registered by Phase 331.
 
 `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 332 Backbone V0 Criteria Negative Edge Contract
+
+Boundary:
+
+`PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_v0_criteria.py`
+
+Registered changed tests:
+
+- `tests/test_phase_332_backbone_v0_criteria_negative_edge_contract.py`
+
+Registered changed docs:
+
+- `docs/PHASE_332.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 332 hardens deterministic negative-edge behavior for
+the Backbone V0 criteria layer while preserving no-Backbone-V0,
+no-declaration-export, no-official-capsule-proof, no-runtime-execution, and
+no-real-domain-execution posture.
+
+Registered non-proofs: no semantic correctness, production readiness,
+autonomous AI coding, live provider/model execution, runtime/platform
+execution, service/API/UI/dashboard/auth/deployment behavior, live Obsidian
+vault access, live PKMS mutation, live business-data mutation, real domain
+execution, official clean capsule proof, declaration/export proof, or Backbone
+V0 declaration is registered by Phase 332.
+
+`PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

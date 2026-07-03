@@ -5902,3 +5902,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   registered by Phase 331.
 
 `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 332 Backbone V0 Criteria Negative Edge Contract
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_v0_criteria.py`.
+- Test added:
+  `tests/test_phase_332_backbone_v0_criteria_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_332.md`.
+- Registered behavior: deterministic criteria evidence validation rejects
+  missing scaffold evidence, missing mapped context, missing non-patch fixture,
+  missing negative-edge coverage, missing readback/decision boundary, smuggled
+  Backbone V0 declaration, semantic correctness, production readiness,
+  provider/model/runtime, real domain execution, official capsule, and
+  fixture-as-live-integration claims.
+- Proof scope: source/test/docs criteria negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment behavior, live Obsidian vault
+  access, live PKMS mutation, live business-data mutation, real domain
+  execution, official clean capsule proof, or declaration/export proof is
+  registered by Phase 332.
+
+`PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

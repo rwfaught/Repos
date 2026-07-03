@@ -4012,3 +4012,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   execution, or official clean capsule proof is added.
 - Marker:
   `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 332 - Backbone V0 Criteria Negative Edge Contract
+
+- Status: source/test/docs hardening of Backbone V0 criteria negative and edge
+  behavior.
+- Source changed:
+  `orchestrator/backbone_v0_criteria.py`.
+- Test added:
+  `tests/test_phase_332_backbone_v0_criteria_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_332.md`.
+- Behavior: deterministic criteria evidence validation rejects missing scaffold
+  evidence, missing mapped contexts, missing non-patch fixtures, missing
+  negative-edge coverage, missing readback/decision boundary, smuggled Backbone
+  V0 declaration, semantic correctness, production readiness, provider/runtime,
+  real domain execution, official capsule, and fixture-as-live-integration
+  claims.
+- Proof scope: source/test/docs criteria negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment behavior, live Obsidian vault
+  access, live PKMS mutation, live business-data mutation, real domain
+  execution, or official clean capsule proof is added.
+- Marker:
+  `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

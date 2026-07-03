@@ -1858,3 +1858,22 @@ fresh artifact proof.
   `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`.
 
 `PHASE331_BACKBONE_V0_CRITERIA_SCAFFOLD_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Criteria Negative Edge Status
+
+- Phase 332 hardens deterministic negative-edge handling for the Backbone V0
+  criteria layer.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; criteria validation reads
+  static evidence only and does not execute the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 332 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 332 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Phase 332 hardens criteria
+  misuse only. The next authorized campaign move is:
+  `PHASE333_BACKBONE_V0_CRITERIA_READBACK_OPERATOR_DECISION_BOUNDARY_SOURCE_TEST_DOCS`.
+
+`PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

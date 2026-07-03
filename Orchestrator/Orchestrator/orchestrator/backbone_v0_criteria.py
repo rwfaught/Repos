@@ -54,6 +54,43 @@ BACKBONE_V0_DECLARATION_BLOCKERS = (
     "production_readiness_not_proven",
 )
 
+BACKBONE_V0_CRITERIA_VALID = "criteria_valid"
+BACKBONE_V0_CRITERIA_INVALID = "criteria_invalid"
+
+BACKBONE_V0_CRITERIA_REASON_CODES = {
+    "missing_scaffold_evidence": "missing_scaffold_evidence",
+    "missing_mapped_context": "missing_mapped_context",
+    "missing_non_patch_fixture": "missing_non_patch_fixture",
+    "missing_negative_edge_coverage": "missing_negative_edge_coverage",
+    "missing_readback_decision_boundary": "missing_readback_decision_boundary",
+    "backbone_v0_declaration_claim_rejected": "backbone_v0_declaration_claim_rejected",
+    "semantic_correctness_claim_rejected": "semantic_correctness_claim_rejected",
+    "production_readiness_claim_rejected": "production_readiness_claim_rejected",
+    "provider_model_runtime_claim_rejected": "provider_model_runtime_claim_rejected",
+    "real_domain_execution_claim_rejected": "real_domain_execution_claim_rejected",
+    "official_capsule_claim_rejected": "official_capsule_claim_rejected",
+    "fixture_live_integration_claim_rejected": "fixture_live_integration_claim_rejected",
+}
+
+_FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
+    "backbone_v0_declared": "backbone_v0_declaration_claim_rejected",
+    "backbone_v0_declaration_allowed_now": "backbone_v0_declaration_claim_rejected",
+    "semantic_correctness_claimed": "semantic_correctness_claim_rejected",
+    "production_readiness_claimed": "production_readiness_claim_rejected",
+    "provider_model_runtime_platform_execution_claimed": (
+        "provider_model_runtime_claim_rejected"
+    ),
+    "provider_model_runtime_claimed": "provider_model_runtime_claim_rejected",
+    "real_domain_execution_claimed": "real_domain_execution_claim_rejected",
+    "real_domain_action_executed": "real_domain_execution_claim_rejected",
+    "official_capsule_generated": "official_capsule_claim_rejected",
+    "official_capsule_proof_current": "official_capsule_claim_rejected",
+    "fixture_mapping_treated_as_live_integration": (
+        "fixture_live_integration_claim_rejected"
+    ),
+    "live_fixture_integration_claimed": "fixture_live_integration_claim_rejected",
+}
+
 
 @dataclass(frozen=True)
 class BackboneV0Criterion:
@@ -136,6 +173,28 @@ def read_current_backbone_v0_criteria_evidence() -> dict[str, Any]:
             "pkms_note_operation_fixture": True,
         },
         "official_capsule_proof_current": False,
+    }
+
+
+def validate_backbone_v0_criteria_evidence(
+    evidence: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    selected_evidence = (
+        read_current_backbone_v0_criteria_evidence()
+        if evidence is None
+        else dict(evidence)
+    )
+    reason_code = _first_criteria_evidence_reason(selected_evidence)
+    status = BACKBONE_V0_CRITERIA_INVALID if reason_code else BACKBONE_V0_CRITERIA_VALID
+    return {
+        "backbone_v0_criteria_evidence_validation": True,
+        "status": status,
+        "valid": status == BACKBONE_V0_CRITERIA_VALID,
+        "reason_code": reason_code,
+        "possible_reason_codes": sorted(BACKBONE_V0_CRITERIA_REASON_CODES.values()),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "declaration_allowed_now": False,
+        "non_proofs": list(BACKBONE_V0_CRITERIA_NON_PROOFS),
     }
 
 
@@ -273,6 +332,48 @@ def _criteria_from_evidence(evidence: dict[str, Any]) -> tuple[BackboneV0Criteri
         ),
     )
     return criteria
+
+
+def _first_criteria_evidence_reason(evidence: dict[str, Any]) -> str:
+    claim_reason = _forbidden_claim_reason(evidence)
+    if claim_reason:
+        return claim_reason
+    scaffold = dict(evidence.get("scaffold") or {})
+    if not scaffold or not scaffold.get("ordered_stage_names"):
+        return BACKBONE_V0_CRITERIA_REASON_CODES["missing_scaffold_evidence"]
+    mapped_contexts = dict(evidence.get("mapped_contexts") or {})
+    if "code_patching" not in mapped_contexts:
+        return BACKBONE_V0_CRITERIA_REASON_CODES["missing_mapped_context"]
+    non_patch_contexts = [name for name in mapped_contexts if name != "code_patching"]
+    if len(non_patch_contexts) < 2:
+        return BACKBONE_V0_CRITERIA_REASON_CODES["missing_non_patch_fixture"]
+    negative_edge_contexts = set(dict(evidence.get("negative_edge_contexts") or {}))
+    if not negative_edge_contexts >= set(mapped_contexts):
+        return BACKBONE_V0_CRITERIA_REASON_CODES["missing_negative_edge_coverage"]
+    decision_boundaries = dict(evidence.get("decision_boundaries") or {})
+    if set(decision_boundaries) != set(mapped_contexts):
+        return BACKBONE_V0_CRITERIA_REASON_CODES[
+            "missing_readback_decision_boundary"
+        ]
+    for name, readback in mapped_contexts.items():
+        readback_data = dict(readback)
+        if not _readback_has_ordered_complete_mapping(readback_data):
+            return BACKBONE_V0_CRITERIA_REASON_CODES["missing_readback_decision_boundary"]
+        nested_claim_reason = _forbidden_claim_reason(readback_data)
+        if nested_claim_reason:
+            return nested_claim_reason
+        if name != "code_patching" and readback_data.get("live_vault_accessed") is True:
+            return BACKBONE_V0_CRITERIA_REASON_CODES[
+                "fixture_live_integration_claim_rejected"
+            ]
+    return ""
+
+
+def _forbidden_claim_reason(data: dict[str, Any]) -> str:
+    for field_name, reason_code in _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS.items():
+        if data.get(field_name) is True:
+            return BACKBONE_V0_CRITERIA_REASON_CODES[reason_code]
+    return ""
 
 
 def _criterion(
