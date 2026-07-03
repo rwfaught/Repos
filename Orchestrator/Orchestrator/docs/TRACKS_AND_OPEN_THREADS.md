@@ -2118,3 +2118,33 @@ fresh artifact proof.
   proof beyond Phase 335.
 
 `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`
+
+## Codex Bounded Worker Packet Operator Readback Status
+
+- Phase 347 adds a deterministic source/test/docs operator readback surface for
+  bounded Codex worker packets grounded in the Phase 345 prompt/report surface.
+- `PRODUCT_GOVERNANCE_PROTOCOL`: strengthened at source/test/docs readback
+  level only. Phase 347 makes bounded worker packet fields, modes, authority
+  rules, validation expectations, report shapes, stop conditions, lockouts, and
+  non-proofs inspectable as static source data.
+- `PRODUCT_WORKER_RELAY_OPERATOR_ROUTING`: role separation remains explicit:
+  Roger/operator approves direction and accepts or rejects results; the
+  coordinator/protocol keeper sets boundaries, reviews evidence, ratifies, and
+  selects next moves; Codex remains a bounded worker; relay/operator command
+  batches remain execution surfaces when needed.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 347 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 347 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 347 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 347 does not create or refresh Source
+  Files, capsules, exports, or packages and does not extend official capsule
+  proof beyond the Phase 335 record.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 347 is a readback surface for worker packet
+  governance, not Backbone V0 redeclaration or product capability expansion.
+
+`PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

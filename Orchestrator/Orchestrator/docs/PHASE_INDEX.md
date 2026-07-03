@@ -4322,4 +4322,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   semantic-correctness claim, live domain execution claim, or official capsule
   proof beyond Phase 335 is registered by Phase 345.
 - Marker:
-  `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`.
+`PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 347 - Codex Bounded Worker Packet Operator Readback
+
+- Status: source/test/docs deterministic operator readback surface added for
+  bounded Codex worker packets.
+- Boundary:
+  `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/codex_bounded_worker_packet_readback.py`.
+- Test added:
+  `tests/test_phase_347_codex_bounded_worker_packet_operator_readback.py`.
+- Phase doc added:
+  `docs/PHASE_347.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: records pure deterministic source-level readback data for bounded
+  worker packet fields, boundary modes, authority rules, timestamp discipline,
+  validation expectations, report shapes, standing lockouts, non-proof
+  doctrine, false execution flags, and source/capsule/Git truth separation.
+- Proof scope: source/test/docs readback surface only.
+- Non-proofs: no Codex execution, worker dispatch, parser/runner/dispatcher,
+  CLI, service/API/UI/dashboard/auth/deployment behavior, runtime/provider/
+  model/platform execution, `general_answer` resumption, capsule/export/
+  package refresh, semantic correctness, production readiness, autonomous AI
+  coding authority, live integration, adapter execution, real domain execution,
+  push, or official capsule proof beyond Phase 335 is registered by Phase 347.
+- Marker:
+  `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

@@ -7205,3 +7205,47 @@ readiness, semantic correctness, live domain execution, or official capsule
 proof beyond the Phase 335 record is registered by Phase 345.
 
 `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 347 Codex Bounded Worker Packet Operator Readback
+
+Boundary:
+
+`PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS`
+
+Source added:
+
+- `orchestrator/codex_bounded_worker_packet_readback.py`
+
+Tests added:
+
+- `tests/test_phase_347_codex_bounded_worker_packet_operator_readback.py`
+
+Docs added:
+
+- `docs/PHASE_347.md`
+
+Docs updated:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 347 adds a pure deterministic source-level readback
+surface for bounded Codex worker packets. The readback records source basis in
+Phase 345, required packet fields, role separation, boundary modes, mutation
+authority rules, timestamp requirements, validation expectations, report
+shapes, standing lockouts, non-proof doctrine, false execution flags, source/
+capsule/Git truth separation, and next-operator caveats.
+
+Registered non-proofs: no Codex execution, worker dispatch, parser/runner/
+dispatcher, CLI, service/API/UI/dashboard/auth/deployment behavior, runtime/
+provider/model/platform execution, `general_answer` resumption, Source Files
+refresh, capsule/export/package refresh, semantic correctness, production
+readiness, autonomous AI coding authority, live integration, adapter execution,
+real domain execution, push, or official capsule proof beyond Phase 335 is
+registered by Phase 347.
+
+Marker:
+
+`PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
