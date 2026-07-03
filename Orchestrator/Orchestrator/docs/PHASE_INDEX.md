@@ -4547,3 +4547,52 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   official capsule proof beyond Phase 335 is registered by Phase 355.
 - Marker:
   `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 356 - Product Task Packet Routing Contract Readback
+
+- Status: source/test/docs deterministic routing-contract readback added for
+  product task packets.
+- Boundary:
+  `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_routing_contract_readback.py`.
+- Test added:
+  `tests/test_phase_356_product_task_packet_routing_contract_readback.py`.
+- Phase doc added:
+  `docs/PHASE_356.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `5b4ca1f1834a45503e14d353e1377d5a6a648825`; Phase 349, Phase 351,
+  Phase 352, Phase 354, and Phase 355 markers remain the source basis; Phase
+  355 push/ref verification is accepted; Source Files refreshes are handoff/
+  source snapshots only unless an explicit official capsule-proof boundary
+  supersedes them; Phase 335 remains the only accepted official clean capsule
+  proof unless explicitly superseded.
+- Behavior: records pure deterministic source-level routing-contract data for
+  route eligibility, route contracts, routing gates, blocked routes, routing
+  doctrine, invalid route claims, stop conditions, false activity flags,
+  required report caveats, source/capsule/Git truth separation, and the
+  recommended next boundary.
+- Proof scope: source/test/docs routing contract readback only.
+- Recommended next boundary:
+  `PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Routing-contract doctrine: readback before route execution, lifecycle before
+  route eligibility, routing contract before routing implementation,
+  coordinator review before push/ref verification, remote-before check before
+  push, Source Files refresh is not official capsule proof, and context
+  saturation routes to handoff rather than scope expansion.
+- Non-proofs: no product task creation, task execution, transition execution,
+  live mutation, worker dispatch, patch workflow implementation, patch
+  application, routing implementation, route selection execution, provider
+  policy implementation, provider/model execution, domain-general intake
+  implementation, parser/runner/dispatcher, CLI, service/API/UI/dashboard/
+  auth/deployment behavior, runtime/provider/model/platform execution,
+  `general_answer` resumption, Source Files refresh, capsule/export/package
+  refresh, semantic correctness, production readiness, autonomous AI coding
+  authority, live business-data/Obsidian/PKMS access, adapter execution, real
+  domain execution, push, or official capsule proof beyond Phase 335 is
+  registered by Phase 356.
+- Marker:
+  `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

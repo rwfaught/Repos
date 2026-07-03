@@ -7490,3 +7490,58 @@ saturation, separate Source Files authorization, separate capsule-proof
 boundary, and separate runtime/provider authorization.
 
 `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 356 Product Task Packet Routing Contract Readback
+
+Boundary:
+
+`PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+
+Changed files:
+
+- `orchestrator/product_task_packet_routing_contract_readback.py`
+- `tests/test_phase_356_product_task_packet_routing_contract_readback.py`
+- `docs/PHASE_356.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Accepted facts: current verified `origin/main` is
+`5b4ca1f1834a45503e14d353e1377d5a6a648825`; Phase 349, Phase 351, Phase 352,
+Phase 354, and Phase 355 source basis is preserved; Phase 355 push/ref
+verification is accepted; Source Files refreshes are handoff/source snapshots
+only unless an explicit official capsule-proof boundary supersedes them; Phase
+335 remains the only accepted official clean capsule proof unless explicitly
+superseded.
+
+Registered behavior: Phase 356 adds a pure deterministic source-level
+routing-contract readback for product task packets. It records route contracts,
+routing gates, blocked routes, routing doctrine, invalid route claims, stop
+conditions, false activity flags, required report caveats, source/capsule/Git
+truth separation, and the recommended next boundary. It is source/test/docs
+readback only.
+
+Recommended next boundary:
+
+`PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+
+Registered non-proofs: no runtime/provider/model/platform execution, no
+service/API/UI/dashboard/auth/deployment behavior, no WSL/Ollama/OpenClaw/
+Hermes/LightRAG/Discord/installer execution, no `general_answer` resumption, no
+worker dispatch, no patch workflow implementation, no patch application, no
+routing implementation, no route selection execution, no provider policy
+implementation, no provider/model execution, no domain-general intake
+implementation, no lifecycle transition execution, no live task creation, no
+live task execution, no live mutation, no live business-data/Obsidian/PKMS
+access, no adapter execution, no real domain execution, no Source Files
+refresh, no capsule/export/package refresh, no semantic correctness, no
+production readiness, no autonomous AI coding authority, no push, and no
+official capsule proof beyond Phase 335 is registered by Phase 356.
+
+Routing-contract doctrine: readback before execution, lifecycle before route
+eligibility, contract before implementation, coordinator review before push,
+remote-before check before push, Source Files refresh is not official capsule
+proof, and handoff on context saturation.
+
+`PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

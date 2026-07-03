@@ -6451,3 +6451,49 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   capsule proof beyond Phase 335 is registered by Phase 355.
 
 `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 356 Product Task Packet Routing Contract Readback
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_routing_contract_readback.py`.
+- Test added:
+  `tests/test_phase_356_product_task_packet_routing_contract_readback.py`.
+- Phase doc added:
+  `docs/PHASE_356.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `5b4ca1f1834a45503e14d353e1377d5a6a648825`; Phase 349, Phase 351,
+  Phase 352, Phase 354, and Phase 355 source/markers are preserved; Phase 355
+  push/ref verification is accepted; Source Files refreshes are handoff/source
+  snapshots only unless an explicit official capsule-proof boundary supersedes
+  them; Phase 335 remains the only accepted official clean capsule proof unless
+  explicitly superseded.
+- Registered behavior: adds a deterministic source/test/docs routing-contract
+  readback for product task packet route contracts, routing gates, blocked
+  routes, routing doctrine, invalid route claims, stop conditions, false
+  activity flags, required report caveats, source/capsule/Git truth separation,
+  and the recommended next boundary.
+- Recommended next boundary:
+  `PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Registered posture: routing contract readback is not route execution, route
+  eligibility is not routing implementation, and route contract is not runtime
+  enforcement.
+- Non-proofs: no product task creation, task execution, transition execution,
+  live mutation, worker dispatch, patch workflow implementation, patch
+  application, routing implementation, route selection execution, provider
+  policy implementation, provider/model execution, domain-general intake
+  implementation, parser/runner/dispatcher, CLI, service/API/UI/dashboard/
+  auth/deployment behavior, runtime/provider/model/platform execution,
+  WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer execution,
+  `general_answer` work, Source Files refresh, capsule/export/package refresh,
+  push, semantic correctness, production readiness, autonomous AI coding
+  authority, live business-data/Obsidian/PKMS access, adapter execution, real
+  domain execution, or official capsule proof beyond Phase 335 is registered by
+  Phase 356.
+
+`PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
