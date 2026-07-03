@@ -1,0 +1,303 @@
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+from orchestrator.backbone_control_loop import (
+    BACKBONE_NATIVE_EVIDENCE_FIELDS,
+    BACKBONE_V0_DECLARED,
+    BackboneAdapterDescriptor,
+    ordered_backbone_stage_names,
+)
+
+
+PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT = "pkms_note_operation_fixture"
+PKMS_NOTE_FIXTURE_MAPPING_STATUS = (
+    "pkms_note_operation_fixture_mapped_to_backbone_scaffold_not_executed"
+)
+PKMS_NOTE_FIXTURE_ADAPTER = BackboneAdapterDescriptor(
+    adapter_name="pkms_note_operation_fixture_backbone_mapping_adapter",
+    bounded_context=PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT,
+    execution_allowed=False,
+)
+
+PKMS_NOTE_FIXTURE_NON_PROOFS = (
+    "pkms_note_fixture_mapping_is_not_semantic_correctness",
+    "pkms_note_fixture_mapping_is_not_production_readiness",
+    "pkms_note_fixture_mapping_is_not_autonomous_ai_coding",
+    "pkms_note_fixture_mapping_is_not_provider_model_runtime_platform_execution",
+    "pkms_note_fixture_mapping_does_not_declare_backbone_v0",
+    "pkms_note_fixture_mapping_does_not_access_live_vaults",
+    "pkms_note_fixture_mapping_does_not_mutate_live_pkms_notes",
+    "pkms_note_fixture_mapping_does_not_prove_backlink_or_frontmatter_correctness",
+    "pkms_note_fixture_mapping_does_not_execute_real_domain_actions",
+    "pkms_note_fixture_mapping_does_not_generate_official_capsule",
+)
+
+PKMS_NOTE_FIXTURE_MAPPING_COMPLETE = "mapped"
+PKMS_NOTE_FIXTURE_MAPPING_INCOMPLETE = "incomplete"
+
+PKMS_NOTE_FIXTURE_REASON_CODES = {
+    "stage_name_missing": "stage_name_missing",
+    "unknown_stage_name": "unknown_stage_name",
+    "bounded_context_missing": "bounded_context_missing",
+    "fake_vault_path_missing": "fake_vault_path_missing",
+    "fake_note_path_missing": "fake_note_path_missing",
+    "fake_before_after_evidence_missing": "fake_before_after_evidence_missing",
+    "fixture_doc_or_test_evidence_missing": "fixture_doc_or_test_evidence_missing",
+    "stage_order_mismatch": "stage_order_mismatch",
+}
+
+PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS = (
+    "fake_vault_path",
+    "fake_note_id",
+    "fake_note_path",
+    "fake_note_title",
+    "fake_frontmatter_change",
+    "fake_backlink_insertion",
+    "fake_before_note_content_evidence",
+    "fake_after_note_content_evidence",
+    "fake_operator_authorization",
+    "fake_verification_evidence",
+    "fixture_stage_role",
+)
+
+
+@dataclass(frozen=True)
+class PkmsNoteFixtureBackboneStageMapping:
+    stage_name: str
+    bounded_context: str = PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT
+    fixture_sources: tuple[str, ...] = field(default_factory=tuple)
+    phase_docs: tuple[str, ...] = field(default_factory=tuple)
+    phase_tests: tuple[str, ...] = field(default_factory=tuple)
+    mapping_note: str = ""
+    reason_code: str = ""
+    domain_payload: dict[str, Any] = field(default_factory=dict)
+    non_proofs: tuple[str, ...] = PKMS_NOTE_FIXTURE_NON_PROOFS
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "stage_name": self.stage_name,
+            "bounded_context": self.bounded_context,
+            "fixture_sources": list(self.fixture_sources),
+            "phase_docs": list(self.phase_docs),
+            "phase_tests": list(self.phase_tests),
+            "mapping_note": self.mapping_note,
+            "reason_code": self.reason_code,
+            "domain_payload": dict(self.domain_payload),
+            "non_proofs": list(self.non_proofs),
+            "backbone_native_evidence_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
+            "backbone_v0_declared": BACKBONE_V0_DECLARED,
+            "adapter_execution_allowed": PKMS_NOTE_FIXTURE_ADAPTER.execution_allowed,
+            "live_vault_accessed": False,
+            "live_pkms_note_mutated": False,
+        }
+
+
+def _fixture_mapping(
+    stage_name: str,
+    fixture_stage_role: str,
+    mapping_note: str,
+) -> PkmsNoteFixtureBackboneStageMapping:
+    return PkmsNoteFixtureBackboneStageMapping(
+        stage_name=stage_name,
+        fixture_sources=("fixtures/pkms_note_operation/static_note_operation.json",),
+        phase_docs=("docs/PHASE_326.md",),
+        phase_tests=("tests/test_phase_326_backbone_pkms_note_fixture_mapping.py",),
+        mapping_note=mapping_note,
+        domain_payload={
+            "fake_vault_path": "C:/FAKE_OBSIDIAN_VAULT_DO_NOT_ACCESS",
+            "fake_note_id": "fake-note-0001",
+            "fake_note_path": "Areas/Fake Project/Fake Note.md",
+            "fake_note_title": "Fake Note Operation Fixture",
+            "fake_frontmatter_change": "status: proposed -> status: reviewed",
+            "fake_backlink_insertion": "[[Fake Related Note]]",
+            "fake_before_note_content_evidence": "Before fixture text only.",
+            "fake_after_note_content_evidence": (
+                "After fixture text only with fake backlink."
+            ),
+            "fake_operator_authorization": "fake_operator_authorization_placeholder",
+            "fake_verification_evidence": "fake_static_shape_verification_only",
+            "fixture_stage_role": fixture_stage_role,
+        },
+    )
+
+
+PKMS_NOTE_FIXTURE_BACKBONE_STAGE_MAPPINGS = (
+    _fixture_mapping("intake_result", "note_operation_intake", "Static fake note operation enters the fixture context."),
+    _fixture_mapping("eligibility_record", "fixture_eligibility", "Fixture eligibility is described without live vault access."),
+    _fixture_mapping("candidate_artifact", "note_operation_candidate", "Candidate note operation remains fake fixture data."),
+    _fixture_mapping("operator_decision", "operator_authorization_placeholder", "Operator decision is represented by fake authorization evidence only."),
+    _fixture_mapping("promotion_record", "promotion_placeholder", "Promotion record is static fixture linkage only."),
+    _fixture_mapping("draft_action_proposal", "draft_note_operation", "Draft note operation proposes fake frontmatter and backlink changes."),
+    _fixture_mapping("authorization_eligibility", "authorization_eligibility_placeholder", "Authorization eligibility is not live authority."),
+    _fixture_mapping("authorization_record", "authorization_record_placeholder", "Authorization record is a fake fixture record only."),
+    _fixture_mapping("bounded_action_attempt", "non_executed_note_operation_attempt", "Bounded action attempt is explicitly not executed."),
+    _fixture_mapping("action_result_evidence", "fake_before_after_note_evidence", "Result evidence is fake before/after note content only."),
+    _fixture_mapping("mechanical_verification", "static_shape_check", "Mechanical verification is shape-only, not backlink or frontmatter correctness."),
+    _fixture_mapping("finalization_record", "fixture_finalization", "Finalization preserves caveats and non-proofs."),
+    _fixture_mapping("readback", "fixture_readback", "Readback surfaces fixture status without Backbone V0."),
+)
+
+
+def ordered_pkms_note_fixture_backbone_stage_mappings() -> tuple[
+    PkmsNoteFixtureBackboneStageMapping, ...
+]:
+    return PKMS_NOTE_FIXTURE_BACKBONE_STAGE_MAPPINGS
+
+
+def validate_pkms_note_fixture_backbone_stage_mapping(
+    mapping: PkmsNoteFixtureBackboneStageMapping | dict[str, Any],
+) -> dict[str, Any]:
+    data = (
+        mapping.as_dict()
+        if isinstance(mapping, PkmsNoteFixtureBackboneStageMapping)
+        else dict(mapping)
+    )
+    reason_code = _first_mapping_reason(data)
+    status = (
+        PKMS_NOTE_FIXTURE_MAPPING_INCOMPLETE
+        if reason_code
+        else PKMS_NOTE_FIXTURE_MAPPING_COMPLETE
+    )
+    return {
+        "pkms_note_fixture_backbone_stage_mapping_validation": True,
+        "status": status,
+        "complete": status == PKMS_NOTE_FIXTURE_MAPPING_COMPLETE,
+        "reason_code": reason_code,
+        "stage_name": data.get("stage_name", ""),
+        "bounded_context": data.get("bounded_context", ""),
+        "fixture_sources": list(data.get("fixture_sources") or []),
+        "phase_docs": list(data.get("phase_docs") or []),
+        "phase_tests": list(data.get("phase_tests") or []),
+        "domain_payload_keys": sorted(
+            str(key) for key in dict(data.get("domain_payload") or {}).keys()
+        ),
+        "backbone_native_evidence_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
+        "pkms_specific_fields": list(PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS),
+        "non_proofs": list(data.get("non_proofs") or PKMS_NOTE_FIXTURE_NON_PROOFS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "adapter_execution_allowed": PKMS_NOTE_FIXTURE_ADAPTER.execution_allowed,
+        "live_vault_accessed": False,
+        "live_pkms_note_mutated": False,
+    }
+
+
+def validate_ordered_pkms_note_fixture_backbone_stage_mappings(
+    mappings: tuple[PkmsNoteFixtureBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_pkms_note_fixture_backbone_stage_mappings()
+        if mappings is None
+        else mappings
+    )
+    stage_names = [
+        mapping.stage_name if isinstance(mapping, PkmsNoteFixtureBackboneStageMapping)
+        else str(dict(mapping).get("stage_name") or "")
+        for mapping in selected_mappings
+    ]
+    expected_stage_names = list(ordered_backbone_stage_names())
+    validations = [
+        validate_pkms_note_fixture_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    order_reason = (
+        PKMS_NOTE_FIXTURE_REASON_CODES["stage_order_mismatch"]
+        if stage_names != expected_stage_names
+        else ""
+    )
+    incomplete_reason_codes = [
+        validation["reason_code"] for validation in validations if validation["reason_code"]
+    ]
+    if order_reason:
+        incomplete_reason_codes.append(order_reason)
+    return {
+        "pkms_note_fixture_backbone_ordered_mapping_validation": True,
+        "stage_names": stage_names,
+        "expected_stage_names": expected_stage_names,
+        "all_stage_names_match_backbone": not order_reason,
+        "mapping_count": len(selected_mappings),
+        "complete": not incomplete_reason_codes,
+        "status": (
+            PKMS_NOTE_FIXTURE_MAPPING_COMPLETE
+            if not incomplete_reason_codes
+            else PKMS_NOTE_FIXTURE_MAPPING_INCOMPLETE
+        ),
+        "reason_code": order_reason,
+        "incomplete_reason_codes": incomplete_reason_codes,
+        "non_proofs": list(PKMS_NOTE_FIXTURE_NON_PROOFS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "adapter_execution_allowed": PKMS_NOTE_FIXTURE_ADAPTER.execution_allowed,
+        "live_vault_accessed": False,
+        "live_pkms_note_mutated": False,
+    }
+
+
+def read_pkms_note_fixture_backbone_mapping_status(
+    mappings: tuple[PkmsNoteFixtureBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_pkms_note_fixture_backbone_stage_mappings()
+        if mappings is None
+        else mappings
+    )
+    validations = [
+        validate_pkms_note_fixture_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    ordered_validation = validate_ordered_pkms_note_fixture_backbone_stage_mappings(
+        selected_mappings
+    )
+    return {
+        "pkms_note_fixture_backbone_mapping_status": PKMS_NOTE_FIXTURE_MAPPING_STATUS,
+        "bounded_context": PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT,
+        "adapter": PKMS_NOTE_FIXTURE_ADAPTER.as_dict(),
+        "adapter_execution_allowed": PKMS_NOTE_FIXTURE_ADAPTER.execution_allowed,
+        "stage_names": ordered_validation["stage_names"],
+        "expected_stage_names": list(ordered_backbone_stage_names()),
+        "all_stage_names_match_backbone": ordered_validation["all_stage_names_match_backbone"],
+        "mapping_count": len(selected_mappings),
+        "incomplete_mapping_count": sum(
+            1 for validation in validations if not validation["complete"]
+        ),
+        "complete": all(validation["complete"] for validation in validations)
+        and ordered_validation["complete"],
+        "incomplete_reason_codes": ordered_validation["incomplete_reason_codes"],
+        "non_proofs": list(PKMS_NOTE_FIXTURE_NON_PROOFS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "live_vault_accessed": False,
+        "live_pkms_note_mutated": False,
+        "real_backlink_frontmatter_correctness_claimed": False,
+        "semantic_correctness_claimed": False,
+        "production_readiness_claimed": False,
+        "provider_model_runtime_platform_execution_claimed": False,
+        "autonomous_ai_coding_claimed": False,
+    }
+
+
+def _first_mapping_reason(data: dict[str, Any]) -> str:
+    stage_name = str(data.get("stage_name") or "").strip()
+    if not stage_name:
+        return PKMS_NOTE_FIXTURE_REASON_CODES["stage_name_missing"]
+    if stage_name not in ordered_backbone_stage_names():
+        return PKMS_NOTE_FIXTURE_REASON_CODES["unknown_stage_name"]
+    if str(data.get("bounded_context") or "").strip() != PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT:
+        return PKMS_NOTE_FIXTURE_REASON_CODES["bounded_context_missing"]
+    payload = dict(data.get("domain_payload") or {})
+    if not str(payload.get("fake_vault_path") or "").strip():
+        return PKMS_NOTE_FIXTURE_REASON_CODES["fake_vault_path_missing"]
+    if not (
+        str(payload.get("fake_note_path") or "").strip()
+        or str(payload.get("fake_note_id") or "").strip()
+    ):
+        return PKMS_NOTE_FIXTURE_REASON_CODES["fake_note_path_missing"]
+    if not (
+        str(payload.get("fake_before_note_content_evidence") or "").strip()
+        and str(payload.get("fake_after_note_content_evidence") or "").strip()
+    ):
+        return PKMS_NOTE_FIXTURE_REASON_CODES["fake_before_after_evidence_missing"]
+    if not data.get("phase_docs") and not data.get("phase_tests"):
+        return PKMS_NOTE_FIXTURE_REASON_CODES[
+            "fixture_doc_or_test_evidence_missing"
+        ]
+    return ""

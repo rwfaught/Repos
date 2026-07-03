@@ -3909,3 +3909,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   is added.
 - Marker:
   `PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 326 - Backbone PKMS Note Operation Fixture Mapping
+
+- Status: source/test/docs mapping added for a static fake PKMS /
+  Obsidian note-operation fixture.
+- Source added:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_326_backbone_pkms_note_fixture_mapping.py`.
+- Phase doc added:
+  `docs/PHASE_326.md`.
+- Behavior: deterministic static mapping names the
+  `pkms_note_operation_fixture` bounded context, maps every Phase 316 Backbone
+  stage, keeps PKMS-specific fields in domain payload, preserves fake-only
+  note-operation evidence strings, and reports false live-vault-access and
+  live-note-mutation claims.
+- Proof scope: source/test/docs mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, no semantic
+  correctness, no production readiness, no autonomous AI coding, no live
+  Obsidian/PKMS access, no live note mutation, no real backlink/frontmatter
+  correctness proof, no provider/model/runtime/platform execution, no adapter
+  execution, no service/API/UI/dashboard/auth/deployment behavior, no official
+  capsule proof.
+- Marker:
+  `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.

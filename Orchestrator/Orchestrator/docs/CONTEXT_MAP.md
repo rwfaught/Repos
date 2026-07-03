@@ -712,3 +712,16 @@ Backbone scaffold vocabulary by source/doc/test evidence strings only.
 The mapping seam is descriptive. It does not execute adapters, migrate
 patch-loop behavior, declare Backbone V0, prove semantic correctness, prove
 production readiness, or prove provider/model/runtime/platform behavior.
+
+## Phase 326 Backbone PKMS Note Fixture Context
+
+Phase 326 adds the static fake `pkms_note_operation_fixture` bounded context as
+the next non-code-patching Backbone fixture mapping after the research-claim
+fixture campaign.
+
+The fixture is action-shaped but fake-only: it carries fake vault path, note
+id/path/title, frontmatter change, backlink insertion, before/after content,
+operator authorization, and verification evidence as strings. It does not
+access live Obsidian vaults, mutate live PKMS notes, execute adapters, prove
+real backlink/frontmatter correctness, create Backbone V0 criteria, or declare
+Backbone V0.

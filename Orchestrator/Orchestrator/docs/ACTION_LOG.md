@@ -5788,3 +5788,30 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production workflow readiness is added.
 
 `PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 326 Backbone PKMS Note Operation Fixture Mapping
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_326_backbone_pkms_note_fixture_mapping.py`.
+- Phase doc added:
+  `docs/PHASE_326.md`.
+- Registered behavior: deterministic source/test/docs mapping for the static
+  fake `pkms_note_operation_fixture` bounded context with one mapping per
+  Backbone stage, fake vault/note/frontmatter/backlink/before-after evidence,
+  PKMS fields isolated in domain payload, adapter execution disabled, live
+  vault access false, and live PKMS note mutation false.
+- Proof scope: source/test/docs mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, semantic
+  correctness, production readiness, autonomous AI coding, live Obsidian/PKMS
+  access, live note mutation, real backlink/frontmatter correctness,
+  provider/model/runtime/platform execution, adapter execution, service/API/UI/
+  dashboard/auth/deployment behavior, official capsule proof, real domain
+  execution, or integrated production workflow readiness is registered by
+  Phase 326.
+
+`PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
