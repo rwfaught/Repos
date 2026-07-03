@@ -56,3 +56,16 @@ runtime/provider/model/platform paths, refresh capsules/exports/packages, or
 extend official capsule proof beyond the Phase 335 record.
 
 `PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+Phase 343 adds a narrow preservation-semantics pointer for the declaration
+fork:
+
+`PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY`
+
+See `docs/BACKBONE_V0_PRESERVATION_SEMANTICS.md` for the distinction between
+the valid Phase 337 declaration-preservation fork, the Phase 342
+post-declaration build-off preservation candidate, the Phase 335 official
+clean capsule proof, and Source Files handoff snapshots. This pointer does not
+broaden the Backbone V0 declaration.
+
+`PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`

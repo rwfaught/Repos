@@ -2030,3 +2030,33 @@ fresh artifact proof.
   phase completion, or official capsule proof beyond the Phase 335 record.
 
 `PHASE342_BACKBONE_V0_SOURCE_INSPECTION_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Post-Declaration Preservation Semantics Status
+
+- Phase 343 documents preservation semantics after the Phase 343A read-only
+  assessment.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 343 does not
+  execute or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 343 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 343 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 343 references only the exact Phase
+  335 official clean capsule proof with SHA256
+  `04cb5a2205bedcef767d8cab6344237e9b4ce1f75f19793a56425ab8b197d49d`; it
+  does not create or refresh capsules, exports, or packages.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 343 clarifies that Phase 337 commit
+  `12e70023d638c0f919aa8e00e50ceccfaf36a6de`, tag
+  `backbone-v0-structural-declaration`, and branch
+  `fork/backbone-v0-structural-declaration` remain valid declaration-
+  preservation refs and must not be moved. Phase 342 commit
+  `bf81ad0c07f40e53c3285da511316679bc763ee9` is documented as the stronger
+  post-declaration build-off preservation candidate, with recommended marker
+  name `backbone-v0-post-declaration-consolidation`; no second marker has been
+  created by this phase.
+
+`PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`

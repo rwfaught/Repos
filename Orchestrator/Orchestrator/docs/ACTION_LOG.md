@@ -6132,3 +6132,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   by Phase 342.
 
 `PHASE342_BACKBONE_V0_SOURCE_INSPECTION_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 343 Backbone V0 Post-Declaration Preservation Semantics
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY`
+- Docs added:
+  `docs/PHASE_343.md` and
+  `docs/BACKBONE_V0_PRESERVATION_SEMANTICS.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_DECLARATION.md`, `docs/PHASE_INDEX.md`,
+  `docs/ACTION_LOG.md`, `docs/SOURCE_MANIFEST.md`, and
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: docs-only separation of declaration-preservation fork,
+  post-declaration build-off preservation candidate, official clean capsule
+  proof, and Source Files handoff snapshot. Phase 337 commit
+  `12e70023d638c0f919aa8e00e50ceccfaf36a6de`, tag
+  `backbone-v0-structural-declaration`, and branch
+  `fork/backbone-v0-structural-declaration` remain valid declaration
+  preservation refs and are not moved. Phase 342 commit
+  `bf81ad0c07f40e53c3285da511316679bc763ee9` is documented as the stronger
+  practical build-off preservation candidate, with recommended marker name
+  `backbone-v0-post-declaration-consolidation`; no second marker has been
+  created by this phase.
+- Proof scope: docs-only source/proof concept clarification.
+- Non-proofs: no source/test code change, no tag/branch creation/movement/
+  deletion/push, no runtime/provider/model/platform execution, no service/API/
+  UI/dashboard/auth/deployment work, no `general_answer` work, no capsule/
+  export/package refresh, no production readiness, no semantic correctness, no
+  live domain execution, and no official capsule proof beyond Phase 335 SHA256
+  `04cb5a2205bedcef767d8cab6344237e9b4ce1f75f19793a56425ab8b197d49d` is
+  registered by Phase 343.
+
+`PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
