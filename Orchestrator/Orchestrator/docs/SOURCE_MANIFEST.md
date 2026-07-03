@@ -6934,3 +6934,44 @@ mutation, real domain execution, adapter execution, or declaration/export claim
 is registered by Phase 335.
 
 `PHASE335_BACKBONE_V0_OFFICIAL_CLEAN_CAPSULE_PROOF_SOURCE_DOCS_PROVEN=PASS`
+
+## Phase 337 Backbone V0 Declaration
+
+Boundary:
+
+`PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_ONLY`
+
+Registered changed source:
+
+- `orchestrator/backbone_v0_declaration.py`
+
+Registered changed tests:
+
+- `tests/test_phase_337_backbone_v0_declaration.py`
+
+Registered changed docs:
+
+- `docs/PHASE_337.md`
+- `docs/BACKBONE_V0_DECLARATION.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 337 declares Backbone V0 only as a narrow
+source/test/docs structural milestone for Orchestrator's domain-neutral
+control-loop architecture. The declaration record preserves the accepted proof
+chain, the exact Phase 335 official clean capsule proof reference, non-proofs,
+forbidden claims, disabled adapter posture, and no-real-domain-execution
+posture.
+
+Registered non-proofs: no semantic correctness, production readiness,
+autonomous AI coding, live provider/model execution, runtime/platform
+execution, service/API/UI/dashboard/auth/deployment readiness, live Obsidian or
+PKMS access, live business-data access, real domain execution, adapter
+execution, fixture mappings as live integrations, `general_answer` resumption,
+OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phases already
+completed, or official capsule proof beyond the exact Phase 335 record is
+registered by Phase 337.
+
+`PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -4096,3 +4096,35 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   registered by Phase 335.
 - Marker:
   `PHASE335_BACKBONE_V0_OFFICIAL_CLEAN_CAPSULE_PROOF_SOURCE_DOCS_PROVEN=PASS`.
+
+## Phase 337 - Backbone V0 Declaration
+
+- Status: Backbone V0 declared as a narrow source/test/docs structural
+  milestone.
+- Boundary:
+  `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_ONLY`.
+- Source added:
+  `orchestrator/backbone_v0_declaration.py`.
+- Test added:
+  `tests/test_phase_337_backbone_v0_declaration.py`.
+- Docs added:
+  `docs/PHASE_337.md` and `docs/BACKBONE_V0_DECLARATION.md`.
+- Ledgers updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Declared claim: Backbone V0 exists as a narrow source/test/docs structural
+  milestone for Orchestrator's domain-neutral control-loop architecture.
+- Accepted proof chain: Phase 320, Phase 324, Phase 328, Phase 333, and Phase
+  335 source/test/docs markers.
+- Official capsule proof: Phase 335 SHA256
+  `04cb5a2205bedcef767d8cab6344237e9b4ce1f75f19793a56425ab8b197d49d`,
+  `1001` entries, `0` `.git` entries, and `0` `__pycache__/.pyc` entries.
+- Non-proofs: no semantic correctness, production readiness, autonomous AI
+  coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment readiness, live Obsidian/PKMS
+  access, live business-data access, real domain execution, adapter execution,
+  fixture mappings as live integrations, `general_answer` resumption, or
+  OpenClaw/Hermes/LightRAG/Discord/installer behavior is registered by Phase
+  337.
+- Marker:
+  `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`.

@@ -1922,3 +1922,30 @@ fresh artifact proof.
   `PHASE336_BACKBONE_V0_DECLARATION_READINESS_RECHECK_READONLY`.
 
 `PHASE335_BACKBONE_V0_OFFICIAL_CLEAN_CAPSULE_PROOF_SOURCE_DOCS_PROVEN=PASS`
+
+## Backbone V0 Declaration Status
+
+- Phase 337 declares Backbone V0 as a narrow source/test/docs structural
+  milestone for Orchestrator's domain-neutral control-loop architecture.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 337 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 337 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 337 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 337 relies only on the exact Phase
+  335 official clean capsule proof with SHA256
+  `04cb5a2205bedcef767d8cab6344237e9b4ce1f75f19793a56425ab8b197d49d`.
+- `ORCHESTRATOR_BACKBONE_V0`: declared only as a source/test/docs structural
+  milestone. This declaration does not claim semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment readiness, live Obsidian/PKMS
+  access, live business-data access, real domain execution, adapter execution,
+  fixture mappings as live integrations, `general_answer` resumption, or
+  OpenClaw/Hermes/LightRAG/Discord/installer behavior. The safest next NBM is:
+  `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`.
+
+`PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`
