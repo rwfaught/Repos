@@ -4260,3 +4260,38 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   registered by Phase 343.
 - Marker:
   `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 344 - Backbone V0 Post-Declaration Consolidation Ref Record
+
+- Status: docs-only record of the completed Backbone V0 post-declaration
+  consolidation preservation refs.
+- Boundary:
+  `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY`
+- Phase doc added:
+  `docs/PHASE_344.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_PRESERVATION_SEMANTICS.md`,
+  `docs/BACKBONE_V0_DECLARATION.md`, `docs/PHASE_INDEX.md`,
+  `docs/ACTION_LOG.md`, `docs/SOURCE_MANIFEST.md`, and
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: records the prior ref-only boundary
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY`
+  with result marker
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY_RESULT=PASS`.
+  The recorded consolidation branch is
+  `fork/backbone-v0-post-declaration-consolidation`, the annotated tag is
+  `backbone-v0-post-declaration-consolidation`, both target Phase 342 commit
+  `bf81ad0c07f40e53c3285da511316679bc763ee9`, and the observed annotated tag
+  object is `ed0ce5ef5c4540af1a3e9ea973896360ae94e734`.
+- Phase 337 refs preserved: `backbone-v0-structural-declaration` and
+  `fork/backbone-v0-structural-declaration` remain tied to
+  `12e70023d638c0f919aa8e00e50ceccfaf36a6de`.
+- Proof scope: docs-only ref record.
+- Non-proofs: no source/test code change, tag/branch creation, movement,
+  deletion, push, runtime/provider/model/platform execution,
+  service/API/UI/dashboard/auth/deployment work, `general_answer` work,
+  capsule/export/package refresh, production-readiness claim,
+  semantic-correctness claim, live domain execution claim, or official capsule
+  proof beyond Phase 335 is registered by Phase 344.
+- Marker:
+  `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`.

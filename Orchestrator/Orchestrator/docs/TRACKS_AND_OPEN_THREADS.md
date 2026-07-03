@@ -2060,3 +2060,33 @@ fresh artifact proof.
   created by this phase.
 
 `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
+
+## Backbone V0 Post-Declaration Consolidation Ref Record Status
+
+- Phase 344 records the completed post-declaration consolidation preservation
+  refs from the prior ref-only boundary.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 344 does not
+  execute or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 344 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 344 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 344 does not create or refresh
+  capsules, exports, or packages and does not extend official capsule proof
+  beyond the Phase 335 record.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 344 records that prior ref-only boundary
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY`
+  created and verified branch
+  `fork/backbone-v0-post-declaration-consolidation` and annotated tag
+  `backbone-v0-post-declaration-consolidation` at Phase 342 commit
+  `bf81ad0c07f40e53c3285da511316679bc763ee9`, with annotated tag object
+  `ed0ce5ef5c4540af1a3e9ea973896360ae94e734`. Phase 337 refs
+  `backbone-v0-structural-declaration` and
+  `fork/backbone-v0-structural-declaration` remain tied to
+  `12e70023d638c0f919aa8e00e50ceccfaf36a6de`.
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`

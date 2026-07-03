@@ -6166,3 +6166,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   registered by Phase 343.
 
 `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 344 Backbone V0 Post-Declaration Consolidation Ref Record
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY`
+- Phase doc added:
+  `docs/PHASE_344.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_PRESERVATION_SEMANTICS.md`,
+  `docs/BACKBONE_V0_DECLARATION.md`, `docs/PHASE_INDEX.md`,
+  `docs/ACTION_LOG.md`, `docs/SOURCE_MANIFEST.md`, and
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: records the prior ref-only boundary result
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY_RESULT=PASS`.
+  The post-declaration consolidation branch
+  `fork/backbone-v0-post-declaration-consolidation` and annotated tag
+  `backbone-v0-post-declaration-consolidation` were created and verified at
+  Phase 342 target commit `bf81ad0c07f40e53c3285da511316679bc763ee9`; the
+  observed annotated tag object was
+  `ed0ce5ef5c4540af1a3e9ea973896360ae94e734`.
+- Phase 337 preservation: original declaration refs
+  `backbone-v0-structural-declaration` and
+  `fork/backbone-v0-structural-declaration` remain tied to
+  `12e70023d638c0f919aa8e00e50ceccfaf36a6de`.
+- Proof scope: docs-only record of prior ref preservation.
+- Non-proofs: no source/test code change, no tag/branch creation, movement,
+  deletion, or push in this docs-only phase, no runtime/provider/model/
+  platform execution, no service/API/UI/dashboard/auth/deployment work, no
+  `general_answer` work, no capsule/export/package refresh, no production
+  readiness, no semantic correctness, no live domain execution, and no
+  official capsule proof beyond Phase 335 is registered by Phase 344.
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`

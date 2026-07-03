@@ -30,7 +30,7 @@ Current candidate:
 
 - Phase 342
 - Commit: `bf81ad0c07f40e53c3285da511316679bc763ee9`
-- Recommended marker name: `backbone-v0-post-declaration-consolidation`
+- Marker name: `backbone-v0-post-declaration-consolidation`
 
 Treating Phase 337 as the best build-off point is too strong after Phase 342
 because Phase 338 added declaration readback/status, Phase 340 added the
@@ -38,8 +38,21 @@ proof-chain operator index, and Phase 342 added the source inspection report
 surface. Phase 342 is therefore a better practical orientation candidate for
 future work, while Phase 337 remains the correct historical declaration fork.
 
-This phase recommends documenting the candidate. It does not create the tag or
-branch. No second marker has been created by this phase.
+Phase 343 documented this candidate without creating refs. A later ref-only
+boundary created and verified the second preservation marker:
+
+- Boundary:
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY`
+- Result marker:
+  `PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY_RESULT=PASS`
+- Branch: `fork/backbone-v0-post-declaration-consolidation`
+- Annotated tag: `backbone-v0-post-declaration-consolidation`
+- Target commit: `bf81ad0c07f40e53c3285da511316679bc763ee9`
+- Annotated tag object:
+  `ed0ce5ef5c4540af1a3e9ea973896360ae94e734`
+
+This second marker does not replace or move the Phase 337 declaration-
+preservation refs.
 
 ## Official clean capsule proof
 
@@ -74,13 +87,26 @@ separate post-declaration candidate.
 
 ## Why a second marker may be useful
 
-A second marker may help future users/future Roger build from a point that
+A second marker helps future users/future Roger build from a point that
 includes declaration readback, proof-chain indexing, and source inspection
-orientation. The recommended second marker name is:
+orientation. The created and verified second marker name is:
 
 `backbone-v0-post-declaration-consolidation`
 
-No second marker has been created by this phase.
+The corresponding branch is:
+
+`fork/backbone-v0-post-declaration-consolidation`
+
+Both target Phase 342 commit:
+
+`bf81ad0c07f40e53c3285da511316679bc763ee9`
+
+The annotated tag object observed for this marker is:
+
+`ed0ce5ef5c4540af1a3e9ea973896360ae94e734`
+
+Phase 344 records this prior ref-only result; it does not create, move,
+delete, or push tags or branches.
 
 ## Non-Proofs
 
@@ -93,3 +119,7 @@ the Phase 335 record.
 Marker:
 
 `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
+
+Phase 344 record marker:
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`

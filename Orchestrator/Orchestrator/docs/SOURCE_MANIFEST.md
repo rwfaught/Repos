@@ -7137,3 +7137,42 @@ official capsule proof beyond the Phase 335 SHA256
 registered by Phase 343.
 
 `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 344 Backbone V0 Post-Declaration Consolidation Ref Record
+
+Boundary:
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY`
+
+Registered changed docs:
+
+- `docs/PHASE_344.md`
+- `docs/BACKBONE_V0_PRESERVATION_SEMANTICS.md`
+- `docs/BACKBONE_V0_DECLARATION.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 344 records, docs-only, that the prior ref-only
+boundary
+`PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY`
+completed with result marker
+`PHASE343_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_PRESERVE_AND_VERIFY_RESULT=PASS`.
+The created/verified branch
+`fork/backbone-v0-post-declaration-consolidation` and annotated tag
+`backbone-v0-post-declaration-consolidation` target
+`bf81ad0c07f40e53c3285da511316679bc763ee9`; the observed annotated tag object
+is `ed0ce5ef5c4540af1a3e9ea973896360ae94e734`.
+
+Registered Phase 337 ref preservation: `backbone-v0-structural-declaration`
+and `fork/backbone-v0-structural-declaration` remain tied to
+`12e70023d638c0f919aa8e00e50ceccfaf36a6de`.
+
+Registered non-proofs: no source/test code change, tag/branch creation or
+movement, push, runtime/provider/model/platform execution, service/API/UI/
+dashboard/auth/deployment work, `general_answer` work, capsule/export/package
+refresh, production readiness, semantic correctness, live domain execution, or
+official capsule proof beyond the Phase 335 record is registered by Phase 344.
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`

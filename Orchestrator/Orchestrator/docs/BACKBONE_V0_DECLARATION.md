@@ -69,3 +69,15 @@ clean capsule proof, and Source Files handoff snapshots. This pointer does not
 broaden the Backbone V0 declaration.
 
 `PHASE343_BACKBONE_V0_POST_DECLARATION_PRESERVATION_SEMANTICS_DOCS_ONLY_PROVEN=PASS`
+
+Phase 344 records that the post-declaration consolidation refs now exist from
+a prior ref-only boundary:
+
+- Tag: `backbone-v0-post-declaration-consolidation`
+- Branch: `fork/backbone-v0-post-declaration-consolidation`
+- Target: `bf81ad0c07f40e53c3285da511316679bc763ee9`
+
+These refs do not replace, move, or broaden the Phase 337 Backbone V0
+declaration-preservation refs or the declaration itself.
+
+`PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`
