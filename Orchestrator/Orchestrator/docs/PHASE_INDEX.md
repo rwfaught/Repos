@@ -3881,3 +3881,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   mutation, or integrated production workflow readiness is added.
 - Marker:
   `PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 324 - Backbone Non-Patch Fixture Readback Decision Boundary
+
+- Status: source/test/docs operator readback and decision-boundary assessment
+  added for the non-patch fixture mapping.
+- Source changed:
+  `orchestrator/backbone_research_claim_fixture_mapping.py`.
+- Source added:
+  `orchestrator/backbone_research_claim_fixture_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_324_backbone_non_patch_fixture_readback_decision_boundary.py`.
+- Docs changed: `docs/PHASE_324.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: deterministic operator readback and decision surface report the
+  static fixture mapping status, block declaration/execution/mutation/claim
+  surfaces, preserve non-proofs, and represent campaign stop after Phase 324.
+- Proof scope: source/test/docs fixture readback and decision-boundary behavior
+  only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  official capsule proof, adapter execution, real domain execution, live record
+  mutation, Backbone V0 criteria, or integrated production workflow readiness
+  is added.
+- Marker:
+  `PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.

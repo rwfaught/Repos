@@ -5756,3 +5756,35 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   is added.
 
 `PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 324 Backbone Non-Patch Fixture Readback Decision Boundary
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_research_claim_fixture_mapping.py`.
+- Source added:
+  `orchestrator/backbone_research_claim_fixture_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_324_backbone_non_patch_fixture_readback_decision_boundary.py`.
+- Docs changed: `docs/PHASE_324.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic operator readback and decision-boundary
+  assessment for the non-patch fixture mapping; blocks declaration, execution,
+  mutation, semantic/production/provider/platform/service claims,
+  `general_answer` resumption, and unauthorized official capsule generation;
+  represents campaign stop after Phase 324.
+- Proof scope: source/test/docs fixture readback and decision-boundary behavior
+  only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, official capsule proof, adapter execution, real domain
+  execution, live record mutation, Backbone V0 criteria, or integrated
+  production workflow readiness is added.
+
+`PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

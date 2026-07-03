@@ -6620,3 +6620,47 @@ mutation, integrated production workflow readiness, or Backbone V0 declaration
 is registered by Phase 323.
 
 `PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 324 Backbone Non-Patch Fixture Readback Decision Boundary
+
+Boundary:
+
+`PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_research_claim_fixture_mapping.py`
+
+Registered changed source:
+
+- `orchestrator/backbone_research_claim_fixture_decision_boundary.py`
+
+Registered changed tests:
+
+- `tests/test_phase_324_backbone_non_patch_fixture_readback_decision_boundary.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_324.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 324 adds operator readback and decision-boundary
+assessment for the non-patch fixture mapping while preserving campaign stop
+after Phase 324 and no-Backbone-V0 posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+official capsule proof, adapter execution, real domain execution, live record
+mutation, Backbone V0 criteria, integrated production workflow readiness, or
+Backbone V0 declaration is registered by Phase 324.
+
+`PHASE324_BACKBONE_NON_PATCH_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

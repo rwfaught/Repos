@@ -58,6 +58,28 @@ RESEARCH_CLAIM_FIXTURE_SPECIFIC_FIELDS = (
     "fixture_stage_role",
 )
 
+RESEARCH_CLAIM_FIXTURE_OPERATOR_READBACK_FIELDS = (
+    "backbone_v0_declared",
+    "adapter_execution_allowed",
+    "real_domain_action_executed",
+    "live_record_mutated",
+    "bounded_context",
+    "mapped_stage_names",
+    "stage_statuses",
+    "status_counts",
+    "complete_mapping_count",
+    "fixture_evidence_strings",
+    "backbone_native_fields",
+    "fixture_specific_fields",
+    "non_proofs",
+    "possible_negative_edge_reason_codes",
+    "recommended_next_boundary_after_campaign_stop",
+)
+
+RESEARCH_CLAIM_FIXTURE_RECOMMENDED_NEXT_BOUNDARY_AFTER_STOP = (
+    "PHASE325_BACKBONE_ADDITIONAL_NON_PATCH_FIXTURE_ASSESSMENT_READONLY"
+)
+
 _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
     "backbone_v0_declared": "backbone_v0_claim_rejected",
     "adapter_execution_allowed": "adapter_execution_claim_rejected",
@@ -271,6 +293,108 @@ def read_research_claim_fixture_backbone_mapping_status(
         "production_readiness_claimed": False,
         "provider_model_runtime_platform_execution_claimed": False,
         "autonomous_ai_coding_claimed": False,
+    }
+
+
+def read_research_claim_fixture_backbone_operator_readback(
+    mappings: tuple[ResearchClaimFixtureBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_research_claim_fixture_backbone_stage_mappings()
+        if mappings is None
+        else mappings
+    )
+    validations = [
+        validate_research_claim_fixture_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    ordered_validation = validate_ordered_research_claim_fixture_backbone_stage_mappings(
+        selected_mappings
+    )
+    stage_statuses = [
+        {
+            "stage_name": validation["stage_name"],
+            "status": validation["status"],
+            "complete": validation["complete"],
+            "blocked": False,
+            "not_applicable": False,
+            "reason_code": validation["reason_code"],
+        }
+        for validation in validations
+    ]
+    incomplete_count = sum(1 for validation in validations if not validation["complete"])
+    return {
+        "research_claim_fixture_backbone_operator_readback": True,
+        "readback_fields": list(RESEARCH_CLAIM_FIXTURE_OPERATOR_READBACK_FIELDS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "adapter_execution_allowed": RESEARCH_CLAIM_FIXTURE_ADAPTER.execution_allowed,
+        "adapters_executable_through_mapping": False,
+        "real_domain_action_executed": False,
+        "live_record_mutated": False,
+        "bounded_context": RESEARCH_CLAIM_FIXTURE_BOUNDED_CONTEXT,
+        "mapped_stage_names": ordered_validation["stage_names"],
+        "expected_backbone_stage_names": list(ordered_backbone_stage_names()),
+        "stage_statuses": stage_statuses,
+        "complete_mapping_count": len(selected_mappings) - incomplete_count,
+        "status_counts": {
+            "complete": len(selected_mappings) - incomplete_count,
+            "mapped": len(selected_mappings) - incomplete_count,
+            "incomplete": incomplete_count,
+            "blocked": 0,
+            "not_applicable": 0,
+        },
+        "fixture_evidence_strings": {
+            "fixture_sources": sorted(
+                {
+                    fixture_source
+                    for mapping in selected_mappings
+                    for fixture_source in (
+                        mapping.fixture_sources
+                        if isinstance(mapping, ResearchClaimFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("fixture_sources") or ())
+                    )
+                }
+            ),
+            "phase_docs": sorted(
+                {
+                    phase_doc
+                    for mapping in selected_mappings
+                    for phase_doc in (
+                        mapping.phase_docs
+                        if isinstance(mapping, ResearchClaimFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_docs") or ())
+                    )
+                }
+            ),
+            "phase_tests": sorted(
+                {
+                    phase_test
+                    for mapping in selected_mappings
+                    for phase_test in (
+                        mapping.phase_tests
+                        if isinstance(mapping, ResearchClaimFixtureBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_tests") or ())
+                    )
+                }
+            ),
+            "evidence_is_reference_only": True,
+        },
+        "backbone_native_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
+        "fixture_specific_fields": list(RESEARCH_CLAIM_FIXTURE_SPECIFIC_FIELDS),
+        "non_proofs": list(RESEARCH_CLAIM_FIXTURE_NON_PROOFS),
+        "possible_negative_edge_reason_codes": sorted(
+            RESEARCH_CLAIM_FIXTURE_REASON_CODES.values()
+        ),
+        "blocked_conditions": list(ordered_validation["incomplete_reason_codes"]),
+        "recommended_next_boundary_after_campaign_stop": (
+            RESEARCH_CLAIM_FIXTURE_RECOMMENDED_NEXT_BOUNDARY_AFTER_STOP
+        ),
+        "campaign_stop_required_after_phase_324": True,
+        "semantic_correctness_claimed": False,
+        "production_readiness_claimed": False,
+        "provider_model_runtime_platform_execution_claimed": False,
+        "autonomous_ai_coding_claimed": False,
+        "official_capsule_proof_current": False,
     }
 
 
