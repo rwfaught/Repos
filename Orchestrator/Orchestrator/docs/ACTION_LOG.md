@@ -5640,3 +5640,32 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   production workflow readiness is added.
 
 `PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 319 Backbone Mapping Readback and Operator Runbook
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_319_backbone_mapping_readback_operator_runbook.py`.
+- Docs changed: `docs/PHASE_319.md`;
+  `docs/BACKBONE_MAPPING_OPERATOR_RUNBOOK.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic operator readback for the static
+  Backbone/code-patching mapping with Backbone V0 false, adapter execution
+  disabled, patch-loop migration false, ordered mapped stages, status counts,
+  reference-only evidence strings, field separation, preserved non-proofs,
+  possible negative-edge reason codes, and a next boundary.
+- Proof scope: source/test/docs operator readback and runbook behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, adapter execution, patch-loop migration, or integrated
+  production workflow readiness is added.
+
+`PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`

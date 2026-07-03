@@ -3778,3 +3778,30 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   readiness is added.
 - Marker:
   `PHASE318_BACKBONE_MAPPING_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 319 - Backbone Mapping Readback and Operator Runbook
+
+- Status: source/test/docs operator-facing readback and runbook guidance added
+  for the Backbone/code-patching mapping layer.
+- Source changed:
+  `orchestrator/backbone_code_patching_adapter_mapping.py`.
+- Test added:
+  `tests/test_phase_319_backbone_mapping_readback_operator_runbook.py`.
+- Docs changed: `docs/PHASE_319.md`;
+  `docs/BACKBONE_MAPPING_OPERATOR_RUNBOOK.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: deterministic operator readback reports Backbone V0 false,
+  adapter execution disabled, patch-loop migration false, code-patching bounded
+  context, ordered mapped stages, status counts, reference-only source/doc/test
+  evidence strings, Backbone-native fields, code-patching-specific fields,
+  non-proofs, possible negative-edge reason codes, and a next boundary.
+- Proof scope: source/test/docs operator readback and runbook behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  adapter execution, patch-loop migration, or integrated production workflow
+  readiness is added.
+- Marker:
+  `PHASE319_BACKBONE_MAPPING_READBACK_AND_OPERATOR_RUNBOOK_SOURCE_TEST_DOCS_PROVEN=PASS`.

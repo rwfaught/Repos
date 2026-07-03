@@ -47,6 +47,27 @@ CODE_PATCHING_MAPPING_REASON_CODES = {
     "patch_specific_native_field_rejected": "patch_specific_native_field_rejected",
 }
 
+CODE_PATCHING_BACKBONE_OPERATOR_READBACK_FIELDS = (
+    "backbone_v0_declared",
+    "patch_loop_migrated",
+    "adapter_execution_allowed",
+    "bounded_context",
+    "mapped_stage_names",
+    "stage_statuses",
+    "status_counts",
+    "complete_mapping_count",
+    "source_doc_test_evidence_strings",
+    "backbone_native_fields",
+    "code_patching_specific_fields",
+    "non_proofs",
+    "possible_negative_edge_reason_codes",
+    "recommended_next_boundary",
+)
+
+CODE_PATCHING_BACKBONE_RECOMMENDED_NEXT_BOUNDARY = (
+    "PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS"
+)
+
 PATCH_SPECIFIC_MAPPING_FIELDS = (
     "source_modules",
     "phase_docs",
@@ -354,6 +375,101 @@ def read_code_patching_backbone_mapping_status(
         "non_proofs": list(CODE_PATCHING_MAPPING_NON_PROOFS),
         "backbone_v0_declared": BACKBONE_V0_DECLARED,
         "patch_loop_migrated": False,
+        "semantic_correctness_claimed": False,
+        "production_readiness_claimed": False,
+        "provider_model_runtime_platform_execution_claimed": False,
+        "autonomous_ai_coding_claimed": False,
+    }
+
+
+def read_code_patching_backbone_operator_readback(
+    mappings: tuple[CodePatchingBackboneStageMapping, ...] | list[Any] | None = None,
+) -> dict[str, Any]:
+    selected_mappings = list(
+        ordered_code_patching_backbone_stage_mappings() if mappings is None else mappings
+    )
+    validations = [
+        validate_code_patching_backbone_stage_mapping(mapping)
+        for mapping in selected_mappings
+    ]
+    ordered_validation = validate_ordered_code_patching_backbone_stage_mappings(
+        selected_mappings
+    )
+    stage_statuses = [
+        {
+            "stage_name": validation["stage_name"],
+            "status": validation["status"],
+            "complete": validation["complete"],
+            "blocked": False,
+            "not_applicable": False,
+            "reason_code": validation["reason_code"],
+        }
+        for validation in validations
+    ]
+    incomplete_count = sum(1 for validation in validations if not validation["complete"])
+    return {
+        "code_patching_backbone_operator_readback": True,
+        "readback_fields": list(CODE_PATCHING_BACKBONE_OPERATOR_READBACK_FIELDS),
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "patch_loop_migrated": False,
+        "adapter_execution_allowed": CODE_PATCHING_BACKBONE_ADAPTER.execution_allowed,
+        "adapters_executable_through_mapping": False,
+        "bounded_context": CODE_PATCHING_BOUNDED_CONTEXT,
+        "mapped_stage_names": ordered_validation["stage_names"],
+        "expected_backbone_stage_names": list(ordered_backbone_stage_names()),
+        "stage_statuses": stage_statuses,
+        "complete_mapping_count": len(selected_mappings) - incomplete_count,
+        "status_counts": {
+            "complete": len(selected_mappings) - incomplete_count,
+            "mapped": len(selected_mappings) - incomplete_count,
+            "incomplete": incomplete_count,
+            "blocked": 0,
+            "not_applicable": 0,
+        },
+        "source_doc_test_evidence_strings": {
+            "source_modules": sorted(
+                {
+                    source_module
+                    for mapping in selected_mappings
+                    for source_module in (
+                        mapping.source_modules
+                        if isinstance(mapping, CodePatchingBackboneStageMapping)
+                        else tuple(dict(mapping).get("source_modules") or ())
+                    )
+                }
+            ),
+            "phase_docs": sorted(
+                {
+                    phase_doc
+                    for mapping in selected_mappings
+                    for phase_doc in (
+                        mapping.phase_docs
+                        if isinstance(mapping, CodePatchingBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_docs") or ())
+                    )
+                }
+            ),
+            "phase_tests": sorted(
+                {
+                    phase_test
+                    for mapping in selected_mappings
+                    for phase_test in (
+                        mapping.phase_tests
+                        if isinstance(mapping, CodePatchingBackboneStageMapping)
+                        else tuple(dict(mapping).get("phase_tests") or ())
+                    )
+                }
+            ),
+            "evidence_is_reference_only": True,
+        },
+        "backbone_native_fields": list(BACKBONE_NATIVE_EVIDENCE_FIELDS),
+        "code_patching_specific_fields": list(PATCH_SPECIFIC_MAPPING_FIELDS),
+        "non_proofs": list(CODE_PATCHING_MAPPING_NON_PROOFS),
+        "possible_negative_edge_reason_codes": sorted(
+            CODE_PATCHING_MAPPING_REASON_CODES.values()
+        ),
+        "blocked_conditions": list(ordered_validation["incomplete_reason_codes"]),
+        "recommended_next_boundary": CODE_PATCHING_BACKBONE_RECOMMENDED_NEXT_BOUNDARY,
         "semantic_correctness_claimed": False,
         "production_readiness_claimed": False,
         "provider_model_runtime_platform_execution_claimed": False,
