@@ -45,6 +45,8 @@ RESEARCH_CLAIM_FIXTURE_REASON_CODES = {
     "backbone_v0_claim_rejected": "backbone_v0_claim_rejected",
     "adapter_execution_claim_rejected": "adapter_execution_claim_rejected",
     "real_domain_action_claim_rejected": "real_domain_action_claim_rejected",
+    "official_capsule_claim_rejected": "official_capsule_claim_rejected",
+    "fixture_specific_native_field_rejected": "fixture_specific_native_field_rejected",
 }
 
 RESEARCH_CLAIM_FIXTURE_SPECIFIC_FIELDS = (
@@ -62,6 +64,9 @@ _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
     "adapter_executed": "adapter_execution_claim_rejected",
     "real_domain_action_executed": "real_domain_action_claim_rejected",
     "live_record_mutated": "real_domain_action_claim_rejected",
+    "official_capsule_generated": "official_capsule_claim_rejected",
+    "semantic_correctness_claimed": "real_domain_action_claim_rejected",
+    "production_readiness_claimed": "real_domain_action_claim_rejected",
 }
 
 
@@ -280,6 +285,9 @@ def _first_mapping_reason(data: dict[str, Any]) -> str:
     claim_reason = _forbidden_claim_reason(data)
     if claim_reason:
         return claim_reason
+    native_leak_reason = _fixture_specific_native_field_reason(data)
+    if native_leak_reason:
+        return native_leak_reason
     if not data.get("fixture_sources"):
         return RESEARCH_CLAIM_FIXTURE_REASON_CODES["fixture_source_missing"]
     if not data.get("phase_docs") and not data.get("phase_tests"):
@@ -293,4 +301,20 @@ def _forbidden_claim_reason(data: dict[str, Any]) -> str:
     for field_name, reason_code in _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS.items():
         if data.get(field_name) is True:
             return RESEARCH_CLAIM_FIXTURE_REASON_CODES[reason_code]
+    return ""
+
+
+def _fixture_specific_native_field_reason(data: dict[str, Any]) -> str:
+    native_fields = {
+        str(field_name)
+        for field_name in data.get(
+            "backbone_native_evidence_fields",
+            BACKBONE_NATIVE_EVIDENCE_FIELDS,
+        )
+    }
+    for field_name in RESEARCH_CLAIM_FIXTURE_SPECIFIC_FIELDS:
+        if field_name in native_fields:
+            return RESEARCH_CLAIM_FIXTURE_REASON_CODES[
+                "fixture_specific_native_field_rejected"
+            ]
     return ""

@@ -1729,3 +1729,26 @@ fresh artifact proof.
   future boundaries.
 
 `PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone Non-Patch Fixture Negative Edge Status
+
+- Phase 323 hardens deterministic negative and edge handling for the static
+  `research_claim_packet_fixture` Backbone mapping.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 323 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  fixture negative-edge contract does not migrate patch-loop behavior.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; negative-edge handling is not
+  semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 323 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 323 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Negative-edge hardening helps
+  the non-patch fixture mapping, but declaration, official capsule proof,
+  semantic proof, and production readiness remain future boundaries.
+
+`PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

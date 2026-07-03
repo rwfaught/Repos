@@ -3856,3 +3856,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   mutation, or integrated production workflow readiness is added.
 - Marker:
   `PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 323 - Backbone Non-Patch Fixture Negative Edge Contract
+
+- Status: source/test/docs hardening of non-patch fixture mapping negative and
+  edge cases.
+- Source changed:
+  `orchestrator/backbone_research_claim_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_323_backbone_non_patch_fixture_negative_edge_contract.py`.
+- Docs changed: `docs/PHASE_323.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: missing, unknown, wrong-context, missing-evidence, order-mismatch,
+  adapter-execution, Backbone V0, real-domain-action, live-record-mutation,
+  official-capsule, semantic/production smuggling, and fixture-specific
+  native-field leakage inputs produce deterministic incomplete reason codes.
+- Proof scope: source/test/docs fixture mapping negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  official capsule proof, adapter execution, real domain execution, live record
+  mutation, or integrated production workflow readiness is added.
+- Marker:
+  `PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

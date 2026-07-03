@@ -6579,3 +6579,44 @@ mutation, integrated production workflow readiness, or Backbone V0 declaration
 is registered by Phase 322.
 
 `PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 323 Backbone Non-Patch Fixture Negative Edge Contract
+
+Boundary:
+
+`PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_research_claim_fixture_mapping.py`
+
+Registered changed tests:
+
+- `tests/test_phase_323_backbone_non_patch_fixture_negative_edge_contract.py`
+
+Registered new documentation/control files:
+
+- `docs/PHASE_323.md`
+
+Registered changed documentation/control files:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 323 hardens deterministic negative-edge behavior for
+the non-patch fixture mapping while preserving no-Backbone-V0,
+no-adapter-execution, no-real-domain-execution, and no-live-record-mutation
+posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform behavior, autonomous AI coding, model-backed generation,
+production readiness, service/API/UI/dashboard/auth/deployment behavior,
+scheduler/reminder/connector behavior, `general_answer` resumption,
+platform/OpenClaw/Hermes/LightRAG behavior, cleanup/delete/archive authority,
+official capsule proof, adapter execution, real domain execution, live record
+mutation, integrated production workflow readiness, or Backbone V0 declaration
+is registered by Phase 323.
+
+`PHASE323_BACKBONE_NON_PATCH_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
