@@ -4596,3 +4596,72 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   registered by Phase 356.
 - Marker:
   `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 357 - Product Task Packet Patch Workflow Contract Readback
+
+- Status: source/test/docs deterministic patch workflow contract readback added.
+- Boundary: `PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_patch_workflow_contract_readback.py`,
+  `tests/test_phase_357_product_task_packet_patch_workflow_contract_readback.py`,
+  and `docs/PHASE_357.md`.
+- Recommended next boundary:
+  `PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no patch workflow implementation, patch application, worker
+  dispatch, routing implementation, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, service/API/UI/dashboard/auth/deployment,
+  `general_answer`, Source Files refresh, capsule/export/package refresh,
+  semantic correctness, production readiness, autonomous AI coding, or official
+  capsule proof beyond Phase 335.
+- Marker:
+  `PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 358 - Product Task Packet Worker Dispatch Contract Readback
+
+- Status: source/test/docs deterministic worker dispatch contract readback added.
+- Boundary: `PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_worker_dispatch_contract_readback.py`,
+  `tests/test_phase_358_product_task_packet_worker_dispatch_contract_readback.py`,
+  and `docs/PHASE_358.md`.
+- Recommended next boundary:
+  `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no worker dispatch, patch application, provider/model execution,
+  runtime/provider/model/platform execution, service/API/UI/dashboard/auth/deployment,
+  `general_answer`, Source Files refresh, capsule/export/package refresh,
+  semantic correctness, production readiness, autonomous AI coding, or official
+  capsule proof beyond Phase 335.
+- Marker:
+  `PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 359 - Product Task Packet Provider Policy Contract Readback
+
+- Status: source/test/docs deterministic provider policy contract readback added.
+- Boundary: `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_provider_policy_contract_readback.py`,
+  `tests/test_phase_359_product_task_packet_provider_policy_contract_readback.py`,
+  and `docs/PHASE_359.md`.
+- Recommended next boundary:
+  `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no provider policy implementation beyond static readback doctrine,
+  no provider/model execution, no live provider/model availability claim, no
+  runtime/provider/model/platform execution, no service/API/UI/dashboard/auth/deployment,
+  no semantic correctness, no production readiness, and no official capsule
+  proof beyond Phase 335.
+- Marker:
+  `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 360 - Product Task Packet Domain-General Intake Contract Readback
+
+- Status: source/test/docs deterministic domain-general intake contract readback added.
+- Boundary: `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_domain_general_intake_contract_readback.py`,
+  `tests/test_phase_360_product_task_packet_domain_general_intake_contract_readback.py`,
+  and `docs/PHASE_360.md`.
+- Recommended next boundary:
+  `PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no domain-general intake implementation beyond static readback
+  doctrine, no live business-data/Obsidian/PKMS access, no real domain
+  execution, no production task execution, no service/API/UI/dashboard/auth/deployment,
+  no Source Files refresh, no capsule/export/package refresh, and no official
+  capsule proof beyond Phase 335.
+- Marker:
+  `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

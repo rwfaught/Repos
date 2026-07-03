@@ -7545,3 +7545,48 @@ remote-before check before push, Source Files refresh is not official capsule
 proof, and handoff on context saturation.
 
 `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 357-360 Product Task Packet Contract Readback Bundle
+
+Boundary:
+
+`PHASE357_TO_360_PRODUCT_TASK_PACKET_CONTRACT_READBACK_BUNDLE_SOURCE_TEST_DOCS`
+
+Changed files:
+
+- `orchestrator/product_task_packet_patch_workflow_contract_readback.py`
+- `orchestrator/product_task_packet_worker_dispatch_contract_readback.py`
+- `orchestrator/product_task_packet_provider_policy_contract_readback.py`
+- `orchestrator/product_task_packet_domain_general_intake_contract_readback.py`
+- `tests/test_phase_357_product_task_packet_patch_workflow_contract_readback.py`
+- `tests/test_phase_358_product_task_packet_worker_dispatch_contract_readback.py`
+- `tests/test_phase_359_product_task_packet_provider_policy_contract_readback.py`
+- `tests/test_phase_360_product_task_packet_domain_general_intake_contract_readback.py`
+- `docs/PHASE_357.md`
+- `docs/PHASE_358.md`
+- `docs/PHASE_359.md`
+- `docs/PHASE_360.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: four pure deterministic source-level readback contracts
+for patch workflow, worker dispatch, provider policy, and domain-general intake.
+These are source/test/docs readback only.
+
+Registered non-proofs: No runtime/provider/model/platform execution. No service/API/UI/dashboard/auth/deployment.
+No general_answer. No Source Files refresh. No capsule/export/package refresh.
+No semantic correctness, production readiness, autonomous AI coding, live
+mutation, adapter execution, real domain execution, worker dispatch, patch
+application, patch workflow implementation, provider policy implementation,
+provider/model execution, domain-general intake implementation, or official
+capsule proof beyond Phase 335.
+
+`PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

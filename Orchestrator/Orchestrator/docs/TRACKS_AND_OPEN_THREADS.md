@@ -2448,3 +2448,31 @@ fresh artifact proof.
   before provider/model execution, and handoff when context saturation appears.
 
 `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 357-360 Product Task Packet Contract Readback Bundle
+
+- Phase 357 adds patch workflow contract readback.
+- Phase 358 adds worker dispatch contract readback.
+- Phase 359 adds provider policy contract readback.
+- Phase 360 adds domain-general intake contract readback.
+- Boundary:
+  `PHASE357_TO_360_PRODUCT_TASK_PACKET_CONTRACT_READBACK_BUNDLE_SOURCE_TEST_DOCS`
+- Accepted current remote main for this packet:
+  `8e33ab2c50ca8722cac4e8e3ca22a15d6ba904da`.
+- These phases are source/test/docs readback only. They do not implement
+  patching, dispatching, provider/model execution, domain intake execution,
+  routing execution, service/API/UI/dashboard behavior, CLI behavior, live task
+  behavior, or live mutation.
+- Source Files snapshots remain separate from Git repo truth and official clean
+  product capsule proof. Phase 335 remains accepted capsule proof unless
+  explicitly superseded.
+- Next recommended boundary:
+  `PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS`.
+
+`PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

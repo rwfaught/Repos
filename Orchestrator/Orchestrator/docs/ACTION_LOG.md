@@ -6497,3 +6497,40 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Phase 356.
 
 `PHASE356_PRODUCT_TASK_PACKET_ROUTING_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 357-360 Product Task Packet Contract Readback Bundle
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE357_TO_360_PRODUCT_TASK_PACKET_CONTRACT_READBACK_BUNDLE_SOURCE_TEST_DOCS`
+- Current verified `origin/main` accepted by packet:
+  `8e33ab2c50ca8722cac4e8e3ca22a15d6ba904da`.
+- Changed source files:
+  `orchestrator/product_task_packet_patch_workflow_contract_readback.py`,
+  `orchestrator/product_task_packet_worker_dispatch_contract_readback.py`,
+  `orchestrator/product_task_packet_provider_policy_contract_readback.py`, and
+  `orchestrator/product_task_packet_domain_general_intake_contract_readback.py`.
+- Changed test files:
+  `tests/test_phase_357_product_task_packet_patch_workflow_contract_readback.py`,
+  `tests/test_phase_358_product_task_packet_worker_dispatch_contract_readback.py`,
+  `tests/test_phase_359_product_task_packet_provider_policy_contract_readback.py`,
+  and `tests/test_phase_360_product_task_packet_domain_general_intake_contract_readback.py`.
+- Phase docs added: `docs/PHASE_357.md`, `docs/PHASE_358.md`,
+  `docs/PHASE_359.md`, and `docs/PHASE_360.md`.
+- Registered behavior: adds four pure deterministic source/test/docs readback
+  surfaces only: patch workflow contract, worker dispatch contract, provider
+  policy contract, and domain-general intake contract.
+- Non-proofs: no runtime/provider/model/platform execution, no service/API/UI/dashboard/auth/deployment,
+  no general_answer, no Source Files refresh, no capsule/export/package
+  refresh, no semantic correctness, no production readiness, no autonomous AI
+  coding, no patch application, no worker dispatch, no provider/model
+  execution, no domain-general intake implementation, no live business-data/
+  Obsidian/PKMS access, and no official capsule proof beyond Phase 335.
+
+`PHASE357_PRODUCT_TASK_PACKET_PATCH_WORKFLOW_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE358_PRODUCT_TASK_PACKET_WORKER_DISPATCH_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+`PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
