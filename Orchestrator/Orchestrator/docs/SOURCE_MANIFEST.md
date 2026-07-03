@@ -7338,3 +7338,47 @@ registered by Phase 351.
 Marker:
 
 `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 352 Product Task Packet Operator Decision Readback
+
+Boundary:
+
+`PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`
+
+Changed files:
+
+- `orchestrator/product_task_packet_operator_decision_readback.py`
+- `tests/test_phase_352_product_task_packet_operator_decision_readback.py`
+- `docs/PHASE_352.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Accepted facts: current remote main was verified at
+`c3861e4491cf692004abb405c3dec23bbcf23dc4`; Phase 349 and Phase 351 source
+basis is preserved; Source Files were refreshed after Phase 351 but that is not
+official clean capsule proof; Phase 335 remains the only accepted official
+clean capsule proof unless explicitly superseded.
+
+Registered behavior: Phase 352 adds a pure deterministic source-level operator
+decision/readback for product task packets. It records allowed operator
+decision states, decision requirements, stop conditions, false activity flags,
+required report caveats, source/capsule/Git truth separation, forbidden surface
+caveats, and next-safe-seam doctrine. It is source/test/docs readback only.
+
+Registered non-proofs: no runtime/provider/model/platform execution, no
+service/API/UI/dashboard/auth/deployment behavior, no WSL/Ollama/OpenClaw/
+Hermes/LightRAG/Discord/installer execution, no `general_answer` resumption, no
+worker dispatch, no patch application, no live task creation, no live task
+execution, no live mutation, no live business-data/Obsidian/PKMS access, no
+adapter execution, no real domain execution, no Source Files refresh, no
+capsule/export/package refresh, no semantic correctness, no production
+readiness, no autonomous AI coding authority, no push, and no official capsule
+proof beyond Phase 335 is registered by Phase 352.
+
+Next-safe-seam doctrine: operator decision/readback may precede later routing,
+patch workflow, worker dispatch, provider policy, or domain-general intake, but
+proves none of them.
+
+`PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

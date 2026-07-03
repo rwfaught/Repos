@@ -2218,3 +2218,49 @@ fresh artifact proof.
   provider policy, or domain-general intake.
 
 `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 352 Product Task Packet Operator Decision Readback
+
+- Phase 352 adds a deterministic source/test/docs operator decision/readback
+  surface for product task packets grounded in Phase 349 and Phase 351.
+- Boundary:
+  `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Changed files:
+  `orchestrator/product_task_packet_operator_decision_readback.py`,
+  `tests/test_phase_352_product_task_packet_operator_decision_readback.py`,
+  `docs/PHASE_352.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current remote main was verified at
+  `c3861e4491cf692004abb405c3dec23bbcf23dc4`; Phase 349 and Phase 351 markers
+  remain source basis; Source Files were refreshed after Phase 351 but that is
+  not official clean capsule proof; Phase 335 remains the only accepted
+  official clean capsule proof unless explicitly superseded.
+- `PRODUCT_WORKER_RELAY_OPERATOR_ROUTING`: updated at readback level only.
+  Phase 352 records proceed/request/stop states, decision requirements, stop
+  conditions, false activity flags, report caveats, source/capsule/Git truth
+  separation, and next-safe-seam doctrine. It is not task execution, live
+  enforcement, worker dispatch, or coordinator ratification.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged. Phase 352 does not execute
+  live product tasks, mutate task state, prove semantic correctness, prove
+  production readiness, or grant autonomous AI coding authority.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged. Phase 352 does not create
+  patch proposals, authorize apply, apply patches, or establish patch workflow
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: unchanged. Phase 352 preserves
+  the `general_answer` lockout and does not resume or mutate that lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate. Phase 352 does not run
+  WSL, Ollama, OpenClaw, Hermes, LightRAG, Discord, installer, provider, model,
+  runtime, platform, adapter, or real domain execution.
+- `PRODUCT_SERVICE_API_UI_AUTH`: unchanged. Phase 352 does not create service,
+  API, UI, dashboard, auth, deployment, CLI, parser, runner, dispatcher, or
+  live harness behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 352 does not create or refresh Source
+  Files, capsule/export/package artifacts, full Git backups, or official clean
+  capsule proof. Source Files refresh after Phase 351 remains distinct from
+  official capsule proof, and Phase 335 remains the accepted official clean
+  capsule proof unless explicitly superseded.
+- Next-safe-seam doctrine: operator decision/readback may precede later
+  routing, patch workflow, worker dispatch, provider policy, or domain-general
+  intake, but proves none of them.
+
+`PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

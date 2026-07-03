@@ -6324,3 +6324,43 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   by Phase 351.
 
 `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 352 Product Task Packet Operator Decision Readback
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_operator_decision_readback.py`.
+- Test added:
+  `tests/test_phase_352_product_task_packet_operator_decision_readback.py`.
+- Phase doc added:
+  `docs/PHASE_352.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current remote main was verified at
+  `c3861e4491cf692004abb405c3dec23bbcf23dc4`; Phase 349 and Phase 351
+  source/markers are preserved; Source Files were refreshed after Phase 351,
+  but that is not official clean capsule proof; Phase 335 remains the only
+  accepted official clean capsule proof unless explicitly superseded.
+- Registered behavior: adds a deterministic source/test/docs operator
+  decision/readback surface for product task packet proceed/request/stop
+  states, decision requirements, stop conditions, false activity flags,
+  required report caveats, source/capsule/Git truth separation, and
+  next-safe-seam doctrine.
+- Registered posture: operator decision readback is not task execution, live
+  enforcement, worker dispatch, patch application, `general_answer` resumption,
+  runtime/provider/model/platform execution, or service/API/UI/dashboard/auth/
+  deployment behavior.
+- Non-proofs: no product task creation, task execution, live mutation, worker
+  dispatch, patch application, parser/runner/dispatcher, CLI, service/API/UI/
+  dashboard/auth/deployment behavior, runtime/provider/model/platform
+  execution, WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer execution,
+  `general_answer` work, Source Files refresh, capsule/export/package refresh,
+  push, semantic correctness, production readiness, autonomous AI coding
+  authority, live business-data/Obsidian/PKMS access, adapter execution, real
+  domain execution, or official capsule proof beyond Phase 335 is registered
+  by Phase 352.
+
+`PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

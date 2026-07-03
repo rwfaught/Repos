@@ -4414,3 +4414,43 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   registered by Phase 351.
 - Marker:
   `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 352 - Product Task Packet Operator Decision Readback
+
+- Status: source/test/docs deterministic operator decision/readback added for
+  product task packets.
+- Boundary:
+  `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_operator_decision_readback.py`.
+- Test added:
+  `tests/test_phase_352_product_task_packet_operator_decision_readback.py`.
+- Phase doc added:
+  `docs/PHASE_352.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current remote main was verified at
+  `c3861e4491cf692004abb405c3dec23bbcf23dc4`; Phase 349 and Phase 351
+  markers remain the source basis; Source Files were refreshed after Phase 351
+  but that is not official clean capsule proof; Phase 335 remains the only
+  accepted official clean capsule proof unless explicitly superseded.
+- Behavior: records pure deterministic source-level decision/readback data for
+  allowed operator decision states, decision requirements, stop conditions,
+  false activity flags, required report caveats, source/capsule/Git truth
+  separation, forbidden surface caveats, and next-safe-seam doctrine grounded
+  in Phase 349 and Phase 351.
+- Proof scope: source/test/docs operator decision readback only.
+- Non-proofs: no product task creation, task execution, live mutation, worker
+  dispatch, patch application, parser/runner/dispatcher, CLI, service/API/UI/
+  dashboard/auth/deployment behavior, runtime/provider/model/platform
+  execution, `general_answer` resumption, Source Files refresh, capsule/export/
+  package refresh, semantic correctness, production readiness, autonomous AI
+  coding authority, live business-data/Obsidian/PKMS access, adapter execution,
+  real domain execution, push, or official capsule proof beyond Phase 335 is
+  registered by Phase 352.
+- Next-safe-seam doctrine: operator decision/readback may precede later
+  routing, patch workflow, worker dispatch, provider policy, or domain-general
+  intake, but proves none of them.
+- Marker:
+  `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
