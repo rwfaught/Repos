@@ -3934,3 +3934,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   capsule proof.
 - Marker:
   `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 327 - Backbone PKMS Note Operation Fixture Negative Edge Contract
+
+- Status: source/test/docs hardening of PKMS note-operation fixture mapping
+  negative and edge behavior.
+- Source changed:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_327_backbone_pkms_note_fixture_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_327.md`.
+- Behavior: deterministic validation rejects missing fake vault path evidence,
+  missing fake note path/id, missing before/after content evidence, live vault
+  access claims, real mutation claims, backlink/frontmatter correctness claims,
+  semantic and production-readiness smuggling, Backbone V0 claims, adapter
+  execution claims, official capsule claims, and PKMS-specific fields leaking
+  into Backbone-native fields.
+- Proof scope: source/test/docs negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, no semantic
+  correctness, no production readiness, no autonomous AI coding, no live
+  Obsidian/PKMS access, no live note mutation, no real backlink/frontmatter
+  correctness proof, no provider/model/runtime/platform execution, no adapter
+  execution, no service/API/UI/dashboard/auth/deployment behavior, no official
+  capsule proof.
+- Marker:
+  `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

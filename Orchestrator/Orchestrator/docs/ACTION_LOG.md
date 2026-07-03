@@ -5815,3 +5815,31 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Phase 326.
 
 `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 327 Backbone PKMS Note Operation Fixture Negative Edge Contract
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source changed:
+  `orchestrator/backbone_pkms_note_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_327_backbone_pkms_note_fixture_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_327.md`.
+- Registered behavior: deterministic negative-edge validation for the static
+  fake `pkms_note_operation_fixture` mapping rejects missing fake fixture
+  evidence, live vault access claims, real mutation claims, backlink/
+  frontmatter correctness claims, semantic/production smuggling, Backbone V0
+  claims, adapter execution claims, official capsule claims, and PKMS-specific
+  native-field leakage.
+- Proof scope: source/test/docs negative-edge behavior only.
+- Non-proofs: no Backbone V0 declaration, no Backbone V0 criteria, semantic
+  correctness, production readiness, autonomous AI coding, live Obsidian/PKMS
+  access, live note mutation, real backlink/frontmatter correctness,
+  provider/model/runtime/platform execution, adapter execution, service/API/UI/
+  dashboard/auth/deployment behavior, official capsule proof, real domain
+  execution, or integrated production workflow readiness is registered by
+  Phase 327.
+
+`PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -1796,3 +1796,23 @@ fresh artifact proof.
   `PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`.
 
 `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone PKMS Note Operation Fixture Negative Edge Status
+
+- Phase 327 hardens deterministic negative and edge handling for the static fake
+  `pkms_note_operation_fixture` Backbone mapping.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 327 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  PKMS fixture negative-edge contract is static fixture validation only.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 327 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 327 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Phase 327 does not create a
+  Backbone V0 criteria phase. The next authorized campaign move is:
+  `PHASE328_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_READBACK_DECISION_BOUNDARY_SOURCE_TEST_DOCS`.
+
+`PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

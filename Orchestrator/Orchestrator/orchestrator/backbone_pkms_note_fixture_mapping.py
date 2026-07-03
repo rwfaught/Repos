@@ -46,6 +46,17 @@ PKMS_NOTE_FIXTURE_REASON_CODES = {
     "fake_before_after_evidence_missing": "fake_before_after_evidence_missing",
     "fixture_doc_or_test_evidence_missing": "fixture_doc_or_test_evidence_missing",
     "stage_order_mismatch": "stage_order_mismatch",
+    "backbone_v0_claim_rejected": "backbone_v0_claim_rejected",
+    "adapter_execution_claim_rejected": "adapter_execution_claim_rejected",
+    "live_vault_access_claim_rejected": "live_vault_access_claim_rejected",
+    "live_pkms_mutation_claim_rejected": "live_pkms_mutation_claim_rejected",
+    "backlink_frontmatter_correctness_claim_rejected": (
+        "backlink_frontmatter_correctness_claim_rejected"
+    ),
+    "semantic_correctness_claim_rejected": "semantic_correctness_claim_rejected",
+    "production_readiness_claim_rejected": "production_readiness_claim_rejected",
+    "official_capsule_claim_rejected": "official_capsule_claim_rejected",
+    "pkms_specific_native_field_rejected": "pkms_specific_native_field_rejected",
 }
 
 PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS = (
@@ -61,6 +72,24 @@ PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS = (
     "fake_verification_evidence",
     "fixture_stage_role",
 )
+
+_FORBIDDEN_TRUE_CLAIM_REASON_FIELDS = {
+    "backbone_v0_declared": "backbone_v0_claim_rejected",
+    "adapter_execution_allowed": "adapter_execution_claim_rejected",
+    "adapter_executed": "adapter_execution_claim_rejected",
+    "live_vault_accessed": "live_vault_access_claim_rejected",
+    "live_obsidian_vault_accessed": "live_vault_access_claim_rejected",
+    "live_pkms_note_mutated": "live_pkms_mutation_claim_rejected",
+    "real_note_mutation_executed": "live_pkms_mutation_claim_rejected",
+    "real_backlink_frontmatter_correctness_claimed": (
+        "backlink_frontmatter_correctness_claim_rejected"
+    ),
+    "backlink_correctness_claimed": "backlink_frontmatter_correctness_claim_rejected",
+    "frontmatter_correctness_claimed": "backlink_frontmatter_correctness_claim_rejected",
+    "semantic_correctness_claimed": "semantic_correctness_claim_rejected",
+    "production_readiness_claimed": "production_readiness_claim_rejected",
+    "official_capsule_generated": "official_capsule_claim_rejected",
+}
 
 
 @dataclass(frozen=True)
@@ -283,6 +312,12 @@ def _first_mapping_reason(data: dict[str, Any]) -> str:
         return PKMS_NOTE_FIXTURE_REASON_CODES["unknown_stage_name"]
     if str(data.get("bounded_context") or "").strip() != PKMS_NOTE_FIXTURE_BOUNDED_CONTEXT:
         return PKMS_NOTE_FIXTURE_REASON_CODES["bounded_context_missing"]
+    claim_reason = _forbidden_claim_reason(data)
+    if claim_reason:
+        return claim_reason
+    native_leak_reason = _pkms_specific_native_field_reason(data)
+    if native_leak_reason:
+        return native_leak_reason
     payload = dict(data.get("domain_payload") or {})
     if not str(payload.get("fake_vault_path") or "").strip():
         return PKMS_NOTE_FIXTURE_REASON_CODES["fake_vault_path_missing"]
@@ -300,4 +335,27 @@ def _first_mapping_reason(data: dict[str, Any]) -> str:
         return PKMS_NOTE_FIXTURE_REASON_CODES[
             "fixture_doc_or_test_evidence_missing"
         ]
+    return ""
+
+
+def _forbidden_claim_reason(data: dict[str, Any]) -> str:
+    for field_name, reason_code in _FORBIDDEN_TRUE_CLAIM_REASON_FIELDS.items():
+        if data.get(field_name) is True:
+            return PKMS_NOTE_FIXTURE_REASON_CODES[reason_code]
+    return ""
+
+
+def _pkms_specific_native_field_reason(data: dict[str, Any]) -> str:
+    native_fields = {
+        str(field_name)
+        for field_name in data.get(
+            "backbone_native_evidence_fields",
+            BACKBONE_NATIVE_EVIDENCE_FIELDS,
+        )
+    }
+    for field_name in PKMS_NOTE_FIXTURE_SPECIFIC_FIELDS:
+        if field_name in native_fields:
+            return PKMS_NOTE_FIXTURE_REASON_CODES[
+                "pkms_specific_native_field_rejected"
+            ]
     return ""

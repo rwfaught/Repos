@@ -6702,3 +6702,39 @@ criteria, integrated production workflow readiness, or Backbone V0 declaration
 is registered by Phase 326.
 
 `PHASE326_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 327 Backbone PKMS Note Operation Fixture Negative Edge Contract
+
+Boundary:
+
+`PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_pkms_note_fixture_mapping.py`
+
+Registered changed tests:
+
+- `tests/test_phase_327_backbone_pkms_note_fixture_negative_edge_contract.py`
+
+Registered changed docs:
+
+- `docs/PHASE_327.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 327 hardens deterministic negative-edge behavior for
+the static fake PKMS note-operation fixture mapping while preserving
+no-Backbone-V0, no-adapter-execution, no-live-vault-access, no-live-PKMS-note-
+mutation, and no-real-domain-execution posture.
+
+Registered non-proofs: no semantic correctness, live provider/model execution,
+runtime/platform execution, service/API/UI/dashboard/auth/deployment behavior,
+official capsule proof, adapter execution, live Obsidian vault access, live
+PKMS note mutation, real backlink/frontmatter correctness, Backbone V0
+criteria, integrated production workflow readiness, or Backbone V0 declaration
+is registered by Phase 327.
+
+`PHASE327_BACKBONE_PKMS_NOTE_OPERATION_FIXTURE_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
