@@ -2090,3 +2090,31 @@ fresh artifact proof.
   `12e70023d638c0f919aa8e00e50ceccfaf36a6de`.
 
 `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`
+
+## Codex Bounded-Autonomy Prompt Surface Status
+
+- Phase 345 adds a docs-only reusable Codex bounded-autonomy prompt/report
+  surface for Orchestrator product-track work after Backbone V0 declaration and
+  post-declaration consolidation preservation.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 345 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+  Phase 345 documents worker prompt/report guardrails only.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 345 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 345 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 345 does not create or refresh Source
+  Files, capsules, exports, or packages and does not extend official capsule
+  proof beyond the Phase 335 record.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 345 adds a docs-only worker prompt/report surface
+  and does not claim semantic correctness, production readiness, autonomous AI
+  coding, provider/model/runtime/platform execution, service/API/UI/dashboard/
+  auth/deployment readiness, live domain execution, adapter execution, fixture
+  mappings as live integrations, future phase completion, or official capsule
+  proof beyond Phase 335.
+
+`PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`

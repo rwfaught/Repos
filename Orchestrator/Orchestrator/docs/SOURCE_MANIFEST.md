@@ -7176,3 +7176,32 @@ refresh, production readiness, semantic correctness, live domain execution, or
 official capsule proof beyond the Phase 335 record is registered by Phase 344.
 
 `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 345 Codex Bounded-Autonomy Prompt Surface
+
+Boundary:
+
+`PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY`
+
+Registered changed docs:
+
+- `docs/PHASE_345.md`
+- `docs/CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 345 adds a docs-only reusable Codex bounded-autonomy
+prompt/report surface for Orchestrator product-track work after Backbone V0
+declaration and post-declaration consolidation preservation.
+
+Registered non-proofs: no source/test code change, runtime/provider/model/
+platform execution, WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer
+execution, service/API/UI/dashboard/auth/deployment work, `general_answer`
+work, Source Files refresh, capsule/export/package refresh, tag/branch
+creation, movement, deletion, or push, autonomous-AI-coding proof, production
+readiness, semantic correctness, live domain execution, or official capsule
+proof beyond the Phase 335 record is registered by Phase 345.
+
+`PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`

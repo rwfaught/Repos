@@ -6200,3 +6200,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   official capsule proof beyond Phase 335 is registered by Phase 344.
 
 `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`
+
+## Phase 345 Codex Bounded-Autonomy Prompt Surface
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY`
+- Phase doc added:
+  `docs/PHASE_345.md`.
+- Docs added:
+  `docs/CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a reusable operator-facing Codex prompt/report
+  surface for bounded product-track work after Backbone V0 declaration and
+  post-declaration consolidation preservation.
+- Registered authority limits: preserves coordinator/operator acceptance
+  authority, explicit boundary/mode lockouts, allowed-file limits,
+  accepted-fact versus inference separation, validation reporting, and
+  local-commit/no-push separation.
+- Non-proofs: no source/test code change, no runtime/provider/model/platform
+  execution, no WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer
+  execution, no service/API/UI/dashboard/auth/deployment work, no
+  `general_answer` work, no Source Files refresh, no capsule/export/package
+  refresh, no tag/branch creation, movement, deletion, or push, no autonomous
+  AI coding proof, no production readiness, no semantic correctness, no live
+  domain execution, and no official capsule proof beyond Phase 335 is
+  registered by Phase 345.
+
+`PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`

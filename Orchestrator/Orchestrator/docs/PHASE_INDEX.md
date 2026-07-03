@@ -4295,3 +4295,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   proof beyond Phase 335 is registered by Phase 344.
 - Marker:
   `PHASE344_BACKBONE_V0_POST_DECLARATION_CONSOLIDATION_REF_RECORD_DOCS_ONLY_PROVEN=PASS`.
+
+## Phase 345 - Codex Bounded-Autonomy Prompt Surface
+
+- Status: docs-only reusable Codex bounded-autonomy prompt/report surface added
+  for Orchestrator product-track work after Backbone V0 declaration and
+  post-declaration consolidation preservation.
+- Boundary:
+  `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY`
+- Phase doc added:
+  `docs/PHASE_345.md`.
+- Docs added:
+  `docs/CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: records an operator-facing prompt/report surface that keeps Codex
+  inside explicit boundary, mode, lockout, allowed-file, accepted-fact,
+  validation, and report-format constraints.
+- Proof scope: docs-only governance surface.
+- Non-proofs: no source/test code change, runtime/provider/model/platform
+  execution, WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer execution,
+  service/API/UI/dashboard/auth/deployment work, `general_answer` work,
+  Source Files refresh, capsule/export/package refresh, tag/branch movement,
+  push, autonomous-AI-coding proof, production-readiness claim,
+  semantic-correctness claim, live domain execution claim, or official capsule
+  proof beyond Phase 335 is registered by Phase 345.
+- Marker:
+  `PHASE345_CODEX_BOUNDED_AUTONOMY_PROMPT_SURFACE_DOCS_ONLY_PROVEN=PASS`.
