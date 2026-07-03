@@ -1877,3 +1877,22 @@ fresh artifact proof.
   `PHASE333_BACKBONE_V0_CRITERIA_READBACK_OPERATOR_DECISION_BOUNDARY_SOURCE_TEST_DOCS`.
 
 `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Criteria Readback Decision Boundary Status
+
+- Phase 333 adds deterministic operator readback and decision-boundary
+  assessment for the Backbone V0 criteria layer.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; criteria readback reads
+  static evidence only and does not execute the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 333 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 333 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. Phase 333 ends the campaign
+  at criteria readback and decision-boundary assessment. The safest next NBM is:
+  `PHASE334_BACKBONE_V0_DECLARATION_READINESS_ASSESSMENT_READONLY`.
+
+`PHASE333_BACKBONE_V0_CRITERIA_READBACK_OPERATOR_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`

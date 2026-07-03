@@ -4037,3 +4037,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   execution, or official clean capsule proof is added.
 - Marker:
   `PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 333 - Backbone V0 Criteria Readback Operator Decision Boundary
+
+- Status: source/test/docs operator readback and decision-boundary assessment
+  added for the Backbone V0 criteria layer.
+- Source changed:
+  `orchestrator/backbone_v0_criteria.py`.
+- Source added:
+  `orchestrator/backbone_v0_criteria_decision_boundary.py`.
+- Test added:
+  `tests/test_phase_333_backbone_v0_criteria_readback_decision_boundary.py`.
+- Phase doc added:
+  `docs/PHASE_333.md`.
+- Behavior: criteria readback reports criteria list, satisfaction status,
+  missing requirements, deferred decisions, allowed next decisions, preserved
+  non-proofs, Backbone V0 declared false, declaration allowed now false, and
+  read-only declaration-readiness assessment as the next boundary. The decision
+  boundary blocks declaration, semantic/production/provider/runtime/live-domain/
+  adapter/capsule claim surfaces.
+- Proof scope: source/test/docs criteria readback and decision-boundary behavior
+  only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, production
+  readiness, autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment behavior, live Obsidian vault
+  access, live PKMS mutation, live business-data mutation, real domain
+  execution, or official clean capsule proof is added.
+- Marker:
+  `PHASE333_BACKBONE_V0_CRITERIA_READBACK_OPERATOR_DECISION_BOUNDARY_SOURCE_TEST_DOCS_PROVEN=PASS`.

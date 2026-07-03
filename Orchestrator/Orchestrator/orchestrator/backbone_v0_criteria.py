@@ -31,6 +31,9 @@ BACKBONE_V0_CRITERIA_STATUS = "backbone_v0_criteria_defined_not_declared"
 BACKBONE_V0_CRITERIA_RECOMMENDED_NEXT_BOUNDARY = (
     "PHASE332_BACKBONE_V0_CRITERIA_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS"
 )
+BACKBONE_V0_CRITERIA_READBACK_RECOMMENDED_NEXT_BOUNDARY = (
+    "PHASE334_BACKBONE_V0_DECLARATION_READINESS_ASSESSMENT_READONLY"
+)
 OFFICIAL_CLEAN_CAPSULE_REQUIRED = True
 
 BACKBONE_V0_CRITERIA_NON_PROOFS = (
@@ -195,6 +198,53 @@ def validate_backbone_v0_criteria_evidence(
         "backbone_v0_declared": BACKBONE_V0_DECLARED,
         "declaration_allowed_now": False,
         "non_proofs": list(BACKBONE_V0_CRITERIA_NON_PROOFS),
+    }
+
+
+def read_backbone_v0_criteria_operator_readback(
+    evidence: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    selected_evidence = (
+        read_current_backbone_v0_criteria_evidence()
+        if evidence is None
+        else dict(evidence)
+    )
+    evaluation = evaluate_backbone_v0_criteria(selected_evidence)
+    validation = validate_backbone_v0_criteria_evidence(selected_evidence)
+    criteria = list(evaluation["criteria"])
+    satisfied = [item for item in criteria if item["satisfied"]]
+    unsatisfied = [item for item in criteria if not item["satisfied"]]
+    return {
+        "backbone_v0_criteria_operator_readback": True,
+        "criteria_status": evaluation["criteria_status"],
+        "criteria_list": criteria,
+        "criteria_count": evaluation["criteria_count"],
+        "satisfied_criteria": satisfied,
+        "unsatisfied_criteria": unsatisfied,
+        "current_satisfaction_status": {
+            "all_criteria_satisfied_for_definition": evaluation[
+                "all_criteria_satisfied_for_definition"
+            ],
+            "satisfied_criteria_count": evaluation["satisfied_criteria_count"],
+            "unsatisfied_criteria_count": evaluation["unsatisfied_criteria_count"],
+        },
+        "missing_requirements": list(evaluation["missing_requirements"]),
+        "evidence_validation": validation,
+        "backbone_v0_declared": BACKBONE_V0_DECLARED,
+        "backbone_v0_declaration_allowed_now": False,
+        "declaration_blockers": list(evaluation["declaration_blockers"]),
+        "deferred_decisions": [
+            "backbone_v0_declaration",
+            "official_declaration_export_or_capsule_claim",
+        ],
+        "allowed_next_decisions": [
+            "read_only_declaration_readiness_assessment",
+        ],
+        "non_proofs": list(evaluation["non_proofs"]),
+        "official_capsule_proof_current": False,
+        "recommended_next_boundary": (
+            BACKBONE_V0_CRITERIA_READBACK_RECOMMENDED_NEXT_BOUNDARY
+        ),
     }
 
 
