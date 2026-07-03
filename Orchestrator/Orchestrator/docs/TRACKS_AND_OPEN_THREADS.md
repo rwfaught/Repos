@@ -2002,3 +2002,31 @@ fresh artifact proof.
   or official capsule proof beyond the Phase 335 record.
 
 `PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Source Inspection Report Surface Status
+
+- Phase 342 adds a deterministic source/test/docs inspection report surface
+  over the existing Backbone V0 declaration, declaration operator status, and
+  proof-chain operator index.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 342 does not
+  execute or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 342 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 342 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 342 references only the exact Phase
+  335 official clean capsule proof and does not create or refresh capsules,
+  exports, or packages.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 342 reports existing Backbone V0 source surfaces
+  without redeclaring Backbone V0, replacing Phase 340, or claiming semantic
+  correctness, production readiness, autonomous AI coding,
+  provider/model/runtime/platform execution, service/API/UI/dashboard/auth/
+  deployment readiness, live Obsidian/PKMS or business-data access, real domain
+  execution, adapter execution, fixture mappings as live integrations, future
+  phase completion, or official capsule proof beyond the Phase 335 record.
+
+`PHASE342_BACKBONE_V0_SOURCE_INSPECTION_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`

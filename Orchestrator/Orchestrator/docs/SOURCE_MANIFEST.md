@@ -7057,3 +7057,46 @@ completed, capsule/export/package refresh, or official capsule proof beyond
 the exact Phase 335 record is registered by Phase 340.
 
 `PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 342 Backbone V0 Source Inspection Report Surface
+
+Boundary:
+
+`PHASE342_BACKBONE_V0_SOURCE_INSPECTION_REPORT_SURFACE_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_v0_source_inspection_report.py`
+
+Registered changed tests:
+
+- `tests/test_phase_342_backbone_v0_source_inspection_report_surface.py`
+
+Registered changed docs:
+
+- `docs/PHASE_342.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 342 adds a deterministic source/test/docs
+inspection report surface over the existing Backbone V0 declaration,
+declaration operator status, and proof-chain operator index. The report
+preserves Phase 337/338/340 markers, Phase 337 fork-point commit, Phase 338
+commit, Phase 340 commit, the exact Phase 335 official clean capsule proof
+reference with caveat, ordered proof-chain phases, read-only assessment phases,
+non-proofs, forbidden claims, false execution flags, next-operator caveats, and
+source/capsule/git truth separation caveats.
+
+Registered non-proofs: no semantic correctness, production readiness,
+autonomous AI coding, live provider/model execution, runtime/platform
+execution, service/API/UI/dashboard/auth/deployment readiness, live
+Obsidian/PKMS or business-data access, real domain execution, adapter
+execution, fixture mappings as live integrations, `general_answer` resumption,
+OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phases already
+completed, capsule/export/package refresh, CLI/service/API/UI/dashboard/auth/
+deployment behavior, or official capsule proof beyond the exact Phase 335
+record is registered by Phase 342.
+
+`PHASE342_BACKBONE_V0_SOURCE_INSPECTION_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
