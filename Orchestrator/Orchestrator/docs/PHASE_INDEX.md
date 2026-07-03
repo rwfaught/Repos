@@ -4454,3 +4454,48 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   intake, but proves none of them.
 - Marker:
   `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 354 - Product Task Packet Next-Seam Selection Readback
+
+- Status: source/test/docs deterministic next-seam selection readback added for
+  the product task packet track.
+- Boundary:
+  `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_next_seam_selection_readback.py`.
+- Test added:
+  `tests/test_phase_354_product_task_packet_next_seam_selection_readback.py`.
+- Phase doc added:
+  `docs/PHASE_354.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `204aac075b6d229e9bf9f408b235be927fd0dc12`; Phase 349, Phase 351, and
+  Phase 352 markers remain the source basis; Phase 352 push/ref verification
+  is accepted; Source Files refresh after Phase 351 was not official clean
+  capsule proof; Phase 335 remains the only accepted official clean capsule
+  proof unless explicitly superseded.
+- Behavior: records pure deterministic source-level seam selection data for the
+  completed packet spine, eligible next seams, blocked/deferred seams,
+  recommended next boundary, selection rules, stop conditions, false activity
+  flags, required report caveats, and source/capsule/Git truth separation.
+- Proof scope: source/test/docs next-seam selection readback only.
+- Recommended next boundary:
+  `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no product task creation, task execution, live mutation, worker
+  dispatch, patch application, routing implementation, provider policy
+  implementation, domain-general intake implementation, parser/runner/
+  dispatcher, CLI, service/API/UI/dashboard/auth/deployment behavior,
+  runtime/provider/model/platform execution, `general_answer` resumption,
+  Source Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, autonomous AI coding authority, live business-data/
+  Obsidian/PKMS access, adapter execution, real domain execution, push, or
+  official capsule proof beyond Phase 335 is registered by Phase 354.
+- Next-safe-seam doctrine: choose readback before execution, lifecycle before
+  routing, routing contract before routing implementation, patch contract
+  before patch application, worker contract before worker dispatch, provider
+  policy before provider/model execution, and handoff when context saturation
+  appears.
+- Marker:
+  `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

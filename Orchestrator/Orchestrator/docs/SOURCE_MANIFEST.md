@@ -7382,3 +7382,56 @@ patch workflow, worker dispatch, provider policy, or domain-general intake, but
 proves none of them.
 
 `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 354 Product Task Packet Next-Seam Selection Readback
+
+Boundary:
+
+`PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS`
+
+Changed files:
+
+- `orchestrator/product_task_packet_next_seam_selection_readback.py`
+- `tests/test_phase_354_product_task_packet_next_seam_selection_readback.py`
+- `docs/PHASE_354.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Accepted facts: current verified `origin/main` is
+`204aac075b6d229e9bf9f408b235be927fd0dc12`; Phase 349, Phase 351, and Phase
+352 source basis is preserved; Phase 352 push/ref verification is accepted;
+Source Files refresh after Phase 351 was not official clean capsule proof;
+Phase 335 remains the only accepted official clean capsule proof unless
+explicitly superseded.
+
+Registered behavior: Phase 354 adds a pure deterministic source-level
+next-seam selection readback for product task packets. It records the completed
+packet spine, eligible next seams, blocked/deferred seams, recommended next
+boundary, selection rules, stop conditions, false activity flags, required
+report caveats, and source/capsule/Git truth separation. It is source/test/docs
+readback only.
+
+Recommended next boundary:
+
+`PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`
+
+Registered non-proofs: no runtime/provider/model/platform execution, no
+service/API/UI/dashboard/auth/deployment behavior, no WSL/Ollama/OpenClaw/
+Hermes/LightRAG/Discord/installer execution, no `general_answer` resumption, no
+worker dispatch, no patch application, no routing implementation, no provider
+policy implementation, no domain-general intake implementation, no live task
+creation, no live task execution, no live mutation, no live business-data/
+Obsidian/PKMS access, no adapter execution, no real domain execution, no Source
+Files refresh, no capsule/export/package refresh, no semantic correctness, no
+production readiness, no autonomous AI coding authority, no push, and no
+official capsule proof beyond Phase 335 is registered by Phase 354.
+
+Next-safe-seam doctrine: choose readback before execution, lifecycle before
+routing, contract before implementation, provider policy before provider
+execution, handoff when context saturation appears, separate push/ref
+verification after local commit, and a separate capsule-proof boundary for
+official capsule claims.
+
+`PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

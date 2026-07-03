@@ -2264,3 +2264,61 @@ fresh artifact proof.
   intake, but proves none of them.
 
 `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 354 Product Task Packet Next-Seam Selection Readback
+
+- Phase 354 adds a deterministic source/test/docs next-seam selection readback
+  surface for product task packets grounded in Phase 349, Phase 351, and Phase
+  352.
+- Boundary:
+  `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Changed files:
+  `orchestrator/product_task_packet_next_seam_selection_readback.py`,
+  `tests/test_phase_354_product_task_packet_next_seam_selection_readback.py`,
+  `docs/PHASE_354.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `204aac075b6d229e9bf9f408b235be927fd0dc12`; Phase 349, Phase 351, and
+  Phase 352 markers remain source basis; Phase 352 push/ref verification is
+  accepted; Source Files refresh after Phase 351 was not official clean capsule
+  proof; Phase 335 remains the only accepted official clean capsule proof
+  unless explicitly superseded.
+- `PRODUCT_WORKER_RELAY_OPERATOR_ROUTING`: updated at readback level only.
+  Phase 354 records eligible candidate seams, blocked/deferred seams,
+  selection rules, stop conditions, false activity flags, report caveats, and
+  source/capsule/Git truth separation. Candidate seam eligibility is not
+  implementation, execution, worker dispatch, or coordinator ratification.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged. Phase 354 does not execute
+  live product tasks, mutate task state, prove semantic correctness, prove
+  production readiness, or grant autonomous AI coding authority.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: unchanged. Phase 354 does not create
+  patch proposals, authorize apply, apply patches, or establish patch workflow
+  proof. Patch workflow remains a later contract/readback seam before any
+  application behavior.
+- `PRODUCT_DOMAIN_GENERAL_INTAKE_ROUTING`: unchanged at implementation level.
+  Phase 354 may list domain-general intake as a later readback candidate, but
+  does not implement routing, domain-general intake, service/API/UI/dashboard/
+  auth/deployment behavior, live business-data access, or live Obsidian/PKMS
+  access.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: unchanged. Phase 354 preserves
+  the `general_answer` lockout and does not resume or mutate that lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate. Phase 354 does not run
+  WSL, Ollama, OpenClaw, Hermes, LightRAG, Discord, installer, provider, model,
+  runtime, platform, adapter, or real domain execution.
+- `PRODUCT_SERVICE_API_UI_AUTH`: unchanged. Phase 354 does not create service,
+  API, UI, dashboard, auth, deployment, CLI, parser, runner, dispatcher, or
+  live harness behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 354 does not create or refresh Source
+  Files, capsule/export/package artifacts, full Git backups, or official clean
+  capsule proof. Source Files refresh after Phase 351 remains distinct from
+  official capsule proof, and Phase 335 remains the accepted official clean
+  capsule proof unless explicitly superseded.
+- Recommended next boundary:
+  `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`.
+- Next-safe-seam doctrine: choose readback before execution, lifecycle before
+  routing, routing contract before routing implementation, patch contract
+  before patch application, worker contract before worker dispatch, provider
+  policy before provider/model execution, and handoff when context saturation
+  appears.
+
+`PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

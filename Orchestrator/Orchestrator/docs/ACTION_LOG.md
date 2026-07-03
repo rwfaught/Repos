@@ -6364,3 +6364,46 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   by Phase 352.
 
 `PHASE352_PRODUCT_TASK_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 354 Product Task Packet Next-Seam Selection Readback
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_next_seam_selection_readback.py`.
+- Test added:
+  `tests/test_phase_354_product_task_packet_next_seam_selection_readback.py`.
+- Phase doc added:
+  `docs/PHASE_354.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Accepted facts: current verified `origin/main` is
+  `204aac075b6d229e9bf9f408b235be927fd0dc12`; Phase 349, Phase 351, and
+  Phase 352 source/markers are preserved; Phase 352 push/ref verification is
+  accepted; Source Files refresh after Phase 351 was not official clean capsule
+  proof; Phase 335 remains the only accepted official clean capsule proof
+  unless explicitly superseded.
+- Registered behavior: adds a deterministic source/test/docs next-seam
+  selection readback for product task packet candidate seams, blocked/deferred
+  seams, selection rules, stop conditions, false activity flags, required
+  report caveats, source/capsule/Git truth separation, and the recommended
+  next boundary.
+- Recommended next boundary:
+  `PHASE355_PRODUCT_TASK_PACKET_LIFECYCLE_STATE_READBACK_SOURCE_TEST_DOCS`.
+- Registered posture: seam selection readback is not execution; candidate seam
+  eligibility is not implementation; the recommended next boundary is not
+  authorization for later seams.
+- Non-proofs: no product task creation, task execution, live mutation, worker
+  dispatch, patch application, routing implementation, provider policy
+  implementation, domain-general intake implementation, parser/runner/
+  dispatcher, CLI, service/API/UI/dashboard/auth/deployment behavior,
+  runtime/provider/model/platform execution, WSL/Ollama/OpenClaw/Hermes/
+  LightRAG/Discord/installer execution, `general_answer` work, Source Files
+  refresh, capsule/export/package refresh, push, semantic correctness,
+  production readiness, autonomous AI coding authority, live business-data/
+  Obsidian/PKMS access, adapter execution, real domain execution, or official
+  capsule proof beyond Phase 335 is registered by Phase 354.
+
+`PHASE354_PRODUCT_TASK_PACKET_NEXT_SEAM_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
