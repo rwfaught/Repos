@@ -2181,3 +2181,40 @@ fresh artifact proof.
   governance, not Backbone V0 redeclaration or product execution proof.
 
 `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Product Task Packet Negative-Edge Contract Status
+
+- Phase 351 adds a deterministic source/test/docs negative-edge contract for
+  product task packets grounded in the Phase 349 operator report surface.
+- `PRODUCT_GOVERNANCE_PROTOCOL`: strengthened at source/test/docs
+  negative-edge level only. Phase 351 makes disallowed product task packet
+  claims, disallowed packet actions, required stop conditions, false flags,
+  report caveats, and source/capsule/Git truth separation inspectable as
+  static source data.
+- `PRODUCT_WORKER_RELAY_OPERATOR_ROUTING`: role separation remains explicit.
+  Phase 351 does not dispatch workers, execute Codex, execute relay surfaces,
+  create product tasks, or grant coordinator authority to Codex.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 351 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+  Phase 351 does not create patch proposals, authorize apply, apply patches,
+  verify apply results, finalize tasks, or prove integrated production patch
+  workflow readiness.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 351 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 351 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 351 does not create or refresh Source
+  Files, capsules, exports, or packages and does not extend official capsule
+  proof beyond the Phase 335 record.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 351 is a negative-edge contract for product task
+  packet governance, not Backbone V0 redeclaration, product execution proof,
+  semantic correctness proof, or production-readiness proof.
+- Next-safe-seam doctrine: product task packet negative-edge hardening should
+  precede operator decision/readback, routing, patch workflow, worker dispatch,
+  provider policy, or domain-general intake.
+
+`PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`

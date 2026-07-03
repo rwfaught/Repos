@@ -4383,3 +4383,34 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   push, or official capsule proof beyond Phase 335 is registered by Phase 349.
 - Marker:
   `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 351 - Product Task Packet Negative-Edge Contract
+
+- Status: source/test/docs deterministic negative-edge contract added for
+  product task packets.
+- Boundary:
+  `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_negative_edge.py`.
+- Test added:
+  `tests/test_phase_351_product_task_packet_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_351.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: records pure deterministic source-level negative-edge data for
+  product task packet disallowed claims, disallowed actions, stop conditions,
+  false flags, report caveats, source/capsule/Git truth separation, and
+  next-safe-seam doctrine grounded in Phase 349.
+- Proof scope: source/test/docs negative-edge contract only.
+- Non-proofs: no product task creation, task mutation, task execution, worker
+  dispatch, relay execution, Codex execution, parser/runner/dispatcher, CLI,
+  service/API/UI/dashboard/auth/deployment behavior, runtime/provider/model/
+  platform execution, `general_answer` resumption, Source Files refresh,
+  capsule/export/package refresh, semantic correctness, production readiness,
+  autonomous AI coding authority, live integration, adapter execution, real
+  domain execution, push, or official capsule proof beyond Phase 335 is
+  registered by Phase 351.
+- Marker:
+  `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`.

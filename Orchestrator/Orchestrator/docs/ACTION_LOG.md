@@ -6290,3 +6290,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   official capsule proof beyond Phase 335 is registered by Phase 349.
 
 `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 351 Product Task Packet Negative-Edge Contract
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_negative_edge.py`.
+- Test added:
+  `tests/test_phase_351_product_task_packet_negative_edge_contract.py`.
+- Phase doc added:
+  `docs/PHASE_351.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a deterministic source/test/docs negative-edge
+  contract for product task packet disallowed claims, disallowed actions,
+  required stop conditions, required false flags, report caveats, source/
+  capsule/Git truth separation, and next-safe-seam doctrine.
+- Registered posture: product task packets are inspectable planning/report
+  artifacts, not execution authority. The negative-edge contract is not live
+  enforcement and does not create a validator, parser, dispatcher, runner, CLI,
+  service, or live task harness.
+- Non-proofs: no product task creation, task mutation, task execution, worker
+  dispatch, relay execution, Codex execution, parser/runner/dispatcher, CLI,
+  service/API/UI/dashboard/auth/deployment behavior, runtime/provider/model/
+  platform execution, WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer
+  execution, `general_answer` work, Source Files refresh, capsule/export/
+  package refresh, push, semantic correctness, production readiness,
+  autonomous AI coding authority, live integration, adapter execution, real
+  domain execution, or official capsule proof beyond Phase 335 is registered
+  by Phase 351.
+
+`PHASE351_PRODUCT_TASK_PACKET_NEGATIVE_EDGE_CONTRACT_SOURCE_TEST_DOCS_PROVEN=PASS`
