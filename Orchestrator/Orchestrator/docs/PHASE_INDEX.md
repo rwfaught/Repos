@@ -3830,4 +3830,29 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   official capsule proof, adapter execution, patch-loop migration, or
   integrated production workflow readiness is added.
 - Marker:
-  `PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 322 - Backbone Non-Patch Fixture Mapping
+
+- Status: source/test/docs mapping added for a static non-code-patching
+  research-claim packet fixture.
+- Source added:
+  `orchestrator/backbone_research_claim_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_322_backbone_non_patch_fixture_mapping.py`.
+- Docs changed: `docs/PHASE_322.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: deterministic static mapping names the
+  `research_claim_packet_fixture` bounded context, maps every Phase 316
+  Backbone stage, keeps fixture-specific fields in domain payload, preserves
+  reference-only evidence strings, and reports false execution/mutation claims.
+- Proof scope: source/test/docs fixture mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness,
+  provider/model/runtime/platform execution, autonomous AI coding, production
+  readiness, service/API/UI/dashboard/auth/deployment behavior,
+  scheduler/connector behavior, `general_answer`, cleanup/delete/archive,
+  official capsule proof, adapter execution, real domain execution, live record
+  mutation, or integrated production workflow readiness is added.
+- Marker:
+  `PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.

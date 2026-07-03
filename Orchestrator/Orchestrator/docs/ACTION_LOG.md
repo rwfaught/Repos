@@ -5698,3 +5698,32 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   migration, or integrated production workflow readiness is added.
 
 `PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 322 Backbone Non-Patch Fixture Mapping
+
+- Timestamp: 2026-07-02
+- Boundary:
+  `PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_research_claim_fixture_mapping.py`.
+- Test added:
+  `tests/test_phase_322_backbone_non_patch_fixture_mapping.py`.
+- Docs changed: `docs/PHASE_322.md`; `docs/PHASE_INDEX.md`;
+  `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`;
+  `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic source/test/docs mapping for the static
+  `research_claim_packet_fixture` bounded context with one mapping per
+  Backbone stage, reference-only fixture evidence, fixture fields isolated in
+  domain payload, adapter execution disabled, and real-domain/live-record
+  action flags false.
+- Proof scope: source/test/docs fixture mapping behavior only.
+- Non-proofs: no Backbone V0 declaration, semantic correctness, live
+  provider/model execution, runtime/platform behavior, autonomous AI coding,
+  model-backed generation, production readiness, service/API/UI/dashboard/auth/
+  deployment behavior, scheduler/reminder/connector behavior, `general_answer`
+  resumption, platform/OpenClaw/Hermes/LightRAG behavior, broad cleanup/delete/
+  archive authority, official capsule proof, adapter execution, real domain
+  execution, live record mutation, or integrated production workflow readiness
+  is added.
+
+`PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`

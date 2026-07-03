@@ -1704,3 +1704,28 @@ fresh artifact proof.
   export claim.
 
 `PHASE320_BACKBONE_MAPPING_OPERATOR_DECISION_BOUNDARY_ASSESSMENT_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone Non-Patch Fixture Mapping Status
+
+- Phase 322 adds a deterministic mapping for the static
+  `research_claim_packet_fixture` bounded context.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 322 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context. The
+  new mapping is a separate non-patch fixture context and does not migrate
+  patch-loop behavior.
+- `PRODUCT_CURRENT_SUCCESS_CRITERION`: unchanged; fixture mapping is not
+  semantic correctness proof, production readiness proof, or task adequacy
+  proof.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 322 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 322 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `ORCHESTRATOR_BACKBONE_V0`: still not declared. The fixture mapping shows a
+  second bounded context can be described by the scaffold, but declaration,
+  official capsule proof, semantic proof, and production readiness remain
+  future boundaries.
+
+`PHASE322_BACKBONE_NON_PATCH_FIXTURE_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
