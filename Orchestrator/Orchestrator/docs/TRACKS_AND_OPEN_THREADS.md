@@ -1949,3 +1949,29 @@ fresh artifact proof.
   `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`.
 
 `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Declaration Operator Status
+
+- Phase 338 adds deterministic operator-facing readback/status for the Phase
+  337 Backbone V0 declaration.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 338 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 338 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 338 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 338 reports only the exact Phase 335
+  official clean capsule proof and does not create or refresh capsules.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 338 does not redeclare it and does not claim
+  semantic correctness, production readiness, autonomous AI coding,
+  provider/model/runtime/platform execution, service/API/UI/dashboard/auth/
+  deployment readiness, live Obsidian/PKMS or business-data access, real domain
+  execution, adapter execution, fixture mappings as live integrations,
+  `general_answer` resumption, future phase completion, or official capsule
+  proof beyond the Phase 335 record.
+
+`PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`

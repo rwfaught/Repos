@@ -6031,3 +6031,37 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   337.
 
 `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 338 Backbone V0 Declaration Operator Status
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_v0_declaration_operator_status.py`.
+- Test added:
+  `tests/test_phase_338_backbone_v0_declaration_operator_status.py`.
+- Phase doc added:
+  `docs/PHASE_338.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_DECLARATION.md`.
+- Ledgers updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic operator-facing readback/status consumes
+  the Phase 337 declaration source and reports the narrow declared status,
+  accepted proof chain, exact Phase 335 official clean capsule proof, preserved
+  non-proofs, forbidden claims, false execution flags, operator summary,
+  operator caveats, and git-ref preservation status. Local preservation refs
+  were inspected; remote refs were not independently verified.
+- Proof scope: source/test/docs declaration readback/status only.
+- Non-proofs: no redeclaration, semantic correctness, production readiness,
+  autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment readiness, live Obsidian/PKMS or
+  business-data access, real domain execution, adapter execution, fixture
+  mappings as live integrations, `general_answer` resumption,
+  OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phase completion,
+  or official capsule proof beyond the Phase 335 record is registered by Phase
+  338.
+
+`PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`

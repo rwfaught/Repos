@@ -6975,3 +6975,43 @@ completed, or official capsule proof beyond the exact Phase 335 record is
 registered by Phase 337.
 
 `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 338 Backbone V0 Declaration Operator Status
+
+Boundary:
+
+`PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`
+
+Registered changed source:
+
+- `orchestrator/backbone_v0_declaration_operator_status.py`
+
+Registered changed tests:
+
+- `tests/test_phase_338_backbone_v0_declaration_operator_status.py`
+
+Registered changed docs:
+
+- `docs/PHASE_338.md`
+- `docs/BACKBONE_V0_DECLARATION.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 338 adds deterministic operator-facing readback and
+status for the Phase 337 Backbone V0 declaration. The readback preserves the
+narrow source/test/docs structural milestone claim, exact Phase 335 official
+clean capsule proof, non-proofs, forbidden claims, false execution flags, and
+careful local-only git-ref preservation facts.
+
+Registered non-proofs: no redeclaration, semantic correctness, production
+readiness, autonomous AI coding, live provider/model execution,
+runtime/platform execution, service/API/UI/dashboard/auth/deployment readiness,
+live Obsidian/PKMS or business-data access, real domain execution, adapter
+execution, fixture mappings as live integrations, `general_answer` resumption,
+OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phases already
+completed, or official capsule proof beyond the exact Phase 335 record is
+registered by Phase 338.
+
+`PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`

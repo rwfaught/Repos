@@ -4128,3 +4128,37 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   337.
 - Marker:
   `PHASE337_BACKBONE_V0_DECLARATION_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 338 - Backbone V0 Declaration Operator Status
+
+- Status: deterministic operator-facing readback/status added for the Phase
+  337 Backbone V0 declaration.
+- Boundary:
+  `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`.
+- Source added:
+  `orchestrator/backbone_v0_declaration_operator_status.py`.
+- Test added:
+  `tests/test_phase_338_backbone_v0_declaration_operator_status.py`.
+- Phase doc added:
+  `docs/PHASE_338.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_DECLARATION.md`.
+- Ledgers updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: readback consumes `read_backbone_v0_declaration_status()` and
+  reports declared status, declaration boundary and marker, declared claim,
+  scope, accepted proof markers, exact Phase 335 official capsule proof,
+  non-proofs, forbidden claims, false execution flags, operator summary,
+  caveats, and careful git-ref preservation status.
+- Proof scope: source/test/docs declaration readback/status only.
+- Non-proofs: no redeclaration, semantic correctness, production readiness,
+  autonomous AI coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment readiness, live Obsidian/PKMS or
+  business-data access, real domain execution, adapter execution, fixture
+  mappings as live integrations, `general_answer` resumption,
+  OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phase completion,
+  or official capsule proof beyond the Phase 335 record is registered by Phase
+  338.
+- Marker:
+  `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`.

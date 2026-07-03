@@ -37,3 +37,10 @@ Official clean capsule proof is limited to the exact Phase 335 record:
   `0`
 - `__pycache__/.pyc` entry count:
   `0`
+
+Phase 338 adds operator-facing readback/status for this declaration:
+
+`PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS`
+
+That readback does not redeclare Backbone V0 and does not broaden the narrow
+source/test/docs structural milestone.
