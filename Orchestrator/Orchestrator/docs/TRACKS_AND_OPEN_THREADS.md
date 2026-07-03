@@ -1975,3 +1975,30 @@ fresh artifact proof.
   proof beyond the Phase 335 record.
 
 `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Backbone V0 Proof-Chain Operator Index Status
+
+- Phase 340 adds a deterministic source/test/docs operator index for the
+  accepted Backbone V0 proof chain after Phase 337 and Phase 338.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 340 does not
+  execute or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 340 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 340 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 340 references only the exact Phase
+  335 official clean capsule proof and does not create or refresh capsules,
+  exports, or packages.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 340 indexes the accepted proof chain and
+  read-only assessment phases without claiming semantic correctness,
+  production readiness, autonomous AI coding, provider/model/runtime/platform
+  execution, service/API/UI/dashboard/auth/deployment readiness, live
+  Obsidian/PKMS or business-data access, real domain execution, adapter
+  execution, fixture mappings as live integrations, future phase completion,
+  or official capsule proof beyond the Phase 335 record.
+
+`PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`

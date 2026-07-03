@@ -44,3 +44,15 @@ Phase 338 adds operator-facing readback/status for this declaration:
 
 That readback does not redeclare Backbone V0 and does not broaden the narrow
 source/test/docs structural milestone.
+
+Phase 340 adds an operator proof-chain/index surface for this declaration:
+
+`PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS`
+
+That index orients future operators to the accepted proof chain, read-only
+assessment phases, non-proofs, false execution flags, and source/capsule
+separation caveats. It does not broaden the Backbone V0 declaration, execute
+runtime/provider/model/platform paths, refresh capsules/exports/packages, or
+extend official capsule proof beyond the Phase 335 record.
+
+`PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`

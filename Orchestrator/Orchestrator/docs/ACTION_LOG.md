@@ -6065,3 +6065,36 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   338.
 
 `PHASE338_BACKBONE_V0_DECLARATION_READBACK_OPERATOR_STATUS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 340 Backbone V0 Proof-Chain Operator Index
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/backbone_v0_proof_chain_operator_index.py`.
+- Test added:
+  `tests/test_phase_340_backbone_v0_proof_chain_operator_index.py`.
+- Phase doc added:
+  `docs/PHASE_340.md`.
+- Docs updated:
+  `docs/BACKBONE_V0_DECLARATION.md`.
+- Ledgers updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: deterministic operator index reports the accepted
+  Backbone V0 proof-chain order, read-only assessment phases, Phase 337 fork
+  commit, Phase 338 commit, exact Phase 335 official clean capsule proof
+  reference, preserved non-proofs, forbidden claims, false execution flags,
+  operator caveats, and source/capsule separation caveats.
+- Proof scope: source/test/docs operator orientation only.
+- Non-proofs: no semantic correctness, production readiness, autonomous AI
+  coding, provider/model/runtime/platform execution,
+  service/API/UI/dashboard/auth/deployment readiness, live Obsidian/PKMS or
+  business-data access, real domain execution, adapter execution, fixture
+  mappings as live integrations, `general_answer` resumption,
+  OpenClaw/Hermes/LightRAG/Discord/installer behavior, future phase completion,
+  capsule/export/package refresh, or official capsule proof beyond the Phase
+  335 record is registered by Phase 340.
+
+`PHASE340_BACKBONE_V0_PROOF_CHAIN_OPERATOR_INDEX_SOURCE_TEST_DOCS_PROVEN=PASS`
