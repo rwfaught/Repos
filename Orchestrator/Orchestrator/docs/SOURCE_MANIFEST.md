@@ -7249,3 +7249,47 @@ registered by Phase 347.
 Marker:
 
 `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 349 Product Task Packet Operator Report Surface
+
+Boundary:
+
+`PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS`
+
+Source added:
+
+- `orchestrator/product_task_packet_operator_report.py`
+
+Tests added:
+
+- `tests/test_phase_349_product_task_packet_operator_report_surface.py`
+
+Docs added:
+
+- `docs/PHASE_349.md`
+
+Docs updated:
+
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Registered behavior: Phase 349 adds a pure deterministic source-level report
+surface for product task packets. The report records Phase 347 and Phase 348
+source basis, product task packet fields, required response sections,
+accepted-fact versus inference separation, operator legibility requirements,
+standing lockouts, validation expectations, false activity flags, non-proofs,
+source/capsule/Git truth separation, and next-operator caveats.
+
+Registered non-proofs: no product task creation, task mutation, task execution,
+worker dispatch, Codex execution, parser/runner/dispatcher, CLI, service/API/
+UI/dashboard/auth/deployment behavior, runtime/provider/model/platform
+execution, `general_answer` resumption, Source Files refresh, capsule/export/
+package refresh, semantic correctness, production readiness, autonomous AI
+coding authority, live integration, adapter execution, real domain execution,
+push, or official capsule proof beyond Phase 335 is registered by Phase 349.
+
+Marker:
+
+`PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`

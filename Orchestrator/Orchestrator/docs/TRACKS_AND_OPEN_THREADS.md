@@ -2148,3 +2148,36 @@ fresh artifact proof.
   governance, not Backbone V0 redeclaration or product capability expansion.
 
 `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Product Task Packet Operator Report Surface Status
+
+- Phase 349 adds a deterministic source/test/docs operator report surface for
+  product task packets after Phase 348 selected this narrow post-Backbone-V0
+  product capability seam.
+- `PRODUCT_GOVERNANCE_PROTOCOL`: strengthened at source/test/docs report
+  level only. Phase 349 makes product task packet fields, required response
+  sections, accepted-fact/inference separation, NBM and decision requirements,
+  report metadata requirements, validation expectations, lockouts, non-proofs,
+  and source/capsule/Git truth separation inspectable as static source data.
+- `PRODUCT_WORKER_RELAY_OPERATOR_ROUTING`: role separation remains explicit.
+  Phase 349 is an operator report surface and does not dispatch workers,
+  execute Codex, or create product tasks.
+- `PRODUCT_CODING_TASK_E2E_SUCCESS_PATH`: unchanged; Phase 349 does not execute
+  or broaden the code-patching loop.
+- `PRODUCT_PATCH_WORKFLOW_CODING_SPINE`: remains its own bounded context.
+  Phase 349 does not create patch proposals, authorize apply, apply patches,
+  or prove integrated production patch workflow readiness.
+- `PRODUCT_GENERAL_ANSWER_LIGHTWEIGHT_REPORT`: remains paused/deferred from
+  Phase 268. Phase 349 does not resume or mutate the `general_answer` lane.
+- `PLATFORM_OPENCLAW_HERMES_LIGHTRAG`: remains separate; Phase 349 does not
+  prove or invoke WSL, Ollama, OpenClaw, Hermes, Obsidian, LightRAG, Discord,
+  installer, runtime, provider/model, service/API/UI, scheduler, connector, or
+  production behavior.
+- `PRODUCT_EXPORT_ARTIFACT_PROOF`: Phase 349 does not create or refresh Source
+  Files, capsules, exports, or packages and does not extend official capsule
+  proof beyond the Phase 335 record.
+- `ORCHESTRATOR_BACKBONE_V0`: remains declared only as a source/test/docs
+  structural milestone. Phase 349 is a report surface for product task packet
+  governance, not Backbone V0 redeclaration or product execution proof.
+
+`PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`

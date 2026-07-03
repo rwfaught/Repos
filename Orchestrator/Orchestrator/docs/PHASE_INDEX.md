@@ -4352,3 +4352,34 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   push, or official capsule proof beyond Phase 335 is registered by Phase 347.
 - Marker:
   `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 349 - Product Task Packet Operator Report Surface
+
+- Status: source/test/docs deterministic operator report surface added for
+  product task packets.
+- Boundary:
+  `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_operator_report.py`.
+- Test added:
+  `tests/test_phase_349_product_task_packet_operator_report_surface.py`.
+- Phase doc added:
+  `docs/PHASE_349.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Behavior: records pure deterministic source-level report data for product
+  task packet fields, required response sections, accepted-fact versus
+  inference separation, NBM/decision/report metadata requirements, standing
+  lockouts, validation expectations, false activity flags, non-proofs, and
+  source/capsule/Git truth separation.
+- Proof scope: source/test/docs report surface only.
+- Non-proofs: no product task creation, task mutation, task execution, worker
+  dispatch, Codex execution, parser/runner/dispatcher, CLI, service/API/UI/
+  dashboard/auth/deployment behavior, runtime/provider/model/platform
+  execution, `general_answer` resumption, Source Files refresh, capsule/export/
+  package refresh, semantic correctness, production readiness, autonomous AI
+  coding authority, live integration, adapter execution, real domain execution,
+  push, or official capsule proof beyond Phase 335 is registered by Phase 349.
+- Marker:
+  `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`.

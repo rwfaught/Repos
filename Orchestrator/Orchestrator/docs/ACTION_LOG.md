@@ -6260,3 +6260,33 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   by Phase 347.
 
 `PHASE347_CODEX_BOUNDED_WORKER_PACKET_OPERATOR_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 349 Product Task Packet Operator Report Surface
+
+- Timestamp: 2026-07-03
+- Boundary:
+  `PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS`
+- Source added:
+  `orchestrator/product_task_packet_operator_report.py`.
+- Test added:
+  `tests/test_phase_349_product_task_packet_operator_report_surface.py`.
+- Phase doc added:
+  `docs/PHASE_349.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a deterministic source/test/docs report surface
+  for product task packet fields, response sections, accepted-fact/inference
+  separation, NBM and decision requirements, report metadata requirements,
+  standing lockouts, validation expectations, false activity flags,
+  non-proofs, and source/capsule/Git truth separation.
+- Non-proofs: no product task creation, task mutation, task execution, worker
+  dispatch, Codex execution, parser/runner/dispatcher, CLI, service/API/UI/
+  dashboard/auth/deployment behavior, runtime/provider/model/platform
+  execution, WSL/Ollama/OpenClaw/Hermes/LightRAG/Discord/installer execution,
+  `general_answer` work, Source Files refresh, capsule/export/package refresh,
+  push, semantic correctness, production readiness, autonomous AI coding
+  authority, live integration, adapter execution, real domain execution, or
+  official capsule proof beyond Phase 335 is registered by Phase 349.
+
+`PHASE349_PRODUCT_TASK_PACKET_OPERATOR_REPORT_SURFACE_SOURCE_TEST_DOCS_PROVEN=PASS`
