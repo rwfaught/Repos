@@ -3,13 +3,16 @@ from pathlib import Path
 
 from orchestrator.product_task_packet_handoff_packet_escalation_outcome_review_closure_readback import (
     BOUNDARY,
+    CAMPAIGN_CAP_STATUS,
     MARKER,
     NAME,
+    RECOMMENDED_NEXT_BOUNDARY,
     read_product_task_packet_handoff_packet_escalation_outcome_review_closure_readback,
 )
 
 
 MARKER_TEXT = "PHASE382_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS"
+PRODUCT_NEXT_BOUNDARY = "PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS"
 
 
 class Phase382HandoffPacketEscalationOutcomeReviewClosureReadbackTests(unittest.TestCase):
@@ -22,6 +25,14 @@ class Phase382HandoffPacketEscalationOutcomeReviewClosureReadbackTests(unittest.
         self.assertEqual(self.readback["name"], NAME)
         self.assertEqual(self.readback["boundary"], BOUNDARY)
         self.assertEqual(self.readback["marker"], MARKER)
+
+    def test_product_next_boundary_is_separate_from_campaign_cap(self):
+        self.assertEqual(RECOMMENDED_NEXT_BOUNDARY, PRODUCT_NEXT_BOUNDARY)
+        self.assertEqual(self.readback["recommended_next_boundary"], PRODUCT_NEXT_BOUNDARY)
+        self.assertEqual(self.readback["review_closure_status"]["recommended_next_boundary"], PRODUCT_NEXT_BOUNDARY)
+        self.assertEqual(CAMPAIGN_CAP_STATUS, "CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED")
+        self.assertEqual(self.readback["campaign_cap_status"], CAMPAIGN_CAP_STATUS)
+        self.assertEqual(self.readback["review_closure_status"]["campaign_cap_status"], CAMPAIGN_CAP_STATUS)
 
     def test_review_closure_posture_is_readback_only(self):
         self.assertIn("readback only", self.readback["purpose"])
@@ -73,6 +84,7 @@ class Phase382HandoffPacketEscalationOutcomeReviewClosureReadbackTests(unittest.
     def test_future_phase_absence_doctrine_does_not_assert_permanent_absence(self):
         self.assertIn("tests must not assert permanent absence of future phases", self.readback["future_phase_assertion_doctrine"])
         self.assertIn("campaign cap prevents Phase 382 from authorizing Phase 383 implementation", self.readback["future_phase_assertion_doctrine"])
+        self.assertIn("Phase 383 implementation requires a later explicit coordinator boundary", self.readback["future_phase_assertion_doctrine"])
 
     def test_marker_appears_in_source_test_docs_and_ledgers(self):
         root = Path(__file__).resolve().parents[1]

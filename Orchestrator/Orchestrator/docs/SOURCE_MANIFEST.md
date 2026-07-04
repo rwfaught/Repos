@@ -8024,4 +8024,9 @@ execute the next boundary, perform cleanup/delete/archive, refresh Source
 Files, refresh capsule/export/package artifacts, prove semantic correctness,
 prove production readiness, push, or implement Phase 383.
 
+Product-track recommended next boundary:
+`PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS`.
+Campaign cap status:
+`CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED`.
+
 `PHASE382_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

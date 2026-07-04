@@ -6944,6 +6944,11 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
 - Registered behavior: adds a pure deterministic source/test/docs handoff
   packet escalation-outcome-review-closure readback only.
+- Repair note: product-track recommended next boundary is
+  `PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS`;
+  campaign cap status remains
+  `CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED` and does not authorize or
+  implement Phase 383.
 - Non-proofs: no operational review closure, no review execution, no review
   blocker resolution, no escalation execution, no outcome action execution, no
   handoff execution, no handoff packet execution, no worker dispatch, no patch

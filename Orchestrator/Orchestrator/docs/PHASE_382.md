@@ -27,6 +27,10 @@ false posture, campaign-cap posture, and future-phase assertion doctrine only.
 
 ## Recommended Next Boundary
 
+`PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS`
+
+## Campaign Cap Status
+
 `CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED`
 
 ## Non-Proofs
@@ -47,4 +51,6 @@ handoffs, perform cleanup/delete/archive, refresh Source Files, create capsules,
 prove semantic correctness, or prove production readiness. Any actual review
 closure action requires a later explicit execution boundary. Tests must not
 assert permanent absence of future phases. The rolling campaign stops at Phase
-382 because the packet caps implementation there.
+382 because the packet caps implementation there. The product-track next
+boundary is preserved as readback data only; actual Phase 383 implementation
+still requires a later explicit coordinator boundary.

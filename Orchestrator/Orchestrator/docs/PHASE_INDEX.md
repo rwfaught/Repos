@@ -5060,6 +5060,8 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   `tests/test_phase_382_product_task_packet_handoff_packet_escalation_outcome_review_closure_readback.py`,
   and `docs/PHASE_382.md`.
 - Recommended next boundary:
+  `PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS`.
+- Campaign cap status:
   `CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED`.
 - Non-proofs: no operational review closure, review execution, review blocker
   resolution, escalation execution, outcome action execution, handoff

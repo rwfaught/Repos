@@ -9,7 +9,10 @@ PHASE = 382
 NAME = "product_task_packet_handoff_packet_escalation_outcome_review_closure_readback"
 BOUNDARY = "PHASE382_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_CLOSURE_READBACK_SOURCE_TEST_DOCS"
 MARKER = "PHASE382_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS"
-RECOMMENDED_NEXT_BOUNDARY = "CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED"
+RECOMMENDED_NEXT_BOUNDARY = (
+    "PHASE383_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_READBACK_SOURCE_TEST_DOCS"
+)
+CAMPAIGN_CAP_STATUS = "CAMPAIGN_CAP_REACHED_NO_PHASE_383_AUTHORIZED"
 
 ACCEPTED_FACTS = (
     "Phase 381 recorded escalation outcome review blocker posture as readback only",
@@ -34,6 +37,7 @@ REVIEW_CLOSURE_STATUS = {
     "review_executed": False,
     "outcome_action_executed": False,
     "campaign_cap_reached": True,
+    "campaign_cap_status": CAMPAIGN_CAP_STATUS,
     "recommended_next_boundary": RECOMMENDED_NEXT_BOUNDARY,
 }
 
@@ -93,6 +97,7 @@ FUTURE_PHASE_ASSERTION_DOCTRINE = (
     "tests must not assert permanent absence of future phases",
     "tests may assert that the current phase did not implement a future phase",
     "campaign cap prevents Phase 382 from authorizing Phase 383 implementation",
+    "Phase 383 implementation requires a later explicit coordinator boundary",
 )
 
 LOCKOUT_TEXT = (
@@ -134,6 +139,7 @@ def read_product_task_packet_handoff_packet_escalation_outcome_review_closure_re
         "non_proof_caveats": list(NON_PROOF_CAVEATS),
         "future_phase_assertion_doctrine": list(FUTURE_PHASE_ASSERTION_DOCTRINE),
         "production_readiness": False,
+        "campaign_cap_status": CAMPAIGN_CAP_STATUS,
         "recommended_next_boundary": RECOMMENDED_NEXT_BOUNDARY,
         "lockout_text": list(LOCKOUT_TEXT),
     }
