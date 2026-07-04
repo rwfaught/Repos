@@ -5318,3 +5318,33 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
   `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY_REGISTERED=DOCS_ONLY`.
+
+
+## Dossier Case Mapping Readback Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs readback seam added.
+- Boundary: `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`.
+- Classification: non-phase readback checkpoint; not Phase 387 and not first
+  product wedge implementation.
+- Source added: `orchestrator/dossier_case_mapping_readback.py`.
+- Tests added: `tests/test_dossier_case_mapping_readback.py`.
+- Docs updated:
+  `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Readback posture: deterministic readback reports neutral fields,
+  neutral-to-case-packet mapping, required field coverage, preserved
+  missing-evidence and contradiction concepts, domain-neutrality status,
+  no-wedge status, Phase 387 non-implementation, explicit non-proofs, and safe
+  next options.
+- Recommended next boundary:
+  `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`.
+- Non-proofs: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

@@ -3156,3 +3156,26 @@ fresh artifact proof.
   behavior mutation, or test mutation.
 
 `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+### Dossier Case Mapping Readback Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs readback seam completed.
+- Source/test posture: `orchestrator/dossier_case_mapping_readback.py`
+  exposes a deterministic mapping readback with neutral fields,
+  neutral-to-case-packet mapping, required field coverage, preserved concepts,
+  domain-neutrality posture, no-wedge status, Phase 387 non-implementation,
+  explicit non-proofs, and safe next options;
+  `tests/test_dossier_case_mapping_readback.py` proves those readback fields
+  and a minimal dictionary fixture path.
+- Recommended next boundary:
+  `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, CLI,
+  production task execution, or persisted case packet requirement.
+
+`DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

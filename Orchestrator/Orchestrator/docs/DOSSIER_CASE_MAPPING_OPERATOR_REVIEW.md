@@ -265,3 +265,26 @@ non-wedge-selection posture.
 
 Do not move to persistence, domain fixtures, Source Files refresh, or product
 wedge ratification unless Roger explicitly chooses that next.
+
+## 13. Readback Boundary Record
+
+Boundary:
+
+`DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a small deterministic source/test/docs readback seam in
+`orchestrator/dossier_case_mapping_readback.py`, with focused coverage in
+`tests/test_dossier_case_mapping_readback.py`.
+
+Readback posture:
+
+The readback reports neutral fields, neutral-to-case-packet mappings, required
+field coverage, missing required fields, preserved missing-evidence and
+contradiction concepts, domain-neutrality posture, no-wedge status, Phase 387
+non-implementation, explicit non-proofs, and safe next options.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`

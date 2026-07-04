@@ -350,3 +350,29 @@ or first product wedge selection.
 Recommended next boundary:
 
 `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`
+
+## 17. Mapping Readback Record
+
+Boundary:
+
+`DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a pure readback/reporting seam for the neutral mapping layer.
+
+Source/test files:
+
+- `orchestrator/dossier_case_mapping_readback.py`
+- `tests/test_dossier_case_mapping_readback.py`
+
+The readback exposes neutral fields, case-packet field targets, required field
+coverage, preserved missing-evidence and contradiction concepts,
+domain-neutrality status, no-wedge status, Phase 387 non-implementation,
+explicit non-proofs, and safe next options. It does not add CLI behavior,
+persistence, runtime/provider/model execution, product-domain implementation,
+or first product wedge selection.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
