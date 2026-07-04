@@ -7047,3 +7047,32 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   readiness, no push, and no Phase 387 implementation.
 
 `PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+
+### Founder Control And Source Reality Docs Only
+
+- Boundary: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`.
+- Added: `docs/FOUNDER_CONTROL_PROTOCOL.md`.
+- Added: `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`.
+- Added: `docs/CAPABILITY_REALITY_MAP.md`.
+- Added: `docs/DOMAIN_LOCK_IN_AUDIT.md`.
+- Added: `docs/OPERATOR_CODEBASE_MAP.md`.
+- Added: `docs/FIRST_PRODUCT_WEDGE_DECISION.md`.
+- Updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Registered founder-control posture: Phase 387 remains parked and is not
+  authorized by sequence momentum.
+- Registered product-wedge posture: claims/disputes/appeals remains historically
+  documented and source-relevant, but is not current forward ratification by
+  itself.
+- Registered strategic bridge: Option C preserves case-packet work while using a
+  neutral dossier/case abstraction as the bridge before first-product wedge
+  ratification.
+- Non-proofs preserved: no source behavior change, no tests added, no runtime/
+  provider/model/platform execution, no worker dispatch, no Phase 387
+  implementation, no final first-product wedge selection, no semantic
+  correctness proof, no production readiness proof, no Source Files refresh,
+  and no capsule/export/package proof.
+
+`FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`

@@ -18,6 +18,44 @@ Every future coordinator session must inspect this ledger and apply
 (NBM) or changing tracks. Accepted facts, coordinator inference, worker report,
 and artifact proof must remain visibly distinct.
 
+
+## Current Founder Control Hinge
+
+Status: `ACTIVE_NBM_CANDIDATE` for founder-visible design/control work; not an
+implementation phase.
+
+Boundary registered: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`.
+
+Reason: Roger reopened founder alignment after Phase 386 because the project was
+accumulating governance/readback machinery faster than founder-level
+comprehension, and because claims/disputes/appeals-style casework had begun to
+act like the gravitational product wedge without fresh founder ratification.
+
+Current accepted bridge: Option C. Preserve case-packet work, but stop treating
+claims/disputes/appeals as the first-product center until Roger explicitly
+ratifies it again. Use a neutral dossier/case abstraction as the strategic bridge.
+
+Phase 387 posture: parked technical thread. Phase 386 preserved
+`PHASE387_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_REVIEW_READBACK_SOURCE_TEST_DOCS`,
+but also recorded `CAMPAIGN_CAP_REACHED_NO_PHASE_387_AUTHORIZED`. Do not resume
+Phase 387 automatically.
+
+Founder-control docs:
+
+- `docs/FOUNDER_CONTROL_PROTOCOL.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+
+Next likely boundary:
+`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
+
+Drift warning: governance/readback growth is valuable only while it increases
+inspectability and product truth. Founder ratification is required before deep
+product-wedge lock-in resumes.
+
 ## Open-Thread Triage Statuses
 
 Every visible open thread must be triaged before NBM ranking. Use these status

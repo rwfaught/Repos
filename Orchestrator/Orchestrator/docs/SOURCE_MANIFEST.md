@@ -8124,3 +8124,32 @@ Campaign cap status:
 `CAMPAIGN_CAP_REACHED_NO_PHASE_387_AUTHORIZED`.
 
 `PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+
+## Founder Control And Source Reality Docs-Only Sources
+
+- `docs/FOUNDER_CONTROL_PROTOCOL.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Classification: docs-only founder visibility and source-reality checkpoint.
+This boundary creates cockpit/control documents and re-entry registrations only.
+It does not change source behavior, add tests, execute runtime/provider/model/
+platform behavior, dispatch workers, implement Phase 387, select the final
+first product wedge, prove semantic correctness, prove production readiness,
+refresh Source Files, or create capsule/export/package proof.
+
+Strategic bridge: Option C preserves case-packet work while preventing
+claims/disputes/appeals from remaining the product gravitational center by
+inertia until Roger ratifies that domain again.
+
+`FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`

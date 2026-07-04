@@ -18,6 +18,8 @@ ALWAYS_READ_CONTROL:
 - `ALPHA_3_0_RESTART_BRIEF.md` (if present)
 - `OWNER_AUTHORED_SYSTEM_PRINCIPLE.md` (if present)
 - `PROJECT_VISION.md`
+- `docs/FOUNDER_CONTROL_PROTOCOL.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`
 - `docs/CONTEXT_MAP.md`
 - `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`
 - `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`
@@ -29,6 +31,10 @@ CURRENT_STATE:
 - `PROJECT_CONTEXT.md`
 - `RERANK_01.md`
 - `RERANK_01_RESULT.md` (if present)
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
 - current Product Strategy docs
 - current Product Design docs
 
@@ -151,6 +157,29 @@ Also restate:
 - or re-ranking
 
 so the workflow stage remains explicit.
+
+
+## Founder-control re-entry gate
+
+When Roger reports black-box concern, when a multi-phase/Codex campaign has
+completed, when a product wedge is being selected or silently reinforced, or
+before a major implementation campaign resumes, apply
+`docs/FOUNDER_CONTROL_PROTOCOL.md` before ranking further implementation NBMs.
+
+The current founder-control state is recorded in:
+
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
+
+Current strategic bridge: preserve case-packet work, but stop treating
+claims/disputes/appeals as the gravitational center until Roger ratifies that
+first proving domain again. The bridge is a neutral dossier/case abstraction,
+not final wedge selection.
+
+Phase 387 remains parked until founder visibility and wedge ratification are
+resolved or Roger explicitly authorizes that technical thread.
 
 
 ## Session doctrine and durable open threads

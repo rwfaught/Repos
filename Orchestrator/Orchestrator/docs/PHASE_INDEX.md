@@ -5155,3 +5155,32 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   implementation.
 - Marker:
   `PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+
+## Founder Control And Source Reality Docs-Only Checkpoint
+
+- Status: docs-only founder visibility and source-reality control docs added.
+- Boundary: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`.
+- Classification: non-phase founder-control checkpoint; not Phase 387 and not
+  implementation momentum.
+- Docs added: `docs/FOUNDER_CONTROL_PROTOCOL.md`,
+  `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`,
+  `docs/CAPABILITY_REALITY_MAP.md`, `docs/DOMAIN_LOCK_IN_AUDIT.md`,
+  `docs/OPERATOR_CODEBASE_MAP.md`, and
+  `docs/FIRST_PRODUCT_WEDGE_DECISION.md`.
+- Docs updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Phase 387 posture: parked technical thread. Phase 386 preserved the Phase 387
+  recommended boundary but recorded `CAMPAIGN_CAP_REACHED_NO_PHASE_387_AUTHORIZED`.
+- Strategic bridge: Option C preserves case-packet work while preventing
+  claims/disputes/appeals from remaining the product center by inertia before
+  Roger ratifies it again.
+- Recommended next boundary:
+  `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
+- Non-proofs: no source behavior change, no implementation phase, no Phase 387
+  implementation, no source tests added, no runtime/provider/model/platform
+  execution, no worker dispatch, no final first-product wedge selection, no
+  semantic correctness proof, no production readiness proof, no Source Files
+  refresh, no capsule/export/package refresh, and no push proof.
+- Marker: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

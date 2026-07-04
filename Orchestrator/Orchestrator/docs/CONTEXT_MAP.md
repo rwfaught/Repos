@@ -736,3 +736,60 @@ Criteria evidence is static source/test/docs readback only. Criteria
 satisfaction is not semantic correctness, production readiness, autonomous AI
 coding, provider/model/runtime/platform execution, live domain integration,
 official clean capsule proof, or declaration/export proof.
+
+
+## Founder Control / Source Reality Context
+
+Boundary marker: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+Purpose: preserve founder-level comprehension, product-wedge ratification, and
+source-reality discipline before implementation momentum resumes.
+
+Owned language:
+
+- Founder Comprehension Snapshot
+- Founder Control Protocol
+- Capability Reality Map
+- Domain Lock-In Audit
+- Operator Codebase Map
+- First Product Wedge Decision
+- product capability surface
+- governance/readback surface
+- deterministic verification
+- semantic success
+- dossier/case abstraction
+- parked technical thread
+- founder ratification
+
+Authority docs/files:
+
+- `docs/FOUNDER_CONTROL_PROTOCOL.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_TEMPLATE.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/STARTUP_BRIEF.md`
+
+Current posture:
+
+- Phase 387 is parked, not authorized by sequence momentum.
+- Claims/disputes/appeals is historically documented and source-relevant, but
+  it is not current forward ratification by itself.
+- Option C is the current strategic bridge: preserve case-packet work while
+  moving toward a neutral dossier/case abstraction before final wedge
+  ratification.
+
+Do-not-confuse warnings:
+
+- A historical product strategy doc is not current founder ratification.
+- A deterministic readback is not product capability.
+- A PASS marker is not broad semantic proof.
+- A case-packet substrate is not end-to-end casework competence.
+- A dossier/case bridge is not final first-wedge selection.
+- A parked Phase 387 boundary is not authorization to implement Phase 387.
+
+Current proof posture: docs-only. The founder-control docs are source artifacts,
+not executable behavior, runtime/provider/model proof, production readiness,
+source capsule/export proof, or final product-wedge ratification.
