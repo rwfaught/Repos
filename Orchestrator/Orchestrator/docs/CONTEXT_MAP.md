@@ -769,6 +769,8 @@ Authority docs/files:
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `docs/OPERATOR_CODEBASE_MAP.md`
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/TRACKS_AND_OPEN_THREADS.md`
 - `docs/STARTUP_BRIEF.md`
 
@@ -780,6 +782,9 @@ Current posture:
 - Option C is the current strategic bridge: preserve case-packet work while
   moving toward a neutral dossier/case abstraction before final wedge
   ratification.
+- The dossier/case abstraction and ratification packet are founder-visible
+  design surfaces only; they prepare explicit ratification and do not select the
+  final first product wedge.
 
 Do-not-confuse warnings:
 
@@ -793,3 +798,5 @@ Do-not-confuse warnings:
 Current proof posture: docs-only. The founder-control docs are source artifacts,
 not executable behavior, runtime/provider/model proof, production readiness,
 source capsule/export proof, or final product-wedge ratification.
+
+Current next boundary: `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.

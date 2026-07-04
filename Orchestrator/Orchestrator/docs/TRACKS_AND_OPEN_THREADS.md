@@ -25,6 +25,8 @@ Status: `ACTIVE_NBM_CANDIDATE` for founder-visible design/control work; not an
 implementation phase.
 
 Boundary registered: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`.
+Current design boundary registered:
+`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
 
 Reason: Roger reopened founder alignment after Phase 386 because the project was
 accumulating governance/readback machinery faster than founder-level
@@ -48,9 +50,11 @@ Founder-control docs:
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `docs/OPERATOR_CODEBASE_MAP.md`
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 
 Next likely boundary:
-`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
+`FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
 
 Drift warning: governance/readback growth is valuable only while it increases
 inspectability and product truth. Founder ratification is required before deep

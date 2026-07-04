@@ -7076,3 +7076,27 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   and no capsule/export/package proof.
 
 `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+### Dossier Case Abstraction Founder Ratification Design Docs Only
+
+- Boundary:
+  `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
+- Added: `docs/DOSSIER_CASE_ABSTRACTION.md`.
+- Added: `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`.
+- Updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Registered design posture: neutral dossier/case abstraction is a bridge that
+  preserves case-packet work while keeping first-product wedge ratification
+  explicit.
+- Registered live options: keep claims/disputes/appeals, pivot to
+  game/worldbuilding/design dossier work, or build the neutral abstraction first
+  and choose the domain later.
+- Non-proofs preserved: no source behavior change, no tests added, no schema
+  implementation, no runtime/provider/model/platform execution, no worker
+  dispatch, no Phase 387 implementation, no final first product wedge
+  selection, no semantic correctness proof, no production readiness proof, no
+  Source Files refresh, and no capsule/export/package proof.
+
+`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

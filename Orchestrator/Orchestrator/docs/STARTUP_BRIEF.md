@@ -32,9 +32,11 @@ CURRENT_STATE:
 - `RERANK_01.md`
 - `RERANK_01_RESULT.md` (if present)
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/CAPABILITY_REALITY_MAP.md`
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `docs/OPERATOR_CODEBASE_MAP.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
 - current Product Strategy docs
 - current Product Design docs
 
@@ -180,6 +182,11 @@ not final wedge selection.
 
 Phase 387 remains parked until founder visibility and wedge ratification are
 resolved or Roger explicitly authorizes that technical thread.
+
+The current founder-visible design packet is
+`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`. It defines
+the neutral dossier/case abstraction and the ratification options; it is design
+only and does not authorize product implementation.
 
 
 ## Session doctrine and durable open threads

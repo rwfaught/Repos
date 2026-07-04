@@ -8153,3 +8153,28 @@ claims/disputes/appeals from remaining the product gravitational center by
 inertia until Roger ratifies that domain again.
 
 `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## Dossier Case Abstraction Founder Ratification Design Docs-Only Sources
+
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Classification: docs-only founder-visible design and ratification checkpoint.
+This boundary defines the neutral dossier/case abstraction and compares live
+first-product wedge ratification options. It does not change source behavior,
+add tests, implement a schema, execute runtime/provider/model/platform
+behavior, dispatch workers, implement Phase 387, select the final first product
+wedge, prove semantic correctness, prove production readiness, refresh Source
+Files, or create capsule/export/package proof.
+
+Recommended next boundary:
+`FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
+
+`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
