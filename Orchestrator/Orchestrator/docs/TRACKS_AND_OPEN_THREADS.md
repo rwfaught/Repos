@@ -2519,3 +2519,21 @@ fresh artifact proof.
   eligibility for a future explicitly bounded next move.
 
 `PHASE362_PRODUCT_TASK_PACKET_HANDOFF_PACKET_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 363 Product Task Packet Handoff Packet Operator Decision Readback
+
+- Phase 363 adds handoff packet operator decision readback.
+- Boundary:
+  `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines allowed decision states, evidence
+  requirements, proceed/defer/reject/stop gates, authority limits, invalid
+  decision claims, source/capsule/Git truth separation, and lockouts.
+- Recommended next boundary:
+  `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, Source Files refresh,
+  capsule/export/package refresh, semantic correctness, production readiness,
+  official capsule proof claim, or Phase 364 implementation.
+
+`PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

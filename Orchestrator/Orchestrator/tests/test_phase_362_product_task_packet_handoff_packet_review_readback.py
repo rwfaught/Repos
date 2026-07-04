@@ -142,7 +142,7 @@ class Phase362HandoffPacketReviewReadbackTests(unittest.TestCase):
         self.assertIn("No official capsule proof claim", self.readback["lockout_text"])
         self.assertEqual(self.readback["recommended_next_boundary"], RECOMMENDED_NEXT_BOUNDARY)
 
-    def test_marker_appears_in_source_test_docs_and_phase_363_is_not_implemented(self):
+    def test_marker_appears_in_source_test_docs_and_phase_362_remains_non_executing(self):
         root = Path(__file__).resolve().parents[1]
         for rel in (
             "orchestrator/product_task_packet_handoff_packet_review_readback.py",
@@ -154,8 +154,13 @@ class Phase362HandoffPacketReviewReadbackTests(unittest.TestCase):
             "docs/TRACKS_AND_OPEN_THREADS.md",
         ):
             self.assertIn(MARKER_TEXT, (root / rel).read_text(encoding="utf-8"))
-        self.assertFalse((root / "docs/PHASE_363.md").exists())
-        self.assertFalse((root / "orchestrator/product_task_packet_handoff_packet_operator_decision_readback.py").exists())
+        self.assertEqual(
+            self.readback["recommended_next_boundary"],
+            "PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS",
+        )
+        self.assertIn("No Phase 363 implementation", self.readback["lockout_text"])
+        for value in self.readback["false_activity_flags"].values():
+            self.assertFalse(value)
 
 
 if __name__ == "__main__":
