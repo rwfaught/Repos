@@ -4684,3 +4684,21 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   beyond Phase 335.
 - Marker:
   `PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 362 - Product Task Packet Handoff Packet Review Readback
+
+- Status: source/test/docs deterministic handoff packet review readback added.
+- Boundary: `PHASE362_PRODUCT_TASK_PACKET_HANDOFF_PACKET_REVIEW_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_handoff_packet_review_readback.py`,
+  `tests/test_phase_362_product_task_packet_handoff_packet_review_readback.py`,
+  and `docs/PHASE_362.md`.
+- Recommended next boundary:
+  `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no handoff execution, worker dispatch, patch application, route
+  selection execution, provider/model execution, runtime/provider/model/platform
+  execution, service/API/UI/dashboard/auth/deployment, `general_answer`, live
+  task execution, live mutation, Source Files refresh, capsule/export/package
+  refresh, semantic correctness, production readiness, official capsule proof
+  claim, or Phase 363 implementation.
+- Marker:
+  `PHASE362_PRODUCT_TASK_PACKET_HANDOFF_PACKET_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

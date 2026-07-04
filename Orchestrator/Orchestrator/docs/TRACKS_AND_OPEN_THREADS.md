@@ -2497,3 +2497,25 @@ fresh artifact proof.
   description is not provider/model execution.
 
 `PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 362 Product Task Packet Handoff Packet Review Readback
+
+- Phase 362 adds handoff packet review readback.
+- Boundary:
+  `PHASE362_PRODUCT_TASK_PACKET_HANDOFF_PACKET_REVIEW_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only. It defines required handoff packet fields,
+  conservative review status vocabulary, evidence doctrine, acceptance gates,
+  rejection gates, deferral gates, authority limits, invalid claims,
+  non-proofs, and source/capsule/Git truth separation.
+- Non-proofs: no handoff execution, worker dispatch, patch application, route
+  selection execution, provider/model execution, runtime/provider/model/platform
+  execution, service/API/UI/dashboard/auth/deployment, `general_answer`, live
+  task execution, live mutation, Source Files refresh, capsule/export/package
+  refresh, semantic correctness, production readiness, official capsule proof
+  claim, or Phase 363 implementation.
+- Handoff packet review readback is not handoff execution; review eligibility is
+  not worker dispatch; review acceptance is not coordinator ratification of
+  implementation correctness; review acceptance only means structural
+  eligibility for a future explicitly bounded next move.
+
+`PHASE362_PRODUCT_TASK_PACKET_HANDOFF_PACKET_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
