@@ -2667,3 +2667,24 @@ fresh artifact proof.
   cleanup/archive/delete.
 
 `PHASE369_PRODUCT_TASK_PACKET_HANDOFF_PACKET_STOP_CONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 370 Product Task Packet Handoff Packet Escalation Readback
+
+- Phase 370 adds handoff packet escalation readback.
+- Boundary:
+  `PHASE370_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, escalation triggers,
+  escalation recommendations, required evidence, blocked escalation conditions,
+  escalation status, false activity flags, non-proof caveats, future-phase
+  assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE371_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no escalation execution, handoff execution, handoff
+  packet execution, worker dispatch, patch application, route selection
+  execution, provider/model execution, runtime/provider/model/platform
+  execution, next-boundary execution, cleanup/delete/archive, Source Files
+  refresh, capsule/export/package refresh, semantic correctness, production
+  readiness, push, or Phase 371 implementation.
+- Escalation readback is not escalation execution.
+
+`PHASE370_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
