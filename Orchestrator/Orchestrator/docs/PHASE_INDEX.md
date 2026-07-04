@@ -5375,4 +5375,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   product implementation, no game/worldbuilding/design product implementation,
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
-  `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+
+## First Product Wedge Operator Decision Docs-Only Checkpoint
+
+- Status: docs-only founder/operator decision record added.
+- Boundary: `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`.
+- Classification: non-phase decision-surface checkpoint; not source behavior
+  mutation, not Phase 387, and not first product wedge implementation.
+- Docs added: `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`.
+- Docs updated:
+  `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`,
+  `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Decision posture: no first product wedge selected. Option 3 remains the only
+  ratified strategic path so far. Current recommendation is to continue
+  abstraction-first unless Roger explicitly chooses otherwise.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`.
+- Non-proofs: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

@@ -3203,3 +3203,24 @@ fresh artifact proof.
   production task execution, or persisted dossier/case migration.
 
 `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### First Product Wedge Operator Decision Docs-Only Checkpoint
+
+- Boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+- Status: docs-only founder/operator decision record completed.
+- Decision record:
+  `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
+- Decision posture: no first product wedge selected. Option 3 remains the only
+  ratified strategic path so far. The current recommendation is to continue
+  abstraction-first unless Roger explicitly chooses otherwise.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, source/test
+  mutation, or production task execution.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`

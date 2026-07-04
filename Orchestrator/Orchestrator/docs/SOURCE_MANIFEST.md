@@ -8336,3 +8336,28 @@ Recommended next boundary:
 `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`.
 
 `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+
+## FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY
+
+- `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/ACTION_LOG.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: docs-only founder/operator decision-surface checkpoint. This
+boundary records the post-mapping/readback/fixture decision posture. It does
+not select a first product wedge, implement Phase 387, mutate source or tests,
+implement claims/disputes/appeals product workflow, implement
+game/worldbuilding/design product workflow, migrate persistence, run
+runtime/provider/model execution, refresh Source Files, or create
+capsule/export/package proof.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`

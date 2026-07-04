@@ -309,3 +309,23 @@ Docs-only diff and required concept searches should pass before commit.
 Founder ratification status:
 
 Not yet ratified.
+
+## 11. First Product Wedge Operator Decision Record
+
+Boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+
+Decision record:
+`docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
+
+Current decision posture:
+
+- no first product wedge selected
+- Option 3 remains the only ratified strategic path so far
+- mapping/readback/fixture seams are structural source/test/docs proof only
+- Phase 387 remains parked
+- current recommendation is to continue abstraction-first unless Roger chooses
+  otherwise
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`

@@ -136,6 +136,7 @@ Authority docs/files:
 - `docs/DOSSIER_CASE_ABSTRACTION.md`
 - `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `orchestrator/dossier_case_mapping.py`
 - `orchestrator/dossier_case_mapping_readback.py`
@@ -162,6 +163,10 @@ two pure structural fixtures that pass through the same mapping/readback spine
 without selecting either as the first product wedge. These boundaries do not
 run runtime/provider/model behavior, implement Phase 387, migrate persistence,
 refresh Source Files, export/package, or prove a domain-specific workflow.
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY` adds the
+founder/operator decision record after those structural seams. It records no
+first product wedge selection and recommends continuing abstraction-first unless
+Roger explicitly chooses otherwise.
 
 ### Request Intake / Routing Context
 

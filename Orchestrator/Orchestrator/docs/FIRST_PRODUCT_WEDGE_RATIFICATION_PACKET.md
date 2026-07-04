@@ -194,3 +194,24 @@ semantic correctness, prove production readiness, prove end-to-end
 claims/disputes/appeals competence, prove end-to-end game/worldbuilding/design
 workflow, refresh Source Files, create capsule/export/package proof, or resume
 Phase 387. It preserves no wedge selection until Roger ratifies one.
+
+## Operator Decision Record
+
+Boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+
+Status:
+
+Recorded in `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`.
+
+Decision posture:
+
+No first product wedge is selected. Option 3 remains the only ratified
+strategic path so far. The current recommendation is to continue
+abstraction-first unless Roger explicitly chooses one of the ratification
+phrases.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
