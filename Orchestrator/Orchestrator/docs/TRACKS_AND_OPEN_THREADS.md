@@ -2776,3 +2776,24 @@ fresh artifact proof.
   execution. The rolling campaign stops at Phase 374 per packet cap.
 
 `PHASE374_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_RESOLUTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 375 Product Task Packet Handoff Packet Escalation Outcome Readback
+
+- Phase 375 adds handoff packet escalation-outcome readback.
+- Boundary:
+  `PHASE375_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, escalation decision
+  inputs, outcome categories, outcome evidence, unresolved blockers,
+  recommendation and inference, false activity flags, non-proof caveats,
+  future-phase assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE376_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_EVIDENCE_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no escalation execution, handoff execution, handoff
+  packet execution, worker dispatch, patch application, route selection
+  execution, provider/model execution, runtime/provider/model/platform
+  execution, next-boundary execution, cleanup/delete/archive, Source Files
+  refresh, capsule/export/package refresh, semantic correctness, production
+  readiness, push, or Phase 376 implementation.
+- Escalation outcome readback is not escalation execution.
+
+`PHASE375_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
