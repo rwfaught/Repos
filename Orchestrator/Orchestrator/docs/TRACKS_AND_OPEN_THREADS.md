@@ -2820,3 +2820,26 @@ fresh artifact proof.
   escalation execution.
 
 `PHASE376_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_EVIDENCE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 377 Product Task Packet Handoff Packet Escalation Outcome Blocker Readback
+
+- Phase 377 adds handoff packet escalation-outcome-blocker readback.
+- Boundary:
+  `PHASE377_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_BLOCKER_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, blocker inputs,
+  blocker status, required evidence, recommendation and inference, false
+  activity flags, non-proof caveats, future-phase assertion doctrine, and
+  lockouts.
+- Recommended next boundary:
+  `PHASE378_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_CLOSURE_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no blocker resolution, escalation execution, outcome
+  action execution, handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, next-boundary execution,
+  cleanup/delete/archive, Source Files refresh, capsule/export/package refresh,
+  semantic correctness, production readiness, push, or Phase 378
+  implementation.
+- Escalation outcome blocker readback is not blocker resolution or escalation
+  execution.
+
+`PHASE377_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_BLOCKER_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
