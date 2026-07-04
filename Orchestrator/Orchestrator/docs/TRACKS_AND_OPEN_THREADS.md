@@ -2645,3 +2645,25 @@ fresh artifact proof.
   execution.
 
 `PHASE368_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_APPROVAL_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 369 Product Task Packet Handoff Packet Stop Condition Readback
+
+- Phase 369 adds handoff packet stop-condition readback.
+- Boundary:
+  `PHASE369_PRODUCT_TASK_PACKET_HANDOFF_PACKET_STOP_CONDITION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, stop triggers,
+  blocking conditions, required escalation, stop recommendation, false activity
+  flags, non-proof caveats, future-phase assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE370_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no stop execution, cleanup/delete/archive, handoff
+  execution, handoff packet execution, worker dispatch, patch application,
+  route selection execution, provider/model execution, runtime/provider/model/
+  platform execution, next-boundary execution, Source Files refresh,
+  capsule/export/package refresh, semantic correctness, production readiness,
+  push, or Phase 370 implementation.
+- Stop-condition readback may recommend stopping, but it does not execute a
+  stop, mutate state beyond this readback seam, dispatch workers, or perform
+  cleanup/archive/delete.
+
+`PHASE369_PRODUCT_TASK_PACKET_HANDOFF_PACKET_STOP_CONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

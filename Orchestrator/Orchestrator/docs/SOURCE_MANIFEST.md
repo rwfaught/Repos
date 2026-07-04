@@ -7742,3 +7742,22 @@ correctness, prove production readiness, perform cleanup/delete/archive, push,
 or implement Phase 369.
 
 `PHASE368_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_APPROVAL_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 369 Product Task Packet Handoff Packet Stop Condition Readback Sources
+
+- `orchestrator/product_task_packet_handoff_packet_stop_condition_readback.py`
+- `tests/test_phase_369_product_task_packet_handoff_packet_stop_condition_readback.py`
+- `docs/PHASE_369.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: source/test/docs readback only. Phase 369 does not execute a
+stop, perform cleanup/delete/archive, execute handoff, execute a handoff packet,
+dispatch workers, apply patches, execute route selection, execute providers/
+models, execute runtime/provider/model/platform behavior, execute the next
+boundary, refresh Source Files, refresh capsule/export/package artifacts, prove
+semantic correctness, prove production readiness, push, or implement Phase 370.
+
+`PHASE369_PRODUCT_TASK_PACKET_HANDOFF_PACKET_STOP_CONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

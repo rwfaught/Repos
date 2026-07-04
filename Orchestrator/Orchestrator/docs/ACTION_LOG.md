@@ -6688,3 +6688,22 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   implementation.
 
 `PHASE368_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_APPROVAL_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 369 Product Task Packet Handoff Packet Stop Condition Readback
+
+- Added: `orchestrator/product_task_packet_handoff_packet_stop_condition_readback.py`.
+- Added: `tests/test_phase_369_product_task_packet_handoff_packet_stop_condition_readback.py`.
+- Added: `docs/PHASE_369.md`.
+- Updated: `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a pure deterministic source/test/docs handoff
+  packet stop-condition readback only.
+- Non-proofs: no stop execution, no cleanup/delete/archive, no handoff
+  execution, no handoff packet execution, no worker dispatch, no patch
+  application, no route selection execution, no provider/model execution, no
+  runtime/provider/model/platform execution, no next-boundary execution, no
+  Source Files refresh, no capsule/export/package refresh, no semantic
+  correctness, no production readiness, no push, and no Phase 370
+  implementation.
+
+`PHASE369_PRODUCT_TASK_PACKET_HANDOFF_PACKET_STOP_CONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
