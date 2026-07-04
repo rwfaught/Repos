@@ -2537,3 +2537,23 @@ fresh artifact proof.
   official capsule proof claim, or Phase 364 implementation.
 
 `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 364 Product Task Packet Handoff Packet Next Boundary Selection Readback
+
+- Phase 364 adds handoff packet next-boundary-selection readback.
+- Boundary:
+  `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines candidate boundary categories,
+  candidate next boundaries, selection evidence, valid/defer/reject/block
+  gates, authority limits, invalid selection claims, source/capsule/Git truth
+  separation, future-phase assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, selected next-boundary
+  execution, Source Files refresh, capsule/export/package refresh, semantic
+  correctness, production readiness, official capsule proof claim, or Phase 365
+  implementation.
+
+`PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

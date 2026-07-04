@@ -6591,3 +6591,23 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   claim, and no Phase 364 implementation.
 
 `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 364 Product Task Packet Handoff Packet Next Boundary Selection Readback
+
+- Added: `orchestrator/product_task_packet_handoff_packet_next_boundary_selection_readback.py`.
+- Added: `tests/test_phase_364_product_task_packet_handoff_packet_next_boundary_selection_readback.py`.
+- Added: `docs/PHASE_364.md`.
+- Updated: `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a pure deterministic source/test/docs handoff
+  packet next-boundary-selection readback only.
+- Non-proofs: no handoff execution, no handoff packet execution, no worker
+  dispatch, no patch application, no route selection execution, no provider/
+  model execution, no runtime/provider/model/platform execution, no next
+  boundary execution, no service/API/UI/dashboard/auth/deployment, no
+  general_answer, no live task execution, no live business-data access, no
+  Source Files refresh, no capsule/export/package refresh, no semantic
+  correctness, no production readiness, no official capsule proof claim, and no
+  Phase 365 implementation.
+
+`PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

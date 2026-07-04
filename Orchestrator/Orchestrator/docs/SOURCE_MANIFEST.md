@@ -7646,3 +7646,22 @@ artifacts, claim official capsule proof, prove semantic correctness, prove
 production readiness, or implement Phase 364.
 
 `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 364 Product Task Packet Handoff Packet Next Boundary Selection Readback Sources
+
+- `orchestrator/product_task_packet_handoff_packet_next_boundary_selection_readback.py`
+- `tests/test_phase_364_product_task_packet_handoff_packet_next_boundary_selection_readback.py`
+- `docs/PHASE_364.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: source/test/docs readback only. Phase 364 does not execute
+handoff, execute a handoff packet, dispatch workers, apply patches, execute
+route selection, execute providers/models, execute runtime/provider/model/
+platform behavior, execute the selected next boundary, refresh Source Files,
+refresh capsule/export/package artifacts, claim official capsule proof, prove
+semantic correctness, prove production readiness, or implement Phase 365.
+
+`PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

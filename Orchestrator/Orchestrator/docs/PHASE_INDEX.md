@@ -4720,3 +4720,22 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   official capsule proof claim, or Phase 364 implementation.
 - Marker:
   `PHASE363_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 364 - Product Task Packet Handoff Packet Next Boundary Selection Readback
+
+- Status: source/test/docs deterministic handoff packet next-boundary-selection readback added.
+- Boundary: `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_handoff_packet_next_boundary_selection_readback.py`,
+  `tests/test_phase_364_product_task_packet_handoff_packet_next_boundary_selection_readback.py`,
+  and `docs/PHASE_364.md`.
+- Recommended next boundary:
+  `PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no handoff execution, handoff packet execution, worker dispatch,
+  patch application, route selection execution, provider/model execution,
+  runtime/provider/model/platform execution, next-boundary execution,
+  service/API/UI/dashboard/auth/deployment, `general_answer`, live task
+  execution, live business-data access, Source Files refresh,
+  capsule/export/package refresh, semantic correctness, production readiness,
+  official capsule proof claim, or Phase 365 implementation.
+- Marker:
+  `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
