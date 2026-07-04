@@ -2476,3 +2476,24 @@ fresh artifact proof.
 `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 361 Product Task Packet Handoff Contract Readback
+
+- Phase 361 adds handoff contract readback.
+- Boundary:
+  `PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only. It defines handoff prerequisites, payload
+  doctrine, recipient doctrine, authority limits, stop gates, invalid claims,
+  non-proofs, and source/capsule/Git truth separation.
+- Non-proofs: no handoff execution, worker dispatch, patch application, route
+  selection execution, provider/model execution, runtime/provider/model/platform
+  execution, service/API/UI/dashboard/auth/deployment, `general_answer`, Source
+  Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, autonomous AI coding, live business-data/Obsidian/PKMS
+  access, adapter execution, real domain execution, or official capsule proof
+  beyond Phase 335.
+- Handoff contract readback is not handoff execution; handoff eligibility is not
+  worker dispatch; handoff payload is not task execution; handoff recipient
+  description is not provider/model execution.
+
+`PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

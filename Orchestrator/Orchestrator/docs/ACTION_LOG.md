@@ -6534,3 +6534,22 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
 `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 361 Product Task Packet Handoff Contract Readback
+
+- Added: `orchestrator/product_task_packet_handoff_contract_readback.py`.
+- Added: `tests/test_phase_361_product_task_packet_handoff_contract_readback.py`.
+- Added: `docs/PHASE_361.md`.
+- Updated: `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Registered behavior: adds a pure deterministic source/test/docs handoff
+  contract readback only.
+- Non-proofs: no handoff execution, no worker dispatch, no patch application,
+  no route selection execution, no provider/model execution, no runtime/provider/
+  model/platform execution, no service/API/UI/dashboard/auth/deployment, no
+  general_answer, no Source Files refresh, no capsule/export/package refresh, no
+  semantic correctness, no production readiness, no autonomous AI coding, no
+  live business-data/Obsidian/PKMS access, no adapter execution, no real domain
+  execution, and no official capsule proof beyond Phase 335.
+
+`PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

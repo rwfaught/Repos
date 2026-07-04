@@ -7590,3 +7590,21 @@ capsule proof beyond Phase 335.
 `PHASE359_PRODUCT_TASK_PACKET_PROVIDER_POLICY_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
 
 `PHASE360_PRODUCT_TASK_PACKET_DOMAIN_GENERAL_INTAKE_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 361 Product Task Packet Handoff Contract Readback Sources
+
+- `orchestrator/product_task_packet_handoff_contract_readback.py`
+- `tests/test_phase_361_product_task_packet_handoff_contract_readback.py`
+- `docs/PHASE_361.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: source/test/docs readback only. Phase 361 does not execute
+handoff, dispatch workers, apply patches, execute route selection, execute
+providers/models, refresh Source Files, refresh capsule/export/package
+artifacts, prove semantic correctness, prove production readiness, or extend
+official capsule proof beyond Phase 335.
+
+`PHASE361_PRODUCT_TASK_PACKET_HANDOFF_CONTRACT_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
