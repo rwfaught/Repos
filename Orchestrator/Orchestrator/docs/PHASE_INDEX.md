@@ -4758,3 +4758,22 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   official capsule proof claim, or Phase 366 implementation.
 - Marker:
   `PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 366 - Product Task Packet Handoff Packet Execution Authority Review Readback
+
+- Status: source/test/docs deterministic handoff packet execution-authority review readback added.
+- Boundary: `PHASE366_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_AUTHORITY_REVIEW_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_handoff_packet_execution_authority_review_readback.py`,
+  `tests/test_phase_366_product_task_packet_handoff_packet_execution_authority_review_readback.py`,
+  and `docs/PHASE_366.md`.
+- Recommended next boundary:
+  `PHASE367_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_PRECONDITION_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no handoff execution, handoff packet execution, worker dispatch,
+  patch application, route selection execution, provider/model execution,
+  runtime/provider/model/platform execution, next-boundary execution,
+  service/API/UI/dashboard/auth/deployment, `general_answer`, live task
+  execution, live business-data access, Source Files refresh,
+  capsule/export/package refresh, semantic correctness, production readiness,
+  official capsule proof claim, or Phase 367 implementation.
+- Marker:
+  `PHASE366_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_AUTHORITY_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
