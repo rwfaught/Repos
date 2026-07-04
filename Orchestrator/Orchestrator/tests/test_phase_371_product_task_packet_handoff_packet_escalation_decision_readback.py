@@ -1,0 +1,117 @@
+import unittest
+from pathlib import Path
+
+from orchestrator.product_task_packet_handoff_packet_escalation_decision_readback import (
+    BOUNDARY,
+    MARKER,
+    NAME,
+    read_product_task_packet_handoff_packet_escalation_decision_readback,
+)
+
+
+MARKER_TEXT = "PHASE371_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS"
+
+
+class Phase371HandoffPacketEscalationDecisionReadbackTests(unittest.TestCase):
+    def setUp(self):
+        self.readback = read_product_task_packet_handoff_packet_escalation_decision_readback()
+
+    def test_identity_is_deterministic(self):
+        self.assertEqual(
+            self.readback,
+            read_product_task_packet_handoff_packet_escalation_decision_readback(),
+        )
+        self.assertEqual(self.readback["phase"], 371)
+        self.assertEqual(self.readback["name"], NAME)
+        self.assertEqual(self.readback["boundary"], BOUNDARY)
+        self.assertEqual(self.readback["marker"], MARKER)
+
+    def test_decision_posture_is_readback_only(self):
+        self.assertIn("readback only", self.readback["purpose"])
+        self.assertEqual(
+            self.readback["escalation_decision_status"]["status"],
+            "escalation_decision_readback_only",
+        )
+        self.assertFalse(self.readback["escalation_decision_status"]["escalation_executed"])
+        self.assertFalse(self.readback["escalation_decision_status"]["worker_dispatched"])
+        self.assertFalse(
+            self.readback["escalation_decision_status"]["cleanup_delete_archive_performed"]
+        )
+
+    def test_inputs_triggers_blockers_and_evidence_are_represented(self):
+        self.assertIn("failed precheck", self.readback["escalation_triggers"])
+        self.assertIn("accepted trigger evidence", self.readback["decision_inputs"])
+        self.assertIn("request to execute escalation", self.readback["blocking_conditions"])
+        self.assertIn("decision input evidence", self.readback["required_evidence"])
+        self.assertIn(
+            "record decision posture for review only",
+            self.readback["recommendation_and_inference"],
+        )
+
+    def test_false_activity_flags_remain_false(self):
+        for value in self.readback["false_activity_flags"].values():
+            self.assertFalse(value)
+        for flag in (
+            "escalation_executed",
+            "handoff_executed",
+            "handoff_packet_executed",
+            "worker_dispatched",
+            "patch_applied",
+            "route_selection_executed",
+            "provider_model_executed",
+            "runtime_provider_model_platform_executed",
+            "next_boundary_executed",
+            "cleanup_delete_archive_performed",
+            "source_files_refreshed",
+            "capsule_export_package_refreshed",
+        ):
+            self.assertIn(flag, self.readback["false_activity_flags"])
+
+    def test_non_proofs_and_production_readiness_are_preserved(self):
+        for caveat in (
+            "escalation decision readback is not escalation execution",
+            "escalation decision status is not worker dispatch",
+            "escalation decision status is not handoff execution",
+            "escalation decision status is not handoff packet execution",
+            "escalation decision status is not cleanup/delete/archive",
+            "escalation decision status is not Source Files refresh",
+            "escalation decision status is not capsule/export/package refresh",
+            "escalation decision status is not route selection execution",
+            "escalation decision status is not provider/model execution",
+            "escalation decision status is not next-boundary execution",
+            "test PASS is not semantic correctness",
+            "pushed commit is not production readiness",
+        ):
+            self.assertIn(caveat, self.readback["non_proof_caveats"])
+        self.assertFalse(self.readback["production_readiness"])
+        self.assertIn("No Source Files refresh", self.readback["lockout_text"])
+        self.assertIn("No capsule/export/package refresh", self.readback["lockout_text"])
+        self.assertIn("No cleanup/delete/archive", self.readback["lockout_text"])
+        self.assertIn("No Phase 372 implementation", self.readback["lockout_text"])
+
+    def test_future_phase_absence_doctrine_does_not_assert_permanent_absence(self):
+        self.assertIn(
+            "tests must not assert permanent absence of future phases",
+            self.readback["future_phase_assertion_doctrine"],
+        )
+        self.assertIn(
+            "tests may assert that the current phase did not implement the future phase",
+            self.readback["future_phase_assertion_doctrine"],
+        )
+
+    def test_marker_appears_in_source_test_docs_and_ledgers(self):
+        root = Path(__file__).resolve().parents[1]
+        for rel in (
+            "orchestrator/product_task_packet_handoff_packet_escalation_decision_readback.py",
+            "tests/test_phase_371_product_task_packet_handoff_packet_escalation_decision_readback.py",
+            "docs/PHASE_371.md",
+            "docs/PHASE_INDEX.md",
+            "docs/ACTION_LOG.md",
+            "docs/SOURCE_MANIFEST.md",
+            "docs/TRACKS_AND_OPEN_THREADS.md",
+        ):
+            self.assertIn(MARKER_TEXT, (root / rel).read_text(encoding="utf-8"))
+
+
+if __name__ == "__main__":
+    unittest.main()

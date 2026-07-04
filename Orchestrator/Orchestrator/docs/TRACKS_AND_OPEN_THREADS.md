@@ -2688,3 +2688,24 @@ fresh artifact proof.
 - Escalation readback is not escalation execution.
 
 `PHASE370_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 371 Product Task Packet Handoff Packet Escalation Decision Readback
+
+- Phase 371 adds handoff packet escalation-decision readback.
+- Boundary:
+  `PHASE371_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_DECISION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, escalation triggers,
+  decision inputs, escalation decision status, blocking conditions, required
+  evidence, recommendation and inference, false activity flags, non-proof
+  caveats, future-phase assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE372_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_EVIDENCE_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no escalation execution, handoff execution, handoff
+  packet execution, worker dispatch, patch application, route selection
+  execution, provider/model execution, runtime/provider/model/platform
+  execution, next-boundary execution, cleanup/delete/archive, Source Files
+  refresh, capsule/export/package refresh, semantic correctness, production
+  readiness, push, or Phase 372 implementation.
+- Escalation decision readback is not escalation execution.
+
+`PHASE371_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
