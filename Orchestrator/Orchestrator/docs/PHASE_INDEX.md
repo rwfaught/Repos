@@ -4777,3 +4777,20 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   official capsule proof claim, or Phase 367 implementation.
 - Marker:
   `PHASE366_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_AUTHORITY_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 367 - Product Task Packet Handoff Packet Execution Precondition Readback
+
+- Status: source/test/docs deterministic handoff packet execution-precondition readback added.
+- Boundary: `PHASE367_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_PRECONDITION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_handoff_packet_execution_precondition_readback.py`,
+  `tests/test_phase_367_product_task_packet_handoff_packet_execution_precondition_readback.py`,
+  and `docs/PHASE_367.md`.
+- Recommended next boundary:
+  `PHASE368_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_APPROVAL_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no handoff execution, handoff packet execution, worker dispatch,
+  patch application, route selection execution, provider/model execution,
+  runtime/provider/model/platform execution, next-boundary execution, Source
+  Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, cleanup/delete/archive, push, or Phase 368 implementation.
+- Marker:
+  `PHASE367_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_PRECONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.

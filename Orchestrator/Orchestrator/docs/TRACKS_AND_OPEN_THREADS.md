@@ -2601,3 +2601,25 @@ fresh artifact proof.
   execution.
 
 `PHASE366_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_AUTHORITY_REVIEW_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 367 Product Task Packet Handoff Packet Execution Precondition Readback
+
+- Phase 367 adds handoff packet execution-precondition readback.
+- Boundary:
+  `PHASE367_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_PRECONDITION_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, required
+  preconditions, missing preconditions, blocking conditions, authority/readiness
+  relationship, evidence requirements, false activity flags, non-proof caveats,
+  future-phase assertion doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE368_PRODUCT_TASK_PACKET_HANDOFF_PACKET_OPERATOR_APPROVAL_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, next-boundary execution,
+  Source Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, cleanup/delete/archive, push, or Phase 368
+  implementation.
+- Execution authority is not execution; execution precondition readback is not
+  execution.
+
+`PHASE367_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_PRECONDITION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
