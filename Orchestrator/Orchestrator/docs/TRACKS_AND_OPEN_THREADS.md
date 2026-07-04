@@ -3038,3 +3038,31 @@ fresh artifact proof.
   or review execution.
 
 `PHASE385_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_BLOCKER_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 386 Product Task Packet Handoff Packet Escalation Outcome Review Posture Closure Readback
+
+- Phase 386 adds handoff packet escalation-outcome-review-posture-closure readback.
+- Boundary:
+  `PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, review posture
+  closure inputs, review posture closure status, unresolved conditions,
+  recommendation and inference, false activity flags, non-proof caveats,
+  future-phase assertion doctrine, campaign-cap posture, and lockouts.
+- Recommended next boundary:
+  `PHASE387_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_REVIEW_READBACK_SOURCE_TEST_DOCS`
+- Campaign cap status:
+  `CAMPAIGN_CAP_REACHED_NO_PHASE_387_AUTHORIZED`
+- Non-proofs preserved: no operational posture closure, review execution,
+  review blocker resolution, live evidence collection, escalation execution,
+  outcome action execution, handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, next-boundary
+  execution, cleanup/delete/archive, Source Files refresh, capsule/export/
+  package refresh, semantic correctness, production readiness, push, or Phase
+  387 implementation.
+- Escalation outcome review posture closure readback is not operational
+  closure or review execution. The rolling campaign stops at Phase 386 per
+  packet cap; Phase 387 implementation requires a later explicit coordinator
+  boundary.
+
+`PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
