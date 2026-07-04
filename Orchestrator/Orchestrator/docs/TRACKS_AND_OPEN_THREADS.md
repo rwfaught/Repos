@@ -3112,3 +3112,26 @@ fresh artifact proof.
   boundary.
 
 `PHASE386_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_POSTURE_CLOSURE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Dossier Case Abstraction Mapping Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs mapping seam completed over the existing
+  case-packet substrate.
+- Source/test posture: `orchestrator/dossier_case_mapping.py` exposes neutral
+  field mappings and a read-only adapter for case-packet-shaped dictionaries;
+  `tests/test_dossier_case_mapping.py` proves required neutral field coverage,
+  case-packet-compatible field targets, missing-evidence and contradiction
+  preservation, domain neutrality, wedge non-selection, adapter extraction, and
+  explicit non-proof posture.
+- Recommended next boundary:
+  `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, or
+  domain-specific workflow proof.
+
+`DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`

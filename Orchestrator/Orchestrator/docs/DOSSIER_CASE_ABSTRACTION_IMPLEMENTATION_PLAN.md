@@ -283,10 +283,10 @@ Add a small pure source/test/docs mapping layer that exposes neutral
 dossier/case field vocabulary over the existing case-packet substrate without
 changing existing case-packet behavior.
 
-Allowed first-boundary mutation should be limited to:
+Implemented first-boundary mutation was limited to:
 
-- `orchestrator/dossier_case_abstraction.py`
-- `tests/test_dossier_case_abstraction_mapping.py`
+- `orchestrator/dossier_case_mapping.py`
+- `tests/test_dossier_case_mapping.py`
 - minimal docs/ledger registrations
 
 Excluded:
@@ -299,3 +299,30 @@ Excluded:
 - no Source Files refresh/export/capsule
 - no claims/disputes/appeals implementation
 - no game/worldbuilding/design implementation
+
+## 15. Mapping Boundary Implementation Record
+
+Boundary:
+
+`DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a small pure mapping/adaptor layer over existing case-packet
+fields. The boundary does not rename `case_packet`, change persistence, select
+a first product wedge, implement Phase 387, or add domain-specific product
+workflow.
+
+Source/test files:
+
+- `orchestrator/dossier_case_mapping.py`
+- `tests/test_dossier_case_mapping.py`
+
+The module exposes a frozen neutral field-mapping dataclass, a canonical
+neutral-to-case-packet field map, and a read-only adapter for dict-shaped case
+packets. It preserves explicit non-proof posture and records
+`no_first_product_wedge_selected`.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`

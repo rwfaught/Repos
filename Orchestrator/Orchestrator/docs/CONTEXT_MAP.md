@@ -122,6 +122,38 @@ registration for the protocol. It does not implement wrapper tooling, run
 runtime/provider/model/platform probes, refresh source capsules, export,
 package, commit, push, or prove service/API/UI behavior.
 
+### Dossier / Case Substrate Context
+
+Purpose: preserve the neutral dossier/case bridge over the existing
+case-packet substrate while Roger defers first product domain selection.
+
+Owned language: dossier/case, objective, source materials, extracted facts,
+chronology, open questions, missing evidence, missing canon, contradictions,
+drafts, decisions, next work items, review posture, operator approvals.
+
+Authority docs/files:
+
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `orchestrator/dossier_case_mapping.py`
+- `tests/test_dossier_case_mapping.py`
+
+Non-authority / do-not-confuse warnings:
+
+- The mapping seam is not a first product wedge selection.
+- The mapping seam is not claims/disputes/appeals product implementation.
+- The mapping seam is not game/worldbuilding/design product implementation.
+- Neutral aliases do not rename or migrate existing `case_packet` storage.
+- Adapter extraction is not semantic correctness or production readiness proof.
+
+Current proof posture: `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`
+adds a pure neutral field map and read-only adapter over existing
+case-packet-shaped dictionaries. It does not run runtime/provider/model
+behavior, implement Phase 387, migrate persistence, refresh Source Files,
+export/package, or prove a domain-specific workflow.
+
 ### Request Intake / Routing Context
 
 Purpose: classify human objectives into bounded request types and validate

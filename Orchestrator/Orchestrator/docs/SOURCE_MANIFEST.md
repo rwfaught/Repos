@@ -107,6 +107,24 @@ These product artifacts remain useful as historical records, but they are not th
 - docs/SESSION_DOCTRINE_AND_OPEN_THREADS.md
 - docs/ARTIFACT_RETENTION_AND_SOURCE_HYGIENE.md
 - docs/SOURCE_HYGIENE_CLEANUP_REPORT.md
+
+## DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS
+
+- Boundary: DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS.
+- Source-state note: pure neutral dossier/case mapping seam added over the
+  existing case-packet substrate without renaming `case_packet`, changing
+  persistence, selecting a product wedge, or implementing Phase 387.
+- Changed source: orchestrator/dossier_case_mapping.py.
+- Changed tests: tests/test_dossier_case_mapping.py.
+- Changed docs: docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md;
+  docs/TRACKS_AND_OPEN_THREADS.md; docs/CONTEXT_MAP.md; docs/PHASE_INDEX.md;
+  docs/ACTION_LOG.md; docs/SOURCE_MANIFEST.md.
+- Non-proofs: no runtime proof, provider/model proof, semantic correctness
+  proof, production readiness proof, Phase 387 implementation, first product
+  wedge selection, claims/disputes/appeals product implementation,
+  game/worldbuilding/design product implementation, persistence migration, or
+  Source Files refresh/export/capsule proof.
+- Marker: DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS.
 ## PLATFORM_SOURCE_IDENTITY_RECONCILIATION_20260611_AA39_CURRENT_LOCAL_ZIP
 
 - Timestamp: 2026-06-11 14:39:22 -05:00
