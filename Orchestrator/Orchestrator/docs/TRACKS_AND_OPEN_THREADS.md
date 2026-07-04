@@ -3135,3 +3135,24 @@ fresh artifact proof.
   domain-specific workflow proof.
 
 `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Dossier Case Mapping Operator Review Docs-Only Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
+- Status: docs-only operator review completed.
+- Review doc: `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`.
+- Review finding: the neutral mapping seam is sufficient as a first source
+  foothold for Roger's ratified Option 3 because it proves deterministic
+  structural compatibility between existing case-packet-shaped data and
+  neutral dossier/case vocabulary without selecting a product wedge.
+- Recommended next boundary:
+  `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, source
+  behavior mutation, or test mutation.
+
+`DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY_REGISTERED=DOCS_ONLY`

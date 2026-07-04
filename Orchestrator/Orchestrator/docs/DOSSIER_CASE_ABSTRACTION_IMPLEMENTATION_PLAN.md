@@ -326,3 +326,27 @@ packets. It preserves explicit non-proof posture and records
 Recommended next boundary:
 
 `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
+
+## 16. Operator Review Record
+
+Boundary:
+
+`DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
+
+Status:
+
+Reviewed in `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md` as a docs-only
+operator/founder-readable assessment.
+
+Review finding:
+
+The mapping seam is sufficient as a first structural source foothold for
+Roger's ratified Option 3. It proves deterministic structural compatibility
+between existing case-packet-shaped data and neutral dossier/case language. It
+does not prove semantic product capability, runtime/provider/model behavior,
+production readiness, Phase 387 implementation, product-domain implementation,
+or first product wedge selection.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`

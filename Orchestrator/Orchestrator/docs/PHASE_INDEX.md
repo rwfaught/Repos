@@ -5293,3 +5293,28 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
   `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+
+## Dossier Case Mapping Operator Review Docs-Only Checkpoint
+
+- Status: docs-only operator review added.
+- Boundary: `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`.
+- Classification: non-phase review checkpoint; not source behavior mutation,
+  not Phase 387, and not first product wedge implementation.
+- Docs added: `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`.
+- Docs updated:
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Review posture: the mapping seam is sufficient as a first deterministic
+  structural foothold for Roger's ratified Option 3.
+- Recommended next boundary:
+  `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

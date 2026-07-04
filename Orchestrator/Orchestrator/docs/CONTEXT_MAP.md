@@ -150,9 +150,10 @@ Non-authority / do-not-confuse warnings:
 
 Current proof posture: `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`
 adds a pure neutral field map and read-only adapter over existing
-case-packet-shaped dictionaries. It does not run runtime/provider/model
-behavior, implement Phase 387, migrate persistence, refresh Source Files,
-export/package, or prove a domain-specific workflow.
+case-packet-shaped dictionaries. `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
+adds a founder/operator-readable review of that seam. These boundaries do not
+run runtime/provider/model behavior, implement Phase 387, migrate persistence,
+refresh Source Files, export/package, or prove a domain-specific workflow.
 
 ### Request Intake / Routing Context
 
