@@ -7665,3 +7665,22 @@ refresh capsule/export/package artifacts, claim official capsule proof, prove
 semantic correctness, prove production readiness, or implement Phase 365.
 
 `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## Phase 365 Product Task Packet Handoff Packet Ready State Readback Sources
+
+- `orchestrator/product_task_packet_handoff_packet_ready_state_readback.py`
+- `tests/test_phase_365_product_task_packet_handoff_packet_ready_state_readback.py`
+- `docs/PHASE_365.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: source/test/docs readback only. Phase 365 does not execute
+handoff, execute a handoff packet, dispatch workers, apply patches, execute
+route selection, execute providers/models, execute runtime/provider/model/
+platform behavior, execute the next boundary, refresh Source Files, refresh
+capsule/export/package artifacts, claim official capsule proof, prove semantic
+correctness, prove production readiness, or implement Phase 366.
+
+`PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`

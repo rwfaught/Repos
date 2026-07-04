@@ -2557,3 +2557,24 @@ fresh artifact proof.
   implementation.
 
 `PHASE364_PRODUCT_TASK_PACKET_HANDOFF_PACKET_NEXT_BOUNDARY_SELECTION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 365 Product Task Packet Handoff Packet Ready State Readback
+
+- Phase 365 adds handoff packet ready-state readback.
+- Boundary:
+  `PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, readiness gates,
+  blocking conditions, readiness recommendation/inference, required evidence
+  before future execution, false activity flags, non-proof caveats,
+  source/capsule/Git truth separation, future-phase assertion doctrine, and
+  lockouts.
+- Recommended next boundary:
+  `PHASE366_PRODUCT_TASK_PACKET_HANDOFF_PACKET_EXECUTION_AUTHORITY_REVIEW_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no handoff execution, handoff packet execution, worker
+  dispatch, patch application, route selection execution, provider/model
+  execution, runtime/provider/model/platform execution, next-boundary execution,
+  Source Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, official capsule proof claim, or Phase 366
+  implementation.
+
+`PHASE365_PRODUCT_TASK_PACKET_HANDOFF_PACKET_READY_STATE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
