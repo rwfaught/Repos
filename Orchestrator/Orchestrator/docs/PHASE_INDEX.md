@@ -4865,3 +4865,21 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   push, or Phase 372 implementation.
 - Marker:
   `PHASE371_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_DECISION_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+## Phase 372 - Product Task Packet Handoff Packet Escalation Evidence Readback
+
+- Status: source/test/docs deterministic handoff packet escalation-evidence readback added.
+- Boundary: `PHASE372_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_EVIDENCE_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs added: `orchestrator/product_task_packet_handoff_packet_escalation_evidence_readback.py`,
+  `tests/test_phase_372_product_task_packet_handoff_packet_escalation_evidence_readback.py`,
+  and `docs/PHASE_372.md`.
+- Recommended next boundary:
+  `PHASE373_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_BLOCKER_READBACK_SOURCE_TEST_DOCS`.
+- Non-proofs: no live evidence collection, escalation execution, handoff
+  execution, handoff packet execution, worker dispatch, patch application,
+  route selection execution, provider/model execution, runtime/provider/model/
+  platform execution, next-boundary execution, cleanup/delete/archive, Source
+  Files refresh, capsule/export/package refresh, semantic correctness,
+  production readiness, push, or Phase 373 implementation.
+- Marker:
+  `PHASE372_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_EVIDENCE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
