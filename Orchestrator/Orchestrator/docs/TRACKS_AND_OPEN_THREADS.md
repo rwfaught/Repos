@@ -2912,3 +2912,26 @@ fresh artifact proof.
   or review execution.
 
 `PHASE380_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_EVIDENCE_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Phase 381 Product Task Packet Handoff Packet Escalation Outcome Review Blocker Readback
+
+- Phase 381 adds handoff packet escalation-outcome-review-blocker readback.
+- Boundary:
+  `PHASE381_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_BLOCKER_READBACK_SOURCE_TEST_DOCS`
+- Source/test/docs readback only: defines accepted facts, review blocker
+  inputs, review blocker status, required evidence, recommendation and
+  inference, false activity flags, non-proof caveats, future-phase assertion
+  doctrine, and lockouts.
+- Recommended next boundary:
+  `PHASE382_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_CLOSURE_READBACK_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no review blocker resolution, review execution,
+  escalation execution, outcome action execution, handoff execution, handoff
+  packet execution, worker dispatch, patch application, route selection
+  execution, provider/model execution, runtime/provider/model/platform
+  execution, next-boundary execution, cleanup/delete/archive, Source Files
+  refresh, capsule/export/package refresh, semantic correctness, production
+  readiness, push, or Phase 382 implementation.
+- Escalation outcome review blocker readback is not blocker resolution or
+  review execution.
+
+`PHASE381_PRODUCT_TASK_PACKET_HANDOFF_PACKET_ESCALATION_OUTCOME_REVIEW_BLOCKER_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
