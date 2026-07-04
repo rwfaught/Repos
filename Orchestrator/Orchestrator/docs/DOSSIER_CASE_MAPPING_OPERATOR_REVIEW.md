@@ -288,3 +288,28 @@ non-implementation, explicit non-proofs, and safe next options.
 Recommended next boundary:
 
 `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+
+## 14. Minimal Fixture Boundary Record
+
+Boundary:
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a small deterministic fixture seam in
+`orchestrator/dossier_case_minimal_fixture.py`, with focused coverage in
+`tests/test_dossier_case_minimal_fixture.py`.
+
+Fixture posture:
+
+The seam exposes one `admin_case_shape` fixture and one
+`creative_dossier_shape` fixture. Both are case-packet-shaped dictionaries
+adapted through the existing mapping seam and represented through the existing
+readback seam. They preserve required neutral field coverage,
+missing-evidence / missing-canon concepts, contradiction concepts, no-wedge
+status, Phase 387 non-implementation, and explicit non-proofs.
+
+Recommended next boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`

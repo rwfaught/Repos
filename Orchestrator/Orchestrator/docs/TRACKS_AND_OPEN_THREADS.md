@@ -3179,3 +3179,27 @@ fresh artifact proof.
   production task execution, or persisted case packet requirement.
 
 `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### Dossier Case Minimal Fixture Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs fixture seam completed.
+- Source/test posture: `orchestrator/dossier_case_minimal_fixture.py`
+  exposes two deterministic structural fixtures, `admin_case_shape` and
+  `creative_dossier_shape`, and adapts both through the existing mapping seam
+  and readback seam; `tests/test_dossier_case_minimal_fixture.py` proves
+  required neutral field coverage, missing-evidence / missing-canon
+  preservation, contradiction preservation, no-wedge status, Phase 387
+  non-implementation, structural-example posture, and no runtime/provider/model
+  requirement.
+- Recommended next boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, CLI, UI,
+  production task execution, or persisted dossier/case migration.
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`

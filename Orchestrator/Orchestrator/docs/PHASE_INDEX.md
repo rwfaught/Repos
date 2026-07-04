@@ -5347,4 +5347,32 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   product implementation, no game/worldbuilding/design product implementation,
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
-  `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+`DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS_PROVEN=PASS`.
+
+
+## Dossier Case Minimal Fixture Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs fixture seam added.
+- Boundary: `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`.
+- Classification: non-phase fixture checkpoint; not Phase 387 and not first
+  product wedge implementation.
+- Source added: `orchestrator/dossier_case_minimal_fixture.py`.
+- Tests added: `tests/test_dossier_case_minimal_fixture.py`.
+- Docs updated:
+  `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Fixture posture: `admin_case_shape` and `creative_dossier_shape` are
+  deterministic structural examples using the same mapping/readback spine.
+- Recommended next boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`.
+- Non-proofs: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`.

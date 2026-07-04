@@ -8308,3 +8308,31 @@ Recommended next boundary:
 `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.
 
 `DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS
+
+- `orchestrator/dossier_case_minimal_fixture.py`
+- `tests/test_dossier_case_minimal_fixture.py`
+- `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/ACTION_LOG.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: pure source/test/docs fixture checkpoint. This boundary adds
+two deterministic structural examples, `admin_case_shape` and
+`creative_dossier_shape`, that pass through the existing dossier/case mapping
+and readback seams. It does not select a first product wedge, implement Phase
+387, implement claims/disputes/appeals product workflow, implement
+game/worldbuilding/design product workflow, migrate persistence, run
+runtime/provider/model execution, add CLI/UI behavior, refresh Source Files, or
+create capsule/export/package proof.
+
+Recommended next boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`.
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS_PROVEN=PASS`

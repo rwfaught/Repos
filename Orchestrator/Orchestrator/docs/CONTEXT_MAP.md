@@ -138,7 +138,11 @@ Authority docs/files:
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `orchestrator/dossier_case_mapping.py`
+- `orchestrator/dossier_case_mapping_readback.py`
+- `orchestrator/dossier_case_minimal_fixture.py`
 - `tests/test_dossier_case_mapping.py`
+- `tests/test_dossier_case_mapping_readback.py`
+- `tests/test_dossier_case_minimal_fixture.py`
 
 Non-authority / do-not-confuse warnings:
 
@@ -153,9 +157,11 @@ adds a pure neutral field map and read-only adapter over existing
 case-packet-shaped dictionaries. `DOSSIER_CASE_MAPPING_OPERATOR_REVIEW_DOCS_ONLY`
 adds a founder/operator-readable review of that seam.
 `DOSSIER_CASE_MAPPING_READBACK_SOURCE_TEST_DOCS` adds a deterministic readback
-over the mapping surface. These boundaries do not run runtime/provider/model
-behavior, implement Phase 387, migrate persistence, refresh Source Files,
-export/package, or prove a domain-specific workflow.
+over the mapping surface. `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS` adds
+two pure structural fixtures that pass through the same mapping/readback spine
+without selecting either as the first product wedge. These boundaries do not
+run runtime/provider/model behavior, implement Phase 387, migrate persistence,
+refresh Source Files, export/package, or prove a domain-specific workflow.
 
 ### Request Intake / Routing Context
 

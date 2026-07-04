@@ -376,3 +376,29 @@ or first product wedge selection.
 Recommended next boundary:
 
 `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+
+## 18. Minimal Fixture Record
+
+Boundary:
+
+`DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a pure fixture seam for the neutral mapping/readback layer.
+
+Source/test files:
+
+- `orchestrator/dossier_case_minimal_fixture.py`
+- `tests/test_dossier_case_minimal_fixture.py`
+
+The fixture layer defines two deterministic structural examples:
+`admin_case_shape` and `creative_dossier_shape`. Both use the same
+case-packet-shaped field spine, pass through the existing mapping adapter, and
+are represented by the existing readback seam. The boundary does not implement
+domain-specific workflow, select a first product wedge, implement Phase 387,
+run runtime/provider/model behavior, add persistence, or refresh Source Files.
+
+Recommended next boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`

@@ -252,6 +252,17 @@ Domain-specific material should remain outside the neutral core:
 The neutral abstraction should not become a bland universal schema that hides
 what actually matters in each domain.
 
+## Minimal Structural Fixture Check
+
+The `DOSSIER_CASE_MINIMAL_FIXTURE_SOURCE_TEST_DOCS` boundary adds two
+deterministic structural examples over the neutral mapping/readback seam:
+`admin_case_shape` and `creative_dossier_shape`.
+
+These examples are not domain implementations. They exist only to show that two
+different example shapes can be represented through the same neutral
+dossier/case fields while preserving missing material, contradiction,
+draft/decision, next-work, review-posture, no-wedge, and non-proof posture.
+
 ## What Remains Domain-Neutral
 
 The following can remain shared:
