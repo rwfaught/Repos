@@ -188,6 +188,11 @@ The current founder-visible design packet is
 the neutral dossier/case abstraction and the ratification options; it is design
 only and does not authorize product implementation.
 
+The current cockpit snapshot is
+`docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`. After that snapshot, the
+project should stop at founder ratification rather than resume implementation
+by sequence momentum.
+
 
 ## Session doctrine and durable open threads
 

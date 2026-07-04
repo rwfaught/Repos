@@ -52,9 +52,10 @@ Founder-control docs:
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
 - `docs/DOSSIER_CASE_ABSTRACTION.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
 
 Next likely boundary:
-`FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
+`FOUNDER_RATIFICATION_GATE_STOP`.
 
 Drift warning: governance/readback growth is valuable only while it increases
 inspectability and product truth. Founder ratification is required before deep

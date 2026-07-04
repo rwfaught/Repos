@@ -5214,3 +5214,27 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   and no push proof.
 - Marker:
   `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY_REGISTERED=DOCS_ONLY`.
+
+
+## Founder Comprehension Snapshot Current State Docs-Only Checkpoint
+
+- Status: current founder cockpit snapshot added.
+- Boundary: `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
+- Classification: non-phase founder visibility checkpoint; not Phase 387 and
+  not implementation momentum.
+- Docs added: `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`.
+- Docs updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Snapshot posture: bounded coding-task packet work is strongest proven
+  capability; case/dossier substrate is early; governance/readback is control
+  spine rather than product body.
+- Recommended next boundary: `FOUNDER_RATIFICATION_GATE_STOP`.
+- Non-proofs: no source behavior change, no implementation phase, no Phase 387
+  implementation, no source tests added, no runtime/provider/model/platform
+  execution, no worker dispatch, no schema implementation, no final first
+  product wedge selection, no semantic correctness proof, no production
+  readiness proof, no Source Files refresh, no capsule/export/package refresh,
+  and no push proof.
+- Marker:
+  `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

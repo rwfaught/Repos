@@ -7100,3 +7100,24 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   Source Files refresh, and no capsule/export/package proof.
 
 `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+### Founder Comprehension Snapshot Current State Docs Only
+
+- Boundary: `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
+- Added: `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`.
+- Updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Registered cockpit state: strongest proven capability remains bounded
+  coding-task packet work; case/dossier product substrate remains early;
+  governance/readback is control spine, not product body.
+- Registered ratification gate: Roger must explicitly choose a path before
+  implementation resumes.
+- Non-proofs preserved: no source behavior change, no tests added, no runtime/
+  provider/model/platform execution, no worker dispatch, no Phase 387
+  implementation, no final first product wedge selection, no semantic
+  correctness proof, no production readiness proof, no Source Files refresh,
+  and no capsule/export/package proof.
+
+`FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`

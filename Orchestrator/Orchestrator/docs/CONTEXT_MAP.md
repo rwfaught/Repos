@@ -771,6 +771,7 @@ Authority docs/files:
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
 - `docs/DOSSIER_CASE_ABSTRACTION.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
 - `docs/TRACKS_AND_OPEN_THREADS.md`
 - `docs/STARTUP_BRIEF.md`
 
@@ -799,4 +800,4 @@ Current proof posture: docs-only. The founder-control docs are source artifacts,
 not executable behavior, runtime/provider/model proof, production readiness,
 source capsule/export proof, or final product-wedge ratification.
 
-Current next boundary: `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
+Current next boundary: `FOUNDER_RATIFICATION_GATE_STOP`.

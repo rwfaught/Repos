@@ -8178,3 +8178,28 @@ Recommended next boundary:
 `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY`.
 
 `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## Founder Comprehension Snapshot Current State Docs-Only Sources
+
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Classification: docs-only founder cockpit snapshot. This boundary records the
+current accepted source state, capability reality, product direction
+implication, strategic decision surface, non-proofs, and ratification gate. It
+does not change source behavior, add tests, implement a schema, execute
+runtime/provider/model/platform behavior, dispatch workers, implement Phase
+387, select the final first product wedge, prove semantic correctness, prove
+production readiness, refresh Source Files, or create capsule/export/package
+proof.
+
+Recommended next boundary:
+`FOUNDER_RATIFICATION_GATE_STOP`.
+
+`FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`
