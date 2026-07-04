@@ -772,6 +772,7 @@ Authority docs/files:
 - `docs/DOSSIER_CASE_ABSTRACTION.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
 - `docs/TRACKS_AND_OPEN_THREADS.md`
 - `docs/STARTUP_BRIEF.md`
 
@@ -786,6 +787,11 @@ Current posture:
 - The dossier/case abstraction and ratification packet are founder-visible
   design surfaces only; they prepare explicit ratification and do not select the
   final first product wedge.
+- Roger ratified Option 3: build the neutral dossier/case abstraction first,
+  then choose the first product domain.
+- The implementation plan recommends a small future mapping layer over the
+  existing case-packet substrate before any rename, persistence migration, or
+  domain-specific implementation.
 
 Do-not-confuse warnings:
 
@@ -800,4 +806,4 @@ Current proof posture: docs-only. The founder-control docs are source artifacts,
 not executable behavior, runtime/provider/model proof, production readiness,
 source capsule/export proof, or final product-wedge ratification.
 
-Current next boundary: `FOUNDER_RATIFICATION_GATE_STOP`.
+Current next boundary: `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.

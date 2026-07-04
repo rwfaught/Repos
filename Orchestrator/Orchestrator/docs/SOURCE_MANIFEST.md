@@ -8203,3 +8203,51 @@ Recommended next boundary:
 `FOUNDER_RATIFICATION_GATE_STOP`.
 
 `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## Dossier Case Abstraction Implementation Plan Docs-Only Sources
+
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/ACTION_LOG.md`
+- `docs/SOURCE_MANIFEST.md`
+
+Inspected source basis:
+
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `docs/DOMAIN_LOCK_IN_AUDIT.md`
+- `docs/OPERATOR_CODEBASE_MAP.md`
+- `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PROJECT_VISION.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+- `orchestrator/case_packet.py`
+- `orchestrator/case_packet_persistence.py`
+- `orchestrator/case_packet_task_candidate_review.py`
+- `orchestrator/case_packet_task_creation_authorization.py`
+- `orchestrator/case_packet_task_creation_write_gate.py`
+- `orchestrator/case_packet_task_execution_authorization.py`
+- `orchestrator/case_packet_task_execution_candidate_surface.py`
+- `orchestrator/case_packet_task_execution_result_review.py`
+- `orchestrator/case_packet_task_execution_result_response_options.py`
+
+Classification: docs-only implementation planning checkpoint. This boundary
+records Roger's Option 3 ratification and prepares a future small source/test/
+docs mapping boundary. It does not change source behavior, add tests, implement
+a schema, execute runtime/provider/model/platform behavior, dispatch workers,
+implement Phase 387, select the first product wedge, prove semantic
+correctness, prove production readiness, refresh Source Files, or create
+capsule/export/package proof.
+
+Recommended next boundary:
+`DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.
+
+`DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

@@ -5238,3 +5238,31 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   and no push proof.
 - Marker:
   `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`.
+
+
+## Dossier Case Abstraction Implementation Plan Docs-Only Checkpoint
+
+- Status: docs-only implementation plan added.
+- Boundary: `DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY`.
+- Classification: non-phase planning checkpoint; not Phase 387 and not source
+  behavior implementation.
+- Docs added: `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`.
+- Docs updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Ratification posture: Roger ratified Option 3, build the neutral dossier/case
+  abstraction first and choose the first product domain later.
+- Planning posture: existing `case_packet` fields cover the shared
+  dossier/case shape closely enough that a future small mapping/adaptor layer
+  should precede any rename, persistence migration, or domain-specific product
+  branch.
+- Recommended next boundary:
+  `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.
+- Non-proofs: no source behavior change, no implementation phase, no Phase 387
+  implementation, no source tests added, no runtime/provider/model/platform
+  execution, no worker dispatch, no schema implementation, no first product
+  wedge selection, no semantic correctness proof, no production readiness
+  proof, no Source Files refresh, no capsule/export/package refresh, and no
+  push proof.
+- Marker:
+  `DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

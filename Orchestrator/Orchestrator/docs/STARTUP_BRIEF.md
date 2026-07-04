@@ -193,6 +193,11 @@ The current cockpit snapshot is
 project should stop at founder ratification rather than resume implementation
 by sequence momentum.
 
+Roger has ratified Option 3: build the neutral dossier/case abstraction first,
+then choose the first product domain. The current implementation-planning
+artifact is `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`. It is a
+plan only; it does not authorize source behavior mutation by itself.
+
 
 ## Session doctrine and durable open threads
 

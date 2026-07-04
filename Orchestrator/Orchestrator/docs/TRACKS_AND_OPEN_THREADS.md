@@ -27,6 +27,8 @@ implementation phase.
 Boundary registered: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`.
 Current design boundary registered:
 `DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`.
+Current planning boundary registered:
+`DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY`.
 
 Reason: Roger reopened founder alignment after Phase 386 because the project was
 accumulating governance/readback machinery faster than founder-level
@@ -53,9 +55,10 @@ Founder-control docs:
 - `docs/DOSSIER_CASE_ABSTRACTION.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
 
 Next likely boundary:
-`FOUNDER_RATIFICATION_GATE_STOP`.
+`DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.
 
 Drift warning: governance/readback growth is valuable only while it increases
 inspectability and product truth. Founder ratification is required before deep

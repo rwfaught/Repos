@@ -7121,3 +7121,25 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   and no capsule/export/package proof.
 
 `FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT_STATE_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+### Dossier Case Abstraction Implementation Plan Docs Only
+
+- Boundary: `DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY`.
+- Added: `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`.
+- Updated: `docs/STARTUP_BRIEF.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Registered Roger ratification: Option 3, build the neutral dossier/case
+  abstraction first and choose the first product domain later.
+- Registered planning posture: future implementation should start with a small
+  neutral mapping/adaptor layer over existing case-packet fields, not a broad
+  rename, persistence migration, Phase 387 resumption, or domain-specific
+  product implementation.
+- Non-proofs preserved: no source behavior change, no tests added, no runtime/
+  provider/model/platform execution, no worker dispatch, no Phase 387
+  implementation, no first product wedge selection, no semantic correctness
+  proof, no production readiness proof, no Source Files refresh, and no
+  capsule/export/package proof.
+
+`DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
