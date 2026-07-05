@@ -3224,3 +3224,26 @@ fresh artifact proof.
   mutation, or production task execution.
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+### Dossier Case Task Surface Plan Docs-Only Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+- Status: docs-only task-surface plan completed.
+- Plan doc:
+  `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+- Plan posture: the next smallest neutral task is exactly
+  `neutral_task_readiness_report`, a deterministic structural report over
+  required fields, open questions, contradictions, decisions, next work items,
+  structural readiness, false product-wedge selection, false Phase 387
+  implementation, and explicit non-proofs.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, source/test
+  mutation, or production task execution.
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

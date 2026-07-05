@@ -402,3 +402,29 @@ run runtime/provider/model behavior, add persistence, or refresh Source Files.
 Recommended next boundary:
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+
+## 19. Dossier Case Task Surface Plan Record
+
+Boundary:
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+
+Plan:
+`docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+
+The task-surface plan narrows the next implementation step to one deterministic
+neutral task: `neutral_task_readiness_report`. The future task should report
+required neutral fields present/missing, open questions, contradictions,
+decisions, next work items, structural readiness for domain-specific work,
+expected false product-wedge selection, expected false Phase 387 implementation,
+and explicit non-proofs.
+
+The plan preserves the current implementation posture: mapping, readback, and
+fixtures are structural; the admin fixture is not claims/disputes/appeals proof;
+the creative fixture is not game/worldbuilding/design proof; no semantic
+reasoning, runtime/provider/model execution, product wedge selection, Phase 387
+resume, persistence migration, or Source Files refresh is authorized.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

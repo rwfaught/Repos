@@ -5403,3 +5403,30 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
   `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`.
+
+
+## Dossier Case Task Surface Plan Docs-Only Checkpoint
+
+- Status: docs-only implementation-planning checkpoint completed.
+- Boundary: `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`.
+- Classification: non-phase task-surface planning checkpoint; not source
+  behavior mutation, not Phase 387, and not first product wedge implementation.
+- Docs added: `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`.
+- Docs updated:
+  `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Planning posture: the next smallest neutral task is exactly
+  `neutral_task_readiness_report`, deterministic structural reporting only.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
+- Non-proofs: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`.

@@ -852,4 +852,23 @@ Current proof posture: docs-only. The founder-control docs are source artifacts,
 not executable behavior, runtime/provider/model proof, production readiness,
 source capsule/export proof, or final product-wedge ratification.
 
-Current next boundary: `DOSSIER_CASE_ABSTRACTION_MAPPING_SOURCE_TEST_DOCS`.
+Current next boundary: `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
+
+### Dossier Case Task Surface Plan Docs-Only Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+- Plan:
+  `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+- Context posture: neutral dossier/case work now has a docs-only task-surface
+  plan. The smallest recommended future task is
+  `neutral_task_readiness_report`, which should remain deterministic structural
+  readback over neutral fields and fixtures.
+- Current non-proofs remain active: no first product wedge selection, no Phase
+  387 implementation, no semantic reasoning proof, no runtime/provider/model
+  proof, no production readiness proof, and no Source Files refresh/export/
+  capsule proof.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

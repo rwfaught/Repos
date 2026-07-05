@@ -233,3 +233,23 @@ This record does not prove:
 - Source Files refresh/export/capsule proof
 
 No first product wedge is selected by this record.
+
+## 15. Dossier Case Task Surface Plan Record
+
+Boundary completed:
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+
+Plan document:
+`docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+
+The task-surface plan keeps Option 3 intact. It recommends exactly one smallest
+future neutral task, `neutral_task_readiness_report`, and keeps that task
+limited to deterministic structural reporting over dossier/case-shaped fields.
+
+This record does not select a first product wedge, resume Phase 387, or convert
+the admin or creative fixtures into product-domain proof.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

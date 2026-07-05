@@ -8361,3 +8361,29 @@ Recommended next boundary:
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`.
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY
+
+- `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+- `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/ACTION_LOG.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: docs-only implementation-planning checkpoint. This boundary
+adds the neutral dossier/case task-surface plan and recommends exactly one
+smallest future task, `neutral_task_readiness_report`. It does not change source
+behavior, add tests, execute runtime/provider/model/platform behavior, dispatch
+workers, implement Phase 387, select the first product wedge, prove semantic
+correctness, prove production readiness, refresh Source Files, or create
+capsule/export/package proof.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`

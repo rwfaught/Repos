@@ -329,3 +329,27 @@ Current decision posture:
 
 Recommended next boundary:
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+
+## 12. Dossier Case Task Surface Plan
+
+Boundary:
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+
+The docs-only task-surface plan has been added at
+`docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`.
+
+Current posture remains:
+
+- no first product wedge selected
+- Phase 387 remains parked
+- the neutral dossier/case substrate is structural only
+- the recommended next implementation boundary is
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+The recommended first neutral task is exactly
+`neutral_task_readiness_report`. It is planned as a deterministic report over
+required fields, open questions, contradictions, decisions, next work items,
+structural readiness, expected false product-wedge selection, expected false
+Phase 387 implementation, and explicit non-proofs.
+
+`DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
