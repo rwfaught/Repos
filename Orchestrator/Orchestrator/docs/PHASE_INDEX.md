@@ -5650,3 +5650,35 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   commit, no push, and no Source Files refresh/export/capsule proof.
 - Marker:
   `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`.
+
+
+## Roger-Legible Game / Worldbuilding / Design Calibration Packet Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs calibration-packet seam completed.
+- Boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS`.
+- Classification: non-phase deterministic founder-comprehension checkpoint; not
+  Phase 387, not product-wedge selection, and not production task execution.
+- Source added:
+  `orchestrator/roger_legible_game_worldbuilding_design_calibration_packet.py`.
+- Tests added:
+  `tests/test_roger_legible_game_worldbuilding_design_calibration_packet.py`.
+- Docs added:
+  `docs/ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET.md`.
+- Calibration posture: compact deterministic packet over a static Game /
+  Worldbuilding / Design fixture seed. It shows what went in, what
+  Orchestrator did, what came out, what Roger can judge, what would count as
+  good or fake output, and what is not proven.
+- Open thread preserved: Roger needs recurring milestone calibration demos he
+  can personally evaluate. Game / Worldbuilding / Design remains a calibration
+  domain candidate, not a selected first product wedge.
+- Recommended next boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_REVIEW_READONLY`.
+- Non-proofs: no runtime/provider/model proof, no semantic correctness proof,
+  no production readiness proof, no Phase 387 implementation, no first product
+  wedge selection, no Game / Worldbuilding / Design wedge selection, no
+  claims/disputes/appeals wedge selection, no live creative reasoning proof, no
+  new canon generation proof, no commit, no push, and no Source Files
+  refresh/export/capsule proof.
+- Marker:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`.

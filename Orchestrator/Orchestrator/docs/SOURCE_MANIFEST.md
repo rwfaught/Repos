@@ -8588,3 +8588,29 @@ game/worldbuilding/design wedge selection, production task execution, commit,
 push, or Source Files refresh/export/capsule proof.
 
 `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+### Roger-Legible Game / Worldbuilding / Design Calibration Packet Source/Test/Docs Checkpoint
+
+- Boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs calibration-packet seam completed.
+- Source/test:
+  `orchestrator/roger_legible_game_worldbuilding_design_calibration_packet.py`
+  and
+  `tests/test_roger_legible_game_worldbuilding_design_calibration_packet.py`
+- Docs:
+  `docs/ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET.md`
+- Packet posture: deterministic founder-facing calibration packet over a
+  static Game / Worldbuilding / Design fixture seed. It separates source facts
+  from coherence pressures, names missing or underspecified material, and keeps
+  live creative reasoning and new canon generation out of scope.
+- Recommended next boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model proof, semantic correctness
+  proof, production readiness proof, Phase 387 implementation, first product
+  wedge selection, Game / Worldbuilding / Design wedge selection,
+  claims/disputes/appeals wedge selection, live creative reasoning proof, new
+  canon generation proof, production task execution, or Source Files
+  refresh/export/capsule proof.
+
+`ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`

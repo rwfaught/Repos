@@ -3401,3 +3401,34 @@ fresh artifact proof.
   Source Files refresh/export/capsule proof.
 
 `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Roger-Legible Game / Worldbuilding / Design Calibration Packet Source/Test/Docs Checkpoint
+
+- Boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs calibration-packet seam completed.
+- Source/test:
+  `orchestrator/roger_legible_game_worldbuilding_design_calibration_packet.py`
+  and
+  `tests/test_roger_legible_game_worldbuilding_design_calibration_packet.py`
+- Docs:
+  `docs/ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET.md`
+- Calibration posture: static fixture packet only. It helps Roger judge whether
+  the demo shape is legible before any live or semi-live provider/model
+  calibration slice is authorized.
+- Open thread preserved: Roger needs recurring milestone calibration demos he
+  can personally evaluate. Game / Worldbuilding / Design remains a candidate
+  calibration domain, not a selected first product wedge.
+- Required future distinction: a real Roger-provided seed and any live model
+  execution require separate authorization.
+- Recommended next boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model proof, semantic correctness
+  proof, production readiness proof, Phase 387 implementation, first product
+  wedge selection, Game / Worldbuilding / Design wedge selection,
+  claims/disputes/appeals wedge selection, live creative reasoning proof, new
+  canon generation proof, production task execution, or Source Files
+  refresh/export/capsule proof.
+
+`ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`

@@ -7226,3 +7226,29 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   no persistence migration, and no Source Files refresh/export/capsule proof.
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+### Roger-Legible Game / Worldbuilding / Design Calibration Packet Source/Test/Docs
+
+- Boundary:
+  `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS`.
+- Added:
+  `orchestrator/roger_legible_game_worldbuilding_design_calibration_packet.py`.
+- Added:
+  `tests/test_roger_legible_game_worldbuilding_design_calibration_packet.py`.
+- Added:
+  `docs/ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET.md`.
+- Registered calibration posture: deterministic packet over a static Game /
+  Worldbuilding / Design fixture seed. It is a Roger-legible calibration-domain
+  candidate only, not product wedge selection.
+- Open thread preserved: Roger needs recurring milestone calibration demos he
+  can personally evaluate. A real Roger-provided seed and any live
+  runtime/provider/model execution require separate authorization.
+- Non-proofs preserved: no runtime/provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no Game / Worldbuilding /
+  Design wedge selection, no claims/disputes/appeals wedge selection, no live
+  creative reasoning proof, no new canon generation proof, and no Source Files
+  refresh/export/capsule proof.
+
+`ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
