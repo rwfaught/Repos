@@ -5555,3 +5555,32 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   and no Source Files refresh/export/capsule proof.
 - Marker:
   `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS_REGISTERED=DOCS_ONLY`.
+
+
+## Founder Native Setting Human Control Infrastructure Complexity Founder Review Docs-Only Checkpoint
+
+- Status: docs-only founder review record completed.
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS`.
+- Classification: non-phase founder review checkpoint; not source/test
+  mutation, not Causal Court micro-scenario implementation, not Phase 387, not
+  product-wedge selection, and not production task execution.
+- Docs added:
+  `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW.md`.
+- Docs updated:
+  `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Review posture: Roger approved the Human Control Infrastructure Complexity
+  expansion as successful deterministic demo material and approved continuing
+  toward a Causal Court micro-scenario.
+- Next approved boundary:
+  `FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS`.
+- Non-proofs: no semantic correctness proof, no model reasoning proof, no
+  runtime/provider/model proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  wedge selection, no game/worldbuilding/design wedge selection, no live model
+  generation, no provider calls, no source/test mutation, no commit, no push,
+  and no Source Files refresh/export/capsule proof.
+- Marker:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS_REGISTERED=DOCS_ONLY`.

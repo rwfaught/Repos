@@ -8501,3 +8501,30 @@ provider calls, source/test mutation, commit, push, or Source Files
 refresh/export/capsule proof.
 
 `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS_REGISTERED=DOCS_ONLY`
+
+
+## FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS
+
+- `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW.md`
+- `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION.md`
+- `docs/ACTION_LOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: docs-only founder review checkpoint. This boundary records
+Roger's approval of the Human Control Infrastructure Complexity expansion as
+successful deterministic demo material and records the next approved direction
+toward one deterministic Causal Court micro-scenario.
+
+Next approved boundary:
+`FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS`.
+
+Non-proofs preserved: no semantic correctness proof, model reasoning proof,
+runtime/provider/model proof, production readiness proof, Phase 387
+implementation, first product wedge selection, claims/disputes/appeals wedge
+selection, game/worldbuilding/design wedge selection, live model generation,
+provider calls, Causal Court micro-scenario implementation, source/test
+mutation, commit, push, or Source Files refresh/export/capsule proof.
+
+`FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS_REGISTERED=DOCS_ONLY`
