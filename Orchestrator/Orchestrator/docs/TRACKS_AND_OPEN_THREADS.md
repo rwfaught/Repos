@@ -3346,3 +3346,58 @@ fresh artifact proof.
   execution, or Source Files refresh/export/capsule proof.
 
 `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS_REGISTERED=DOCS_ONLY`
+
+### Founder Native Setting Causal Court Micro-Scenario Source/Test/Docs Checkpoint
+
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs founder-native micro-scenario seam completed.
+- Source/test:
+  `orchestrator/founder_native_setting_causal_court_micro_scenario.py` and
+  `tests/test_founder_native_setting_causal_court_micro_scenario.py`
+- Docs:
+  `docs/FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO.md`
+- Scenario posture: one deterministic case, `The Six-Minute New Jakarta
+  Fusion-Grid Override`, from the approved Human Control Infrastructure
+  Complexity expansion. It stress-tests Causal Courts, explanation standards,
+  fake accountability, infrastructure paralysis, command-chain law, and Human
+  Override doctrine.
+- Recommended next boundary:
+  `FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_REVIEW_READONLY`
+- Non-proofs preserved: no semantic correctness proof, model reasoning proof,
+  runtime/provider/model proof, production readiness proof, Phase 387
+  implementation, first product wedge selection, claims/disputes/appeals wedge
+  selection, game/worldbuilding/design wedge selection, live model generation,
+  provider calls, production task execution, or Source Files
+  refresh/export/capsule proof.
+
+`FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+### Roger-Legible Vertical Slice Demo Packet Source/Test/Docs Checkpoint
+
+- Boundary:
+  `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs demo-packet seam completed.
+- Source/test:
+  `orchestrator/roger_legible_vertical_slice_demo_packet.py` and
+  `tests/test_roger_legible_vertical_slice_demo_packet.py`
+- Docs:
+  `docs/ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET.md`
+- Demo posture: compact deterministic founder-facing packet over existing
+  Human Override / Causal Court material. It shows what went in, what
+  Orchestrator did, what came out, what was verified, what Roger can judge, and
+  what is not proven.
+- Open thread preserved: Roger needs recurring milestone vertical-slice demos
+  he can personally evaluate. Game / Worldbuilding / Design remains a candidate
+  calibration domain for that purpose but is not a selected first product wedge.
+- Human Override / Causal Court posture: useful principle and supporting
+  material, not current product direction.
+- Recommended next boundary:
+  `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model proof, semantic correctness
+  proof, production readiness proof, Phase 387 implementation, first product
+  wedge selection, claims/disputes/appeals wedge selection,
+  game/worldbuilding/design wedge selection, production task execution, or
+  Source Files refresh/export/capsule proof.
+
+`ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`

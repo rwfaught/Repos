@@ -8528,3 +8528,63 @@ provider calls, Causal Court micro-scenario implementation, source/test
 mutation, commit, push, or Source Files refresh/export/capsule proof.
 
 `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS_REGISTERED=DOCS_ONLY`
+
+
+## FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS
+
+- `orchestrator/founder_native_setting_causal_court_micro_scenario.py`
+- `tests/test_founder_native_setting_causal_court_micro_scenario.py`
+- `docs/FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO.md`
+- `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW.md`
+- `docs/ACTION_LOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: pure source/test/docs founder-native micro-scenario
+checkpoint. This boundary adds one deterministic case,
+`The Six-Minute New Jakarta Fusion-Grid Override`, from the approved Human
+Control Infrastructure Complexity expansion.
+
+Recommended next boundary:
+`FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_REVIEW_READONLY`.
+
+Non-proofs preserved: no semantic correctness proof, model reasoning proof,
+runtime/provider/model proof, production readiness proof, Phase 387
+implementation, first product wedge selection, claims/disputes/appeals wedge
+selection, game/worldbuilding/design wedge selection, live model generation,
+provider calls, production task execution, commit, push, or Source Files
+refresh/export/capsule proof.
+
+`FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+## ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS
+
+- `orchestrator/roger_legible_vertical_slice_demo_packet.py`
+- `tests/test_roger_legible_vertical_slice_demo_packet.py`
+- `docs/ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET.md`
+- `docs/ACTION_LOG.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: pure source/test/docs founder-comprehension demo checkpoint.
+This boundary adds one compact deterministic packet over existing Human Override
+/ Causal Court material so Roger can see what went in, what Orchestrator did,
+what came out, what was verified, what he can judge, and what is not proven.
+
+Recommended next boundary:
+`ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_REVIEW_READONLY`.
+
+Open thread preserved: Roger needs recurring milestone vertical-slice demos he
+can personally evaluate. Game / Worldbuilding / Design remains a future
+calibration-domain candidate, not a selected first product wedge.
+
+Non-proofs preserved: no runtime/provider/model proof, semantic correctness
+proof, production readiness proof, Phase 387 implementation, first product
+wedge selection, claims/disputes/appeals wedge selection,
+game/worldbuilding/design wedge selection, production task execution, commit,
+push, or Source Files refresh/export/capsule proof.
+
+`ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`

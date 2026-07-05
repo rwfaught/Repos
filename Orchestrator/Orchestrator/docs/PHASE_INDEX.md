@@ -5584,3 +5584,69 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   and no Source Files refresh/export/capsule proof.
 - Marker:
   `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW_DOCS_REGISTERED=DOCS_ONLY`.
+
+
+## Founder Native Setting Causal Court Micro-Scenario Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs founder-native micro-scenario seam completed.
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS`.
+- Classification: non-phase founder-native deterministic micro-scenario
+  checkpoint; not Phase 387, not product-wedge selection, and not production
+  task execution.
+- Source added:
+  `orchestrator/founder_native_setting_causal_court_micro_scenario.py`.
+- Tests added:
+  `tests/test_founder_native_setting_causal_court_micro_scenario.py`.
+- Docs added:
+  `docs/FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO.md`.
+- Docs updated:
+  `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_FOUNDER_REVIEW.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Scenario posture: one deterministic case, `The Six-Minute New Jakarta
+  Fusion-Grid Override`, over the approved
+  `human_control_vs_infrastructure_complexity` contradiction area.
+- Recommended next boundary:
+  `FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_REVIEW_READONLY`.
+- Non-proofs: no semantic correctness proof, no model reasoning proof, no
+  runtime/provider/model proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  wedge selection, no game/worldbuilding/design wedge selection, no live model
+  generation, no provider calls, no commit, no push, and no Source Files
+  refresh/export/capsule proof.
+- Marker:
+`FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`.
+
+
+## Roger-Legible Vertical Slice Demo Packet Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs demo-packet seam completed.
+- Boundary:
+  `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS`.
+- Classification: non-phase deterministic founder-comprehension checkpoint; not
+  Phase 387, not product-wedge selection, and not production task execution.
+- Source added:
+  `orchestrator/roger_legible_vertical_slice_demo_packet.py`.
+- Tests added:
+  `tests/test_roger_legible_vertical_slice_demo_packet.py`.
+- Docs added:
+  `docs/ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET.md`.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Demo posture: compact deterministic packet over existing Human Override /
+  Causal Court material that shows what went in, what Orchestrator did, what
+  came out, what was verified, what Roger can judge, and what is not proven.
+- Open thread preserved: Roger needs recurring milestone vertical-slice demos
+  he can personally evaluate. Game / Worldbuilding / Design remains a possible
+  calibration domain, not a selected first product wedge.
+- Recommended next boundary:
+  `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_REVIEW_READONLY`.
+- Non-proofs: no runtime/provider/model proof, no semantic correctness proof,
+  no production readiness proof, no Phase 387 implementation, no first product
+  wedge selection, no claims/disputes/appeals wedge selection, no
+  game/worldbuilding/design wedge selection, no production task execution, no
+  commit, no push, and no Source Files refresh/export/capsule proof.
+- Marker:
+  `ROGER_LEGIBLE_VERTICAL_SLICE_DEMO_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`.

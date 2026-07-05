@@ -56,3 +56,9 @@ human-control/infrastructure-complexity expansion. It should stress-test Causal
 Courts, explanation standards, fake accountability, infrastructure paralysis,
 command-chain law, and Human Override doctrine through a single concrete
 incident.
+
+## Causal Court Micro-Scenario Record
+
+The deterministic micro-scenario record is:
+
+`docs/FOUNDER_NATIVE_SETTING_CAUSAL_COURT_MICRO_SCENARIO.md`
