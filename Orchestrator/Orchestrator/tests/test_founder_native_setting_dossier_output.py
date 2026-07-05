@@ -4,6 +4,8 @@ from orchestrator.founder_native_setting_dossier_output import (
     BOUNDARY,
     DRAFT_REPAIR_OR_RECOMMENDATION,
     OUTPUT_NAME,
+    RECOMMENDED_NEXT_BOUNDARY,
+    STALE_NEXT_WORK_ITEM_FRAGMENT,
     build_human_override_setting_dossier_output,
     build_human_override_setting_dossier_output_dict,
     render_human_override_setting_dossier_markdown,
@@ -100,6 +102,40 @@ class FounderNativeSettingDossierOutputTests(unittest.TestCase):
             any("bureaucratic theater" in question for question in output.open_questions)
         )
 
+    def test_next_work_items_are_founder_review_oriented_not_stale_build_loop(self):
+        output = build_human_override_setting_dossier_output()
+        next_surface = " ".join(output.next_work_items)
+
+        self.assertNotIn(STALE_NEXT_WORK_ITEM_FRAGMENT, next_surface)
+        self.assertIn(
+            "Roger reviews whether the dossier captures the setting's actual coherence problem.",
+            output.next_work_items,
+        )
+        self.assertIn(
+            "Roger identifies which contradiction is the central design engine.",
+            output.next_work_items,
+        )
+        self.assertTrue(
+            any("contradiction analysis" in item for item in output.next_work_items)
+        )
+        self.assertIn(
+            "Preserve explicit non-proofs before any runtime/model/provider work.",
+            output.next_work_items,
+        )
+
+    def test_recommended_next_boundary_records_founder_review_without_wedge_selection(self):
+        output = build_human_override_setting_dossier_output()
+
+        self.assertEqual(output.recommended_next_boundary, RECOMMENDED_NEXT_BOUNDARY)
+        self.assertEqual(
+            output.recommended_next_boundary,
+            "FOUNDER_NATIVE_SETTING_DOSSIER_FOUNDER_REVIEW_RECORD_DOCS_ONLY",
+        )
+        self.assertNotEqual(
+            output.recommended_next_boundary,
+            "FOUNDER_NATIVE_SETTING_DOSSIER_OUTPUT_REVIEW_READONLY",
+        )
+
     def test_draft_repair_is_source_grounded_and_limited(self):
         output = build_human_override_setting_dossier_output()
 
@@ -124,6 +160,7 @@ class FounderNativeSettingDossierOutputTests(unittest.TestCase):
         self.assertIn("no semantic correctness proof", output.explicit_non_proofs)
         self.assertIn("no production readiness proof", output.explicit_non_proofs)
         self.assertIn("no live model generation", output.explicit_non_proofs)
+        self.assertIn("no provider calls", output.explicit_non_proofs)
 
     def test_markdown_renderer_exposes_visible_dossier_sections(self):
         text = render_human_override_setting_dossier_markdown()
@@ -151,6 +188,32 @@ class FounderNativeSettingDossierOutputTests(unittest.TestCase):
         self.assertIn("phase_387_implemented=false", text)
         self.assertIn("runtime_required=false", text)
         self.assertIn("provider_model_required=false", text)
+        self.assertIn(
+            "recommended_next_boundary=FOUNDER_NATIVE_SETTING_DOSSIER_FOUNDER_REVIEW_RECORD_DOCS_ONLY",
+            text,
+        )
+        self.assertNotIn(
+            "recommended_next_boundary=FOUNDER_NATIVE_SETTING_DOSSIER_OUTPUT_REVIEW_READONLY",
+            text,
+        )
+
+    def test_markdown_renderer_contains_founder_review_next_work_items(self):
+        text = render_human_override_setting_dossier_markdown()
+
+        self.assertNotIn(STALE_NEXT_WORK_ITEM_FRAGMENT, text)
+        self.assertIn(
+            "Roger reviews whether the dossier captures the setting's actual coherence problem.",
+            text,
+        )
+        self.assertIn(
+            "Roger identifies which contradiction is the central design engine.",
+            text,
+        )
+        self.assertIn("contradiction analysis", text)
+        self.assertIn(
+            "Preserve explicit non-proofs before any runtime/model/provider work.",
+            text,
+        )
 
 
 if __name__ == "__main__":

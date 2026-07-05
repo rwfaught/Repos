@@ -13,7 +13,8 @@ from orchestrator.founder_native_setting_fixture import (
 
 BOUNDARY = "FOUNDER_NATIVE_SETTING_DOSSIER_OUTPUT_SOURCE_TEST_DOCS"
 OUTPUT_NAME = "human_override_setting_consistency_dossier_output"
-RECOMMENDED_NEXT_BOUNDARY = "FOUNDER_NATIVE_SETTING_DOSSIER_OUTPUT_REVIEW_READONLY"
+RECOMMENDED_NEXT_BOUNDARY = "FOUNDER_NATIVE_SETTING_DOSSIER_FOUNDER_REVIEW_RECORD_DOCS_ONLY"
+STALE_NEXT_WORK_ITEM_FRAGMENT = "build a visible setting consistency dossier output"
 
 NON_PROOFS = (
     "no runtime proof",
@@ -32,6 +33,16 @@ DRAFT_REPAIR_OR_RECOMMENDATION = (
     "Clarify whether post-AI sovereignty in The Human Override is real human "
     "control, bureaucratic ritual, or negotiated dependency on quarantined and "
     "restricted machine intelligence."
+)
+
+FOUNDER_REVIEW_NEXT_WORK_ITEMS = (
+    "Roger reviews whether the dossier captures the setting's actual coherence problem.",
+    "Roger identifies which contradiction is the central design engine.",
+    (
+        "Roger chooses whether the next deterministic seam should produce a deeper "
+        "contradiction analysis, a canon clarification packet, or a revised setting brief."
+    ),
+    "Preserve explicit non-proofs before any runtime/model/provider work.",
 )
 
 
@@ -96,7 +107,7 @@ def build_human_override_setting_dossier_output() -> FounderNativeSettingDossier
         missing_canon=tuple(adapted["missing_canon"]),
         open_questions=tuple(adapted["open_questions"]),
         draft_repair_or_recommendation=DRAFT_REPAIR_OR_RECOMMENDATION,
-        next_work_items=tuple(adapted["next_work_items"]),
+        next_work_items=FOUNDER_REVIEW_NEXT_WORK_ITEMS,
         explicit_non_proofs=tuple(dict.fromkeys((*fixture.non_proofs, *NON_PROOFS))),
         product_wedge_selection=NO_FIRST_PRODUCT_WEDGE_SELECTED,
         first_product_wedge_selected=False,

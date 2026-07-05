@@ -53,4 +53,8 @@ This boundary does not prove:
 
 ## Recommended Next Boundary
 
-`FOUNDER_NATIVE_SETTING_DOSSIER_OUTPUT_REVIEW_READONLY`
+`FOUNDER_NATIVE_SETTING_DOSSIER_FOUNDER_REVIEW_RECORD_DOCS_ONLY`
+
+This later docs-only boundary should record Roger's founder review of the
+visible dossier output without selecting a first product wedge or mutating
+source behavior.
