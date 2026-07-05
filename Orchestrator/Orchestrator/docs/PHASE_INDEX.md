@@ -5492,3 +5492,66 @@ Audit interpretation: non-contiguous docs/PHASE_*.md filenames are expected and 
   no persistence migration, and no Source Files refresh/export/capsule proof.
 - Marker:
   `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`.
+
+
+## Founder Native Setting Human Control Infrastructure Complexity Expansion Source/Test/Docs Checkpoint
+
+- Status: pure source/test/docs founder-native expansion seam completed.
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION_SOURCE_TEST_DOCS`.
+- Classification: non-phase founder-native deterministic expansion checkpoint;
+  not Phase 387, not product-wedge selection, and not production task
+  execution.
+- Source added:
+  `orchestrator/founder_native_setting_human_control_infrastructure_expansion.py`.
+- Tests added:
+  `tests/test_founder_native_setting_human_control_infrastructure_expansion.py`.
+- Docs added:
+  `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION.md`.
+- Docs updated:
+  `docs/FOUNDER_NATIVE_SETTING_CONTRADICTION_ANALYSIS_FOUNDER_REVIEW.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Expansion posture: deterministic plain-data expansion over
+  `human_control_vs_infrastructure_complexity` in The Human Override,
+  preserving infrastructure domains, explanation standards, accountability
+  failure modes, Causal Court functions, doctrine implications, generated
+  story/worldbuilding pressures, next work items, and explicit non-proofs.
+- Governance repair boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS`.
+- Recommended next boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_REVIEW_READONLY`.
+- Non-proofs: no semantic correctness proof, no model reasoning proof, no
+  runtime/provider/model proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  wedge selection, no game/worldbuilding/design wedge selection, no live model
+  generation, no provider calls, and no Source Files refresh/export/capsule
+  proof.
+- Marker:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`.
+
+
+## Founder Native Setting Human Control Infrastructure Complexity Governance Repair Docs-Only Checkpoint
+
+- Status: docs-only governance repair completed.
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS`.
+- Classification: non-phase governance registration checkpoint; not source/test
+  mutation, not Phase 387, not product-wedge selection, and not production task
+  execution.
+- Docs updated:
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`,
+  `docs/SOURCE_MANIFEST.md`, and `docs/TRACKS_AND_OPEN_THREADS.md`.
+- Governance posture: registers the already-created Human Control
+  Infrastructure Complexity Expansion seam in ledgers that track non-phase
+  founder-native deterministic seams and source/test/docs file identity.
+- Recommended next boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_REVIEW_READONLY`.
+- Non-proofs: no semantic correctness proof, no model reasoning proof, no
+  runtime/provider/model proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  wedge selection, no game/worldbuilding/design wedge selection, no live model
+  generation, no provider calls, no source/test mutation, no commit, no push,
+  and no Source Files refresh/export/capsule proof.
+- Marker:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS_REGISTERED=DOCS_ONLY`.

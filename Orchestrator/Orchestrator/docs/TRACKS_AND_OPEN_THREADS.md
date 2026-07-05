@@ -3293,3 +3293,35 @@ fresh artifact proof.
   mutation, or production task execution.
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+### Founder Native Setting Human Control Infrastructure Complexity Expansion Source/Test/Docs Checkpoint
+
+- Boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs founder-native expansion seam completed.
+- Source/test:
+  `orchestrator/founder_native_setting_human_control_infrastructure_expansion.py`
+  and
+  `tests/test_founder_native_setting_human_control_infrastructure_expansion.py`
+- Docs:
+  `docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION.md`
+- Expansion posture: deterministic plain-data expansion over
+  `human_control_vs_infrastructure_complexity` in The Human Override. It narrows
+  the central contradiction into infrastructure domains, explanation standards,
+  accountability failure modes, Causal Court functions, Human Override doctrine
+  implications, generated story/worldbuilding pressures, next work items, and
+  explicit non-proofs.
+- Governance repair boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS`
+- Recommended next boundary:
+  `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_REVIEW_READONLY`
+- Non-proofs preserved: no semantic correctness proof, model reasoning proof,
+  runtime/provider/model proof, production readiness proof, Phase 387
+  implementation, first product wedge selection, claims/disputes/appeals wedge
+  selection, game/worldbuilding/design wedge selection, live model generation,
+  provider calls, production task execution, or Source Files
+  refresh/export/capsule proof.
+
+`FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+`FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_GOVERNANCE_REPAIR_DOCS_REGISTERED=DOCS_ONLY`

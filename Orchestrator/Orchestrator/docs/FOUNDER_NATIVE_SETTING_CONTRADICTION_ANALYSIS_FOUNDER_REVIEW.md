@@ -69,3 +69,9 @@ This record preserves these explicit non-proofs:
 ## Recommended Next Boundary
 
 `FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION_SOURCE_TEST_DOCS`
+
+## Human Control Infrastructure Complexity Expansion Record
+
+The deterministic expansion record is:
+
+`docs/FOUNDER_NATIVE_SETTING_HUMAN_CONTROL_INFRASTRUCTURE_COMPLEXITY_EXPANSION.md`
