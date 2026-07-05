@@ -65,3 +65,9 @@ This record does not prove:
 ## Recommended Next Boundary
 
 `FOUNDER_NATIVE_SETTING_DEEPER_CONTRADICTION_ANALYSIS_SOURCE_TEST_DOCS`
+
+## Deeper Contradiction Analysis Record
+
+The deeper contradiction analysis boundary is recorded at:
+
+`docs/FOUNDER_NATIVE_SETTING_DEEPER_CONTRADICTION_ANALYSIS.md`
