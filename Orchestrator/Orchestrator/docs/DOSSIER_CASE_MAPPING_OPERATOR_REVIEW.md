@@ -313,3 +313,29 @@ status, Phase 387 non-implementation, and explicit non-proofs.
 Recommended next boundary:
 
 `FIRST_PRODUCT_WEDGE_RATIFICATION_OPERATOR_DECISION_DOCS_ONLY`
+
+## 15. Task Readiness Boundary Record
+
+Boundary:
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+Status:
+
+Implemented as a deterministic neutral task-readiness source/test/docs seam in
+`orchestrator/dossier_case_task_readiness.py`, with focused coverage in
+`tests/test_dossier_case_task_readiness.py`.
+
+Readiness posture:
+
+The report inspects structural fields only. It reports required neutral fields,
+present/missing fields, open questions, contradictions, decisions, next work
+items, structural readiness blockers, no-wedge status, Phase 387
+non-implementation, runtime/provider/model non-requirement, and explicit
+non-proofs.
+
+Recommended next boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -872,3 +872,24 @@ Current next boundary: `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
   `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+### Dossier Case Task Readiness Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+- Source/test:
+  `orchestrator/dossier_case_task_readiness.py` and
+  `tests/test_dossier_case_task_readiness.py`
+- Context posture: neutral dossier/case work now has a deterministic structural
+  task-readiness report. It inspects required neutral fields, open questions,
+  contradictions, decisions, next work items, structural blockers, no-wedge
+  state, Phase 387 non-implementation, runtime/provider/model non-requirement,
+  and explicit non-proofs.
+- Current non-proofs remain active: no first product wedge selection, no Phase
+  387 implementation, no semantic reasoning proof, no runtime/provider/model
+  proof, no production readiness proof, and no Source Files refresh/export/
+  capsule proof.
+- Recommended next boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -7170,3 +7170,28 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   capsule/export/package proof.
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+### Dossier Case Task Readiness Source/Test/Docs
+
+- Boundary: `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
+- Added: `orchestrator/dossier_case_task_readiness.py`.
+- Added: `tests/test_dossier_case_task_readiness.py`.
+- Updated: `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`,
+  `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION.md`, `docs/TRACKS_AND_OPEN_THREADS.md`,
+  `docs/CONTEXT_MAP.md`, `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Registered task-readiness posture: `neutral_task_readiness_report` is a pure
+  deterministic structural report over required neutral fields, open questions,
+  contradictions, decisions, next work items, structural blockers, no-wedge
+  state, Phase 387 non-implementation, runtime/provider/model
+  non-requirement, and explicit non-proofs.
+- Non-proofs preserved: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

@@ -309,6 +309,16 @@ The shared fields are strong enough to justify a neutral design bridge.
 This does not prove that a single implementation should serve both domains, or
 that either domain should be selected as the first proving wedge.
 
+## Neutral Task Readiness Check
+
+The `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS` boundary adds a deterministic
+neutral task-readiness report over the existing mapping, readback, and fixture
+seams.
+
+The report is a structural readiness check only. It does not choose
+claims/disputes/appeals, does not choose game/worldbuilding/design, does not
+resume Phase 387, and does not prove semantic or production readiness.
+
 ## Recommendation
 
 Use this abstraction as a ratification bridge only. Roger should next choose

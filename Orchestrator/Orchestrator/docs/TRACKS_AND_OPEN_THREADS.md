@@ -3247,3 +3247,28 @@ fresh artifact proof.
   mutation, or production task execution.
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+### Dossier Case Task Readiness Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs task-readiness seam completed.
+- Source/test:
+  `orchestrator/dossier_case_task_readiness.py` and
+  `tests/test_dossier_case_task_readiness.py`
+- Readiness posture: `neutral_task_readiness_report` is deterministic
+  structural reporting only. It reports required neutral fields,
+  present/missing fields, open questions, contradictions, decisions, next work
+  items, structural readiness blockers, no-wedge state, Phase 387
+  non-implementation, runtime/provider/model non-requirement, and explicit
+  non-proofs.
+- Recommended next boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, CLI, UI,
+  or production task execution.
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

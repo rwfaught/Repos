@@ -428,3 +428,30 @@ Recommended next boundary:
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+## 20. Task Readiness Source/Test/Docs Record
+
+Boundary:
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+Source/test files:
+
+- `orchestrator/dossier_case_task_readiness.py`
+- `tests/test_dossier_case_task_readiness.py`
+
+The implemented readiness layer is the smallest source/test/docs seam after the
+task-surface plan. It accepts case-packet-shaped dictionaries, adapted
+dossier/case dictionaries, and existing minimal fixtures; returns deterministic
+plain report data; and preserves the current no-wedge, no-Phase-387, no-runtime,
+no-provider/model posture.
+
+The readiness rule remains structural: all required neutral fields must be
+present, the structural fields for open questions, contradictions, decisions,
+and next work items must exist, no product wedge may be selected, Phase 387 must
+not be marked implemented, and no runtime/provider/model requirement may be
+present.
+
+Recommended next boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

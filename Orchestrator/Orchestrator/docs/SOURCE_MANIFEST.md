@@ -8387,3 +8387,31 @@ Recommended next boundary:
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+
+## DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS
+
+- `orchestrator/dossier_case_task_readiness.py`
+- `tests/test_dossier_case_task_readiness.py`
+- `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+- `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/ACTION_LOG.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: pure source/test/docs structural readiness checkpoint. This
+boundary adds `neutral_task_readiness_report` as deterministic structural
+reporting over the existing dossier/case mapping, readback, and fixture seams.
+It does not execute runtime/provider/model/platform behavior, dispatch workers,
+implement Phase 387, select the first product wedge, implement either product
+domain, prove semantic correctness, prove production readiness, refresh Source
+Files, or create capsule/export/package proof.
+
+Recommended next boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`.
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`

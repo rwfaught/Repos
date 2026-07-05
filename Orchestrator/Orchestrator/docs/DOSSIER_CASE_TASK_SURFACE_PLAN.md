@@ -240,3 +240,28 @@ Recommended next boundary:
 That boundary should implement the pure deterministic
 `neutral_task_readiness_report` task with focused tests and documentation. It
 should not select a product wedge, resume Phase 387, or claim production proof.
+
+## 17. Task Readiness Implementation Record
+
+Boundary:
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
+
+Source/test files:
+
+- `orchestrator/dossier_case_task_readiness.py`
+- `tests/test_dossier_case_task_readiness.py`
+
+Implemented task:
+`neutral_task_readiness_report`
+
+The source seam adds a frozen readiness report dataclass and a pure builder for
+case-packet-shaped dictionaries, adapted dossier/case dictionaries, and the
+existing minimal fixtures. The report lists required, present, and missing
+neutral fields; preserves open questions, contradictions, decisions, and next
+work items; and reports structural readiness for a future domain-specific
+boundary without claiming semantic or production readiness.
+
+Recommended next boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+`DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
