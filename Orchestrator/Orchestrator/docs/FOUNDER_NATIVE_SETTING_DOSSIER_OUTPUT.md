@@ -58,3 +58,9 @@ This boundary does not prove:
 This later docs-only boundary should record Roger's founder review of the
 visible dossier output without selecting a first product wedge or mutating
 source behavior.
+
+## Founder Review Record
+
+The founder review record is:
+
+`docs/FOUNDER_NATIVE_SETTING_DOSSIER_FOUNDER_REVIEW.md`
