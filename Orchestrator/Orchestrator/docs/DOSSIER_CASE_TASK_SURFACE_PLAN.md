@@ -265,3 +265,20 @@ Recommended next boundary:
 `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## 18. First Product Wedge Ratification Record
+
+Boundary:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+Record:
+`docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+
+The post-readiness ratification record preserves that no first product wedge is
+selected. The neutral task-readiness report remains structural only and does
+not prove semantic readiness or product-domain workflow readiness.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

@@ -3272,3 +3272,24 @@ fresh artifact proof.
   or production task execution.
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### First Product Wedge Ratification Record Docs-Only Checkpoint
+
+- Boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+- Status: docs-only founder ratification record completed.
+- Record:
+  `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+- Ratification posture: no first product wedge selected. Option 3 remains the
+  only ratified strategic path so far. The current recommendation is to
+  continue abstraction-first.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+- Non-proofs preserved: no runtime proof, provider/model proof, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, claims/disputes/appeals product
+  implementation, game/worldbuilding/design product implementation,
+  persistence migration, Source Files refresh/export/capsule proof, source/test
+  mutation, or production task execution.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

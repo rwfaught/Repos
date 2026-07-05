@@ -7195,3 +7195,29 @@ Non-proofs preserved: no route execution, no live routing, no provider/model exe
   no persistence migration, and no Source Files refresh/export/capsule proof.
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+
+### First Product Wedge Ratification Record Docs Only
+
+- Boundary: `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`.
+- Added: `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`.
+- Updated: `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`,
+  `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`,
+  `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`,
+  `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`,
+  `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`,
+  `docs/DOSSIER_CASE_ABSTRACTION.md`,
+  `docs/TRACKS_AND_OPEN_THREADS.md`, `docs/CONTEXT_MAP.md`,
+  `docs/PHASE_INDEX.md`, `docs/ACTION_LOG.md`, and
+  `docs/SOURCE_MANIFEST.md`.
+- Recorded ratification posture: no first product wedge selected. Option 3
+  remains the only ratified strategic path so far. Current recommendation is to
+  continue abstraction-first.
+- Non-proofs preserved: no runtime proof, no provider/model proof, no semantic
+  correctness proof, no production readiness proof, no Phase 387
+  implementation, no first product wedge selection, no claims/disputes/appeals
+  product implementation, no game/worldbuilding/design product implementation,
+  no persistence migration, and no Source Files refresh/export/capsule proof.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

@@ -215,3 +215,26 @@ phrases.
 Recommended next boundary:
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY`
+
+## Ratification Record After Task Readiness
+
+Boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+Record:
+
+`docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+
+Decision posture:
+
+No first product wedge is selected. Option 3 remains the only ratified
+strategic path so far. The current recommendation is to continue
+abstraction-first unless Roger explicitly chooses one of the ratification
+phrases.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

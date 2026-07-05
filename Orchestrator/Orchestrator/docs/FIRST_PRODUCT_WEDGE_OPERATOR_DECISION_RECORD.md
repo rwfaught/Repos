@@ -253,3 +253,20 @@ Recommended next boundary:
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`
 
 `DOSSIER_CASE_TASK_SURFACE_PLAN_DOCS_ONLY_REGISTERED=DOCS_ONLY`
+
+## 16. First Product Wedge Ratification Record
+
+Boundary completed:
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+Record document:
+`docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+
+No first product wedge was selected in this boundary. Option 3 remains the only
+ratified strategic path so far, and the current posture remains continue
+abstraction-first.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

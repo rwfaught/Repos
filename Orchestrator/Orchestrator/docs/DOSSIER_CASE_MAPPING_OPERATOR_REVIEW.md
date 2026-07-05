@@ -339,3 +339,24 @@ Recommended next boundary:
 `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+## 16. First Product Wedge Ratification Record
+
+Boundary:
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+
+Status:
+
+Recorded in `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`.
+
+Decision posture:
+
+No first product wedge is selected. The mapping, readback, fixture, and
+readiness seams remain structural source/test/docs proof only.
+
+Recommended next boundary:
+
+`DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

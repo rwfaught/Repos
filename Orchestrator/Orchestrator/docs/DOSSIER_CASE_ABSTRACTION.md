@@ -336,3 +336,15 @@ claims/disputes/appeals competence, prove a game/worldbuilding/design workflow,
 refresh Source Files, create capsule/export/package proof, resume Phase 387,
 authorize wedge implementation, or select the first product wedge. In short:
 no wedge selection.
+
+## First Product Wedge Ratification Record
+
+The `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY` boundary adds
+`docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md` after the neutral
+task-readiness seam.
+
+The record preserves that no first product wedge is selected. Option 3 remains
+the only ratified strategic path so far, and the current posture remains
+continue abstraction-first.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

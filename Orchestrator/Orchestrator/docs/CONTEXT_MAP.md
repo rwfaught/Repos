@@ -893,3 +893,21 @@ Current next boundary: `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS`.
   `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+### First Product Wedge Ratification Record Docs-Only Checkpoint
+
+- Boundary:
+  `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`
+- Record:
+  `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+- Context posture: the project has a founder ratification record after neutral
+  task readiness. No first product wedge is selected. Option 3 remains the only
+  ratified strategic path so far, and the recommended posture is continue
+  abstraction-first.
+- Current non-proofs remain active: no Phase 387 implementation, no semantic
+  readiness proof, no runtime/provider/model proof, no production readiness
+  proof, and no Source Files refresh/export/capsule proof.
+- Recommended next boundary:
+  `DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`

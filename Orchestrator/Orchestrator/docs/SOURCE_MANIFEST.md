@@ -8415,3 +8415,34 @@ Recommended next boundary:
 `FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY`.
 
 `DOSSIER_CASE_TASK_READINESS_SOURCE_TEST_DOCS_PROVEN=PASS`
+
+
+## FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY
+
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD.md`
+- `docs/FIRST_PRODUCT_WEDGE_OPERATOR_DECISION_RECORD.md`
+- `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
+- `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`
+- `docs/DOSSIER_CASE_TASK_SURFACE_PLAN.md`
+- `docs/DOSSIER_CASE_MAPPING_OPERATOR_REVIEW.md`
+- `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`
+- `docs/DOSSIER_CASE_ABSTRACTION.md`
+- `docs/ACTION_LOG.md`
+- `docs/CONTEXT_MAP.md`
+- `docs/PHASE_INDEX.md`
+- `docs/SOURCE_MANIFEST.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+Classification: docs-only founder ratification record. This boundary records
+that no first product wedge is selected after the neutral task-readiness seam.
+Option 3 remains the only ratified strategic path so far, and the current
+recommendation is to continue abstraction-first. It does not mutate source or
+tests, implement Phase 387, select a first product wedge, implement either
+product domain, run runtime/provider/model behavior, prove semantic
+correctness, prove production readiness, refresh Source Files, or create
+capsule/export/package proof.
+
+Recommended next boundary:
+`DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_DOCS_ONLY`.
+
+`FIRST_PRODUCT_WEDGE_RATIFICATION_RECORD_DOCS_ONLY_REGISTERED=DOCS_ONLY`
