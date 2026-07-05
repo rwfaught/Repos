@@ -61,3 +61,9 @@ This boundary does not prove:
 ## Recommended Next Boundary
 
 `FOUNDER_NATIVE_SETTING_CONTRADICTION_ANALYSIS_REVIEW_READONLY`
+
+## Founder Review Record
+
+The founder review record for this analysis is:
+
+`docs/FOUNDER_NATIVE_SETTING_CONTRADICTION_ANALYSIS_FOUNDER_REVIEW.md`
