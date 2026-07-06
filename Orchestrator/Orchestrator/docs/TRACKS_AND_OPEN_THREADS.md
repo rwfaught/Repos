@@ -3432,3 +3432,264 @@ fresh artifact proof.
   refresh/export/capsule proof.
 
 `ROGER_LEGIBLE_GAME_WORLDBUILDING_DESIGN_CALIBRATION_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Roger-Provided Human Override Real Seed Fixture Packet Source/Test/Docs Checkpoint
+
+- Boundary:
+  `ROGER_PROVIDED_HUMAN_OVERRIDE_REAL_SEED_FIXTURE_PACKET_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs real-seed packet completed.
+- Source/test:
+  `orchestrator/roger_provided_human_override_seed_calibration_packet.py`
+  and
+  `tests/test_roger_provided_human_override_seed_calibration_packet.py`
+- Docs:
+  `docs/ROGER_PROVIDED_HUMAN_OVERRIDE_SEED_CALIBRATION_PACKET.md`
+- Calibration posture: Roger's real Human Override seed is now preserved and
+  structured by deterministic source code, but this remains preservation/
+  structuring proof only.
+- Open thread preserved: a future live or semi-live calibration slice requires
+  separate authorization. Game / Worldbuilding / Design remains a calibration
+  domain candidate, not a selected first product wedge.
+- Asterion posture: Asterion remains unresolved and is not made conscious,
+  benevolent, hostile, dead, imprisoned, secretly active, or secretly
+  controlling events.
+- Recommended next boundary:
+  `ROGER_PROVIDED_HUMAN_OVERRIDE_SEED_CALIBRATION_PACKET_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model proof, semantic correctness
+  proof, production readiness proof, Phase 387 implementation, first product
+  wedge selection, Game / Worldbuilding / Design wedge selection,
+  claims/disputes/appeals wedge selection, live creative reasoning proof, new
+  canon generation proof, production task execution, or Source Files
+  refresh/export/capsule proof.
+
+`ROGER_PROVIDED_HUMAN_OVERRIDE_REAL_SEED_FIXTURE_PACKET_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Goal Intake To Bounded Task Packet Vertical Slice Source/Test/Docs Checkpoint
+
+- Boundary:
+  `GOAL_INTAKE_TO_BOUNDED_TASK_PACKET_VERTICAL_SLICE_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs product-loop spine completed.
+- Source/test:
+  `orchestrator/goal_intake_to_bounded_task_packet.py` and
+  `tests/test_goal_intake_to_bounded_task_packet.py`
+- Docs:
+  `docs/GOAL_INTAKE_TO_BOUNDED_TASK_PACKET_VERTICAL_SLICE.md`
+- Open thread preserved: Roger's intended Orchestrator path is broad goal in,
+  intake and clarification, local-first bounded task routing when safe,
+  escalation only when justified, review at each phase, and persistent state.
+- Current limitation: this slice is deterministic and non-executing. It proves
+  packet shape and review posture, not live model coordination or dispatch.
+- Recommended next boundary:
+  `GOAL_INTAKE_TO_BOUNDED_TASK_PACKET_VERTICAL_SLICE_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, local model
+  capability proof, frontier escalation proof, production task execution, or
+  Source Files refresh/export/capsule proof.
+
+`GOAL_INTAKE_TO_BOUNDED_TASK_PACKET_VERTICAL_SLICE_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Bounded Task Packet Review Gate Source/Test/Docs Checkpoint
+
+- Boundary:
+  `BOUNDED_TASK_PACKET_REVIEW_GATE_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs approval-gate seam completed.
+- Source/test:
+  `orchestrator/bounded_task_packet_review_gate.py` and
+  `tests/test_bounded_task_packet_review_gate.py`
+- Docs:
+  `docs/BOUNDED_TASK_PACKET_REVIEW_GATE.md`
+- Open thread advanced: the small MVP loop now has a checkpoint between
+  "Orchestrator proposes a bounded next task" and any future execution-like
+  step. Roger approval remains explicit.
+- Current limitation: this gate reviews packet structure and approval posture
+  only. It does not persist tasks, dispatch workers, or prove model quality.
+- Recommended next boundary:
+  `BOUNDED_TASK_PACKET_REVIEW_GATE_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, worker
+  execution proof, local model capability proof, frontier escalation proof,
+  production task execution, or Source Files refresh/export/capsule proof.
+
+`BOUNDED_TASK_PACKET_REVIEW_GATE_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Approved Bounded Task Packet To Queued Task Source/Test/Docs Checkpoint
+
+- Boundary:
+  `APPROVED_BOUNDED_TASK_PACKET_TO_QUEUED_TASK_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs task-creation persistence seam completed.
+- Source/test:
+  `orchestrator/approved_bounded_task_packet_to_queued_task.py` and
+  `tests/test_approved_bounded_task_packet_to_queued_task.py`
+- Docs:
+  `docs/APPROVED_BOUNDED_TASK_PACKET_TO_QUEUED_TASK.md`
+- Open thread advanced: the small MVP loop can now persist a queued task record
+  after explicit Roger approval, while still stopping before worker dispatch or
+  execution authorization.
+- Current limitation: queued task persistence is proven with caller-supplied
+  task-store directories. Live repo task-store integration, worker dispatch,
+  and execution remain future boundaries.
+- Recommended next boundary:
+  `QUEUED_TASK_EXECUTION_AUTHORIZATION_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, worker
+  execution proof, local model capability proof, frontier escalation proof,
+  production task execution, or Source Files refresh/export/capsule proof.
+
+`APPROVED_BOUNDED_TASK_PACKET_TO_QUEUED_TASK_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Queued Task Execution Authorization Review Source/Test/Docs Checkpoint
+
+- Boundary:
+  `QUEUED_TASK_EXECUTION_AUTHORIZATION_REVIEW_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs queued-task execution-authorization review seam
+  completed.
+- Source/test:
+  `orchestrator/queued_task_execution_authorization_review.py` and
+  `tests/test_queued_task_execution_authorization_review.py`
+- Docs:
+  `docs/QUEUED_TASK_EXECUTION_AUTHORIZATION_REVIEW.md`
+- Open thread advanced: the small MVP loop now has a checkpoint between queued
+  task persistence and any future worker execution boundary.
+- Current limitation: this review does not authorize execution or dispatch a
+  worker. It only determines whether the queued task is structurally ready for
+  Roger to consider a separate execution boundary.
+- Recommended next boundary:
+  `REPORT_ONLY_WORKER_EXECUTION_DRY_RUN_BOUNDARY_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, worker
+  execution proof, local model capability proof, frontier escalation proof,
+  production task execution, or Source Files refresh/export/capsule proof.
+
+`QUEUED_TASK_EXECUTION_AUTHORIZATION_REVIEW_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Report-Only Worker Execution Dry Run Source/Test/Docs Checkpoint
+
+- Boundary:
+  `REPORT_ONLY_WORKER_EXECUTION_DRY_RUN_BOUNDARY_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs dry worker-result seam completed.
+- Source/test:
+  `orchestrator/report_only_worker_execution_dry_run.py` and
+  `tests/test_report_only_worker_execution_dry_run.py`
+- Docs:
+  `docs/REPORT_ONLY_WORKER_EXECUTION_DRY_RUN.md`
+- Open thread advanced: the small MVP loop can now produce a deterministic dry
+  worker-result artifact after explicit Roger authorization.
+- Current limitation: this is still a dry result. It does not dispatch a real
+  worker, use a local model, call a provider, mutate files, or prove semantic
+  quality.
+- Recommended next boundary:
+  `REPORT_ONLY_WORKER_RESULT_REVIEW_SOURCE_TEST_DOCS`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, real worker
+  execution proof, local model capability proof, frontier escalation proof,
+  production task execution, or Source Files refresh/export/capsule proof.
+
+`REPORT_ONLY_WORKER_EXECUTION_DRY_RUN_BOUNDARY_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Report-Only Worker Result Review Source/Test/Docs Checkpoint
+
+- Boundary:
+  `REPORT_ONLY_WORKER_RESULT_REVIEW_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs dry result review seam completed.
+- Source/test:
+  `orchestrator/report_only_worker_result_review.py` and
+  `tests/test_report_only_worker_result_review.py`
+- Docs:
+  `docs/REPORT_ONLY_WORKER_RESULT_REVIEW.md`
+- Open thread advanced: the small MVP loop now reaches dry artifact review and
+  operator response options.
+- Current limitation: this closes a deterministic dry loop only. It does not
+  dispatch a real worker, use a local model, call a provider, mutate files, or
+  prove semantic quality.
+- Recommended next boundary:
+  `DRY_MVP_LOOP_CLOSEOUT_REVIEW_READONLY`
+- Non-proofs preserved: no runtime/provider/model execution, semantic
+  correctness proof, production readiness proof, Phase 387 implementation,
+  first product wedge selection, autonomous task dispatch proof, real worker
+  execution proof, local model capability proof, frontier escalation proof,
+  production task execution, or Source Files refresh/export/capsule proof.
+
+`REPORT_ONLY_WORKER_RESULT_REVIEW_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Dry MVP Loop Closeout / PM Status / Demo CLI Source/Test/Docs Checkpoint
+
+- Boundaries:
+  `DRY_MVP_LOOP_CLOSEOUT_REVIEW_SOURCE_TEST_DOCS`,
+  `PM_FACING_ORCHESTRATOR_STATUS_PACKET_SOURCE_TEST_DOCS`, and
+  `DRY_MVP_LOOP_DEMO_CLI_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs closeout, PM status, and CLI/readback seams
+  completed.
+- Open thread advanced: Roger can now run a deterministic dry MVP loop demo
+  through a thin CLI/readback surface using caller-supplied output directories.
+- Current limitation: this remains dry/report-only. It does not dispatch a real
+  worker, call models/providers/runtimes, mutate project files, prove semantic
+  quality, select a product wedge, or implement Phase 387.
+- Suggested next decision: pause for Roger review and commit-ready verification
+  before any real local-worker proof boundary.
+
+`DRY_MVP_LOOP_CLOSEOUT_AND_DEMO_CLI_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Dry MVP Integrated Acceptance Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DRY_MVP_INTEGRATED_ACCEPTANCE_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs integrated dry acceptance seam completed.
+- Open thread advanced: Roger can now check the dry MVP loop as one
+  deterministic chain instead of reading separate seam packets in isolation.
+- Current limitation: this remains dry/report-only. It does not dispatch a real
+  worker, use a local model, call a provider, mutate project files through the
+  Orchestrator spine, prove semantic quality, select a product wedge, or
+  implement Phase 387.
+- Suggested next decision: run a read-only commit-readiness review and then
+  decide whether to commit the dry MVP skeleton or request targeted repair.
+
+`DRY_MVP_INTEGRATED_ACCEPTANCE_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Dry MVP Commit Readiness Review Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DRY_MVP_COMMIT_READINESS_REVIEW_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs commit-readiness review seam completed.
+- Open thread advanced: Roger can now inspect a deterministic readiness packet
+  that says whether the dry MVP skeleton is ready for a commit decision.
+- Current limitation: this remains dry/report-only. It does not commit, push,
+  dispatch a real worker, use a local model, call a provider, mutate project
+  files through the Orchestrator spine, prove semantic quality, select a
+  product wedge, or implement Phase 387.
+- Suggested next decision: Roger chooses whether to commit the dry MVP
+  skeleton, request targeted repair before commit, pause without commit, or
+  authorize a later local-worker proof boundary.
+
+`DRY_MVP_COMMIT_READINESS_REVIEW_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Dry MVP Milestone Closeout Source/Test/Docs Checkpoint
+
+- Boundary:
+  `DRY_MVP_MILESTONE_CLOSEOUT_SOURCE_TEST_DOCS`
+- Status: pure source/test/docs dry MVP milestone closeout completed.
+- Open thread advanced: the dry MVP source/test/docs milestone is now closed
+  out as complete pending Roger's commit decision.
+- Current limitation: this does not prove real provider execution, real worker
+  execution, semantic correctness, production readiness, full
+  current-success-criterion satisfaction, Phase 387, product-wedge selection,
+  commit, or push.
+- Suggested next decision: Roger chooses whether to commit the dry MVP skeleton
+  or request targeted repair before commit.
+
+`DRY_MVP_MILESTONE_CLOSEOUT_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
