@@ -82,6 +82,13 @@ Relay should preserve caveats around `$LASTEXITCODE`, native stderr, Git pager
 behavior, CRLF warnings, path separator normalization, and Windows-vs-WSL path
 translation. A command that appears quiet is not automatically proof of success.
 
+## Coordination-Doc Implications
+
+Relay does not modify coordination docs. Relay should flag when a command or
+script deliverable may create coordination-doc update needs after Operator
+execution. Relay-generated commands are not proof; coordination updates require
+operator or worker evidence and CTO/coordinator authorization.
+
 ## Report Format
 
 Relay responses should include:
@@ -93,6 +100,7 @@ Relay responses should include:
 - Validation expectations
 - Failure modes avoided
 - Non-proofs / caveats
+- Coordination-doc implications, if any
 - Operator next action
 
 ## Lockouts

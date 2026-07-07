@@ -27,7 +27,7 @@ ALWAYS_READ_CONTROL:
 
 CURRENT_STATE:
 - `CURRENT_SUCCESS_CRITERION.md`
-- `TRACKS_AND_OPEN_THREADS.md`
+- `TRACKS_AND_OPEN_THREADS_CURRENT.md`
 - `PROJECT_CONTEXT.md`
 - `RERANK_01.md`
 - `RERANK_01_RESULT.md` (if present)
@@ -55,10 +55,14 @@ EXTERNAL_TRACK_PACKAGE:
 
 Authority reminder:
 - `ORCHESTRATOR_HANDOFF_STATUS_OUTLINE.md` must not outrank `PHASE_INDEX.md`, `ACTION_LOG.md`, or current governing docs.
-- Coordinator sessions must inspect `TRACKS_AND_OPEN_THREADS.md` and apply
+- Coordinator sessions must inspect `TRACKS_AND_OPEN_THREADS_CURRENT.md` and apply
   `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` before recommending an NBM or changing
   tracks.
-- `TRACKS_AND_OPEN_THREADS.md` remains the active coordination ledger; `docs/CONTEXT_MAP.md` owns language/context architecture.
+- `TRACKS_AND_OPEN_THREADS_CURRENT.md` is the default current-state startup
+  summary. `TRACKS_AND_OPEN_THREADS.md` remains the full historical
+  coordination ledger and should be read when named, when historical/open-thread
+  archaeology is required, or when a boundary explicitly asks for it.
+- `docs/CONTEXT_MAP.md` owns language/context architecture.
 - `PHASE_INDEX.md`, `ACTION_LOG.md`, `SOURCE_MANIFEST.md`, and phase docs are
   evidence/history authorities, not mandatory full-load startup payloads unless
   the current boundary requires phase history, source registration, proof, or
@@ -207,9 +211,11 @@ Live relevant open threads and their triage status remain visible in
 RESPONSE_METADATA. Durable product open threads that outlive a session should
 be recorded in SESSION_DOCTRINE_AND_OPEN_THREADS.md.
 
-The cross-track accepted-state map and full active open-thread register are
-maintained in `TRACKS_AND_OPEN_THREADS.md`. Session handoffs may carry only the
-active relevant subset, but must refer back to that ledger.
+The compact cross-track current-state map is maintained in
+`TRACKS_AND_OPEN_THREADS_CURRENT.md`. The full accepted-state history and open-
+thread register are maintained in `TRACKS_AND_OPEN_THREADS.md`. Session
+handoffs may carry only the active relevant subset, but must refer back to the
+current summary and, when needed, the full ledger.
 
 The durable documentation context map and language authority model are
 maintained in `docs/CONTEXT_MAP.md`. It clarifies bounded contexts, owned language,

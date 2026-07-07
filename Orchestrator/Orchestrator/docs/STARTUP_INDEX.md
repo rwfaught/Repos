@@ -22,7 +22,7 @@ Read these documents by default, in this order:
 4. `CONTEXT_MAP.md`
 5. `CURRENT_SUCCESS_CRITERION.md`
 6. `OPEN_THREAD_TRIAGE_PROTOCOL.md`
-7. `TRACKS_AND_OPEN_THREADS.md`
+7. `TRACKS_AND_OPEN_THREADS_CURRENT.md`
 8. `PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md`
 9. `REENTRY_PROTOCOL_01.md`
 10. `PROJECT_VISION.md`
@@ -42,6 +42,7 @@ or evidence question names them or makes them load-bearing:
 - `CAPABILITY_REGISTRY.md`
 - `LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
 - `LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `TRACKS_AND_OPEN_THREADS.md` full historical ledger
 - `ARTIFACT_RETENTION_AND_SOURCE_HYGIENE.md`
 - `OPERATOR_CODEBASE_MAP.md`
 - operator runbooks
@@ -49,6 +50,11 @@ or evidence question names them or makes them load-bearing:
 - source/test referenced phase docs
 - track-specific product, founder, design, dossier, provider, RAG, platform, or
   artifact docs
+
+The full `TRACKS_AND_OPEN_THREADS.md` ledger is `READ_WHEN_NAMED`: read it
+when the user, packet, current boundary, historical proof question, or
+open-thread archaeology requirement makes it load-bearing. Startup orientation
+should use `TRACKS_AND_OPEN_THREADS_CURRENT.md` by default.
 
 ## DO_NOT_LOAD_BY_DEFAULT
 

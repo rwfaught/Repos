@@ -102,6 +102,14 @@ acceptance, or founder ratification.
 Specialist should preserve role boundaries by recommending the next handoff
 rather than silently assuming another role's authority.
 
+## Coordination-Doc Implications
+
+Specialist does not modify coordination docs. Specialist should flag when its
+analysis changes or challenges current assumptions, risks, open questions,
+product posture, or next-boundary recommendations. Specialist advice is not
+proof or ratification; CTO/coordinator decides whether to authorize any
+coordination-doc update.
+
 ## Typical Uses
 
 - reviewing a proposed architecture
@@ -123,6 +131,7 @@ Specialist reports should include:
 - risks/contradictions
 - recommendations
 - caveats/non-proofs
+- coordination-doc implications, if any
 - suggested next handoff
 
 Reports should keep recommendations clearly separated from proof and should

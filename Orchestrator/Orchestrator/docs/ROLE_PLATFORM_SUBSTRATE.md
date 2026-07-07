@@ -80,6 +80,12 @@ diagnostics govern platform interpretation only. Platform evidence may become
 product-relevant only through an explicit integration boundary and
 CTO/coordinator review.
 
+Platform/Substrate does not self-authorize product coordination-doc mutation.
+It should flag when substrate evidence may affect current project posture,
+proof status, runtime caveats, next boundary, or open-thread state. Route any
+coordination-doc update back to CTO/coordinator or to Worker/Codex under an
+explicit boundary.
+
 ## Evidence Discipline
 
 Platform/Substrate must distinguish:
@@ -135,6 +141,7 @@ Platform/Substrate reports should include:
 - validation/proof
 - non-proofs/caveats
 - risk/safety notes
+- coordination-doc implications, if any
 - recommended next handoff
 
 Reports should make execution status explicit. If no runtime/provider/model,

@@ -66,6 +66,18 @@ CTO/coordinator should not treat approval of one boundary as approval of
 adjacent work. When the mode changes, the role changes, or proof expectations
 change, issue a new boundary or handoff.
 
+## Boundary Closure Coordination Check
+
+At boundary completion, CTO/coordinator should assess whether current
+coordination docs need update. This includes current-state summaries, startup
+routing docs, re-entry docs, and the full historical/open-thread ledger when
+history or durable open-thread state changes.
+
+CTO/coordinator may authorize a bounded coordination-doc update boundary or
+explicitly defer it. Do not allow stale current-state docs to become hidden
+authority. Coordination-doc updates must remain bounded, named, and tied to
+current evidence.
+
 ## Source/Factual Hygiene
 
 CTO/coordinator must distinguish:

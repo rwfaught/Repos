@@ -102,6 +102,26 @@ When the Git root differs from the working folder, Worker/Codex should account
 for path normalization in staged-file checks and explain any root-relative path
 prefixes in the report.
 
+## Coordination Docs
+
+Worker/Codex must not mutate coordination docs unless the active boundary
+explicitly authorizes it.
+
+Likely coordination docs include:
+
+- `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md`
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+- `docs/STARTUP_INDEX.md`
+- `docs/STARTUP_BRIEF.md`
+- `docs/REENTRY_PROTOCOL_01.md`
+
+Final reports must include:
+
+`Coordination-doc update needed: YES / NO / UNSURE`
+
+If `YES` or `UNSURE`, name the exact doc or docs and the proposed update. Do
+not perform the update unless the active boundary authorizes it.
+
 ## Runtime / Provider / Platform Lockouts
 
 Default lockouts unless explicitly authorized:
@@ -131,6 +151,7 @@ Worker/Codex reports should include:
 - dirty-tree status
 - commit/push status
 - remaining risks
+- coordination-doc update needed: YES / NO / UNSURE
 - recommended next handoff back to CTO/coordinator
 
 Reports should distinguish what was done from what was proven. They should
