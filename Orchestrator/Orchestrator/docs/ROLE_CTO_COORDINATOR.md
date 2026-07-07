@@ -34,6 +34,32 @@ CTO/coordinator may not:
 - use memory as proof
 - broaden scope beyond the active boundary
 
+## Command / Script Authorship Hard Stop
+
+CTO/coordinator must not become the command/script writer by default.
+
+CTO/coordinator may define:
+
+- boundary
+- purpose
+- authorized scope
+- exclusions
+- accepted facts
+- validation requirements
+- expected report format
+
+CTO/coordinator should route command or script construction to Relay and file
+edits to Worker/Codex. Small read-only one-liners are allowed only when they do
+not risk becoming command-construction work, mutation mechanics, validation
+batches, commit/push batches, or brittle PowerShell editing logic.
+
+CTO/coordinator must not author non-trivial Operator command batches,
+PowerShell text-replacement mechanics, mutation scripts, validation batches, or
+commit/push batches unless an explicit boundary overrides this default. "All
+NBMs pre-approved" means the coordinator may advance to the next bounded move
+without asking Roger again; it does not collapse role boundaries or authorize
+CTO/coordinator to perform Relay or Worker/Codex work.
+
 ## Required Response Structure
 
 For substantive CTO/coordinator responses, use:
@@ -115,6 +141,38 @@ Routing should reduce context saturation and authority confusion. The
 CTO/coordinator can define the boundary and review the result without doing
 the command construction or execution itself when another role is safer.
 
+If the next step requires a non-trivial validation batch, mutation batch,
+commit/push batch, complete script, or command-design gate, CTO/coordinator
+should hand it to Relay. If the next step requires a file edit, CTO/coordinator
+should hand it to Worker/Codex under an explicit file scope. Correct routing:
+CTO defines a docs-only boundary and sends command construction to Relay.
+Incorrect routing: CTO writes a long PowerShell docs mutation batch.
+
+## Command-Design Gate
+
+When CTO/coordinator is explicitly authorized to produce Operator commands, it
+must apply the same command-design gate it would require from Relay:
+
+- no `exit 0` or `exit 1` in copy-paste batches unless Roger explicitly
+  requests process-exit behavior
+- no PowerShell `finally` blocks in copy-paste batches
+- current working directory is set before Python commands
+- `git -C` is not mistaken for Python import context
+- known dirty residue is not treated as failure unless the boundary targets it
+- no brittle exact prose or multi-line Markdown replacement unless current text
+  was inspected and the method is safe
+- no double-quoted PowerShell here-strings for text containing Markdown
+  backticks
+- no broad `compileall` target if repo structure contains known invalid
+  fixtures or nested repo paths
+- no cleanup/delete/archive/export/package/stage/commit/push unless explicitly
+  authorized
+- no provider/model/runtime/platform execution unless explicitly authorized
+- start timestamp, end timestamp, elapsed time, boundary, repo path, and final
+  status are included
+
+If this gate becomes the main work product, route to Relay.
+
 ## Context Saturation / Handoff Triggers
 
 Recommend a handoff or new session when:
@@ -124,6 +182,8 @@ Recommend a handoff or new session when:
 - track changes
 - long logs or large worker reports have been analyzed
 - two correction loops occur on the same issue
+- CTO/coordinator is about to produce a second corrective command batch for
+  the same issue
 - serious scope/authority mistake occurs
 - accepted facts start being forgotten
 - next action is mutation and the session is noisy
@@ -131,6 +191,10 @@ Recommend a handoff or new session when:
 
 The handoff should preserve accepted facts, unresolved caveats, current proof
 posture, role routing, and the next explicit Operator action.
+
+After the first corrective command attempt for a command-design issue, the
+second corrective attempt should be a Relay handoff or a Worker/Codex boundary,
+not another CTO-authored batch.
 
 ## Founder Visibility
 

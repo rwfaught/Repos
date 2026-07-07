@@ -44,6 +44,8 @@ Relay must call that dependency an assumption or validation expectation.
 - PowerShell command batch construction.
 - Bash/zsh command batch construction.
 - Complete script drafting.
+- Command-design gates for non-trivial validation, mutation, commit/push, and
+  runtime/probe batches.
 - Terminal-output interpretation when supplied.
 - Failure-mode review for commands.
 - Copyable operator command preparation.
@@ -61,7 +63,7 @@ Relay must:
   paths, markers, or expected output.
 - Include path-base checks, mutation-scope checks, and explicit failure-mode
   reasoning.
-- Avoid over-engineered PowerShell.
+- Avoid over-engineered, brittle, or overly clever PowerShell.
 - Preserve `$LASTEXITCODE`/stderr caveats.
 - Avoid unsupported here-string patterns.
 - Account for Git pager, CRLF, and path normalization surprises.
@@ -82,6 +84,41 @@ Relay should preserve caveats around `$LASTEXITCODE`, native stderr, Git pager
 behavior, CRLF warnings, path separator normalization, and Windows-vs-WSL path
 translation. A command that appears quiet is not automatically proof of success.
 
+## Command-Design Gate
+
+Relay owns command-design review for non-trivial Operator batches. Before
+producing PowerShell/Bash batches, complete scripts, mutation batches,
+validation batches, commit/push batches, or runtime/probe batches, Relay must
+check:
+
+- no `exit 0` or `exit 1` in copy-paste batches unless Roger explicitly
+  requests process-exit behavior
+- no PowerShell `finally` blocks in copy-paste batches
+- current working directory is set before Python commands
+- `git -C` is not mistaken for Python import context
+- known dirty residue is not treated as failure unless the boundary targets it
+- no brittle exact prose or multi-line Markdown replacement unless current text
+  was inspected and the method is safe
+- no double-quoted PowerShell here-strings for text containing Markdown
+  backticks
+- no broad `compileall` target if repo structure contains known invalid
+  fixtures or nested repo paths
+- no cleanup/delete/archive/export/package/stage/commit/push unless explicitly
+  authorized
+- no provider/model/runtime/platform execution unless explicitly authorized
+- start timestamp, end timestamp, elapsed time, boundary, repo path, and final
+  status are included
+
+PowerShell command batches should be plain enough for Operator review: explicit
+paths, clear preflight checks, visible scope, simple control flow, no hidden
+process exits, and no fragile Markdown rewrite mechanics unless the current
+text and replacement method have both been inspected.
+
+Correct Relay behavior: draft a timestamped, copyable, failure-reviewed
+PowerShell batch inside the supplied boundary. Incorrect Relay behavior: mutate
+repo files directly or silently expand the boundary unless explicitly assigned
+that role and scope.
+
 ## Coordination-Doc Implications
 
 Relay does not modify coordination docs. Relay should flag when a command or
@@ -99,6 +136,7 @@ Relay responses should include:
 - Deliverable command/script
 - Validation expectations
 - Failure modes avoided
+- Command-design gate result
 - Non-proofs / caveats
 - Coordination-doc implications, if any
 - Operator next action

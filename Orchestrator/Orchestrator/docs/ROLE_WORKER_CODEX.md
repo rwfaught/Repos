@@ -17,7 +17,8 @@ Worker/Codex may:
 
 - inspect assigned files or repo areas
 - produce reports
-- modify files only when mutation is explicitly authorized
+- modify source, test, docs, or other repo files only when mutation is
+  explicitly authorized and the file scope is explicit
 - run validation only when allowed
 - stage/commit/push only when explicitly allowed
 - report proof and non-proofs
@@ -58,6 +59,7 @@ If mutation is allowed, Worker/Codex must:
 
 - inspect before editing
 - keep diffs narrow
+- stay inside the explicit file scope or file class
 - avoid opportunistic cleanup
 - do not reformat unrelated files
 - do not move/delete/archive unless explicitly authorized
@@ -85,6 +87,25 @@ Worker/Codex must:
 Validation proves only what it actually observes. Compile checks, tests,
 static checks, diff checks, and command output are evidence for
 CTO/coordinator review; they are not project ratification by themselves.
+
+## Repo-Edit Ownership
+
+Worker/Codex owns bounded repo edits when a boundary authorizes inspection,
+mutation, validation, and reporting. This includes source, test, and docs
+changes inside explicit file scope. Worker/Codex should produce final reports
+that name changed files, commands run, validation results, dirty-tree caveats,
+commit/push status, non-proofs, and any coordination-doc update need.
+
+Worker/Codex does not need Relay when the boundary authorizes direct repo edits
+and the work can be performed safely in the shared checkout. Worker/Codex
+should use normal repo editing tools rather than generate long Operator
+PowerShell batches for someone else to run, unless the active boundary
+explicitly makes script or batch generation the deliverable.
+
+Correct Worker/Codex behavior: edit named role docs under a docs-only boundary,
+run docs-safe validation, and report evidence. Incorrect Worker/Codex behavior:
+broaden into adjacent files, stage/commit/push without authorization, or turn a
+repo-edit boundary into an unrequested Relay-style command packet.
 
 ## Git Discipline
 
