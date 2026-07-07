@@ -57,8 +57,9 @@ It is not the source of truth.
 
 A clean restart should come from:
 - the governance stack
-- the phase ledger
-- the action log
+- the canonical startup routing index
+- the current-state cockpit summary
+- targeted evidence/history checks when they are load-bearing
 - current strategy/design anchors
 - targeted fresh code evidence only where needed
 
@@ -68,24 +69,36 @@ Not from replaying the entire project history informally.
 
 ## Required Re-entry Stack
 
-A returning Orchestrator should orient from a small fixed document set first.
+A returning Orchestrator should orient from the canonical startup routing index
+first.
 
-### Required startup read set
+### Canonical startup routing
 
-The minimum re-entry set should be:
+`docs/STARTUP_INDEX.md` is the startup-load authority for CTO/coordinator
+sessions. It defines which documents are read by default, which are
+read-when-named, and which append-heavy evidence/history docs are not loaded by
+default.
 
-- `docs/PROJECT_VISION.md`
-- `docs/CURRENT_SUCCESS_CRITERION.md`
-- `docs/ORCHESTRATOR_METHOD.md`
-- `docs/STARTUP_BRIEF.md`
-- `docs/PROJECT_CONTEXT.md`
-- `docs/PHASE_INDEX.md`
-- `docs/ACTION_LOG.md`
+The default current-state cockpit is:
+
+- `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md`
+
+The full historical/open-thread ledger:
+
+- `docs/TRACKS_AND_OPEN_THREADS.md`
+
+is read only when named, when historical/open-thread archaeology is required,
+or when a boundary explicitly requires it.
 
 ### Conditional read set
 
 Read these only when they are currently load-bearing:
 
+- append-heavy evidence/history docs, including:
+  - `docs/ACTION_LOG.md`
+  - `docs/PHASE_INDEX.md`
+  - `docs/SOURCE_MANIFEST.md`
+  - `docs/PHASE_*.md`
 - active product strategy artifacts
   - for example: `docs/PRODUCT_STRATEGY_*.md`
 - active intake design artifacts
@@ -95,7 +108,13 @@ Read these only when they are currently load-bearing:
 - currently open or most recent approved boundary docs
   - phase / fix / alignment docs not yet fully metabolized into repo truth
 
-This keeps the restart surface small while still allowing strategic context to remain current.
+Evidence/history docs should be searched or read in targeted excerpts only when
+the active boundary has a specific evidence question involving proof history,
+source registration, phase history, action provenance, reconciliation, or
+historical archaeology.
+
+This keeps the restart surface small while still allowing strategic context and
+proof checks to remain current.
 
 ---
 
@@ -195,12 +214,15 @@ A returning Orchestrator must inherit those distinctions and avoid speaking as t
 
 The preferred restart sequence is:
 
-1. read the required startup docs
-2. read any currently load-bearing strategy/design/recovery artifacts
-3. inspect `PHASE_INDEX.md` and `ACTION_LOG.md` together
-4. identify whether any repo-truth caveat or partial-support note is active
-5. decide whether a fresh snapshot is needed before further judgment
-6. only then resume ranking, review, or drafting
+1. read `docs/STARTUP_INDEX.md`
+2. follow its routed default startup/current-state read set
+3. read any currently load-bearing strategy/design/recovery artifacts
+4. search or excerpt ledgers/evidence docs only when the active boundary has a
+   specific proof, source-registration, phase-history, action-provenance,
+   reconciliation, or historical-archaeology question
+5. identify whether any repo-truth caveat or partial-support note is active
+6. decide whether a fresh snapshot is needed before further judgment
+7. only then resume ranking, review, or drafting
 
 This sequence should become the normal restart path.
 
@@ -213,8 +235,12 @@ This protocol implies a maintenance responsibility:
 The project’s docs stack must remain strong enough that a fresh session can recover from it.
 
 That means:
+- `STARTUP_INDEX.md` must remain the canonical startup routing authority
+- `TRACKS_AND_OPEN_THREADS_CURRENT.md` must remain a concise current-state
+  cockpit
 - `PHASE_INDEX.md` must remain truthful
 - `ACTION_LOG.md` must remain current enough to explain recent moves
+- `SOURCE_MANIFEST.md` must remain useful for source registration questions
 - strategy/design artifacts that materially outrank implementation should be present in `docs/`
 - partially supported or recovered state must be visible, not hidden in chat history
 
@@ -270,7 +296,7 @@ This protocol is meant to reduce:
 
 This protocol should establish:
 
-1. the canonical startup read set
+1. the canonical startup routing authority
 2. the conditional load-bearing read set
 3. the required re-entry questions
 4. the snapshot discipline rule

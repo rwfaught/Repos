@@ -8,8 +8,12 @@ Use it at the beginning of a new orchestrator thread.
 
 ## Startup script
 
-1. Read using startup-load discipline. Do not automatically full-load every
-historical/evidence document unless the boundary requires it.
+1. Use `docs/STARTUP_INDEX.md` as the canonical startup routing authority.
+Read the default/current-state docs it names, and do not automatically
+full-load historical/evidence documents unless the boundary requires it.
+
+The lists below are a compact orientation aid, not a parallel authority that
+overrides `docs/STARTUP_INDEX.md`.
 
 ALWAYS_READ_CONTROL:
 - `ORCHESTRATOR_METHOD.md`
@@ -54,6 +58,8 @@ EXTERNAL_TRACK_PACKAGE:
   integration boundary is in scope
 
 Authority reminder:
+- `docs/STARTUP_INDEX.md` owns startup-load routing. If this brief conflicts
+  with the live index, follow the index and resolve the conflict explicitly.
 - `ORCHESTRATOR_HANDOFF_STATUS_OUTLINE.md` must not outrank `PHASE_INDEX.md`, `ACTION_LOG.md`, or current governing docs.
 - Coordinator sessions must inspect `TRACKS_AND_OPEN_THREADS_CURRENT.md` and apply
   `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` before recommending an NBM or changing
