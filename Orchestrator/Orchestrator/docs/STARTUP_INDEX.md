@@ -12,6 +12,51 @@ with a named authority document, inspect the live repo document and resolve the
 conflict explicitly instead of relying on memory, old prompts, or historical
 summaries.
 
+## Source Authority / GitHub Connector Rule
+
+Current repo docs are the authority for startup and role behavior.
+
+In ChatGPT sessions without direct local repo access, if the boundary or
+session opener names current repo docs, the session must use the
+GitHub-connected repository unless current uploaded docs or operator evidence
+are explicitly supplied. Local filesystem paths in prompts are operator/repo
+orientation, not proof that ChatGPT can inspect local files directly.
+
+Default GitHub source, unless the boundary overrides it:
+
+- repository: `rwfaught/Repos`
+- branch: `main`
+- docs root: `Orchestrator/Orchestrator/docs`
+
+First reads should normally be:
+
+1. `STARTUP_INDEX.md`
+2. the active role doc named by the resolved session role
+
+If the active role is CTO/coordinator, read:
+
+1. `STARTUP_INDEX.md`
+2. `ROLE_CTO_COORDINATOR.md`
+3. the current `READ_BY_DEFAULT` docs named by this index
+
+If the active role is Relay, read:
+
+1. `STARTUP_INDEX.md`
+2. `ROLE_RELAY.md`
+3. only docs explicitly named by the boundary or by this index as required
+
+If the connector/source is unavailable, report the missing source and do not
+invent continuity. Memory, pasted summaries, old handoffs, and prior worker
+reports are not substitutes for reading current source docs when the boundary
+depends on current repo doctrine.
+
+Only CTO/coordinator handoffs can initialize CTO/coordinator continuity or
+route the next role. Relay closeout reports, Worker/Codex reports,
+Platform/Substrate reports, Specialist memos, stale handoffs, and session
+records are evidence artifacts for CTO/coordinator review; they are not
+startup authority unless CTO/coordinator ratifies them against current repo
+docs.
+
 ## READ_BY_DEFAULT
 
 Read these documents by default, in this order:
@@ -46,6 +91,7 @@ or evidence question names them or makes them load-bearing:
 - `ARTIFACT_RETENTION_AND_SOURCE_HYGIENE.md`
 - `OPERATOR_CODEBASE_MAP.md`
 - operator runbooks
+- `session_records/` saved closeout records
 - current boundary docs
 - source/test referenced phase docs
 - track-specific product, founder, design, dossier, provider, RAG, platform, or
@@ -55,6 +101,10 @@ The full `TRACKS_AND_OPEN_THREADS.md` ledger is `READ_WHEN_NAMED`: read it
 when the user, packet, current boundary, historical proof question, or
 open-thread archaeology requirement makes it load-bearing. Startup orientation
 should use `TRACKS_AND_OPEN_THREADS_CURRENT.md` by default.
+
+Read `session_records/` only when named, when a boundary requires a specific
+record, or when evidence archaeology is required. Do not load saved session
+records by default.
 
 ## DO_NOT_LOAD_BY_DEFAULT
 
@@ -90,6 +140,10 @@ Do not treat memory, old prompts, archived docs, ZIP contents, historical
 capsules, or prior worker reports as current authority without checking live
 repo docs and git/source state. Prefer current live repo files over packaged
 artifacts unless the active boundary is explicitly about a packaged artifact.
+
+Do not treat stale handoffs, Relay reports, Worker/Codex reports,
+Platform/Substrate reports, Specialist memos, or saved session records as
+substitutes for current repo docs and CTO/coordinator ratification.
 
 ## Mutation Caution
 

@@ -45,6 +45,12 @@ The intent is semantic continuity: active layer, decision membrane, approval gat
 - Orchestrator must not: delegate ambiguous control semantics or open-ended scope.
 - Human authority required: final approval of handoff packet when needed.
 
+Only the CTO/coordinator role owns cross-role handoff authority. Non-CTO
+sessions may report back, recommend follow-up, or prepare a capsule for CTO
+review, but they must not route the next session or create/re-create
+CTO/coordinator continuity unless CTO/coordinator explicitly assigns a
+handoff-drafting task for review.
+
 ### 7) Implementation Report Intake
 - Orchestrator may: ingest worker report, check stated changes against packet boundaries.
 - Orchestrator must not: assume report claims are true without evidence path.
@@ -175,6 +181,12 @@ Coding workers execute only inside the authorized packet.
 
 Worker reports are evidence for coordinator review, not artifact acceptance,
 production readiness, or proof that adjacent capabilities exist.
+
+Relay closeout reports, Worker/Codex reports, Platform/Substrate reports,
+Specialist memos, and saved session records are evidence artifacts. They do
+not become authority artifacts unless CTO/coordinator ratifies them. Directly
+writing any session output into the repo or GitHub is repo mutation and
+requires an explicit boundary.
 
 
 ## Approved Boundary Handoff Rule

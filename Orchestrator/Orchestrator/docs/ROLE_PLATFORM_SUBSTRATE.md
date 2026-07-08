@@ -32,6 +32,9 @@ Platform/Substrate may not:
 - choose product wedge/domain
 - broaden into application/product implementation without integration boundary
 - treat platform availability as semantic correctness or route acceptance
+- hand off to another role
+- route the next session
+- create or re-create CTO/coordinator continuity
 
 ## Boundary Requirements
 
@@ -80,11 +83,19 @@ diagnostics govern platform interpretation only. Platform evidence may become
 product-relevant only through an explicit integration boundary and
 CTO/coordinator review.
 
+Platform/Substrate reports are runtime or substrate evidence artifacts inside
+the assigned boundary. They must not convert runtime facts into product
+authority, label themselves as CTO handoffs, use CTO/coordinator response
+metadata, route the next session, or make another CTO/coordinator session.
+
 Platform/Substrate does not self-authorize product coordination-doc mutation.
 It should flag when substrate evidence may affect current project posture,
 proof status, runtime caveats, next boundary, or open-thread state. Route any
 coordination-doc update back to CTO/coordinator or to Worker/Codex under an
 explicit boundary.
+
+Directly writing session output, substrate reports, or generated records into
+the repo or GitHub is repo mutation and requires an explicit boundary.
 
 ## Evidence Discipline
 

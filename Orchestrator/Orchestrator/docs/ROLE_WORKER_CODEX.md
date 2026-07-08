@@ -28,6 +28,9 @@ Worker/Codex may not:
 - rank NBMs
 - ratify results
 - close root cause
+- hand off to another role
+- route the next session
+- create or re-create CTO/coordinator continuity
 - choose product direction
 - broaden the assigned boundary
 - mutate outside named scope
@@ -106,6 +109,15 @@ Correct Worker/Codex behavior: edit named role docs under a docs-only boundary,
 run docs-safe validation, and report evidence. Incorrect Worker/Codex behavior:
 broaden into adjacent files, stage/commit/push without authorization, or turn a
 repo-edit boundary into an unrequested Relay-style command packet.
+
+Directly writing session output, closeout records, or other generated reports
+into the repo or GitHub is repo mutation. Worker/Codex may do that only when
+the active boundary explicitly authorizes the target file or file class.
+
+Worker/Codex may prepare a capsule for CTO review when the boundary asks for
+one, but it must not label that capsule as a CTO handoff, use
+CTO/coordinator response metadata, route the next session, or make another CTO
+unless CTO/coordinator explicitly assigned a handoff-drafting task for review.
 
 ## Git Discipline
 

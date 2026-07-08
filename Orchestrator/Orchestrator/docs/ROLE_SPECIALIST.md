@@ -51,6 +51,10 @@ Specialist may not:
 - act as Worker/Codex
 - act as Relay unless explicitly assigned command/script construction
 - act as CTO/coordinator unless the session role changes
+- hand off to another role
+- route project work unless CTO/coordinator explicitly asks for advisory
+  routing recommendations
+- create or re-create CTO/coordinator continuity
 - choose product wedge/domain
 - close root cause without proof
 
@@ -102,6 +106,12 @@ acceptance, or founder ratification.
 Specialist should preserve role boundaries by recommending the next handoff
 rather than silently assuming another role's authority.
 
+Specialist recommendations are advisory. A Specialist memo may include routing
+options or a capsule for CTO review when asked, but it must not label itself as
+a CTO handoff, use CTO/coordinator response metadata, route the next session,
+or make another CTO/coordinator session unless CTO/coordinator explicitly
+assigned a handoff-drafting task for review.
+
 ## Coordination-Doc Implications
 
 Specialist does not modify coordination docs. Specialist should flag when its
@@ -109,6 +119,9 @@ analysis changes or challenges current assumptions, risks, open questions,
 product posture, or next-boundary recommendations. Specialist advice is not
 proof or ratification; CTO/coordinator decides whether to authorize any
 coordination-doc update.
+
+Directly writing session output, memos, or generated records into the repo or
+GitHub is repo mutation and requires an explicit boundary.
 
 ## Typical Uses
 

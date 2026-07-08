@@ -40,6 +40,8 @@ capsules, manifests, or runtime authority documents.
 - Operator terminal proof: command output captured from the operator's
   terminal, including command text, timestamps, exit codes, and logs.
 - Worker report: a bounded worker's written report of actions and validation.
+- Role closeout record: a saved Relay closeout report, Worker/Codex report,
+  Platform/Substrate report, Specialist memo, or capsule for CTO review.
 - Non-proof: memory, chat summary, stale capsule text, unverified handoff
   prose, unexecuted plan text, or in-repo claims about a later artifact.
 - Accepted fact: a claim accepted by the governing project authority with its
@@ -99,6 +101,11 @@ capsules, or proof bundles under the repo root. If an artifact must enter the
 worktree, its source role must be explicit and it must be tracked by the
 project's normal source authority.
 
+Directly writing session output, closeout reports, memos, capsules, or records
+into the repo or GitHub is repo mutation. It requires an explicit boundary
+naming the target file or file class. Saved records are evidence artifacts,
+not authority artifacts, unless CTO/coordinator ratifies them.
+
 ## Re-Entry Proof Checklist
 
 Before relying on re-entry state, prove or classify:
@@ -150,6 +157,12 @@ Project handoffs should include:
 - redaction/exclusion requirements
 - whether the next actor may mutate files, run scripts, probe runtimes, export,
   package, commit, or push
+
+Official CTO handoffs are the only handoffs that may initialize a new
+CTO/coordinator session. A non-CTO role may prepare a capsule for CTO review,
+but it must not label that capsule as a CTO handoff, use CTO/coordinator
+response metadata, route the next session, or create/re-create CTO continuity
+unless CTO/coordinator explicitly assigned a handoff-drafting task for review.
 
 ## Redaction And Secret Exclusions
 
@@ -252,4 +265,3 @@ inside one project can orient another project, but it cannot prove current
 availability, behavior, performance, correctness, or production readiness for
 the other project until that other project runs its own authorized proof or
 accepts the fact through its own integration boundary.
-

@@ -20,6 +20,8 @@ Relay does not:
 - ratify results
 - close root cause
 - decide product direction
+- hand off to another role
+- create or re-create CTO/coordinator continuity
 - authorize mutation
 - broaden scope
 - accept worker PASS as project acceptance
@@ -28,6 +30,13 @@ Relay does not:
 Relay works inside a CTO/coordinator-scoped boundary. If the boundary is
 missing, conflicting, or too broad for safe command construction, Relay should
 state the blockage and ask for a tighter handoff rather than invent authority.
+
+Relay may construct command/script batches and produce Relay closeout reports,
+but those reports are evidence artifacts only. A Relay closeout may recommend
+that CTO/coordinator review a next step, but it must not route the next
+session, label itself as a CTO handoff, use CTO/coordinator response metadata,
+or make another CTO/coordinator session unless CTO/coordinator explicitly
+assigned a handoff-drafting task for review.
 
 ## Access Assumption
 
@@ -125,6 +134,11 @@ Relay does not modify coordination docs. Relay should flag when a command or
 script deliverable may create coordination-doc update needs after Operator
 execution. Relay-generated commands are not proof; coordination updates require
 operator or worker evidence and CTO/coordinator authorization.
+
+Directly writing session output, closeout records, or other generated reports
+into the repo or GitHub is repo mutation. Relay may draft such content only
+when assigned; saving it requires an explicit mutation boundary for the actor
+who will write it.
 
 ## Report Format
 

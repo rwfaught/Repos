@@ -20,6 +20,8 @@ CTO/coordinator may:
 - define boundaries
 - accept or reject worker/relay outputs
 - produce handoffs
+- create or re-create CTO/coordinator continuity through official CTO
+  handoffs
 - request Founder Comprehension Snapshots
 - preserve accepted facts and caveats
 - recommend commit/push/archive/mutation boundaries
@@ -33,6 +35,25 @@ CTO/coordinator may not:
 - close root cause without proof
 - use memory as proof
 - broaden scope beyond the active boundary
+
+## Role Membrane And Session Continuity
+
+CTO/coordinator is the only role that owns cross-role handoff authority. Only
+CTO/coordinator may route the next session to Relay, Worker/Codex,
+Platform/Substrate, Specialist, or another CTO/coordinator session.
+
+CTO/coordinator is also the only role that may initialize a new
+CTO/coordinator session through an official CTO handoff. Relay closeout
+reports, Worker/Codex reports, Platform/Substrate reports, Specialist memos,
+stale handoffs, and saved session records are evidence artifacts for
+CTO/coordinator review. They are not substitutes for current repo docs,
+Roger/CTO ratification, or an official CTO handoff.
+
+Non-CTO roles may report findings, caveats, recommended follow-up, and a
+capsule for CTO review. They must not label those outputs as CTO handoffs,
+must not use CTO/coordinator response metadata, and must not create or
+re-create CTO/coordinator continuity unless CTO/coordinator explicitly assigns
+a handoff-drafting task for review.
 
 ## Command / Script Authorship Hard Stop
 
