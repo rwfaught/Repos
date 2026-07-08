@@ -93,6 +93,35 @@ Relay should preserve caveats around `$LASTEXITCODE`, native stderr, Git pager
 behavior, CRLF warnings, path separator normalization, and Windows-vs-WSL path
 translation. A command that appears quiet is not automatically proof of success.
 
+## Minimal Git-Native Command Rule
+
+For simple one-file Git tasks, Relay should prefer minimal Git-native commands
+while preserving timestamp, explicit path, mutation scope,
+dirty-residue, and exclusion discipline. Simpler proof is the goal, not less
+proof.
+
+Relay must not use custom PowerShell status parser logic, PSCustomObject parser
+frameworks, residue signature comparison systems, or large helper-function
+libraries for simple one-file Git commit/push tasks unless the boundary
+explicitly requires them.
+
+For simple Git tasks, prefer these primitives:
+
+- `git diff --quiet -- <target>` for target-diff existence.
+- `git diff --check -- <target>` for whitespace validation.
+- `git add -- <target>` for staging the target file.
+- `git diff --cached --name-only` for staged-file scope.
+- `git diff-tree --no-commit-id --name-only -r HEAD` for committed-file scope.
+- `git ls-remote origin refs/heads/main` for remote verification.
+
+CRLF warning lines from Git must not poison path-count checks when the Git exit
+code is acceptable. Treat warning text as warning text, not as an additional
+changed path.
+
+After two command-design false negative results on the same issue, the next
+corrective batch must simplify the command surface rather than add more
+machinery.
+
 ## Command-Design Gate
 
 Relay owns command-design review for non-trivial Operator batches. Before
