@@ -6,6 +6,9 @@ This folder may hold lightweight saved closeout records from bounded
 Orchestrator role sessions when an explicit boundary authorizes writing a
 record into the repo.
 
+Use `SESSION_RECORDS_PROTOCOL.md` for the full workflow protocol and
+`INDEX.md` as the lightweight discovery index.
+
 Session records are evidence artifacts, not authority artifacts. A saved Relay
 closeout report, Worker/Codex report, Platform/Substrate report, Specialist
 memo, or capsule for CTO review does not become a CTO handoff, accepted fact,
