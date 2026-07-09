@@ -42,8 +42,32 @@ class CoordinatorAgentLoopCLITests(unittest.TestCase):
             "operator_prompt", "intake_interpretation", "capability_route",
             "coordinator_plan", "worker_handoff", "worker_result",
             "review_evaluation", "coordinator_closeout",
+            "operator_review_packet",
         ):
             self.assertIn(key, payload)
+
+    def test_operator_format_is_concise_and_includes_governance_fields(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main([
+                "--objective",
+                "Classify this fixed status list into three labels",
+                "--format",
+                "operator",
+            ])
+
+        rendered = output.getvalue()
+        self.assertEqual(code, 0)
+        for section in (
+            "## Safe Local Exploration (Planning Only)",
+            "## Owner Approval Gates",
+            "## Blocked or Deferred",
+            "## Neutral Dossier/Case Relationship",
+            "## Next Bounded Action",
+            "## Explicit Non-Proofs",
+        ):
+            self.assertIn(section, rendered)
+        self.assertIn("Execution authorized: `False`", rendered)
 
     def test_missing_objective_is_blocked(self):
         output = StringIO()

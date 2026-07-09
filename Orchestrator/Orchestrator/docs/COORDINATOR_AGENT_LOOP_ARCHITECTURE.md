@@ -95,8 +95,20 @@ evaluation method supports that claim.
 ## Dry-run command
 
 ```text
-python -m orchestrator.coordinator_agent_loop_cli --objective "Summarize these internal policy notes for staff review" --format markdown
+python -m orchestrator.coordinator_agent_loop_cli --objective "Summarize these internal policy notes for staff review" --format operator
 ```
+
+Use `--format operator` for the concise PM/founder readback. It combines the
+coordinator's decision, safe local planning steps, owner approval gates,
+blocked/deferred conditions, evidence produced, next bounded action, and the
+neutral dossier/case relationship. `--format markdown` remains available for
+the full internal control-flow readback, and the default `--format json`
+remains the machine-readable surface.
+
+The operator packet reuses the existing objective-route owner packet and its
+neutral dossier/case adapter readback. This connects control-flow evidence to
+the neutral substrate without changing that substrate or selecting a product
+wedge. A case bridge is withheld when intake cannot establish a safe objective.
 
 The report shows intake, plan, route, worker handoff, synthetic dry result,
 review action, coordinator closeout, and explicit non-proofs. For a deterministic

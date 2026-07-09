@@ -49,6 +49,26 @@ class CoordinatorAgentLoopTests(unittest.TestCase):
         self.assertTrue(loop["review_evaluation"]["result_accepted"])
         self.assertFalse(loop["worker_result"]["execution_performed"])
 
+    def test_operator_review_packet_bridges_control_flow_to_neutral_case_surface(self):
+        loop = run_dry_coordinator_loop("Classify this fixed status list into three labels")
+
+        packet = loop["operator_review_packet"]
+        self.assertEqual(packet["decision"], "accept")
+        self.assertTrue(packet["neutral_dossier_case"]["bridge_present"])
+        self.assertTrue(packet["neutral_dossier_case"]["structurally_ready_for_domain_specific_work"])
+        self.assertFalse(packet["execution_authorized"])
+        self.assertEqual(packet["handoff_status"], "prepared_not_dispatched")
+        self.assertFalse(packet["dispatched"])
+        self.assertIn("worker handoff must remain prepared_not_dispatched", packet["owner_approval_gates"])
+
+    def test_unknown_objective_has_no_case_bridge_until_clarified(self):
+        loop = run_dry_coordinator_loop("Please handle this thing")
+
+        packet = loop["operator_review_packet"]
+        self.assertEqual(packet["decision"], "blocked")
+        self.assertFalse(packet["neutral_dossier_case"]["bridge_present"])
+        self.assertIn("clarification_required_task_type", packet["blocked_or_deferred"])
+
     def test_bad_result_requests_retry_then_escalates_after_retry_budget(self):
         route = CapabilityRoute(
             "deterministic_code_only", "deterministic_local_worker", "test", True, True, False, ()

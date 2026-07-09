@@ -14,7 +14,10 @@ from orchestrator.capability_routing_triage import (
     ROUTES,
     classify_capability_task,
 )
-from orchestrator.objective_route_packet_loop import infer_objective_capability_task
+from orchestrator.objective_route_packet_loop import (
+    build_objective_route_packet,
+    infer_objective_capability_task,
+)
 
 
 LOOP_NON_PROOFS = tuple(dict.fromkeys(ROUTING_NON_PROOFS + (
@@ -298,6 +301,90 @@ def create_coordinator_closeout(route: CapabilityRoute, evaluation: ReviewEvalua
     )
 
 
+def build_operator_review_packet(
+    prompt: OperatorPrompt,
+    intake: IntakeInterpretation,
+    route: CapabilityRoute,
+    plan: CoordinatorPlan,
+    handoff: WorkerHandoff,
+    result: WorkerResult,
+    evaluation: ReviewEvaluation,
+    closeout: CoordinatorCloseout,
+) -> dict[str, Any]:
+    """Assemble a concise operator view without duplicating packet semantics.
+
+    The objective-route packet remains the owner-review and neutral-case data
+    surface. This function adds the coordinator's control-flow evidence around
+    that packet so the operator can review one bounded readback.
+    """
+    route_packet = build_objective_route_packet(prompt.objective)
+    owner_packet = route_packet.get("owner_review_packet")
+    bridge = route_packet.get("neutral_dossier_case_bridge")
+
+    if owner_packet is None:
+        safe_local_exploration = (
+            "clarify the objective type, risk/privacy posture, and reviewability",
+        )
+        blocked_or_deferred = list(dict.fromkeys(
+            list(route.blocked_or_deferred_conditions)
+            + [f"clarification_required_{item}" for item in intake.clarification_needed]
+        ))
+        neutral_case_relationship = (
+            "No neutral dossier/case bridge is created until the objective is clarified."
+        )
+        structural_readiness = False
+    else:
+        safe_local_exploration = tuple(owner_packet["deterministic_first"])
+        blocked_or_deferred = list(dict.fromkeys(
+            list(route.blocked_or_deferred_conditions)
+            + list(owner_packet["blocked_or_deferred_conditions"])
+        ))
+        neutral_case_relationship = bridge["architecture_posture"]
+        structural_readiness = bool(
+            bridge["neutral_task_readiness"]["structurally_ready_for_domain_specific_work"]
+        )
+
+    if route_packet.get("route_readback", {}).get("route") != route.route_name:
+        blocked_or_deferred.append("coordinator_route_packet_alignment_requires_review")
+
+    if result.status not in {"success", "blocked"}:
+        blocked_or_deferred.append(f"dry_result_status_{result.status}")
+
+    return {
+        "packet_name": "coordinator_operator_review_packet",
+        "objective": prompt.objective,
+        "decision": evaluation.action,
+        "rationale": evaluation.rationale,
+        "intake_confidence": intake.confidence,
+        "recommended_route": route.route_name,
+        "handoff_status": handoff.handoff_status,
+        "dispatched": handoff.dispatched,
+        "safe_local_exploration": list(safe_local_exploration),
+        "blocked_or_deferred": blocked_or_deferred,
+        "owner_approval_gates": [
+            plan.approval_gate,
+            "worker handoff must remain prepared_not_dispatched",
+            "execution authorization must remain false until a separate boundary approves it",
+        ],
+        "evidence_produced": [
+            "operator prompt and deterministic intake interpretation",
+            "capability route recommendation",
+            "coordinator plan and bounded worker handoff",
+            "dry worker result and review evaluation",
+            "coordinator closeout",
+        ],
+        "neutral_dossier_case": {
+            "relationship": neutral_case_relationship,
+            "bridge_present": bridge is not None,
+            "structurally_ready_for_domain_specific_work": structural_readiness,
+        },
+        "next_bounded_action": closeout.next_bounded_action,
+        "execution_authorized": False,
+        "execution_performed": False,
+        "explicit_non_proofs": list(LOOP_NON_PROOFS),
+    }
+
+
 def run_dry_coordinator_loop(prompt: OperatorPrompt | dict[str, Any] | str) -> dict[str, Any]:
     """Run intake, planning, routing, handoff, dry result review, and closeout."""
     operator_prompt = _as_prompt(prompt)
@@ -308,6 +395,9 @@ def run_dry_coordinator_loop(prompt: OperatorPrompt | dict[str, Any] | str) -> d
     result = build_dry_worker_result(route, handoff)
     evaluation = evaluate_worker_result(route, result)
     closeout = create_coordinator_closeout(route, evaluation)
+    operator_review = build_operator_review_packet(
+        operator_prompt, intake, route, plan, handoff, result, evaluation, closeout
+    )
     return {
         "loop_name": "dry_coordinator_agent_loop",
         "operator_prompt": asdict(operator_prompt),
@@ -318,6 +408,7 @@ def run_dry_coordinator_loop(prompt: OperatorPrompt | dict[str, Any] | str) -> d
         "worker_result": asdict(result),
         "review_evaluation": asdict(evaluation),
         "coordinator_closeout": asdict(closeout),
+        "operator_review_packet": operator_review,
         "execution_posture": {
             "model_execution": False,
             "provider_execution": False,
@@ -376,5 +467,47 @@ def render_dry_coordinator_loop_markdown(loop: dict[str, Any]) -> str:
         "",
         "## Explicit Non-Proofs",
         *[f"- {item}" for item in loop["explicit_non_proofs"]],
+    ]
+    return "\n".join(lines)
+
+
+def render_operator_review_markdown(loop: dict[str, Any]) -> str:
+    """Render the compact PM/operator readback for the coordinator loop."""
+    review = loop["operator_review_packet"]
+    neutral_case = review["neutral_dossier_case"]
+    lines = [
+        "# Coordinator Operator Review",
+        "",
+        f"Objective: {review['objective'] or '(missing)'}",
+        f"Decision: `{review['decision']}`",
+        f"Recommended route: `{review['recommended_route']}`",
+        f"Execution authorized: `{review['execution_authorized']}`",
+        "",
+        "## Why",
+        review["rationale"],
+        f"Intake confidence: `{review['intake_confidence']}`",
+        "",
+        "## Safe Local Exploration (Planning Only)",
+        *[f"- {item}" for item in review["safe_local_exploration"]],
+        "",
+        "## Owner Approval Gates",
+        *[f"- {item}" for item in review["owner_approval_gates"]],
+        "",
+        "## Blocked or Deferred",
+        *[f"- {item}" for item in review["blocked_or_deferred"] or ["none"]],
+        "",
+        "## Evidence Produced",
+        *[f"- {item}" for item in review["evidence_produced"]],
+        "",
+        "## Neutral Dossier/Case Relationship",
+        f"- {neutral_case['relationship']}",
+        f"- Bridge present: `{neutral_case['bridge_present']}`",
+        f"- Structural readiness: `{neutral_case['structurally_ready_for_domain_specific_work']}`",
+        "",
+        "## Next Bounded Action",
+        review["next_bounded_action"],
+        "",
+        "## Explicit Non-Proofs",
+        *[f"- {item}" for item in review["explicit_non_proofs"]],
     ]
     return "\n".join(lines)
