@@ -6,6 +6,8 @@ Operate as Worker/Codex unless the active boundary explicitly assigns another ro
 
 Before scoped work, read `docs/ROLE_WORKER_CODEX.md`. Use `docs/STARTUP_INDEX.md` only for document-routing context when needed.
 
+Current repo docs are the source of truth for Worker/Codex behavior when load-bearing, especially `docs/ROLE_WORKER_CODEX.md` and `docs/STARTUP_INDEX.md`; memory, prior reports, and pasted summaries are not substitutes for current repo doctrine.
+
 ## Boundary Discipline
 
 Obey the active boundary exactly. Respect:
