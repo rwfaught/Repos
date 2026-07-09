@@ -28,4 +28,4 @@ record.
 
 ## Records
 
-No session record entries have been created yet.
+| 2026-07-08 | Worker/Codex | SESSION_RECORDS_PROTOCOL_PILOT_RECORD_DOCS_ONLY | `2026-07-08_worker-codex_session-records-protocol-pilot.md` | evidence-only | first repo-backed session-record protocol pilot for docs/doctrine/current-state alignment sequence |
