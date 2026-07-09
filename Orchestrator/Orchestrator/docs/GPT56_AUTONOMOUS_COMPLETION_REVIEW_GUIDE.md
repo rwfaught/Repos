@@ -15,12 +15,16 @@
 python -m orchestrator.local_ai_consulting_campaign_cli
 python -m orchestrator.local_ai_consulting_campaign_cli --scenario internal_knowledge_helpdesk --format markdown
 python -m orchestrator.local_ai_consulting_campaign_cli --scenario regulated_sensitive_data
+python -m orchestrator.local_ai_consulting_campaign_cli --summary --format markdown
 python -m unittest -v tests.test_local_ai_consulting_audit_packet tests.test_local_ai_consulting_campaign tests.test_local_ai_consulting_campaign_cli
 ```
 
 ## Expected review questions
 
-- Does the all-scenario output make readiness and blockers easy to see?
+- Does the summary dashboard make readiness, blocker reasons, and the next
+  recommended review scenario easy to see?
+- Does the selected-scenario report give a founder enough context to decide
+  whether to approve the next bounded local review step?
 - Does a selected scenario preserve owner approval before implementation?
 - Does the neutral dossier/case bridge remain an adapter rather than a second
   semantic system?

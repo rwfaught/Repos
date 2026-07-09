@@ -373,6 +373,8 @@ def build_local_ai_consulting_operator_readback(
         "readback_name": "local_ai_consulting_operator_campaign_readback",
         "selection": scenario_id,
         "found": True,
+        "scenario": selected["scenario"],
+        "self_review": selected["self_review"],
         "readiness_status": review["readiness_status"],
         "owner_review_ready": review["owner_review_ready"],
         "blocked_conditions": [
@@ -394,6 +396,97 @@ def build_local_ai_consulting_operator_readback(
     }
 
 
+def _scenario_rationale(review: dict[str, Any]) -> str:
+    if review["missing_inputs"]:
+        return "The packet cannot be judged ready because required scenario information is missing."
+    if review["blocked_by_sensitivity"]:
+        return "The packet is structurally complete, but sensitive or regulated data requires separate owner and compliance review."
+    if review["blocked_by_external_integration"]:
+        return "The packet is structurally complete, but requested live integrations are outside this local, non-executing boundary."
+    return "The supplied scenario is structurally complete for a bounded local review, with owner approval still required before implementation."
+
+
+def build_local_ai_consulting_operator_summary() -> dict[str, Any]:
+    """Return a compact dashboard without embedding every scenario packet."""
+    campaign = build_local_ai_consulting_campaign_readback()
+    readbacks = campaign["scenario_readbacks"]
+    statuses = campaign["comparison"]["readiness_status_by_scenario"]
+    blocked_reasons = {
+        scenario_id: _scenario_rationale(readback["self_review"])
+        for scenario_id, readback in readbacks.items()
+        if not readback["self_review"]["owner_review_ready"]
+    }
+    recommended = next(
+        (scenario_id for scenario_id, status in statuses.items() if status == "owner_review_ready"),
+        None,
+    )
+    return {
+        "readback_name": "local_ai_consulting_operator_summary_dashboard",
+        "selection": "summary",
+        "scenario_count": len(statuses),
+        "owner_review_ready_scenarios": list(campaign["comparison"]["owner_review_ready_scenarios"]),
+        "blocked_scenarios": list(campaign["comparison"]["blocked_scenarios"]),
+        "blocked_reasons": blocked_reasons,
+        "readiness_status_by_scenario": dict(statuses),
+        "recommended_next_review_scenario": recommended,
+        "recommended_next_action": (
+            f"Open `{recommended}` for owner review using the selected-scenario report."
+            if recommended else "Resolve a blocker or supply missing input before selecting a review scenario."
+        ),
+        "execution_authorized": False,
+        "product_wedge_posture": "no first product wedge selected",
+        "phase_387_posture": "Phase 387 remains unset/not resumed",
+        "explicit_non_proofs": list(EXPLICIT_NON_PROOFS),
+    }
+
+
+def build_local_ai_consulting_operator_review_report(
+    scenario_id: str,
+) -> dict[str, Any]:
+    """Build a PM-readable review report for one scenario."""
+    readback = build_local_ai_consulting_operator_readback(scenario_id)
+    if not readback.get("found"):
+        return readback
+    packet = readback["owner_packet"]
+    review = readback["self_review"] if "self_review" in readback else packet["self_review"]
+    bridge = readback["neutral_dossier_case_bridge"]
+    scenario = readback["scenario"]
+    return {
+        "readback_name": "local_ai_consulting_operator_review_report",
+        "selection": scenario_id,
+        "scenario_id": scenario_id,
+        "scenario_summary": {
+            "business_profile": scenario["business_profile"],
+            "objective": scenario["owner_objective"],
+            "current_tools": list(scenario["current_tools_and_systems"]),
+            "workflow_pain_points": list(scenario["workflow_pain_points"]),
+        },
+        "readiness_decision": review["readiness_status"],
+        "readiness_status": review["readiness_status"],
+        "owner_review_ready": review["owner_review_ready"],
+        "blocked_conditions": list(readback["blocked_conditions"]),
+        "rationale": _scenario_rationale(review),
+        "safe_local_exploration": list(packet["safe_to_explore_locally"]),
+        "owner_approval_gates": list(packet["needs_owner_approval"]),
+        "blocked_or_deferred_items": list(packet["do_not_automate_yet"]),
+        "risks": list(packet["risks"]),
+        "evidence_produced": [
+            "deterministic owner-review packet",
+            "deterministic readiness classification",
+            "neutral dossier/case adapter readback",
+        ],
+        "neutral_dossier_case_relationship": {
+            "posture": bridge["architecture_posture"],
+            "case_status": bridge["case_packet"]["status"],
+            "structurally_ready_for_domain_specific_work": bridge["neutral_task_readiness"]["structurally_ready_for_domain_specific_work"],
+            "product_wedge_selected": bridge["neutral_task_readiness"]["product_wedge_selected"],
+        },
+        "next_bounded_action": readback["next_action"],
+        "execution_authorized": False,
+        "explicit_non_proofs": list(EXPLICIT_NON_PROOFS),
+    }
+
+
 def render_local_ai_consulting_operator_readback_markdown(
     readback: dict[str, Any] | None = None,
 ) -> str:
@@ -405,7 +498,61 @@ def render_local_ai_consulting_operator_readback_markdown(
         f"Selection: `{payload['selection']}`",
         f"Execution authorized: `{payload['execution_authorized']}`",
     ]
-    if not payload.get("found", True):
+    if payload.get("readback_name") == "local_ai_consulting_operator_summary_dashboard":
+        lines.extend([
+            "",
+            "## Readiness Dashboard",
+            f"Scenarios reviewed: `{payload['scenario_count']}`",
+            f"Owner-review-ready: `{', '.join(payload['owner_review_ready_scenarios']) or 'none'}`",
+            f"Blocked: `{', '.join(payload['blocked_scenarios']) or 'none'}`",
+            "",
+            "### Why Scenarios Are Blocked",
+            *[f"- `{scenario_id}`: {reason}" for scenario_id, reason in payload["blocked_reasons"].items()],
+            "",
+            f"Recommended next review: `{payload['recommended_next_review_scenario'] or 'none'}`",
+            f"Next action: {payload['recommended_next_action']}",
+        ])
+    elif payload.get("readback_name") == "local_ai_consulting_operator_review_report":
+        summary = payload["scenario_summary"]
+        relationship = payload["neutral_dossier_case_relationship"]
+        safe_local_items = [f"- {item}" for item in payload["safe_local_exploration"]]
+        deferred_items = [f"- {item}" for item in payload["blocked_or_deferred_items"]]
+        lines.extend([
+            "",
+            "## Scenario Summary",
+            f"Business: {summary['business_profile']}",
+            f"Objective: {summary['objective']}",
+            f"Current tools: {', '.join(summary['current_tools'])}",
+            f"Workflow pain points: {', '.join(summary['workflow_pain_points'])}",
+            "",
+            "## Readiness Decision",
+            f"Decision: `{payload['readiness_decision']}`",
+            f"Readiness: `{payload['readiness_status']}`",
+            f"Owner-review-ready: `{payload['owner_review_ready']}`",
+            f"Rationale: {payload['rationale']}",
+            "",
+            "## Safe Local Exploration",
+            *(safe_local_items or ["- none until blockers are resolved"]),
+            "",
+            "## Owner Approval Gates",
+            *[f"- {item}" for item in payload["owner_approval_gates"]],
+            "",
+            "## Blocked or Deferred",
+            *(deferred_items or ["- none listed"]),
+            "",
+            "## Evidence Produced",
+            *[f"- {item}" for item in payload["evidence_produced"]],
+            "",
+            "## Neutral Dossier/Case Relationship",
+            f"- {relationship['posture']}",
+            f"- Case status: `{relationship['case_status']}`",
+            f"- Structurally ready for domain-specific work: `{relationship['structurally_ready_for_domain_specific_work']}`",
+            f"- Product wedge selected: `{relationship['product_wedge_selected']}`",
+            "",
+            "## Next Bounded Action",
+            payload["next_bounded_action"],
+        ])
+    elif not payload.get("found", True):
         lines.extend([
             "",
             "## Selection Result",

@@ -50,6 +50,43 @@ class LocalAIConsultingCampaignCLITests(unittest.TestCase):
         self.assertIn("Readiness: `owner_review_ready`", rendered)
         self.assertIn("not production readiness", rendered)
 
+    def test_selected_markdown_is_a_pm_review_report(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main(["--scenario", "regulated_sensitive_data", "--format", "markdown"])
+
+        rendered = output.getvalue()
+        self.assertEqual(code, 0)
+        self.assertIn("## Scenario Summary", rendered)
+        self.assertIn("## Readiness Decision", rendered)
+        self.assertIn("## Safe Local Exploration", rendered)
+        self.assertIn("## Owner Approval Gates", rendered)
+        self.assertIn("## Blocked or Deferred", rendered)
+        self.assertIn("## Evidence Produced", rendered)
+        self.assertIn("## Neutral Dossier/Case Relationship", rendered)
+        self.assertIn("## Next Bounded Action", rendered)
+
+    def test_summary_markdown_is_compact_dashboard(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main(["--summary", "--format", "markdown"])
+
+        rendered = output.getvalue()
+        self.assertEqual(code, 0)
+        self.assertIn("## Readiness Dashboard", rendered)
+        self.assertIn("Why Scenarios Are Blocked", rendered)
+        self.assertIn("Recommended next review: `internal_knowledge_helpdesk`", rendered)
+        self.assertNotIn("source_materials", rendered)
+
+    def test_summary_and_scenario_are_mutually_exclusive(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main(["--summary", "--scenario", "internal_knowledge_helpdesk"])
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(code, 2)
+        self.assertIn("cannot be used together", payload["detail"])
+
     def test_invalid_arguments_are_blocked_without_side_effects(self):
         output = StringIO()
         with redirect_stdout(output):

@@ -57,12 +57,23 @@ From the experimental worktree:
 python -m orchestrator.local_ai_consulting_campaign_cli
 python -m orchestrator.local_ai_consulting_campaign_cli --scenario internal_knowledge_helpdesk --format markdown
 python -m orchestrator.local_ai_consulting_campaign_cli --scenario regulated_sensitive_data
+python -m orchestrator.local_ai_consulting_campaign_cli --summary --format markdown
 ```
 
 The first command shows the campaign comparison. The second shows a ready
 scenario in operator language. The third shows that sensitive-data work is
 explicitly blocked while preserving owner questions and the no-execution
 posture.
+
+## Continuation: operator-facing V1 flow
+
+The continuation pass replaced the thin selected-scenario Markdown view with a
+PM-readable review report. It now presents the scenario summary, readiness
+decision and rationale, safe local exploration, owner approval gates, blocked or
+deferred work, evidence produced, the neutral dossier/case relationship, and
+the next bounded action. The new `--summary --format markdown` mode provides a
+compact dashboard of ready scenarios, blocker reasons, and the recommended next
+review scenario without embedding every internal packet field.
 
 ## Validation and evidence limits
 
@@ -80,6 +91,8 @@ wedge selection.
   boundary.
 - Persistence, task creation, and implementation authorization remain outside
   this read-only campaign surface.
+- The operator report is still a deterministic fixture-backed review surface;
+  it does not ingest arbitrary live objectives or persist a customer case.
 - CTO/Roger should compare the fork diff and validation output against current
   main before deciding whether any part should be promoted or folded into a
   future boundary.
