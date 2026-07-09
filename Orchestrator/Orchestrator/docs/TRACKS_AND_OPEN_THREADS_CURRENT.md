@@ -16,8 +16,8 @@ not replace the full historical ledger.
 ## Last Updated / Source Posture
 
 - Current repo HEAD at edit time:
-  `78557b92109a30ae878d201e25c67eaadcf5adc9`
-- Generated/edited: `2026-07-08T23:59:23.6768333-05:00`
+  `1a94c6e54139ac851ecfd025052abbe5e5bd2230`
+- Generated/edited: `2026-07-09T02:03:32.7477010-05:00`
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
@@ -70,6 +70,10 @@ Current safely inferable posture:
 - Relay named command modes are completed, committed, pushed, and ratified in
   current `main` ancestry via
   `78557b92109a30ae878d201e25c67eaadcf5adc9`.
+- `DIRTY_RESIDUE_EXPLICIT_CLEANUP_AND_ZIP_DELETION_RELAY_CORRECTION_2` is
+  completed. The obsolete tracked product ZIP deletion is committed and pushed
+  in current `main` ancestry via
+  `1a94c6e54139ac851ecfd025052abbe5e5bd2230`.
 
 If a later handoff claims a different active membrane, treat this summary as
 stale and verify against live docs and evidence.
@@ -92,7 +96,7 @@ product-wedge selection.
 | Founder/product-wedge control | ACTIVE | Option 3 is ratified: neutral dossier/case abstraction first, then product-domain choice. No first product wedge selected. |
 | Dry MVP bounded-task loop | WATCH | Dry source/test/docs milestone closeout and deterministic local-worker stub proof package are already committed and pushed in current `main` ancestry. The stub proof proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. |
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
-| Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, AGENTS source-authority hardening, Relay command-surface/no-helper doctrine, and Relay named command modes are completed, committed, pushed, and ratified. Relay command discipline is persistent in `ROLE_RELAY.md`. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
+| Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, AGENTS source-authority hardening, Relay command-surface/no-helper doctrine, Relay named command modes, and dirty-residue cleanup/ZIP deletion are completed. Relay command discipline is persistent in `ROLE_RELAY.md`. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
 | Local-first model/router/provider | WATCH | Evidence exists for specific smoke/metadata/proof registrations, but live execution and production readiness remain separate future boundaries. |
 | General answer lightweight lane | DEFERRED | Report-only structured local lane is paused pending explicit coordinator ranking. |
 | Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review and neutral task packet structural proof are completed, committed, pushed, and ratified; they do not select a product wedge or prove runtime/provider/model behavior. |
@@ -104,7 +108,7 @@ product-wedge selection.
 
 | Thread | Status | Current proof posture | Next likely boundary | History pointer |
 | --- | --- | --- | --- | --- |
-| Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, the ratified task-readiness operator review, and the neutral task packet structural proof support abstraction-first posture; no final wedge selected. | First product wedge selection, dirty-residue hygiene decision, Source Files refresh/export, or Phase 387 resume decision only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
+| Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, the ratified task-readiness operator review, and the neutral task packet structural proof support abstraction-first posture; no final wedge selected. | First product wedge selection, Source Files refresh/export, or Phase 387 resume decision only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -143,17 +147,19 @@ product-wedge selection.
   that completed pilot; future session-record edits still require explicit
   boundary authorization.
 - No Source Files refresh, export, or capsule proof is implied by this summary.
-- The current git tree at edit time includes unrelated dirty-tree residue:
-  deleted `../Orchestrator_product_repo_latest.zip`, untracked `outputs/`, and
-  untracked files under `../../Source Files/`. Preserve that residue unless a
-  later boundary explicitly authorizes touching it.
+- Dirty residue cleanup was completed by
+  `DIRTY_RESIDUE_EXPLICIT_CLEANUP_AND_ZIP_DELETION_RELAY_CORRECTION_2`.
+  Named residue was archived outside the Git root at
+  `C:\Users\accou\Desktop\Orchestrator_dirty_residue_archives\DIRTY_RESIDUE_EXPLICIT_CLEANUP_AND_ZIP_DELETION_RELAY_CORRECTION_2_20260709_014939`.
+  Final Operator status was clean. No `.gitignore` change was made, no source
+  export/product ZIP was created, and no runtime/provider/model/platform
+  execution occurred.
 
 ## Recommended Next Ranked Candidates
 
 1. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
-2. `DIRTY_RESIDUE_HYGIENE_DECISION_DOCS_ONLY`
-3. `SOURCE_FILES_REFRESH_EXPORT_AFTER_TASK_READINESS`
-4. `PHASE_387_RESUME_DECISION_DOCS_ONLY`
+2. `SOURCE_FILES_REFRESH_EXPORT_AFTER_TASK_READINESS`
+3. `PHASE_387_RESUME_DECISION_DOCS_ONLY`
 
 ## Update Discipline
 
