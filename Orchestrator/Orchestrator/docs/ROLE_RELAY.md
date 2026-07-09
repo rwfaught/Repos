@@ -160,6 +160,48 @@ or complex script-mode boundaries.
 Do not build custom PowerShell validation systems unless the boundary
 specifically requires it.
 
+## Relay Command Modes
+
+Future Relay prompts may name these modes instead of restating routine
+command-construction constraints. Routine Git commit/push defaults to
+`MODE_SIMPLE_GIT_COMMIT_ONE_TARGET` or `MODE_SIMPLE_GIT_COMMIT_FEW_TARGETS`,
+not bespoke command design.
+
+- `MODE_SIMPLE_GIT_COMMIT_ONE_TARGET`: Commit and push one already-ratified
+  local file change. Use the Git top-level as command base, Git-root-relative
+  pathspecs, and straight-line PowerShell. Do not use helper functions,
+  wrappers, parser helpers, array-normalization helpers, mini-frameworks,
+  `try`/`catch`, `throw`, `finally`, broad dirty-tree parsers, or broad
+  `git add`. Verify precondition HEAD, local `origin/main`, remote
+  `origin/main`, no pre-existing staged files, exact staged file list,
+  committed file scope, post-push heads, target clean, no staged files remain,
+  and final status.
+- `MODE_SIMPLE_GIT_COMMIT_FEW_TARGETS`: Same as one-target mode, but for a
+  small explicit file list. Verify staged and committed file lists exactly
+  match the allowed set. Do not generalize into custom status parser machinery.
+- `MODE_READONLY_RATIFICATION_REVIEW`: Read-only inspection before
+  CTO/coordinator ratification. Do not stage, commit, or push. Show target
+  diffs, target status, relevant tests or validation only when explicitly
+  allowed, and non-proofs. Avoid brittle dirty-tree parsing unless the boundary
+  specifically targets dirty-tree classification.
+- `MODE_READONLY_FAILURE_DIAGNOSIS`: Interpret supplied Operator output or
+  failure logs. Separate observed facts, likely cause, non-proofs, and the next
+  bounded correction. Do not produce mutation-capable commands unless the
+  boundary explicitly requests them.
+- `MODE_DOCS_ONLY_WORKER_BOUNDARY_PROMPT`: Draft a Worker/Codex boundary
+  prompt. Relay should not mutate repo files or produce a command batch in
+  this mode. Keep target files, allowed mutation, exclusions, and validation
+  explicit.
+- `MODE_COMPLETE_SCRIPT_DRAFT`: Use only for boundaries that explicitly request
+  a complete script. Helper functions may be used only when they reduce risk
+  and are appropriate for a real script. Include timestamps, path-base checks,
+  clear failure handling, and full script content. This mode is not for routine
+  Git commit/push.
+- `MODE_VALIDATION_BATCH_TARGETED`: Produce targeted validation commands
+  against named files or tests. Do not use broad `compileall`,
+  runtime/provider/model/platform execution, or project-script execution unless
+  explicitly named. Include timestamps and final status.
+
 ## Command-Design Gate
 
 Relay owns command-design review for non-trivial Operator batches. Before
