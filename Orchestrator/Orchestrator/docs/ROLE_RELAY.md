@@ -122,6 +122,44 @@ After two command-design false negative results on the same issue, the next
 corrective batch must simplify the command surface rather than add more
 machinery.
 
+## Operator Git Command Surface
+
+Future Operator Git command batches should use the Git top-level as the
+canonical command base: `C:\Users\accou\Desktop\Repos`.
+
+Use Git-root-relative pathspecs for staged, committed, and verified files, such
+as `Orchestrator/Orchestrator/docs/...`,
+`Orchestrator/Orchestrator/orchestrator/...`, and
+`Orchestrator/Orchestrator/tests/...`. Do not mix product-repo-relative paths
+with Git-root-relative paths inside the same batch.
+
+Treat `git status --short` and porcelain output primarily as human-visible
+display unless the boundary is explicitly a dirty-tree audit. Avoid brittle
+exact-string dirty-residue allowlists, especially for paths with spaces such as
+`Source Files/...`.
+
+Prefer minimal Git-native verification:
+
+- `git diff --cached --name-only` for staged target verification.
+- `git diff --quiet -- <target>` for target cleanliness.
+- `git rev-parse HEAD` for local HEAD checks.
+- `git rev-parse origin/main` for local tracking ref checks.
+- `git ls-remote origin refs/heads/main` for remote main checks.
+
+For routine Git review, stage/commit/push, and verify batches, helper
+functions are not minimal by default. Do not define custom PowerShell
+functions, wrapper functions, Git output helper functions, parser helpers,
+array-normalization helpers, or mini-frameworks for routine Git batches. Use
+straight-line commands with immediate simple checks.
+
+A routine one-file or few-file Git commit/push batch should use direct Git
+commands, Git-root-relative pathspecs, and no generalized machinery. Helper
+functions are reserved only for explicitly authorized complete script drafting
+or complex script-mode boundaries.
+
+Do not build custom PowerShell validation systems unless the boundary
+specifically requires it.
+
 ## Command-Design Gate
 
 Relay owns command-design review for non-trivial Operator batches. Before
