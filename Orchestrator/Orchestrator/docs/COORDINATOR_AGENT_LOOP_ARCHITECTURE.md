@@ -45,11 +45,11 @@ or make semantic claims that require reasoning evidence.
 - explaining uncertainty and asking useful clarification questions.
 
 The current `interpret_operator_prompt()` function is an explicit stub seam.
-Future local-model execution, preferably a separately authorized local model
-such as Qwen 3.6 27B or its successor, should plug into that seam through a
-reviewable adapter. The model must return structured interpretation, not hidden
-control flow, and its output must remain subject to deterministic validation and
-operator approval.
+Future local-model execution should plug into that seam through the strict
+contract in `orchestrator/local_model_reasoning_contract.py` and the disabled
+provider interface in `orchestrator/local_model_provider_stub.py`. The model
+must return structured interpretation, not hidden control flow, and its output
+must remain subject to deterministic validation and operator approval.
 
 ### The coordinator owns
 
@@ -115,6 +115,19 @@ review action, coordinator closeout, and explicit non-proofs. For a deterministi
 objective the dry worker result can be accepted as a bounded stub result. Local
 model, frontier/Codex, API, and human-review routes remain clarify/escalate/
 blocked without execution.
+
+For contract-only seam testing, a caller may supply JSON without invoking a
+model:
+
+```text
+python -m orchestrator.coordinator_agent_loop_cli --objective "Classify this fixed status list into three labels" --format operator --model-output-json <structured-json>
+```
+
+Accepted structured reasoning is still only candidate intake data. Malformed,
+low-confidence, ambiguous, unsupported, overreaching, or high-risk responses
+are rejected or quarantined and the deterministic intake fallback is retained.
+The model response cannot select a route, create a plan, authorize execution,
+dispatch a worker, or satisfy operator approval.
 
 ## Future local-model authorization checklist
 

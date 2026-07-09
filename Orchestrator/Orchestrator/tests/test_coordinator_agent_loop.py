@@ -1,6 +1,7 @@
 import json
 import unittest
 
+from orchestrator.local_model_provider_stub import DisabledLocalModelProvider, StaticLocalModelProvider
 from orchestrator.coordinator_agent_loop import (
     CapabilityRoute,
     OperatorPrompt,
@@ -10,6 +11,35 @@ from orchestrator.coordinator_agent_loop import (
     evaluate_worker_result,
     run_dry_coordinator_loop,
 )
+
+
+def model_response_for(objective, prompt_id="prompt-001"):
+    return {
+        "contract_version": "local_model_reasoning_v1",
+        "request_id": prompt_id,
+        "objective": objective,
+        "normalized_objective": objective.lower(),
+        "capability_task": {
+            "task_id": "task-001",
+            "title": "Classify supplied labels",
+            "objective": objective,
+            "complexity": "simple",
+            "code_generation_required": False,
+            "long_context_required": False,
+            "safety_risk": "low",
+            "privacy_sensitivity": "internal",
+            "external_tool_or_api_need": False,
+            "live_runtime_execution_need": False,
+            "tolerance_for_mistakes": "medium",
+            "deterministic_validation_available": True,
+            "local_model_output_reviewable": True,
+        },
+        "matched_signals": {"deterministic": ["fixed labels"]},
+        "confidence": 0.91,
+        "clarification_needed": [],
+        "risk_flags": [],
+        "assumptions": [],
+    }
 
 
 class CoordinatorAgentLoopTests(unittest.TestCase):
@@ -48,6 +78,35 @@ class CoordinatorAgentLoopTests(unittest.TestCase):
         self.assertTrue(loop["worker_result"]["validation_passed"])
         self.assertTrue(loop["review_evaluation"]["result_accepted"])
         self.assertFalse(loop["worker_result"]["execution_performed"])
+
+    def test_validated_model_stub_interpretation_is_consumed_before_deterministic_policy(self):
+        objective = "Classify this fixed status list into three labels"
+        loop = run_dry_coordinator_loop(
+            objective,
+            reasoning_provider=StaticLocalModelProvider(model_response_for(objective)),
+        )
+
+        intake = loop["intake_interpretation"]
+        self.assertEqual(intake["reasoning_mode"], "validated_model_stub")
+        self.assertEqual(intake["interpretation_source"], "validated_local_model_stub_response")
+        self.assertEqual(intake["reasoning_validation_status"], "accepted")
+        self.assertEqual(loop["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertFalse(loop["execution_posture"]["model_execution"])
+        self.assertFalse(loop["execution_posture"]["provider_execution"])
+
+    def test_disabled_or_malformed_model_reasoning_falls_back_deterministically(self):
+        objective = "Classify this fixed status list into three labels"
+        disabled = run_dry_coordinator_loop(objective, reasoning_provider=DisabledLocalModelProvider())
+        malformed = run_dry_coordinator_loop(
+            objective,
+            reasoning_provider=StaticLocalModelProvider({"execution_authorized": True}),
+        )
+
+        self.assertEqual(disabled["intake_interpretation"]["reasoning_mode"], "deterministic_fallback")
+        self.assertEqual(disabled["intake_interpretation"]["reasoning_validation_status"], "not_attempted")
+        self.assertEqual(disabled["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertEqual(malformed["intake_interpretation"]["reasoning_validation_status"], "rejected")
+        self.assertIn("unsupported_response_fields:execution_authorized", malformed["intake_interpretation"]["reasoning_validation_reasons"])
 
     def test_operator_review_packet_bridges_control_flow_to_neutral_case_surface(self):
         loop = run_dry_coordinator_loop("Classify this fixed status list into three labels")

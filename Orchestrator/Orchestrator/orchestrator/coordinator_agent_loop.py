@@ -14,6 +14,15 @@ from orchestrator.capability_routing_triage import (
     ROUTES,
     classify_capability_task,
 )
+from orchestrator.local_model_provider_stub import (
+    LocalModelReasoningProvider,
+    ProviderInterpretationResult,
+)
+from orchestrator.local_model_reasoning_contract import (
+    REASONING_NON_PROOFS,
+    build_local_model_interpretation_request,
+    validate_local_model_interpretation,
+)
 from orchestrator.objective_route_packet_loop import (
     build_objective_route_packet,
     infer_objective_capability_task,
@@ -29,7 +38,7 @@ LOOP_NON_PROOFS = tuple(dict.fromkeys(ROUTING_NON_PROOFS + (
     "not retry execution",
     "not operator approval",
     "not packet persistence",
-)))
+) + REASONING_NON_PROOFS))
 
 REVIEW_ACTIONS = (
     "accept",
@@ -67,6 +76,11 @@ class IntakeInterpretation:
     clarification_needed: tuple[str, ...]
     model_reasoning_seam: str
     model_execution: bool
+    reasoning_mode: str = "deterministic_stub"
+    reasoning_provider_status: str = "not_requested"
+    reasoning_provider_key: str = "none"
+    reasoning_validation_status: str = "not_requested"
+    reasoning_validation_reasons: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -150,23 +164,158 @@ def _as_prompt(value: OperatorPrompt | dict[str, Any] | str) -> OperatorPrompt:
     raise TypeError("operator prompt must be OperatorPrompt, mapping, or string")
 
 
-def interpret_operator_prompt(prompt: OperatorPrompt) -> IntakeInterpretation:
-    """Stub intake interpreter; future local model reasoning plugs in here."""
-    inferred = infer_objective_capability_task(prompt.objective)
+def _build_deterministic_intake(
+    prompt: OperatorPrompt,
+    inferred: dict[str, Any],
+    *,
+    interpretation_source: str,
+    reasoning_mode: str = "deterministic_stub",
+    provider_status: str = "not_requested",
+    provider_key: str = "none",
+    validation_status: str = "not_requested",
+    validation_reasons: tuple[str, ...] = (),
+    model_reasoning_seam: str = "replace this function with an owner-controlled model-assisted interpreter",
+) -> IntakeInterpretation:
     capability_task = inferred["capability_task"]
     return IntakeInterpretation(
         prompt_id=prompt.prompt_id,
         objective=prompt.objective,
-        interpretation_source=(
-            "deterministic_stub_intake_future_local_model_seam"
-            if capability_task is not None else "deterministic_stub_intake_insufficient_signals"
-        ),
+        interpretation_source=interpretation_source,
         capability_task=capability_task,
         matched_signals=inferred["matched_signals"],
         confidence=0.75 if capability_task is not None else 0.0,
         clarification_needed=tuple(inferred["clarification_needed"]),
-        model_reasoning_seam="replace this function with an owner-controlled model-assisted interpreter",
+        model_reasoning_seam=model_reasoning_seam,
         model_execution=False,
+        reasoning_mode=reasoning_mode,
+        reasoning_provider_status=provider_status,
+        reasoning_provider_key=provider_key,
+        reasoning_validation_status=validation_status,
+        reasoning_validation_reasons=validation_reasons,
+    )
+
+
+def _deterministic_fallback_after_reasoning(
+    prompt: OperatorPrompt,
+    inferred: dict[str, Any],
+    *,
+    provider_status: str,
+    provider_key: str,
+    validation_status: str,
+    validation_reasons: tuple[str, ...],
+) -> IntakeInterpretation:
+    return _build_deterministic_intake(
+        prompt,
+        inferred,
+        interpretation_source=f"deterministic_stub_fallback_after_{provider_status}",
+        reasoning_mode="deterministic_fallback",
+        provider_status=provider_status,
+        provider_key=provider_key,
+        validation_status=validation_status,
+        validation_reasons=validation_reasons,
+        model_reasoning_seam=(
+            "local-model interpretation was unavailable or quarantined; "
+            "deterministic intake fallback remains authoritative"
+        ),
+    )
+
+
+def interpret_operator_prompt(
+    prompt: OperatorPrompt,
+    reasoning_provider: LocalModelReasoningProvider | None = None,
+) -> IntakeInterpretation:
+    """Use validated candidate reasoning when supplied, otherwise deterministic intake."""
+    inferred = infer_objective_capability_task(prompt.objective)
+    if reasoning_provider is None:
+        return _build_deterministic_intake(
+            prompt,
+            inferred,
+            interpretation_source=(
+                "deterministic_stub_intake_future_local_model_seam"
+                if inferred["capability_task"] is not None else "deterministic_stub_intake_insufficient_signals"
+            ),
+        )
+
+    request = build_local_model_interpretation_request(
+        request_id=prompt.prompt_id,
+        objective=prompt.objective,
+        requested_outcome=prompt.requested_outcome,
+        owner_context=prompt.owner_context,
+    )
+    provider_key = str(getattr(reasoning_provider, "provider_key", "unknown_provider"))
+    try:
+        provider_result = reasoning_provider.interpret(request)
+    except Exception:
+        return _deterministic_fallback_after_reasoning(
+            prompt,
+            inferred,
+            provider_status="provider_exception",
+            provider_key=provider_key,
+            validation_status="rejected",
+            validation_reasons=("provider_call_failed",),
+        )
+
+    if not isinstance(provider_result, ProviderInterpretationResult):
+        return _deterministic_fallback_after_reasoning(
+            prompt,
+            inferred,
+            provider_status="invalid_provider_result",
+            provider_key=provider_key,
+            validation_status="rejected",
+            validation_reasons=("provider_result_shape_invalid",),
+        )
+
+    provider_status = provider_result.status or "unknown_status"
+    provider_key = provider_result.provider_key or provider_key
+    if provider_result.execution_performed:
+        return _deterministic_fallback_after_reasoning(
+            prompt,
+            inferred,
+            provider_status=provider_status,
+            provider_key=provider_key,
+            validation_status="rejected",
+            validation_reasons=("provider_execution_flag_must_be_false",),
+        )
+    if provider_result.response is None:
+        return _deterministic_fallback_after_reasoning(
+            prompt,
+            inferred,
+            provider_status=provider_status,
+            provider_key=provider_key,
+            validation_status="not_attempted",
+            validation_reasons=("provider_response_unavailable",),
+        )
+
+    validation = validate_local_model_interpretation(request, provider_result.response)
+    if validation.accepted and validation.interpretation is not None:
+        interpretation = validation.interpretation
+        return IntakeInterpretation(
+            prompt_id=prompt.prompt_id,
+            objective=prompt.objective,
+            interpretation_source="validated_local_model_stub_response",
+            capability_task=interpretation.capability_task,
+            matched_signals=interpretation.matched_signals,
+            confidence=interpretation.confidence,
+            clarification_needed=interpretation.clarification_needed,
+            model_reasoning_seam=(
+                "validated structured model interpretation is input only; "
+                "deterministic capability policy remains authoritative"
+            ),
+            model_execution=False,
+            reasoning_mode="validated_model_stub",
+            reasoning_provider_status=provider_status,
+            reasoning_provider_key=provider_key,
+            reasoning_validation_status=validation.status,
+            reasoning_validation_reasons=validation.reasons,
+        )
+
+    return _deterministic_fallback_after_reasoning(
+        prompt,
+        inferred,
+        provider_status=provider_status,
+        provider_key=provider_key,
+        validation_status=validation.status,
+        validation_reasons=validation.reasons,
     )
 
 
@@ -356,6 +505,9 @@ def build_operator_review_packet(
         "decision": evaluation.action,
         "rationale": evaluation.rationale,
         "intake_confidence": intake.confidence,
+        "reasoning_provider_key": intake.reasoning_provider_key,
+        "reasoning_validation_status": intake.reasoning_validation_status,
+        "reasoning_validation_reasons": list(intake.reasoning_validation_reasons),
         "recommended_route": route.route_name,
         "handoff_status": handoff.handoff_status,
         "dispatched": handoff.dispatched,
@@ -385,10 +537,13 @@ def build_operator_review_packet(
     }
 
 
-def run_dry_coordinator_loop(prompt: OperatorPrompt | dict[str, Any] | str) -> dict[str, Any]:
+def run_dry_coordinator_loop(
+    prompt: OperatorPrompt | dict[str, Any] | str,
+    reasoning_provider: LocalModelReasoningProvider | None = None,
+) -> dict[str, Any]:
     """Run intake, planning, routing, handoff, dry result review, and closeout."""
     operator_prompt = _as_prompt(prompt)
-    intake = interpret_operator_prompt(operator_prompt)
+    intake = interpret_operator_prompt(operator_prompt, reasoning_provider)
     route = create_capability_route(intake)
     plan = create_coordinator_plan(operator_prompt, intake, route)
     handoff = prepare_worker_handoff(plan)
@@ -438,6 +593,9 @@ def render_dry_coordinator_loop_markdown(loop: dict[str, Any]) -> str:
         "",
         "## Intake Interpretation",
         f"Source: `{intake['interpretation_source']}`",
+        f"Reasoning mode: `{intake['reasoning_mode']}`",
+        f"Provider status: `{intake['reasoning_provider_status']}`",
+        f"Contract validation: `{intake['reasoning_validation_status']}`",
         f"Confidence: `{intake['confidence']}`",
         f"Future model seam: {intake['model_reasoning_seam']}",
         f"Model execution: `{intake['model_execution']}`",
@@ -482,6 +640,14 @@ def render_operator_review_markdown(loop: dict[str, Any]) -> str:
         f"Decision: `{review['decision']}`",
         f"Recommended route: `{review['recommended_route']}`",
         f"Execution authorized: `{review['execution_authorized']}`",
+        "",
+        "## Interpretation Boundary",
+        f"Mode: `{loop['intake_interpretation']['reasoning_mode']}`",
+        f"Provider status: `{loop['intake_interpretation']['reasoning_provider_status']}`",
+        f"Provider key: `{review['reasoning_provider_key']}`",
+        f"Contract validation: `{loop['intake_interpretation']['reasoning_validation_status']}`",
+        f"Validation reasons: {', '.join(review['reasoning_validation_reasons']) or 'none'}",
+        "Model interpretation is candidate intake data only; deterministic policy selects the route and no model output authorizes execution.",
         "",
         "## Why",
         review["rationale"],

@@ -69,6 +69,41 @@ class CoordinatorAgentLoopCLITests(unittest.TestCase):
             self.assertIn(section, rendered)
         self.assertIn("Execution authorized: `False`", rendered)
 
+    def test_cli_accepts_caller_supplied_model_json_through_stub_seam(self):
+        objective = "Classify this fixed status list into three labels"
+        payload = {
+            "contract_version": "local_model_reasoning_v1",
+            "request_id": "prompt-001",
+            "objective": objective,
+            "normalized_objective": objective.lower(),
+            "capability_task": {
+                "task_id": "task-001", "title": "Classify supplied labels", "objective": objective,
+                "complexity": "simple", "code_generation_required": False, "long_context_required": False,
+                "safety_risk": "low", "privacy_sensitivity": "internal", "external_tool_or_api_need": False,
+                "live_runtime_execution_need": False, "tolerance_for_mistakes": "medium",
+                "deterministic_validation_available": True, "local_model_output_reviewable": True,
+            },
+            "matched_signals": {"deterministic": ["fixed labels"]}, "confidence": 0.91,
+            "clarification_needed": [], "risk_flags": [], "assumptions": [],
+        }
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main(["--objective", objective, "--format", "operator", "--model-output-json", json.dumps(payload)])
+
+        rendered = output.getvalue()
+        self.assertEqual(code, 0)
+        self.assertIn("Mode: `validated_model_stub`", rendered)
+        self.assertIn("deterministic policy selects the route", rendered)
+
+    def test_cli_rejects_invalid_model_json_without_running_the_loop(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            code = main(["--objective", "Classify this fixed status list into three labels", "--model-output-json", "not-json"])
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(code, 2)
+        self.assertTrue(payload["blocked"])
+
     def test_missing_objective_is_blocked(self):
         output = StringIO()
         with redirect_stdout(output):
