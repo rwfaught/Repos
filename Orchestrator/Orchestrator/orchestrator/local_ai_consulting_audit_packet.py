@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from typing import Any
 
+from orchestrator.dossier_case_mapping import adapt_case_packet_to_dossier_case
+from orchestrator.dossier_case_task_readiness import (
+    build_neutral_task_readiness_report_dict,
+)
 
 BOUNDARY = "GPT56_LOCAL_AI_CONSULTING_SANDBOX_VERTICAL_SLICE"
 SCENARIO = "Fictional Springfield HVAC Service Company"
@@ -198,6 +202,70 @@ def build_audit_review_gate(
     }
 
 
+def build_local_ai_consulting_case_packet(
+    intake: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Map consulting intake into the existing neutral case-packet shape."""
+    source = build_audit_intake() if intake is None else intake
+    business_name = source["business_profile"]["business_name"]
+    return {
+        "case_id": source.get("audit_id", "local-ai-consulting-sandbox-001"),
+        "case_type": "local_ai_consulting_audit",
+        "title": f"{business_name} local AI efficiency audit",
+        "objective": source["objective"],
+        "counterparties": ["fictional business owner/operator"],
+        "source_materials": list(source["source_materials"]),
+        "extracted_facts": list(source["workflow_facts"]),
+        "timeline_events": [
+            "fictional intake received",
+            "workflow friction captured",
+            "owner review required",
+        ],
+        "open_issues": list(source["open_questions"]),
+        "missing_evidence": [
+            "owner-confirmed mandatory inquiry fields",
+            "verified follow-up timing",
+        ],
+        "contradictions": list(source["contradictions_or_unclear_claims"]),
+        "drafts": [source["recommended_first_implementation"]],
+        "decisions": [
+            "owner review is required before any implementation boundary",
+            NO_FIRST_PRODUCT_WEDGE_SELECTED,
+        ],
+        "status": "structural_sandbox_review",
+        "next_step": source["operator_next_action"],
+    }
+
+
+def build_dossier_case_bridge_readback(
+    intake: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Return the consulting-to-neutral-dossier adapter and readiness readback."""
+    source = build_audit_intake() if intake is None else intake
+    case_packet = build_local_ai_consulting_case_packet(source)
+    adapted = adapt_case_packet_to_dossier_case(case_packet)
+    readiness = build_neutral_task_readiness_report_dict(case_packet)
+    return {
+        "bridge_name": "local_ai_consulting_to_neutral_dossier_case_bridge",
+        "boundary": BOUNDARY,
+        "source_audit_id": source.get("audit_id", "sandbox-fixture-without-audit-id"),
+        "case_packet": case_packet,
+        "adapted_dossier_case": adapted,
+        "neutral_task_readiness": readiness,
+        "preservation_checks": {
+            "objective_preserved": adapted["objective"] == source["objective"],
+            "source_materials_preserved": adapted["source_materials"] == source["source_materials"],
+            "open_questions_preserved": adapted["open_questions"] == source["open_questions"],
+            "contradictions_preserved": adapted["contradictions"] == source["contradictions_or_unclear_claims"],
+            "recommended_next_step_preserved": adapted["next_work_items"] == [source["operator_next_action"]],
+        },
+        "architecture_posture": (
+            "adapter bridge only; existing neutral dossier/case semantics remain authoritative"
+        ),
+        "explicit_non_proofs": list(EXPLICIT_NON_PROOFS),
+    }
+
+
 def build_internal_implementation_packet(
     fixture: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
@@ -205,6 +273,7 @@ def build_internal_implementation_packet(
     risk_posture = classify_risk_privacy_posture(fixture)
     deferred_automation = classify_do_not_automate_yet(fixture)
     review_gate = build_audit_review_gate(fixture)
+    dossier_bridge = build_dossier_case_bridge_readback(fixture)
     return {
         "packet_name": "local_ai_consulting_internal_implementation_packet",
         "flow_name": FLOW_NAME,
@@ -229,6 +298,7 @@ def build_internal_implementation_packet(
         "explicit_non_proofs": fixture["explicit_non_proofs"],
         "operator_next_action": fixture["operator_next_action"],
         "review_gate": review_gate,
+        "dossier_case_bridge_readback": dossier_bridge,
         "execution_posture": {
             "runtime_provider_model_execution": False,
             "production_readiness": False,
@@ -245,6 +315,7 @@ def build_client_readable_audit_report(
     risk_posture = classify_risk_privacy_posture(fixture)
     deferred_automation = classify_do_not_automate_yet(fixture)
     review_gate = build_audit_review_gate(fixture)
+    dossier_bridge = build_dossier_case_bridge_readback(fixture)
     return {
         "report_name": "Springfield HVAC Local AI Efficiency Audit",
         "flow_name": FLOW_NAME,
@@ -271,6 +342,7 @@ def build_client_readable_audit_report(
             "operator_approval_required": review_gate["operator_approval_required"],
             "execution_authorized": review_gate["execution_authorized"],
         },
+        "neutral_dossier_case_readiness": dossier_bridge["neutral_task_readiness"],
         "explicit_non_proofs": fixture["explicit_non_proofs"],
     }
 
@@ -278,6 +350,7 @@ def build_client_readable_audit_report(
 def build_local_ai_consulting_readback() -> dict[str, Any]:
     intake = build_audit_intake()
     review_gate = build_audit_review_gate(intake)
+    dossier_bridge = build_dossier_case_bridge_readback(intake)
     return {
         "flow_name": FLOW_NAME,
         "fixture": intake,
@@ -285,6 +358,7 @@ def build_local_ai_consulting_readback() -> dict[str, Any]:
         "risk_privacy_classification": classify_risk_privacy_posture(intake),
         "do_not_automate_yet_classification": classify_do_not_automate_yet(intake),
         "review_gate": review_gate,
+        "dossier_case_bridge": dossier_bridge,
         "internal_implementation_packet": build_internal_implementation_packet(intake),
         "client_readable_audit_report": build_client_readable_audit_report(intake),
         "product_wedge_posture": NO_FIRST_PRODUCT_WEDGE_SELECTED,

@@ -10,9 +10,11 @@ from orchestrator.local_ai_consulting_audit_packet import (
     SCENARIO,
     build_audit_intake,
     build_audit_review_gate,
+    build_dossier_case_bridge_readback,
     build_client_readable_audit_report,
     build_internal_implementation_packet,
     build_local_ai_consulting_audit_flow,
+    build_local_ai_consulting_case_packet,
     build_local_ai_consulting_fixture_library,
     build_local_ai_consulting_readback,
     build_springfield_hvac_fixture,
@@ -76,6 +78,34 @@ class LocalAIConsultingAuditPacketTests(unittest.TestCase):
         self.assertTrue(gate["operator_approval_required"])
         self.assertFalse(gate["execution_authorized"])
 
+    def test_case_packet_bridge_reuses_neutral_dossier_and_readiness_surfaces(self):
+        intake = build_audit_intake()
+        case_packet = build_local_ai_consulting_case_packet(intake)
+        bridge = build_dossier_case_bridge_readback(intake)
+
+        for field in (
+            "case_id", "case_type", "title", "objective", "source_materials",
+            "extracted_facts", "timeline_events", "open_issues",
+            "missing_evidence", "contradictions", "drafts", "decisions",
+            "status", "next_step",
+        ):
+            self.assertIn(field, case_packet)
+        self.assertEqual(bridge["neutral_task_readiness"]["missing_required_neutral_fields"], [])
+        self.assertTrue(bridge["neutral_task_readiness"]["structurally_ready_for_domain_specific_work"])
+        self.assertEqual(bridge["neutral_task_readiness"]["open_questions"], intake["open_questions"])
+        self.assertEqual(bridge["neutral_task_readiness"]["contradictions"], intake["contradictions_or_unclear_claims"])
+        self.assertFalse(bridge["neutral_task_readiness"]["product_wedge_selected"])
+        self.assertFalse(bridge["neutral_task_readiness"]["phase_387_implemented"])
+        self.assertTrue(all(bridge["preservation_checks"].values()))
+
+    def test_bridge_is_deterministic_and_declares_adapter_posture(self):
+        first = build_dossier_case_bridge_readback()
+        second = build_dossier_case_bridge_readback()
+
+        self.assertEqual(first, second)
+        self.assertIn("adapter bridge only", first["architecture_posture"])
+        self.assertIn("not semantic correctness", first["explicit_non_proofs"])
+
     def test_internal_packet_contains_readback_and_governance_posture(self):
         packet = build_internal_implementation_packet()
 
@@ -107,6 +137,7 @@ class LocalAIConsultingAuditPacketTests(unittest.TestCase):
             "what_not_to_automate_yet_classification",
             "questions_roger_should_ask_the_owner",
             "contradictions_or_unclear_claims", "review_gate_summary",
+            "neutral_dossier_case_readiness",
             "operator_next_action", "explicit_non_proofs",
         ):
             self.assertIn(field, report)
