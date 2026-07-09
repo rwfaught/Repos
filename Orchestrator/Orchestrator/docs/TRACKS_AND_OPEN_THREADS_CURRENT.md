@@ -16,8 +16,8 @@ not replace the full historical ledger.
 ## Last Updated / Source Posture
 
 - Current repo HEAD at edit time:
-  `81db15d77eed41ab8e0556b9b9351b33be1b5ace`
-- Generated/edited: `2026-07-08T20:37:31-05:00`
+  `78557b92109a30ae878d201e25c67eaadcf5adc9`
+- Generated/edited: `2026-07-08T23:59:23.6768333-05:00`
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
@@ -58,6 +58,18 @@ Current safely inferable posture:
   committed, pushed, and ratified in current `main` ancestry via
   `81db15d Add dossier case task-readiness operator review`.
   `DOSSIER_CASE_TASK_READINESS_OPERATOR_REVIEW_COMMIT_PUSH_VERIFY=RATIFIED`
+- `NEUTRAL_TASK_PACKET_SOURCE_TEST_DOCS` is completed, committed, pushed, and
+  ratified in current `main` ancestry via
+  `353557b8e209f35033908bf276b16614bdb40b47`. It proves only the neutral task
+  packet structural/source/test/docs surface and preserves: no first product
+  wedge selected, Phase 387 parked, runtime/provider/model execution excluded,
+  and not production readiness.
+- Relay command-surface simplification and no-helper routine Git doctrine is
+  completed, committed, pushed, and ratified in current `main` ancestry via
+  `0c74ac97a40513d305fa7fe0576de39cf91e4732`.
+- Relay named command modes are completed, committed, pushed, and ratified in
+  current `main` ancestry via
+  `78557b92109a30ae878d201e25c67eaadcf5adc9`.
 
 If a later handoff claims a different active membrane, treat this summary as
 stale and verify against live docs and evidence.
@@ -80,10 +92,10 @@ product-wedge selection.
 | Founder/product-wedge control | ACTIVE | Option 3 is ratified: neutral dossier/case abstraction first, then product-domain choice. No first product wedge selected. |
 | Dry MVP bounded-task loop | WATCH | Dry source/test/docs milestone closeout and deterministic local-worker stub proof package are already committed and pushed in current `main` ancestry. The stub proof proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. |
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
-| Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, and AGENTS source-authority hardening are completed, committed, pushed, and ratified. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
+| Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, AGENTS source-authority hardening, Relay command-surface/no-helper doctrine, and Relay named command modes are completed, committed, pushed, and ratified. Relay command discipline is persistent in `ROLE_RELAY.md`. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
 | Local-first model/router/provider | WATCH | Evidence exists for specific smoke/metadata/proof registrations, but live execution and production readiness remain separate future boundaries. |
 | General answer lightweight lane | DEFERRED | Report-only structured local lane is paused pending explicit coordinator ranking. |
-| Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review is completed, committed, pushed, and ratified; it does not select a product wedge or prove runtime/provider/model behavior. |
+| Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review and neutral task packet structural proof are completed, committed, pushed, and ratified; they do not select a product wedge or prove runtime/provider/model behavior. |
 | Founder-native Human Override / Causal Court material | WATCH | Useful founder-legible calibration/demo material; not current product direction or selected wedge. |
 | Platform/OpenClaw/Hermes/RAG/installer integration | DEFERRED | External or future integration tracks only unless an explicit integration boundary authorizes them. |
 | Historical artifact/export proof | HISTORICAL | Preserve as proof history. Do not treat older export/upload hashes or packaged artifacts as current source authority without fresh verification. |
@@ -92,7 +104,7 @@ product-wedge selection.
 
 | Thread | Status | Current proof posture | Next likely boundary | History pointer |
 | --- | --- | --- | --- | --- |
-| Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, and the ratified task-readiness operator review support abstraction-first posture; no final wedge selected. | `DOSSIER_CASE_NEUTRAL_TASK_PACKET_PLAN_DOCS_ONLY` unless Roger/CTO chooses wedge selection, Source Files refresh/export, or Phase 387 resume decision first. | `TRACKS_AND_OPEN_THREADS.md` |
+| Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, the ratified task-readiness operator review, and the neutral task packet structural proof support abstraction-first posture; no final wedge selected. | First product wedge selection, dirty-residue hygiene decision, Source Files refresh/export, or Phase 387 resume decision only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -113,6 +125,12 @@ product-wedge selection.
 - Platform/runtime/model smoke proof is not product readiness.
 - Runtime/provider/model work remains unproven and requires an explicit future
   boundary before execution or proof claims.
+- Neutral task packet proof is structural/source/test/docs proof only. It does
+  not select a first product wedge, unpark Phase 387, authorize
+  runtime/provider/model execution, or prove production readiness.
+- Relay doctrine hardening improves command-construction discipline but does
+  not prove future Relay compliance in any individual session unless that
+  session source-loads current `ROLE_RELAY.md`.
 - Deterministic local-worker stub proof is committed and pushed in current
   `main` ancestry, but proves only that a worker-shaped local stub ran under
   explicit boundary and produced persisted reviewable evidence. It is not
@@ -132,8 +150,8 @@ product-wedge selection.
 
 ## Recommended Next Ranked Candidates
 
-1. `DOSSIER_CASE_NEUTRAL_TASK_PACKET_PLAN_DOCS_ONLY`
-2. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
+1. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
+2. `DIRTY_RESIDUE_HYGIENE_DECISION_DOCS_ONLY`
 3. `SOURCE_FILES_REFRESH_EXPORT_AFTER_TASK_READINESS`
 4. `PHASE_387_RESUME_DECISION_DOCS_ONLY`
 
