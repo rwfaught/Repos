@@ -80,10 +80,16 @@ them.
 
 - `DisabledLocalModelProvider` reports that the seam is unavailable.
 - `StaticLocalModelProvider` returns caller-supplied data for tests.
+- `InjectedLocalModelProvider` accepts an injected transport, preserves exact raw output, runs the existing normalizer and validator, and returns bounded evidence plus deterministic-fallback status. It does not select routes or authorize execution.
 - Both explicitly report `execution_performed=False`.
 
-No provider, runtime, network, subprocess, Ollama, WSL, or Qwen import is used
-by this seam.
+The adapter's raw-output reference is a bounded SHA-256 evidence reference; it
+is not a persistence or provider-execution proof. Candidate admission remains
+advisory intake only.
+
+The adapter itself performs no direct runtime, network, subprocess, Ollama,
+WSL, or Qwen invocation; any transport remains explicitly injected and
+outside this dry-run proof boundary.
 
 ## Non-proofs
 

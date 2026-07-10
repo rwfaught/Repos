@@ -84,7 +84,13 @@ class IntakeInterpretation:
     reasoning_validation_reasons: tuple[str, ...] = ()
     reasoning_raw_output: str = ""
     reasoning_output_classification: str = "not_available"
+    reasoning_normalization_classification: str = "not_attempted"
     reasoning_candidate_json: str = ""
+    provider_attempted: bool = False
+    reasoning_fallback_status: str = "not_required"
+    model_candidate_admitted: bool = False
+    authority_quarantined: bool = False
+    reasoning_raw_output_reference: str = ""
 
 
 @dataclass(frozen=True)
@@ -180,7 +186,13 @@ def _build_deterministic_intake(
     validation_reasons: tuple[str, ...] = (),
     raw_output: str = "",
     output_classification: str = "not_available",
+    normalization_classification: str = "not_attempted",
     candidate_json: str = "",
+    provider_attempted: bool = False,
+    fallback_status: str = "not_required",
+    candidate_admitted: bool = False,
+    authority_quarantined: bool = False,
+    raw_output_reference: str = "",
     model_reasoning_seam: str = "replace this function with an owner-controlled model-assisted interpreter",
 ) -> IntakeInterpretation:
     capability_task = inferred["capability_task"]
@@ -201,7 +213,13 @@ def _build_deterministic_intake(
         reasoning_validation_reasons=validation_reasons,
         reasoning_raw_output=raw_output,
         reasoning_output_classification=output_classification,
+        reasoning_normalization_classification=normalization_classification,
         reasoning_candidate_json=candidate_json,
+        provider_attempted=provider_attempted,
+        reasoning_fallback_status=fallback_status,
+        model_candidate_admitted=candidate_admitted,
+        authority_quarantined=authority_quarantined,
+        reasoning_raw_output_reference=raw_output_reference,
     )
 
 
@@ -215,7 +233,12 @@ def _deterministic_fallback_after_reasoning(
     validation_reasons: tuple[str, ...],
     raw_output: str = "",
     output_classification: str = "not_available",
+    normalization_classification: str = "not_attempted",
     candidate_json: str = "",
+    provider_attempted: bool = True,
+    fallback_status: str = "deterministic_fallback",
+    authority_quarantined: bool = False,
+    raw_output_reference: str = "",
 ) -> IntakeInterpretation:
     return _build_deterministic_intake(
         prompt,
@@ -228,7 +251,12 @@ def _deterministic_fallback_after_reasoning(
         validation_reasons=validation_reasons,
         raw_output=raw_output,
         output_classification=output_classification,
+        normalization_classification=normalization_classification,
         candidate_json=candidate_json,
+        provider_attempted=provider_attempted,
+        fallback_status=fallback_status,
+        authority_quarantined=authority_quarantined,
+        raw_output_reference=raw_output_reference,
         model_reasoning_seam=(
             "local-model interpretation was unavailable or quarantined; "
             "deterministic intake fallback remains authoritative"
@@ -269,6 +297,7 @@ def interpret_operator_prompt(
             provider_key=provider_key,
             validation_status="rejected",
             validation_reasons=("provider_call_failed",),
+            provider_attempted=True,
         )
 
     if not isinstance(provider_result, ProviderInterpretationResult):
@@ -279,6 +308,7 @@ def interpret_operator_prompt(
             provider_key=provider_key,
             validation_status="rejected",
             validation_reasons=("provider_result_shape_invalid",),
+            provider_attempted=True,
         )
 
     provider_status = provider_result.status or "unknown_status"
@@ -294,9 +324,16 @@ def interpret_operator_prompt(
             validation_reasons=("provider_execution_flag_must_be_false",),
             raw_output=raw_output or "",
             output_classification="rejected_authority_or_execution_claim" if raw_output is not None else "not_available",
+            normalization_classification=(provider_result.normalization_classification
+                                          if provider_result.normalization_classification != "not_attempted"
+                                          else "not_available"),
+            provider_attempted=True,
+            raw_output_reference=provider_result.raw_output_reference,
         )
     if raw_output is not None:
-        raw_review = validate_local_model_raw_output(request, raw_output)
+        raw_review = getattr(provider_result, "raw_output_validation", None)
+        if raw_review is None:
+            raw_review = validate_local_model_raw_output(request, raw_output)
         if raw_review.accepted and raw_review.validation and raw_review.validation.interpretation:
             interpretation = raw_review.validation.interpretation
             return IntakeInterpretation(
@@ -318,7 +355,15 @@ def interpret_operator_prompt(
                 reasoning_validation_reasons=raw_review.reasons,
                 reasoning_raw_output=raw_review.raw_output,
                 reasoning_output_classification=raw_review.classification,
+                reasoning_normalization_classification=(provider_result.normalization_classification
+                                                        if provider_result.normalization_classification != "not_attempted"
+                                                        else raw_review.classification),
                 reasoning_candidate_json=raw_review.candidate_json or "",
+                provider_attempted=True,
+                reasoning_fallback_status=provider_result.fallback_status,
+                model_candidate_admitted=True,
+                authority_quarantined=provider_result.authority_quarantined,
+                reasoning_raw_output_reference=provider_result.raw_output_reference,
             )
         validation_status = raw_review.validation.status if raw_review.validation else raw_review.classification
         return _deterministic_fallback_after_reasoning(
@@ -330,7 +375,14 @@ def interpret_operator_prompt(
             validation_reasons=raw_review.reasons,
             raw_output=raw_review.raw_output,
             output_classification=raw_review.classification,
+            normalization_classification=(provider_result.normalization_classification
+                                          if provider_result.normalization_classification != "not_attempted"
+                                          else raw_review.classification),
             candidate_json=raw_review.candidate_json or "",
+            provider_attempted=True,
+            fallback_status=provider_result.fallback_status,
+            authority_quarantined=provider_result.authority_quarantined,
+            raw_output_reference=provider_result.raw_output_reference,
         )
     if provider_result.response is None:
         return _deterministic_fallback_after_reasoning(
@@ -364,6 +416,8 @@ def interpret_operator_prompt(
             reasoning_validation_status=validation.status,
             reasoning_validation_reasons=validation.reasons,
             reasoning_output_classification="structured_payload",
+            provider_attempted=True,
+            model_candidate_admitted=True,
         )
 
     return _deterministic_fallback_after_reasoning(
@@ -374,6 +428,9 @@ def interpret_operator_prompt(
         validation_status=validation.status,
         validation_reasons=validation.reasons,
         output_classification="structured_payload",
+        provider_attempted=True,
+        fallback_status=provider_result.fallback_status,
+        raw_output_reference=provider_result.raw_output_reference,
     )
 
 
@@ -567,8 +624,14 @@ def build_operator_review_packet(
         "reasoning_validation_status": intake.reasoning_validation_status,
         "reasoning_validation_reasons": list(intake.reasoning_validation_reasons),
         "reasoning_output_classification": intake.reasoning_output_classification,
+        "normalization_classification": intake.reasoning_normalization_classification,
         "raw_output_preserved": bool(intake.reasoning_raw_output),
         "candidate_json_extracted": bool(intake.reasoning_candidate_json),
+        "provider_attempted": intake.provider_attempted,
+        "raw_output_reference": intake.reasoning_raw_output_reference,
+        "fallback_status": intake.reasoning_fallback_status,
+        "model_candidate_admitted": intake.model_candidate_admitted,
+        "authority_quarantined": intake.authority_quarantined,
         "recommended_route": route.route_name,
         "handoff_status": handoff.handoff_status,
         "dispatched": handoff.dispatched,
@@ -712,6 +775,10 @@ def render_operator_review_markdown(loop: dict[str, Any]) -> str:
         f"Raw-output classification: `{review['reasoning_output_classification']}`",
         f"Raw output preserved: `{review['raw_output_preserved']}`",
         f"Candidate JSON extracted: `{review['candidate_json_extracted']}`",
+        f"Provider attempted: `{review['provider_attempted']}`",
+        f"Fallback status: `{review['fallback_status']}`",
+        f"Model candidate admitted: `{review['model_candidate_admitted']}`",
+        f"Authority-shaped candidate quarantined: `{review['authority_quarantined']}`",
         f"Validation reasons: {', '.join(review['reasoning_validation_reasons']) or 'none'}",
         "Model interpretation is candidate intake data only; deterministic policy selects the route and no model output authorizes execution.",
         "",

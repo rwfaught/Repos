@@ -2,6 +2,7 @@ import json
 import unittest
 
 from orchestrator.local_model_provider_stub import DisabledLocalModelProvider, StaticLocalModelProvider
+from orchestrator.local_model_provider_adapter import InjectedLocalModelProvider
 from orchestrator.coordinator_agent_loop import (
     CapabilityRoute,
     OperatorPrompt,
@@ -109,6 +110,31 @@ class CoordinatorAgentLoopTests(unittest.TestCase):
         self.assertEqual(intake["reasoning_output_classification"], "extracted_embedded_json")
         self.assertEqual(intake["reasoning_raw_output"], raw)
         self.assertTrue(loop["operator_review_packet"]["raw_output_preserved"])
+
+    def test_injected_provider_evidence_is_advisory_and_route_remains_deterministic(self):
+        objective = "Classify this fixed status list into three labels"
+        raw = "<think>\n\n</think>\n" + json.dumps(model_response_for(objective)) + " [end of text]"
+        loop = run_dry_coordinator_loop(objective, reasoning_provider=InjectedLocalModelProvider(lambda request: raw))
+        review = loop["operator_review_packet"]
+        self.assertTrue(review["provider_attempted"])
+        self.assertTrue(review["model_candidate_admitted"])
+        self.assertEqual(review["fallback_status"], "not_required")
+        self.assertTrue(review["raw_output_reference"].startswith("sha256:"))
+        self.assertEqual(loop["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertFalse(loop["coordinator_plan"]["execution_authorized"])
+        self.assertFalse(loop["worker_handoff"]["dispatched"])
+        self.assertFalse(loop["execution_posture"]["provider_execution"])
+
+    def test_injected_transport_failure_preserves_deterministic_fallback(self):
+        objective = "Classify this fixed status list into three labels"
+        def failing(request):
+            raise RuntimeError("down")
+        loop = run_dry_coordinator_loop(objective, reasoning_provider=InjectedLocalModelProvider(failing))
+        intake = loop["intake_interpretation"]
+        self.assertEqual(intake["reasoning_provider_status"], "transport_exception")
+        self.assertEqual(intake["reasoning_fallback_status"], "deterministic_fallback")
+        self.assertEqual(loop["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertFalse(loop["worker_handoff"]["dispatched"])
 
     def test_ambiguous_raw_wrapper_falls_back_without_authority(self):
         import json

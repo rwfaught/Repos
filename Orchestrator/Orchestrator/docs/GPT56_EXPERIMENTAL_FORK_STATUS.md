@@ -13,8 +13,8 @@ this fork sequence at `a882bb960f9686f62bd316276716fe2047141f52`.
 ## Current fork identity
 
 - Branch: `experiment/gpt56-local-ai-consulting-wedge`
-- HEAD after the focused normalization fix:
-  `041fc53`
+- HEAD before the bounded provider integration campaign:
+  `7de018c`
 - Fork scope: GPT-5.6/Luna local-model reasoning and the bounded local-AI
   consulting/dossier-case proving history.
 - Product posture: no first product wedge selected; Phase 387 remains parked.
@@ -119,6 +119,18 @@ raw shape as an accepted embedded JSON candidate.
 - The focused tests also retain coverage for prose, multiple candidates,
   malformed JSON, authority-shaped output, and wrapper-looking text inside
   JSON strings.
+
+## Bounded provider integration campaign
+
+The fork now contains an injected-transport local-provider adapter and dry-run
+coordinator readback for advisory candidate evidence. The adapter preserves
+raw output, exposes normalization and validation classifications, quarantines
+authority-shaped fields, and records deterministic fallback posture. The
+coordinator continues to own routing, planning, approval posture, and handoff;
+the worker handoff remains `prepared_not_dispatched`.
+
+This is source/test proof only. No provider, model, runtime, network, WSL,
+Ollama, worker, or production execution occurred.
 
 ## Open threads
 

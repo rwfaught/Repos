@@ -17,6 +17,14 @@ class ProviderInterpretationResult:
     detail: str = ""
     execution_performed: bool = False
     raw_output: str | None = None
+    normalization_classification: str = "not_attempted"
+    validation_classification: str = "not_attempted"
+    validation_reasons: tuple[str, ...] = ()
+    fallback_status: str = "not_required"
+    candidate_admitted: bool = False
+    authority_quarantined: bool = False
+    raw_output_reference: str = ""
+    raw_output_validation: Any = None
 
 
 class LocalModelReasoningProvider(Protocol):
