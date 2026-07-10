@@ -14,7 +14,7 @@ this fork sequence at `a882bb960f9686f62bd316276716fe2047141f52`.
 
 - Branch: `experiment/gpt56-local-ai-consulting-wedge`
 - HEAD at this documentation boundary:
-  `e851f906c7622c8d684f786777d6e301eba056ee`
+  `9cd460eae123819b929c0fb3a10243ef366ed971`
 - Fork scope: GPT-5.6/Luna local-model reasoning and the bounded local-AI
   consulting/dossier-case proving history.
 - Product posture: no first product wedge selected; Phase 387 remains parked.
@@ -74,17 +74,49 @@ did not match the known-good prior shape and was conservatively rejected.
 The Relay failure and its useful evidence must remain visible in future
 handoffs.
 
+### `GPT56_LOCAL_QWEN_NORMALIZATION_KNOWN_GOOD_SHAPE_EVIDENCE_READONLY`
+
+- Disposition: source-level evidence found a current non-acceptance.
+- Experimental branch and HEAD were confirmed at
+  `9cd460eae123819b929c0fb3a10243ef366ed971`.
+- The exact prior known-good raw shape was tested against the deterministic
+  normalizer:
+
+```text
+<think>
+
+</think>
+
+{"interpretation_candidate":[{"status":"docs loaded","label":"ready"},{"status":"runtime identity unknown","label":"blocked"},{"status":"model output malformed","label":"needs_review"}]} [end of text]
+```
+
+- Normalization classification observed:
+  `quarantined_ambiguous_output`.
+- Reason observed: `unclassified_prefix_artifact`.
+- The JSON object itself was extracted as a candidate, but the multiline empty
+  `<think>` wrapper was not accepted by the current wrapper whitelist.
+- Contract validation was not attempted by `validate_local_model_raw_output`
+  because normalization did not produce `strict_json` or
+  `extracted_embedded_json`.
+
+This does not prove the prior llama.cpp TQ3 smoke was invalid. It proves the
+current fork normalizer at `9cd460e` does not accept the exact recorded
+known-good raw shape as an accepted embedded JSON candidate.
+
 ## Open threads
 
-1. Establish one clean normalization evidence boundary using either the exact
+1. Decide whether to broaden the wrapper whitelist to accept multiline empty
+   `<think>` wrappers such as `<think>\n\n</think>`, then prove the behavior
+   with a focused deterministic source/test boundary.
+2. Establish one clean normalization evidence boundary using either the exact
    known-good prior raw-output shape or a fresh, tightly bounded
-   `llama-completion -no-cnv` output against `e851f90` normalization.
-2. Keep the next evidence command minimal and contract-focused; do not broaden
+   `llama-completion -no-cnv` output against the post-fix normalization.
+3. Keep the next evidence command minimal and contract-focused; do not broaden
    into rediscovery, provider integration, coordinator looping, or product
    evaluation.
-3. Reconcile any future fork evidence with current repo docs and live git
+4. Reconcile any future fork evidence with current repo docs and live git
    state before CTO/coordinator review.
-4. Preserve the separation between experimental evidence and authoritative-main
+5. Preserve the separation between experimental evidence and authoritative-main
    ratification before any promotion or merge decision.
 
 ## Explicit non-proofs
@@ -117,10 +149,10 @@ docs-only boundary.
 
 ## Recommended next boundaries
 
-1. `GPT56_LOCAL_QWEN_NORMALIZATION_KNOWN_GOOD_SHAPE_EVIDENCE_READONLY` —
-   replay the exact known-good raw shape through the existing normalizer and
-   report normalization plus contract-validation results, without changing
-   source or tests.
+1. `GPT56_LOCAL_QWEN_NORMALIZATION_MULTILINE_EMPTY_THINK_FIX_SOURCE_TEST` —
+   decide whether the wrapper contract should accept multiline empty
+   `<think>` wrappers, then make the smallest source/test/doc update if
+   authorized.
 2. If replay is unavailable, a separately authorized minimal
    `llama-completion -no-cnv` evidence boundary may capture one fresh raw
    artifact and pass it to the normalizer. It must report raw-shape limits and

@@ -5,6 +5,7 @@ from orchestrator.local_model_reasoning_contract import (
     CONTRACT_VERSION,
     MIN_ACCEPTED_CONFIDENCE,
     build_local_model_interpretation_request,
+    normalize_local_model_output,
     validate_local_model_raw_output,
     validate_local_model_interpretation,
 )
@@ -123,6 +124,35 @@ class LocalModelReasoningContractTests(unittest.TestCase):
         self.assertEqual(result.classification, "extracted_embedded_json")
         self.assertEqual(result.raw_output, raw)
         self.assertEqual(result.candidate_json, candidate)
+
+    def test_known_good_qwen_smoke_shape_is_quarantined_before_contract_validation(self):
+        candidate = (
+            '{"interpretation_candidate":[{"status":"docs loaded","label":"ready"},'
+            '{"status":"runtime identity unknown","label":"blocked"},'
+            '{"status":"model output malformed","label":"needs_review"}]}'
+        )
+        raw = f"<think>\n\n</think>\n\n{candidate} [end of text]"
+
+        normalization = normalize_local_model_output(raw)
+        validation_result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertEqual(normalization.classification, "quarantined_ambiguous_output")
+        self.assertEqual(normalization.raw_output, raw)
+        self.assertEqual(normalization.candidate_json, candidate)
+        self.assertEqual(
+            normalization.parsed_candidate,
+            {
+                "interpretation_candidate": [
+                    {"status": "docs loaded", "label": "ready"},
+                    {"status": "runtime identity unknown", "label": "blocked"},
+                    {"status": "model output malformed", "label": "needs_review"},
+                ]
+            },
+        )
+        self.assertIn("unclassified_prefix_artifact", normalization.reasons)
+        self.assertEqual(validation_result.classification, "quarantined_ambiguous_output")
+        self.assertIsNone(validation_result.validation)
+        self.assertIn("unclassified_prefix_artifact", validation_result.reasons)
 
     def test_unclassified_prose_before_candidate_is_quarantined(self):
         raw = "Here is the interpretation:\n" + json.dumps(valid_payload(self.request))
