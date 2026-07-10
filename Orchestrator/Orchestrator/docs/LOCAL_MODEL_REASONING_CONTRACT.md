@@ -54,8 +54,10 @@ choose the route directly.
 
 `normalize_local_model_output()` preserves the exact raw text and extracts at
 most one JSON object. Strict JSON is classified as `strict_json`. The only
-embedded wrapper artifacts currently allowed are an empty `<think></think>`
-prefix and `[end of text]` suffix, which produce `extracted_embedded_json`.
+embedded wrapper artifacts currently allowed are a whitespace-only
+`<think>...</think>` prefix and `[end of text]` suffix, which produce
+`extracted_embedded_json`. Non-empty think content remains unclassified and is
+quarantined.
 
 The normalizer reports these explicit states:
 

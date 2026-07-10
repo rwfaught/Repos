@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import asdict, dataclass
 from typing import Any, Mapping
 
@@ -69,8 +70,9 @@ _AUTHORITY_FIELDS = frozenset({
     "production_readiness", "product_wedge", "route", "route_name",
     "worker", "worker_type", "worker_dispatch", "provider_execution",
 })
-_ALLOWED_WRAPPER_PREFIX = "<think></think>"
+_ALLOWED_WRAPPER_PREFIX_REASON = "whitespace_only_empty_think_wrapper"
 _ALLOWED_WRAPPER_SUFFIX = "[end of text]"
+_EMPTY_THINK_WRAPPER_PATTERN = re.compile(r"<think>\s*</think>")
 
 
 @dataclass(frozen=True)
@@ -322,9 +324,9 @@ def _normalization(
 def normalize_local_model_output(raw_output: str) -> LocalModelOutputNormalization:
     """Classify raw text and extract at most one contract candidate.
 
-    Only an empty ``<think></think>`` prefix and ``[end of text]`` suffix are
-    accepted as wrapper artifacts. All other prose or wrapper text is kept in
-    the evidence and causes quarantine rather than silent stripping.
+    Only a whitespace-only ``<think>...</think>`` prefix and ``[end of text]``
+    suffix are accepted as wrapper artifacts. All other prose or wrapper text
+    is kept in the evidence and causes quarantine rather than silent stripping.
     """
     if not isinstance(raw_output, str) or not raw_output.strip():
         return _normalization(
@@ -378,7 +380,7 @@ def normalize_local_model_output(raw_output: str) -> LocalModelOutputNormalizati
 
     prefix = raw_output[:first_start].strip()
     suffix = raw_output[first_end:].strip()
-    prefix_allowed = prefix in {"", _ALLOWED_WRAPPER_PREFIX}
+    prefix_allowed = prefix == "" or _EMPTY_THINK_WRAPPER_PATTERN.fullmatch(prefix) is not None
     suffix_allowed = suffix in {"", _ALLOWED_WRAPPER_SUFFIX}
     if not prefix_allowed or not suffix_allowed:
         reasons = []
@@ -401,7 +403,7 @@ def normalize_local_model_output(raw_output: str) -> LocalModelOutputNormalizati
         first_candidate,
         reasons=tuple(
             artifact for artifact in (
-                _ALLOWED_WRAPPER_PREFIX if prefix else "",
+                _ALLOWED_WRAPPER_PREFIX_REASON if prefix else "",
                 _ALLOWED_WRAPPER_SUFFIX if suffix else "",
             ) if artifact
         ),

@@ -13,8 +13,8 @@ this fork sequence at `a882bb960f9686f62bd316276716fe2047141f52`.
 ## Current fork identity
 
 - Branch: `experiment/gpt56-local-ai-consulting-wedge`
-- HEAD at this documentation boundary:
-  `9cd460eae123819b929c0fb3a10243ef366ed971`
+- HEAD after the focused normalization fix:
+  `041fc53`
 - Fork scope: GPT-5.6/Luna local-model reasoning and the bounded local-AI
   consulting/dossier-case proving history.
 - Product posture: no first product wedge selected; Phase 387 remains parked.
@@ -99,19 +99,37 @@ handoffs.
   because normalization did not produce `strict_json` or
   `extracted_embedded_json`.
 
-This does not prove the prior llama.cpp TQ3 smoke was invalid. It proves the
-current fork normalizer at `9cd460e` does not accept the exact recorded
-known-good raw shape as an accepted embedded JSON candidate.
+This did not prove the prior llama.cpp TQ3 smoke was invalid. It showed that
+the fork normalizer at `9cd460e` did not accept the exact recorded known-good
+raw shape as an accepted embedded JSON candidate.
+
+### `GPT55_LOCAL_QWEN_NORMALIZATION_MULTILINE_EMPTY_THINK_FIX_SOURCE_TEST`
+
+- Disposition: focused source/test fix accepted the exact recorded wrapper
+  shape at the normalizer boundary.
+- The normalizer now accepts only `<think>...</think>` prefixes whose contents
+  are whitespace-only; the existing `[end of text]` suffix remains the only
+  approved suffix artifact.
+- The exact known-good Qwen shape now classifies as
+  `extracted_embedded_json`, preserving the raw output and extracted JSON.
+- A contract-valid payload using a multiline whitespace-only wrapper passes
+  the existing local-model reasoning validator.
+- A non-empty `<think>...</think>` wrapper remains
+  `quarantined_ambiguous_output` with `unclassified_prefix_artifact`.
+- The focused tests also retain coverage for prose, multiple candidates,
+  malformed JSON, authority-shaped output, and wrapper-looking text inside
+  JSON strings.
 
 ## Open threads
 
-1. Decide whether to broaden the wrapper whitelist to accept multiline empty
-   `<think>` wrappers such as `<think>\n\n</think>`, then prove the behavior
-   with a focused deterministic source/test boundary.
-2. Establish one clean normalization evidence boundary using either the exact
-   known-good prior raw-output shape or a fresh, tightly bounded
-   `llama-completion -no-cnv` output against the post-fix normalization.
-3. Keep the next evidence command minimal and contract-focused; do not broaden
+1. Establish one clean normalization evidence boundary using the exact
+   known-good prior raw-output shape against the post-fix normalizer, without
+   running a model.
+2. If replay is unavailable, a separately authorized minimal
+   `llama-completion -no-cnv` evidence boundary may capture one fresh raw
+   artifact and pass it to the normalizer. It must report raw-shape limits and
+   must not imply strict JSON-only output.
+3. Keep any next evidence command minimal and contract-focused; do not broaden
    into rediscovery, provider integration, coordinator looping, or product
    evaluation.
 4. Reconcile any future fork evidence with current repo docs and live git
