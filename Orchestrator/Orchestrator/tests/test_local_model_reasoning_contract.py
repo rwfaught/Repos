@@ -6,6 +6,7 @@ from orchestrator.local_model_reasoning_contract import (
     MIN_ACCEPTED_CONFIDENCE,
     build_local_model_interpretation_request,
     normalize_local_model_output,
+    render_local_model_interpretation_prompt,
     validate_local_model_raw_output,
     validate_local_model_interpretation,
 )
@@ -53,6 +54,41 @@ class LocalModelReasoningContractTests(unittest.TestCase):
         self.assertEqual(result.status, "accepted")
         self.assertEqual(result.interpretation.confidence, 0.91)
         self.assertEqual(result.interpretation.capability_task["complexity"], "simple")
+
+    def test_runtime_prompt_schema_matches_validator_response_schema(self):
+        prompt = render_local_model_interpretation_prompt(self.request)
+        example = json.loads(prompt[prompt.index("{"):])
+
+        self.assertEqual(set(example), {
+            "contract_version", "request_id", "objective", "normalized_objective",
+            "capability_task", "matched_signals", "confidence", "clarification_needed",
+            "risk_flags", "assumptions",
+        })
+        self.assertNotIn("matched_signals", example["capability_task"])
+        self.assertNotIn("confidence", example["capability_task"])
+        self.assertIn("top-level fields", prompt)
+        self.assertEqual(
+            validate_local_model_interpretation(self.request, example).status,
+            "accepted",
+        )
+
+    def test_prior_live_nested_shape_remains_rejected(self):
+        payload = valid_payload(self.request)
+        for field in ("matched_signals", "confidence", "clarification_needed", "risk_flags", "assumptions"):
+            payload["capability_task"][field] = payload.pop(field)
+
+        result = validate_local_model_interpretation(self.request, payload)
+
+        self.assertFalse(result.accepted)
+        self.assertIn("missing_response_fields:assumptions,clarification_needed,confidence,matched_signals,risk_flags", result.reasons)
+
+    def test_contract_valid_live_shaped_fixture_is_admitted(self):
+        raw = "<think>\n\n</think>\n" + json.dumps(valid_payload(self.request)) + " [end of text]"
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertTrue(result.accepted)
+        self.assertEqual(result.classification, "extracted_embedded_json")
 
     def test_extra_authority_fields_are_rejected(self):
         payload = valid_payload(self.request)

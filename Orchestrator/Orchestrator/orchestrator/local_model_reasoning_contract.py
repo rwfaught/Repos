@@ -147,6 +147,43 @@ def interpretation_request_to_dict(request: LocalModelInterpretationRequest) -> 
     return asdict(request)
 
 
+def render_local_model_interpretation_prompt(request: LocalModelInterpretationRequest) -> str:
+    """Render the canonical advisory response schema for a runtime transport."""
+    example = {
+        "contract_version": request.contract_version,
+        "request_id": request.request_id,
+        "objective": request.objective,
+        "normalized_objective": request.objective.lower(),
+        "capability_task": {
+            "task_id": "task-001",
+            "title": "short capability task title",
+            "objective": request.objective,
+            "complexity": "simple",
+            "code_generation_required": False,
+            "long_context_required": False,
+            "safety_risk": "low",
+            "privacy_sensitivity": "internal",
+            "external_tool_or_api_need": False,
+            "live_runtime_execution_need": False,
+            "tolerance_for_mistakes": "medium",
+            "deterministic_validation_available": True,
+            "local_model_output_reviewable": True,
+        },
+        "matched_signals": {"deterministic": ["brief supporting signal"]},
+        "confidence": 0.91,
+        "clarification_needed": [],
+        "risk_flags": [],
+        "assumptions": [],
+    }
+    return "\n".join((
+        "Return exactly one JSON object and no prose.",
+        "This is advisory intake only. Do not include route, plan, approval, worker selection, dispatch, execution, or production authority.",
+        "The response fields matched_signals, confidence, clarification_needed, risk_flags, and assumptions are top-level fields, not capability_task fields.",
+        "Use this exact response schema:",
+        json.dumps(example, indent=2),
+    ))
+
+
 def _string_list(value: Any, field: str) -> tuple[tuple[str, ...] | None, str | None]:
     if not isinstance(value, (list, tuple)):
         return None, f"{field}_must_be_a_list"

@@ -125,6 +125,24 @@ class CoordinatorAgentLoopTests(unittest.TestCase):
         self.assertFalse(loop["worker_handoff"]["dispatched"])
         self.assertFalse(loop["execution_posture"]["provider_execution"])
 
+    def test_admitted_model_candidate_cannot_control_coordinator_authority(self):
+        objective = "Classify this fixed status list into three labels"
+        raw = json.dumps(model_response_for(objective))
+        loop = run_dry_coordinator_loop(
+            objective,
+            reasoning_provider=InjectedLocalModelProvider(lambda request: raw),
+        )
+
+        self.assertTrue(loop["intake_interpretation"]["model_candidate_admitted"])
+        self.assertEqual(loop["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertFalse(loop["capability_route"]["execution_authorized"])
+        self.assertFalse(loop["coordinator_plan"]["execution_authorized"])
+        self.assertFalse(loop["coordinator_plan"]["handoff_authorized"])
+        self.assertFalse(loop["worker_handoff"]["dispatched"])
+        self.assertFalse(loop["execution_posture"]["model_execution"])
+        self.assertFalse(loop["execution_posture"]["provider_execution"])
+        self.assertFalse(loop["execution_posture"]["worker_dispatch"])
+
     def test_injected_transport_failure_preserves_deterministic_fallback(self):
         objective = "Classify this fixed status list into three labels"
         def failing(request):
