@@ -110,6 +110,12 @@ neutral dossier/case adapter readback. This connects control-flow evidence to
 the neutral substrate without changing that substrate or selecting a product
 wedge. A case bridge is withheld when intake cannot establish a safe objective.
 
+When a future provider returns raw text, the coordinator records the raw output
+and its normalization classification before applying the existing contract.
+Only strict JSON or the explicitly allowed empty-think/end-marker wrapper can
+be accepted. Prose, multiple candidates, malformed JSON, and authority-shaped
+fields remain rejected or quarantined and fall back to deterministic intake.
+
 The report shows intake, plan, route, worker handoff, synthetic dry result,
 review action, coordinator closeout, and explicit non-proofs. For a deterministic
 objective the dry worker result can be accepted as a bounded stub result. Local

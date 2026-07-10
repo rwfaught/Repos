@@ -21,6 +21,7 @@ from orchestrator.local_model_provider_stub import (
 from orchestrator.local_model_reasoning_contract import (
     REASONING_NON_PROOFS,
     build_local_model_interpretation_request,
+    validate_local_model_raw_output,
     validate_local_model_interpretation,
 )
 from orchestrator.objective_route_packet_loop import (
@@ -81,6 +82,9 @@ class IntakeInterpretation:
     reasoning_provider_key: str = "none"
     reasoning_validation_status: str = "not_requested"
     reasoning_validation_reasons: tuple[str, ...] = ()
+    reasoning_raw_output: str = ""
+    reasoning_output_classification: str = "not_available"
+    reasoning_candidate_json: str = ""
 
 
 @dataclass(frozen=True)
@@ -174,6 +178,9 @@ def _build_deterministic_intake(
     provider_key: str = "none",
     validation_status: str = "not_requested",
     validation_reasons: tuple[str, ...] = (),
+    raw_output: str = "",
+    output_classification: str = "not_available",
+    candidate_json: str = "",
     model_reasoning_seam: str = "replace this function with an owner-controlled model-assisted interpreter",
 ) -> IntakeInterpretation:
     capability_task = inferred["capability_task"]
@@ -192,6 +199,9 @@ def _build_deterministic_intake(
         reasoning_provider_key=provider_key,
         reasoning_validation_status=validation_status,
         reasoning_validation_reasons=validation_reasons,
+        reasoning_raw_output=raw_output,
+        reasoning_output_classification=output_classification,
+        reasoning_candidate_json=candidate_json,
     )
 
 
@@ -203,6 +213,9 @@ def _deterministic_fallback_after_reasoning(
     provider_key: str,
     validation_status: str,
     validation_reasons: tuple[str, ...],
+    raw_output: str = "",
+    output_classification: str = "not_available",
+    candidate_json: str = "",
 ) -> IntakeInterpretation:
     return _build_deterministic_intake(
         prompt,
@@ -213,6 +226,9 @@ def _deterministic_fallback_after_reasoning(
         provider_key=provider_key,
         validation_status=validation_status,
         validation_reasons=validation_reasons,
+        raw_output=raw_output,
+        output_classification=output_classification,
+        candidate_json=candidate_json,
         model_reasoning_seam=(
             "local-model interpretation was unavailable or quarantined; "
             "deterministic intake fallback remains authoritative"
@@ -267,6 +283,7 @@ def interpret_operator_prompt(
 
     provider_status = provider_result.status or "unknown_status"
     provider_key = provider_result.provider_key or provider_key
+    raw_output = provider_result.raw_output
     if provider_result.execution_performed:
         return _deterministic_fallback_after_reasoning(
             prompt,
@@ -275,6 +292,45 @@ def interpret_operator_prompt(
             provider_key=provider_key,
             validation_status="rejected",
             validation_reasons=("provider_execution_flag_must_be_false",),
+            raw_output=raw_output or "",
+            output_classification="rejected_authority_or_execution_claim" if raw_output is not None else "not_available",
+        )
+    if raw_output is not None:
+        raw_review = validate_local_model_raw_output(request, raw_output)
+        if raw_review.accepted and raw_review.validation and raw_review.validation.interpretation:
+            interpretation = raw_review.validation.interpretation
+            return IntakeInterpretation(
+                prompt_id=prompt.prompt_id,
+                objective=prompt.objective,
+                interpretation_source="validated_local_model_raw_output",
+                capability_task=interpretation.capability_task,
+                matched_signals=interpretation.matched_signals,
+                confidence=interpretation.confidence,
+                clarification_needed=interpretation.clarification_needed,
+                model_reasoning_seam=(
+                    "validated raw output is candidate intake only; deterministic capability policy remains authoritative"
+                ),
+                model_execution=False,
+                reasoning_mode="validated_model_raw_output",
+                reasoning_provider_status=provider_status,
+                reasoning_provider_key=provider_key,
+                reasoning_validation_status=raw_review.validation.status,
+                reasoning_validation_reasons=raw_review.reasons,
+                reasoning_raw_output=raw_review.raw_output,
+                reasoning_output_classification=raw_review.classification,
+                reasoning_candidate_json=raw_review.candidate_json or "",
+            )
+        validation_status = raw_review.validation.status if raw_review.validation else raw_review.classification
+        return _deterministic_fallback_after_reasoning(
+            prompt,
+            inferred,
+            provider_status=provider_status,
+            provider_key=provider_key,
+            validation_status=validation_status,
+            validation_reasons=raw_review.reasons,
+            raw_output=raw_review.raw_output,
+            output_classification=raw_review.classification,
+            candidate_json=raw_review.candidate_json or "",
         )
     if provider_result.response is None:
         return _deterministic_fallback_after_reasoning(
@@ -307,6 +363,7 @@ def interpret_operator_prompt(
             reasoning_provider_key=provider_key,
             reasoning_validation_status=validation.status,
             reasoning_validation_reasons=validation.reasons,
+            reasoning_output_classification="structured_payload",
         )
 
     return _deterministic_fallback_after_reasoning(
@@ -316,6 +373,7 @@ def interpret_operator_prompt(
         provider_key=provider_key,
         validation_status=validation.status,
         validation_reasons=validation.reasons,
+        output_classification="structured_payload",
     )
 
 
@@ -508,6 +566,9 @@ def build_operator_review_packet(
         "reasoning_provider_key": intake.reasoning_provider_key,
         "reasoning_validation_status": intake.reasoning_validation_status,
         "reasoning_validation_reasons": list(intake.reasoning_validation_reasons),
+        "reasoning_output_classification": intake.reasoning_output_classification,
+        "raw_output_preserved": bool(intake.reasoning_raw_output),
+        "candidate_json_extracted": bool(intake.reasoning_candidate_json),
         "recommended_route": route.route_name,
         "handoff_status": handoff.handoff_status,
         "dispatched": handoff.dispatched,
@@ -596,6 +657,8 @@ def render_dry_coordinator_loop_markdown(loop: dict[str, Any]) -> str:
         f"Reasoning mode: `{intake['reasoning_mode']}`",
         f"Provider status: `{intake['reasoning_provider_status']}`",
         f"Contract validation: `{intake['reasoning_validation_status']}`",
+        f"Raw-output classification: `{intake['reasoning_output_classification']}`",
+        f"Raw output preserved: `{bool(intake['reasoning_raw_output'])}`",
         f"Confidence: `{intake['confidence']}`",
         f"Future model seam: {intake['model_reasoning_seam']}",
         f"Model execution: `{intake['model_execution']}`",
@@ -646,6 +709,9 @@ def render_operator_review_markdown(loop: dict[str, Any]) -> str:
         f"Provider status: `{loop['intake_interpretation']['reasoning_provider_status']}`",
         f"Provider key: `{review['reasoning_provider_key']}`",
         f"Contract validation: `{loop['intake_interpretation']['reasoning_validation_status']}`",
+        f"Raw-output classification: `{review['reasoning_output_classification']}`",
+        f"Raw output preserved: `{review['raw_output_preserved']}`",
+        f"Candidate JSON extracted: `{review['candidate_json_extracted']}`",
         f"Validation reasons: {', '.join(review['reasoning_validation_reasons']) or 'none'}",
         "Model interpretation is candidate intake data only; deterministic policy selects the route and no model output authorizes execution.",
         "",

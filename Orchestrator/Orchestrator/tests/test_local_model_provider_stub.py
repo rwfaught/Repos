@@ -28,6 +28,14 @@ class LocalModelProviderStubTests(unittest.TestCase):
         self.assertFalse(result.execution_performed)
         self.assertIn("no model was invoked", result.detail)
 
+    def test_static_provider_preserves_raw_text_for_normalization(self):
+        raw = "<think></think>{\"candidate\": true}[end of text]"
+        result = StaticLocalModelProvider(raw).interpret(self.request)
+
+        self.assertIsNone(result.response)
+        self.assertEqual(result.raw_output, raw)
+        self.assertFalse(result.execution_performed)
+
 
 if __name__ == "__main__":
     unittest.main()

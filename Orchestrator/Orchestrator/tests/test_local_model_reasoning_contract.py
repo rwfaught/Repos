@@ -1,9 +1,11 @@
+import json
 import unittest
 
 from orchestrator.local_model_reasoning_contract import (
     CONTRACT_VERSION,
     MIN_ACCEPTED_CONFIDENCE,
     build_local_model_interpretation_request,
+    validate_local_model_raw_output,
     validate_local_model_interpretation,
 )
 
@@ -100,6 +102,91 @@ class LocalModelReasoningContractTests(unittest.TestCase):
         self.assertFalse(result.accepted)
         self.assertIn("request_id_mismatch", result.reasons)
         self.assertIn("not local model execution", result.non_proofs)
+
+    def test_strict_json_output_is_accepted_and_preserved(self):
+        raw = json.dumps(valid_payload(self.request))
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertTrue(result.accepted)
+        self.assertEqual(result.classification, "strict_json")
+        self.assertEqual(result.raw_output, raw)
+        self.assertEqual(result.candidate_json, raw)
+
+    def test_empty_think_and_end_marker_are_allowed_wrappers(self):
+        candidate = json.dumps(valid_payload(self.request))
+        raw = f"<think></think>\n{candidate}\n[end of text]"
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertTrue(result.accepted)
+        self.assertEqual(result.classification, "extracted_embedded_json")
+        self.assertEqual(result.raw_output, raw)
+        self.assertEqual(result.candidate_json, candidate)
+
+    def test_unclassified_prose_before_candidate_is_quarantined(self):
+        raw = "Here is the interpretation:\n" + json.dumps(valid_payload(self.request))
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.classification, "quarantined_ambiguous_output")
+        self.assertIn("unclassified_prefix_artifact", result.reasons)
+
+    def test_multiple_json_objects_are_rejected(self):
+        first = json.dumps(valid_payload(self.request))
+        second = json.dumps(valid_payload(self.request))
+
+        result = validate_local_model_raw_output(self.request, first + "\n" + second)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.classification, "rejected_multiple_json_candidates")
+
+    def test_malformed_json_is_rejected(self):
+        result = validate_local_model_raw_output(self.request, "{not valid json}")
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.classification, "rejected_malformed_json")
+
+    def test_authority_and_execution_claims_are_rejected_after_extraction(self):
+        payload = valid_payload(self.request)
+        payload["execution_authorized"] = False
+        raw = "<think></think>" + json.dumps(payload) + "[end of text]"
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.classification, "rejected_authority_or_execution_claim")
+        self.assertIn("authority_or_execution_fields:execution_authorized", result.reasons)
+
+    def test_wrapper_looking_text_inside_json_string_is_not_stripped(self):
+        payload = valid_payload(self.request)
+        payload["assumptions"] = ["literal <think></think> [end of text] text"]
+        raw = json.dumps(payload)
+
+        result = validate_local_model_raw_output(self.request, raw)
+
+        self.assertTrue(result.accepted)
+        self.assertEqual(result.classification, "strict_json")
+        self.assertEqual(result.raw_output, raw)
+
+    def test_low_confidence_and_ambiguity_remain_quarantined_after_extraction(self):
+        low_confidence = valid_payload(self.request)
+        low_confidence["confidence"] = MIN_ACCEPTED_CONFIDENCE - 0.01
+        ambiguous = valid_payload(self.request)
+        ambiguous["clarification_needed"] = ["which input scope applies"]
+
+        low_result = validate_local_model_raw_output(
+            self.request,
+            "<think></think>" + json.dumps(low_confidence) + "[end of text]",
+        )
+        ambiguous_result = validate_local_model_raw_output(
+            self.request,
+            "<think></think>" + json.dumps(ambiguous) + "[end of text]",
+        )
+
+        self.assertEqual(low_result.classification, "quarantined_ambiguous_output")
+        self.assertEqual(ambiguous_result.classification, "quarantined_ambiguous_output")
 
 
 if __name__ == "__main__":

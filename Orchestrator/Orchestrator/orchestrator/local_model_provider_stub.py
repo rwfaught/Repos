@@ -16,6 +16,7 @@ class ProviderInterpretationResult:
     response: Any = None
     detail: str = ""
     execution_performed: bool = False
+    raw_output: str | None = None
 
 
 class LocalModelReasoningProvider(Protocol):
@@ -46,10 +47,13 @@ class StaticLocalModelProvider:
         self._response = deepcopy(response)
 
     def interpret(self, request: LocalModelInterpretationRequest) -> ProviderInterpretationResult:
+        response = None if isinstance(self._response, str) else deepcopy(self._response)
+        raw_output = self._response if isinstance(self._response, str) else None
         return ProviderInterpretationResult(
             provider_key=self.provider_key,
             status="stub_response",
-            response=deepcopy(self._response),
+            response=response,
             detail="Caller-supplied response; no model was invoked.",
             execution_performed=False,
+            raw_output=raw_output,
         )

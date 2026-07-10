@@ -94,6 +94,38 @@ class CoordinatorAgentLoopTests(unittest.TestCase):
         self.assertFalse(loop["execution_posture"]["model_execution"])
         self.assertFalse(loop["execution_posture"]["provider_execution"])
 
+    def test_embedded_raw_model_candidate_is_normalized_and_preserved_in_intake(self):
+        import json
+
+        objective = "Classify this fixed status list into three labels"
+        raw = "<think></think>\n" + json.dumps(model_response_for(objective)) + "\n[end of text]"
+        loop = run_dry_coordinator_loop(
+            objective,
+            reasoning_provider=StaticLocalModelProvider(raw),
+        )
+
+        intake = loop["intake_interpretation"]
+        self.assertEqual(intake["reasoning_mode"], "validated_model_raw_output")
+        self.assertEqual(intake["reasoning_output_classification"], "extracted_embedded_json")
+        self.assertEqual(intake["reasoning_raw_output"], raw)
+        self.assertTrue(loop["operator_review_packet"]["raw_output_preserved"])
+
+    def test_ambiguous_raw_wrapper_falls_back_without_authority(self):
+        import json
+
+        objective = "Classify this fixed status list into three labels"
+        raw = "Here is the answer:\n" + json.dumps(model_response_for(objective))
+        loop = run_dry_coordinator_loop(
+            objective,
+            reasoning_provider=StaticLocalModelProvider(raw),
+        )
+
+        intake = loop["intake_interpretation"]
+        self.assertEqual(intake["reasoning_mode"], "deterministic_fallback")
+        self.assertEqual(intake["reasoning_output_classification"], "quarantined_ambiguous_output")
+        self.assertEqual(loop["capability_route"]["route_name"], "deterministic_code_only")
+        self.assertFalse(loop["execution_posture"]["worker_dispatch"])
+
     def test_disabled_or_malformed_model_reasoning_falls_back_deterministically(self):
         objective = "Classify this fixed status list into three labels"
         disabled = run_dry_coordinator_loop(objective, reasoning_provider=DisabledLocalModelProvider())

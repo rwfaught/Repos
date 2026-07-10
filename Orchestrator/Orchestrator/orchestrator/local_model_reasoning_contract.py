@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import asdict, dataclass
 from typing import Any, Mapping
 
@@ -18,6 +19,21 @@ REASONING_NON_PROOFS = (
     "not coordinator planning",
     "not worker dispatch",
     "not operator approval",
+)
+
+OUTPUT_CLASSIFICATIONS = (
+    "strict_json",
+    "extracted_embedded_json",
+    "rejected_malformed_json",
+    "rejected_multiple_json_candidates",
+    "rejected_no_json_candidate",
+    "rejected_authority_or_execution_claim",
+    "quarantined_ambiguous_output",
+)
+
+OUTPUT_NON_PROOFS = REASONING_NON_PROOFS + (
+    "not raw model text trust",
+    "not raw output normalization proof of model behavior",
 )
 
 _RESPONSE_FIELDS = frozenset({
@@ -47,6 +63,14 @@ _ENUM_VALUES = {
     "tolerance_for_mistakes": {"high", "medium", "low", "zero"},
 }
 _HIGH_RISK_FLAGS = frozenset({"high_consequence", "regulated", "sensitive_data", "legal", "medical", "financial"})
+_AUTHORITY_FIELDS = frozenset({
+    "approval", "approved", "coordinator_plan", "dispatch", "dispatched",
+    "execution_authorized", "execution_performed", "operator_approval",
+    "production_readiness", "product_wedge", "route", "route_name",
+    "worker", "worker_type", "worker_dispatch", "provider_execution",
+})
+_ALLOWED_WRAPPER_PREFIX = "<think></think>"
+_ALLOWED_WRAPPER_SUFFIX = "[end of text]"
 
 
 @dataclass(frozen=True)
@@ -79,6 +103,28 @@ class InterpretationValidation:
     interpretation: StructuredModelInterpretation | None
     reasons: tuple[str, ...]
     non_proofs: tuple[str, ...] = REASONING_NON_PROOFS
+
+
+@dataclass(frozen=True)
+class LocalModelOutputNormalization:
+    classification: str
+    raw_output: str
+    candidate_json: str | None
+    parsed_candidate: dict[str, Any] | None
+    reasons: tuple[str, ...]
+    non_proofs: tuple[str, ...] = OUTPUT_NON_PROOFS
+
+
+@dataclass(frozen=True)
+class LocalModelRawOutputValidation:
+    classification: str
+    raw_output: str
+    candidate_json: str | None
+    parsed_candidate: dict[str, Any] | None
+    validation: InterpretationValidation | None
+    accepted: bool
+    reasons: tuple[str, ...]
+    non_proofs: tuple[str, ...] = OUTPUT_NON_PROOFS
 
 
 def build_local_model_interpretation_request(
@@ -222,3 +268,213 @@ def validate_local_model_interpretation(
         contract_version=payload["contract_version"],
     )
     return InterpretationValidation("accepted", True, interpretation, ())
+
+
+def _object_start_positions(text: str) -> list[int]:
+    """Find object delimiters outside quoted strings without rewriting text."""
+    positions: list[int] = []
+    in_string = False
+    escaped = False
+    for index, character in enumerate(text):
+        if in_string:
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+        elif character == '"':
+            in_string = True
+        elif character == "{":
+            positions.append(index)
+    return positions
+
+
+def _parse_object_candidates(text: str) -> list[tuple[int, int, dict[str, Any]]]:
+    decoder = json.JSONDecoder()
+    candidates: list[tuple[int, int, dict[str, Any]]] = []
+    for position in _object_start_positions(text):
+        try:
+            parsed, end = decoder.raw_decode(text, position)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(parsed, Mapping):
+            candidates.append((position, end, dict(parsed)))
+    return candidates
+
+
+def _normalization(
+    classification: str,
+    raw_output: str,
+    candidate_json: str | None = None,
+    parsed_candidate: dict[str, Any] | None = None,
+    reasons: tuple[str, ...] = (),
+) -> LocalModelOutputNormalization:
+    return LocalModelOutputNormalization(
+        classification=classification,
+        raw_output=raw_output,
+        candidate_json=candidate_json,
+        parsed_candidate=parsed_candidate,
+        reasons=reasons,
+    )
+
+
+def normalize_local_model_output(raw_output: str) -> LocalModelOutputNormalization:
+    """Classify raw text and extract at most one contract candidate.
+
+    Only an empty ``<think></think>`` prefix and ``[end of text]`` suffix are
+    accepted as wrapper artifacts. All other prose or wrapper text is kept in
+    the evidence and causes quarantine rather than silent stripping.
+    """
+    if not isinstance(raw_output, str) or not raw_output.strip():
+        return _normalization(
+            "rejected_no_json_candidate",
+            raw_output if isinstance(raw_output, str) else str(raw_output),
+            reasons=("raw_output_is_empty_or_not_text",),
+        )
+
+    decoder = json.JSONDecoder()
+    stripped = raw_output.strip()
+    try:
+        parsed, end = decoder.raw_decode(stripped)
+    except json.JSONDecodeError:
+        parsed = None
+        end = -1
+    if end == len(stripped) and isinstance(parsed, Mapping):
+        return _normalization("strict_json", raw_output, stripped, dict(parsed))
+    if end == len(stripped) and parsed is not None:
+        return _normalization(
+            "rejected_malformed_json",
+            raw_output,
+            stripped,
+            reasons=("json_object_required",),
+        )
+
+    candidates = _parse_object_candidates(raw_output)
+    if not candidates:
+        if "{" in raw_output or stripped.startswith("["):
+            return _normalization(
+                "rejected_malformed_json",
+                raw_output,
+                reasons=("no_parseable_json_object",),
+            )
+        return _normalization(
+            "rejected_no_json_candidate",
+            raw_output,
+            reasons=("no_json_object_candidate_found",),
+        )
+
+    first_start, first_end, first_candidate = candidates[0]
+    later_candidates = [candidate for candidate in candidates[1:] if candidate[0] >= first_end]
+    candidate_json = raw_output[first_start:first_end]
+    if later_candidates:
+        return _normalization(
+            "rejected_multiple_json_candidates",
+            raw_output,
+            candidate_json,
+            first_candidate,
+            reasons=("more_than_one_top_level_json_object",),
+        )
+
+    prefix = raw_output[:first_start].strip()
+    suffix = raw_output[first_end:].strip()
+    prefix_allowed = prefix in {"", _ALLOWED_WRAPPER_PREFIX}
+    suffix_allowed = suffix in {"", _ALLOWED_WRAPPER_SUFFIX}
+    if not prefix_allowed or not suffix_allowed:
+        reasons = []
+        if not prefix_allowed:
+            reasons.append("unclassified_prefix_artifact")
+        if not suffix_allowed:
+            reasons.append("unclassified_suffix_artifact")
+        return _normalization(
+            "quarantined_ambiguous_output",
+            raw_output,
+            candidate_json,
+            first_candidate,
+            reasons=tuple(reasons),
+        )
+
+    return _normalization(
+        "extracted_embedded_json",
+        raw_output,
+        candidate_json,
+        first_candidate,
+        reasons=tuple(
+            artifact for artifact in (
+                _ALLOWED_WRAPPER_PREFIX if prefix else "",
+                _ALLOWED_WRAPPER_SUFFIX if suffix else "",
+            ) if artifact
+        ),
+    )
+
+
+def _authority_claim_fields(payload: Mapping[str, Any]) -> tuple[str, ...]:
+    claims = set(payload).intersection(_AUTHORITY_FIELDS)
+    capability_task = payload.get("capability_task")
+    if isinstance(capability_task, Mapping):
+        claims.update(f"capability_task.{field}" for field in set(capability_task).intersection(_AUTHORITY_FIELDS))
+    return tuple(sorted(claims))
+
+
+def validate_local_model_raw_output(
+    request: LocalModelInterpretationRequest,
+    raw_output: str,
+) -> LocalModelRawOutputValidation:
+    """Normalize raw text, preserve it, then apply the existing contract validator."""
+    normalization = normalize_local_model_output(raw_output)
+    if (
+        normalization.classification not in {"strict_json", "extracted_embedded_json"}
+        or normalization.parsed_candidate is None
+    ):
+        return LocalModelRawOutputValidation(
+            classification=normalization.classification,
+            raw_output=normalization.raw_output,
+            candidate_json=normalization.candidate_json,
+            parsed_candidate=None,
+            validation=None,
+            accepted=False,
+            reasons=normalization.reasons,
+        )
+
+    validation = validate_local_model_interpretation(request, normalization.parsed_candidate)
+    authority_claims = _authority_claim_fields(normalization.parsed_candidate)
+    if authority_claims:
+        return LocalModelRawOutputValidation(
+            classification="rejected_authority_or_execution_claim",
+            raw_output=normalization.raw_output,
+            candidate_json=normalization.candidate_json,
+            parsed_candidate=normalization.parsed_candidate,
+            validation=validation,
+            accepted=False,
+            reasons=tuple(dict.fromkeys(
+                normalization.reasons
+                + validation.reasons
+                + (f"authority_or_execution_fields:{','.join(authority_claims)}",)
+            )),
+        )
+
+    if validation.accepted:
+        return LocalModelRawOutputValidation(
+            classification=normalization.classification,
+            raw_output=normalization.raw_output,
+            candidate_json=normalization.candidate_json,
+            parsed_candidate=normalization.parsed_candidate,
+            validation=validation,
+            accepted=True,
+            reasons=normalization.reasons,
+        )
+
+    classification = (
+        "quarantined_ambiguous_output"
+        if validation.status == "quarantined"
+        else "rejected_malformed_json"
+    )
+    return LocalModelRawOutputValidation(
+        classification=classification,
+        raw_output=normalization.raw_output,
+        candidate_json=normalization.candidate_json,
+        parsed_candidate=normalization.parsed_candidate,
+        validation=validation,
+        accepted=False,
+        reasons=tuple(dict.fromkeys(normalization.reasons + validation.reasons)),
+    )

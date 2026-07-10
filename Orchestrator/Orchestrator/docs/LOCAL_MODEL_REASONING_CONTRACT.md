@@ -50,6 +50,30 @@ When a validated stub interpretation is accepted, it is passed into the
 existing deterministic `create_capability_route()` policy. The model does not
 choose the route directly.
 
+## Raw-output normalization
+
+`normalize_local_model_output()` preserves the exact raw text and extracts at
+most one JSON object. Strict JSON is classified as `strict_json`. The only
+embedded wrapper artifacts currently allowed are an empty `<think></think>`
+prefix and `[end of text]` suffix, which produce `extracted_embedded_json`.
+
+The normalizer reports these explicit states:
+
+- `strict_json`
+- `extracted_embedded_json`
+- `rejected_malformed_json`
+- `rejected_multiple_json_candidates`
+- `rejected_no_json_candidate`
+- `rejected_authority_or_execution_claim`
+- `quarantined_ambiguous_output`
+
+Unclassified prose or wrapper text is quarantined, not stripped. Multiple
+top-level objects are rejected. Wrapper-looking text inside a quoted JSON
+string is preserved because extraction only considers object delimiters outside
+quoted strings. Extracted candidates still pass through
+`validate_local_model_interpretation()` before coordinator intake can consume
+them.
+
 ## Dry-run provider seam
 
 - `DisabledLocalModelProvider` reports that the seam is unavailable.
