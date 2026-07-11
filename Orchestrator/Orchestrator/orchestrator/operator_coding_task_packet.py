@@ -10,6 +10,12 @@ from orchestrator.current_success_acceptance import record_current_success_resul
 from orchestrator.operator_packet_result_decision import record_packet_result_operator_decision
 from orchestrator.paths import record_path, resolve_declared_project_path, validate_record_id
 from orchestrator.task_schema import FILESYSTEM_MUTATION_EXECUTION_POLICY, Task
+import orchestrator.paths as project_paths
+from orchestrator.trusted_worker_security import (
+    WorkerSecurityError,
+    prepare_trusted_worker_workspace,
+    validate_trust_posture,
+)
 
 
 _REQUIRED_FIELDS = (
@@ -154,6 +160,12 @@ def _validate_packet(packet: Any) -> tuple[dict[str, Any] | None, dict[str, Any]
     if provider_name not in {"local_file", "subprocess_worker"}:
         blocked_conditions.append("unsupported_provider_name")
         details.append("Canonical execution allows only an explicit subprocess_worker; local_file remains legacy-only.")
+    trust_posture = _normalize_text(packet.get("worker_trust_posture"))
+    if provider_name == "subprocess_worker":
+        posture_error = validate_trust_posture(trust_posture)
+        if posture_error:
+            blocked_conditions.append(posture_error)
+            details.append("Canonical subprocess execution requires explicit trusted_local_unsandboxed posture.")
 
     requested_runtime_fields = [
         field_name
@@ -220,6 +232,7 @@ def _validate_packet(packet: Any) -> tuple[dict[str, Any] | None, dict[str, Any]
         "expected_output": expected_output,
         "provider_name": provider_name,
         "execution_policy": execution_policy,
+        "worker_trust_posture": trust_posture,
     }
     return validated, None
 
@@ -268,7 +281,21 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
             "operator_next_action": "provide_explicit_execution_authorization",
         }
 
-    run_manager.ensure_run(validated["run_id"], validated["title"])
+    try:
+        worker_security = prepare_trusted_worker_workspace(
+            project_paths.DATA_DIR,
+            task_id=validated["task_id"],
+            run_id=validated["run_id"],
+            trust_posture=validated["worker_trust_posture"],
+            declared_paths=validated["files_in_scope"],
+        )
+    except WorkerSecurityError as error:
+        return {
+            **_blocked(packet=packet, blocked_conditions=[error.code], detail=str(error)),
+            "authorization": authorization,
+        }
+
+    run_manager.ensure_run(validated["run_id"], validated["title"], worker_security=worker_security)
 
     task = Task(
         id=validated["task_id"],
@@ -289,7 +316,9 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
             "task_id": authorization["task_id"],
             "authorized_scope": list(authorization["authorized_scope"]),
             "operator_provenance": authorization["operator_provenance"],
+            "worker_trust_posture": authorization["worker_trust_posture"],
         },
+        worker_security=worker_security,
     )
 
     run_manager.save_task(task)
@@ -297,7 +326,7 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         run_manager.load_task(task.id),
         provider_name=active_provider_name,
         provider=provider,
-        context={"execution_authorization": authorization},
+        context={"execution_authorization": authorization, "worker_security": worker_security},
     )
     completed = run_manager.load_task(task.id)
     review = review_current_success_task_result({"task_id": task.id})

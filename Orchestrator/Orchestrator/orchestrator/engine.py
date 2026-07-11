@@ -30,6 +30,7 @@ from orchestrator.task_schema import (
     Task,
     normalize_execution_policy,
 )
+from orchestrator.trusted_worker_security import WorkerSecurityError, resolve_workspace_target
 from orchestrator.state import load_state
 from verifiers.base import VerificationCheckResult, VerificationResult
 from verifiers.registry import run_check
@@ -43,6 +44,12 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _resolve_task_target(task: Task, declared_path: str) -> Path:
+    if isinstance(task.worker_security, dict):
+        return resolve_workspace_target(task.worker_security, declared_path)
+    return resolve_declared_project_path(declared_path)
+
+
 def _snapshot_causal_targets(task: Task) -> list[dict]:
     snapshots = []
     seen_targets = set()
@@ -53,7 +60,7 @@ def _snapshot_causal_targets(task: Task) -> list[dict]:
             continue
         seen_targets.add(target)
 
-        resolved_path = resolve_declared_project_path(target)
+        resolved_path = _resolve_task_target(task, target)
         existed_before = resolved_path.is_file()
         snapshots.append(
             {
@@ -137,7 +144,7 @@ def _verify_task_outputs(task: Task) -> VerificationResult:
         for declared_check in task.verification_checks:
             check_name = declared_check["check"]
             target = declared_check["target"]
-            resolved_path = resolve_declared_project_path(target)
+            resolved_path = _resolve_task_target(task, target)
             result = run_check(check_name, str(resolved_path), check_options=declared_check)
             checks.extend(result.checks)
             messages.extend(result.messages)
@@ -161,7 +168,7 @@ def _verify_task_outputs(task: Task) -> VerificationResult:
     overall_passed = True
 
     for file_path in task.files_in_scope:
-        resolved_path = resolve_declared_project_path(file_path)
+        resolved_path = _resolve_task_target(task, file_path)
         result = run_check("file_exists", str(resolved_path))
         checks.extend(result.checks)
         messages.extend(result.messages)
@@ -206,7 +213,10 @@ def _validate_execution_policy_preconditions(task: Task) -> str | None:
         return "Filesystem-mutation tasks require at least one bounded file target."
 
     for declared_path in task.files_in_scope:
-        resolve_declared_project_path(declared_path)
+        try:
+            _resolve_task_target(task, declared_path)
+        except WorkerSecurityError as error:
+            return f"{error.code}: {error}"
     return None
 
 
@@ -256,9 +266,11 @@ def _execute_task(task: Task, provider_name: str = "mock", provider=None, contex
         _snapshot_causal_targets(task) if task.requires_causal_change else []
     )
     dispatch_context = dict(context or {})
-    dispatch_context["allowed_paths"] = [
-        str(resolve_declared_project_path(path)) for path in task.files_in_scope
-    ]
+    try:
+        dispatch_context["allowed_paths"] = [str(_resolve_task_target(task, path)) for path in task.files_in_scope]
+    except WorkerSecurityError as error:
+        _fail_execution_policy_precondition(task, f"{error.code}: {error}")
+        return
     if provider is None and context is None:
         # Preserve the legacy dispatcher call shape for non-canonical callers.
         result = dispatch_task(task, provider_name=provider_name)
@@ -270,6 +282,8 @@ def _execute_task(task: Task, provider_name: str = "mock", provider=None, contex
             context=dispatch_context,
         )
     causal_targets = _complete_causal_target_snapshots(causal_targets_before)
+    if isinstance(result.get("metadata"), dict) and isinstance(result["metadata"].get("worker_security"), dict):
+        task.worker_security = result["metadata"]["worker_security"]
     artifact = create_artifact(task, result)
     task.execution_artifact_id = artifact["artifact_id"]
 

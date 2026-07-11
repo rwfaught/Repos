@@ -170,6 +170,18 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
                 ):
                     add(task_id, "authorization_identity_or_scope_mismatch", authorization_path)
 
+        worker_security = task.get("worker_security") if isinstance(task.get("worker_security"), dict) else {}
+        if task.get("execution_policy") == "filesystem_mutation":
+            if worker_security.get("trust_posture") != "trusted_local_unsandboxed":
+                add(task_id, "missing_or_inconsistent_worker_trust_posture")
+            if not str(worker_security.get("workspace_id", "")).strip() or not str(worker_security.get("workspace_path", "")).strip():
+                add(task_id, "missing_worker_workspace_identity")
+            if worker_security.get("launch_attempted") is True:
+                if not isinstance(worker_security.get("workspace_effect_audit"), dict):
+                    add(task_id, "missing_workspace_effect_audit")
+                if worker_security.get("cleanup_status") not in {"not_required", "confirmed"}:
+                    add(task_id, "incomplete_worker_cleanup_status")
+
         artifact: dict[str, Any] | None = None
         artifact_path = artifacts / f"{artifact_id}.json" if artifact_id else None
         if artifact_id and artifact_path is not None and not artifact_path.exists():

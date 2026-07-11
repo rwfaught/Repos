@@ -27,13 +27,13 @@ def create_run(request_text: str) -> dict:
     return run_data
 
 
-def ensure_run(run_id: str, request_text: str) -> dict:
+def ensure_run(run_id: str, request_text: str, worker_security: dict | None = None) -> dict:
     """Persist an alpha caller-supplied run identity without changing active state."""
     safe_id = validate_record_id(run_id, label="run id")
     path = record_path(RUNS_DIR, safe_id, label="run id")
     if path.exists():
         return load_json_record(path, record_type="run")
-    run_data = {"schema_version": SCHEMA_VERSION, "id": safe_id, "request_text": request_text, "status": "active", "created_at": datetime.now(timezone.utc).isoformat()}
+    run_data = {"schema_version": SCHEMA_VERSION, "id": safe_id, "request_text": request_text, "status": "active", "created_at": datetime.now(timezone.utc).isoformat(), "worker_security": worker_security or {}}
     atomic_write_json(path, run_data)
     return run_data
 

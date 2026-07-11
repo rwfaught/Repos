@@ -99,35 +99,37 @@ def _read_packet_json(path_text: str) -> tuple[dict[str, Any] | None, dict[str, 
     return value, None
 
 
-def _parse_args(argv: Sequence[str]) -> tuple[str, str, str, list[str], dict[str, Any] | None]:
+def _parse_args(argv: Sequence[str]) -> tuple[str, str, str, str, list[str], dict[str, Any] | None]:
     args = tuple(argv)
     if len(args) >= 2 and args[0] == "--packet-json" and args[1]:
         if len(args) == 2:
-            return "legacy_packet_json", args[1], "", [], None
+            return "legacy_packet_json", args[1], "", "", [], None
         data_root = ""
+        trust_posture = ""
         command: list[str] = []
         index = 2
         while index < len(args):
             if args[index] == "--data-root" and index + 1 < len(args): data_root = args[index + 1]; index += 2; continue
+            if args[index] == "--trusted-worker-posture" and index + 1 < len(args): trust_posture = args[index + 1]; index += 2; continue
             if args[index] == "--worker-command" and index + 1 < len(args): command = list(args[index + 1:]); break
-            return "", "", "", [], _blocked(blocked_conditions=["unsupported_cli_arguments"], detail="Use --data-root and --worker-command.")
-        if not data_root or not command:
-            return "", "", "", [], _blocked(blocked_conditions=["isolated_data_root_and_worker_required"], detail="Alpha execution requires --data-root and --worker-command.")
-        return "packet_json", args[1], data_root, command, None
+            return "", "", "", "", [], _blocked(blocked_conditions=["unsupported_cli_arguments"], detail="Use --data-root, --trusted-worker-posture, and --worker-command.")
+        if not data_root or not trust_posture or not command:
+            return "", "", "", "", [], _blocked(blocked_conditions=["isolated_data_root_worker_trust_and_command_required"], detail="Alpha execution requires --data-root, --trusted-worker-posture, and --worker-command.")
+        return "packet_json", args[1], data_root, trust_posture, command, None
     if len(args) == 3 and args[0] == "--reconcile" and args[1] == "--data-root":
-        return "reconcile", "", args[2], [], None
+        return "reconcile", "", args[2], "", [], None
     if len(args) == 1 and args[0] == "--residue-guard":
-        return "residue_guard", "", "", [], None
-    return "", "", "", [], _blocked(
+        return "residue_guard", "", "", "", [], None
+    return "", "", "", "", [], _blocked(
         blocked_conditions=["unsupported_or_missing_cli_arguments"],
-        detail="Usage: python -m orchestrator.operator_coding_task_packet_cli --packet-json <path> --data-root <path> --worker-command <command...> | --reconcile --data-root <path>",
+        detail="Usage: python -m orchestrator.operator_coding_task_packet_cli --packet-json <path> --data-root <path> --trusted-worker-posture trusted_local_unsandboxed --worker-command <command...> | --reconcile --data-root <path>",
         missing_requirements=["packet_json_path"],
     )
 
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
-    mode, packet_path, data_root, command, argument_error = _parse_args(args)
+    mode, packet_path, data_root, trust_posture, command, argument_error = _parse_args(args)
     if argument_error is not None:
         _print_json(argument_error)
         return 2
@@ -149,6 +151,12 @@ def main(argv: list[str] | None = None) -> int:
         result = run_operator_coding_task_packet(packet)
         _print_json(result)
         return 1
+
+    packet_posture = str(packet.get("worker_trust_posture", "")).strip()
+    if packet_posture and packet_posture != trust_posture:
+        _print_json(_blocked(blocked_conditions=["worker_trust_posture_mismatch"], detail="Packet and CLI trust postures must match."))
+        return 1
+    packet = {**packet, "worker_trust_posture": trust_posture}
 
     engine_stdout = StringIO()
     provider = SubprocessWorkerProvider(command)

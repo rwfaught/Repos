@@ -17,6 +17,11 @@ from orchestrator.alpha_runtime import (
 from orchestrator.operator_coding_task_packet import run_operator_coding_task_packet
 from orchestrator.operator_coding_task_packet_cli import main as packet_cli_main
 from orchestrator.task_schema import FILESYSTEM_MUTATION_EXECUTION_POLICY, Task
+from orchestrator.trusted_worker_security import (
+    TRUSTED_LOCAL_UNSANDBOXED,
+    prepare_trusted_worker_workspace,
+    resolve_workspace_target,
+)
 from providers.subprocess_worker_provider import SubprocessWorkerProvider
 
 
@@ -41,6 +46,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             "provider_name": "subprocess_worker",
             "authorization_decision": "authorize_execution",
             "authorization_provenance": "test_operator",
+            "worker_trust_posture": TRUSTED_LOCAL_UNSANDBOXED,
         }
         packet.update(overrides)
         return packet
@@ -70,9 +76,25 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             "decision": "authorized",
             "execution_authorized": True,
             "operator_provenance": "test_operator",
+            "worker_trust_posture": TRUSTED_LOCAL_UNSANDBOXED,
         }
         authorization.update(overrides)
         return authorization
+
+    def _worker_context(self, task, **authorization_overrides):
+        security = prepare_trusted_worker_workspace(
+            self.data_root,
+            task_id=task.id,
+            run_id=task.run_id,
+            trust_posture=TRUSTED_LOCAL_UNSANDBOXED,
+            declared_paths=task.files_in_scope,
+        )
+        task.worker_security = security
+        return {
+            "execution_authorization": self._authorization(task, **authorization_overrides),
+            "worker_security": security,
+            "allowed_paths": [str(resolve_workspace_target(security, path)) for path in task.files_in_scope],
+        }
 
     def _worker(self, body, name="worker.py"):
         path = self.root / name
@@ -107,6 +129,8 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
                     str(packet_path),
                     "--data-root",
                     str(self.data_root),
+                    "--trusted-worker-posture",
+                    TRUSTED_LOCAL_UNSANDBOXED,
                     "--worker-command",
                     *(command or self._valid_worker()),
                 ]
@@ -117,7 +141,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         result = self._run_packet(self._packet("authorized"))
         self.assertTrue(result["execution_succeeded"])
         self.assertEqual(result["final_task_status"], "completed")
-        self.assertTrue((self.root / "outputs" / "authorized.txt").exists())
+        self.assertTrue((self.data_root / "worker_workspaces" / "run_authorized__task_authorized" / "outputs" / "authorized.txt").exists())
 
     def test_missing_authorization_blocks_before_dispatch(self):
         packet = self._packet("missing_auth", authorization_decision="", authorization_provenance="")
@@ -147,12 +171,13 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
 
     def test_subprocess_success_requires_valid_structured_output(self):
         task = self._task("success")
-        target = self.root / "outputs" / "success.txt"
+        context = self._worker_context(task)
+        target = Path(context["allowed_paths"][0])
         provider = SubprocessWorkerProvider(self._valid_worker())
         result = provider.execute(
             "coder",
             task,
-            {"execution_authorization": self._authorization(task), "allowed_paths": [str(target)]},
+            context,
         )
         self.assertEqual(result["status"], "success")
         self.assertEqual(result["metadata"]["worker_result"]["target_path"], str(target))
@@ -161,7 +186,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         task = self._task("nonzero")
         command = self._worker("import sys\nsys.exit(7)\n", "nonzero.py")
         result = SubprocessWorkerProvider(command).execute(
-            "coder", task, {"execution_authorization": self._authorization(task)}
+            "coder", task, self._worker_context(task)
         )
         self.assertEqual(result["error"], "worker_nonzero_exit")
         self.assertEqual(result["metadata"]["exit_code"], 7)
@@ -170,15 +195,15 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         task = self._task("timeout")
         command = self._worker("import time\ntime.sleep(1)\n", "timeout.py")
         result = SubprocessWorkerProvider(command, timeout_seconds=0.01).execute(
-            "coder", task, {"execution_authorization": self._authorization(task)}
+            "coder", task, self._worker_context(task)
         )
-        self.assertTrue(result["error"].startswith("worker_timeout:"))
+        self.assertEqual(result["error"], "worker_timeout")
 
     def test_malformed_worker_json(self):
         task = self._task("malformed")
         command = self._worker("print('not-json')\n", "malformed.py")
         result = SubprocessWorkerProvider(command).execute(
-            "coder", task, {"execution_authorization": self._authorization(task)}
+            "coder", task, self._worker_context(task)
         )
         self.assertEqual(result["error"], "worker_output_not_json")
 
@@ -189,9 +214,9 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             "missing_fields.py",
         )
         result = SubprocessWorkerProvider(command).execute(
-            "coder", task, {"execution_authorization": self._authorization(task)}
+            "coder", task, self._worker_context(task)
         )
-        self.assertEqual(result["error"], "worker_output_contract_invalid")
+        self.assertEqual(result["error"], "worker_result_mismatch")
 
     def test_returned_target_outside_resolved_declared_scope(self):
         task = self._task("outside")
@@ -203,11 +228,11 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             ),
             "outside.py",
         )
-        allowed = self.root / "outputs" / "outside.txt"
+        context = self._worker_context(task)
         result = SubprocessWorkerProvider(command).execute(
             "coder",
             task,
-            {"execution_authorization": self._authorization(task), "allowed_paths": [str(allowed)]},
+            context,
         )
         self.assertEqual(result["error"], "worker_target_outside_declared_scope")
 
@@ -231,6 +256,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         verifier = json.loads(verifier_path.read_text())
         acceptance_path = Path(result["human_review_acceptance"]["acceptance_record_path"])
         acceptance = json.loads(acceptance_path.read_text())
+        run = json.loads((self.data_root / "runs" / "run_linked.json").read_text())
         for record in (task, artifact, verifier, acceptance):
             self.assertEqual(record["schema_version"], SCHEMA_VERSION)
         self.assertEqual(task["run_id"], artifact["run_id"])
@@ -239,6 +265,9 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         self.assertEqual(authorization["authorization_id"], artifact["authorization_id"])
         self.assertEqual(authorization["authorization_id"], verifier["authorization_id"])
         self.assertEqual(authorization["authorization_id"], acceptance["authorization_id"])
+        self.assertEqual(authorization["worker_trust_posture"], TRUSTED_LOCAL_UNSANDBOXED)
+        self.assertEqual(task["worker_security"]["trust_posture"], TRUSTED_LOCAL_UNSANDBOXED)
+        self.assertEqual(run["worker_security"]["workspace_id"], task["worker_security"]["workspace_id"])
 
     def test_human_acceptance_is_persisted(self):
         packet = self._packet(

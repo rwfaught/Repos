@@ -9,6 +9,7 @@ from uuid import uuid4
 
 from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json
 from orchestrator.paths import DATA_DIR, record_path, validate_record_id
+from orchestrator.trusted_worker_security import validate_trust_posture
 
 
 AUTHORIZATION_RECORDS_DIR = DATA_DIR / "execution_authorizations"
@@ -43,6 +44,8 @@ def persist_execution_authorization(packet: dict[str, Any], task_id: str, files_
     constraints = packet.get("authorization_constraints", [])
     if not isinstance(constraints, list):
         constraints = []
+    trust_posture = str(packet.get("worker_trust_posture", "")).strip()
+    posture_error = validate_trust_posture(trust_posture) if packet.get("provider_name") == "subprocess_worker" else None
     record = {
         "schema_version": SCHEMA_VERSION,
         "authorization_id": record_id,
@@ -53,6 +56,8 @@ def persist_execution_authorization(packet: dict[str, Any], task_id: str, files_
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "constraints": [str(item) for item in constraints],
         "denial_reason": "" if approved else (reason or "explicit_authorization_required"),
+        "worker_trust_posture": trust_posture,
+        "worker_trust_posture_valid": posture_error is None,
     }
     path = record_path(AUTHORIZATION_RECORDS_DIR, record_id, label="authorization id")
     atomic_write_json(path, record)

@@ -41,6 +41,7 @@ class Task:
     execution_delegation_status: str | None = None
     source_case_packet_identity: str | None = None
     execution_authorization_provenance: Dict[str, Any] | None = None
+    worker_security: Dict[str, Any] | None = None
 
 
 def normalize_execution_policy(task: Task) -> str:
@@ -150,6 +151,7 @@ def create_task(data: Dict[str, Any]) -> Task:
             if isinstance(data.get("execution_authorization_provenance"), dict)
             else None
         ),
+        worker_security=(dict(data["worker_security"]) if isinstance(data.get("worker_security"), dict) else None),
     )
     normalize_execution_policy(task)
     return task
@@ -184,6 +186,7 @@ def serialize_task(task: Task) -> Dict[str, Any]:
         "execution_delegation_status": task.execution_delegation_status,
         "source_case_packet_identity": task.source_case_packet_identity,
         "execution_authorization_provenance": task.execution_authorization_provenance,
+        "worker_security": task.worker_security,
     }
 
 
