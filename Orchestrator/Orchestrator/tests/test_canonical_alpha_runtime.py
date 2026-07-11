@@ -329,6 +329,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         self.assertEqual(authorization["worker_trust_posture"], TRUSTED_LOCAL_UNSANDBOXED)
         self.assertEqual(task["worker_security"]["trust_posture"], TRUSTED_LOCAL_UNSANDBOXED)
         self.assertEqual(run["worker_security"]["workspace_id"], task["worker_security"]["workspace_id"])
+        self.assertTrue(reconcile_lifecycle(self.data_root)["healthy"])
 
     def test_human_acceptance_is_persisted(self):
         packet = self._packet(
