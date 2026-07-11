@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 from orchestrator.paths import RUNS_DIR, TASKS_DIR, record_path, validate_record_id
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json
 from orchestrator.state import load_state, save_state
 from orchestrator.task_schema import Task, deserialize_task, serialize_task
 
@@ -10,15 +11,15 @@ from orchestrator.task_schema import Task, deserialize_task, serialize_task
 def create_run(request_text: str) -> dict:
     run_id = f"run_{uuid4().hex[:8]}"
     run_data = {
+        "schema_version": SCHEMA_VERSION,
         "id": run_id,
         "request_text": request_text,
         "status": "active",
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    RUNS_DIR.mkdir(parents=True, exist_ok=True)
     run_path = record_path(RUNS_DIR, run_id, label="run id")
-    run_path.write_text(json.dumps(run_data, indent=2), encoding="utf-8")
+    atomic_write_json(run_path, run_data)
 
     state = load_state()
     state["active_run_id"] = run_id
@@ -26,10 +27,20 @@ def create_run(request_text: str) -> dict:
     return run_data
 
 
+def ensure_run(run_id: str, request_text: str) -> dict:
+    """Persist an alpha caller-supplied run identity without changing active state."""
+    safe_id = validate_record_id(run_id, label="run id")
+    path = record_path(RUNS_DIR, safe_id, label="run id")
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    run_data = {"schema_version": SCHEMA_VERSION, "id": safe_id, "request_text": request_text, "status": "active", "created_at": datetime.now(timezone.utc).isoformat()}
+    atomic_write_json(path, run_data)
+    return run_data
+
+
 def save_task(task: Task) -> None:
     task_path = record_path(TASKS_DIR, task.id, label="task id")
-    TASKS_DIR.mkdir(parents=True, exist_ok=True)
-    task_path.write_text(json.dumps(serialize_task(task), indent=2), encoding="utf-8")
+    atomic_write_json(task_path, serialize_task(task))
 
 
 def load_task(task_id: str) -> Task:

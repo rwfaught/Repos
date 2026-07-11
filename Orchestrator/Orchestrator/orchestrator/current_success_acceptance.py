@@ -1,12 +1,12 @@
 ﻿from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
 from typing import Any
 from uuid import uuid4
 
 from orchestrator.current_success_result_review import review_current_success_task_result
 from orchestrator.paths import DATA_DIR
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json
 
 
 ACCEPTANCE_RECORDS_DIR = DATA_DIR / "acceptance_records"
@@ -152,6 +152,7 @@ def record_current_success_result_acceptance(acceptance_input: dict[str, Any]) -
     record_id = f"acceptance_{uuid4().hex[:8]}"
     accepted_at = datetime.now(timezone.utc).isoformat()
     record = {
+        "schema_version": SCHEMA_VERSION,
         "acceptance_record_id": record_id,
         "task_id": task_id,
         "run_id": _normalize_string(review.get("run_id")),
@@ -169,9 +170,8 @@ def record_current_success_result_acceptance(acceptance_input: dict[str, Any]) -
         "no_execution_flags": dict(_NO_EXECUTION_FLAGS),
     }
 
-    ACCEPTANCE_RECORDS_DIR.mkdir(parents=True, exist_ok=True)
     record_path = ACCEPTANCE_RECORDS_DIR / f"{record_id}.json"
-    record_path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    atomic_write_json(record_path, record)
 
     return {
         "current_success_acceptance_record_surface": True,

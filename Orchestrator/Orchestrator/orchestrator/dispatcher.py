@@ -27,7 +27,7 @@ def _get_provider(provider_name: str = "mock") -> BaseProvider | None:
     return None
 
 
-def dispatch_task(task: Task, provider_name: str = "mock", context: dict | None = None) -> dict:
+def dispatch_task(task: Task, provider_name: str = "mock", context: dict | None = None, provider: BaseProvider | None = None) -> dict:
     role_prompt = None
     prompt_loader = ROLE_PROMPT_LOADERS.get(task.role)
     if prompt_loader is not None:
@@ -37,8 +37,8 @@ def dispatch_task(task: Task, provider_name: str = "mock", context: dict | None 
     if role_prompt is not None:
         dispatch_context["role_prompt"] = role_prompt
 
-    provider = _get_provider(provider_name)
-    if provider is None:
+    active_provider = provider or _get_provider(provider_name)
+    if active_provider is None:
         return {
             "status": "error",
             "output": None,
@@ -47,4 +47,4 @@ def dispatch_task(task: Task, provider_name: str = "mock", context: dict | None 
             "error": f"Unknown provider requested: {provider_name}",
         }
 
-    return provider.execute(role=task.role, task=task, context=dispatch_context)
+    return active_provider.execute(role=task.role, task=task, context=dispatch_context)

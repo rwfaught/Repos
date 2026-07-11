@@ -4,7 +4,9 @@ from typing import Any
 
 from orchestrator import engine
 import orchestrator.run_manager as run_manager
+from orchestrator.execution_authorization import persist_execution_authorization
 from orchestrator.current_success_result_review import review_current_success_task_result
+from orchestrator.current_success_acceptance import record_current_success_result_acceptance
 from orchestrator.paths import record_path, resolve_declared_project_path, validate_record_id
 from orchestrator.task_schema import FILESYSTEM_MUTATION_EXECUTION_POLICY, Task
 
@@ -237,11 +239,20 @@ def _operator_next_action_from_review(review: dict[str, Any]) -> str:
     return "; ".join(available) or _normalize_text(review.get("next_action"))
 
 
-def run_operator_coding_task_packet(packet: dict[str, Any]) -> dict[str, Any]:
+def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = None) -> dict[str, Any]:
     validated, blocked = _validate_packet(packet)
     if blocked is not None:
         return blocked
     assert validated is not None
+
+    run_manager.ensure_run(validated["run_id"], validated["title"])
+    authorization = persist_execution_authorization(packet, validated["task_id"], validated["files_in_scope"])
+    if not authorization["execution_authorized"]:
+        return {
+            **_blocked(packet=packet, blocked_conditions=["execution_authorization_denied"], detail=authorization["denial_reason"]),
+            "authorization": authorization,
+            "operator_next_action": "provide_explicit_execution_authorization",
+        }
 
     task = Task(
         id=validated["task_id"],
@@ -259,12 +270,12 @@ def run_operator_coding_task_packet(packet: dict[str, Any]) -> dict[str, Any]:
     )
 
     run_manager.save_task(task)
-    engine.process_task_by_id(
-        run_manager.load_task(task.id),
-        provider_name="local_file",
-    )
+    engine.process_task_by_id(run_manager.load_task(task.id), provider_name=getattr(provider, "provider_name", ""), provider=provider)
     completed = run_manager.load_task(task.id)
     review = review_current_success_task_result({"task_id": task.id})
+    acceptance = {}
+    if isinstance(packet.get("human_review"), dict):
+        acceptance = record_current_success_result_acceptance({"task_id": task.id, **packet["human_review"]})
 
     return {
         "operator_coding_task_packet_surface": True,
@@ -275,10 +286,12 @@ def run_operator_coding_task_packet(packet: dict[str, Any]) -> dict[str, Any]:
         "blocked": False,
         "blocked_conditions": [],
         "missing_requirements": [],
-        "execution_provider": "local_file",
+        "execution_provider": getattr(provider, "provider_name", ""),
+        "authorization": authorization,
         "final_task_status": completed.status,
         "execution_artifact_id": completed.execution_artifact_id or "",
         "current_success_review": review,
+        "human_review_acceptance": acceptance,
         "operator_response_surface": review.get("operator_response_surface"),
         "operator_next_action": _operator_next_action_from_review(review),
         "no_activity_flags": dict(_NO_ACTIVITY_FLAGS),

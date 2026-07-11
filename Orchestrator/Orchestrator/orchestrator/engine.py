@@ -241,7 +241,7 @@ def _fail_execution_policy_precondition(task: Task, reason: str) -> None:
     print(f"Status: {task.status}")
 
 
-def _execute_task(task: Task, provider_name: str = "mock") -> None:
+def _execute_task(task: Task, provider_name: str = "mock", provider=None) -> None:
     precondition_failure = _validate_execution_policy_preconditions(task)
     task.status = "in_progress"
     save_task(task)
@@ -252,7 +252,7 @@ def _execute_task(task: Task, provider_name: str = "mock") -> None:
     causal_targets_before = (
         _snapshot_causal_targets(task) if task.requires_causal_change else []
     )
-    result = dispatch_task(task, provider_name=provider_name)
+    result = dispatch_task(task, provider_name=provider_name, provider=provider, context={"allowed_paths": [str(resolve_declared_project_path(path)) for path in task.files_in_scope]})
     causal_targets = _complete_causal_target_snapshots(causal_targets_before)
     artifact = create_artifact(task, result)
     task.execution_artifact_id = artifact["artifact_id"]
@@ -341,8 +341,8 @@ def _execute_task(task: Task, provider_name: str = "mock") -> None:
     print(f"Status: {task.status}")
 
 
-def process_task_by_id(task: Task, provider_name: str = "mock") -> None:
-    _execute_task(task=task, provider_name=provider_name)
+def process_task_by_id(task: Task, provider_name: str = "mock", provider=None) -> None:
+    _execute_task(task=task, provider_name=provider_name, provider=provider)
 
 
 def process_next_task(provider_name: str = "mock") -> None:

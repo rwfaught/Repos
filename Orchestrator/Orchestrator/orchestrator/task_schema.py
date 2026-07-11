@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
+from orchestrator.alpha_runtime import SCHEMA_VERSION
+
 
 REPORT_ONLY_EXECUTION_POLICY = "report_only"
 FILESYSTEM_MUTATION_EXECUTION_POLICY = "filesystem_mutation"
@@ -79,6 +81,9 @@ def _normalize_verification_checks(raw_checks: Any) -> List[Dict[str, str]] | No
 
 
 def create_task(data: Dict[str, Any]) -> Task:
+    schema_version = int(data.get("schema_version", SCHEMA_VERSION))
+    if schema_version != SCHEMA_VERSION:
+        raise ValueError(f"Unsupported task schema_version: {schema_version}.")
     recommendation_confirmed_raw = data.get("recommendation_confirmed", False)
     recommendation_confirmed = (
         recommendation_confirmed_raw
@@ -153,6 +158,7 @@ def create_task(data: Dict[str, Any]) -> Task:
 def serialize_task(task: Task) -> Dict[str, Any]:
     normalize_execution_policy(task)
     return {
+        "schema_version": SCHEMA_VERSION,
         "id": task.id,
         "run_id": task.run_id,
         "title": task.title,
