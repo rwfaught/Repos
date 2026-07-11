@@ -75,6 +75,15 @@ def _assert_safe_existing_chain(root: Path, parts: tuple[str, ...]) -> Path:
     return current
 
 
+def _expected_parent_paths(declared_paths: list[str]) -> list[str]:
+    parents = {
+        "/".join(_declared_parts(declared_path)[:-1])
+        for declared_path in declared_paths
+        if _declared_parts(declared_path)[:-1]
+    }
+    return sorted(parents, key=lambda value: (len(PurePosixPath(value).parts), value))
+
+
 def prepare_trusted_worker_workspace(
     data_root: str | Path,
     *,
@@ -117,6 +126,7 @@ def prepare_trusted_worker_workspace(
         "workspace_id": f"workspace_{safe_run_id}_{safe_task_id}",
         "workspace_path": str(workspace),
         "declared_targets": mappings,
+        "expected_parent_paths": _expected_parent_paths(declared_paths),
         "launch_attempted": False,
         "cleanup_status": "not_started",
         "containment_claim": "trusted_local_unsandboxed_not_os_sandboxed",
@@ -133,6 +143,41 @@ def resolve_workspace_target(worker_security: dict[str, Any], declared_path: str
     if target.parent != workspace and workspace not in target.parents:
         raise WorkerSecurityError("worker_declared_path_unsafe", "Worker target escapes its workspace.")
     return target
+
+
+def validate_trusted_worker_prelaunch_state(
+    worker_security: dict[str, Any],
+    declared_paths: list[str],
+) -> list[Path]:
+    """Fail closed if setup's required directory state changed before launch."""
+    workspace_text = str(worker_security.get("workspace_path", "")).strip()
+    if not workspace_text:
+        raise WorkerSecurityError("worker_prelaunch_path_state_unsafe", "Worker workspace identity is required before launch.")
+    workspace = Path(workspace_text)
+    expected_parents = _expected_parent_paths(declared_paths)
+    persisted_parents = worker_security.get("expected_parent_paths")
+    if persisted_parents != expected_parents:
+        raise WorkerSecurityError("worker_prelaunch_path_state_unsafe", "Worker parent setup state is missing or inconsistent.")
+    try:
+        if not workspace.is_dir() or _is_reparse_or_symlink(workspace):
+            raise WorkerSecurityError("worker_prelaunch_path_state_unsafe", "Worker workspace is unavailable or unsafe before launch.")
+        resolved_workspace = workspace.resolve(strict=True)
+        for parent_text in expected_parents:
+            parent = workspace.joinpath(*PurePosixPath(parent_text).parts)
+            if not parent.exists() or not parent.is_dir() or _is_reparse_or_symlink(parent):
+                raise WorkerSecurityError(
+                    "worker_prelaunch_path_state_unsafe",
+                    f"Expected worker output parent is unavailable or unsafe: {parent}.",
+                )
+            parent.resolve(strict=True).relative_to(resolved_workspace)
+        targets = [resolve_workspace_target(worker_security, declared_path) for declared_path in declared_paths]
+        for target in targets:
+            target.parent.resolve(strict=True).relative_to(resolved_workspace)
+        return targets
+    except WorkerSecurityError:
+        raise
+    except (OSError, RuntimeError, ValueError) as error:
+        raise WorkerSecurityError("worker_prelaunch_path_state_unsafe", str(error)) from error
 
 
 def inventory_workspace(workspace: str | Path) -> dict[str, dict[str, Any]]:

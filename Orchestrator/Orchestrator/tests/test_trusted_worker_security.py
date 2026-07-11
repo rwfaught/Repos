@@ -146,6 +146,56 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
                 self.assertEqual(result["error"], "worker_symlink_reparse_risk")
                 launched.assert_not_called()
 
+    def test_changed_declared_parent_blocks_real_helper_before_launch(self):
+        command = self._worker(
+            "import pathlib\n"
+            "(pathlib.Path.cwd() / 'launch_marker.txt').write_text('launched', encoding='utf-8')\n",
+            "launch_marker_worker.py",
+        )
+        for suffix, files, replace in (
+            ("removed", ["outputs/removed.txt"], "removed"),
+            ("replaced_file", ["outputs/replaced.txt"], "file"),
+            ("nested_removed", ["nested/parent/removed.txt"], "nested_removed"),
+        ):
+            with self.subTest(suffix=suffix):
+                task = self._task(suffix, files)
+                context = self._context(task)
+                workspace = Path(context["worker_security"]["workspace_path"])
+                self.assertTrue((workspace / files[0]).parent.is_dir())
+                if replace == "nested_removed":
+                    (workspace / "nested" / "parent").rmdir()
+                    (workspace / "nested").rmdir()
+                else:
+                    parent = workspace / "outputs"
+                    parent.rmdir()
+                    if replace == "file":
+                        parent.write_text("replacement", encoding="utf-8")
+                result = SubprocessWorkerProvider(command).execute("coder", task, context)
+                self.assertEqual(result["error"], "worker_prelaunch_path_state_unsafe")
+                self.assertFalse((workspace / "launch_marker.txt").exists())
+
+    def test_reparse_parent_blocks_real_helper_before_launch(self):
+        command = self._worker(
+            "import pathlib\n"
+            "(pathlib.Path.cwd() / 'launch_marker.txt').write_text('launched', encoding='utf-8')\n",
+            "reparse_launch_marker_worker.py",
+        )
+        with tempfile.TemporaryDirectory() as outside_directory:
+            task = self._task("reparse_real", ["nested/output.txt"])
+            context = self._context(task)
+            workspace = Path(context["worker_security"]["workspace_path"])
+            parent = workspace / "nested"
+            parent.rmdir()
+            created = subprocess.run(
+                ["cmd", "/c", "mklink", "/J", str(parent), outside_directory],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            result = SubprocessWorkerProvider(command).execute("coder", task, context)
+            self.assertEqual(result["error"], "worker_symlink_reparse_risk")
+            self.assertFalse((workspace / "launch_marker.txt").exists())
+
     def test_reparse_policy_fails_closed_in_portable_abstraction(self):
         task = self._task("reparse_abstraction")
         context = self._context(task)
@@ -244,6 +294,45 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
         classifications = {item["classification"] for item in result["findings"]}
         self.assertEqual(before, after)
         self.assertTrue({"missing_or_inconsistent_worker_trust_posture", "missing_worker_workspace_identity", "missing_workspace_effect_audit", "incomplete_worker_cleanup_status"}.issubset(classifications))
+
+    def test_reconciliation_detects_cross_record_security_mismatch_read_only(self):
+        task_id, run_id = "task_reconcile_cross", "run_reconcile_cross"
+        artifact_id, authorization_id = "artifact_reconcile_cross", "authorization_reconcile_cross"
+        task_path = self.data_root / "tasks" / f"{task_id}.json"
+        records = {
+            task_path: {
+                "schema_version": SCHEMA_VERSION, "id": task_id, "run_id": run_id, "status": "execution_failed",
+                "execution_policy": FILESYSTEM_MUTATION_EXECUTION_POLICY, "files_in_scope": ["output.txt"],
+                "execution_artifact_id": artifact_id,
+                "execution_authorization_provenance": {"authorization_id": authorization_id, "worker_trust_posture": TRUSTED_LOCAL_UNSANDBOXED},
+                "worker_security": {"trust_posture": TRUSTED_LOCAL_UNSANDBOXED, "workspace_id": "workspace_cross", "workspace_path": "C:/safe/cross", "launch_attempted": True, "workspace_effect_audit": {"passed": True}, "cleanup_status": "confirmed"},
+            },
+            self.data_root / "runs" / f"{run_id}.json": {
+                "schema_version": SCHEMA_VERSION, "id": run_id,
+                "worker_security": {"trust_posture": "mismatched_run_posture", "workspace_id": "workspace_cross", "workspace_path": "C:/safe/cross"},
+            },
+            self.data_root / "execution_authorizations" / f"{authorization_id}.json": {
+                "schema_version": SCHEMA_VERSION, "authorization_id": authorization_id, "task_id": task_id,
+                "authorized_scope": ["output.txt"], "decision": "authorized", "worker_trust_posture": "mismatched_authorization_posture",
+            },
+            self.data_root / "artifacts" / f"{artifact_id}.json": {
+                "schema_version": SCHEMA_VERSION, "artifact_id": artifact_id, "task_id": task_id, "run_id": run_id,
+                "authorization_id": authorization_id,
+                "worker_security": {"trust_posture": "mismatched_artifact_posture", "workspace_id": "workspace_cross", "workspace_path": "C:/safe/cross"},
+            },
+            self.data_root / "verifier_results" / f"{task_id}_20260711T000000Z.json": {
+                "schema_version": SCHEMA_VERSION, "task_id": task_id, "run_id": run_id,
+                "execution_artifact_id": artifact_id, "authorization_id": authorization_id,
+            },
+        }
+        for path, payload in records.items():
+            atomic_write_json(path, payload)
+        before = {path: path.read_bytes() for path in records}
+        result = reconcile_lifecycle(self.data_root)
+        classifications = {item["classification"] for item in result["findings"]}
+        self.assertFalse(result["healthy"])
+        self.assertIn("worker_trust_posture_mismatch", classifications)
+        self.assertEqual(before, {path: path.read_bytes() for path in records})
 
     def test_repository_data_root_is_unchanged_by_disposable_worker_contract_run(self):
         import orchestrator.paths as paths

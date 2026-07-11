@@ -105,6 +105,7 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
 def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
     """Read-only partial-lifecycle and identity-link detector for alpha records."""
     root = Path(data_root).resolve()
+    runs = root / "runs"
     tasks = root / "tasks"
     artifacts = root / "artifacts"
     verifiers = root / "verifier_results"
@@ -155,6 +156,7 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
 
         authorization_link = task.get("execution_authorization_provenance")
         authorization_id = str(authorization_link.get("authorization_id", "")) if isinstance(authorization_link, dict) else ""
+        authorization: dict[str, Any] | None = None
         if not authorization_id:
             add(task_id, "missing_authorization_link")
         else:
@@ -169,6 +171,24 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
                     or authorization.get("decision") != "authorized"
                 ):
                     add(task_id, "authorization_identity_or_scope_mismatch", authorization_path)
+                if (
+                    task.get("execution_policy") == "filesystem_mutation"
+                    and authorization is not None
+                    and str(authorization.get("task_id", "")) != task_id
+                ):
+                    add(task_id, "worker_task_id_mismatch", authorization_path)
+
+        run: dict[str, Any] | None = None
+        run_path = runs / f"{run_id}.json" if run_id else None
+        if task.get("execution_policy") == "filesystem_mutation":
+            if run_path is None:
+                add(task_id, "missing_run_record")
+            elif not run_path.exists():
+                add(task_id, "missing_run_record", run_path)
+            else:
+                run = read(run_path, "run", task_id)
+                if run is not None and str(run.get("id", "")) != run_id:
+                    add(task_id, "worker_run_id_mismatch", run_path)
 
         worker_security = task.get("worker_security") if isinstance(task.get("worker_security"), dict) else {}
         if task.get("execution_policy") == "filesystem_mutation":
@@ -194,6 +214,66 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
                 or str(artifact.get("run_id", "")) != run_id
             ):
                 add(task_id, "artifact_identity_mismatch", artifact_path)
+            if artifact is not None and task.get("execution_policy") == "filesystem_mutation":
+                if str(artifact.get("artifact_id", "")) != artifact_id:
+                    add(task_id, "worker_artifact_linkage_mismatch", artifact_path)
+                if str(artifact.get("task_id", "")) != task_id:
+                    add(task_id, "worker_task_id_mismatch", artifact_path)
+                if str(artifact.get("run_id", "")) != run_id:
+                    add(task_id, "worker_run_id_mismatch", artifact_path)
+
+        if task.get("execution_policy") == "filesystem_mutation":
+            records: list[tuple[str, dict[str, Any] | None, Path | None]] = [
+                ("task", worker_security, task_path),
+                ("run", run.get("worker_security") if isinstance(run, dict) else None, run_path),
+            ]
+            if artifact is not None:
+                records.append(("artifact", artifact.get("worker_security") if isinstance(artifact.get("worker_security"), dict) else None, artifact_path))
+
+            security_values: dict[str, dict[str, str]] = {}
+            for label, security, path in records:
+                if not isinstance(security, dict):
+                    add(task_id, "missing_worker_security_metadata", path)
+                    continue
+                posture = str(security.get("trust_posture", "")).strip()
+                workspace_id = str(security.get("workspace_id", "")).strip()
+                workspace_path = str(security.get("workspace_path", "")).strip()
+                if not posture or not workspace_id or not workspace_path:
+                    add(task_id, "missing_worker_security_metadata", path)
+                    continue
+                security_values[label] = {
+                    "trust_posture": posture,
+                    "workspace_id": workspace_id,
+                    "workspace_path": workspace_path,
+                }
+
+            task_authorization = authorization_link if isinstance(authorization_link, dict) else {}
+            posture_values = [
+                str((authorization or {}).get("worker_trust_posture", "")).strip(),
+                str(task_authorization.get("worker_trust_posture", "")).strip(),
+                *(value["trust_posture"] for value in security_values.values()),
+            ]
+            if not all(posture_values):
+                add(task_id, "missing_worker_security_metadata")
+            elif len(set(posture_values)) != 1:
+                add(task_id, "worker_trust_posture_mismatch")
+
+            workspace_ids = [value["workspace_id"] for value in security_values.values()]
+            workspace_paths = [value["workspace_path"] for value in security_values.values()]
+            if len(workspace_ids) > 1 and len(set(workspace_ids)) != 1:
+                add(task_id, "worker_workspace_id_mismatch")
+            if len(workspace_paths) > 1 and len(set(workspace_paths)) != 1:
+                add(task_id, "worker_workspace_path_mismatch")
+
+            linked_authorization_ids = [authorization_id]
+            if authorization is not None:
+                linked_authorization_ids.append(str(authorization.get("authorization_id", "")).strip())
+            if artifact is not None:
+                linked_authorization_ids.append(str(artifact.get("authorization_id", "")).strip())
+            if not all(linked_authorization_ids):
+                add(task_id, "missing_authorization_link")
+            elif len(set(linked_authorization_ids)) != 1:
+                add(task_id, "worker_authorization_id_mismatch")
 
         verifier_paths = sorted(verifiers.glob(f"{task_id}_*.json")) if verifiers.exists() else []
         if artifact_id and not verifier_paths:
@@ -207,6 +287,20 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
                 or str(verifier.get("execution_artifact_id", "")) != artifact_id
             ):
                 add(task_id, "verifier_identity_mismatch", verifier_path)
+            if verifier is not None and task.get("execution_policy") == "filesystem_mutation":
+                if str(verifier.get("task_id", "")) != task_id:
+                    add(task_id, "worker_task_id_mismatch", verifier_path)
+                if str(verifier.get("run_id", "")) != run_id:
+                    add(task_id, "worker_run_id_mismatch", verifier_path)
+                if str(verifier.get("execution_artifact_id", "")) != artifact_id:
+                    add(task_id, "worker_artifact_linkage_mismatch", verifier_path)
+            if (
+                task.get("execution_policy") == "filesystem_mutation"
+                and verifier is not None
+                and str(verifier.get("authorization_id", "")).strip()
+                and str(verifier.get("authorization_id", "")).strip() != authorization_id
+            ):
+                add(task_id, "worker_authorization_id_mismatch", verifier_path)
 
         disposition_records: list[tuple[Path, str]] = []
         disposition_records.extend((path, "acceptance") for path in acceptances.glob("*.json") if acceptances.exists())
@@ -221,6 +315,17 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
                     or str(disposition.get("execution_artifact_id", "")) != artifact_id
                 ):
                     add(task_id, "human_disposition_identity_mismatch", disposition_path)
+                if task.get("execution_policy") == "filesystem_mutation":
+                    if str(disposition.get("run_id", "")) != run_id:
+                        add(task_id, "worker_run_id_mismatch", disposition_path)
+                    if str(disposition.get("execution_artifact_id", "")) != artifact_id:
+                        add(task_id, "worker_artifact_linkage_mismatch", disposition_path)
+                if (
+                    task.get("execution_policy") == "filesystem_mutation"
+                    and str(disposition.get("authorization_id", "")).strip()
+                    and str(disposition.get("authorization_id", "")).strip() != authorization_id
+                ):
+                    add(task_id, "worker_authorization_id_mismatch", disposition_path)
         if task.get("status") == "completed" and not dispositions:
             add(task_id, "missing_human_disposition")
 

@@ -21,6 +21,7 @@ from orchestrator.trusted_worker_security import (
     audit_workspace_effects,
     inventory_workspace,
     resolve_workspace_target,
+    validate_trusted_worker_prelaunch_state,
     validate_trust_posture,
 )
 from providers.base import BaseProvider, ProviderResult
@@ -120,7 +121,13 @@ class SubprocessWorkerProvider(BaseProvider):
         else:
             popen_args["start_new_session"] = True
         try:
+            final_allowed = validate_trusted_worker_prelaunch_state(worker_security, task.files_in_scope)
+            if [str(path) for path in final_allowed] != [str(path) for path in allowed]:
+                raise WorkerSecurityError("worker_prelaunch_path_state_unsafe", "Worker targets changed before launch.")
             process: subprocess.Popen[str] = subprocess.Popen(self.command, **popen_args)
+        except WorkerSecurityError as error:
+            worker_security.update({"launch_attempted": False, "cleanup_status": "not_started"})
+            return self._error(error.code, {**base_metadata, "worker_security": worker_security})
         except OSError as error:
             worker_security.update({"launch_attempted": False, "cleanup_status": "not_started"})
             return self._error("worker_launch_failed", {**base_metadata, "worker_security": worker_security, "launch_error": error.__class__.__name__})
