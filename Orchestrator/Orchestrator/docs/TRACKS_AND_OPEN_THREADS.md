@@ -420,6 +420,43 @@ fresh artifact proof.
   live router, productized answer/lookup/scheduler lanes, or another routing
   proof gap is ranked highest; otherwise `DEFERRED_VALID`.
 
+#### Experimental Native Online Advisory Adapter — Isolated Fork Durability
+
+- The isolated experimental repository is
+  `C:\Users\accou\Desktop\Repos\Orchestrator_gpt56_experiment`, product path
+  `C:\Users\accou\Desktop\Repos\Orchestrator_gpt56_experiment\Orchestrator\Orchestrator`,
+  branch `experiment/gpt56-local-ai-consulting-wedge`.
+- The local durability commit is
+  `5526034397e3460f5ca886495e6370d2a1ac9c51`, message
+  `Preserve provider-neutral native Codex advisory repair`. Its parent
+  experimental HEAD was `e69dcea7647ff13947451f0843ec187754a05bf4`.
+- The commit contains exactly the five experimental adapter/contract/test/docs
+  files named by the bounded repair boundary. It has no upstream and was not
+  pushed. It is not authoritative-main adoption, product-track advancement,
+  provider selection, or CTO ratification.
+- The durable repair preserves a provider-neutral advisory subsystem with
+  Native Codex as one adapter, explicit provider selection, no production
+  default, no automatic local-to-Codex/Codex-to-local/Codex-to-API fallback,
+  and continued local-provider viability.
+- Large prompt transport moved out of the Windows `wsl.exe` argv and into
+  subprocess stdin. `[WinError 206] The filename or extension is too long` is
+  classified as a command-line-length failure and is not retried as transient.
+- Validation recorded by the Relay correction batch: targeted compile passed;
+  pytest was unavailable; stdlib unittest fallback ran 12 focused tests and
+  passed; targeted `git diff --check` passed; exact staged and committed-file
+  allowlists passed; post-commit staging was empty; protected residue remained
+  unstaged and untouched.
+- Current status: `WATCH`. Live Codex stdin acceptance, repaired frozen-run
+  semantic quality, production readiness, provider-selection authority,
+  authoritative-main adoption, public push durability, product-wedge choice,
+  Phase 387 resumption, general-answer productization, platform/OpenClaw/
+  Hermes/RAG integration, and closure of offline/local advisory model search
+  remain unproven or separately open.
+- Recommended future proof candidates, only if explicitly ranked and
+  authorized: read-only CTO durability review; one bounded live stdin transport
+  proof; unchanged frozen-packet semantic rescoring; and a later explicit
+  provider-selection review. None is authorized by this ledger entry.
+
 ### Local-First Model / Router / Provider
 
 - Ollama/provider surfaces exist but not as the first-pass router.
