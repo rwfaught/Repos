@@ -25,13 +25,36 @@ class ProviderInterpretationResult:
     authority_quarantined: bool = False
     raw_output_reference: str = ""
     raw_output_validation: Any = None
+    provider_type: str = "unknown"
+    requested_model: str = ""
+    resolved_model: str = ""
+    transport_status: str = "not_attempted"
+    authentication_status: str = "not_attempted"
+    provider_metadata: Mapping[str, Any] | None = None
 
 
-class LocalModelReasoningProvider(Protocol):
+class AdvisoryProvider(Protocol):
     provider_key: str
 
     def interpret(self, request: LocalModelInterpretationRequest) -> ProviderInterpretationResult:
         """Return a structured candidate response without granting authority."""
+
+
+# Compatibility name for the pre-existing local-model seam.
+LocalModelReasoningProvider = AdvisoryProvider
+
+
+class AdvisoryProviderRegistry:
+    """Explicit provider selection; construction never chooses a default."""
+
+    def __init__(self, providers: Mapping[str, AdvisoryProvider]):
+        self._providers = dict(providers)
+
+    def select(self, provider_key: str) -> AdvisoryProvider:
+        try:
+            return self._providers[provider_key]
+        except KeyError as exc:
+            raise ValueError(f"unknown advisory provider: {provider_key}") from exc
 
 
 class DisabledLocalModelProvider:

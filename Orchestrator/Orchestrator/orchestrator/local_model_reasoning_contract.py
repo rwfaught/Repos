@@ -179,6 +179,8 @@ def render_local_model_interpretation_prompt(request: LocalModelInterpretationRe
         "Return exactly one JSON object and no prose.",
         "This is advisory intake only. Do not include route, plan, approval, worker selection, dispatch, execution, or production authority.",
         "The response fields matched_signals, confidence, clarification_needed, risk_flags, and assumptions are top-level fields, not capability_task fields.",
+        "matched_signals may contain only these keys: deterministic, local_model, frontier, external, human.",
+        "Do not invent matched_signals keys such as interpretation or hypotheses. Put facts, hypotheses, interpretations, conclusions, and assumptions in their canonical fields; use clarification_needed for missing prerequisites and confidence, risk_flags, and assumptions for uncertainty. Unsupported keys are rejected or quarantined. The result remains advisory evidence only.",
         "Use this exact response schema:",
         json.dumps(example, indent=2),
     ))
