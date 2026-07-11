@@ -2,21 +2,23 @@
 
 Boundary: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`
 
-Status: source-reality orientation from the latest uploaded product repo
-snapshot. Static docs-only map; not runtime proof.
+Status: source-reality orientation for authoritative `main` at
+`1cb2bc8922a6325d90948ebe1a7942ffef784566`. Static docs-only map; the cited
+runtime evidence is accepted from the independent verification boundary.
 
 Marker: `CAPABILITY_REALITY_MAP_REGISTERED=DOCS_ONLY`
 
 ## Executive Summary
 
-The strongest current Orchestrator capability is a bounded coding-task packet
-path: a structured, operator-provided coding task can move through controlled
-packet surfaces, produce or preserve artifacts, run deterministic checks, and
-return operator-visible readbacks and next decisions.
+The strongest current Orchestrator capability is the authoritative canonical
+alpha runtime: a structured, operator-provided coding task can move through one
+explicitly authorized trusted-worker lifecycle, persist linked records and
+artifacts, run deterministic verification, receive human disposition, and
+surface read-only reconciliation.
 
-The project also has an early case-packet substrate and a large governance /
-readback surface. Those are real source surfaces, but they are not the same as a
-finished product experience.
+The project also has an early case-packet substrate, a bounded packet surface,
+and a large governance/readback surface. Those are real source surfaces, but
+they are not the same as a finished product experience.
 
 The system should not currently be described as a general autonomous agent, a
 production caseworker, a game/worldbuilding assistant, a local-model execution
@@ -24,9 +26,40 @@ platform, or an end-to-end user-facing product.
 
 ## Current Strongest Proven Path
 
+### Authoritative Canonical Alpha Runtime
+
+Status: adopted current authority on `main`.
+
+Classification: independently verified deterministic alpha capability; not
+production or semantic AI proof.
+
+Canonical entry point:
+
+`python -m orchestrator.operator_coding_task_packet_cli`
+
+The supported lifecycle is a structured bounded packet, explicit persisted
+authorization, task/run persistence, execution through the
+`trusted_local_unsandboxed` `SubprocessWorkerProvider` seam, structured worker
+result, artifact persistence, deterministic verification, human acceptance or
+rejection, and read-only lifecycle reconciliation.
+
+This proves one coherent alpha execution spine with controlled workspace,
+path-state, timeout-cleanup, workspace-effect, and cross-record security
+checks. It does not prove:
+
+- model-backed coding quality or semantic correctness
+- provider competence or provider selection
+- autonomous AI work or unattended execution
+- OS-level sandboxing or comprehensive outside-workspace containment
+- concurrency safety
+- production readiness or product-market fit
+
+No provider/model or first product wedge has been selected.
+
 ### Bounded Coding-Task Packet Path
 
-Status: strongest current capability.
+Status: retained bounded intake/control surface beneath the canonical alpha
+runtime.
 
 Classification: proven primarily by deterministic tests and source/test/docs
 records in the product repo history; not re-run during this docs-only boundary.

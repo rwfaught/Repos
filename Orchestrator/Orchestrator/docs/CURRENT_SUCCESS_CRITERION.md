@@ -40,9 +40,36 @@ This document provides that bar.
 
 At the current maturity level, a successful end-to-end run is:
 
-a bounded operator-provided coding task executed through the orchestration system such that the run produces a persisted, inspectable, minimally verified result with clear outcome classification and no ambiguity about what happened.
+a bounded operator-provided coding task executed through the canonical alpha
+control surface with explicit authorization and an explicitly selected
+`trusted_local_unsandboxed` worker, producing a persisted linked lifecycle,
+deterministic verification, human disposition, and read-only reconciliation
+with no ambiguity about what happened.
 
 This is a current-state bar, not a future-state aspiration.
+
+## Canonical Alpha Runtime Adopted State
+
+The canonical alpha runtime is authoritative on `main` at
+`1cb2bc8922a6325d90948ebe1a7942ffef784566`.
+
+Its canonical entry point is:
+
+`python -m orchestrator.operator_coding_task_packet_cli`
+
+The adopted lifecycle is:
+
+`structured packet -> explicit authorization -> task/run persistence ->
+trusted local worker -> structured result -> artifact -> deterministic
+verification -> human disposition -> read-only reconciliation`
+
+The prior deterministic local-file and packet-only proofs remain historical
+evidence for narrower stages. The adopted alpha spine now provides one coherent
+operator-facing path, but it does not prove semantic AI quality, provider
+competence, autonomous coding, concurrency safety, production readiness, or
+product-market fit. `trusted_local_unsandboxed` is not an operating-system
+sandbox, and effects outside the controlled workspace are not comprehensively
+observed.
 
 ---
 
@@ -249,20 +276,25 @@ This satisfaction is narrow. It does not prove:
 
 ## Next Success Bar
 
-The next product success bar is:
-
-operator-facing bounded coding-task proof through a stable control surface or
-repeatable boundary packet.
+The next product success bar is useful bounded work through the adopted
+canonical alpha spine, with the provider/runtime capability still selected and
+ranked through a separate explicit boundary.
 
 The next bar should require:
 
+- the canonical operator control surface
 - an operator-provided bounded coding task specification or packet
 - named file scope
 - explicit success criteria
+- explicit persisted execution authorization
+- execution through an explicitly selected trusted worker
 - persisted task state
+- persisted run, authorization, task, artifact, and verifier linkage
 - execution artifact
 - verifier result
 - current-success review/readback
+- human acceptance or rejection when disposition is required
+- read-only lifecycle reconciliation
 - clear operator-visible next action
 - no ambiguity about what was executed, what was only recommended, and what
   remains unproven

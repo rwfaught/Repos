@@ -4,6 +4,25 @@ This is the minimal startup script for The Orchestrator.
 
 Use it at the beginning of a new orchestrator thread.
 
+## Current authoritative runtime snapshot
+
+The canonical alpha runtime is authoritative on `main` at
+`1cb2bc8922a6325d90948ebe1a7942ffef784566`.
+
+Use the canonical operator entry point:
+
+`python -m orchestrator.operator_coding_task_packet_cli`
+
+The current alpha spine requires explicit authorization, an explicitly
+selected `trusted_local_unsandboxed` worker, linked persisted lifecycle state,
+deterministic verification, human disposition, and read-only reconciliation.
+It is alpha capability, not production readiness or OS-level sandboxing.
+
+`main.py` remains a legacy 49-command surface; do not add commands. The Phase
+277 packet CLI runbook is stale and still describes implicit `local_file`
+execution and repository-local persistence. Both migrations remain separate
+future docs boundaries. No provider/model or product wedge has been selected.
+
 ---
 
 ## Startup script

@@ -16,15 +16,16 @@ not replace the full historical ledger.
 ## Last Updated / Source Posture
 
 - Current repo HEAD at edit time:
-  `9766662205a52a95efa63c6cee0b1f83d890bb1d`
-- Generated/edited: `2026-07-10T23:24:00-05:00`
+  `12281643aeb04670a6eadbd4d664a52c74bc725d`
+- Generated/edited: `2026-07-11T12:56:00-05:00`
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
 ## Current Decision Membrane
 
 The active decision membrane is founder/product-wedge control around the
-neutral dossier/case abstraction.
+neutral dossier/case abstraction, with the canonical alpha runtime now
+authoritative on `main`.
 
 Current safely inferable posture:
 
@@ -33,6 +34,23 @@ Current safely inferable posture:
   then choose the first product domain.
 - Phase 387 remains parked unless Roger or CTO/coordinator explicitly
   authorizes it.
+- Canonical alpha runtime adoption is complete on authoritative `main` at
+  `1cb2bc8922a6325d90948ebe1a7942ffef784566`; the recovery/consolidation
+  campaign is complete and the project is now in post-adoption capability
+  ranking posture.
+- Accepted adoption classification:
+  `PASS_CANONICAL_ALPHA_RUNTIME_CONTROLLED_FAST_FORWARD_ADOPTION_COMPLETE`.
+  Accepted project classification:
+  `PASS_CANONICAL_ALPHA_RUNTIME_ADOPTED_TO_AUTHORITATIVE_MAIN`.
+- The canonical entry point is
+  `python -m orchestrator.operator_coding_task_packet_cli`, using explicit
+  authorization, `trusted_local_unsandboxed`, a per-run worker workspace,
+  structured results, deterministic verification, human disposition, and
+  read-only reconciliation. This is alpha capability, not production
+  readiness or an OS sandbox.
+- The adopted worker contract is `trusted_local_unsandboxed`: no provider or
+  model has been selected, untrusted worker execution is unsupported, and
+  effects outside the controlled workspace are not comprehensively observed.
 - The prior dry/report-only MVP milestone commit decision is resolved:
   `d40c6d4 Complete dry MVP milestone` is already in the
   pushed `main` ancestry before `969a13f`. The dry MVP successor/local-worker
@@ -80,9 +98,10 @@ stale and verify against live docs and evidence.
 
 ## Current Success Anchor
 
-`CURRENT_SUCCESS_CRITERION.md` records a bounded coding-task success bar:
-operator-facing bounded coding-task proof through a stable control surface or
-repeatable boundary packet.
+`CURRENT_SUCCESS_CRITERION.md` records the adopted canonical alpha bar: one
+bounded operator task through the canonical control surface with explicit
+authorization, trusted-worker execution, linked persistence, deterministic
+verification, human disposition, and honest reconciliation.
 
 The anchor remains narrow. It does not prove semantic correctness, live
 provider/model behavior, autonomous coding, production readiness,
@@ -93,6 +112,14 @@ product-wedge selection.
 
 | Track | Status | Current posture |
 | --- | --- | --- |
+| Canonical alpha runtime | ADOPTED_CURRENT_AUTHORITY | Authoritative on `main` at `1cb2bc8`; one coherent alpha execution spine is now present beyond disconnected runtime scaffolding. It remains alpha and is not production-ready. |
+| Trusted-worker contract | ADOPTED_WITH_CAVEATS | `trusted_local_unsandboxed` is explicit and independently reverified; workspace, path-state, cleanup, and effect checks are defense in depth, not an OS sandbox. |
+| Legacy `main.py` | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy. Do not add commands; migration is a separate future campaign. |
+| Phase 277 packet CLI runbook | ACTIVE_NEXT_DOCS_CANDIDATE | The runbook is stale: it still describes implicit `local_file` execution and repository-local persistence. Replace it only in a separate docs boundary. |
+| Real provider integration | READY_FOR_RANKING | Rank useful bounded provider-backed work through the canonical worker seam; do not select a provider in this cockpit. |
+| Product-wedge control | DEFERRED_VALID | No first product wedge is selected; preserve the neutral dossier/case abstraction-first posture. |
+| Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
+| Framework/readback expansion | BLOCKED | Keep framework/readback expansion frozen until a separately authorized, meaningful capability need is ranked. |
 | Founder/product-wedge control | ACTIVE | Option 3 is ratified: neutral dossier/case abstraction first, then product-domain choice. No first product wedge selected. |
 | Dry MVP bounded-task loop | WATCH | Dry source/test/docs milestone closeout and deterministic local-worker stub proof package are already committed and pushed in current `main` ancestry. The stub proof proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. |
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
@@ -109,6 +136,17 @@ product-wedge selection.
 
 | Thread | Status | Current proof posture | Next likely boundary | History pointer |
 | --- | --- | --- | --- | --- |
+| Canonical alpha runtime consolidation | RETIRED_OR_RESOLVED | Adopted and authoritative on `main` at `1cb2bc8`; the coherent alpha lifecycle is source-backed and independently validated. | None; reopen only for targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
+| Trusted-worker security defects | RETIRED_OR_RESOLVED | Cross-record reconciliation and final pre-launch parent-state rejection were independently reverified. | None; reopen only for a newly reproduced defect. | `TRACKS_AND_OPEN_THREADS.md` |
+| Canonical branch adoption | RETIRED_OR_RESOLVED | Local, tracking, and remote `main` are aligned at `1cb2bc8`; no further adoption action is open. | None. | `TRACKS_AND_OPEN_THREADS.md` |
+| Coordination-doc reconciliation | ACTIVE_WITHIN_THIS_BOUNDARY | Current cockpit and orientation docs are being reconciled to adopted `main`; no source or runbook mutation is implied. | Complete this docs-only boundary, then review the resulting cockpit. | `TRACKS_AND_OPEN_THREADS.md` |
+| Phase 277 packet CLI runbook migration | ACTIVE_NEXT_DOCS_CANDIDATE | Current runbook still describes implicit local-file execution and repository-local persistence. | Separate docs-only runbook replacement. | `TRACKS_AND_OPEN_THREADS.md` |
+| Legacy `main.py` migration | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy and must not gain new commands. | Separate migration campaign after ranking. | `TRACKS_AND_OPEN_THREADS.md` |
+| Real provider integration | READY_FOR_RANKING | The canonical worker seam is available for useful bounded work; provider competence and selection remain unproven. | Rank a provider-neutral bounded integration boundary. | `TRACKS_AND_OPEN_THREADS.md` |
+| Provider selection | DEFERRED_VALID | No provider or model has been selected. | Reopen only after ranking and explicit boundary authorization. | `TRACKS_AND_OPEN_THREADS.md` |
+| Product-wedge selection | DEFERRED_VALID | No first product wedge selected; neutral dossier/case abstraction remains the membrane. | Separate founder/CTO decision record. | `TRACKS_AND_OPEN_THREADS.md` |
+| Phase 387 | DEFERRED_VALID | Parked; no resume authorization is present. | Explicit Roger/CTO resume decision only. | `TRACKS_AND_OPEN_THREADS.md` |
+| Framework/readback expansion | BLOCKED | Do not broaden framework/readback surfaces while useful bounded work remains unrated. | Reopen only with a concrete capability need and proof boundary. | `TRACKS_AND_OPEN_THREADS.md` |
 | Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, the ratified task-readiness operator review, and the neutral task packet structural proof support abstraction-first posture; no final wedge selected. | First product wedge selection, Source Files refresh/export, or Phase 387 resume decision only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -119,6 +157,19 @@ product-wedge selection.
 | Platform/OpenClaw/Hermes/RAG integration | DEFERRED | Not product-repo current authority; requires separate integration boundary and fresh operator evidence. | Explicit integration boundary only. | `TRACKS_AND_OPEN_THREADS.md` |
 
 ## Current Non-Proofs / Caveats
+
+- Adoption proves deterministic canonical alpha lifecycle behavior, not
+  model-backed coding quality, semantic correctness, autonomous AI work,
+  provider competence, concurrency safety, production readiness, or product
+  readiness.
+- `trusted_local_unsandboxed` is a trusted-worker contract, not OS-level
+  sandboxing; effects outside the controlled workspace are not comprehensively
+  prevented or observed.
+- No provider/model has been selected, no first product wedge has been
+  selected, and no product-market fit is proven.
+- `main.py` remains a legacy 49-command surface. Phase 277 runbook migration,
+  `main.py` migration, provider selection, and product-wedge selection remain
+  separate boundaries.
 
 ## Advisory Repair Reconciliation Triage
 
@@ -172,9 +223,9 @@ product-wedge selection.
 
 ## Recommended Next Ranked Candidates
 
-1. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
-2. `SOURCE_FILES_REFRESH_EXPORT_AFTER_TASK_READINESS`
-3. `PHASE_387_RESUME_DECISION_DOCS_ONLY`
+1. `PHASE_277_PACKET_CLI_RUNBOOK_MIGRATION_DOCS_ONLY`
+2. `REAL_PROVIDER_INTEGRATION_RANKING_REVIEW`
+3. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
 
 ## Update Discipline
 

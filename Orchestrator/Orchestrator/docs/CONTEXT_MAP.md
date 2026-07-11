@@ -34,7 +34,7 @@ separate.
 | Constitutional direction | Defines what Orchestrator is trying to become and what growth must preserve. | `docs/PROJECT_VISION.md` | Long-range direction, not present capability proof. |
 | Present success bar | Defines what a successful run means today. | `docs/CURRENT_SUCCESS_CRITERION.md` | Present-tense product bar, not a roadmap or phase authorization. |
 | Coordinator/governance method | Defines ranking, approval, handoff, review, closure, re-entry discipline, open-thread triage, startup-load discipline, and project continuity evidence discipline. | `docs/ORCHESTRATOR_METHOD.md`; `docs/ORCHESTRATOR_INTERACTION_MODEL.md`; `docs/STARTUP_BRIEF.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`; `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md` | Governs process semantics and evidence vocabulary, not runtime behavior. |
-| Active product state/open threads | Preserves accepted track state, open threads, proof posture, triage status, and drift warnings. | `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` | Active coordination ledger and triage protocol; this context map does not complete its open threads. |
+| Active product state/open threads | Preserves accepted track state, open threads, proof posture, triage status, and drift warnings. | `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md`; `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` | The compact cockpit is the default current-state source; the full ledger remains historical/on-demand. |
 | Evidence/history stack | Records ordered phase history, action logs, source identity, artifact caveats, and accepted proof claims. | `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; phase docs | Evidence/history authorities; not mandatory full-load startup payloads unless the boundary requires phase history, source registration, proof, or reconciliation. |
 | Language/context architecture | Defines bounded contexts, owned terms, and do-not-confuse rules for docs. | `docs/CONTEXT_MAP.md` | Clarifies language authority only; it does not clean up historical docs by itself. |
 
@@ -70,6 +70,48 @@ Non-authority / do-not-confuse warnings:
 Current proof posture: governance and interaction protocols are documented;
 Phase 102 locally proved the durable cross-track ledger; Phase 104 locally
 proves only the documentation language/context map.
+
+### Canonical Alpha Execution Context
+
+Purpose: name the adopted alpha execution spine without confusing it with
+provider selection, product direction, or production capability.
+
+Owned language: canonical alpha runtime, bounded packet, explicit execution
+authorization, `trusted_local_unsandboxed`, controlled worker workspace,
+structured worker result, artifact, deterministic verification, human
+disposition, read-only reconciliation, legacy `main.py`, Phase 277 runbook.
+
+Authority docs/files:
+
+- `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md`
+- `docs/CURRENT_SUCCESS_CRITERION.md`
+- `docs/CAPABILITY_REALITY_MAP.md`
+- `orchestrator/operator_coding_task_packet_cli.py`
+- `providers/subprocess_worker_provider.py`
+- `orchestrator/alpha_runtime.py`
+
+Current source fact: the canonical alpha runtime is authoritative on `main` at
+`1cb2bc8922a6325d90948ebe1a7942ffef784566`. Its worker posture is
+`trusted_local_unsandboxed`, which is a trusted-worker contract and not an
+operating-system sandbox.
+
+Non-authority / do-not-confuse warnings:
+
+- Alpha runtime adoption is not production readiness.
+- A trusted worker is not an untrusted-worker sandbox or comprehensive outside-
+  workspace containment mechanism.
+- Deterministic verification is not semantic correctness or provider
+  competence.
+- The canonical worker seam does not select a provider or model.
+- The canonical runtime does not select a product wedge.
+- `main.py` remains legacy and the Phase 277 runbook remains a separate stale
+  docs migration boundary.
+
+Current proof posture: the adopted source and independent evidence prove one
+coherent bounded alpha execution spine, including linked persistence,
+controlled workspace/path-state checks, human disposition, and read-only
+reconciliation. They do not prove autonomous AI coding, concurrency safety,
+production readiness, or product-market fit.
 
 ### Startup Load Classes
 
