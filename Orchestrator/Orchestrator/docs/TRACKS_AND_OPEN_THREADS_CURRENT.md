@@ -16,8 +16,8 @@ not replace the full historical ledger.
 ## Last Updated / Source Posture
 
 - Current repo HEAD at edit time:
-  `1a94c6e54139ac851ecfd025052abbe5e5bd2230`
-- Generated/edited: `2026-07-10T23:30:00-05:00`
+  `9766662205a52a95efa63c6cee0b1f83d890bb1d`
+- Generated/edited: `2026-07-10T23:24:00-05:00`
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
