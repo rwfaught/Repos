@@ -8,6 +8,7 @@ from uuid import uuid4
 
 from orchestrator.current_success_result_review import review_current_success_task_result
 from orchestrator.paths import DATA_DIR, validate_record_id
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json, load_json_record
 
 
 PACKET_OPERATOR_DECISION_RECORDS_DIR = DATA_DIR / "packet_operator_decision_records"
@@ -137,7 +138,7 @@ def _latest_record_payloads(task_id: str) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     for path in sorted(PACKET_OPERATOR_DECISION_RECORDS_DIR.glob("packet_decision_*.json")):
         try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
+            payload = load_json_record(path, record_type="operator decision")
         except (OSError, json.JSONDecodeError):
             continue
         if not isinstance(payload, dict):
@@ -287,6 +288,7 @@ def record_packet_result_operator_decision(decision_input: dict[str, Any]) -> di
     record_id = f"packet_decision_{uuid4().hex[:8]}"
     decided_at = datetime.now(timezone.utc).isoformat()
     record = {
+        "schema_version": SCHEMA_VERSION,
         "operator_decision_record_id": record_id,
         "packet_id": packet_id,
         "task_id": task_id,
@@ -309,9 +311,8 @@ def record_packet_result_operator_decision(decision_input: dict[str, Any]) -> di
         "non_proofs": list(_NON_PROOFS),
     }
 
-    PACKET_OPERATOR_DECISION_RECORDS_DIR.mkdir(parents=True, exist_ok=True)
     record_path = PACKET_OPERATOR_DECISION_RECORDS_DIR / f"{record_id}.json"
-    record_path.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+    atomic_write_json(record_path, record)
 
     return {
         "packet_result_operator_decision_surface": True,

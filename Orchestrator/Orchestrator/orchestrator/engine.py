@@ -5,6 +5,7 @@ from pathlib import Path
 
 from orchestrator.adequacy import assess_output_adequacy
 from orchestrator.artifact_store import create_artifact
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json
 from orchestrator.dispatcher import dispatch_task
 from orchestrator.paths import (
     VERIFIER_RESULTS_DIR,
@@ -183,15 +184,17 @@ def _store_verification_result(task: Task, verification_result: VerificationResu
         label="verifier result id",
     )
     payload = {
+        "schema_version": SCHEMA_VERSION,
         "task_id": task.id,
         "run_id": task.run_id,
         "execution_artifact_id": task.execution_artifact_id,
+        "authorization_id": (task.execution_authorization_provenance or {}).get("authorization_id"),
         "execution_policy": task.execution_policy,
         "requires_causal_change": task.requires_causal_change,
         "verification_result": verification_result.to_dict(),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
-    result_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    atomic_write_json(result_path, payload)
     return result_path
 
 
@@ -241,7 +244,7 @@ def _fail_execution_policy_precondition(task: Task, reason: str) -> None:
     print(f"Status: {task.status}")
 
 
-def _execute_task(task: Task, provider_name: str = "mock", provider=None) -> None:
+def _execute_task(task: Task, provider_name: str = "mock", provider=None, context: dict | None = None) -> None:
     precondition_failure = _validate_execution_policy_preconditions(task)
     task.status = "in_progress"
     save_task(task)
@@ -252,7 +255,16 @@ def _execute_task(task: Task, provider_name: str = "mock", provider=None) -> Non
     causal_targets_before = (
         _snapshot_causal_targets(task) if task.requires_causal_change else []
     )
-    result = dispatch_task(task, provider_name=provider_name, provider=provider, context={"allowed_paths": [str(resolve_declared_project_path(path)) for path in task.files_in_scope]})
+    dispatch_context = dict(context or {})
+    dispatch_context["allowed_paths"] = [
+        str(resolve_declared_project_path(path)) for path in task.files_in_scope
+    ]
+    result = dispatch_task(
+        task,
+        provider_name=provider_name,
+        provider=provider,
+        context=dispatch_context,
+    )
     causal_targets = _complete_causal_target_snapshots(causal_targets_before)
     artifact = create_artifact(task, result)
     task.execution_artifact_id = artifact["artifact_id"]
@@ -341,8 +353,8 @@ def _execute_task(task: Task, provider_name: str = "mock", provider=None) -> Non
     print(f"Status: {task.status}")
 
 
-def process_task_by_id(task: Task, provider_name: str = "mock", provider=None) -> None:
-    _execute_task(task=task, provider_name=provider_name, provider=provider)
+def process_task_by_id(task: Task, provider_name: str = "mock", provider=None, context: dict | None = None) -> None:
+    _execute_task(task=task, provider_name=provider_name, provider=provider, context=context)
 
 
 def process_next_task(provider_name: str = "mock") -> None:

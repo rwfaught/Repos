@@ -6,6 +6,7 @@ from typing import Any
 
 import orchestrator.artifact_store as artifact_store
 import orchestrator.run_manager as run_manager
+from orchestrator.alpha_runtime import load_json_record
 from orchestrator.paths import (
     DATA_DIR,
     ARTIFACTS_DIR,
@@ -71,8 +72,8 @@ def _artifact_path(artifact_id: str) -> Path | None:
 
 def _read_json(path: Path) -> dict[str, Any] | None:
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+        return load_json_record(path, record_type=path.parent.name)
+    except (OSError, ValueError, json.JSONDecodeError):
         return None
 
 
@@ -108,6 +109,7 @@ def _artifact_summary(artifact_id: str) -> tuple[dict[str, Any], list[str]]:
         "run_id": _normalize_string(payload.get("run_id")),
         "role": _normalize_string(payload.get("role")),
         "status": _normalize_string(payload.get("status")),
+        "authorization_id": _normalize_string(payload.get("authorization_id")),
         "output_present": bool(_normalize_string(payload.get("output"))),
     }, missing
 
@@ -130,6 +132,7 @@ def _verification_summary(task_id: str) -> tuple[dict[str, Any], list[str]]:
     return {
         "verifier_result_path": str(path),
         "overall_passed": bool(result.get("overall_passed")),
+        "authorization_id": _normalize_string(payload.get("authorization_id")),
         "check_count": len(checks_list),
         "checks": checks_list,
         "messages": result.get("messages") if isinstance(result.get("messages"), list) else [],
@@ -438,6 +441,9 @@ def review_current_success_task_result(review_input: dict[str, Any]) -> dict[str
             "success_criteria": list(task.success_criteria),
             "expected_output": task.expected_output,
             "execution_artifact_id": task.execution_artifact_id,
+            "authorization_id": _normalize_string(
+                (task.execution_authorization_provenance or {}).get("authorization_id")
+            ),
             "verification_checks": task.verification_checks,
         },
         "artifact_summary": artifact,

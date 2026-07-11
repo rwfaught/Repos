@@ -13,6 +13,27 @@ from typing import Any, Iterator
 SCHEMA_VERSION = 1
 
 
+def validate_record_schema(value: dict[str, Any], *, record_type: str) -> None:
+    """Reject explicitly versioned records from unsupported schemas.
+
+    Unversioned records remain readable as legacy inputs; every record written
+    by the canonical alpha path is versioned.
+    """
+    if "schema_version" not in value:
+        return
+    version = value.get("schema_version")
+    if version != SCHEMA_VERSION:
+        raise ValueError(f"Unsupported {record_type} schema_version: {version}.")
+
+
+def load_json_record(path: Path, *, record_type: str) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8-sig"))
+    if not isinstance(value, dict):
+        raise ValueError(f"{record_type} record must be a JSON object.")
+    validate_record_schema(value, record_type=record_type)
+    return value
+
+
 def atomic_write_json(path: Path, value: dict[str, Any]) -> None:
     """Write one JSON record atomically in the record's own directory."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -43,6 +64,7 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
     import orchestrator.current_success_result_review as review
     import orchestrator.engine as engine
     import orchestrator.execution_authorization as authorization
+    import orchestrator.operator_packet_result_decision as operator_decision
     import orchestrator.paths as paths
     import orchestrator.run_manager as run_manager
     import orchestrator.state as state
@@ -61,6 +83,7 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
         (artifact_store, "ARTIFACTS_DIR"): root / "artifacts",
         (engine, "VERIFIER_RESULTS_DIR"): root / "verifier_results",
         (authorization, "AUTHORIZATION_RECORDS_DIR"): root / "execution_authorizations",
+        (operator_decision, "PACKET_OPERATOR_DECISION_RECORDS_DIR"): root / "packet_operator_decision_records",
         (review, "DATA_DIR"): root,
         (review, "ARTIFACTS_DIR"): root / "artifacts",
         (review, "VERIFIER_RESULTS_DIR"): root / "verifier_results",
@@ -80,33 +103,119 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
 
 
 def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
-    """Read-only partial-lifecycle detector for alpha JSON records."""
+    """Read-only partial-lifecycle and identity-link detector for alpha records."""
     root = Path(data_root).resolve()
     tasks = root / "tasks"
     artifacts = root / "artifacts"
     verifiers = root / "verifier_results"
-    reviews = root / "acceptance_records"
+    authorizations = root / "execution_authorizations"
+    acceptances = root / "acceptance_records"
+    decisions = root / "packet_operator_decision_records"
     findings: list[dict[str, str]] = []
+
+    def add(task_id: str, classification: str, path: Path | None = None) -> None:
+        finding = {"task_id": task_id, "classification": classification}
+        if path is not None:
+            finding["path"] = str(path)
+        findings.append(finding)
+
+    def read(path: Path, record_type: str, task_id: str) -> dict[str, Any] | None:
+        try:
+            return load_json_record(path, record_type=record_type)
+        except json.JSONDecodeError:
+            add(task_id, f"invalid_{record_type}_json", path)
+        except (OSError, ValueError) as error:
+            classification = (
+                "unsupported_schema_version"
+                if "Unsupported" in str(error) and "schema_version" in str(error)
+                else f"invalid_{record_type}_record"
+            )
+            add(task_id, classification, path)
+        return None
+
     for task_path in sorted(tasks.glob("*.json")) if tasks.exists() else []:
         try:
-            task = json.loads(task_path.read_text(encoding="utf-8"))
+            task = load_json_record(task_path, record_type="task")
         except json.JSONDecodeError:
             findings.append({"task_path": str(task_path), "classification": "invalid_task_json"})
             continue
+        except (OSError, ValueError) as error:
+            classification = (
+                "unsupported_schema_version"
+                if "Unsupported" in str(error) and "schema_version" in str(error)
+                else "invalid_task_record"
+            )
+            findings.append({"task_path": str(task_path), "classification": classification})
+            continue
         task_id = str(task.get("id", ""))
+        run_id = str(task.get("run_id", ""))
         artifact_id = str(task.get("execution_artifact_id", ""))
         if task.get("status") == "in_progress":
-            findings.append({"task_id": task_id, "classification": "in_progress_requires_recovery"})
-        if artifact_id and not (artifacts / f"{artifact_id}.json").exists():
-            findings.append({"task_id": task_id, "classification": "missing_artifact"})
-        if artifact_id and not any(verifiers.glob(f"{task_id}_*.json")):
-            findings.append({"task_id": task_id, "classification": "missing_verifier_result"})
+            add(task_id, "in_progress_requires_recovery")
+
+        authorization_link = task.get("execution_authorization_provenance")
+        authorization_id = str(authorization_link.get("authorization_id", "")) if isinstance(authorization_link, dict) else ""
+        if not authorization_id:
+            add(task_id, "missing_authorization_link")
+        else:
+            authorization_path = authorizations / f"{authorization_id}.json"
+            if not authorization_path.exists():
+                add(task_id, "missing_authorization_record", authorization_path)
+            else:
+                authorization = read(authorization_path, "authorization", task_id)
+                if authorization is not None and (
+                    str(authorization.get("task_id", "")) != task_id
+                    or list(authorization.get("authorized_scope", [])) != list(task.get("files_in_scope", []))
+                    or authorization.get("decision") != "authorized"
+                ):
+                    add(task_id, "authorization_identity_or_scope_mismatch", authorization_path)
+
+        artifact: dict[str, Any] | None = None
+        artifact_path = artifacts / f"{artifact_id}.json" if artifact_id else None
+        if artifact_id and artifact_path is not None and not artifact_path.exists():
+            add(task_id, "missing_artifact", artifact_path)
+        elif artifact_path is not None:
+            artifact = read(artifact_path, "artifact", task_id)
+            if artifact is not None and (
+                str(artifact.get("artifact_id", "")) != artifact_id
+                or str(artifact.get("task_id", "")) != task_id
+                or str(artifact.get("run_id", "")) != run_id
+            ):
+                add(task_id, "artifact_identity_mismatch", artifact_path)
+
+        verifier_paths = sorted(verifiers.glob(f"{task_id}_*.json")) if verifiers.exists() else []
+        if artifact_id and not verifier_paths:
+            add(task_id, "missing_verifier_result")
+        elif verifier_paths:
+            verifier_path = verifier_paths[-1]
+            verifier = read(verifier_path, "verifier", task_id)
+            if verifier is not None and (
+                str(verifier.get("task_id", "")) != task_id
+                or str(verifier.get("run_id", "")) != run_id
+                or str(verifier.get("execution_artifact_id", "")) != artifact_id
+            ):
+                add(task_id, "verifier_identity_mismatch", verifier_path)
+
+        disposition_records: list[tuple[Path, str]] = []
+        disposition_records.extend((path, "acceptance") for path in acceptances.glob("*.json") if acceptances.exists())
+        disposition_records.extend((path, "operator_decision") for path in decisions.glob("*.json") if decisions.exists())
         dispositions = []
-        for review_path in reviews.glob("*.json") if reviews.exists() else []:
-            try:
-                dispositions.append(json.loads(review_path.read_text(encoding="utf-8")).get("task_id"))
-            except json.JSONDecodeError:
-                continue
-        if task.get("status") == "completed" and task_id not in dispositions:
-            findings.append({"task_id": task_id, "classification": "missing_human_disposition"})
-    return {"alpha_reconciliation": True, "data_root": str(root), "findings": findings, "healthy": not findings}
+        for disposition_path, record_type in disposition_records:
+            disposition = read(disposition_path, record_type, task_id)
+            if disposition is not None and str(disposition.get("task_id", "")) == task_id:
+                dispositions.append(disposition)
+                if (
+                    str(disposition.get("run_id", "")) != run_id
+                    or str(disposition.get("execution_artifact_id", "")) != artifact_id
+                ):
+                    add(task_id, "human_disposition_identity_mismatch", disposition_path)
+        if task.get("status") == "completed" and not dispositions:
+            add(task_id, "missing_human_disposition")
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "alpha_reconciliation": True,
+        "data_root": str(root),
+        "findings": findings,
+        "healthy": not findings,
+    }

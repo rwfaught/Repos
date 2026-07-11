@@ -7,6 +7,7 @@ import orchestrator.run_manager as run_manager
 from orchestrator.execution_authorization import persist_execution_authorization
 from orchestrator.current_success_result_review import review_current_success_task_result
 from orchestrator.current_success_acceptance import record_current_success_result_acceptance
+from orchestrator.operator_packet_result_decision import record_packet_result_operator_decision
 from orchestrator.paths import record_path, resolve_declared_project_path, validate_record_id
 from orchestrator.task_schema import FILESYSTEM_MUTATION_EXECUTION_POLICY, Task
 
@@ -150,9 +151,9 @@ def _validate_packet(packet: Any) -> tuple[dict[str, Any] | None, dict[str, Any]
         blocked_conditions.append("missing_required_packet_fields")
 
     provider_name = _normalize_text(packet.get("provider_name")) or "local_file"
-    if provider_name != "local_file":
+    if provider_name not in {"local_file", "subprocess_worker"}:
         blocked_conditions.append("unsupported_provider_name")
-        details.append("Phase 274 only allows provider_name='local_file'.")
+        details.append("Canonical execution allows only an explicit subprocess_worker; local_file remains legacy-only.")
 
     requested_runtime_fields = [
         field_name
@@ -245,7 +246,20 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         return blocked
     assert validated is not None
 
-    run_manager.ensure_run(validated["run_id"], validated["title"])
+    if provider is None:
+        return _blocked(
+            packet=packet,
+            blocked_conditions=["explicit_worker_provider_required"],
+            detail="Implicit local_file execution is retired from the canonical packet path.",
+        )
+    active_provider_name = _normalize_text(getattr(provider, "provider_name", ""))
+    if active_provider_name != validated["provider_name"]:
+        return _blocked(
+            packet=packet,
+            blocked_conditions=["provider_identity_mismatch"],
+            detail="The explicit worker provider must match packet provider_name.",
+        )
+
     authorization = persist_execution_authorization(packet, validated["task_id"], validated["files_in_scope"])
     if not authorization["execution_authorized"]:
         return {
@@ -253,6 +267,8 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
             "authorization": authorization,
             "operator_next_action": "provide_explicit_execution_authorization",
         }
+
+    run_manager.ensure_run(validated["run_id"], validated["title"])
 
     task = Task(
         id=validated["task_id"],
@@ -266,25 +282,51 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         retry_count=0,
         expected_output=validated["expected_output"],
         execution_policy=FILESYSTEM_MUTATION_EXECUTION_POLICY,
-        requires_causal_change=False,
+        requires_causal_change=True,
+        execution_authorization_provenance={
+            "authorization_id": authorization["authorization_id"],
+            "decision": authorization["decision"],
+            "task_id": authorization["task_id"],
+            "authorized_scope": list(authorization["authorized_scope"]),
+            "operator_provenance": authorization["operator_provenance"],
+        },
     )
 
     run_manager.save_task(task)
-    engine.process_task_by_id(run_manager.load_task(task.id), provider_name=getattr(provider, "provider_name", ""), provider=provider)
+    engine.process_task_by_id(
+        run_manager.load_task(task.id),
+        provider_name=active_provider_name,
+        provider=provider,
+        context={"execution_authorization": authorization},
+    )
     completed = run_manager.load_task(task.id)
     review = review_current_success_task_result({"task_id": task.id})
     acceptance = {}
+    disposition = {}
     if isinstance(packet.get("human_review"), dict):
-        acceptance = record_current_success_result_acceptance({"task_id": task.id, **packet["human_review"]})
+        human_review = packet["human_review"]
+        if human_review.get("accepted") is True:
+            acceptance = record_current_success_result_acceptance({"task_id": task.id, **human_review})
+        else:
+            disposition = record_packet_result_operator_decision(
+                {
+                    "task_id": task.id,
+                    "packet_id": validated["packet_id"],
+                    "operator_decision": human_review.get("operator_decision") or "rejected",
+                    "operator_note": human_review.get("operator_note") or human_review.get("reason"),
+                }
+            )
+
+    execution_succeeded = completed.status == "completed"
 
     return {
         "operator_coding_task_packet_surface": True,
         "packet_id": validated["packet_id"],
         "run_id": completed.run_id,
         "task_id": completed.id,
-        "accepted": True,
-        "blocked": False,
-        "blocked_conditions": [],
+        "accepted": execution_succeeded,
+        "blocked": not execution_succeeded,
+        "blocked_conditions": [] if execution_succeeded else [f"task_{completed.status}"],
         "missing_requirements": [],
         "execution_provider": getattr(provider, "provider_name", ""),
         "authorization": authorization,
@@ -292,6 +334,8 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         "execution_artifact_id": completed.execution_artifact_id or "",
         "current_success_review": review,
         "human_review_acceptance": acceptance,
+        "human_review_disposition": disposition,
+        "execution_succeeded": execution_succeeded,
         "operator_response_surface": review.get("operator_response_surface"),
         "operator_next_action": _operator_next_action_from_review(review),
         "no_activity_flags": dict(_NO_ACTIVITY_FLAGS),

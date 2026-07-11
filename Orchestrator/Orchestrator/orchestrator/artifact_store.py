@@ -19,6 +19,7 @@ def create_artifact(task: Task, result: dict) -> dict:
         "run_id": task.run_id,
         "role": task.role,
         "execution_policy": task.execution_policy,
+        "authorization_id": (task.execution_authorization_provenance or {}).get("authorization_id"),
         "requires_causal_change": task.requires_causal_change,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "status": result.get("status", "unknown"),

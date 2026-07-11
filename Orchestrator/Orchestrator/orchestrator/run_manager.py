@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 from orchestrator.paths import RUNS_DIR, TASKS_DIR, record_path, validate_record_id
-from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json, load_json_record
 from orchestrator.state import load_state, save_state
 from orchestrator.task_schema import Task, deserialize_task, serialize_task
 
@@ -32,7 +32,7 @@ def ensure_run(run_id: str, request_text: str) -> dict:
     safe_id = validate_record_id(run_id, label="run id")
     path = record_path(RUNS_DIR, safe_id, label="run id")
     if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
+        return load_json_record(path, record_type="run")
     run_data = {"schema_version": SCHEMA_VERSION, "id": safe_id, "request_text": request_text, "status": "active", "created_at": datetime.now(timezone.utc).isoformat()}
     atomic_write_json(path, run_data)
     return run_data
@@ -45,7 +45,7 @@ def save_task(task: Task) -> None:
 
 def load_task(task_id: str) -> Task:
     task_path = record_path(TASKS_DIR, task_id, label="task id")
-    data = json.loads(task_path.read_text(encoding="utf-8"))
+    data = load_json_record(task_path, record_type="task")
     task = deserialize_task(data)
     persisted_id = validate_record_id(task.id, label="persisted task id")
     if persisted_id != validate_record_id(task_id, label="task id"):
@@ -59,7 +59,7 @@ def load_tasks_for_run(run_id: str) -> list[Task]:
 
     tasks: list[Task] = []
     for path in sorted(TASKS_DIR.glob("*.json")):
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = load_json_record(path, record_type="task")
         if str(data.get("run_id")) == run_id:
             tasks.append(deserialize_task(data))
     return tasks

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from orchestrator.task_schema import Task
+from orchestrator.execution_authorization import validate_execution_authorization
 from providers.base import BaseProvider, ProviderResult
 
 
@@ -21,7 +22,30 @@ class SubprocessWorkerProvider(BaseProvider):
         self.timeout_seconds = timeout_seconds
 
     def execute(self, role: str, task: Task, context: dict[str, Any] | None = None) -> ProviderResult:
-        payload = {"task_id": task.id, "role": role, "title": task.title, "files_in_scope": task.files_in_scope, "success_criteria": task.success_criteria, "allowed_paths": list((context or {}).get("allowed_paths", []))}
+        dispatch_context = context or {}
+        authorization_error = validate_execution_authorization(
+            dispatch_context.get("execution_authorization"),
+            task_id=task.id,
+            files_in_scope=task.files_in_scope,
+        )
+        if authorization_error:
+            return {
+                "status": "error",
+                "output": None,
+                "provider": self.provider_name,
+                "metadata": {"command": self.command, "task_id": task.id},
+                "error": authorization_error,
+            }
+        payload = {
+            "task_id": task.id,
+            "run_id": task.run_id,
+            "role": role,
+            "title": task.title,
+            "files_in_scope": task.files_in_scope,
+            "success_criteria": task.success_criteria,
+            "expected_output": task.expected_output,
+            "allowed_paths": list(dispatch_context.get("allowed_paths", [])),
+        }
         try:
             completed = subprocess.run(self.command, input=json.dumps(payload), text=True, capture_output=True, timeout=self.timeout_seconds, check=False)
         except subprocess.TimeoutExpired as error:
@@ -33,12 +57,18 @@ class SubprocessWorkerProvider(BaseProvider):
             result = json.loads(completed.stdout)
         except json.JSONDecodeError:
             return {"status": "error", "output": completed.stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_output_not_json"}
-        if not isinstance(result, dict) or result.get("task_id") != task.id or not isinstance(result.get("output"), str):
+        if (
+            not isinstance(result, dict)
+            or result.get("task_id") != task.id
+            or result.get("run_id") != task.run_id
+            or result.get("status") != "success"
+            or not isinstance(result.get("output"), str)
+            or not isinstance(result.get("target_path"), str)
+            or not result.get("target_path", "").strip()
+        ):
             return {"status": "error", "output": completed.stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_output_contract_invalid"}
-        target = result.get("target_path")
-        if target:
-            resolved = Path(target).resolve()
-            allowed = [Path(item).resolve() for item in (context or {}).get("allowed_paths", [])]
-            if resolved not in allowed:
-                return {"status": "error", "output": completed.stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_target_outside_declared_scope"}
+        resolved = Path(result["target_path"]).resolve()
+        allowed = [Path(item).resolve() for item in dispatch_context.get("allowed_paths", [])]
+        if resolved not in allowed:
+            return {"status": "error", "output": completed.stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_target_outside_declared_scope"}
         return {"status": "success", "output": result["output"], "provider": self.provider_name, "metadata": {**metadata, "worker_result": result}, "error": None}

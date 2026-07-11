@@ -1,7 +1,7 @@
 import json
 from typing import Any, Dict
 
-from orchestrator.alpha_runtime import atomic_write_json
+from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json, load_json_record
 from orchestrator.paths import STATE_DIR
 
 STATE_PATH = STATE_DIR / "workspace_state.json"
@@ -16,9 +16,9 @@ def _default_state() -> Dict[str, Any]:
 
 def load_state() -> Dict[str, Any]:
     if STATE_PATH.exists():
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        return load_json_record(STATE_PATH, record_type="state")
     return _default_state()
 
 
 def save_state(state: Dict[str, Any]) -> None:
-    atomic_write_json(STATE_PATH, {"schema_version": 1, **state})
+    atomic_write_json(STATE_PATH, {"schema_version": SCHEMA_VERSION, **state})

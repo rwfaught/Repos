@@ -157,6 +157,7 @@ def record_current_success_result_acceptance(acceptance_input: dict[str, Any]) -
         "task_id": task_id,
         "run_id": _normalize_string(review.get("run_id")),
         "execution_artifact_id": artifact_id,
+        "authorization_id": _normalize_string(_task_summary_value(review, "authorization_id")),
         "verifier_result_path": verifier_result_path,
         "accepted": True,
         "accepted_at": accepted_at,
