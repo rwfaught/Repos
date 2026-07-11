@@ -32,6 +32,7 @@ class LocalFileProvider(BaseProvider):
                     "task_id": task.id,
                     "role": role,
                     "files_in_scope_count": len(task.files_in_scope),
+                    "error_code": "scope_file_count_invalid",
                 },
                 "error": "Local file provider requires exactly one file in scope.",
             }
@@ -42,7 +43,7 @@ class LocalFileProvider(BaseProvider):
                 "status": "error",
                 "output": None,
                 "provider": self.provider_name,
-                "metadata": {"task_id": task.id, "role": role},
+                "metadata": {"task_id": task.id, "role": role, "error_code": "expected_output_missing"},
                 "error": "Local file provider requires non-empty task.expected_output content.",
             }
 
@@ -56,7 +57,7 @@ class LocalFileProvider(BaseProvider):
                 "status": "error",
                 "output": None,
                 "provider": self.provider_name,
-                "metadata": {"task_id": task.id, "role": role},
+                "metadata": {"task_id": task.id, "role": role, "error_code": "declared_path_invalid"},
                 "error": str(error),
             }
 

@@ -84,7 +84,7 @@ class Phase79LocalFileProviderTests(unittest.TestCase):
         result = LocalFileProvider().execute(role="coder", task=task, context={})
 
         self.assertEqual(result.get("status"), "error")
-        self.assertIn("parent-directory traversal", result.get("error", ""))
+        self.assertEqual(result.get("metadata", {}).get("error_code"), "declared_path_invalid")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import copy
+import ast
 import inspect
 import unittest
 
@@ -241,24 +242,32 @@ class Phase117CoordinatorReviewReportContractTests(unittest.TestCase):
 
     def test_module_does_not_import_forbidden_execution_provider_platform_runtime_service_libraries(self):
         source = inspect.getsource(coordinator_review_report)
+        imported_modules = set()
+        for node in ast.walk(ast.parse(source)):
+            if isinstance(node, ast.Import):
+                imported_modules.update(alias.name for alias in node.names)
+            elif isinstance(node, ast.ImportFrom) and node.module:
+                imported_modules.add(node.module)
 
         for forbidden in (
-            "import requests",
-            "import subprocess",
-            "import openai",
-            "import ollama",
-            "import discord",
-            "from orchestrator.provider",
-            "from orchestrator.platform",
-            "from orchestrator.connector",
-            "from orchestrator.scheduler",
-            "from orchestrator.service",
-            "from orchestrator.api",
-            "from orchestrator.ui",
-            "from orchestrator.openclaw",
-            "from orchestrator.hermes",
+            "requests",
+            "subprocess",
+            "openai",
+            "ollama",
+            "discord",
+            "orchestrator.provider",
+            "orchestrator.platform",
+            "orchestrator.connector",
+            "orchestrator.scheduler",
+            "orchestrator.service",
+            "orchestrator.api",
+            "orchestrator.ui",
+            "orchestrator.openclaw",
+            "orchestrator.hermes",
         ):
-            self.assertNotIn(forbidden, source)
+            self.assertFalse(
+                any(name == forbidden or name.startswith(f"{forbidden}.") for name in imported_modules)
+            )
 
     def test_regression_with_phase116_safe_fixture_to_packet_pipeline_output(self):
         pipeline = run_fixture_to_boundary_packet_pipeline(

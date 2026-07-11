@@ -1,4 +1,5 @@
 from pathlib import Path
+from tokenize import open as open_python_source
 
 from verifiers.base import VerificationCheckResult
 
@@ -23,7 +24,8 @@ def check_python_syntax(path: str) -> VerificationCheckResult:
         )
 
     try:
-        source = target.read_text(encoding="utf-8")
+        with open_python_source(target) as handle:
+            source = handle.read()
         compile(source, str(target), "exec")
     except SyntaxError as error:
         return VerificationCheckResult(
