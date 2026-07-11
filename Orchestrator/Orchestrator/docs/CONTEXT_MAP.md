@@ -78,8 +78,9 @@ provider selection, product direction, or production capability.
 
 Owned language: canonical alpha runtime, bounded packet, explicit execution
 authorization, `trusted_local_unsandboxed`, controlled worker workspace,
-structured worker result, artifact, deterministic verification, human
-disposition, read-only reconciliation, legacy `main.py`, Phase 277 runbook.
+explicit task objective, ordered audited `changed_paths`, structured worker
+result, artifact, deterministic verification, human disposition, read-only
+reconciliation, legacy `main.py`, Phase 277 runbook.
 
 Authority docs/files:
 
@@ -93,7 +94,9 @@ Authority docs/files:
 Current source fact: the canonical alpha runtime is authoritative on `main` at
 `1cb2bc8922a6325d90948ebe1a7942ffef784566`. Its worker posture is
 `trusted_local_unsandboxed`, which is a trusted-worker contract and not an
-operating-system sandbox.
+operating-system sandbox. The Phase 277 runbook migration and cockpit closure
+were pushed and verified on authoritative `main` at
+`831969c86d305805ca5cb9ae1cc3d51b63e5923a`.
 
 Non-authority / do-not-confuse warnings:
 
@@ -104,15 +107,16 @@ Non-authority / do-not-confuse warnings:
   competence.
 - The canonical worker seam does not select a provider or model.
 - The canonical runtime does not select a product wedge.
-- `main.py` remains legacy. The Phase 277 runbook has been migrated locally in
-  `62d0532` to the canonical-alpha operator path; remote durability awaits a
-  separate Relay push-and-verification boundary.
+- `main.py` remains legacy. Phase 277 is `RETIRED_OR_RESOLVED`; its runbook
+  migration and cockpit closure are durably present on authoritative `main` at
+  `831969c86d305805ca5cb9ae1cc3d51b63e5923a`.
 
 Current proof posture: the adopted source and independent evidence prove one
 coherent bounded alpha execution spine, including linked persistence,
-controlled workspace/path-state checks, human disposition, and read-only
-reconciliation. They do not prove autonomous AI coding, concurrency safety,
-production readiness, or product-market fit.
+controlled workspace/path-state checks, objective propagation, ordered
+worker-result/audit changed-path agreement, human disposition, and read-only
+reconciliation. They do not prove autonomous AI coding, provider competence,
+concurrency safety, production readiness, or product-market fit.
 
 ### Startup Load Classes
 

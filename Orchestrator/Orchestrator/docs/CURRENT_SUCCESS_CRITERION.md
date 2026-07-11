@@ -46,6 +46,11 @@ control surface with explicit authorization and an explicitly selected
 deterministic verification, human disposition, and read-only reconciliation
 with no ambiguity about what happened.
 
+For the current trusted-worker contract, the task objective is propagated to
+the worker and a successful ordered `changed_paths` result must exactly agree
+with the audit of declared workspace changes. This strengthens auditability; it
+does not raise the bar to semantic correctness or provider competence.
+
 This is a current-state bar, not a future-state aspiration.
 
 ## Canonical Alpha Runtime Adopted State
@@ -276,9 +281,9 @@ This satisfaction is narrow. It does not prove:
 
 ## Next Success Bar
 
-The next product success bar is useful bounded work through the adopted
-canonical alpha spine, with the provider/runtime capability still selected and
-ranked through a separate explicit boundary.
+The next product success bar is a bounded real provider-backed proof through
+the adopted canonical alpha spine. Provider/runtime selection and execution
+remain subject to a separate explicit ranking and authorization boundary.
 
 The next bar should require:
 
@@ -288,6 +293,8 @@ The next bar should require:
 - explicit success criteria
 - explicit persisted execution authorization
 - execution through an explicitly selected trusted worker
+- ordered worker-reported `changed_paths` that agree with the declared-workspace
+  audit
 - persisted task state
 - persisted run, authorization, task, artifact, and verifier linkage
 - execution artifact

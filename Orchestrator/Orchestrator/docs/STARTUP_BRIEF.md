@@ -19,10 +19,14 @@ deterministic verification, human disposition, and read-only reconciliation.
 It is alpha capability, not production readiness or OS-level sandboxing.
 
 `main.py` remains a legacy 49-command surface; do not add commands. The Phase
-277 packet CLI runbook has been migrated locally to the canonical-alpha
-operator path. `main.py` remains a separate migration, and remote durability of
-the local runbook commits requires a later Relay push-and-verification boundary.
-No provider/model or product wedge has been selected.
+277 packet CLI runbook migration and cockpit closure were pushed and verified
+on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`.
+`main.py` remains a separate migration. The local provider-neutral worker
+integration now forwards an explicit task objective and requires ordered worker
+`changed_paths` to agree exactly with the declared-workspace audit; this is
+stronger auditability, not provider/model selection or semantic proof. A
+bounded real provider-backed proof is ready for ranking only. No provider/model
+or product wedge has been selected.
 
 ---
 

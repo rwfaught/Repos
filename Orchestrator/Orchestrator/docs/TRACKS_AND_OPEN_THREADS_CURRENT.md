@@ -48,9 +48,9 @@ Current safely inferable posture:
 - The canonical entry point is
   `python -m orchestrator.operator_coding_task_packet_cli`, using explicit
   authorization, `trusted_local_unsandboxed`, a per-run worker workspace,
-  structured results, deterministic verification, human disposition, and
-  read-only reconciliation. This is alpha capability, not production
-  readiness or an OS sandbox.
+  explicit task-objective propagation, ordered audited `changed_paths`,
+  deterministic verification, human disposition, and read-only reconciliation.
+  This is alpha capability, not production readiness or an OS sandbox.
 - The adopted worker contract is `trusted_local_unsandboxed`: no provider or
   model has been selected, untrusted worker execution is unsupported, and
   effects outside the controlled workspace are not comprehensively observed.
@@ -118,8 +118,9 @@ product-wedge selection.
 | Canonical alpha runtime | ADOPTED_CURRENT_AUTHORITY | Authoritative on `main` at `1cb2bc8`; one coherent alpha execution spine is now present beyond disconnected runtime scaffolding. It remains alpha and is not production-ready. |
 | Trusted-worker contract | ADOPTED_WITH_CAVEATS | `trusted_local_unsandboxed` is explicit and independently reverified; workspace, path-state, cleanup, and effect checks are defense in depth, not an OS sandbox. |
 | Legacy `main.py` | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy. Do not add commands; migration is a separate future campaign. |
-| Phase 277 packet CLI runbook | RETIRED_OR_RESOLVED | Migrated locally in `62d0532` to document the canonical-alpha operator path. It is not yet pushed; remote durability awaits a later Relay push-and-verification boundary. |
-| Real provider integration | READY_FOR_RANKING | Rank useful bounded provider-backed work through the canonical worker seam; do not select a provider in this cockpit. |
+| Phase 277 packet CLI runbook | RETIRED_OR_RESOLVED | Runbook migration and cockpit closure were pushed and verified on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`. |
+| Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` add task-objective propagation, ordered multi-file `changed_paths`, exact worker-result/workspace-audit agreement, persisted changed-path evidence, and reconciliation-health coverage. This is stronger auditability only. |
+| Real provider-backed proof | READY_FOR_RANKING | Rank a bounded real provider-backed proof through the canonical worker seam; do not select a provider in this cockpit. |
 | Product-wedge control | DEFERRED_VALID | No first product wedge is selected; preserve the neutral dossier/case abstraction-first posture. |
 | Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
 | Framework/readback expansion | BLOCKED | Keep framework/readback expansion frozen until a separately authorized, meaningful capability need is ranked. |
@@ -143,9 +144,10 @@ product-wedge selection.
 | Trusted-worker security defects | RETIRED_OR_RESOLVED | Cross-record reconciliation and final pre-launch parent-state rejection were independently reverified. | None; reopen only for a newly reproduced defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Canonical branch adoption | RETIRED_OR_RESOLVED | Local, tracking, and remote `main` are aligned at `1cb2bc8`; no further adoption action is open. | None. | `TRACKS_AND_OPEN_THREADS.md` |
 | Coordination-doc reconciliation | RETIRED_OR_RESOLVED | The five-document reconciliation was completed, committed, pushed, and verified through `99d3d85`. | None; reopen only for a newly identified current-state defect. | `TRACKS_AND_OPEN_THREADS.md` |
-| Phase 277 packet CLI runbook migration | RETIRED_OR_RESOLVED | Completed locally in `62d0532`; the runbook now documents the canonical-alpha operator path. The local commit is not yet pushed. | Remote durability requires a later authorized Relay push-and-verification boundary. | `TRACKS_AND_OPEN_THREADS.md` |
+| Phase 277 packet CLI runbook migration | RETIRED_OR_RESOLVED | Runbook migration and cockpit closure were pushed and verified on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`. | None; reopen only for a newly identified current-state defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Legacy `main.py` migration | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy and must not gain new commands. | Separate migration campaign after ranking. | `TRACKS_AND_OPEN_THREADS.md` |
-| Real provider integration | READY_FOR_RANKING | The canonical worker seam is available for useful bounded work; provider competence and selection remain unproven. | Rank a provider-neutral bounded integration boundary. | `TRACKS_AND_OPEN_THREADS.md` |
+| Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` added objective propagation, ordered multi-file `changed_paths`, exact audit/result agreement, persisted changed-path evidence, and linked-lifecycle reconciliation-health coverage. | None; reopen only for a targeted defect. | `TRACKS_AND_OPEN_THREADS.md` |
+| Real provider-backed proof | READY_FOR_RANKING | The canonical seam now supports auditable bounded multi-file work; provider competence and selection remain unproven. | Rank a bounded real provider-backed proof boundary without selecting a provider in this cockpit. | `TRACKS_AND_OPEN_THREADS.md` |
 | Provider selection | DEFERRED_VALID | No provider or model has been selected. | Reopen only after ranking and explicit boundary authorization. | `TRACKS_AND_OPEN_THREADS.md` |
 | Product-wedge selection | DEFERRED_VALID | No first product wedge selected; neutral dossier/case abstraction remains the membrane. | Separate founder/CTO decision record. | `TRACKS_AND_OPEN_THREADS.md` |
 | Phase 387 | DEFERRED_VALID | Parked; no resume authorization is present. | Explicit Roger/CTO resume decision only. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -170,10 +172,10 @@ product-wedge selection.
   prevented or observed.
 - No provider/model has been selected, no first product wedge has been
   selected, and no product-market fit is proven.
-- `main.py` remains a legacy 49-command surface. The Phase 277 runbook migration
-  is complete locally in `62d0532`, but remote durability remains a separate
-  later Relay push-and-verification boundary; `main.py` migration, provider
-  selection, and product-wedge selection remain separate boundaries.
+- `main.py` remains a legacy 49-command surface. The Phase 277 runbook
+  migration and cockpit closure were pushed and verified on authoritative
+  `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`; `main.py` migration,
+  provider selection, and product-wedge selection remain separate boundaries.
 
 ## Advisory Repair Reconciliation Triage
 

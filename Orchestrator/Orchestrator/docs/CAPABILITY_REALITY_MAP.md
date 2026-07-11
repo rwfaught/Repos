@@ -41,11 +41,13 @@ The supported lifecycle is a structured bounded packet, explicit persisted
 authorization, task/run persistence, execution through the
 `trusted_local_unsandboxed` `SubprocessWorkerProvider` seam, structured worker
 result, artifact persistence, deterministic verification, human acceptance or
-rejection, and read-only lifecycle reconciliation.
+rejection, and read-only lifecycle reconciliation. The worker payload carries
+the task objective; successful results use ordered `changed_paths`, which must
+exactly agree with the audit of declared workspace changes before persistence.
 
 This proves one coherent alpha execution spine with controlled workspace,
-path-state, timeout-cleanup, workspace-effect, and cross-record security
-checks. It does not prove:
+path-state, timeout-cleanup, workspace-effect, cross-record security checks,
+and auditable multi-file result reporting. It does not prove:
 
 - model-backed coding quality or semantic correctness
 - provider competence or provider selection
