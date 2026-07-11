@@ -1,279 +1,357 @@
-# Operator Coding Task Packet CLI Runbook
+# Canonical Alpha Operator Coding Task Packet CLI Runbook
 
-## Purpose
+## Purpose and authority
 
-This runbook gives an operator-facing command path for the Phase 275 packet
-CLI:
+The authoritative canonical-alpha operator route is:
 
-`python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>`
+~~~text
+python -m orchestrator.operator_coding_task_packet_cli
+~~~
 
-The packet CLI is an execution and persistence surface. A successful invocation
-runs deterministic `local_file` behavior and may create repo-local durable
-task, artifact, verifier, and output records. It is not a read-only repo smoke.
-Run it only under an explicit persistence or mutation boundary where generated
-repo-local files are expected, inspected, accepted, or cleaned under a later
-explicit boundary.
+This is an execution surface, not a read-only smoke command. Use it only when an
+operator has deliberately selected a data root, a trusted local worker command,
+and a bounded packet for an authorized execution.
 
-## Command Syntax
+**main.py** remains a legacy 49-command surface. It is not the canonical-alpha
+entry point. Implicit **local_file** execution is retired from the canonical
+packet path: a canonical execution requires an explicit **subprocess_worker**
+and an explicit worker command.
 
-Native PowerShell:
+The canonical lifecycle is:
 
-```powershell
-python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>
-```
+~~~text
+bounded structured packet
+→ validation
+→ explicit persisted execution authorization
+→ task/run persistence
+→ BaseProvider dispatch
+→ trusted worker execution
+→ structured result and artifact persistence
+→ deterministic verification
+→ human semantic disposition
+→ persisted acceptance or rejection
+→ read-only lifecycle reconciliation
+~~~
 
-zsh/bash:
+This runbook does not select a provider or model.
 
-```text
-python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>
-```
+## Command forms
 
-From WSL, call native Windows PowerShell explicitly only when you need the
-Windows environment:
+The canonical execution command is:
 
-```text
-powershell.exe -NoProfile -Command "python -m orchestrator.operator_coding_task_packet_cli --packet-json <path>"
-```
+~~~text
+python -m orchestrator.operator_coding_task_packet_cli --packet-json <packet-path> --data-root <data-root> --trusted-worker-posture trusted_local_unsandboxed --worker-command <trusted-worker-command> <worker-argument>...
+~~~
 
-The CLI accepts only `--packet-json <path>`.
+The **--worker-command** flag consumes the command and all remaining arguments,
+so it must be last. The CLI does not shell-parse that value: it launches the
+supplied argument list directly. Quote paths and arguments according to the
+shell that constructs the list. The command receives one JSON object on standard
+input and runs with the controlled per-run workspace as its current directory.
 
-Operator-pasted command batches for this runbook must not use `exit`,
-especially not `exit 1`. For expected boundary failures, prefer accumulated
-PASS/FAIL lines and natural script completion instead of `throw`.
+The only canonical read-only command form is:
 
-Before an operator smoke or packet CLI runbook execution, generated residue can
-be inspected without cleanup authority:
+~~~text
+python -m orchestrator.operator_coding_task_packet_cli --reconcile --data-root <data-root>
+~~~
 
-```text
-python -m orchestrator.operator_coding_task_packet_cli --residue-guard
-```
+It reads lifecycle records and prints reconciliation JSON; it does not launch a
+worker. **--residue-guard** is a legacy repository-residue inspection surface,
+not a canonical-alpha lifecycle command.
 
-This readback reports exact known generated paths under `outputs/`,
-`data/tasks/`, `data/artifacts/`, and `data/verifier_results/`. It does not
-delete, archive, clean, execute, call a provider, call a model, invoke a
-runtime, or claim cleanup authority.
+## Deliberate data-root selection
 
-## Minimal Packet
+**--data-root** is required for canonical execution and reconciliation. Select a
+dedicated, operator-controlled path for each isolated lifecycle or evidence set.
+Do not assume repository-local persistence: the canonical path redirects its
+durable stores to the supplied data root.
 
-```json
+For an execution, the data root can contain these record areas:
+
+- **state/**
+- **runs/**
+- **tasks/**
+- **artifacts/**
+- **verifier_results/**
+- **execution_authorizations/**
+- **worker_workspaces/**
+- **acceptance_records/**
+- **packet_operator_decision_records/**
+
+Records written by the canonical path are schema-versioned JSON and are written
+atomically. The selected data root must be suitable for this persistent state;
+the worker safeguard rejects an existing data root that is a symlink or Windows
+reparse point. A new data root is created as records and workspaces are written.
+This isolation prevents canonical persistence from silently using the
+repository's normal data location; it does not make the trusted worker an
+OS-sandboxed process.
+
+### Non-executing preparation and inspection
+
+These examples prepare values and inspect an already selected data root; they
+do not start a worker:
+
+~~~powershell
+$DataRoot = Join-Path $env:TEMP 'orchestrator-canonical-alpha-example-data'
+$PacketPath = Join-Path $env:TEMP 'orchestrator-canonical-alpha-example-packet.json'
+python -m orchestrator.operator_coding_task_packet_cli --reconcile --data-root $DataRoot
+~~~
+
+Reconciliation of an unused data root is a valid read-only inspection and may
+report a healthy empty lifecycle. A healthy result means the records it found
+are internally consistent; it is not semantic, security, or execution proof.
+
+## Bounded packet and persisted authorization
+
+The packet is a JSON object. It supplies the packet, run, and task identifiers;
+title; declared output paths; success criteria; expected output; provider name;
+and execution policy. For canonical execution, the material fields include:
+
+~~~json
 {
+  "packet_id": "packet_example_001",
+  "run_id": "run_example_001",
+  "task_id": "task_example_001",
+  "title": "Bounded canonical-alpha example",
+  "files_in_scope": ["outputs/example.txt"],
+  "success_criteria": ["Write the declared target."],
+  "expected_output": "example output\n",
   "execution_policy": "filesystem_mutation",
-  "expected_output": "PHASE277 packet CLI golden smoke proof\n",
-  "files_in_scope": [
-    "outputs/phase277_golden_smoke.txt"
-  ],
-  "packet_id": "packet_phase277_golden_smoke",
-  "provider_name": "local_file",
-  "run_id": "run_phase277_golden_smoke",
-  "success_criteria": [
-    "Write the deterministic Phase 277 golden-smoke output.",
-    "Return parseable JSON with local_file execution evidence and non-proofs."
-  ],
-  "task_id": "task_phase277_golden_smoke",
-  "title": "Phase 277 packet CLI golden smoke"
+  "provider_name": "subprocess_worker",
+  "worker_trust_posture": "trusted_local_unsandboxed",
+  "authorization_decision": "authorize_execution",
+  "authorization_provenance": "operator-selected-example"
 }
-```
+~~~
 
-## Persistence Posture
+This JSON is a preparation example, not a command to execute. Identifiers and
+declared paths must be valid; declared paths use relative forward-slash form.
+The execution policy is **filesystem_mutation**. Do not add provider, model,
+runtime, or platform request fields: the packet validator rejects them.
 
-A successful packet CLI execution may persist repo-local generated files under:
+Validation and packet construction are not authorization. Before workspace
+creation or worker launch, the runtime persists an execution-authorization
+record under **execution_authorizations/**. It authorizes only when the packet
+contains **authorization_decision: "authorize_execution"** and non-empty
+**authorization_provenance**; the record binds the task ID, declared scope,
+operator provenance, trust posture, timestamp, and constraints. A denied,
+missing, or contradictory authorization blocks execution. The operator remains
+the execution decision membrane.
 
-- `outputs/`
-- `data/tasks/`
-- `data/artifacts/`
-- `data/verifier_results/`
+## Trusted worker contract and controlled workspace
 
-Deterministic `local_file` behavior is local filesystem behavior. It is not
-model-backed coding, live provider generation, autonomous AI coding, or semantic
-task adequacy proof.
+The only supported posture is:
 
-Deterministic `local_file` behavior is not model-backed coding and is not
-semantic task adequacy proof.
+~~~text
+trusted_local_unsandboxed
+~~~
 
-Because the packet writes files, a successful run can leave `git status` dirty.
-Do not frame this command as a repo-read-only smoke. The operator should inspect
-the generated paths and then accept them, leave them for a follow-up boundary,
-or clean them only under a later explicit cleanup/delete boundary.
+The operator deliberately selects the local worker command. The canonical
+provider seam is:
 
-## Native PowerShell Execution And Persistence Pattern
+~~~text
+providers.base.BaseProvider.execute(role, task, context)
+~~~
 
-From the product repo root, under an explicit persistence or mutation boundary:
+The CLI constructs **SubprocessWorkerProvider** from **--worker-command**, which
+implements that seam with provider name **subprocess_worker**. The provider
+receives authorization, worker-security metadata, declared safe target paths,
+and task context. It invokes the selected command with the controlled workspace
+as its working directory and passes a JSON payload on standard input.
 
-```powershell
-$StartedAt = Get-Date -Format o
-$Failures = New-Object System.Collections.Generic.List[string]
-$Stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-$RunStamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-$RunDir = Join-Path $env:TEMP "orchestrator_phase277_packet_cli_$RunStamp"
-$PacketPath = Join-Path $RunDir "packet.json"
-$OutputPath = Join-Path $RunDir "cli-output.json"
-$GeneratedRepoPaths = @(
-  "outputs/phase277_golden_smoke.txt",
-  "data/tasks/task_phase277_golden_smoke.json",
-  "data/artifacts",
-  "data/verifier_results"
-)
+For each task/run pair, the runtime creates a unique workspace beneath:
 
-New-Item -ItemType Directory -Force -Path $RunDir | Out-Null
+~~~text
+<data-root>/worker_workspaces/<run-id>__<task-id>/
+~~~
 
-@'
+Declared outputs are mapped below that workspace. The runtime rejects absolute,
+backslash-form, ambiguous, or parent-traversal declared paths; checks workspace
+and existing parent chains for symlink/reparse risks; checks expected parents
+again immediately before launch; and inventories/audits workspace effects
+afterward. A timeout attempts bounded descendant cleanup and records whether
+cleanup was confirmed. The workspace audit detects effects within this controlled
+workspace, including undeclared workspace mutation.
+
+These are defense-in-depth controls for a trusted local worker. They are not OS
+sandboxing. Effects outside the controlled workspace are not comprehensively
+prevented or observed, and untrusted-worker execution is unsupported.
+
+## Worker result contract and persisted records
+
+After receiving the JSON payload, a successful worker must emit one JSON object
+on standard output with at least:
+
+~~~json
 {
-  "execution_policy": "filesystem_mutation",
-  "expected_output": "PHASE277 packet CLI golden smoke proof\n",
-  "files_in_scope": [
-    "outputs/phase277_golden_smoke.txt"
-  ],
-  "packet_id": "packet_phase277_golden_smoke",
-  "provider_name": "local_file",
-  "run_id": "run_phase277_golden_smoke",
-  "success_criteria": [
-    "Write the deterministic Phase 277 golden-smoke output.",
-    "Return parseable JSON with local_file execution evidence and non-proofs."
-  ],
-  "task_id": "task_phase277_golden_smoke",
-  "title": "Phase 277 packet CLI golden smoke"
+  "task_id": "task_example_001",
+  "run_id": "run_example_001",
+  "status": "success",
+  "output": "example output\n",
+  "target_path": "<the first allowed_paths value from the input payload>"
 }
-'@ | Set-Content -LiteralPath $PacketPath -Encoding UTF8
+~~~
 
-python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath |
-  Tee-Object -FilePath $OutputPath
+**target_path** must exactly equal the first safe allowed path supplied in the
+input payload. Non-JSON output, a non-zero exit, a timeout, missing or
+mismatched result fields, or an out-of-scope reported target fails the worker
+result contract.
 
-$CliExitCode = $LASTEXITCODE
-if ($CliExitCode -ne 0) { $Failures.Add("CLI exit code was $CliExitCode") }
+On the canonical path, task and run records are persisted before dispatch.
+Execution produces an execution artifact; deterministic verification produces a
+verifier result; and the records carry identifiers that link task, run,
+authorization, artifact, verifier, worker-security metadata, and later human
+disposition. Inspect the CLI JSON for **execution_provider**,
+**final_task_status**, **execution_artifact_id**, **authorization**, and
+**current_success_review**.
 
-try {
-  $CliJson = Get-Content -LiteralPath $OutputPath -Raw | ConvertFrom-Json
-  $Checks = @(
-    @("accepted", $CliJson.accepted -eq $true),
-    @("blocked_false", $CliJson.blocked -eq $false),
-    @("execution_provider_local_file", $CliJson.execution_provider -eq "local_file"),
-    @("model_executed_false", $CliJson.no_activity_flags.model_executed -eq $false),
-    @("runtime_executed_false", $CliJson.no_activity_flags.runtime_executed -eq $false),
-    @("platform_invoked_false", $CliJson.no_activity_flags.platform_invoked -eq $false)
-  )
-  foreach ($Check in $Checks) {
-    if (-not $Check[1]) { $Failures.Add("$($Check[0]) check failed") }
-  }
-} catch {
-  $Failures.Add("CLI output was not parseable JSON: $($_.Exception.Message)")
-}
+## Operator execution example — do not run as documentation validation
 
-$Stopwatch.Stop()
-$FinishedAt = Get-Date -Format o
+This is the source-accurate command shape for a separately authorized real
+execution. It deliberately uses placeholders rather than selecting a provider,
+model, or worker implementation. Do not run it merely to validate this runbook.
 
-"StartedAt=$StartedAt"
-"FinishedAt=$FinishedAt"
-"ElapsedMs=$($Stopwatch.ElapsedMilliseconds)"
-"CliExitCode=$CliExitCode"
-"RunDir=$RunDir"
-"PacketPath=$PacketPath"
-"OutputPath=$OutputPath"
-"GeneratedRepoPathsToInspect=$($GeneratedRepoPaths -join '; ')"
+~~~powershell
+python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath --data-root $DataRoot --trusted-worker-posture trusted_local_unsandboxed --worker-command <trusted-worker-command> <worker-argument-1> <worker-argument-2>
+~~~
 
-if ($Failures.Count -eq 0) {
-  "PHASE277_PACKET_CLI_EXECUTION_PERSISTENCE_SMOKE=PASS"
-} else {
-  "PHASE277_PACKET_CLI_EXECUTION_PERSISTENCE_SMOKE=FAIL"
-  $Failures | ForEach-Object { "Failure=$_" }
-  "OperatorAction=inspect output JSON, generated repo-local files, and boundary authorization before retrying"
-}
-```
+The CLI requires the packet's **worker_trust_posture**, if present, to match the
+CLI posture. It also requires the packet's **provider_name** to be
+**subprocess_worker**; an implicit or requested **local_file** path is not a
+canonical execution.
 
-Keep the start timestamp, finish timestamp, elapsed time, CLI exit code,
-visible CLI output, run directory path, and generated repo-local paths together
-for any evidence-bearing script batch.
+## Deterministic verification and human semantic disposition
 
-## Output Fields That Matter
-
-For a successful local execution, inspect:
-
-- `accepted`: should be `true`
-- `blocked`: should be `false`
-- `execution_provider`: should be `local_file`
-- `final_task_status`: should be `completed`
-- `execution_artifact_id`: should be non-empty
-- `current_success_review`: should be present and reviewable
-- `operator_response_surface`: should describe the response options
-- `operator_next_action`: should list inspectable next actions
-- `no_activity_flags`: should keep model, runtime, platform, provider, WSL,
-  Ollama, OpenClaw, Hermes, Discord, installer, autonomous-coding, semantic,
-  and production-readiness activity false
-- `non_proofs`: should include the current non-proof caveats
-
-## Operator Decision Record
-
-After inspecting a completed packet CLI result and its current-success review,
-an operator can record an explicit bounded decision with:
-
-```text
-python main.py packet-result-operator-decide <decision_input_json_path>
-```
-
-The input JSON must include `operator_decision` as `accepted` or `rejected`, a
-valid `task_id`, and an `operator_note` or `reason`. `packet_id` may be supplied
-when known. The command persists a local decision record and does not execute,
-mutate, verify, call a provider, call a model, invoke a runtime, or claim
+Deterministic verification occurs after worker execution and is persisted as a
+verifier result. It is a bounded tripwire: it can check declared conditions
+represented by the runtime, but does not prove semantic correctness,
+architectural quality, task adequacy, provider competence, autonomous coding, or
 production readiness.
 
-Acceptance records only the operator decision under stated caveats. It does not
-prove semantic correctness, autonomous AI coding, model-backed generation, live
-provider/model execution, runtime/platform behavior, or production readiness.
-Rejection preserves the operator decision and reason without automatically
-mutating the task into product failure.
+Human semantic judgment is separate from deterministic verification. A packet
+may include a **human_review** object, which the runtime processes only after it
+has completed execution and current-success review:
 
-The latest decision is surfaced in current-success readback under
-`operator_decision_summary`.
+~~~json
+{
+  "human_review": {
+    "accepted": true,
+    "operator_note": "Accepted after bounded human review.",
+    "verification_caveat_acknowledged": true,
+    "provider_caveat_acknowledged": true
+  }
+}
+~~~
 
-## Expected Success Shape
+For an acceptance record, **accepted** must be true, the operator note and both
+caveat acknowledgements are required, and the completed result must have passed
+the deterministic review gate. The persisted acceptance links the task, run,
+artifact, authorization, and verifier result. An execution-level CLI result with
+**accepted: true** means the task execution completed; it is not by itself human
+acceptance.
 
-The successful shape is deterministic parseable JSON with:
+To persist a rejection for a completed reviewable result, include a
+non-accepting review with an operator note:
 
-- `accepted=true`
-- `blocked=false`
-- `blocked_conditions=[]`
-- `missing_requirements=[]`
-- `execution_provider=local_file`
-- `final_task_status=completed`
-- a non-empty `execution_artifact_id`
-- `no_activity_flags.model_executed=false`
-- `no_activity_flags.runtime_executed=false`
-- `no_activity_flags.platform_invoked=false`
-- `no_activity_flags.live_provider_invoked=false`
-- `non_proofs` containing `no_semantic_correctness_proof`,
-  `no_live_provider_model_proof`, `no_runtime_platform_proof`,
-  `no_autonomous_ai_coding_proof`, and `no_production_readiness_proof`
+~~~json
+{
+  "human_review": {
+    "accepted": false,
+    "operator_note": "Rejected after semantic inspection."
+  }
+}
+~~~
 
-## Expected Blocked Or Error Shape
+The runtime records a rejected operator-decision record; rejection preserves the
+decision and reason and does not automatically turn the task into product
+failure. A later result-review operation outside this CLI does not make legacy
+**main.py** the canonical lifecycle route.
 
-Blocked/error output is also deterministic parseable JSON. It should contain:
+## Read-only lifecycle reconciliation
 
-- `accepted=false`
-- `blocked=true`
-- one or more `blocked_conditions`
-- optional `missing_requirements`
-- `detail` when the CLI can safely explain the issue
-- `no_activity_flags` preserving false activity flags
-- `non_proofs` preserving the current caveats
+Run reconciliation against the same data root after a lifecycle has produced
+records:
 
-Typical blocked/error causes include missing CLI arguments, unreadable packet
-files, malformed JSON, JSON that is not an object, missing required packet
-fields, unsupported provider names, requested model/runtime/platform fields,
-unsafe declared file paths, or unsupported execution policy.
+~~~powershell
+python -m orchestrator.operator_coding_task_packet_cli --reconcile --data-root $DataRoot
+~~~
 
-## Current Lockouts
+The reconciliation result contains **alpha_reconciliation**, **data_root**,
+**findings**, and **healthy**. It reads task, run, authorization, artifact,
+verifier, acceptance, and operator-decision records; checks JSON and schema
+versions; detects incomplete in-progress work; validates task/run/artifact/
+verifier/disposition identity linkage; checks authorization scope and identity
+linkage; and checks persisted worker posture, workspace identity, audit, and
+cleanup metadata. It is read-only.
 
-This runbook does not authorize provider/model execution, runtime/platform
-execution, WSL, Ollama, OpenClaw, Hermes, Discord, installer behavior,
-service/API/UI work, scheduler/connector behavior, `general_answer` mutation,
-cleanup/delete/archive behavior, or production-readiness claims.
+An empty **findings** list (**healthy: true**) means the records examined are
+structurally consistent. It does not prove semantic correctness, OS sandboxing,
+safe execution of an untrusted worker, provider/model quality, or production
+readiness.
 
-## Non-Proofs
+## End-to-end operator sequence
 
-This runbook proves only a source/test/docs-backed description of the packet CLI
-as an execution and persistence surface with deterministic `local_file`
-behavior.
+1. Select a deliberate isolated **--data-root**; do not reuse one whose prior
+   task IDs or workspace identities would collide.
+2. Prepare a bounded packet with relative declared paths,
+   **provider_name: "subprocess_worker"**, the required trust posture, and an
+   explicit authorization decision and provenance.
+3. Select a trusted local worker command that understands the JSON
+   standard-input and structured-standard-output contract. Treat that selection
+   as an operator decision, not a provider/model recommendation from runtime.
+4. Under a separately authorized execution boundary, invoke the canonical CLI
+   with **--packet-json**, **--data-root**,
+   **--trusted-worker-posture trusted_local_unsandboxed**, and a final
+   **--worker-command** argument list.
+5. Inspect the structured result and persisted task, run, authorization,
+   artifact, and verifier records under the selected data root.
+6. Apply human semantic judgment. Include a valid **human_review** when an
+   immediate acceptance or rejection record is intended; otherwise do not
+   mistake execution completion for a persisted human disposition.
+7. Run the read-only reconciliation command against that data root and inspect
+   every finding before relying on the linked lifecycle state.
 
-It does not prove semantic correctness, live provider/model execution,
-runtime/platform behavior, autonomous AI coding, production readiness, service
-or API or UI behavior, scheduler/reminder behavior, connector behavior,
-`general_answer` resumption, or the full production patch workflow.
+## Failure and stop conditions
+
+Stop and inspect the structured CLI result rather than retrying blindly when
+any of these occurs:
+
+- packet file unreadable, malformed, or not a JSON object;
+- unsupported CLI arguments, or missing **--data-root**, trust posture, or
+  worker command;
+- missing packet fields, invalid identifiers, unsafe declared paths, unsupported
+  execution policy, **local_file**, or provider/model/runtime/platform request
+  fields;
+- missing, denied, or contradictory persisted authorization;
+- unsupported or mismatched trust posture, provider identity, task identity, or
+  authorized scope;
+- unavailable, reused, unsafe, or changed workspace/output-parent state,
+  including symlink or reparse risk;
+- worker launch failure, timeout, unconfirmed descendant cleanup, non-zero exit,
+  malformed result, target mismatch, or undeclared workspace effect;
+- execution failure, failed deterministic verification, or human review that
+  does not meet its acceptance/rejection prerequisites; or
+- reconciliation findings such as invalid records, missing links, mismatched
+  identifiers, incomplete cleanup metadata, or a completed task lacking human
+  disposition.
+
+Do not infer recovery behavior beyond the reported records and error codes.
+
+## Explicit non-proofs
+
+Canonical alpha does not prove:
+
+- OS-level sandboxing;
+- safe execution of untrusted workers;
+- semantic correctness or architectural quality;
+- autonomous coding competence;
+- provider or model quality;
+- concurrency safety;
+- multi-user safety;
+- production readiness;
+- first-product-wedge selection; or
+- product-market fit.
+
+It also does not select a provider, model, or product wedge. This runbook does
+not authorize a worker launch, provider/model/runtime execution, or production
+workload; its real-execution example is descriptive only.
