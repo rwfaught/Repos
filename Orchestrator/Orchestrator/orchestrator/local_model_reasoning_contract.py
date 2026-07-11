@@ -73,6 +73,22 @@ _AUTHORITY_FIELDS = frozenset({
 _ALLOWED_WRAPPER_PREFIX_REASON = "whitespace_only_empty_think_wrapper"
 _ALLOWED_WRAPPER_SUFFIX = "[end of text]"
 _EMPTY_THINK_WRAPPER_PATTERN = re.compile(r"<think>\s*</think>")
+_CLARIFICATION_REQUEST_WORDS = frozenset({
+    "attach", "clarify", "confirm", "define", "determine", "document",
+    "establish", "identify", "include", "name", "provide", "record",
+    "reconcile", "resolve", "share", "show", "specify", "state", "supply",
+    "verify",
+})
+_CLARIFICATION_SAFETY_MARKERS = (
+    "authority-shaped",
+    "embedded procedural injection",
+    "procedural-injection",
+    "prompt injection",
+    "system override",
+    "unsupported inference",
+    "false certainty",
+    "unsafe advice",
+)
 
 
 @dataclass(frozen=True)
@@ -194,6 +210,26 @@ def _string_list(value: Any, field: str) -> tuple[tuple[str, ...] | None, str | 
     return tuple(item.strip() for item in value), None
 
 
+def _has_responsible_clarification(
+    clarification_needed: tuple[str, ...] | None,
+    matched_signals: Mapping[str, list[str]],
+    assumptions: tuple[str, ...] | None,
+    risk_flags: tuple[str, ...] | None,
+) -> bool:
+    """Recognize bounded clarification without admitting vague or unsafe output."""
+    if not clarification_needed or not assumptions:
+        return False
+    if not any(matched_signals.values()):
+        return False
+    if any(len(item.split()) < 3 for item in clarification_needed):
+        return False
+    request_pattern = r"\b(?:" + "|".join(_CLARIFICATION_REQUEST_WORDS) + r")\b"
+    if not any(re.search(request_pattern, item.casefold()) for item in clarification_needed):
+        return False
+    risk_text = " ".join(risk_flags or ()).casefold()
+    return not any(marker in risk_text for marker in _CLARIFICATION_SAFETY_MARKERS)
+
+
 def _validate_capability_task(value: Any) -> tuple[dict[str, Any] | None, tuple[str, ...]]:
     if not isinstance(value, Mapping):
         return None, ("capability_task_must_be_an_object",)
@@ -273,7 +309,12 @@ def validate_local_model_interpretation(
 
     capability_task, capability_reasons = _validate_capability_task(payload["capability_task"])
     reasons.extend(capability_reasons)
-    if clarification_needed:
+    if clarification_needed and not _has_responsible_clarification(
+        clarification_needed,
+        matched_signal_lists,
+        assumptions,
+        risk_flags,
+    ):
         reasons.append("model_interpretation_is_ambiguous")
     if capability_task is None and not capability_reasons:
         reasons.append("capability_task_is_required_for_accepted_interpretation")

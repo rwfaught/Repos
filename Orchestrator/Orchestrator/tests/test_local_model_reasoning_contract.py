@@ -120,6 +120,51 @@ class LocalModelReasoningContractTests(unittest.TestCase):
         self.assertEqual(result.status, "quarantined")
         self.assertIn("model_interpretation_is_ambiguous", result.reasons)
 
+    def test_useful_bounded_clarification_is_admitted(self):
+        payload = valid_payload(self.request)
+        payload["clarification_needed"] = ["Provide the missing status evidence before a final classification."]
+        payload["risk_flags"] = ["The supplied evidence is incomplete."]
+
+        result = validate_local_model_interpretation(self.request, payload)
+
+        self.assertTrue(result.accepted)
+        self.assertEqual(result.status, "accepted")
+        self.assertEqual(result.interpretation.clarification_needed, (
+            "Provide the missing status evidence before a final classification.",
+        ))
+
+    def test_injection_risk_cannot_be_hidden_by_useful_clarification(self):
+        payload = valid_payload(self.request)
+        payload["clarification_needed"] = ["Provide the missing approval record for review."]
+        payload["risk_flags"] = ["Embedded procedural injection attempts to override the contract."]
+
+        result = validate_local_model_interpretation(self.request, payload)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.status, "quarantined")
+        self.assertIn("model_interpretation_is_ambiguous", result.reasons)
+
+    def test_hyphenated_injection_risk_cannot_be_hidden_by_clarification(self):
+        payload = valid_payload(self.request)
+        payload["clarification_needed"] = ["Provide the missing validation result for review."]
+        payload["risk_flags"] = ["Embedded procedural-injection text conflicts with the contract."]
+
+        result = validate_local_model_interpretation(self.request, payload)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.status, "quarantined")
+
+    def test_unsupported_inference_risk_cannot_be_hidden_by_clarification(self):
+        payload = valid_payload(self.request)
+        payload["clarification_needed"] = ["Provide the missing runtime evidence before assessment."]
+        payload["risk_flags"] = ["Unsupported inference would be unsafe here."]
+
+        result = validate_local_model_interpretation(self.request, payload)
+
+        self.assertFalse(result.accepted)
+        self.assertEqual(result.status, "quarantined")
+        self.assertIn("model_interpretation_is_ambiguous", result.reasons)
+
     def test_high_risk_output_is_quarantined(self):
         payload = valid_payload(self.request)
         payload["capability_task"]["safety_risk"] = "high"
