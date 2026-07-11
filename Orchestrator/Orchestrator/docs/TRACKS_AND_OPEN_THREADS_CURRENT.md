@@ -17,7 +17,7 @@ not replace the full historical ledger.
 
 - Current repo HEAD at edit time:
   `1a94c6e54139ac851ecfd025052abbe5e5bd2230`
-- Generated/edited: `2026-07-09T02:03:32.7477010-05:00`
+- Generated/edited: `2026-07-10T23:30:00-05:00`
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
@@ -98,7 +98,7 @@ product-wedge selection.
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
 | Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, AGENTS source-authority hardening, Relay command-surface/no-helper doctrine, Relay named command modes, and dirty-residue cleanup/ZIP deletion are completed. Relay command discipline is persistent in `ROLE_RELAY.md`. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
 | Local-first model/router/provider | WATCH | Evidence exists for specific smoke/metadata/proof registrations, but live execution and production readiness remain separate future boundaries. |
-| Experimental native online advisory adapter | WATCH | Isolated experimental fork contains local durability commit `5526034397e3460f5ca886495e6370d2a1ac9c51` (`Preserve provider-neutral native Codex advisory repair`); no push or authoritative-main adoption. Prompt transport repair is source/test/docs-proven, while live stdin acceptance and semantic rescoring remain future proof candidates. No provider is selected; neutral dossier/case abstraction first remains the product membrane. |
+| Experimental native online advisory adapter | WATCH | The isolated experimental branch is pushed and verified at `64125b9909b7e72b7d7d3c542caac3274def086b`; live native Codex stdin transport is accepted with no WinError 206, and the repaired frozen 12-scenario rerun admitted 8/12 while quarantining 04, 05, 09, and 12. Focused tests passed 42/42; transport was 12/12 with no retries and the prompt absent from argv. Codex remains one experimental advisory adapter: no provider is selected, no production readiness or main-source adoption is implied, and the neutral dossier/case membrane remains unchanged. |
 | General answer lightweight lane | DEFERRED | Report-only structured local lane is paused pending explicit coordinator ranking. |
 | Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review and neutral task packet structural proof are completed, committed, pushed, and ratified; they do not select a product wedge or prove runtime/provider/model behavior. |
 | Founder-native Human Override / Causal Court material | WATCH | Useful founder-legible calibration/demo material; not current product direction or selected wedge. |
@@ -114,11 +114,24 @@ product-wedge selection.
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
 | Local provider/runtime execution | WATCH | Specific prior operator proofs are narrow and time-bound; live execution requires explicit future authorization and fresh evidence. | `UNKNOWN_REQUIRES_ROGER_REVIEW` unless a provider/runtime boundary is named. | `TRACKS_AND_OPEN_THREADS.md` |
-| Experimental native online advisory adapter durability | WATCH | Local experimental commit `5526034397e3460f5ca886495e6370d2a1ac9c51` exists without push or authoritative-main adoption; the repaired stdin transport is not live-proven and the repaired frozen-run semantic quality is unscored. | Read-only CTO durability review, then separately authorized live stdin transport proof and semantic rescoring if ranked. | `TRACKS_AND_OPEN_THREADS.md` |
+| Experimental native online advisory adapter durability | WATCH | Remote durability is verified at `64125b9909b7e72b7d7d3c542caac3274def086b`. The repaired evidence is bounded: transport accepted 12/12 with no retries and prompt absent argv; frozen semantic replay admitted 8/12, with 04, 05, 09, and 12 quarantined as preserved evidence. | Keep provider-neutral and experimental; separately rank offline/local advisory model search, provider selection, or any main-source adoption review. | `TRACKS_AND_OPEN_THREADS.md` |
 | General answer productized surfacing | DEFERRED | Report-only contracts exist; no semantic answer quality, service/API/UI, live generation, or production readiness proof. | Explicit coordinator ranking before resumption. | `TRACKS_AND_OPEN_THREADS.md` |
 | Platform/OpenClaw/Hermes/RAG integration | DEFERRED | Not product-repo current authority; requires separate integration boundary and fresh operator evidence. | Explicit integration boundary only. | `TRACKS_AND_OPEN_THREADS.md` |
 
 ## Current Non-Proofs / Caveats
+
+## Advisory Repair Reconciliation Triage
+
+| Thread | Status | Current disposition |
+| --- | --- | --- |
+| `LIVE_CODEX_STDIN_SMOKE_PROOF` | `RETIRED_OR_RESOLVED` | Live native Codex stdin transport proof completed; no WinError 206, 12/12 transport success, no retries, prompt absent from argv. |
+| `REPAIRED_FROZEN_RUN_SEMANTIC_RESCORING` | `RETIRED_OR_RESOLVED` | Repaired frozen 12-scenario replay completed: 8/12 admitted; 04, 05, 09, and 12 remain quarantined. |
+| `USEFUL_CLARIFICATION_ADMISSION_REPAIR` | `RETIRED_OR_RESOLVED` | Provider-neutral clarification admission repair completed and revalidated; focused tests passed 42/42. |
+| `EXPERIMENTAL_FORK_PUSH_DECISION` | `RETIRED_OR_RESOLVED` | Existing experimental branch push completed and remote ref verified at `64125b9`. |
+| `PROVIDER_SELECTION_POLICY` | `DEFERRED_VALID` | No provider selected; Codex remains one experimental advisory adapter. |
+| `AUTHORITATIVE_MAIN_SOURCE_ADOPTION` | `DEFERRED_VALID` | No source adoption into authoritative `main` is implied or authorized by the evidence. |
+| `OFFLINE_LOCAL_ADVISORY_MODEL_SEARCH` | `DEFERRED_VALID` | Offline/local search remains open for a separately ranked boundary. |
+| `REMAINING_ADVISORY_QUARANTINE_ANALYSIS` | `DEFERRED_VALID` | Quarantines preserve evidence and are not automatically classified as defects. |
 
 - Product wedge is not selected unless current docs and Roger review prove
   otherwise.

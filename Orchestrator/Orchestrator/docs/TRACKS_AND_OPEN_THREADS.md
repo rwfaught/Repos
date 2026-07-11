@@ -3730,3 +3730,50 @@ fresh artifact proof.
   or request targeted repair before commit.
 
 `DRY_MVP_MILESTONE_CLOSEOUT_SOURCE_TEST_DOCS_REGISTERED=SOURCE_TEST_DOCS`
+
+
+### Experimental Advisory Repair Remote Durability And Coordination Reconciliation
+
+- Boundary: `EXPERIMENTAL_ADVISORY_REPAIR_REMOTE_DURABILITY_AND_COORDINATION_RECONCILIATION`.
+- Status: completed within the explicitly authorized experimental push and
+  coordination-document reconciliation boundary.
+- Experimental branch:
+  `experiment/gpt56-local-ai-consulting-wedge`.
+- Experimental commits now durable on `origin`:
+  `5526034397e3460f5ca886495e6370d2a1ac9c51` (`Preserve provider-neutral
+  native Codex advisory repair`) and
+  `64125b9909b7e72b7d7d3c542caac3274def086b` (`Admit safe bounded
+  clarification outputs`). The remote branch ref was verified at
+  `64125b9909b7e72b7d7d3c542caac3274def086b`.
+- Live native Codex stdin transport proof is complete: the repaired adapter
+  accepted all 12 scenario prompts, required no retries, kept the prompt out
+  of argv, and did not reproduce `[WinError 206] The filename or extension is
+  too long`.
+- Frozen semantic baseline context: the pre-repair run admitted 2/12
+  scenarios and recorded a 15/15 admitted-average score; ambiguity handling
+  was the dominant repairable defect.
+- Provider-neutral repair and revalidation are complete: the repaired replay
+  admitted 8/12 scenarios and quarantined 04, 05, 09, and 12. The remaining
+  quarantines are preserved evidence, not automatic defect findings.
+- Focused validation passed 42/42 tests. This coordination update does not
+  rerun source/tests or alter the experimental source/test repair.
+- Triage disposition: `LIVE_CODEX_STDIN_SMOKE_PROOF`,
+  `REPAIRED_FROZEN_RUN_SEMANTIC_RESCORING`,
+  `USEFUL_CLARIFICATION_ADMISSION_REPAIR`, and
+  `EXPERIMENTAL_FORK_PUSH_DECISION` are `RETIRED_OR_RESOLVED`.
+  `PROVIDER_SELECTION_POLICY`, `AUTHORITATIVE_MAIN_SOURCE_ADOPTION`,
+  `OFFLINE_LOCAL_ADVISORY_MODEL_SEARCH`, and remaining quarantine analysis
+  are `DEFERRED_VALID`. The experimental adapter track remains `WATCH`.
+- Guardrails preserved: Codex remains one experimental advisory adapter; no
+  provider is selected; no production readiness, product-wedge selection,
+  Phase 387 resumption, or main-source adoption is proven; the neutral
+  dossier/case membrane is unchanged; and offline/local search remains open.
+- Coordination-doc update: `YES`, limited to
+  `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md` and
+  `docs/TRACKS_AND_OPEN_THREADS.md` under explicit authorization.
+- Evidence and non-proofs: the external campaign report records both repo
+  states, remote verification, and the bounded evidence paths. The evidence
+  does not prove provider selection, production execution/readiness, product
+  wedge selection, Phase 387, or authoritative-main source adoption.
+
+`EXPERIMENTAL_ADVISORY_REPAIR_REMOTE_DURABILITY_AND_COORDINATION_RECONCILIATION=PASS`
