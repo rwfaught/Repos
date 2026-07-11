@@ -118,7 +118,7 @@ product-wedge selection.
 | Canonical alpha runtime | ADOPTED_CURRENT_AUTHORITY | Authoritative on `main` at `1cb2bc8`; one coherent alpha execution spine is now present beyond disconnected runtime scaffolding. It remains alpha and is not production-ready. |
 | Trusted-worker contract | ADOPTED_WITH_CAVEATS | `trusted_local_unsandboxed` is explicit and independently reverified; workspace, path-state, cleanup, and effect checks are defense in depth, not an OS sandbox. |
 | Legacy `main.py` | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy. Do not add commands; migration is a separate future campaign. |
-| Phase 277 packet CLI runbook | ACTIVE_NEXT_DOCS_CANDIDATE | The runbook is stale: it still describes implicit `local_file` execution and repository-local persistence. Replace it only in a separate docs boundary. |
+| Phase 277 packet CLI runbook | RETIRED_OR_RESOLVED | Migrated locally in `62d0532` to document the canonical-alpha operator path. It is not yet pushed; remote durability awaits a later Relay push-and-verification boundary. |
 | Real provider integration | READY_FOR_RANKING | Rank useful bounded provider-backed work through the canonical worker seam; do not select a provider in this cockpit. |
 | Product-wedge control | DEFERRED_VALID | No first product wedge is selected; preserve the neutral dossier/case abstraction-first posture. |
 | Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
@@ -143,7 +143,7 @@ product-wedge selection.
 | Trusted-worker security defects | RETIRED_OR_RESOLVED | Cross-record reconciliation and final pre-launch parent-state rejection were independently reverified. | None; reopen only for a newly reproduced defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Canonical branch adoption | RETIRED_OR_RESOLVED | Local, tracking, and remote `main` are aligned at `1cb2bc8`; no further adoption action is open. | None. | `TRACKS_AND_OPEN_THREADS.md` |
 | Coordination-doc reconciliation | RETIRED_OR_RESOLVED | The five-document reconciliation was completed, committed, pushed, and verified through `99d3d85`. | None; reopen only for a newly identified current-state defect. | `TRACKS_AND_OPEN_THREADS.md` |
-| Phase 277 packet CLI runbook migration | ACTIVE_NEXT_DOCS_CANDIDATE | Current runbook still describes implicit local-file execution and repository-local persistence. | Separate docs-only runbook replacement. | `TRACKS_AND_OPEN_THREADS.md` |
+| Phase 277 packet CLI runbook migration | RETIRED_OR_RESOLVED | Completed locally in `62d0532`; the runbook now documents the canonical-alpha operator path. The local commit is not yet pushed. | Remote durability requires a later authorized Relay push-and-verification boundary. | `TRACKS_AND_OPEN_THREADS.md` |
 | Legacy `main.py` migration | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy and must not gain new commands. | Separate migration campaign after ranking. | `TRACKS_AND_OPEN_THREADS.md` |
 | Real provider integration | READY_FOR_RANKING | The canonical worker seam is available for useful bounded work; provider competence and selection remain unproven. | Rank a provider-neutral bounded integration boundary. | `TRACKS_AND_OPEN_THREADS.md` |
 | Provider selection | DEFERRED_VALID | No provider or model has been selected. | Reopen only after ranking and explicit boundary authorization. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -170,9 +170,10 @@ product-wedge selection.
   prevented or observed.
 - No provider/model has been selected, no first product wedge has been
   selected, and no product-market fit is proven.
-- `main.py` remains a legacy 49-command surface. Phase 277 runbook migration,
-  `main.py` migration, provider selection, and product-wedge selection remain
-  separate boundaries.
+- `main.py` remains a legacy 49-command surface. The Phase 277 runbook migration
+  is complete locally in `62d0532`, but remote durability remains a separate
+  later Relay push-and-verification boundary; `main.py` migration, provider
+  selection, and product-wedge selection remain separate boundaries.
 
 ## Advisory Repair Reconciliation Triage
 
@@ -226,9 +227,8 @@ product-wedge selection.
 
 ## Recommended Next Ranked Candidates
 
-1. `PHASE_277_PACKET_CLI_RUNBOOK_MIGRATION_DOCS_ONLY`
-2. `REAL_PROVIDER_INTEGRATION_RANKING_REVIEW`
-3. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
+1. `REAL_PROVIDER_INTEGRATION_RANKING_REVIEW`
+2. `FIRST_PRODUCT_WEDGE_SELECTION_RECORD_DOCS_ONLY`
 
 ## Update Discipline
 

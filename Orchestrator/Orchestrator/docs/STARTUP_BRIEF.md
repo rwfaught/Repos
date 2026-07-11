@@ -19,9 +19,10 @@ deterministic verification, human disposition, and read-only reconciliation.
 It is alpha capability, not production readiness or OS-level sandboxing.
 
 `main.py` remains a legacy 49-command surface; do not add commands. The Phase
-277 packet CLI runbook is stale and still describes implicit `local_file`
-execution and repository-local persistence. Both migrations remain separate
-future docs boundaries. No provider/model or product wedge has been selected.
+277 packet CLI runbook has been migrated locally to the canonical-alpha
+operator path. `main.py` remains a separate migration, and remote durability of
+the local runbook commits requires a later Relay push-and-verification boundary.
+No provider/model or product wedge has been selected.
 
 ---
 

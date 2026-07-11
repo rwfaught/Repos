@@ -104,8 +104,9 @@ Non-authority / do-not-confuse warnings:
   competence.
 - The canonical worker seam does not select a provider or model.
 - The canonical runtime does not select a product wedge.
-- `main.py` remains legacy and the Phase 277 runbook remains a separate stale
-  docs migration boundary.
+- `main.py` remains legacy. The Phase 277 runbook has been migrated locally in
+  `62d0532` to the canonical-alpha operator path; remote durability awaits a
+  separate Relay push-and-verification boundary.
 
 Current proof posture: the adopted source and independent evidence prove one
 coherent bounded alpha execution spine, including linked persistence,
