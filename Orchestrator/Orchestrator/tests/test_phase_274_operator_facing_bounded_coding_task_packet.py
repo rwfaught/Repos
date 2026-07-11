@@ -52,57 +52,22 @@ class Phase274OperatorFacingBoundedCodingTaskPacketTests(unittest.TestCase):
         result = run_operator_coding_task_packet(packet)
         return root, tasks_dir, artifacts_dir, verifier_dir, result
 
-    def test_operator_packet_runs_local_current_spine_and_surfaces_review(self):
+    def test_legacy_direct_packet_isolated_until_explicit_worker_migration(self):
         root, tasks_dir, artifacts_dir, verifier_dir, result = self._run_in_temp_project(
             self._packet()
         )
 
         self.assertTrue(result["operator_coding_task_packet_surface"])
-        self.assertTrue(result["accepted"])
-        self.assertFalse(result["blocked"])
-        self.assertEqual(result["execution_provider"], "local_file")
-        self.assertEqual(result["final_task_status"], "completed")
-        self.assertTrue(result["execution_artifact_id"])
-        self.assertEqual(
-            (root / "outputs" / "phase274.txt").read_text(encoding="utf-8"),
-            "PHASE274 operator packet proof\n",
-        )
-
-        task_files = sorted(tasks_dir.glob("*.json"))
-        artifact_files = sorted(artifacts_dir.glob("*.json"))
-        verifier_files = sorted(verifier_dir.glob("*.json"))
-        self.assertEqual(len(task_files), 1)
-        self.assertEqual(len(artifact_files), 1)
-        self.assertEqual(len(verifier_files), 1)
-
-        artifact = json.loads(artifact_files[0].read_text(encoding="utf-8"))
-        verifier = json.loads(verifier_files[0].read_text(encoding="utf-8"))
-        self.assertEqual(artifact["artifact_id"], result["execution_artifact_id"])
-        self.assertEqual(verifier["execution_artifact_id"], result["execution_artifact_id"])
-        self.assertTrue(verifier["verification_result"]["overall_passed"])
-
-        review = result["current_success_review"]
-        self.assertTrue(review["current_success_result_review_surface"])
-        self.assertTrue(review["ready_for_operator_review"])
-        self.assertEqual(
-            review["final_outcome_classification"],
-            "completed_current_state_success",
-        )
+        self.assertFalse(result["accepted"])
+        self.assertTrue(result["blocked"])
+        self.assertIn("explicit_worker_provider_required", result["blocked_conditions"])
+        self.assertFalse((root / "outputs" / "phase274.txt").exists())
+        self.assertFalse(tasks_dir.exists())
+        self.assertFalse(artifacts_dir.exists())
+        self.assertFalse(verifier_dir.exists())
         self.assertEqual(
             result["operator_response_surface"],
-            "completed_result_response_options",
-        )
-
-        option_ids = {
-            option["option_id"] for option in review.get("response_options", [])
-        }
-        self.assertTrue(
-            {
-                "inspect_task_state",
-                "inspect_execution_artifact",
-                "inspect_verifier_result",
-                "record_operator_acceptance_later",
-            }.issubset(option_ids)
+            "blocked_operator_coding_task_packet_options",
         )
 
         self.assertFalse(result["no_activity_flags"]["semantic_correctness_claimed"])

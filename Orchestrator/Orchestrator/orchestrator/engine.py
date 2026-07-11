@@ -259,12 +259,16 @@ def _execute_task(task: Task, provider_name: str = "mock", provider=None, contex
     dispatch_context["allowed_paths"] = [
         str(resolve_declared_project_path(path)) for path in task.files_in_scope
     ]
-    result = dispatch_task(
-        task,
-        provider_name=provider_name,
-        provider=provider,
-        context=dispatch_context,
-    )
+    if provider is None and context is None:
+        # Preserve the legacy dispatcher call shape for non-canonical callers.
+        result = dispatch_task(task, provider_name=provider_name)
+    else:
+        result = dispatch_task(
+            task,
+            provider_name=provider_name,
+            provider=provider,
+            context=dispatch_context,
+        )
     causal_targets = _complete_causal_target_snapshots(causal_targets_before)
     artifact = create_artifact(task, result)
     task.execution_artifact_id = artifact["artifact_id"]

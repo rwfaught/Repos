@@ -21,7 +21,7 @@ class Phase277PacketCliOperatorRunbookGoldenSmokeTests(unittest.TestCase):
         self.assertIsNotNone(match, "runbook must contain a fenced JSON packet")
         return json.loads(match.group(1))
 
-    def test_runbook_packet_cli_golden_smoke_stays_local_file_only(self):
+    def test_legacy_runbook_is_preserved_but_cannot_execute_implicitly(self):
         repo_root = Path(__file__).resolve().parents[1]
         runbook_path = repo_root / "docs" / "OPERATOR_CODING_TASK_PACKET_CLI_RUNBOOK.md"
 
@@ -72,36 +72,18 @@ class Phase277PacketCliOperatorRunbookGoldenSmokeTests(unittest.TestCase):
                 exit_code = main(["--packet-json", str(packet_path)])
             result = json.loads(stdout.getvalue())
 
-            self.assertEqual(exit_code, 0)
+            self.assertEqual(exit_code, 1)
             self.assertTrue(packet_path.exists())
             self.assertTrue(result["operator_coding_task_packet_surface"])
-            self.assertTrue(result["accepted"])
-            self.assertFalse(result["blocked"])
-            self.assertEqual(result["execution_provider"], "local_file")
-            self.assertEqual(result["final_task_status"], "completed")
-            self.assertTrue(result["execution_artifact_id"])
+            self.assertFalse(result["accepted"])
+            self.assertTrue(result["blocked"])
+            self.assertIn("explicit_worker_provider_required", result["blocked_conditions"])
 
             output_path = root / "outputs" / "phase277_golden_smoke.txt"
-            self.assertEqual(
-                output_path.read_text(encoding="utf-8"),
-                "PHASE277 packet CLI golden smoke proof\n",
-            )
-
-            task_files = sorted(tasks_dir.glob("*.json"))
-            artifact_files = sorted(artifacts_dir.glob("*.json"))
-            verifier_files = sorted(verifier_dir.glob("*.json"))
-            self.assertEqual(len(task_files), 1)
-            self.assertEqual(len(artifact_files), 1)
-            self.assertEqual(len(verifier_files), 1)
-
-            artifact = json.loads(artifact_files[0].read_text(encoding="utf-8"))
-            verifier = json.loads(verifier_files[0].read_text(encoding="utf-8"))
-            self.assertEqual(artifact["artifact_id"], result["execution_artifact_id"])
-            self.assertEqual(
-                verifier["execution_artifact_id"],
-                result["execution_artifact_id"],
-            )
-            self.assertTrue(verifier["verification_result"]["overall_passed"])
+            self.assertFalse(output_path.exists())
+            self.assertFalse(tasks_dir.exists())
+            self.assertFalse(artifacts_dir.exists())
+            self.assertFalse(verifier_dir.exists())
 
             no_activity_flags = result["no_activity_flags"]
             for flag_name in (

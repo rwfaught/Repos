@@ -102,6 +102,8 @@ def _read_packet_json(path_text: str) -> tuple[dict[str, Any] | None, dict[str, 
 def _parse_args(argv: Sequence[str]) -> tuple[str, str, str, list[str], dict[str, Any] | None]:
     args = tuple(argv)
     if len(args) >= 2 and args[0] == "--packet-json" and args[1]:
+        if len(args) == 2:
+            return "legacy_packet_json", args[1], "", [], None
         data_root = ""
         command: list[str] = []
         index = 2
@@ -142,6 +144,11 @@ def main(argv: list[str] | None = None) -> int:
         _print_json(read_error)
         return 1
     assert packet is not None
+
+    if mode == "legacy_packet_json":
+        result = run_operator_coding_task_packet(packet)
+        _print_json(result)
+        return 1
 
     engine_stdout = StringIO()
     provider = SubprocessWorkerProvider(command)
