@@ -15,9 +15,12 @@ not replace the full historical ledger.
 
 ## Last Updated / Source Posture
 
-- Current repo HEAD at edit time:
-  `12281643aeb04670a6eadbd4d664a52c74bc725d`
-- Generated/edited: `2026-07-11T12:56:00-05:00`
+- Canonical runtime source basis:
+  `1cb2bc8922a6325d90948ebe1a7942ffef784566`
+- Coordination-doc reconciliation durability: pushed in `main` ancestry
+  through `99d3d85e5c17a796b8aa687e720d3cc95daab7d7`.
+- Current repository HEAD must always be verified live; it is not predicted
+  inside this document.
 - Source state must be verified against live git, operator evidence, worker
   evidence, and current repo docs before being treated as current proof.
 
@@ -139,7 +142,7 @@ product-wedge selection.
 | Canonical alpha runtime consolidation | RETIRED_OR_RESOLVED | Adopted and authoritative on `main` at `1cb2bc8`; the coherent alpha lifecycle is source-backed and independently validated. | None; reopen only for targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Trusted-worker security defects | RETIRED_OR_RESOLVED | Cross-record reconciliation and final pre-launch parent-state rejection were independently reverified. | None; reopen only for a newly reproduced defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Canonical branch adoption | RETIRED_OR_RESOLVED | Local, tracking, and remote `main` are aligned at `1cb2bc8`; no further adoption action is open. | None. | `TRACKS_AND_OPEN_THREADS.md` |
-| Coordination-doc reconciliation | ACTIVE_WITHIN_THIS_BOUNDARY | Current cockpit and orientation docs are being reconciled to adopted `main`; no source or runbook mutation is implied. | Complete this docs-only boundary, then review the resulting cockpit. | `TRACKS_AND_OPEN_THREADS.md` |
+| Coordination-doc reconciliation | RETIRED_OR_RESOLVED | The five-document reconciliation was completed, committed, pushed, and verified through `99d3d85`. | None; reopen only for a newly identified current-state defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Phase 277 packet CLI runbook migration | ACTIVE_NEXT_DOCS_CANDIDATE | Current runbook still describes implicit local-file execution and repository-local persistence. | Separate docs-only runbook replacement. | `TRACKS_AND_OPEN_THREADS.md` |
 | Legacy `main.py` migration | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy and must not gain new commands. | Separate migration campaign after ranking. | `TRACKS_AND_OPEN_THREADS.md` |
 | Real provider integration | READY_FOR_RANKING | The canonical worker seam is available for useful bounded work; provider competence and selection remain unproven. | Rank a provider-neutral bounded integration boundary. | `TRACKS_AND_OPEN_THREADS.md` |
