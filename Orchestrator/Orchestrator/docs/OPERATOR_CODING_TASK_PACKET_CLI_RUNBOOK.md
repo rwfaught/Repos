@@ -104,8 +104,9 @@ are internally consistent; it is not semantic, security, or execution proof.
 ## Bounded packet and persisted authorization
 
 The packet is a JSON object. It supplies the packet, run, and task identifiers;
-title; declared output paths; success criteria; expected output; provider name;
-and execution policy. For canonical execution, the material fields include:
+title (the bounded task objective); declared output paths; success criteria;
+expected output; provider name; and execution policy. For canonical execution,
+the material fields include:
 
 ~~~json
 {
@@ -155,9 +156,10 @@ providers.base.BaseProvider.execute(role, task, context)
 
 The CLI constructs **SubprocessWorkerProvider** from **--worker-command**, which
 implements that seam with provider name **subprocess_worker**. The provider
-receives authorization, worker-security metadata, declared safe target paths,
-and task context. It invokes the selected command with the controlled workspace
-as its working directory and passes a JSON payload on standard input.
+receives authorization, worker-security metadata, task objective, declared safe
+target paths, success criteria, expected output, and task context. It invokes
+the selected command with the controlled workspace as its working directory and
+passes a JSON payload on standard input.
 
 For each task/run pair, the runtime creates a unique workspace beneath:
 
@@ -188,14 +190,20 @@ on standard output with at least:
   "run_id": "run_example_001",
   "status": "success",
   "output": "example output\n",
-  "target_path": "<the first allowed_paths value from the input payload>"
+  "changed_paths": [
+    "<each changed allowed_paths value from the input payload, in declared order>"
+  ]
 }
 ~~~
 
-**target_path** must exactly equal the first safe allowed path supplied in the
-input payload. Non-JSON output, a non-zero exit, a timeout, missing or
-mismatched result fields, or an out-of-scope reported target fails the worker
-result contract.
+**changed_paths** must be a non-empty, duplicate-free list of safe allowed paths
+supplied in the input payload. It must exactly match the declared workspace
+files that the post-execution audit observed as created, modified, or deleted,
+in packet declaration order. This makes a multi-file bounded result inspectable
+without broadening the worker's scope. Non-JSON output, a non-zero exit, a
+timeout, missing or mismatched result fields, an out-of-scope reported path, or
+a mismatch between the reported and audited changes fails the worker-result
+contract.
 
 On the canonical path, task and run records are persisted before dispatch.
 Execution produces an execution artifact; deterministic verification produces a
@@ -328,7 +336,7 @@ any of these occurs:
 - unavailable, reused, unsafe, or changed workspace/output-parent state,
   including symlink or reparse risk;
 - worker launch failure, timeout, unconfirmed descendant cleanup, non-zero exit,
-  malformed result, target mismatch, or undeclared workspace effect;
+  malformed result, changed-path mismatch, or undeclared workspace effect;
 - execution failure, failed deterministic verification, or human review that
   does not meet its acceptance/rejection prerequisites; or
 - reconciliation findings such as invalid records, missing links, mismatched

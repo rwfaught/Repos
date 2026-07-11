@@ -219,6 +219,7 @@ def audit_workspace_effects(
     return {
         "audit_version": 1,
         "declared_paths": sorted(declared),
+        "changed_paths": changed,
         "created": created,
         "deleted": deleted,
         "modified_or_type_changed": modified,

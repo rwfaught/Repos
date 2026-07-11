@@ -105,12 +105,13 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         return self._worker(
             "import json, pathlib, sys\n"
             "payload = json.load(sys.stdin)\n"
-            "target = pathlib.Path(payload['allowed_paths'][0])\n"
-            "target.parent.mkdir(parents=True, exist_ok=True)\n"
             "output = payload['expected_output']\n"
-            "target.write_text(output, encoding='utf-8')\n"
+            "for target_path in payload['allowed_paths']:\n"
+            "    target = pathlib.Path(target_path)\n"
+            "    target.parent.mkdir(parents=True, exist_ok=True)\n"
+            "    target.write_text(output, encoding='utf-8')\n"
             "print(json.dumps({'task_id': payload['task_id'], 'run_id': payload['run_id'], "
-            "'status': 'success', 'output': output, 'target_path': str(target)}))\n"
+            "'status': 'success', 'output': output, 'changed_paths': payload['allowed_paths']}))\n"
         )
 
     def _run_packet(self, packet, command=None, timeout=2.0):
@@ -180,7 +181,51 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             context,
         )
         self.assertEqual(result["status"], "success")
-        self.assertEqual(result["metadata"]["worker_result"]["target_path"], str(target))
+        self.assertEqual(result["metadata"]["worker_result"]["changed_paths"], [str(target)])
+
+    def test_subprocess_payload_and_result_contract_support_multiple_declared_outputs(self):
+        task = self._task("multiple")
+        task.files_in_scope = ["outputs/first.txt", "outputs/second.txt"]
+        context = self._worker_context(task)
+        provider = SubprocessWorkerProvider(self._valid_worker())
+        result = provider.execute("coder", task, context)
+        self.assertEqual(result["status"], "success")
+        self.assertEqual(result["metadata"]["worker_result"]["changed_paths"], context["allowed_paths"])
+        self.assertEqual(result["metadata"]["worker_security"]["workspace_effect_audit"]["changed_paths"], task.files_in_scope)
+
+    def test_subprocess_payload_includes_the_provider_neutral_task_contract(self):
+        task = self._task("payload_contract")
+        command = self._worker(
+            "import json, pathlib, sys\n"
+            "p=json.load(sys.stdin)\n"
+            "required=('objective', 'files_in_scope', 'success_criteria', 'expected_output', "
+            "'allowed_paths', 'worker_workspace', 'trust_posture')\n"
+            "if any(not p.get(key) for key in required) or p['objective'] != p['title']:\n"
+            "    raise SystemExit(3)\n"
+            "target=pathlib.Path(p['allowed_paths'][0])\n"
+            "target.parent.mkdir(parents=True, exist_ok=True)\n"
+            "target.write_text(p['expected_output'], encoding='utf-8')\n"
+            "print(json.dumps({'task_id': p['task_id'], 'run_id': p['run_id'], "
+            "'status': 'success', 'output': p['expected_output'], 'changed_paths': p['allowed_paths']}))\n",
+            "payload_contract.py",
+        )
+        result = SubprocessWorkerProvider(command).execute("coder", task, self._worker_context(task))
+        self.assertEqual(result["status"], "success")
+
+    def test_worker_result_must_report_actual_declared_workspace_changes(self):
+        task = self._task("reported_mismatch")
+        command = self._worker(
+            "import json, pathlib, sys\n"
+            "p=json.load(sys.stdin)\n"
+            "target=pathlib.Path(p['allowed_paths'][0])\n"
+            "target.parent.mkdir(parents=True, exist_ok=True)\n"
+            "target.write_text('x', encoding='utf-8')\n"
+            "print(json.dumps({'task_id': p['task_id'], 'run_id': p['run_id'], "
+            "'status': 'success', 'output': 'x', 'changed_paths': []}))\n",
+            "reported_mismatch.py",
+        )
+        result = SubprocessWorkerProvider(command).execute("coder", task, self._worker_context(task))
+        self.assertEqual(result["error"], "worker_result_mismatch")
 
     def test_subprocess_nonzero_exit(self):
         task = self._task("nonzero")
@@ -218,12 +263,12 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         )
         self.assertEqual(result["error"], "worker_result_mismatch")
 
-    def test_returned_target_outside_resolved_declared_scope(self):
+    def test_reported_changed_path_outside_resolved_declared_scope(self):
         task = self._task("outside")
         outside = self.root / "outside.txt"
         command = self._worker(
             "import json, sys\np=json.load(sys.stdin)\nprint(json.dumps({'task_id': p['task_id'], "
-            "'run_id': p['run_id'], 'status': 'success', 'output': 'x', 'target_path': p['outside']}))\n".replace(
+            "'run_id': p['run_id'], 'status': 'success', 'output': 'x', 'changed_paths': [p['outside']]}))\n".replace(
                 "p['outside']", repr(str(outside))
             ),
             "outside.py",
@@ -235,6 +280,22 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             context,
         )
         self.assertEqual(result["error"], "worker_target_outside_declared_scope")
+
+    def test_packet_persists_multi_file_worker_result_contract(self):
+        packet = self._packet(
+            "packet_multiple",
+            files_in_scope=["outputs/first.txt", "outputs/second.txt"],
+        )
+        result = self._run_packet(packet)
+        artifact = json.loads(
+            (self.data_root / "artifacts" / f"{result['execution_artifact_id']}.json").read_text()
+        )
+        worker_result = artifact["metadata"]["worker_result"]
+        workspace = self.data_root / "worker_workspaces" / "run_packet_multiple__task_packet_multiple"
+        self.assertEqual(
+            worker_result["changed_paths"],
+            [str(workspace / "outputs" / "first.txt"), str(workspace / "outputs" / "second.txt")],
+        )
 
     def test_task_run_artifact_verifier_authorization_and_acceptance_linkage(self):
         packet = self._packet(

@@ -68,7 +68,7 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
             "target=pathlib.Path(p['allowed_paths'][0])\n"
             "target.write_text(p['expected_output'], encoding='utf-8')\n"
             + extra + "\n"
-            "print(json.dumps({'task_id':p['task_id'],'run_id':p['run_id'],'status':'success','output':p['expected_output'],'target_path':str(target),'cwd':os.getcwd()}))\n"
+            "print(json.dumps({'task_id':p['task_id'],'run_id':p['run_id'],'status':'success','output':p['expected_output'],'changed_paths':[str(target)],'cwd':os.getcwd()}))\n"
         )
 
     def _packet(self, suffix="packet", **overrides):

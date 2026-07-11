@@ -102,6 +102,7 @@ class SubprocessWorkerProvider(BaseProvider):
             "run_id": task.run_id,
             "role": role,
             "title": task.title,
+            "objective": task.title,
             "files_in_scope": task.files_in_scope,
             "success_criteria": task.success_criteria,
             "expected_output": task.expected_output,
@@ -174,14 +175,28 @@ class SubprocessWorkerProvider(BaseProvider):
             or result.get("run_id") != task.run_id
             or result.get("status") != "success"
             or not isinstance(result.get("output"), str)
-            or not isinstance(result.get("target_path"), str)
-            or not result.get("target_path", "").strip()
+            or not isinstance(result.get("changed_paths"), list)
         ):
             return {"status": "error", "output": stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_result_mismatch"}
-        try:
-            reported = Path(result["target_path"])
-            if reported != allowed[0]:
-                return {"status": "error", "output": stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_target_outside_declared_scope"}
-        except OSError:
+
+        reported_paths = result["changed_paths"]
+        if (
+            not reported_paths
+            or any(not isinstance(path, str) or not path.strip() for path in reported_paths)
+            or len(set(reported_paths)) != len(reported_paths)
+        ):
             return {"status": "error", "output": stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_result_mismatch"}
+
+        allowed_paths = [str(path) for path in allowed]
+        if any(path not in allowed_paths for path in reported_paths):
+            return {"status": "error", "output": stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_target_outside_declared_scope"}
+
+        audit_changed_paths = worker_security["workspace_effect_audit"].get("changed_paths", [])
+        actual_changed_paths: list[str] = []
+        for declared_path, path in zip(task.files_in_scope, allowed):
+            resolved_path = str(path)
+            if declared_path in audit_changed_paths and resolved_path not in actual_changed_paths:
+                actual_changed_paths.append(resolved_path)
+        if reported_paths != actual_changed_paths:
+            return {"status": "error", "output": stdout, "provider": self.provider_name, "metadata": metadata, "error": "worker_declared_changes_mismatch"}
         return {"status": "success", "output": result["output"], "provider": self.provider_name, "metadata": {**metadata, "worker_result": result}, "error": None}
