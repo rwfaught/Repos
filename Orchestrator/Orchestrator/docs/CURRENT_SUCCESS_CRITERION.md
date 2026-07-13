@@ -76,6 +76,23 @@ product-market fit. `trusted_local_unsandboxed` is not an operating-system
 sandbox, and effects outside the controlled workspace are not comprehensively
 observed.
 
+## Accepted Exact Bounded Proof Closure
+
+The bounded real provider-backed canonical proof has completed and was ratified
+for one exact coding task. Its follow-on task-specific semantic verification
+passed all eight requirements, with accepted closure
+`PASS_CANONICAL_ALPHA_REAL_CODEX_V1_EXACT_EIGHT_REQUIREMENT_SEMANTIC_VERIFICATION_COMPLETE`.
+
+This confirms one accepted real provider-backed bounded execution and exact
+semantic verification of that same task through the canonical alpha spine. It
+does not establish generalized provider or model competence, arbitrary
+coding-task reliability, autonomous coding reliability, generalized
+semantic-verifier capability, untrusted-worker safety, production readiness,
+or product-wedge selection. It creates no global provider/model selection.
+No further Codex execution is required for this exact proof thread; future
+provider-generalization or semantic-verifier-generalization work requires a
+separately ranked boundary.
+
 ---
 
 ## Kind of task the system should handle today
@@ -279,13 +296,14 @@ This satisfaction is narrow. It does not prove:
 
 `PHASE273_CURRENT_SUCCESS_SATISFACTION_AND_NEXT_SUCCESS_BAR_DOCS_ONLY_PROVEN=PASS`
 
-## Next Success Bar
+## Resolved Bounded Provider-Backed Success Bar
 
-The next product success bar is a bounded real provider-backed proof through
-the adopted canonical alpha spine. Provider/runtime selection and execution
-remain subject to a separate explicit ranking and authorization boundary.
+The prior next product success bar is now met for one exact bounded
+provider-backed task through the adopted canonical alpha spine. Any future
+provider/runtime selection, provider generalization, or semantic-verifier
+generalization remains subject to a separately ranked and authorized boundary.
 
-The next bar should require:
+The completed bounded proof required:
 
 - the canonical operator control surface
 - an operator-provided bounded coding task specification or packet
@@ -306,11 +324,11 @@ The next bar should require:
 - no ambiguity about what was executed, what was only recommended, and what
   remains unproven
 
-The next bar does not yet require:
+This exact bounded proof does not establish:
 
-- live model/provider execution
-- autonomous coding
-- semantic correctness proof
+- generalized live model/provider competence
+- autonomous coding reliability
+- semantic-verifier capability beyond the exact task
 - production readiness
 - runtime/platform/OpenClaw/Hermes work
 - `general_answer` resumption

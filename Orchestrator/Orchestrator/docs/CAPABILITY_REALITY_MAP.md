@@ -58,6 +58,24 @@ and auditable multi-file result reporting. It does not prove:
 
 No provider/model or first product wedge has been selected.
 
+### Accepted Exact Bounded Provider-Backed Coding Proof
+
+Status: accepted and ratified bounded evidence for one exact task.
+
+One exact bounded provider-backed coding task was operationally and
+semantically verified through the canonical alpha spine. The accepted
+real-provider execution and its follow-on eight-requirement task-specific
+semantic verification are closed as
+`PASS_CANONICAL_ALPHA_REAL_CODEX_V1_EXACT_EIGHT_REQUIREMENT_SEMANTIC_VERIFICATION_COMPLETE`.
+
+This is evidence for that exact task only. It does not prove generalized
+provider/model competence, arbitrary coding-task correctness, autonomous
+coding reliability, generalized semantic-verifier capability, untrusted-worker
+safety, production readiness, or product-wedge selection. It creates no global
+provider/model selection, and no further Codex execution is currently required
+for this proof thread. Future provider-generalization or semantic-verifier-
+generalization work requires a separately ranked boundary.
+
 ### Bounded Coding-Task Packet Path
 
 Status: retained bounded intake/control surface beneath the canonical alpha

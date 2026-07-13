@@ -54,6 +54,16 @@ Current safely inferable posture:
 - The adopted worker contract is `trusted_local_unsandboxed`: no provider or
   model has been selected, untrusted worker execution is unsupported, and
   effects outside the controlled workspace are not comprehensively observed.
+- The bounded real provider-backed canonical proof is completed and ratified
+  for one exact task. Its subsequent eight-requirement task-specific semantic
+  verification passed with closure
+  `PASS_CANONICAL_ALPHA_REAL_CODEX_V1_EXACT_EIGHT_REQUIREMENT_SEMANTIC_VERIFICATION_COMPLETE`.
+  This resolves the operational-and-semantic proof thread for that task only;
+  it neither selects a provider/model nor proves generalized provider/model
+  competence, arbitrary-task correctness, autonomous coding reliability,
+  generalized semantic-verifier capability, untrusted-worker safety,
+  production readiness, or product-wedge selection. No additional Codex
+  execution is currently required for this exact proof thread.
 - The prior dry/report-only MVP milestone commit decision is resolved:
   `d40c6d4 Complete dry MVP milestone` is already in the
   pushed `main` ancestry before `969a13f`. The dry MVP successor/local-worker
@@ -120,7 +130,7 @@ product-wedge selection.
 | Legacy `main.py` | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy. Do not add commands; migration is a separate future campaign. |
 | Phase 277 packet CLI runbook | RETIRED_OR_RESOLVED | Runbook migration and cockpit closure were pushed and verified on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`. |
 | Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` add task-objective propagation, ordered multi-file `changed_paths`, exact worker-result/workspace-audit agreement, persisted changed-path evidence, and reconciliation-health coverage. This is stronger auditability only. |
-| Real provider-backed proof | READY_FOR_RANKING | Rank a bounded real provider-backed proof through the canonical worker seam; do not select a provider in this cockpit. |
+| Real provider-backed proof | RETIRED_OR_RESOLVED | One exact bounded provider-backed coding task completed and was ratified through the canonical worker seam; its eight-requirement task-specific semantic verification passed. The proof is task-specific only and does not select a provider/model or establish generalized competence or production readiness. |
 | Product-wedge control | DEFERRED_VALID | No first product wedge is selected; preserve the neutral dossier/case abstraction-first posture. |
 | Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
 | Framework/readback expansion | BLOCKED | Keep framework/readback expansion frozen until a separately authorized, meaningful capability need is ranked. |
@@ -147,7 +157,7 @@ product-wedge selection.
 | Phase 277 packet CLI runbook migration | RETIRED_OR_RESOLVED | Runbook migration and cockpit closure were pushed and verified on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`. | None; reopen only for a newly identified current-state defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Legacy `main.py` migration | DEFERRED_SEPARATE_CAMPAIGN | The 49-command surface remains legacy and must not gain new commands. | Separate migration campaign after ranking. | `TRACKS_AND_OPEN_THREADS.md` |
 | Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` added objective propagation, ordered multi-file `changed_paths`, exact audit/result agreement, persisted changed-path evidence, and linked-lifecycle reconciliation-health coverage. | None; reopen only for a targeted defect. | `TRACKS_AND_OPEN_THREADS.md` |
-| Real provider-backed proof | READY_FOR_RANKING | The canonical seam now supports auditable bounded multi-file work; provider competence and selection remain unproven. | Rank a bounded real provider-backed proof boundary without selecting a provider in this cockpit. | `TRACKS_AND_OPEN_THREADS.md` |
+| Real provider-backed proof | RETIRED_OR_RESOLVED | One exact bounded provider-backed coding task was operationally and semantically verified through the canonical alpha spine. Provider competence and selection remain unproven beyond that task. | None; reopen only for a newly identified defect in this exact proof, or rank separately scoped generalization work. | `TRACKS_AND_OPEN_THREADS.md` |
 | Provider selection | DEFERRED_VALID | No provider or model has been selected. | Reopen only after ranking and explicit boundary authorization. | `TRACKS_AND_OPEN_THREADS.md` |
 | Product-wedge selection | DEFERRED_VALID | No first product wedge selected; neutral dossier/case abstraction remains the membrane. | Separate founder/CTO decision record. | `TRACKS_AND_OPEN_THREADS.md` |
 | Phase 387 | DEFERRED_VALID | Parked; no resume authorization is present. | Explicit Roger/CTO resume decision only. | `TRACKS_AND_OPEN_THREADS.md` |
