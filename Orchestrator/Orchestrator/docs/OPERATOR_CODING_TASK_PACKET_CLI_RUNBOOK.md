@@ -40,10 +40,14 @@ This runbook does not select a provider or model.
 The canonical execution command is:
 
 ~~~text
-python -m orchestrator.operator_coding_task_packet_cli --packet-json <packet-path> --data-root <data-root> --trusted-worker-posture trusted_local_unsandboxed --worker-command <trusted-worker-command> <worker-argument>...
+python -m orchestrator.operator_coding_task_packet_cli --packet-json <packet-path> --data-root <data-root> --trusted-worker-posture trusted_local_unsandboxed --worker-timeout-seconds <seconds> --worker-command <trusted-worker-command> <worker-argument>...
 ~~~
 
-The **--worker-command** flag consumes the command and all remaining arguments,
+The optional **--worker-timeout-seconds** flag must occur before
+**--worker-command**. It selects a hard whole-worker ceiling: the default is
+**600 seconds**, and valid explicit values are finite numbers from **10** through
+**3600** seconds. The ceiling is not a required wait; a completed worker returns
+immediately. The **--worker-command** flag consumes the command and all remaining arguments,
 so it must be last. The CLI does not shell-parse that value: it launches the
 supplied argument list directly. Quote paths and arguments according to the
 shell that constructs the list. The command receives one JSON object on standard
@@ -74,6 +78,7 @@ For an execution, the data root can contain these record areas:
 - **artifacts/**
 - **verifier_results/**
 - **execution_authorizations/**
+- **worker_execution_states/**
 - **worker_workspaces/**
 - **acceptance_records/**
 - **packet_operator_decision_records/**
@@ -139,6 +144,11 @@ operator provenance, trust posture, timestamp, and constraints. A denied,
 missing, or contradictory authorization blocks execution. The operator remains
 the execution decision membrane.
 
+The authorization record stores the normalized worker-execution-policy snapshot
+and selection provenance before launch. This is internal durable state rather
+than a public packet field; CLI readback and execution artifacts repeat it for
+reconciliation.
+
 ## Trusted worker contract and controlled workspace
 
 The only supported posture is:
@@ -171,8 +181,11 @@ Declared outputs are mapped below that workspace. The runtime rejects absolute,
 backslash-form, ambiguous, or parent-traversal declared paths; checks workspace
 and existing parent chains for symlink/reparse risks; checks expected parents
 again immediately before launch; and inventories/audits workspace effects
-afterward. A timeout attempts bounded descendant cleanup and records whether
-cleanup was confirmed. The workspace audit detects effects within this controlled
+afterward. Separate stdout/stderr reader threads drain into bounded captures
+while the parent observes liveness at a bounded interval; liveness is not
+claimed as useful progress. A timeout first requests graceful process-group or
+cooperative termination, then attempts bounded descendant cleanup and records
+whether cleanup was confirmed. The workspace audit detects effects within this controlled
 workspace, including undeclared workspace mutation.
 
 These are defense-in-depth controls for a trusted local worker. They are not OS
@@ -213,6 +226,12 @@ disposition. Inspect the CLI JSON for **execution_provider**,
 **final_task_status**, **execution_artifact_id**, **authorization**, and
 **current_success_review**.
 
+After process creation, **worker_execution_states/** contains a generic record
+with task/run identity, provider, PID, start and liveness-observation times,
+normalized policy, termination state, and terminal result classification. It
+does not persist raw prompts, packet bodies, environment dumps, credentials, or
+secrets.
+
 ## Operator execution example — do not run as documentation validation
 
 This is the source-accurate command shape for a separately authorized real
@@ -220,7 +239,7 @@ execution. It deliberately uses placeholders rather than selecting a provider,
 model, or worker implementation. Do not run it merely to validate this runbook.
 
 ~~~powershell
-python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath --data-root $DataRoot --trusted-worker-posture trusted_local_unsandboxed --worker-command <trusted-worker-command> <worker-argument-1> <worker-argument-2>
+python -m orchestrator.operator_coding_task_packet_cli --packet-json $PacketPath --data-root $DataRoot --trusted-worker-posture trusted_local_unsandboxed --worker-timeout-seconds 600 --worker-command <trusted-worker-command> <worker-argument-1> <worker-argument-2>
 ~~~
 
 The CLI requires the packet's **worker_trust_posture**, if present, to match the

@@ -273,7 +273,13 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
             detail="The explicit worker provider must match packet provider_name.",
         )
 
-    authorization = persist_execution_authorization(packet, validated["task_id"], validated["files_in_scope"])
+    worker_execution_policy = getattr(provider, "worker_execution_policy", None)
+    authorization = persist_execution_authorization(
+        packet,
+        validated["task_id"],
+        validated["files_in_scope"],
+        worker_execution_policy=worker_execution_policy,
+    )
     if not authorization["execution_authorized"]:
         return {
             **_blocked(packet=packet, blocked_conditions=["execution_authorization_denied"], detail=authorization["denial_reason"]),
@@ -317,8 +323,10 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
             "authorized_scope": list(authorization["authorized_scope"]),
             "operator_provenance": authorization["operator_provenance"],
             "worker_trust_posture": authorization["worker_trust_posture"],
+            "worker_execution_policy": authorization["worker_execution_policy"],
         },
         worker_security=worker_security,
+        worker_execution_policy=authorization["worker_execution_policy"],
     )
 
     run_manager.save_task(task)
@@ -326,7 +334,11 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         run_manager.load_task(task.id),
         provider_name=active_provider_name,
         provider=provider,
-        context={"execution_authorization": authorization, "worker_security": worker_security},
+        context={
+            "execution_authorization": authorization,
+            "worker_security": worker_security,
+            "worker_execution_policy": authorization["worker_execution_policy"],
+        },
     )
     completed = run_manager.load_task(task.id)
     review = review_current_success_task_result({"task_id": task.id})
@@ -359,6 +371,7 @@ def run_operator_coding_task_packet(packet: dict[str, Any], *, provider: Any = N
         "missing_requirements": [],
         "execution_provider": getattr(provider, "provider_name", ""),
         "authorization": authorization,
+        "worker_execution_policy": authorization["worker_execution_policy"],
         "final_task_status": completed.status,
         "execution_artifact_id": completed.execution_artifact_id or "",
         "current_success_review": review,

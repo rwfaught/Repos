@@ -8,7 +8,7 @@ import tempfile
 import time
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from orchestrator.alpha_runtime import SCHEMA_VERSION, atomic_write_json, isolated_data_root, reconcile_lifecycle
 from orchestrator.operator_coding_task_packet import run_operator_coding_task_packet
@@ -19,6 +19,7 @@ from orchestrator.trusted_worker_security import (
     resolve_workspace_target,
 )
 from providers.subprocess_worker_provider import SubprocessWorkerProvider
+from orchestrator.worker_execution_policy import normalize_worker_execution_policy
 
 
 class TrustedWorkerSecurityTests(unittest.TestCase):
@@ -82,10 +83,23 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
         packet.update(overrides)
         return packet
 
-    def _run_packet(self, packet, command=None, timeout=1.0):
+    def _run_packet(self, packet, command=None, timeout=10.0):
         provider = SubprocessWorkerProvider(command or self._success_worker(), timeout_seconds=timeout)
         with isolated_data_root(self.data_root), contextlib.redirect_stdout(io.StringIO()):
             return run_operator_coding_task_packet(packet, provider=provider)
+
+    def _test_only_fast_policy(self, provider, *, output_limit=1_000_000):
+        """Exercise timeout paths without lowering the production normalizer minimum."""
+        provider.worker_execution_policy = {
+            **normalize_worker_execution_policy(10, selection_source="deterministic_test"),
+            "whole_worker_timeout_seconds": 0.05,
+            "poll_interval_seconds": 0.01,
+            "graceful_termination_seconds": 0.02,
+            "forced_cleanup_confirmation_seconds": 0.2,
+            "max_output_bytes": output_limit,
+        }
+        provider.timeout_seconds = 0.05
+        return provider
 
     def test_worker_cwd_is_per_run_workspace_and_not_test_root(self):
         task = self._task("cwd")
@@ -95,6 +109,7 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
         self.assertEqual(result["status"], "success")
         self.assertEqual(Path(result["metadata"]["worker_result"]["cwd"]), workspace)
         self.assertNotEqual(workspace, self.root)
+        self.assertFalse(result["metadata"]["reader_threads_alive"])
 
     def test_distinct_runs_receive_distinct_workspaces(self):
         first, second = self._task("first"), self._task("second")
@@ -246,37 +261,99 @@ class TrustedWorkerSecurityTests(unittest.TestCase):
         self.assertEqual(result["error"], "worker_undeclared_workspace_mutation")
         self.assertIn("tracked.txt", result["metadata"]["worker_security"]["workspace_effect_audit"]["modified_or_type_changed"])
 
-    def test_timeout_uses_real_tree_cleanup_and_records_status(self):
+    def test_timeout_attempts_cleanup_audits_workspace_and_reaps_descendant(self):
         command = self._worker(
             "import json, pathlib, subprocess, sys, time\n"
             "p=json.load(sys.stdin); workspace=pathlib.Path.cwd()\n"
-            "subprocess.Popen([sys.executable,'-c',\"import pathlib,time; time.sleep(0.4); pathlib.Path('descendant_marker.txt').write_text('alive')\"], cwd=workspace)\n"
-            "time.sleep(2)\n",
+            "subprocess.Popen([sys.executable,'-c',\"import pathlib,time; time.sleep(0.3); pathlib.Path('descendant_marker.txt').write_text('alive')\"], cwd=workspace)\n"
+            "time.sleep(3)\n",
             "timeout_tree.py",
         )
         task = self._task("timeout_tree")
         context = self._context(task)
-        result = SubprocessWorkerProvider(command, timeout_seconds=0.05).execute("coder", task, context)
+        provider = self._test_only_fast_policy(SubprocessWorkerProvider(command))
+        result = provider.execute("coder", task, context)
         workspace = Path(context["worker_security"]["workspace_path"])
-        time.sleep(0.6)
+        time.sleep(0.4)
         self.assertEqual(result["error"], "worker_timeout")
         self.assertEqual(result["metadata"]["worker_security"]["cleanup_status"], "confirmed")
+        self.assertIn("workspace_effect_audit", result["metadata"]["worker_security"])
         self.assertFalse((workspace / "descendant_marker.txt").exists())
+        self.assertFalse(result["metadata"]["reader_threads_alive"])
 
     def test_unconfirmed_timeout_cleanup_cannot_complete_or_accept(self):
-        command = self._worker("import time; time.sleep(2)\n", "unconfirmed.py")
-        provider = SubprocessWorkerProvider(command, timeout_seconds=0.01)
-        def cleanup_but_report_unconfirmed(process):
+        command = self._worker("import time; time.sleep(3)\n", "unconfirmed.py")
+        provider = SubprocessWorkerProvider(command)
+        def timeout_with_unconfirmed_cleanup(process, *_args, **_kwargs):
             process.kill()
             process.wait(timeout=1.0)
-            return "unconfirmed", "simulated confirmation failure after direct cleanup"
-        with patch.object(provider, "_terminate_descendants", side_effect=cleanup_but_report_unconfirmed):
+            return ("timeout", "", "", "simulated confirmation failure", "forced_cleanup_unconfirmed", "unconfirmed", False)
+        with patch.object(provider, "_wait_with_observation", side_effect=timeout_with_unconfirmed_cleanup):
             with isolated_data_root(self.data_root), contextlib.redirect_stdout(io.StringIO()):
                 result = run_operator_coding_task_packet(self._packet("unconfirmed"), provider=provider)
         self.assertFalse(result["accepted"])
         self.assertEqual(result["final_task_status"], "execution_failed")
         task = json.loads((self.data_root / "tasks" / "task_unconfirmed.json").read_text())
         self.assertEqual(task["worker_security"]["cleanup_status"], "unconfirmed")
+
+    def test_stdout_and_stderr_limits_terminate_and_reap_reader_threads(self):
+        for stream in ("stdout", "stderr"):
+            with self.subTest(stream=stream):
+                task = self._task(f"capture_{stream}")
+                context = self._context(task)
+                writer = "sys.stdout.write('x'*4096); sys.stdout.flush()" if stream == "stdout" else "sys.stderr.write('x'*4096); sys.stderr.flush()"
+                command = self._worker(f"import sys,time\n{writer}\ntime.sleep(3)\n", f"capture_{stream}.py")
+                result = self._test_only_fast_policy(SubprocessWorkerProvider(command), output_limit=64).execute("coder", task, context)
+                self.assertEqual(result["error"], "worker_output_capture_exceeded")
+                self.assertLessEqual(len(result["metadata"][stream].encode("utf-8")), 64)
+                self.assertEqual(result["metadata"]["worker_security"]["cleanup_status"], "confirmed")
+                self.assertFalse(result["metadata"]["reader_threads_alive"])
+
+    def test_output_limit_unconfirmed_cleanup_keeps_unconfirmed_classification(self):
+        task = self._task("capture_unconfirmed")
+        context = self._context(task)
+        command = self._worker("import sys,time\nsys.stdout.write('x'*4096); sys.stdout.flush()\ntime.sleep(3)\n", "capture_unconfirmed.py")
+        provider = self._test_only_fast_policy(SubprocessWorkerProvider(command), output_limit=64)
+        def cleanup_but_report_unconfirmed(process, *_args, **_kwargs):
+            process.kill()
+            process.wait(timeout=1.0)
+            return "unconfirmed", "simulated confirmation failure", "forced_cleanup_unconfirmed"
+        with patch.object(provider, "_terminate_descendants", side_effect=cleanup_but_report_unconfirmed):
+            result = provider.execute("coder", task, context)
+        self.assertEqual(result["error"], "worker_descendant_cleanup_unconfirmed")
+        self.assertEqual(result["metadata"]["worker_security"]["cleanup_status"], "unconfirmed")
+
+    def test_graceful_termination_is_attempted_before_forced_cleanup(self):
+        events = []
+        process = MagicMock()
+        process.wait.side_effect = [subprocess.TimeoutExpired("worker", 0.02), None]
+        process.send_signal.side_effect = lambda *_args: events.append("graceful")
+        task = self._task("termination_order")
+        provider = SubprocessWorkerProvider(["unused"])
+        with patch("providers.subprocess_worker_provider.os.name", "nt"), patch(
+            "providers.subprocess_worker_provider.update_worker_execution_state"
+        ), patch("providers.subprocess_worker_provider.subprocess.run") as forced:
+            forced.side_effect = lambda *_args, **_kwargs: events.append("forced") or MagicMock(returncode=0)
+            status, _detail, terminal = provider._terminate_descendants(process, task, self.data_root / "states")
+        self.assertEqual(status, "confirmed")
+        self.assertEqual(terminal, "forced_cleanup_confirmed")
+        self.assertEqual(events, ["graceful", "forced"])
+
+    def test_start_state_failure_after_launch_cleans_up_child(self):
+        marker = self.root / "start_state_marker.txt"
+        command = self._worker(
+            f"import pathlib,time\ntime.sleep(0.3)\npathlib.Path({str(marker)!r}).write_text('alive')\ntime.sleep(3)\n",
+            "start_state_failure.py",
+        )
+        task = self._task("start_state_failure")
+        context = self._context(task)
+        provider = self._test_only_fast_policy(SubprocessWorkerProvider(command))
+        with patch("providers.subprocess_worker_provider.start_worker_execution_state", side_effect=OSError("state write failed")):
+            result = provider.execute("coder", task, context)
+        time.sleep(0.4)
+        self.assertEqual(result["error"], "worker_execution_state_persistence_failed")
+        self.assertIn(result["metadata"]["worker_security"]["cleanup_status"], {"confirmed", "unconfirmed"})
+        self.assertFalse(marker.exists())
 
     def test_reconciliation_reports_missing_worker_security_linkage_read_only(self):
         task_path = self.data_root / "tasks" / "task_reconcile_security.json"

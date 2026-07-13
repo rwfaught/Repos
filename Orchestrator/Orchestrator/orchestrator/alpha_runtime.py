@@ -68,6 +68,7 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
     import orchestrator.paths as paths
     import orchestrator.run_manager as run_manager
     import orchestrator.state as state
+    import orchestrator.worker_execution_state as worker_execution_state
 
     replacements = {
         (paths, "PROJECT_ROOT"): root.parent,
@@ -83,6 +84,7 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
         (artifact_store, "ARTIFACTS_DIR"): root / "artifacts",
         (engine, "VERIFIER_RESULTS_DIR"): root / "verifier_results",
         (authorization, "AUTHORIZATION_RECORDS_DIR"): root / "execution_authorizations",
+        (worker_execution_state, "WORKER_EXECUTION_STATES_DIR"): root / "worker_execution_states",
         (operator_decision, "PACKET_OPERATOR_DECISION_RECORDS_DIR"): root / "packet_operator_decision_records",
         (review, "DATA_DIR"): root,
         (review, "ARTIFACTS_DIR"): root / "artifacts",
@@ -112,6 +114,7 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
     authorizations = root / "execution_authorizations"
     acceptances = root / "acceptance_records"
     decisions = root / "packet_operator_decision_records"
+    worker_execution_states = root / "worker_execution_states"
     findings: list[dict[str, str]] = []
 
     def add(task_id: str, classification: str, path: Path | None = None) -> None:
@@ -192,6 +195,18 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
 
         worker_security = task.get("worker_security") if isinstance(task.get("worker_security"), dict) else {}
         if task.get("execution_policy") == "filesystem_mutation":
+            task_policy = task.get("worker_execution_policy")
+            authorization_policy = (authorization or {}).get("worker_execution_policy")
+            try:
+                from orchestrator.worker_execution_policy import policies_match, validate_normalized_worker_execution_policy
+                validate_normalized_worker_execution_policy(task_policy)
+                validate_normalized_worker_execution_policy(authorization_policy)
+                if not policies_match(task_policy, authorization_policy):
+                    add(task_id, "authorization_artifact_policy_mismatch")
+            except ValueError:
+                # Legacy records without the field remain readable and are not universally unhealthy.
+                if task_policy is not None or authorization_policy not in (None, {}):
+                    add(task_id, "invalid_worker_execution_policy")
             if worker_security.get("trust_posture") != "trusted_local_unsandboxed":
                 add(task_id, "missing_or_inconsistent_worker_trust_posture")
             if not str(worker_security.get("workspace_id", "")).strip() or not str(worker_security.get("workspace_path", "")).strip():
@@ -215,12 +230,48 @@ def reconcile_lifecycle(data_root: str | Path) -> dict[str, Any]:
             ):
                 add(task_id, "artifact_identity_mismatch", artifact_path)
             if artifact is not None and task.get("execution_policy") == "filesystem_mutation":
+                try:
+                    from orchestrator.worker_execution_policy import policies_match, validate_normalized_worker_execution_policy
+                    artifact_policy = artifact.get("worker_execution_policy")
+                    if artifact_policy is not None:
+                        validate_normalized_worker_execution_policy(artifact_policy)
+                        if task.get("worker_execution_policy") is not None and not policies_match(task.get("worker_execution_policy"), artifact_policy):
+                            add(task_id, "authorization_artifact_policy_mismatch", artifact_path)
+                except ValueError:
+                    add(task_id, "invalid_worker_execution_policy", artifact_path)
                 if str(artifact.get("artifact_id", "")) != artifact_id:
                     add(task_id, "worker_artifact_linkage_mismatch", artifact_path)
                 if str(artifact.get("task_id", "")) != task_id:
                     add(task_id, "worker_task_id_mismatch", artifact_path)
                 if str(artifact.get("run_id", "")) != run_id:
                     add(task_id, "worker_run_id_mismatch", artifact_path)
+
+        if task.get("execution_policy") == "filesystem_mutation" and worker_security.get("launch_attempted") is True:
+            state_path = worker_execution_states / f"{run_id}__{task_id}.json"
+            state = None
+            if not state_path.exists():
+                add(task_id, "missing_worker_execution_state", state_path)
+            else:
+                state = read(state_path, "worker_execution_state", task_id)
+                if state is not None:
+                    if str(state.get("task_id", "")) != task_id or str(state.get("run_id", "")) != run_id:
+                        add(task_id, "worker_execution_state_identity_mismatch", state_path)
+                    try:
+                        from orchestrator.worker_execution_policy import policies_match, validate_normalized_worker_execution_policy
+                        validate_normalized_worker_execution_policy(state.get("worker_execution_policy"))
+                        if task.get("worker_execution_policy") is not None and not policies_match(task.get("worker_execution_policy"), state.get("worker_execution_policy")):
+                            add(task_id, "authorization_artifact_policy_mismatch", state_path)
+                    except ValueError:
+                        add(task_id, "invalid_worker_execution_policy", state_path)
+                    terminal_task = task.get("status") not in {"queued", "ready", "in_progress"}
+                    if terminal_task and state.get("state") != "terminal":
+                        add(task_id, "nonterminal_worker_execution_state_for_terminal_task", state_path)
+                    if artifact is not None and artifact.get("error") == "worker_timeout":
+                        metadata_policy = (artifact.get("metadata") or {}).get("worker_execution_policy")
+                        if not isinstance(metadata_policy, dict) or metadata_policy.get("whole_worker_timeout_seconds") != state.get("worker_execution_policy", {}).get("whole_worker_timeout_seconds"):
+                            add(task_id, "timeout_artifact_policy_mismatch", artifact_path)
+                    if state.get("termination_state") == "forced_cleanup_unconfirmed":
+                        add(task_id, "unconfirmed_worker_cleanup", state_path)
 
         if task.get("execution_policy") == "filesystem_mutation":
             records: list[tuple[str, dict[str, Any] | None, Path | None]] = [

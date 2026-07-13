@@ -114,7 +114,7 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
             "'status': 'success', 'output': output, 'changed_paths': payload['allowed_paths']}))\n"
         )
 
-    def _run_packet(self, packet, command=None, timeout=2.0):
+    def _run_packet(self, packet, command=None, timeout=10.0):
         provider = SubprocessWorkerProvider(command or self._valid_worker(), timeout_seconds=timeout)
         with isolated_data_root(self.data_root):
             return run_operator_coding_task_packet(packet, provider=provider)
@@ -236,13 +236,11 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         self.assertEqual(result["error"], "worker_nonzero_exit")
         self.assertEqual(result["metadata"]["exit_code"], 7)
 
-    def test_subprocess_timeout(self):
+    def test_subprocess_rejects_timeout_below_policy_minimum(self):
         task = self._task("timeout")
         command = self._worker("import time\ntime.sleep(1)\n", "timeout.py")
-        result = SubprocessWorkerProvider(command, timeout_seconds=0.01).execute(
-            "coder", task, self._worker_context(task)
-        )
-        self.assertEqual(result["error"], "worker_timeout")
+        with self.assertRaises(ValueError):
+            SubprocessWorkerProvider(command, timeout_seconds=0.01)
 
     def test_malformed_worker_json(self):
         task = self._task("malformed")

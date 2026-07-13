@@ -80,12 +80,18 @@ Representative files:
 - `orchestrator/operator_coding_task_packet_cli.py`
 - `orchestrator/operator_packet_result_decision.py`
 - `orchestrator/packet_cli_residue_guard.py`
+- `orchestrator/worker_execution_policy.py`
+- `orchestrator/worker_execution_state.py`
 
 Role:
 
 This is the clearest current work path. A bounded coding task is shaped into a
 packet, processed through controlled surfaces, and returned with artifacts,
 checks, readbacks, and operator-visible decisions.
+
+The worker-execution policy and state modules keep the selected whole-worker
+ceiling and minimal launch/termination record durable without expanding the
+public packet contract.
 
 Roger should understand:
 
