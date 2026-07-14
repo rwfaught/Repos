@@ -1,27 +1,29 @@
 # Experimental Branch Reconciliation Ledger
 
-Boundary: `EXPERIMENT_RECONCILIATION_LEDGER_DOCS_ONLY`
+Boundary: `EXPERIMENT_BRANCH_WORKTREE_RETENTION_AND_CAMPAIGN_CLOSURE_DOCS_ONLY`
 
-Mode: `DOCS_ONLY_CURRENT_MAIN_RECONCILIATION_LEDGER_AND_COORDINATION_ALIGNMENT`
+Mode: `DOCS_ONLY_RECONCILIATION_CLOSURE_AND_RETENTION_RECORD`
 
-Status: `EXPERIMENTAL_BRANCH_RECONCILIATION_LEDGER_CREATED_PENDING_COMMIT_PUSH_AND_RETENTION_DECISION`
+Status: `PASS_EXPERIMENTAL_BRANCH_RECONCILIATION_CAMPAIGN_CLOSED_BRANCH_AND_WORKTREE_PRESERVED`
 
 ## Purpose and Authority
 
 This is the durable final-disposition ledger for
 `experiment/gpt56-local-ai-consulting-wedge` against authoritative `main`.
 It records accepted review outcomes for every commit unique to the experimental
-branch. It does not merge branches, adopt experimental source, select a
+branch and the CTO/coordinator-ratified campaign-closure and retention
+decisions. It does not merge branches, adopt experimental source, select a
 provider or model, prove runtime or semantic behavior, authorize cleanup,
-branch deletion, worktree removal, or product-work resumption.
+branch deletion, worktree removal, or product implementation.
 
 ## Repository Topology and Count Reconciliation
 
 - Authoritative repository/worktree: `rwfaught/Repos` at
   `C:\Users\accou\Desktop\Repos`, branch `main`.
 - Authoritative product root: `Orchestrator/Orchestrator`.
-- Authoritative HEAD at ledger creation:
-  `ea818195add622dc0727b00bb4fafb1bd5743d4c`.
+- Reconciliation ledger committed and pushed at:
+  `261b2afb7a35bd730174b95c83dfc895f0782636`
+  (`docs: record experimental branch reconciliation`).
 - Experimental linked worktree:
   `C:\Users\accou\Desktop\Repos\Orchestrator_gpt56_experiment`.
 - Experimental branch/HEAD:
@@ -42,9 +44,18 @@ documentation replacement is the independent
 exactly the sixteen rows emitted by the comparison command, with no forced
 extra row and no duplicate count.
 
-The experimental linked worktree and its pre-existing dirty/generated residue
-remain preserved and untouched. No retention, archival, cleanup, removal, or
-deletion decision is recorded here.
+`EXPERIMENTAL_BRANCH_RETENTION=RETAIN_AS_HISTORICAL_RESEARCH`.
+
+The experimental branch is preserved as historical research and is not an
+active or authoritative product-development branch.
+
+`EXPERIMENTAL_LINKED_WORKTREE_RETENTION=RETAIN_UNTOUCHED_PENDING_SEPARATE_FUTURE_OPERATOR_DECISION`.
+
+The experimental linked worktree remains present and untouched. Its
+approximately 319 pre-existing dirty/generated paths remain unclassified and
+must not be deleted. No cleanup, removal, or deletion is authorized. Any
+future worktree removal or residue handling requires a separate explicit
+boundary.
 
 ## Reconciliation Method
 
@@ -153,17 +164,26 @@ copying or source adoption.
   advisory-provider integration.
 - No production readiness, product-market fit, or final product-wedge
   selection.
-- No consulting pilot-template implementation or product-work resumption.
-- No branch/worktree cleanup, retention decision, deletion authorization, or
-  proof that experimental dirty residue is safe to delete.
+- No consulting pilot-template implementation or product-work authorization.
+- No branch/worktree cleanup, deletion authorization, or proof that
+  experimental dirty residue is safe to delete. The branch retention and
+  linked-worktree retention decisions above preserve them; they do not make
+  the residue disposable.
 
 ## Preservation Posture and Campaign Status
 
-The experimental branch and linked worktree remain preserved. Their dirty and
-generated residue remains untouched. Retention, archival labeling, worktree
-removal, and deletion decisions belong to a later CTO/coordinator boundary
-after this ledger is committed and pushed.
+All sixteen experiment-exclusive commits have final dispositions. There was
+zero direct experimental-source adoption and no adoption-grade capability gap.
 
-All experiment-exclusive commits now have final dispositions, but the wider
-split-repository campaign is not closed: this ledger still requires commit and
-push, followed by an explicit retention and campaign-closure decision.
+The reconciliation ledger was committed and pushed at
+`261b2afb7a35bd730174b95c83dfc895f0782636`. The experimental branch is
+retained as historical research, and the linked worktree is retained untouched
+with its unclassified dirty/generated residue preserved.
+
+`PASS_EXPERIMENTAL_BRANCH_RECONCILIATION_CAMPAIGN_CLOSED_BRANCH_AND_WORKTREE_PRESERVED`.
+
+The split-repository reconciliation campaign is closed. Its closure no longer
+blocks future product work from being ranked under a new explicit boundary; it
+does not authorize a specific product implementation, resume the dossier
+pilot or Phase 387, or select a product wedge. Any future worktree removal or
+residue handling requires a separate explicit boundary.
