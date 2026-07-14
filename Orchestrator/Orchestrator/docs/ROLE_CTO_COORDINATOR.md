@@ -125,6 +125,30 @@ explicitly defer it. Do not allow stale current-state docs to become hidden
 authority. Coordination-doc updates must remain bounded, named, and tied to
 current evidence.
 
+### Worker/Codex Coordination-Document Obligations
+
+When a Worker/Codex report states `Coordination-doc update needed: YES` or
+`UNSURE`, CTO/coordinator must record exactly one disposition:
+`ACCEPT_AND_UPDATE`, `DEFER_WITH_RECORDED_REASON`,
+`REJECT_AS_NOT_REQUIRED`, or `REQUIRES_FURTHER_REVIEW`. The Worker/Codex
+report is evidence, not authority: it does not authorize mutation, and only
+CTO/coordinator may disposition or close the obligation. Only an authorized
+mutation boundary permits coordination-doc edits.
+
+`ACCEPT_AND_UPDATE` must name the target coordination document or documents
+and name or issue a bounded mutation task. The obligation remains open until
+the update is reviewed; when repository durability is part of the accepted
+update, commit/push verification is required, and closure occurs only after
+the required durability evidence is accepted. `DEFER_WITH_RECORDED_REASON`
+must record the reason and next review condition or boundary, and remain
+visible in the current cockpit and subsequent CTO/coordinator handoffs.
+`REJECT_AS_NOT_REQUIRED` must record why no update is required and closes the
+obligation without mutation. `REQUIRES_FURTHER_REVIEW` must identify the
+unresolved question and next review boundary or condition, and remain visible
+in the current cockpit and subsequent CTO/coordinator handoffs. A report,
+edit, commit, or push alone does not close an obligation unless the accepted
+disposition's required evidence has been reviewed.
+
 ## Source/Factual Hygiene
 
 CTO/coordinator must distinguish:
@@ -212,6 +236,9 @@ Recommend a handoff or new session when:
 
 The handoff should preserve accepted facts, unresolved caveats, current proof
 posture, role routing, and the next explicit Operator action.
+
+Any unresolved coordination-document obligation must be included in each
+CTO/coordinator handoff until it is closed under its recorded disposition.
 
 After the first corrective command attempt for a command-design issue, the
 second corrective attempt should be a Relay handoff or a Worker/Codex boundary,
