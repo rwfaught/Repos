@@ -56,6 +56,26 @@ SUBSTRATE_SENSITIVE_FIELDS = (
     "intake_source",
 )
 
+STRUCTURED_CAPABILITY_ASSESSMENT_FIELDS = (
+    "input_completeness",
+    "objective_clarity",
+    "consequence_level",
+    "external_capability_dependency",
+    "reviewability",
+    "reversibility",
+    "requires_human_decision",
+    "blocked_conditions",
+    "missing_information",
+)
+
+_CAPABILITY_ASSESSMENT_ALLOWED_VALUES = {
+    "input_completeness": {"complete", "incomplete"},
+    "objective_clarity": {"clear", "needs_clarification"},
+    "consequence_level": {"low", "moderate", "elevated", "high"},
+    "reviewability": {"reviewable", "not_reviewable"},
+    "reversibility": {"reversible", "limited", "irreversible"},
+}
+
 ROUTE_ENVELOPE_FIELDS = (
     "request_id",
     "request_type",
@@ -99,6 +119,7 @@ class RequestIntakeRecord:
     reasoning_summary_for_operator: str
     caveats: tuple[str, ...] = ()
     intake_source: str = "structured_operator_intake"
+    structured_capability_assessment: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -108,6 +129,7 @@ class CandidateRouteProposal:
     route_envelope: dict[str, Any]
     proposal_state: str
     non_proofs: tuple[str, ...]
+    structured_capability_assessment: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -129,6 +151,174 @@ class AdmissionDecision:
     accepted_route_state: str
     execution_authority: bool
     activity_flags: dict[str, bool]
+    structured_capability_assessment: dict[str, Any] | None = None
+
+
+def _capability_assessment_decision(
+    *,
+    assessment_state: str,
+    accepted: bool,
+    missing_information: tuple[str, ...] = (),
+    blocked_conditions: tuple[str, ...] = (),
+    review_reasons: tuple[str, ...] = (),
+    next_bounded_action: str,
+    next_boundary_kind: str,
+    normalized_assessment: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Return a provider-neutral, non-executing assessment decision."""
+    return {
+        "assessment_state": assessment_state,
+        "accepted": accepted,
+        "normalized_assessment": deepcopy(normalized_assessment)
+        if normalized_assessment is not None
+        else None,
+        "missing_information": list(missing_information),
+        "blocked_conditions": list(blocked_conditions),
+        "review_reasons": list(review_reasons),
+        "next_bounded_action": next_bounded_action,
+        "next_boundary_kind": next_boundary_kind,
+        "execution_authority": False,
+        "authorization_created": False,
+        "dispatch_performed": False,
+        "canonical_execution_state_created": False,
+        "non_proofs": [
+            "structured_capability_assessment_is_not_execution_authority",
+            "structured_capability_assessment_does_not_select_execution_substrate",
+            "structured_capability_assessment_does_not_create_persistence",
+        ],
+    }
+
+
+def _strict_text_list(value: Any, field_name: str) -> tuple[tuple[str, ...], str | None]:
+    if not isinstance(value, list):
+        return (), f"capability_assessment_{field_name}_must_be_list"
+    if any(not isinstance(item, str) or not item.strip() for item in value):
+        return (), f"capability_assessment_{field_name}_must_contain_non_empty_strings"
+    return tuple(item.strip() for item in value), None
+
+
+def assess_structured_capability_assessment(value: Any) -> dict[str, Any] | None:
+    """Assess explicit capability facts without inferring raw objective intent.
+
+    ``None`` preserves the existing intake/admission behavior. Any supplied
+    assessment is strict: unknown fields and malformed values are rejected
+    rather than coerced into a route decision.
+    """
+    if value is None:
+        return None
+    if not isinstance(value, dict):
+        return _capability_assessment_decision(
+            assessment_state="blocked",
+            accepted=False,
+            blocked_conditions=("structured_capability_assessment_must_be_object",),
+            next_bounded_action="provide_a_structured_capability_assessment",
+            next_boundary_kind="reject_or_reframe",
+        )
+
+    unknown_fields = sorted(set(value) - set(STRUCTURED_CAPABILITY_ASSESSMENT_FIELDS))
+    missing_fields = [
+        field for field in STRUCTURED_CAPABILITY_ASSESSMENT_FIELDS if field not in value
+    ]
+    validation_errors: list[str] = []
+    if unknown_fields:
+        validation_errors.append("structured_capability_assessment_unknown_fields")
+    if missing_fields:
+        validation_errors.append("structured_capability_assessment_missing_required_fields")
+
+    normalized: dict[str, Any] = {}
+    for field, allowed_values in _CAPABILITY_ASSESSMENT_ALLOWED_VALUES.items():
+        raw = value.get(field)
+        if not isinstance(raw, str) or raw not in allowed_values:
+            validation_errors.append(f"capability_assessment_{field}_invalid")
+        else:
+            normalized[field] = raw
+
+    for field in ("external_capability_dependency", "requires_human_decision"):
+        raw = value.get(field)
+        if not isinstance(raw, bool):
+            validation_errors.append(f"capability_assessment_{field}_must_be_boolean")
+        else:
+            normalized[field] = raw
+
+    for field in ("blocked_conditions", "missing_information"):
+        values, error = _strict_text_list(value.get(field), field)
+        if error:
+            validation_errors.append(error)
+        else:
+            normalized[field] = list(values)
+
+    if not validation_errors:
+        if normalized["input_completeness"] == "complete" and normalized["missing_information"]:
+            validation_errors.append(
+                "capability_assessment_complete_input_cannot_have_missing_information"
+            )
+        if normalized["input_completeness"] == "incomplete" and not normalized["missing_information"]:
+            validation_errors.append(
+                "capability_assessment_incomplete_input_requires_missing_information"
+            )
+
+    if validation_errors:
+        return _capability_assessment_decision(
+            assessment_state="blocked",
+            accepted=False,
+            missing_information=tuple(missing_fields),
+            blocked_conditions=tuple(sorted(set(validation_errors))),
+            next_bounded_action="repair_the_structured_capability_assessment",
+            next_boundary_kind="reject_or_reframe",
+        )
+
+    if (
+        normalized["input_completeness"] == "incomplete"
+        or normalized["objective_clarity"] == "needs_clarification"
+        or normalized["missing_information"]
+    ):
+        return _capability_assessment_decision(
+            assessment_state="clarification_required",
+            accepted=False,
+            missing_information=tuple(normalized["missing_information"]),
+            next_bounded_action="ask_operator_for_missing_capability_information",
+            next_boundary_kind="ask_clarification",
+            normalized_assessment=normalized,
+        )
+
+    if normalized["blocked_conditions"]:
+        return _capability_assessment_decision(
+            assessment_state="blocked",
+            accepted=False,
+            blocked_conditions=tuple(normalized["blocked_conditions"]),
+            next_bounded_action="resolve_blocked_capability_conditions",
+            next_boundary_kind="reject_or_reframe",
+            normalized_assessment=normalized,
+        )
+
+    review_reasons = []
+    if normalized["consequence_level"] in {"elevated", "high"}:
+        review_reasons.append("elevated_consequence")
+    if normalized["external_capability_dependency"]:
+        review_reasons.append("external_capability_dependency")
+    if normalized["reviewability"] == "not_reviewable":
+        review_reasons.append("reviewability_not_established")
+    if normalized["reversibility"] == "irreversible":
+        review_reasons.append("irreversible_effect")
+    if normalized["requires_human_decision"]:
+        review_reasons.append("human_decision_required")
+    if review_reasons:
+        return _capability_assessment_decision(
+            assessment_state="operator_review_required",
+            accepted=True,
+            review_reasons=tuple(review_reasons),
+            next_bounded_action="obtain_operator_capability_review_before_next_boundary",
+            next_boundary_kind="ready_for_coordinator_boundary_decision",
+            normalized_assessment=normalized,
+        )
+
+    return _capability_assessment_decision(
+        assessment_state="eligible_for_bounded_next_boundary",
+        accepted=True,
+        next_bounded_action="prepare_bounded_next_boundary_from_structured_intake",
+        next_boundary_kind="ready_for_coordinator_boundary_decision",
+        normalized_assessment=normalized,
+    )
 
 
 def _normalize_text(value: Any) -> str:
@@ -216,6 +406,7 @@ def _coerce_intake_record(value: RequestIntakeRecord | dict[str, Any]) -> Reques
         reasoning_summary_for_operator=_normalize_text(value.get("reasoning_summary_for_operator")),
         caveats=_tuple_of_text(value.get("caveats", ())),
         intake_source=_normalize_text(value.get("intake_source", "structured_operator_intake")),
+        structured_capability_assessment=value.get("structured_capability_assessment"),
     )
 
 
@@ -274,6 +465,9 @@ def build_candidate_route_envelope(
     if intake is None:
         raise ValueError("structured_route_fields_required")
 
+    assessment = assess_structured_capability_assessment(
+        intake.structured_capability_assessment
+    )
     intake_values = asdict(intake)
     for field in SUBSTRATE_SENSITIVE_FIELDS:
         if _contains_substrate_reference(intake_values.get(field)):
@@ -303,6 +497,7 @@ def build_candidate_route_envelope(
                 route_envelope=envelope,
                 proposal_state="candidate_route_proposed_with_substrate_smuggling_caveat",
                 non_proofs=_non_proofs(("substrate_specific_smuggling_detected",)),
+                structured_capability_assessment=assessment,
             )
 
     envelope = {
@@ -329,8 +524,13 @@ def build_candidate_route_envelope(
         request_id=intake.request_id,
         proposal_source=intake.intake_source,
         route_envelope=envelope,
-        proposal_state="candidate_route_proposed",
+        proposal_state=(
+            "candidate_route_proposed_with_structured_capability_assessment"
+            if assessment is not None
+            else "candidate_route_proposed"
+        ),
         non_proofs=_non_proofs(),
+        structured_capability_assessment=assessment,
     )
 
 
@@ -375,26 +575,62 @@ def admit_route_proposal(
         blocked_conditions = tuple(dict.fromkeys(blocked_conditions + ("route_proposal_substrate_smuggling_blocked",)))
         next_boundary_kind = "reject_or_reframe"
 
+    assessment = proposal.structured_capability_assessment
+    assessment_state = _normalize_text(assessment.get("assessment_state")) if assessment else ""
+    assessment_accepted = assessment.get("accepted") is True if assessment else True
+    if assessment:
+        blocked_conditions = tuple(
+            dict.fromkeys(blocked_conditions + tuple(assessment["blocked_conditions"]))
+        )
+        missing_requirements = tuple(
+            dict.fromkeys(
+                tuple(validation_result["missing_requirements"])
+                + tuple(assessment["missing_information"])
+            )
+        )
+        if assessment_state == "clarification_required":
+            next_boundary_kind = "ask_clarification"
+        elif assessment_state == "blocked":
+            next_boundary_kind = "reject_or_reframe"
+        elif assessment_state in {
+            "operator_review_required",
+            "eligible_for_bounded_next_boundary",
+        }:
+            next_boundary_kind = assessment["next_boundary_kind"]
+    else:
+        missing_requirements = tuple(validation_result["missing_requirements"])
+
     request_id = _normalize_text(proposal.route_envelope.get("request_id")) or proposal.request_id
     accepted = validation_result["accepted"] and "route_proposal_substrate_smuggling_blocked" not in blocked_conditions
+    accepted = accepted and assessment_accepted
     route_admission = validation_result["route_admission"] if accepted else (
         "needs_clarification"
-        if validation_result["route_admission"] == "needs_clarification" and not blocked_conditions
+        if assessment_state == "clarification_required"
+        or (validation_result["route_admission"] == "needs_clarification" and not blocked_conditions)
         else "rejected"
     )
+    recommended_next_action = _normalize_text(proposal.route_envelope.get("recommended_next_action"))
+    if assessment:
+        recommended_next_action = assessment["next_bounded_action"]
 
     return AdmissionDecision(
         request_id=request_id,
         route_admission=route_admission,
         accepted=accepted,
         request_type=validation_result["request_type"],
-        missing_requirements=tuple(validation_result["missing_requirements"]),
+        missing_requirements=missing_requirements,
         blocked_conditions=blocked_conditions,
         capability_assessment=deepcopy(validation_result["capability_assessment"]),
-        recommended_next_action=_normalize_text(proposal.route_envelope.get("recommended_next_action")),
+        recommended_next_action=recommended_next_action,
         next_boundary_kind=next_boundary_kind,
         emitted_boundary_type=next_boundary_kind,
-        non_proofs=tuple(dict.fromkeys(proposal.non_proofs + tuple(validation_result["capability_assessment"].get("non_proofs", ())))),
+        non_proofs=tuple(
+            dict.fromkeys(
+                proposal.non_proofs
+                + tuple(validation_result["capability_assessment"].get("non_proofs", ()))
+                + tuple(assessment["non_proofs"] if assessment else ())
+            )
+        ),
         activity_statement=(
             "Route proposal admission only; no mutation, execution, provider, model, runtime, "
             "platform, connector, scheduler, lookup, export, package, cleanup, deletion, or archive occurred."
@@ -404,4 +640,5 @@ def admit_route_proposal(
         accepted_route_state="accepted_route_without_execution_authority" if accepted else "not_accepted",
         execution_authority=False,
         activity_flags={field: validation_result[field] for field in NO_ACTIVITY_FLAGS},
+        structured_capability_assessment=deepcopy(assessment),
     )

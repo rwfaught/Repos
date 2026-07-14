@@ -115,6 +115,23 @@ What this does not prove:
 - unattended execution
 - correct product direction
 
+### Structured Capability Assessment
+
+Status: provider-neutral, non-executing intake/admission contract.
+
+Structured intake may include explicit capability facts about completeness,
+objective clarity, consequence, external dependency, reviewability,
+reversibility, human-decision need, blockers, and missing information. The
+assessment accepts only validated structured fields; it does not infer those
+facts from raw objective text.
+
+Its only outputs are clarification, blocked, operator-review, or bounded-next-
+boundary posture through the existing intake/admission membrane. It does not
+select a provider, model, runtime, worker, or execution substrate; create
+authorization or execution state; dispatch work; or replace the canonical
+packet path. Canonical packet construction and execution remain downstream and
+separately authorized.
+
 ## Early Product Substrate
 
 ### Case-Packet Substrate

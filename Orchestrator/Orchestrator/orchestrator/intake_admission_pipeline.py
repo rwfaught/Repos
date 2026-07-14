@@ -94,6 +94,7 @@ class IntakeAdmissionPipelineResult:
     non_proofs: tuple[str, ...]
     no_activity_flags: dict[str, bool]
     execution_authority: bool = False
+    structured_capability_assessment: dict[str, Any] | None = None
 
 
 def _normalize_text(value: Any) -> str:
@@ -160,6 +161,7 @@ def _coerce_intake(value: RequestIntakeRecord | dict[str, Any]) -> RequestIntake
         reasoning_summary_for_operator=_normalize_text(value.get("reasoning_summary_for_operator")),
         caveats=_tuple_of_text(value.get("caveats", ())),
         intake_source=_normalize_text(value.get("intake_source", "structured_operator_intake")),
+        structured_capability_assessment=value.get("structured_capability_assessment"),
     )
 
 
@@ -187,6 +189,7 @@ def _stopped_result(
         non_proofs=_dedupe(PIPELINE_NON_PROOFS + fixture_decision.non_proofs),
         no_activity_flags=dict(NO_ACTIVITY_FLAGS),
         execution_authority=False,
+        structured_capability_assessment=None,
     )
 
 
@@ -216,6 +219,9 @@ def _result_from_admission(
         non_proofs=_dedupe(non_proofs),
         no_activity_flags=dict(admission_decision.activity_flags),
         execution_authority=False,
+        structured_capability_assessment=deepcopy(
+            admission_decision.structured_capability_assessment
+        ),
     )
 
 
