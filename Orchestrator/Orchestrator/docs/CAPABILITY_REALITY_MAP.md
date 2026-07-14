@@ -20,6 +20,11 @@ The project also has an early case-packet substrate, a bounded packet surface,
 and a large governance/readback surface. Those are real source surfaces, but
 they are not the same as a finished product experience.
 
+The Small-Business AI Implementation Dossier is the ratified first
+revenue-bearing proving use case, initially operated by Roger as an AI
+consultant. It is an evidence-generating use-case layer, not the Orchestrator
+product or a selected final product wedge.
+
 The system should not currently be described as a general autonomous agent, a
 production caseworker, a game/worldbuilding assistant, a local-model execution
 platform, or an end-to-end user-facing product.
@@ -56,7 +61,9 @@ and auditable multi-file result reporting. It does not prove:
 - concurrency safety
 - production readiness or product-market fit
 
-No provider/model or first product wedge has been selected.
+No provider/model or first product wedge has been selected. The ratified
+Small-Business AI Implementation Dossier proving use case does not alter that
+technical or product-wedge posture.
 
 ### Accepted Exact Bounded Provider-Backed Coding Proof
 
@@ -194,6 +201,25 @@ What this does not prove:
 - current runtime availability
 
 ## Product-Facing Capability
+
+### Small-Business AI Implementation Dossier
+
+Status: ratified first revenue-bearing proving use case; not a product-wedge
+selection and not proven as end-to-end product work.
+
+Classification: consulting use-case layer operated initially by Roger; a source
+of real users, revenue, requirements, and failure evidence.
+
+The use case may exercise general Orchestrator capabilities, but it does not
+define the neutral core. Business interview scripts, AI opportunity scoring,
+consulting pricing, estimated savings, local-versus-cloud recommendation
+criteria, client report branding, and business workflow taxonomies remain
+use-case-specific by default.
+
+Capabilities may enter the neutral core only when they plausibly generalize
+across materially different supervised AI-assisted workflows. The dossier does
+not itself prove user value, product-market fit, production readiness, correct
+recommendations, or general architectural validity.
 
 ### Claims / Disputes / Appeals Casework
 

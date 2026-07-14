@@ -28,6 +28,11 @@ stronger auditability, not provider/model selection or semantic proof. A
 bounded real provider-backed proof is ready for ranking only. No provider/model
 or product wedge has been selected.
 
+The first revenue-bearing proving use case is the Small-Business AI
+Implementation Dossier, initially operated by Roger as an AI consultant. It is
+a consulting use-case layer, not the Orchestrator product or final wedge, and
+does not authorize architectural lock-in.
+
 ---
 
 ## Startup script
@@ -60,6 +65,7 @@ CURRENT_STATE:
 - `RERANK_01.md`
 - `RERANK_01_RESULT.md` (if present)
 - `docs/FIRST_PRODUCT_WEDGE_DECISION.md`
+- `docs/FIRST_REVENUE_PROVING_USE_CASE_RATIFICATION_RECORD.md`
 - `docs/FIRST_PRODUCT_WEDGE_RATIFICATION_PACKET.md`
 - `docs/CAPABILITY_REALITY_MAP.md`
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
@@ -209,10 +215,17 @@ The current founder-control state is recorded in:
 - `docs/DOMAIN_LOCK_IN_AUDIT.md`
 - `docs/OPERATOR_CODEBASE_MAP.md`
 
-Current strategic bridge: preserve case-packet work, but stop treating
-claims/disputes/appeals as the gravitational center until Roger ratifies that
-first proving domain again. The bridge is a neutral dossier/case abstraction,
-not final wedge selection.
+Current proving-use-case posture: the Small-Business AI Implementation Dossier
+is the first revenue-bearing proving use case, initially operated by Roger as
+an AI consultant. It is a use-case layer that may exercise general
+capabilities; it is not the Orchestrator product, a final wedge selection, or
+permission to lock the neutral core to small-business consulting.
+
+The earlier strategic bridge remains relevant: preserve reusable case-packet
+work and avoid letting claims/disputes/appeals or any new use case become the
+gravitational center by inertia. Capabilities enter the neutral core only when
+they plausibly generalize across materially different supervised AI-assisted
+workflows.
 
 Phase 387 remains parked until founder visibility and wedge ratification are
 resolved or Roger explicitly authorizes that technical thread.
@@ -227,10 +240,16 @@ The current cockpit snapshot is
 project should stop at founder ratification rather than resume implementation
 by sequence momentum.
 
-Roger has ratified Option 3: build the neutral dossier/case abstraction first,
-then choose the first product domain. The current implementation-planning
-artifact is `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md`. It is a
-plan only; it does not authorize source behavior mutation by itself.
+The prior Option 3 abstraction-first ratification remains historical structural
+context. The current proving-use-case ratification is recorded in
+`docs/FIRST_REVENUE_PROVING_USE_CASE_RATIFICATION_RECORD.md`. Neither record
+selects a first product wedge or authorizes source behavior mutation by itself.
+
+The earlier `docs/DOSSIER_CASE_ABSTRACTION_IMPLEMENTATION_PLAN.md` remains a
+planning-only artifact for the neutral dossier/case abstraction. Read it as
+historical and structural context alongside the newer proving-use-case
+ratification; it does not authorize source behavior mutation or select a first
+product wedge.
 
 
 ## Session doctrine and durable open threads

@@ -26,15 +26,21 @@ not replace the full historical ledger.
 
 ## Current Decision Membrane
 
-The active decision membrane is founder/product-wedge control around the
-neutral dossier/case abstraction, with the canonical alpha runtime now
-authoritative on `main`.
+The active decision membrane is founder/product-wedge control around a neutral
+core and the ratified Small-Business AI Implementation Dossier proving use
+case, with the canonical alpha runtime now authoritative on `main`.
 
 Current safely inferable posture:
 
 - No first product wedge is selected.
-- Roger ratified Option 3: build the neutral dossier/case abstraction first,
-  then choose the first product domain.
+- `FIRST_REVENUE_BEARING_PROVING_USE_CASE=SMALL_BUSINESS_AI_IMPLEMENTATION_DOSSIER`.
+- `ACTIVE_PROVING_USE_CASE_OPERATOR=ROGER_AS_AI_CONSULTANT`.
+- `ORCHESTRATOR_PRODUCT_IDENTITY=TRUSTWORTHY_GENERAL_GOVERNING_LAYER_FOR_AI_ASSISTED_WORK`.
+- `ARCHITECTURAL_LOCK_IN_AUTHORIZED=FALSE`.
+- The proving use case is a consulting workflow and evidence-generating
+  use-case layer, not the Orchestrator product or final product wedge.
+- The earlier Option 3 abstraction-first bridge remains relevant structural
+  context; it does not authorize consulting-specific core design.
 - Phase 387 remains parked unless Roger or CTO/coordinator explicitly
   authorizes it.
 - Canonical alpha runtime adoption is complete on authoritative `main` at
@@ -131,17 +137,17 @@ product-wedge selection.
 | Phase 277 packet CLI runbook | RETIRED_OR_RESOLVED | Runbook migration and cockpit closure were pushed and verified on authoritative `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`. |
 | Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` add task-objective propagation, ordered multi-file `changed_paths`, exact worker-result/workspace-audit agreement, persisted changed-path evidence, and reconciliation-health coverage. This is stronger auditability only. |
 | Real provider-backed proof | RETIRED_OR_RESOLVED | One exact bounded provider-backed coding task completed and was ratified through the canonical worker seam; its eight-requirement task-specific semantic verification passed. The proof is task-specific only and does not select a provider/model or establish generalized competence or production readiness. |
-| Product-wedge control | DEFERRED_VALID | No first product wedge is selected; preserve the neutral dossier/case abstraction-first posture. |
+| Product-wedge control | DEFERRED_VALID | `FIRST_PRODUCT_WEDGE=NOT_SELECTED`. The Small-Business AI Implementation Dossier is the ratified revenue-bearing proving use case, not the final wedge or product identity. |
 | Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
 | Framework/readback expansion | BLOCKED | Keep framework/readback expansion frozen until a separately authorized, meaningful capability need is ranked. |
-| Founder/product-wedge control | ACTIVE | Option 3 is ratified: neutral dossier/case abstraction first, then product-domain choice. No first product wedge selected. |
+| Founder/product-wedge control | ACTIVE | Roger operates the Small-Business AI Implementation Dossier as the first revenue-bearing proving use case. Neutral-core admission requires plausible cross-workflow generalization; no first product wedge or architectural lock-in is authorized. |
 | Dry MVP bounded-task loop | WATCH | Dry source/test/docs milestone closeout and deterministic local-worker stub proof package are already committed and pushed in current `main` ancestry. The stub proof proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. |
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
 | Governance / startup / open-thread discipline | ACTIVE | Startup should use this compact current summary and triage visible open threads before ranking NBMs. Session-record protocol, pilot record, AGENTS source-authority hardening, Relay command-surface/no-helper doctrine, Relay named command modes, and dirty-residue cleanup/ZIP deletion are completed. Relay command discipline is persistent in `ROLE_RELAY.md`. `docs/session_records/` remains `READ_WHEN_NAMED`; use `docs/session_records/INDEX.md` only when the boundary names session records or evidence archaeology. |
 | Local-first model/router/provider | WATCH | Evidence exists for specific smoke/metadata/proof registrations, but live execution and production readiness remain separate future boundaries. |
 | Experimental native online advisory adapter | WATCH | The isolated experimental branch is pushed and verified at `64125b9909b7e72b7d7d3c542caac3274def086b`; live native Codex stdin transport is accepted with no WinError 206, and the repaired frozen 12-scenario rerun admitted 8/12 while quarantining 04, 05, 09, and 12. Focused tests passed 42/42; transport was 12/12 with no retries and the prompt absent from argv. Codex remains one experimental advisory adapter: no provider is selected, no production readiness or main-source adoption is implied, and the neutral dossier/case membrane remains unchanged. |
 | General answer lightweight lane | DEFERRED | Report-only structured local lane is paused pending explicit coordinator ranking. |
-| Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review and neutral task packet structural proof are completed, committed, pushed, and ratified; they do not select a product wedge or prove runtime/provider/model behavior. |
+| Dossier/case mapping and task-readiness seams | WATCH | Source/test/docs seams and docs-only reviews support the neutral abstraction. The task-readiness operator review and neutral task packet structural proof remain completed, committed, pushed, and ratified. The ratified Small-Business AI Implementation Dossier may exercise general capabilities, but consulting-specific concerns remain outside the core by default. The structural proof does not prove runtime/provider/model behavior. |
 | Founder-native Human Override / Causal Court material | WATCH | Useful founder-legible calibration/demo material; not current product direction or selected wedge. |
 | Platform/OpenClaw/Hermes/RAG/installer integration | DEFERRED | External or future integration tracks only unless an explicit integration boundary authorizes them. |
 | Historical artifact/export proof | HISTORICAL | Preserve as proof history. Do not treat older export/upload hashes or packaged artifacts as current source authority without fresh verification. |
@@ -159,10 +165,10 @@ product-wedge selection.
 | Provider-neutral auditable multi-file integration | RETIRED_OR_RESOLVED | Local commits `bf9865d` and `fab7a53` added objective propagation, ordered multi-file `changed_paths`, exact audit/result agreement, persisted changed-path evidence, and linked-lifecycle reconciliation-health coverage. | None; reopen only for a targeted defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | Real provider-backed proof | RETIRED_OR_RESOLVED | One exact bounded provider-backed coding task was operationally and semantically verified through the canonical alpha spine. Provider competence and selection remain unproven beyond that task. | None; reopen only for a newly identified defect in this exact proof, or rank separately scoped generalization work. | `TRACKS_AND_OPEN_THREADS.md` |
 | Provider selection | DEFERRED_VALID | No provider or model has been selected. | Reopen only after ranking and explicit boundary authorization. | `TRACKS_AND_OPEN_THREADS.md` |
-| Product-wedge selection | DEFERRED_VALID | No first product wedge selected; neutral dossier/case abstraction remains the membrane. | Separate founder/CTO decision record. | `TRACKS_AND_OPEN_THREADS.md` |
+| Product-wedge selection | DEFERRED_VALID | No first product wedge selected. The Small-Business AI Implementation Dossier is a ratified revenue-bearing proving use case, not the wedge. | Separate founder/CTO decision record. | `TRACKS_AND_OPEN_THREADS.md` |
 | Phase 387 | DEFERRED_VALID | Parked; no resume authorization is present. | Explicit Roger/CTO resume decision only. | `TRACKS_AND_OPEN_THREADS.md` |
 | Framework/readback expansion | BLOCKED | Do not broaden framework/readback surfaces while useful bounded work remains unrated. | Reopen only with a concrete capability need and proof boundary. | `TRACKS_AND_OPEN_THREADS.md` |
-| Neutral dossier/case abstraction before wedge selection | ACTIVE | Docs/source/test seams, founder ratification records, the ratified task-readiness operator review, and the neutral task packet structural proof support abstraction-first posture; no final wedge selected. | First product wedge selection, Source Files refresh/export, or Phase 387 resume decision only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
+| Revenue-bearing proving use case / neutral core | ACTIVE | Roger's Small-Business AI Implementation Dossier is the ratified proving use case. Docs/source/test seams remain structural evidence only; neutral-core adoption requires plausible cross-workflow generalization, and no final wedge is selected. | A separately authorized use-case evidence review, core-admission boundary, or Source Files refresh/export; product-wedge selection or Phase 387 resume only if explicitly authorized. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -180,8 +186,9 @@ product-wedge selection.
 - `trusted_local_unsandboxed` is a trusted-worker contract, not OS-level
   sandboxing; effects outside the controlled workspace are not comprehensively
   prevented or observed.
-- No provider/model has been selected, no first product wedge has been
-  selected, and no product-market fit is proven.
+- No provider/model or first product wedge has been selected, and no
+  product-market fit is proven. The ratified Small-Business AI Implementation
+  Dossier is a revenue-bearing proving use case, not contrary proof.
 - `main.py` remains a legacy 49-command surface. The Phase 277 runbook
   migration and cockpit closure were pushed and verified on authoritative
   `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`; `main.py` migration,

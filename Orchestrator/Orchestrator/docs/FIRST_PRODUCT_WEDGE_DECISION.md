@@ -1,185 +1,93 @@
 # First Product Wedge Decision
 
-Boundary: `FOUNDER_CONTROL_AND_SOURCE_REALITY_DOCS_ONLY`
+Boundary: `FIRST_REVENUE_PROVING_USE_CASE_CURRENT_MAIN_DOCS_RECONCILIATION`
 
-Status: founder ratification surface and interim strategic bridge.
+Status: current founder decision surface. The first revenue-bearing proving use
+case is ratified; no first product wedge is selected.
 
 Marker: `FIRST_PRODUCT_WEDGE_DECISION_REGISTERED=DOCS_ONLY`
 
-## Executive Summary
+## Current Decision
 
-The first product wedge is not currently settled for forward implementation.
-Claims/disputes/appeals-style casework exists as the historically documented
-proving ground, but Roger has reopened the decision because he has no strong
-founder-native ownership in that domain.
+Roger has ratified the following current posture:
 
-Roger authorized Option C as the interim bridge: preserve the case-packet work,
-but stop allowing claims/disputes/appeals to remain the gravitational center
-until he ratifies that domain again.
+- `FIRST_REVENUE_BEARING_PROVING_USE_CASE=SMALL_BUSINESS_AI_IMPLEMENTATION_DOSSIER`
+- `FIRST_PRODUCT_WEDGE=NOT_SELECTED`
+- `ORCHESTRATOR_PRODUCT_IDENTITY=TRUSTWORTHY_GENERAL_GOVERNING_LAYER_FOR_AI_ASSISTED_WORK`
+- `ACTIVE_PROVING_USE_CASE_OPERATOR=ROGER_AS_AI_CONSULTANT`
+- `ARCHITECTURAL_LOCK_IN_AUTHORIZED=FALSE`
 
-Option C does not choose the final wedge. It keeps the project from drifting
-while preserving useful structure.
+The Small-Business AI Implementation Dossier is the first revenue-bearing
+proving use case. It is a consulting workflow initially operated by Roger and
+a source of real users, revenue, requirements, and failure evidence. It is a
+use-case layer through which general Orchestrator capabilities may be exercised.
 
-## Current Decision State
+It is not the Orchestrator product, the final product wedge, permission to
+design the neutral core around small-business consulting, or proof of user
+value, product-market fit, production readiness, or general architectural
+validity.
 
-### Historically Documented Candidate
+## Relationship To The Earlier Bridge
 
-Claims / disputes / appeals-style casework.
+The earlier Option 3 ratification remains relevant as a historical
+abstraction-first bridge: preserve reusable dossier/case structure and avoid
+domain lock-in by inertia. It no longer describes the full current posture.
 
-Current status:
+The ratified proving use case adds a real consulting context without selecting
+a final wedge or changing the constitutional product identity. Claims/disputes/
+appeals casework and game/worldbuilding/design dossier work remain historical
+or candidate contexts, not current product-wedge selections.
 
-- documented in product strategy/design records
-- reflected in early case-packet phases
-- source-relevant
-- not discarded
-- not current forward ratification by itself
+Phase 387 remains parked. Provider/model selection remains deferred.
+Framework/readback expansion remains blocked pending a separately authorized,
+meaningful capability need.
 
-### Founder-Reopened Candidate
+## Core Versus Use-Case Rule
 
-Game / worldbuilding / design dossier work.
+Capabilities enter the neutral Orchestrator core only when they plausibly
+generalize across materially different supervised AI-assisted workflows.
 
-Current status:
+General-core candidates include:
 
-- personally meaningful to Roger
-- likely to preserve founder judgment and motivation
-- structurally compatible with dossier/case packet ideas
-- not yet represented as a named product surface in source
-- not yet selected as first wedge
-
-### Strategic Bridge
-
-Neutral dossier/case abstraction.
-
-Current status:
-
-- authorized as interim bridge
-- not final product wedge selection
-- intended to prevent premature lock-in
-- intended to preserve reusable value from case-packet work
-
-## Why The Decision Was Reopened
-
-The project began to accumulate machinery around claims/disputes/appeals-style
-casework. That domain can still be valid, but Roger identified a founder-risk:
-he has no direct experience or strong ownership in that domain.
-
-A first proving domain should exercise Orchestrator's core muscles while giving
-Roger enough native judgment to know whether the product is actually becoming
-useful.
-
-Claims/disputes/appeals may be consequential, but founder distance makes it
-harder for Roger to evaluate product truth without outsourcing too much judgment
-to the system.
-
-Game/worldbuilding/design dossier work may be lower-stakes, but it may better
-preserve founder-level discernment while still testing:
-
-- source-material handling
-- fact extraction
-- contradiction tracking
-- draft generation
-- decision records
-- task decomposition
-- review gates
+- objective intake
+- source and provenance handling
+- facts, claims, chronology, and contradiction representation
+- missing-information detection
+- bounded task construction
+- evidence-linked recommendations
+- human review and disposition
 - artifact persistence
-- human-in-the-loop control
+- lifecycle visibility
+- honest clarify, blocked, uncertainty, and failure states
 
-## Option C: The Bridge
+Use-case-specific concerns remain outside the neutral core by default,
+including:
 
-Option C says:
+- business interview scripts
+- AI opportunity scoring
+- consulting pricing
+- estimated savings
+- local-versus-cloud recommendation criteria
+- client report branding
+- business workflow taxonomies
 
-Do not throw away the case-packet work. Do not keep letting
-claims/disputes/appeals steer the project by inertia. Generalize toward a
-neutral dossier/case abstraction until Roger ratifies the first proving domain.
+## Implementation Discipline
 
-The bridge keeps both doors open:
+The proving use case may generate requirements and failure evidence, but it
+does not authorize source changes, product implementation, architectural
+lock-in, or a final wedge choice by itself. A future boundary must demonstrate
+plausible cross-workflow generalization before adopting a capability into the
+neutral core.
 
-- consequential admin casework can remain a future branch
-- creative/worldbuilding/design dossier work can become a first proving branch
-- shared packet/state/review machinery can be preserved
-
-## Candidate Abstraction: Dossier / Case Packet
-
-A neutral dossier/case packet may contain:
-
-- objective
-- source materials
-- extracted facts
-- timeline or chronology
-- open questions
-- missing evidence or missing canon
-- contradictions
-- drafts
-- decisions
-- next work items
-- review posture
-- operator approvals
-
-This shape can serve both:
-
-- a billing dispute, benefits appeal, or reimbursement claim
-- a game design dossier, lore bible, setting packet, faction brief, or mechanics
-  design file
-
-The abstraction should not erase domain differences. It should preserve common
-workflow bones while allowing domain-specific organs.
-
-## Decisions Not Yet Made
-
-Roger has not yet ratified:
-
-- claims/disputes/appeals as the first product wedge going forward
-- game/worldbuilding/design dossier as the first product wedge
-- the name and schema of a neutral dossier/case abstraction
-- whether existing `case_packet` code should be generalized, wrapped, or left as
-  a specialized branch
-- whether Phase 387 should resume before or after a wedge decision
-
-## What Would Count As Ratification
-
-Roger ratification should be explicit and durable. Examples:
-
-- "Keep claims/disputes/appeals as the first proving domain."
-- "Pivot the first proving domain to game/worldbuilding/design dossier work."
-- "Build a neutral dossier/case abstraction first, then choose the first domain."
-
-Until such ratification exists, implementation should avoid deepening domain
-lock-in.
-
-## Recommended Next Boundary
-
-The next implementation-relevant move should not be Phase 387 by default.
-
-The next strategic move should be a founder-visible design boundary that defines
-the neutral dossier/case abstraction and compares it against the existing
-case-packet substrate.
-
-Possible boundary name:
-
-`DOSSIER_CASE_ABSTRACTION_FOUNDER_RATIFICATION_DESIGN_DOCS_ONLY`
-
-Allowed purpose:
-
-- define neutral dossier/case language
-- map existing case-packet fields to a neutral abstraction
-- compare claims/disputes/appeals and game/worldbuilding/design as first proving
-  candidates
-- identify minimal source changes that would preserve both paths
-- prepare Roger for explicit wedge ratification
-
-Exclusions:
-
-- no source mutation
-- no Phase 387
-- no runtime/provider/model execution
-- no worker dispatch
-- no final wedge selection without Roger
+No provider/model has been selected. The canonical alpha runtime and its exact
+real provider-backed coding proof retain their current narrow evidence posture;
+this decision does not generalize that proof or make a production-readiness
+claim.
 
 ## Non-Proofs
 
-This decision record does not implement a dossier packet, refactor case-packet
-code, prove a game/worldbuilding/design workflow, prove claims/disputes/appeals
-wrong, or select the final product wedge.
-
-It records the current founder-ratification state and the authorized strategic
-bridge.
+This record does not prove that the consulting dossier delivers user value,
+fits a market, works end-to-end, produces correct recommendations, is ready for
+production, or validates a general architecture. It does not select the first
+product wedge, resume Phase 387, select a provider/model, or authorize
+architectural lock-in.
