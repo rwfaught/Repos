@@ -33,10 +33,29 @@ separate.
 | --- | --- | --- | --- |
 | Constitutional direction | Defines what Orchestrator is trying to become and what growth must preserve. | `docs/PROJECT_VISION.md` | Long-range direction, not present capability proof. |
 | Present success bar | Defines what a successful run means today. | `docs/CURRENT_SUCCESS_CRITERION.md` | Present-tense product bar, not a roadmap or phase authorization. |
+| Project trajectory and roadmap | Synthesizes project stage, milestone sequence, entry/exit gates, strategic bottlenecks, and management priorities. | `docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md` | Management synthesis, not live Git/source/test/runtime proof, mutation authorization, provider/model or product-wedge selection, or a replacement for current-state/capability authority. Phase status must be verified against current evidence. |
 | Coordinator/governance method | Defines ranking, approval, handoff, review, closure, re-entry discipline, open-thread triage, startup-load discipline, and project continuity evidence discipline. | `docs/ORCHESTRATOR_METHOD.md`; `docs/ORCHESTRATOR_INTERACTION_MODEL.md`; `docs/STARTUP_BRIEF.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md`; `docs/PROJECT_CONTINUITY_EVIDENCE_PROTOCOL.md` | Governs process semantics and evidence vocabulary, not runtime behavior. |
 | Active product state/open threads | Preserves accepted track state, open threads, proof posture, triage status, and drift warnings. | `docs/TRACKS_AND_OPEN_THREADS_CURRENT.md`; `docs/TRACKS_AND_OPEN_THREADS.md`; `docs/OPEN_THREAD_TRIAGE_PROTOCOL.md` | The compact cockpit is the default current-state source; the full ledger remains historical/on-demand. |
 | Evidence/history stack | Records ordered phase history, action logs, source identity, artifact caveats, and accepted proof claims. | `docs/PHASE_INDEX.md`; `docs/ACTION_LOG.md`; `docs/SOURCE_MANIFEST.md`; phase docs | Evidence/history authorities; not mandatory full-load startup payloads unless the boundary requires phase history, source registration, proof, or reconciliation. |
 | Language/context architecture | Defines bounded contexts, owned terms, and do-not-confuse rules for docs. | `docs/CONTEXT_MAP.md` | Clarifies language authority only; it does not clean up historical docs by itself. |
+
+### Project Trajectory and Roadmap
+
+Purpose: provide management synthesis of project stage, milestone sequence,
+entry/exit gates, strategic bottlenecks, and management priorities.
+
+Authority document:
+
+- `docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md`
+
+Non-authority / do-not-confuse warnings:
+
+- The roadmap is not live Git proof.
+- The roadmap is not source, test, or runtime proof.
+- The roadmap is not mutation authorization.
+- The roadmap does not select a provider, model, or product wedge.
+- The roadmap does not replace current-state or capability authority.
+- Roadmap phase status must be verified against current evidence.
 
 ## Bounded Context Map
 

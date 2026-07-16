@@ -87,6 +87,10 @@ or evidence question names them or makes them load-bearing:
 - `CAPABILITY_REGISTRY.md`
 - `LOCAL_FIRST_MODEL_ROUTER_POLICY.md`
 - `LOCAL_FIRST_PROVIDER_CATALOG.md`
+- `PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md` when the boundary concerns
+  project roadmap, project-stage assessment, strategic ranking, major track
+  selection, product hinges, Founder Cockpit, product-wedge implications,
+  productionization planning, or Project Manager/founder-level reporting
 - `TRACKS_AND_OPEN_THREADS.md` full historical ledger
 - `ARTIFACT_RETENTION_AND_SOURCE_HYGIENE.md`
 - `OPERATOR_CODEBASE_MAP.md`

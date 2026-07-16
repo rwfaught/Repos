@@ -149,6 +149,49 @@ in the current cockpit and subsequent CTO/coordinator handoffs. A report,
 edit, commit, or push alone does not close an obligation unless the accepted
 disposition's required evidence has been reviewed.
 
+## Project Roadmap Stewardship
+
+`PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md` is the management-level authority
+for project-stage interpretation, strategic sequencing, milestone phases, entry
+and exit gates, management priorities, and strategic bottlenecks and risks.
+
+CTO/coordinator must determine whether the roadmap is relevant when opening or
+closing a major track; ranking cross-track work; reviewing a project hinge or
+overall progress; considering product-wedge implications, Founder Cockpit work,
+productionization planning, founder or Project Manager reporting, or material
+strategic resequencing. It is not required for every narrow review or routine
+boundary.
+
+At major boundary closure or strategic review, ask:
+
+> Has the answer to “where are we on the project journey?” materially changed?
+
+If yes, disposition a roadmap update through a named docs-only boundary,
+require current evidence and authority verification, and preserve the roadmap
+revision record. If no, do not update merely to record routine activity.
+
+Typical triggers include a roadmap phase transition, product-wedge decision,
+accepted real proving-use-case result, productionization entry, material
+bottleneck resolution, accepted Founder Cockpit transition, strategic
+resequencing, or a major capability that changes the expected path. Small fixes,
+isolated tests, command corrections, routine commits, minor documentation
+changes, and track activity that does not change stage or sequence normally do
+not justify an update.
+
+The roadmap is not live Git proof, source/test/runtime proof, current
+open-thread authority, implementation authorization, provider/model selection,
+product-wedge selection, or production-readiness proof. Verify present facts
+through their proper authorities: constitutional vision in
+`PROJECT_VISION.md`, the present success criterion in
+`CURRENT_SUCCESS_CRITERION.md`, current tracks in
+`TRACKS_AND_OPEN_THREADS_CURRENT.md`, capability reality in
+`CAPABILITY_REALITY_MAP.md`, and technical proof in current source, tests, Git,
+accepted evidence, and CTO ratification.
+
+When roadmap relevance is material to the next CTO session or active track, the
+CTO handoff should name it as a required read. Do not make it a universal
+handoff attachment.
+
 ## Source/Factual Hygiene
 
 CTO/coordinator must distinguish:
