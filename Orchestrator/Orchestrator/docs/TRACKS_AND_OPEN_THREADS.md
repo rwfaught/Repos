@@ -3777,3 +3777,35 @@ fresh artifact proof.
   wedge selection, Phase 387, or authoritative-main source adoption.
 
 `EXPERIMENTAL_ADVISORY_REPAIR_REMOTE_DURABILITY_AND_COORDINATION_RECONCILIATION=PASS`
+
+### Founder Cockpit Sidecar Coordination Status Update
+
+- Boundary: `FOUNDER_COCKPIT_SIDECAR_COORDINATION_STATUS_UPDATE`.
+- Specialist evidence classification:
+  `BLOCKED_CODEX_SITES_CURRENT_CAPABILITY_OR_PRIVACY_UNCLEAR`.
+- CTO-ratified authority disposition:
+  `PASS_FOUNDER_COCKPIT_INFORMATION_ARCHITECTURE_READY_CODEX_SITES_SUBSTRATE_BLOCKED`.
+  The Specialist report remains evidence; the CTO disposition is the authority
+  for this coordination state.
+- Founder Cockpit remains an active advisory sidecar. Its information
+  architecture is accepted for a tool-neutral fixture specification.
+- Codex Sites disposition: `DEFER_WITH_RECORDED_REASON`. It is neither selected
+  nor authorized because inspectable evidence is still required for privacy,
+  publication, persistence, retention, deletion, rollback, access control, and
+  portability.
+- No Site, UI code, static HTML, fixture data, platform selection, final
+  provenance contract, stable identity design, real-data hosted-tool use, live
+  integration, deployment, or publication is authorized by this record.
+- Reopen Codex Sites only under a separately authorized review boundary with
+  inspectable evidence for the governing privacy, deployment, persistence,
+  retention, deletion, rollback, access-control, and portability contract.
+- Provenance alternatives may be represented later for usability review, but
+  are not selected as final domain or storage contracts. Founder Cockpit and
+  Dossier Workspace remain separate instruments even if one fixture artifact
+  contains both.
+- Next bounded move:
+  `FOUNDER_COCKPIT_TOOL_NEUTRAL_FIXTURE_INFORMATION_MODEL_AND_WIREFRAME_SPEC`.
+  A generated static HTML proof is the current lowest-risk likely first visual
+  artifact; a local-only interactive fixture may be considered later.
+
+`FOUNDER_COCKPIT_SIDECAR_COORDINATION_STATUS_UPDATE=PASS`
