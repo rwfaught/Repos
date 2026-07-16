@@ -3809,3 +3809,32 @@ fresh artifact proof.
   artifact; a local-only interactive fixture may be considered later.
 
 `FOUNDER_COCKPIT_SIDECAR_COORDINATION_STATUS_UPDATE=PASS`
+
+### Relay PowerShell 5.1 Git Batch Profile V1 Startup Doctrine Update
+
+- Boundary: `RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1_STARTUP_DOCTRINE_UPDATE`.
+- Status: docs-only doctrine update pending CTO review.
+- Motivating evidence: one routine two-document Git durability campaign needed
+  repeated correction because empty pipeline output became `$null` and caused
+  `.Count` failure; validation demanded a literal stricter than the CTO
+  packet; a line-oriented semantic regex misread wrapped negation; benign Git
+  stderr became a terminating PowerShell exception; and `return ,$Paths` with
+  caller-side `@(...)` created nested path collections and false
+  staged/untracked findings. These are command-construction failures, not
+  repository-content defects.
+- Doctrine disposition: `ROLE_RELAY.md` now requires
+  `RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1` for routine Windows PowerShell
+  5.1 Git review, stage, commit, push, and verification batches, especially
+  the simple one-target and few-target modes. The profile requires direct Git
+  invocation, `$LASTEXITCODE`-based success checks, safe stderr handling, flat
+  collections with zero/one/many checks, straight-line newline-delimited Git
+  output, ratified-marker-only validation, correction simplification, and a
+  hard command-design rejection gate.
+- Preserved posture: no runtime or product behavior changed; Founder Cockpit
+  semantics are unchanged; no product wedge is selected; and existing Relay
+  authority limits, command modes, lockouts, no-helper routine Git doctrine,
+  and report requirements remain in force.
+- Next durability boundary after CTO review:
+  `RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1_CTO_REVIEW_THEN_COMMIT_PUSH_VERIFY`.
+
+`RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1_STARTUP_DOCTRINE_UPDATE=PENDING_CTO_REVIEW`

@@ -160,6 +160,74 @@ or complex script-mode boundaries.
 Do not build custom PowerShell validation systems unless the boundary
 specifically requires it.
 
+## RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1
+
+`RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1` is mandatory for routine Windows
+PowerShell 5.1 Git review, stage, commit, push, and verification batches,
+especially `MODE_SIMPLE_GIT_COMMIT_ONE_TARGET` and
+`MODE_SIMPLE_GIT_COMMIT_FEW_TARGETS`. It strengthens routine command
+construction; it does not change Relay authority, lockouts, or the rule that
+generated commands are not proof of execution.
+
+### Direct Git Execution
+
+- Invoke Git directly with `& git @Arguments`.
+- Set `$ErrorActionPreference = 'Continue'` and use `$LASTEXITCODE` as the
+  sole Git success signal.
+- Display stderr separately, but do not treat stderr presence as failure.
+- Do not place routine native Git commands inside a broad outer `try`/`catch`.
+  Use narrow `try`/`catch` only for PowerShell or .NET operations that may
+  throw.
+
+### Flat Collection Discipline
+
+- Materialize every collection that will be counted, indexed, sorted, or
+  compared, and explicitly audit zero, one, and many output cardinalities.
+- Use inline flat string arrays for routine path handling. Empty staged or
+  untracked output must be a flat array with count `0`.
+- Do not use `return ,$Paths`, `Write-Output -NoEnumerate`, nested path arrays,
+  or collection-returning path-normalization helpers in routine Git modes.
+
+### Routine Git Simplicity
+
+Unless the boundary explicitly proves necessity, routine Git modes must not
+use `ProcessStartInfo`, `Start-Process`, `cmd /c`, manual native argument
+quoting, `-z`, NUL parsers, custom process wrappers, parser
+mini-frameworks, generalized path/status helpers, or semantic authorization
+regex. Prefer newline-delimited Git output and straight-line checks.
+
+### Ratified-Content Validation
+
+- Do not reinterpret already-ratified prose. Validate only finite exact
+  markers explicitly named by the CTO packet.
+- Do not silently strengthen “literal or equivalent” into exact-literal
+  validation.
+- Do not perform line-oriented negation or authorization analysis. Return
+  semantic concerns to CTO rather than inferring them in a commit batch.
+
+### Correction Escalation
+
+- Rebuild a correction batch from current requirements; do not lightly patch
+  or relabel its parent.
+- After one command-design failure, explicitly remove the defective mechanism.
+- After two command-design false negatives or command defects on the same
+  routine Git boundary, mandatory simplification applies.
+- Do not add machinery to compensate for machinery-caused failures. Repeated
+  failure requires a CTO-visible process-defect note.
+
+### Hard Command-Design Rejection Gate
+
+For routine Git modes, the Relay report must certify the absence of prohibited
+constructs. If the constructed batch violates this profile, classify the
+command-design gate as failed and do not present the batch as ready for
+Operator execution.
+
+The report must audit direct Git invocation; safe stderr handling;
+`$LASTEXITCODE`; zero/one/many cardinality; flat path arrays; absence of a
+collection-returning path helper, NUL parsing, broad Git catch, and semantic
+prose regex; exact-marker scope; start/end/elapsed output; staged failure
+state; and commit-created but push-unverified state.
+
 ## Relay Command Modes
 
 Future Relay prompts may name these modes instead of restating routine
@@ -175,10 +243,11 @@ not bespoke command design.
   `git add`. Verify precondition HEAD, local `origin/main`, remote
   `origin/main`, no pre-existing staged files, exact staged file list,
   committed file scope, post-push heads, target clean, no staged files remain,
-  and final status.
+  and final status. Apply `RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1`.
 - `MODE_SIMPLE_GIT_COMMIT_FEW_TARGETS`: Same as one-target mode, but for a
   small explicit file list. Verify staged and committed file lists exactly
   match the allowed set. Do not generalize into custom status parser machinery.
+  Apply `RELAY_POWERSHELL_5_1_GIT_BATCH_PROFILE_V1`.
 - `MODE_READONLY_RATIFICATION_REVIEW`: Read-only inspection before
   CTO/coordinator ratification. Do not stage, commit, or push. Show target
   diffs, target status, relevant tests or validation only when explicitly
