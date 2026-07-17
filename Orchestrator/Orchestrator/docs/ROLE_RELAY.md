@@ -84,10 +84,30 @@ occur. For mutation-authorized batches, include checks that the resolved target
 path stays inside the declared base path, that the dirty tree state is observed
 before changes, and that the command stops on unexpected scope expansion.
 
+### Interactive PowerShell Paste Boundary
+
+Unless the boundary explicitly requests a complete `.ps1` script, every
+PowerShell command batch is an interactive-terminal paste batch. It must be
+straight-line: each displayed line must be independently valid when PowerShell
+submits it as a separate command between prompts.
+
+Do not include conditional statements or control-flow blocks in an interactive
+paste batch, including `if`, `elseif`, `else`, `switch`, `try`, `catch`,
+`finally`, loops, script blocks, or unmatched braces. In particular, never
+emit an `else` line for a prior prompt to continue. Do not write a pasted batch
+as though it will be saved as a `.ps1` file.
+
+Use one explicit command per line with visible output and immediately report
+any non-zero `$LASTEXITCODE` or failed expectation to the Operator for the next
+bounded step. If branching, recovery, or coordinated failure handling is
+necessary, either split the alternatives into separately labeled batches or
+use `MODE_COMPLETE_SCRIPT_DRAFT` only when a complete `.ps1` file is
+explicitly requested.
+
 Relay should not make PowerShell clever for its own sake. Prefer readable
-variables, explicit paths, simple conditionals, clear exit handling, and
-operator-visible output over dense pipelines when the batch may become project
-evidence.
+variables, explicit paths, straight-line commands, clear exit-status reporting,
+and operator-visible output over dense pipelines when the batch may become
+project evidence.
 
 Relay should preserve caveats around `$LASTEXITCODE`, native stderr, Git pager
 behavior, CRLF warnings, path separator normalization, and Windows-vs-WSL path
