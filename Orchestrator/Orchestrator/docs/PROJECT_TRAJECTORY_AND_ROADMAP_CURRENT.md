@@ -62,7 +62,7 @@ replace it with opaque autonomy or an alternate control system.
 | Canonical bounded execution | Alpha-authoritative | A structured bounded coding task can move through explicit authorization, persisted records, controlled worker execution, deterministic verification, human disposition, and read-only reconciliation. |
 | Provider-backed task proof | Exact task closed | One exact provider-backed coding task is accepted; this is not generalized provider/model competence or selection. |
 | Case/dossier substrate | Early but real | Case-like state and neutral structural seams exist, but they do not establish competent casework or an end-to-end dossier workflow. |
-| Founder Cockpit | Active advisory sidecar | Read-only founder-legible visualization is an active design/prototype thread, not a deployed control surface. |
+| Founder Cockpit | Static design/prototype accepted; live work separate | The fixture-backed static visual hierarchy and representative-context transfer are accepted at prototype level; this is not a deployed control surface, live integration, or implementation authorization. |
 | Revenue-bearing proving use case | Ratified, not operationally proven | Roger's Small-Business AI Implementation Dossier should generate real users, requirements, value, and failure evidence. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
 
@@ -120,11 +120,16 @@ Status: ACTIVE_ADVISORY_SIDECAR
 
 This phase covers Founder Cockpit information architecture, read-only state
 visualization, proof/caveat visibility, authority and freshness indicators, and
-a fixture-backed prototype before live integration. Preserve the open thread
-FOUNDER_COCKPIT_CODEX_SITES_SIDECAR_ACTIVE.
+a fixture-backed prototype before live integration. The static design/prototype
+exit condition is satisfied: the accepted six-unit hierarchy was reviewed in a
+four-frame canonical/degraded/narrow composition and transferred without
+redesign into the representative fictional `Ozark Family Dental AI Intake
+Pilot`. Live integration and implementation are neither authorized nor proven;
+any future Cockpit work must be separately ranked against useful-work needs.
 
-Exit condition: a founder-legible read-only cockpit design is accepted without
-conflicting control semantics or premature deployment authority.
+Static design/prototype exit condition: satisfied. This does not complete or
+deploy a Cockpit, or establish accessibility, responsive, interaction,
+independent-user, platform, live-data, or production proof.
 
 ### Phase 3 — Producer Adoption of Entry Preservation
 
@@ -232,7 +237,7 @@ The project is operating between completed alpha foundation and the first
 productization-oriented sequence. Immediate management priorities are:
 
 1. complete CTO handoff and preserve continuity;
-2. review the Founder Cockpit sidecar;
+2. rank any future Founder Cockpit work separately against useful-work needs;
 3. decide whether the next implementation track is narrow producer adoption or a higher-priority useful-work proof;
 4. avoid additional generic framework expansion without demonstrated need;
 5. move toward one complete founder-legible dossier workflow; and
@@ -291,6 +296,7 @@ replacing technical proof with roadmap prose.
 
 | Revision basis | Change | Evidence posture |
 | --- | --- | --- |
+| e08f0b87a3709c44de32fc455773663a722042f3 (verified local and `origin/main` before this update) | Records CTO/coordinator-accepted static Founder Cockpit visual-hierarchy and representative-context transfer at prototype level; Phase 2's static design/prototype exit condition is satisfied while live integration and implementation remain separately governed. | Documentation synthesis of accepted founder-review evidence and verified Git state only; it is not live implementation, accessibility, responsive, interaction, independent-user, platform, live-data, or production proof. |
 | cfa8c5e8e0fe2845dc67bcd8a2c92283831fd0c0 | Initial current Project Manager-level roadmap adoption; records the completed case-scoped entry-preservation contract and post-foundation, pre-productization alpha posture. | Documentation synthesis only; live Git, source, test, runtime, and operator evidence retain their own authority. |
 
 ## Source Hierarchy

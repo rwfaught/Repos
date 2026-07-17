@@ -40,3 +40,42 @@ The five reviewed states are canonical reconciled, stale sources, conflicting au
 ## Explicit Non-Proofs
 
 This record does not establish independent-user testing, timing performance, visual validation, accessibility conformance, implementation behavior, platform selection, live data, APIs, persistence, project-management behavior, product-wedge selection, implementation authority, architectural lock-in, repository durability, commit, push, or remote verification.
+
+## Static Visual-Hierarchy and Representative-Context Review Record
+
+The accepted four-frame informed founder review result is:
+
+`PASS_FOUNDER_COCKPIT_STATIC_VISUAL_HIERARCHY_FOUR_FRAME_INFORMED_FOUNDER_REVIEW_COMPLETE_WITH_REPRESENTATIVE_CONTEXT_TRANSFER_CAVEAT`
+
+Roger found the four-frame canonical/degraded/narrow static hierarchy readable,
+comprehensible, and inclusive of the information he expects to need. The
+review was informed, not blind or independent-user testing. The original
+four-frame composition's caveat was that its context was too meta.
+
+The representative fictional-project transfer result is:
+
+`PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_STATIC_TRANSFER_FOUNDER_ACCEPTED`
+
+The hierarchy transferred without redesign into the fictional `Ozark Family
+Dental AI Intake Pilot`. Roger stated that the representative version would
+work. The accepted six-unit model remained unchanged, and no blocking
+information-model defect was identified. Roger preferred moving toward
+completion and handling future issues through concrete implementation or use
+evidence rather than further static-fixture iteration.
+
+Closed-track classification:
+
+`PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_CONTEXT_STATIC_TRANSFER_AND_STATIC_VISUAL_HIERARCHY_TRACK_COMPLETE`
+
+This record proves only that the accepted hierarchy was statically rendered,
+visually distinguishable across canonical, stale/conflicting-authority, and
+narrow-screen states, readable and comprehensible to Roger in this informed
+review, and transferable to the representative fictional project while
+remaining distinct from a Dossier Workspace and project-management dashboard.
+
+It does not prove live-project usefulness, independent-user comprehension,
+accessibility conformance, responsive implementation, interaction or
+evidence-disclosure behavior, live data, APIs, persistence, platform
+suitability, project-management functionality, product-wedge selection,
+production readiness, implementation authorization, architectural lock-in, or
+Phase 387 resumption.

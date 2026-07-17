@@ -28,8 +28,35 @@ The canonical fixture and all four degraded variants completed informed founder 
 - Unratified wedge: `PASS_FOUNDER_COCKPIT_UNRATIFIED_WEDGE_INFORMED_FOUNDER_REVIEW`
 - Campaign: `PASS_FOUNDER_COCKPIT_CANONICAL_AND_FOUR_DEGRADED_VARIANT_INFORMED_FOUNDER_REVIEW_COMPLETE`
 
+The static visual-hierarchy review is also accepted:
+
+- Four-frame review: `PASS_FOUNDER_COCKPIT_STATIC_VISUAL_HIERARCHY_FOUR_FRAME_INFORMED_FOUNDER_REVIEW_COMPLETE_WITH_REPRESENTATIVE_CONTEXT_TRANSFER_CAVEAT`
+- Representative transfer: `PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_STATIC_TRANSFER_FOUNDER_ACCEPTED`
+- Closed track: `PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_CONTEXT_STATIC_TRANSFER_AND_STATIC_VISUAL_HIERARCHY_TRACK_COMPLETE`
+
+Roger found the four-frame canonical/degraded/narrow hierarchy readable,
+comprehensible, and inclusive of the information he expects. Its original
+context was too meta; the fictional `Ozark Family Dental AI Intake Pilot`
+transfer resolved that concern, and Roger said the representative version would
+work. The accepted six-unit model remains unchanged, no blocking
+information-model defect was identified, and further static-fixture iteration
+is not currently justified. This remains static prototype evidence, not a
+Dossier Workspace or a project-management dashboard.
+
 ## Scope and Durability
 
-This package is local and untracked in the current working tree. Its review records do not make it a durable repository package, a remote verification, or a later CTO review outcome; commit/push and any such review require separate authorization.
+This package is tracked and committed in repository history; before this
+reconciliation, its current repository durability was verified at
+`e08f0b87a3709c44de32fc455773663a722042f3` on both local `main` and
+`origin/main`. That proves repository durability only. A commit, push, or
+remote-reference verification does not by itself prove semantic correctness,
+visual behavior, implementation behavior, live data, or production behavior.
+Static visual artifacts produced outside the repository are not automatically
+repository artifacts unless they are separately added and verified there.
 
-The package does not prove or authorize HTML, CSS, JavaScript, visual implementation, platform work, live data, APIs, persistence, project-management functions, product-wedge selection, implementation, or architectural lock-in. Future visual prototyping requires a separate boundary.
+The package does not prove or authorize HTML, CSS, JavaScript, visual
+implementation, platform work, live data, APIs, persistence, project-management
+functions, product-wedge selection, implementation, or architectural lock-in.
+It also does not prove accessibility, responsive behavior, interaction,
+independent-user comprehension, or production readiness. Future live Cockpit
+work requires separate ranking and authorization.
