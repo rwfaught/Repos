@@ -1,0 +1,31 @@
+{
+  "record_type": "Snapshot",
+  "id": "fixture-unratified-wedge-v0",
+  "data_mode": "fictional_fixture",
+  "authority_posture": "non_authoritative_projection",
+  "stage": "fictional decision tension",
+  "current_pursuit": "Keep a proving use case distinct from the fictional Ledger Lantern wedge proposal.",
+  "strongest_proof_claim_id": "claim-use-case-active",
+  "decisive_non_proof_claim_id": "claim-proposal-not-ratified",
+  "proving_use_case_posture": "active fictional proving use case",
+  "product_wedge_posture": "No product wedge is currently ratified. Ledger Lantern is a fictional wedge proposal only.",
+  "next_move_work_item_id": "workitem-wedge-blocked",
+  "source_health": "reconciled",
+  "observed_at": "2030-01-16T10:00:00Z",
+  "source_ids": ["source-wedge-record"],
+  "authority_class": "current_project_state_authority",
+  "reconciliation_state": "reconciled",
+  "durability": "fixture_only",
+  "source_entity": "fictional-wedge-record",
+  "producing_or_verifying_activity": "fictional-fixture-construction",
+  "responsible_agent_or_role": "fictional-fixture-author",
+  "source_basis": "invented illustrative records only",
+  "derivation_note": "Ledger Lantern is an invented illustrative proposal; no wedge-selection, implementation-authorization, or architectural-lock-in inference is valid.",
+  "records": [
+    {"record_type":"Claim","id":"claim-use-case-active","founder_statement":"The fictional proving use case is active.","canonical_value":"FICTIONAL_PROVING_USE_CASE=ACTIVE","classification":"proof","support_status":"supported_in_fixture","authority_class":"current_project_state_authority","source_ids":["source-wedge-record"],"observed_at":"2030-01-16T10:00:00Z","reconciliation_state":"reconciled","conflict_state":"none","source_entity":"fictional-wedge-record","producing_or_verifying_activity":"fictional-fixture-construction","responsible_agent_or_role":"fictional-fixture-author","source_basis":"invented source","derivation_note":"Direct rendering of fictional source record."},
+    {"record_type":"Claim","id":"claim-proposal-not-ratified","founder_statement":"No product wedge is currently ratified. Ledger Lantern is a fictional proposal, not a selected wedge, and does not authorize implementation or architectural lock-in.","canonical_value":"LEDGER_LANTERN_PROPOSAL=UNRATIFIED_NO_IMPLEMENTATION_AUTHORIZATION","classification":"decisive_non_proof","support_status":"explicit_limitation","authority_class":"founder_decision_authority","source_ids":["source-wedge-record"],"observed_at":"2030-01-16T10:00:00Z","reconciliation_state":"reconciled","conflict_state":"none","source_entity":"fictional-wedge-record","producing_or_verifying_activity":"fictional-fixture-construction","responsible_agent_or_role":"fictional-founder-role","source_basis":"invented source","derivation_note":"Direct rendering of fictional source record."},
+    {"record_type":"Decision","id":"decision-ledger-lantern-proposal","question":"Should the fictional Ledger Lantern proposal be selected as a product wedge?","posture":"unresolved","founder_statement":"Founder ratification is required before any fictional product wedge selection is recorded for Ledger Lantern.","canonical_value":"LEDGER_LANTERN_WEDGE_SELECTION=PENDING_FOUNDER","ratification_status":"pending_founder","authority_class":"founder_decision_authority","source_ids":["source-wedge-record"],"durability":"fixture_only","source_entity":"fictional-wedge-record","producing_or_verifying_activity":"fictional-fixture-construction","responsible_agent_or_role":"fictional-founder-role","source_basis":"invented source","observed_at":"2030-01-16T10:00:00Z","reconciliation_state":"reconciled","derivation_note":"Direct rendering of fictional source record."},
+    {"record_type":"WorkItem","id":"workitem-wedge-blocked","type":"blocker","founder_statement":"Do not implement the fictional Ledger Lantern proposal without founder ratification.","canonical_value":"LEDGER_LANTERN_IMPLEMENTATION=BLOCKED","status":"blocked","authority_class":"founder_decision_authority","advisory_or_authorized":"blocked","responsible_role":"fictional-founder-role","source_ids":["source-wedge-record"],"observed_at":"2030-01-16T10:00:00Z","reconciliation_state":"reconciled"},
+    {"record_type":"Source","id":"source-wedge-record","label":"Fictional Ledger Lantern proposal record","source_entity":"fictional-wedge-record","source_basis":"invented illustrative source","authority_class":"fictional_fixture_data","revision_or_update_time":"2030-01-16T09:00:00Z","observed_or_verified_time":"2030-01-16T10:00:00Z","producing_or_verifying_activity":"fictional-fixture-construction","responsible_agent_or_role":"fictional-fixture-author","reconciliation_state":"reconciled","durability":"fixture_only","availability":"available"}
+  ]
+}
