@@ -29,3 +29,4 @@ record.
 ## Records
 
 | 2026-07-08 | Worker/Codex | SESSION_RECORDS_PROTOCOL_PILOT_RECORD_DOCS_ONLY | `2026-07-08_worker-codex_session-records-protocol-pilot.md` | evidence-only | first repo-backed session-record protocol pilot for docs/doctrine/current-state alignment sequence |
+| 2026-07-17 | Specialist | SMALL_BUSINESS_AI_IMPLEMENTATION_DOSSIER_FICTIONAL_END_TO_END_MANUAL_DRY_RUN | `2026-07-17_specialist_small-business-dossier-fictional-end-to-end-manual-dry-run.md` | evidence-only | Complete fictional manual dry run preserved for discovery; evidence only, not startup authority, CTO handoff, or implementation authorization. |
