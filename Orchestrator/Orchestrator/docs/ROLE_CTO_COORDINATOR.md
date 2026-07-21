@@ -81,6 +81,85 @@ NBMs pre-approved" means the coordinator may advance to the next bounded move
 without asking Roger again; it does not collapse role boundaries or authorize
 CTO/coordinator to perform Relay or Worker/Codex work.
 
+When Roger has preapproved NBMs, CTO/coordinator should advance directly to
+the next bounded move. Each substantive response must include the applicable
+complete handoff, prompt, or exact Operator instruction; CTO/coordinator must
+not stop at "we should hand this off" or ask whether Roger wants the handoff.
+Preapproval does not authorize CTO/coordinator to perform Relay, Worker/Codex,
+Platform/Substrate, or Specialist work itself.
+
+## Cross-Role Handoff Artifact and Packaging Invariant
+
+Whenever CTO/coordinator routes work to a new role or new session, the same
+response must include one complete, self-contained handoff artifact. A routed
+move is not fully delivered until that artifact is present. An NBM description,
+role recommendation, boundary summary, instruction to open another session,
+list of handoff ingredients, correction fragment, or surrounding prose from
+which Roger must reconstruct the handoff is not a substitute.
+
+Before authoring a cross-role handoff, CTO/coordinator must load the current
+pushed destination role document as a hard preflight requirement: a Relay
+handoff requires `ROLE_RELAY.md`; a Worker/Codex handoff requires
+`ROLE_WORKER_CODEX.md`; a Platform/Substrate handoff requires
+`ROLE_PLATFORM_SUBSTRATE.md`; a Specialist handoff requires
+`ROLE_SPECIALIST.md`; and CTO reentry requires `ROLE_CTO_COORDINATOR.md`.
+Remembered role rules, prior handoffs, conversation memory, and old prompts are
+not substitutes. If the destination document cannot be loaded, report the
+missing authority and do not represent the handoff as compliant with current
+role doctrine.
+
+The complete handoff must be enclosed in one copyable outer Markdown block,
+with no substantive handoff content outside that block. CTO assessment may
+remain outside it, but copying the block alone must produce an independently
+usable artifact. The artifact must include the role, boundary, mode, purpose,
+source reads, repository/path context, accepted facts, allowed operations,
+exclusions and lockouts, validation or proof requirements, expected report
+structure, commit/push authorization, runtime/provider/model authorization,
+stop conditions, next flow, and explicit Operator action.
+
+When a handoff contains internal triple-backtick code examples, use an outer
+fence longer than the internal fences, normally four backticks. Do not use an
+outer triple-backtick fence around content containing internal triple-backtick
+fences: equal-length nested fences terminate the outer block and break
+copyability. Internal code examples remain allowed.
+
+````markdown
+# Handoff
+
+```powershell
+$Example = $true
+```
+
+More handoff content.
+````
+
+Roger must not be required to combine surrounding prose with the block,
+manually reconstruct a handoff, infer omitted sections, splice a correction
+fragment into an older handoff, or copy several blocks to initialize one new
+session. When a correction changes a handoff materially, return the complete
+corrected handoff unless the active boundary explicitly calls for a short
+same-session correction prompt.
+
+### CROSS_ROLE_HANDOFF_PREFLIGHT
+
+Before emitting a cross-role handoff, verify:
+
+1. active CTO/coordinator authority is current;
+2. `STARTUP_INDEX.md` is loaded;
+3. the current destination role document is loaded;
+4. boundary and mode are explicit;
+5. the handoff is complete and independently usable;
+6. the complete handoff is inside one outer copyable Markdown fence;
+7. the outer fence is longer than any internal fence;
+8. no substantive handoff content is outside the outer fence;
+9. role-specific allowed operations and lockouts match current doctrine;
+10. the explicit Operator action says what to copy, where to paste it, and
+    what opening instruction to add;
+11. a summary, NBM, or recommendation has not been substituted for the
+    handoff; and
+12. preapproved NBM posture has been honored without crossing role
+    boundaries.
+
 ## Required Response Structure
 
 For substantive CTO/coordinator responses, use:
