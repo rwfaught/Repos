@@ -4,7 +4,7 @@ Status: current Project Manager-level management synthesis
 Update class: project hinge only
 Startup class: READ_WHEN_NAMED
 Current repository basis at time of revision:
-4bcdc1bb43d2aab16b3db66131943a690a785786
+ff13eb67f16ea4f503ef2c8f39baa776328a300a
 Current stage: POST_FOUNDATION_PRE_PRODUCTIZATION_ALPHA
 First revenue-bearing proving use case:
 SMALL_BUSINESS_AI_IMPLEMENTATION_DOSSIER
@@ -77,21 +77,24 @@ general autonomous capability, production readiness, or product-market fit.
 ## 6. Most Recent Milestone
 
 The most recent completed milestone is
-PASS_ORCHESTRATOR_DOSSIER_ENTRY_PRESERVATION_PRODUCER_ADOPTION_COMPLETE_CTO_RATIFIED,
-committed and pushed at 4bcdc1bb43d2aab16b3db66131943a690a785786.
+PASS_ORCHESTRATOR_CASE_PACKET_ENTRY_PERSISTENCE_INTEGRATION_COMPLETE_CTO_RATIFIED,
+committed and pushed at 27fafd1e3d849a83ce187ccdd7859c5faea0c04d and
+ff13eb67f16ea4f503ef2c8f39baa776328a300a.
 
-One existing in-memory case-packet producer now adopts the explicit
-case-scoped entry-preservation contract for source materials and extracted
-facts. It supports explicit create, preserve, edit, replace, and retire
-transitions. Identity remains caller-explicit and case-scoped; legacy anonymous
-entries remain compatible; and no semantic matching or silent identity
-assignment was added. Focused preservation/producer validation and the full
-deterministic suite (2,565 passed, 1 skipped) were accepted as source/test
-evidence.
+The existing case-packet persistence seam now preserves caller-explicit,
+case-scoped source-material and extracted-fact identities, values, target
+fields, ordering, and case identity across local save/load. Explicit
+create/preserve/edit/replace/retire transitions remain owned by the existing
+preservation contract; legacy anonymous entries remain compatible; no IDs are
+synthesized; and no semantic matching is performed. Ordinary whole-packet
+saves preserve both protected collections exactly while still allowing
+unrelated packet state to be updated. Focused and full deterministic tests
+(2,573 passed, 1 skipped) were accepted as source/test evidence.
 
-This milestone provides no persistence or reload continuity, no provenance or
-evidence-link adoption, and no complete dossier workflow. It does not provide
-real proving-use-case, product-wedge, or production-readiness evidence.
+This milestone provides no provenance or evidence-link integrity, semantic
+correctness, complete dossier workflow, real proving-use-case evidence,
+product-wedge evidence, concurrency guarantee, production recovery guarantee,
+or production-readiness evidence.
 
 ## 7. Active Strategic Bottlenecks
 
@@ -153,19 +156,32 @@ persistence, provenance, workflow, product-wedge, or production proof.
 
 ### Phase 4 — Persistence Integration
 
-Status: NOT_STARTED
+Status: COMPLETED_AT_SOURCE_TEST_LEVEL
 
-This phase persists structured entries, retains legacy anonymous compatibility,
-and prevents continuity bypass through whole-packet replacement without creating
-an unnecessary global registry or history system.
+The existing case-packet persistence seam preserves explicit case-scoped
+source-material and extracted-fact identity, values, target fields, ordering,
+and case identity across local save/load. Explicit transitions remain
+contract-owned; legacy anonymous entries remain compatible; no IDs are
+synthesized; and no semantic matching is performed.
 
-This is the next technical phase following Phase 3, but it is not authorized by
-this roadmap update.
+Ordinary whole-packet replacement cannot silently change protected collections;
+create, preserve, edit, replace, and retire use the explicit persisted-
+transition adapter. Unrelated packet state may still be updated. No global
+registry or history system was introduced.
 
 Entry condition: producer behavior is proven.
 
 Exit condition: save/load preserves explicit identities and transitions
 deterministically, migration posture is explicit, and adoption is not silent.
+Satisfied at source/test level by
+27fafd1e3d849a83ce187ccdd7859c5faea0c04d and
+ff13eb67f16ea4f503ef2c8f39baa776328a300a. This is not provenance,
+evidence-link integrity, complete workflow, real proving-use-case,
+product-wedge, concurrency, recovery, or production proof.
+
+The next useful-work target is the narrow evidence-linked synthesis
+transformation seam, subject to separate ranking and authorization; this
+roadmap update does not authorize its implementation.
 
 ### Phase 5 — Provenance Adoption
 
@@ -248,7 +264,7 @@ productization-oriented sequence. Immediate management priorities are:
 
 1. complete CTO handoff and preserve continuity;
 2. rank any future Founder Cockpit work separately against useful-work needs;
-3. treat Phase 4 persistence integration as the next technical phase, subject to a separate authorization and ranking against useful-work needs;
+3. rank the narrow evidence-linked synthesis transformation seam as the next useful-work target, subject to separate authorization;
 4. avoid additional generic framework expansion without demonstrated need;
 5. move toward one complete founder-legible dossier workflow; and
 6. begin generating real proving-use-case evidence before product-wedge selection.
@@ -280,12 +296,13 @@ direction.
 
 ## 14. Explicit Non-Proofs and Non-Authorizations
 
-This roadmap does not prove runtime/provider/model behavior, semantic
-correctness, end-to-end dossier competence, real user value, production
-readiness, or product-market fit. It does not authorize source/test mutation,
-provider/model execution, dashboard deployment, persistence or evidence-link
-work, product-wedge selection, architectural lock-in, Phase 387, legacy main.py
-work, or productionization.
+This roadmap does not prove runtime/provider/model behavior, provenance,
+evidence-link integrity, semantic correctness, end-to-end dossier competence,
+real user value, concurrency, production recovery, production readiness, or
+product-market fit. It does not authorize source/test mutation, provider/model
+execution, dashboard deployment, evidence-link or synthesis implementation,
+product-wedge selection, architectural lock-in, Phase 387, legacy main.py work,
+or productionization.
 
 ## 15. Update Policy
 
@@ -306,6 +323,7 @@ replacing technical proof with roadmap prose.
 
 | Revision basis | Change | Evidence posture |
 | --- | --- | --- |
+| ff13eb67f16ea4f503ef2c8f39baa776328a300a (verified local and `origin/main` before this update) | Records CTO-ratified Phase 4 completion at source/test level. The existing persistence seam preserves explicit source-material and extracted-fact identity and transition semantics across local save/load; protected collections require the explicit persisted-transition adapter, while unrelated packet state remains updatable. Commits `27fafd1e3d849a83ce187ccdd7859c5faea0c04d` and `ff13eb67f16ea4f503ef2c8f39baa776328a300a` are durable on `main`. | Documentation synthesis of current source, tests, persistence contract, accepted CTO ratification, and verified Git state; it is not provenance, evidence-link integrity, semantic correctness, complete workflow, real-use-case, product-wedge, concurrency, recovery, or production proof. |
 | 4bcdc1bb43d2aab16b3db66131943a690a785786 (verified local and `origin/main` before this update) | Records CTO-ratified Phase 3 completion at source/test level: one existing in-memory case-packet producer adopts explicit case-scoped create, preserve, edit, replace, and retire transitions for source materials and extracted facts. Phase 4 persistence integration is the next technical phase but remains unauthorized. | Documentation synthesis of current source, tests, accepted Worker/Codex validation, CTO ratification, and verified Git state; it is not persistence, reload continuity, provenance, complete workflow, real-use-case, product-wedge, or production proof. |
 | e08f0b87a3709c44de32fc455773663a722042f3 (verified local and `origin/main` before this update) | Records CTO/coordinator-accepted static Founder Cockpit visual-hierarchy and representative-context transfer at prototype level; Phase 2's static design/prototype exit condition is satisfied while live integration and implementation remain separately governed. | Documentation synthesis of accepted founder-review evidence and verified Git state only; it is not live implementation, accessibility, responsive, interaction, independent-user, platform, live-data, or production proof. |
 | cfa8c5e8e0fe2845dc67bcd8a2c92283831fd0c0 | Initial current Project Manager-level roadmap adoption; records the completed case-scoped entry-preservation contract and post-foundation, pre-productization alpha posture. | Documentation synthesis only; live Git, source, test, runtime, and operator evidence retain their own authority. |
