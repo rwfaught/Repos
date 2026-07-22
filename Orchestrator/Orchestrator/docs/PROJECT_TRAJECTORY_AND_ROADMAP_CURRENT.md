@@ -301,8 +301,8 @@ explicit authorization boundary.
 The project is operating between completed alpha foundation and the first
 productization-oriented sequence. Immediate management priorities are:
 
-1. preserve continuity and complete the separate durable decision record
-   obligation;
+1. preserve the completed, CTO-ratified durable decision record at
+   `2bda3418b7573d471a81c7794124e4b9a9499cdc`;
 2. audit cross-domain generality for the active governed-research reusable-work-
    pattern investigation;
 3. only after that audit, design Governed Research V1;
@@ -314,8 +314,10 @@ productization-oriented sequence. Immediate management priorities are:
 8. preserve product-wedge, architectural-lock-in, provider/model-selection,
    Phase 387, and productionization deferral.
 
-`DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=REQUIRED_PENDING_SEPARATE_BOUNDARY`.
-`FULL_HISTORICAL_LEDGER_UPDATE=DEFERRED_PENDING_DURABLE_DECISION_RECORD`.
+`DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`.
+The durable authority is `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`,
+committed at `2bda3418b7573d471a81c7794124e4b9a9499cdc`.
+`FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_PENDING_CTO_REVIEW`.
 This ranking does not authorize any implementation track.
 
 ## 11. Deferred Decisions

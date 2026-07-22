@@ -3907,3 +3907,25 @@ fresh artifact proof.
   suitability, and production readiness.
 
 `ORCHESTRATOR_CONTROLLED_DOSSIER_WORKFLOW_COORDINATION_DOC_RECONCILIATION=PASS`
+
+### Durable Research Decision Current and Historical Coordination Closure
+
+- Boundary:
+  `DURABLE_RESEARCH_DECISION_CURRENT_AND_HISTORICAL_COORDINATION_CLOSURE_DOCS_ONLY`.
+- The three-file coordination reconciliation was committed and CTO-ratified at
+  `8b88bff20d78ac68689bf688a996c75ac7e10d3b`.
+- The durable strategic decision record was committed and CTO-ratified at
+  `2bda3418b7573d471a81c7794124e4b9a9499cdc`.
+- `DOSSIER_TRACK=PAUSED_VALID`; real non-sensitive engagement is
+  participant-blocked and off the critical path; and the synthetic
+  public-evidence HVAC case is retained as a future proving-use-case option.
+- Governed-research investigation is the active reusable-work-pattern track.
+  The governing sequence is cross-domain generality audit, then Governed
+  Research V1 design, then separately authorized proof.
+- No research implementation, product-wedge selection, provider/model
+  selection, Phase 387 activation, architectural lock-in, or productionization
+  is authorized.
+- The next candidate boundary is a read-only cross-domain generality audit.
+  Continuity-capsule retirement remains a separate CTO decision.
+
+`DURABLE_RESEARCH_DECISION_CURRENT_AND_HISTORICAL_COORDINATION_CLOSURE_DOCS_ONLY=COMPLETED_PENDING_CTO_REVIEW`

@@ -65,9 +65,11 @@ Current safely inferable posture:
 - The governing sequence is cross-domain generality audit, Governed Research V1
   design, then one public-source proof; the audit must occur before design or
   proof.
-- `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=REQUIRED_PENDING_SEPARATE_BOUNDARY`
-  (provisional target: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`).
-- `FULL_HISTORICAL_LEDGER_UPDATE=DEFERRED_PENDING_DURABLE_DECISION_RECORD`.
+- `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`.
+  The durable authority is
+  `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` at
+  `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`.
+- `FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_PENDING_CTO_REVIEW`.
   The active continuity capsule remains in force.
 - The earlier Option 3 abstraction-first bridge remains relevant structural
   context; it does not authorize consulting-specific core design.
@@ -210,7 +212,7 @@ product-wedge selection.
 | `EVIDENCE_LINKED_SYNTHESIS_WORKFLOW_ADOPTION_AND_PHASE_6_PROOF_RANKING` | RETIRED_OR_RESOLVED | The previously open workflow-adoption and proof-ranking thread is closed by the CTO-ratified first repeatable fictional controlled dossier-workflow proof at `d1e2b22d7b756d7999b83b44f6ba91bd07ed3b8f`. Generalized Phase 6 is not closed. | None; reopen only for a targeted defect in the accepted fictional proof. | `TRACKS_AND_OPEN_THREADS.md` |
 | `REAL_NON_SENSITIVE_PROVING_USE_CASE_EVIDENCE_AND_MINIMUM_OPERATIONAL_SAFEGUARDS` | BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH | No real participant engagement or real participant evidence exists. No participant recruitment or outreach is authorized. | Retain the reusable packet; reopen only when a suitable participant exists and a separate boundary authorizes engagement. | `TRACKS_AND_OPEN_THREADS.md` |
 | Revenue-bearing proving use case / neutral core | PAUSED_VALID | Roger's Small-Business AI Implementation Dossier remains the ratified, resumable first revenue-bearing proving use case. One fictional end-to-end manual dry run and one repeatable fictional controlled workflow proof are complete; together they do not establish real-client usefulness, willingness to pay, competent real-world operation, implementation behavior, provider/model competence, product-wedge suitability, or production readiness. Phase 4A remains complete; Phase 5 provenance and generalized Phase 6 remain incomplete. Founder Cockpit static work remains closed; no final wedge is selected; Phase 387 remains parked. | Governed-research investigation is the active reusable-work-pattern track. Begin with a cross-domain generality audit; retain the public-evidence synthetic HVAC case as a future proving-use-case option. | `TRACKS_AND_OPEN_THREADS.md` |
-| Governed-research direction and dossier pause record | REQUIRED_PENDING_SEPARATE_BOUNDARY | Current coordination reconciliation does not itself create the durable decision record. | Create and review the separate durable decision record before updating the full historical ledger. | Provisional target: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` |
+| Governed-research direction and dossier pause record | RETIRED_OR_RESOLVED | The durable decision-record obligation is closed: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` is completed and CTO-ratified at `2bda3418b7573d471a81c7794124e4b9a9499cdc`. This does not complete the audit, design, proof, or implementation. | Preserve the cross-domain generality audit as the next candidate boundary. | `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` at `2bda3418b7573d471a81c7794124e4b9a9499cdc` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -311,8 +313,8 @@ execution, productionization, or privacy/security compliance claims.
 
 - Keep this file concise.
 - Do not append long chronological history here.
-- Put historical detail in `TRACKS_AND_OPEN_THREADS.md`; its update is deferred
-  pending the separate durable decision record.
+- Put historical detail in `TRACKS_AND_OPEN_THREADS.md`; the narrow historical
+  update is completed pending CTO review.
 - Update this file when current active track/open-thread state changes.
 - If this file and the full ledger conflict, preserve the conflict and verify
   against live repo, operator, and worker evidence.
