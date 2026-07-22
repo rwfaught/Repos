@@ -41,6 +41,13 @@ proving use case. It is an evidence-generating consulting workflow, not the
 Orchestrator product or a selected first product wedge. No first product wedge
 has been selected, no architectural lock-in is authorized, and production readiness is not achieved.
 
+`DOSSIER_TRACK=PAUSED_VALID`: the dossier remains ratified, valid, and
+resumable, but its real engagement is
+`BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH`. Governed-research
+investigation is the active reusable-work-pattern track; research implementation
+is not authorized. The public-evidence synthetic HVAC case is retained as a
+future proving-use-case option.
+
 Governance strength is substantial. The primary strategic challenge is turning
 that discipline into useful, founder-legible work without allowing framework or
 readback expansion to substitute for a concrete capability need.
@@ -64,7 +71,8 @@ replace it with opaque autonomy or an alternate control system.
 | Provider-backed task proof | Exact task closed | One exact provider-backed coding task is accepted; this is not generalized provider/model competence or selection. |
 | Case/dossier substrate | First fictional controlled workflow proof completed; generalized phase incomplete | One explicit fictional dossier case can be persisted and reloaded, adapted into the existing evidence-linked synthesis contract, and returned with validated supplied evidence links and a separate human disposition. This satisfies the first structural fictional Phase 6 proof, but does not establish generalized workflow competence, real proving-use-case evidence, competent casework, or Phase 5 provenance adoption. |
 | Founder Cockpit | Static design/prototype accepted; live work separate | The fixture-backed static visual hierarchy and representative-context transfer are accepted at prototype level; this is not a deployed control surface, live integration, or implementation authorization. |
-| Revenue-bearing proving use case | Ratified, not operationally proven | Roger's Small-Business AI Implementation Dossier should generate real users, requirements, value, and failure evidence. |
+| Revenue-bearing proving use case | Ratified, paused-valid, not operationally proven | The dossier remains valid and preserved, but its real engagement is blocked pending a participant and is off the immediate critical path. |
+| Governed-research investigation | Active reusable-work-pattern investigation | Cross-domain generality must be audited before Governed Research V1 design; one public-source proof follows design and remains unauthorized now. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
 
 ## 5. Completed Foundation
@@ -111,6 +119,8 @@ product-wedge evidence, productization, or production-readiness evidence.
 - trusted_local_unsandboxed is a trusted-worker posture, not comprehensive operating-system containment.
 - Provider/model generalization remains unproven, and main.py remains a separate legacy migration concern.
 - Repeated real-world user, value, burden, trust, privacy, and willingness-to-pay evidence is still absent.
+- Cross-domain generality must be audited before the Governed Research V1 design
+  or any public-source proof; governed research is not implemented or proven.
 
 ## 8. Roadmap Phases
 
@@ -238,11 +248,12 @@ has been established.
 
 ### Phase 7 — Revenue-Bearing Proving Use Case
 
-Status: RATIFIED_BUT_NOT_OPERATIONALLY_PROVEN
+Status: RATIFIED_PAUSED_VALID_NOT_OPERATIONALLY_PROVEN
 
-This phase uses Roger as operator for the Small-Business AI Implementation
-Dossier, gathering evidence about real users and requirements, time, value,
-burden, trust, privacy, and willingness to pay.
+The Small-Business AI Implementation Dossier remains the ratified first
+revenue-bearing proving use case, but execution is paused-valid. Its real
+non-sensitive engagement is blocked pending an actual participant and is off
+the immediate critical path; no recruitment or outreach is authorized.
 
 Exit condition: repeated use supplies evidence sufficient for founder product
 judgment.
@@ -290,26 +301,29 @@ explicit authorization boundary.
 The project is operating between completed alpha foundation and the first
 productization-oriented sequence. Immediate management priorities are:
 
-1. complete CTO handoff and preserve continuity;
-2. rank any future Founder Cockpit work separately against useful-work needs;
-3. prepare, under separately authorized CTO/coordinator scope, the minimum
-   real non-sensitive proving-use-case safety and intake specification needed
-   to collect evidence;
-4. collect user, workflow, friction, value, burden, trust, privacy, and
-   willingness-to-pay evidence from one tightly bounded manual engagement;
-5. defer engineering until real work exposes a concrete repeated bottleneck;
-6. avoid additional generic framework/readback expansion without demonstrated
-   need; and
-7. preserve product-wedge and productionization deferral until evidence exists.
+1. preserve continuity and complete the separate durable decision record
+   obligation;
+2. audit cross-domain generality for the active governed-research reusable-work-
+   pattern investigation;
+3. only after that audit, design Governed Research V1;
+4. only after design and separate authorization, run one public-source proof;
+5. retain the public-evidence synthetic HVAC case as a future proving-use-case
+   option;
+6. preserve the paused-valid dossier and its reusable real-engagement packet;
+7. defer engineering and research implementation; and
+8. preserve product-wedge, architectural-lock-in, provider/model-selection,
+   Phase 387, and productionization deferral.
 
+`DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=REQUIRED_PENDING_SEPARATE_BOUNDARY`.
+`FULL_HISTORICAL_LEDGER_UPDATE=DEFERRED_PENDING_DURABLE_DECISION_RECORD`.
 This ranking does not authorize any implementation track.
 
 ## 11. Deferred Decisions
 
 The first product wedge, architectural lock-in, provider/model selection,
-Phase 387, broader framework/readback expansion, legacy main.py migration, and
-productionization remain deferred or separately governed. The proving use case
-does not resolve any of them by itself.
+Phase 387, broader framework/readback expansion, legacy main.py migration,
+research implementation, and productionization remain deferred or separately
+governed. The proving use case does not resolve any of them by itself.
 
 ## 12. Major Risks
 
@@ -333,9 +347,10 @@ This roadmap does not prove runtime/provider/model behavior, provenance,
 semantic correctness, generalized or real-world dossier competence, real user
 value, concurrency, production recovery, production readiness, or product-market
 fit. It does not authorize source/test mutation, provider/model execution,
-dashboard deployment, a real engagement, real implementation, generalized
-workflow expansion, product-wedge selection, architectural lock-in, Phase 387,
-legacy main.py work, or productionization.
+dashboard deployment, a real engagement, participant recruitment or outreach,
+research implementation, Governed Research V1 implementation, a public-source
+proof, generalized workflow expansion, product-wedge selection, architectural
+lock-in, Phase 387, legacy main.py work, or productionization.
 
 ## 15. Update Policy
 

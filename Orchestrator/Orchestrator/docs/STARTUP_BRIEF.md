@@ -33,6 +33,27 @@ Implementation Dossier, initially operated by Roger as an AI consultant. It is
 a consulting use-case layer, not the Orchestrator product or final wedge, and
 does not authorize architectural lock-in.
 
+## Current strategic coordination
+
+`DOSSIER_TRACK=PAUSED_VALID`: the dossier remains ratified, valid, resumable,
+and preserved, but is off the immediate critical path. Its real non-sensitive
+engagement is `BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH`; no suitable
+participant is present, and no participant recruitment or outreach is
+authorized. The public-evidence synthetic HVAC case is retained as a future
+proving-use-case option.
+
+`GOVERNED_RESEARCH_INVESTIGATION=ACTIVE_REUSABLE_WORK_PATTERN_TRACK` and
+`RESEARCH_IMPLEMENTATION_AUTHORIZED=FALSE`. The governing sequence is:
+
+`RECONCILE_CURRENT_TRUTH → RATIFY_ACTIVE_DIRECTION → AUDIT_CROSS_DOMAIN_GENERALITY → DESIGN_GOVERNED_RESEARCH_V1 → RUN_ONE_PUBLIC_SOURCE_PROOF`.
+
+Before ranking work, inspect the current coordination documents and any future
+durable decision record. `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=REQUIRED_PENDING_SEPARATE_BOUNDARY`
+(provisional target: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`);
+`FULL_HISTORICAL_LEDGER_UPDATE=DEFERRED_PENDING_DURABLE_DECISION_RECORD`.
+The active continuity capsule remains in force until its retirement conditions
+are met.
+
 ---
 
 ## Startup script

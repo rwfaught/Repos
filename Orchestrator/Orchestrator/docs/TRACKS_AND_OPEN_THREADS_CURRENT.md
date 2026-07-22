@@ -53,6 +53,22 @@ Current safely inferable posture:
 - `ARCHITECTURAL_LOCK_IN_AUTHORIZED=FALSE`.
 - The proving use case is a consulting workflow and evidence-generating
   use-case layer, not the Orchestrator product or final product wedge.
+- `DOSSIER_TRACK=PAUSED_VALID`: the ratified Small-Business AI Implementation
+  Dossier remains valid, resumable, and preserved, but is not on the immediate
+  critical path.
+- `REAL_NON_SENSITIVE_ENGAGEMENT=BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH`:
+  no suitable participant is present, and no participant recruitment or outreach
+  is authorized.
+- `PUBLIC_EVIDENCE_SYNTHETIC_HVAC_CASE=RETAIN_AS_FUTURE_PROVING_USE_CASE`.
+- `GOVERNED_RESEARCH_INVESTIGATION=ACTIVE_REUSABLE_WORK_PATTERN_TRACK` and
+  `RESEARCH_IMPLEMENTATION_AUTHORIZED=FALSE`.
+- The governing sequence is cross-domain generality audit, Governed Research V1
+  design, then one public-source proof; the audit must occur before design or
+  proof.
+- `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=REQUIRED_PENDING_SEPARATE_BOUNDARY`
+  (provisional target: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`).
+- `FULL_HISTORICAL_LEDGER_UPDATE=DEFERRED_PENDING_DURABLE_DECISION_RECORD`.
+  The active continuity capsule remains in force.
 - The earlier Option 3 abstraction-first bridge remains relevant structural
   context; it does not authorize consulting-specific core design.
 - Phase 387 remains parked unless Roger or CTO/coordinator explicitly
@@ -160,6 +176,7 @@ product-wedge selection.
 | Coordination/startup discipline | ACTIVE | This cockpit is the current startup summary; reconcile it against live `main` before ranking the next bounded move. |
 | Framework/readback expansion | BLOCKED | Keep framework/readback expansion frozen until a separately authorized, meaningful capability need is ranked. |
 | Founder/product-wedge control | ACTIVE | Roger operates the Small-Business AI Implementation Dossier as the first revenue-bearing proving use case. Neutral-core admission requires plausible cross-workflow generalization; no first product wedge or architectural lock-in is authorized. |
+| Governed-research investigation | ACTIVE_REUSABLE_WORK_PATTERN_TRACK | Begin with a cross-domain generality audit. Governed Research V1 design and any public-source proof remain later, separately governed steps; research implementation is not authorized. |
 | Founder Cockpit sidecar | ACTIVE_ADVISORY_SIDECAR | `PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_CONTEXT_STATIC_TRANSFER_AND_STATIC_VISUAL_HIERARCHY_TRACK_COMPLETE`: the four-frame canonical/degraded/narrow static prototype completed informed founder review, and the representative fictional `Ozark Family Dental AI Intake Pilot` transfer was founder accepted. The accepted six-unit information model remains unchanged; no blocking information-model defect was identified, and further static-fixture iteration is not currently ranked. This proves only that the hierarchy is visually expressible and distinguishable in those static compositions and transferred without redesign into the representative context. Live implementation, accessibility, responsive behavior, interaction, independent-user comprehension, platform suitability, and production work remain separately governed and unproven. The Founder Cockpit remains distinct from the Dossier Workspace. No product wedge, platform, architectural lock-in, Phase 387 resumption, or implementation authorization follows. |
 | Dry MVP bounded-task loop | WATCH | Dry source/test/docs milestone closeout and deterministic local-worker stub proof package are already committed and pushed in current `main` ancestry. The stub proof proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. |
 | Current success / coding-task anchor | WATCH | Current bar remains bounded coding-task proof. Use it for Question 0 and NBM ranking; do not treat it as whole-product proof. |
@@ -191,8 +208,9 @@ product-wedge selection.
 | Founder Cockpit static visual-hierarchy track | RETIRED_OR_RESOLVED | `PASS_FOUNDER_COCKPIT_REPRESENTATIVE_PROJECT_CONTEXT_STATIC_TRANSFER_AND_STATIC_VISUAL_HIERARCHY_TRACK_COMPLETE`: the four-frame canonical/degraded/narrow composition was readable and comprehensible to Roger; the representative fictional `Ozark Family Dental AI Intake Pilot` version resolved the too-meta context caveat and was founder accepted. The accepted six-unit model remains unchanged, with no blocking information-model defect identified. This is static prototype proof only, not live implementation, accessibility, responsive behavior, interaction, independent-user comprehension, platform, or production proof. | None for static-fixture iteration. Future live implementation or other Cockpit work must be separately ranked against useful-work needs and separately authorized. | `docs/founder_cockpit_fixtures/README.md` |
 | `EVIDENCE_LINKED_SYNTHESIS_TRANSFORMATION_SEAM` | RETIRED_OR_RESOLVED | `PASS_ORCHESTRATOR_NARROW_EVIDENCE_LINKED_SYNTHESIS_TRANSFORMATION_SOURCE_TEST_DOCS_COMPLETE_CTO_RATIFIED`: the packet-local, caller-governed, non-persistent, non-autonomous transformation is complete at deterministic source/test/docs level; `NeutralEvidenceLink` is reused unchanged. Commit `11418c0b17b0ed2630b52313f0c2e4515555eba0` is durable on `main`. | None; reopen only for a targeted defect. | `TRACKS_AND_OPEN_THREADS.md` |
 | `EVIDENCE_LINKED_SYNTHESIS_WORKFLOW_ADOPTION_AND_PHASE_6_PROOF_RANKING` | RETIRED_OR_RESOLVED | The previously open workflow-adoption and proof-ranking thread is closed by the CTO-ratified first repeatable fictional controlled dossier-workflow proof at `d1e2b22d7b756d7999b83b44f6ba91bd07ed3b8f`. Generalized Phase 6 is not closed. | None; reopen only for a targeted defect in the accepted fictional proof. | `TRACKS_AND_OPEN_THREADS.md` |
-| `REAL_NON_SENSITIVE_PROVING_USE_CASE_EVIDENCE_AND_MINIMUM_OPERATIONAL_SAFEGUARDS` | NEEDS_TRIAGE | The next visible thread is preparation for real non-sensitive proving-use-case evidence: define the minimum safe intake and operational safeguards, then collect evidence from one tightly bounded manual engagement. The controlled fictional proof is more than disconnected substrate but less than competent real-world dossier operation. | CTO/coordinator must separately rank and authorize any safety/intake specification or real engagement. Engineering follows only after concrete repeated burden is observed; generic framework/readback expansion remains blocked absent demonstrated need. | `TRACKS_AND_OPEN_THREADS.md` |
-| Revenue-bearing proving use case / neutral core | ACTIVE | Roger's Small-Business AI Implementation Dossier remains the ratified proving use case. One fictional end-to-end manual dry run and one repeatable fictional controlled workflow proof are complete; together they do not establish real-client usefulness, willingness to pay, competent real-world operation, implementation behavior, provider/model competence, product-wedge suitability, or production readiness. Phase 4A remains complete; Phase 5 provenance and generalized Phase 6 remain incomplete. Founder Cockpit static work remains closed; no final wedge is selected; Phase 387 remains parked. | The visible next thread is `REAL_NON_SENSITIVE_PROVING_USE_CASE_EVIDENCE_AND_MINIMUM_OPERATIONAL_SAFEGUARDS`; product-wedge selection or Phase 387 resume only if separately authorized. | `TRACKS_AND_OPEN_THREADS.md` |
+| `REAL_NON_SENSITIVE_PROVING_USE_CASE_EVIDENCE_AND_MINIMUM_OPERATIONAL_SAFEGUARDS` | BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH | No real participant engagement or real participant evidence exists. No participant recruitment or outreach is authorized. | Retain the reusable packet; reopen only when a suitable participant exists and a separate boundary authorizes engagement. | `TRACKS_AND_OPEN_THREADS.md` |
+| Revenue-bearing proving use case / neutral core | PAUSED_VALID | Roger's Small-Business AI Implementation Dossier remains the ratified, resumable first revenue-bearing proving use case. One fictional end-to-end manual dry run and one repeatable fictional controlled workflow proof are complete; together they do not establish real-client usefulness, willingness to pay, competent real-world operation, implementation behavior, provider/model competence, product-wedge suitability, or production readiness. Phase 4A remains complete; Phase 5 provenance and generalized Phase 6 remain incomplete. Founder Cockpit static work remains closed; no final wedge is selected; Phase 387 remains parked. | Governed-research investigation is the active reusable-work-pattern track. Begin with a cross-domain generality audit; retain the public-evidence synthetic HVAC case as a future proving-use-case option. | `TRACKS_AND_OPEN_THREADS.md` |
+| Governed-research direction and dossier pause record | REQUIRED_PENDING_SEPARATE_BOUNDARY | Current coordination reconciliation does not itself create the durable decision record. | Create and review the separate durable decision record before updating the full historical ledger. | Provisional target: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` |
 | Dry MVP skeleton commit decision | RETIRED_OR_RESOLVED | The dry MVP milestone commit is already present in pushed `main` ancestry. This is no longer an active commit/push decision. | None for commit/push. Reopen only if evidence shows the milestone commit is missing or needs targeted repair. | `TRACKS_AND_OPEN_THREADS.md` |
 | Dry MVP successor / local-worker proof question | RETIRED_OR_RESOLVED | `DRY_MVP_LOCAL_WORKER_STUB_PROOF_REVIEW_READONLY=PASS`: deterministic local-worker stub proof is committed and pushed in current `main` ancestry via `71be0c196e382c0aa8e2dead4a2b940a62a9fd18` and proves only that a worker-shaped local stub ran under explicit boundary and produced persisted reviewable evidence. It does not prove provider/model execution, subprocess worker execution, Codex handoff execution, file mutation execution, semantic correctness, production readiness, Phase 387, or product-wedge selection. | None for commit/push. Reopen only if targeted repair is found or a future boundary asks for a higher proof bar. | `TRACKS_AND_OPEN_THREADS.md` |
 | Current success re-entry / Question 0 | WATCH | Current success anchor is bounded and coding-task focused; dry MVP work may inform the next bar but does not broaden it automatically. | Re-rank against `CURRENT_SUCCESS_CRITERION.md` before new implementation. | `TRACKS_AND_OPEN_THREADS.md` |
@@ -215,6 +233,9 @@ product-wedge selection.
 - No provider/model or first product wedge has been selected, and no
   product-market fit is proven. The ratified Small-Business AI Implementation
   Dossier is a revenue-bearing proving use case, not contrary proof.
+- Governed research is an active investigation/design track, not an implemented
+  framework or public-source proof. The public-evidence synthetic HVAC case is
+  retained as a future option only.
 - `main.py` remains a legacy 49-command surface. The Phase 277 runbook
   migration and cockpit closure were pushed and verified on authoritative
   `main` at `831969c86d305805ca5cb9ae1cc3d51b63e5923a`; `main.py` migration,
@@ -279,17 +300,19 @@ product-wedge selection.
 
 ## Visible Next Candidate (Requires CTO/Coordinator Ranking)
 
-1. `REAL_NON_SENSITIVE_PROVING_USE_CASE_EVIDENCE_AND_MINIMUM_OPERATIONAL_SAFEGUARDS`
+1. `CROSS_DOMAIN_GENERALITY_AUDIT_FOR_GOVERNED_RESEARCH`
 
-This records the active open thread; it neither selects a product wedge nor
-authorizes a real engagement, engineering expansion, provider/model/runtime
+This begins the active governed-research investigation sequence. It does not
+authorize research implementation, a public-source proof, a real engagement,
+participant recruitment or outreach, engineering expansion, provider/model/runtime
 execution, productionization, or privacy/security compliance claims.
 
 ## Update Discipline
 
 - Keep this file concise.
 - Do not append long chronological history here.
-- Put historical detail in `TRACKS_AND_OPEN_THREADS.md`.
+- Put historical detail in `TRACKS_AND_OPEN_THREADS.md`; its update is deferred
+  pending the separate durable decision record.
 - Update this file when current active track/open-thread state changes.
 - If this file and the full ledger conflict, preserve the conflict and verify
   against live repo, operator, and worker evidence.
