@@ -51,9 +51,10 @@ Before ranking work, inspect the current coordination documents and the durable
 decision record: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`.
 `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`
 at `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`;
-`FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_PENDING_CTO_REVIEW`.
-The active continuity capsule remains in force until its retirement conditions
-are met.
+`FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_CTO_RATIFIED`.
+The temporary active CTO continuity capsule has been retired and deleted;
+future startup should not expect it as a source. Orient through ordinary
+startup authority and the durable decision record.
 
 ---
 

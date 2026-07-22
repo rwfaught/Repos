@@ -69,8 +69,14 @@ Current safely inferable posture:
   The durable authority is
   `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md` at
   `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`.
-- `FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_PENDING_CTO_REVIEW`.
-  The active continuity capsule remains in force.
+- `FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_CTO_RATIFIED`.
+- `ACTIVE_CTO_CONTINUITY_CAPSULE=RETIRED_DELETED`.
+- `CAPSULE_UNIQUE_DURABLE_FACT_EXTRACTION_REQUIRED=FALSE`.
+  Future CTO orientation uses `STARTUP_INDEX.md`, its ordinary
+  `READ_BY_DEFAULT` documents, the durable decision record
+  `GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`, and current
+  roadmap and cockpit authority. The cross-domain generality audit remains
+  the next candidate boundary; startup does not execute or authorize it.
 - The earlier Option 3 abstraction-first bridge remains relevant structural
   context; it does not authorize consulting-specific core design.
 - Phase 387 remains parked unless Roger or CTO/coordinator explicitly
@@ -314,7 +320,7 @@ execution, productionization, or privacy/security compliance claims.
 - Keep this file concise.
 - Do not append long chronological history here.
 - Put historical detail in `TRACKS_AND_OPEN_THREADS.md`; the narrow historical
-  update is completed pending CTO review.
+  update is completed and CTO-ratified.
 - Update this file when current active track/open-thread state changes.
 - If this file and the full ledger conflict, preserve the conflict and verify
   against live repo, operator, and worker evidence.

@@ -3929,3 +3929,20 @@ fresh artifact proof.
   Continuity-capsule retirement remains a separate CTO decision.
 
 `DURABLE_RESEARCH_DECISION_CURRENT_AND_HISTORICAL_COORDINATION_CLOSURE_DOCS_ONLY=COMPLETED_PENDING_CTO_REVIEW`
+
+### Active CTO Continuity Capsule Retirement and Reference Closure
+
+- Boundary:
+  `ACTIVE_CTO_CONTINUITY_CAPSULE_RETIREMENT_AND_REFERENCE_CLOSURE_DOCS_ONLY`.
+- The active CTO continuity capsule was a temporary orientation-only artifact.
+  Its retirement conditions were satisfied, and no unique durable facts
+  required extraction.
+- Its strategic content is preserved in current coordination, the durable
+  decision record `GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`,
+  and this full historical ledger. The capsule was deleted under this boundary.
+- The next candidate boundary remains a read-only cross-domain generality
+  audit. This retirement does not authorize audit execution, Governed Research
+  V1 design, proof, implementation, wedge selection, provider/model selection,
+  Phase 387 activation, architectural lock-in, or productionization.
+
+`ACTIVE_CTO_CONTINUITY_CAPSULE_RETIREMENT_AND_REFERENCE_CLOSURE_DOCS_ONLY=COMPLETED`
