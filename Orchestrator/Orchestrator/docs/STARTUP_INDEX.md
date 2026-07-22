@@ -39,6 +39,14 @@ If the active role is CTO/coordinator, read:
 2. `ROLE_CTO_COORDINATOR.md`
 3. the current `READ_BY_DEFAULT` docs named by this index
 
+When `docs/ACTIVE_CTO_CONTINUITY_CAPSULE.md` exists, CTO/coordinator reentry
+sessions should read it after `STARTUP_INDEX.md` and
+`ROLE_CTO_COORDINATOR.md`. It is orientation-only: verify its claims against
+current pushed authority, replace rather than append it, and delete it (or
+selectively archive unique durable evidence) when its retirement condition is
+satisfied. Non-CTO roles read it only when their boundary explicitly names it
+or they must report to CTO/coordinator.
+
 If the active role is Relay, read:
 
 1. `STARTUP_INDEX.md`
