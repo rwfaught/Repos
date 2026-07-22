@@ -3930,6 +3930,40 @@ fresh artifact proof.
 
 `DURABLE_RESEARCH_DECISION_CURRENT_AND_HISTORICAL_COORDINATION_CLOSURE_DOCS_ONLY=COMPLETED_PENDING_CTO_REVIEW`
 
+### Cross-Domain Generality Audit Decision and Design-Gate Coordination
+
+- Specialist classification:
+  `SPECIALIST_CROSS_DOMAIN_GENERALITY_AUDIT_COMPLETE_WITH_NAMED_GAPS`.
+- CTO acceptance and ratification:
+  `PASS_CROSS_DOMAIN_GENERALITY_AUDIT_ADVISORY_FINDINGS_CTO_RATIFIED` and
+  `CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED`.
+- Accepted neutral semantics are neutral evidence links, deterministic
+  diagnostic blocking, recommendation/human-disposition separation, and—with
+  constraints—explicit entry identity/caller-declared transitions plus visible
+  contradictions and missing information. These are semantic classifications,
+  not general research competence proof.
+- Case-packet persistence and packet-local synthesis presentation are reusable
+  only via a research application adapter. Controlled dossier workflow, the
+  current case-packet schema, and candidate-prioritization recommendation
+  packet remain application-layer-only and not research canonical.
+- `PHASE_5_PROVENANCE=INCOMPLETE` and `GENERALIZED_PHASE_6=INCOMPLETE`.
+  Current evidence does not establish complete provenance, collection
+  reproducibility, source quality, claim lineage, extraction correctness,
+  freshness, or evidentiary sufficiency.
+- `GOVERNED_RESEARCH_V1_DESIGN_GATE=READY_WITH_NAMED_PRECONDITIONS`; design
+  must define its research adapter and missing lifecycle boundaries, minimum
+  provenance/claim lineage, preserved no-conclusion/no-recommendation outcomes,
+  and the exact invariant for each reuse.
+- `PUBLIC_SOURCE_PROOF_DOMAIN=NOT_YET_SELECTED`. Historical-record claim brief,
+  standards/guidance comparison, and scientific-literature evidence note are
+  advisory candidates only; the historical-record brief is merely leading.
+- Next candidate boundary: `DESIGN_GOVERNED_RESEARCH_V1`, bounded and
+  non-implementation. Public-source proof remains blocked pending design and
+  separate authorization; research implementation remains unauthorized.
+- Explicit lockouts: no research implementation, public-source proof execution,
+  product-wedge selection, provider/model selection, Phase 387 activation,
+  architectural lock-in, or productionization is authorized.
+
 ### Active CTO Continuity Capsule Retirement and Reference Closure
 
 - Boundary:

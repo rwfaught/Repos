@@ -4,7 +4,7 @@ Status: current Project Manager-level management synthesis
 Update class: project hinge only
 Startup class: READ_WHEN_NAMED
 Current repository basis at time of revision:
-d1e2b22d7b756d7999b83b44f6ba91bd07ed3b8f
+215905889a4aadcd8d702f2066ef49b6968e3d32
 Current stage: POST_FOUNDATION_PRE_PRODUCTIZATION_ALPHA
 First revenue-bearing proving use case:
 SMALL_BUSINESS_AI_IMPLEMENTATION_DOSSIER
@@ -44,9 +44,12 @@ has been selected, no architectural lock-in is authorized, and production readin
 `DOSSIER_TRACK=PAUSED_VALID`: the dossier remains ratified, valid, and
 resumable, but its real engagement is
 `BLOCKED_PENDING_PARTICIPANT_OFF_CRITICAL_PATH`. Governed-research
-investigation is the active reusable-work-pattern track; research implementation
-is not authorized. The public-evidence synthetic HVAC case is retained as a
-future proving-use-case option.
+investigation is the active reusable-work-pattern track.
+`CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED`; bounded Governed
+Research V1 design is the next candidate only with named preconditions.
+Research implementation is not authorized, public-source proof remains blocked
+pending design and separate authorization, and the public-evidence synthetic
+HVAC case remains a future proving-use-case option.
 
 Governance strength is substantial. The primary strategic challenge is turning
 that discipline into useful, founder-legible work without allowing framework or
@@ -72,7 +75,7 @@ replace it with opaque autonomy or an alternate control system.
 | Case/dossier substrate | First fictional controlled workflow proof completed; generalized phase incomplete | One explicit fictional dossier case can be persisted and reloaded, adapted into the existing evidence-linked synthesis contract, and returned with validated supplied evidence links and a separate human disposition. This satisfies the first structural fictional Phase 6 proof, but does not establish generalized workflow competence, real proving-use-case evidence, competent casework, or Phase 5 provenance adoption. |
 | Founder Cockpit | Static design/prototype accepted; live work separate | The fixture-backed static visual hierarchy and representative-context transfer are accepted at prototype level; this is not a deployed control surface, live integration, or implementation authorization. |
 | Revenue-bearing proving use case | Ratified, paused-valid, not operationally proven | The dossier remains valid and preserved, but its real engagement is blocked pending a participant and is off the immediate critical path. |
-| Governed-research investigation | Active reusable-work-pattern investigation | Cross-domain generality must be audited before Governed Research V1 design; one public-source proof follows design and remains unauthorized now. |
+| Governed-research investigation | Audit complete and CTO-ratified; design gate conditionally ready | Reconciliation and direction ratification are complete; `CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED`. Bounded Governed Research V1 design is the next candidate only with named preconditions. Public-source proof remains blocked pending design and separate authorization; implementation remains unauthorized. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
 
 ## 5. Completed Foundation
@@ -301,11 +304,11 @@ explicit authorization boundary.
 The project is operating between completed alpha foundation and the first
 productization-oriented sequence. Immediate management priorities are:
 
-1. preserve the completed, CTO-ratified durable decision record at
-   `2bda3418b7573d471a81c7794124e4b9a9499cdc`;
-2. audit cross-domain generality for the active governed-research reusable-work-
-   pattern investigation;
-3. only after that audit, design Governed Research V1;
+1. preserve the completed, CTO-ratified durable direction and audit decisions;
+2. treat reconciliation, direction ratification, and cross-domain audit as
+   complete;
+3. rank bounded Governed Research V1 design as the next candidate only with the
+   audit decision's named preconditions;
 4. only after design and separate authorization, run one public-source proof;
 5. retain the public-evidence synthetic HVAC case as a future proving-use-case
    option;
@@ -317,7 +320,9 @@ productization-oriented sequence. Immediate management priorities are:
 `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`.
 The durable authority is `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`,
 committed at `2bda3418b7573d471a81c7794124e4b9a9499cdc`.
-`FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_PENDING_CTO_REVIEW`.
+`CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED`; the durable authority
+is `docs/GOVERNED_RESEARCH_CROSS_DOMAIN_GENERALITY_AUDIT_DECISION.md`.
+`GOVERNED_RESEARCH_V1_DESIGN_GATE=READY_WITH_NAMED_PRECONDITIONS`.
 This ranking does not authorize any implementation track.
 
 ## 11. Deferred Decisions
@@ -373,6 +378,7 @@ replacing technical proof with roadmap prose.
 
 | Revision basis | Change | Evidence posture |
 | --- | --- | --- |
+| 215905889a4aadcd8d702f2066ef49b6968e3d32 (verified local and `origin/main` before this update) | Records completed CTO-ratified cross-domain generality audit. A narrow semantic core is accepted; case-packet persistence and packet-local synthesis are reusable only through a research application adapter; dossier-shaped workflow, current schema, and candidate-prioritization recommendation packet remain application-layer-only. Bounded Governed Research V1 design is the next candidate only with named preconditions; public-source proof remains blocked pending design and separate authorization; research implementation remains unauthorized. | Documentation decision and coordination synthesis only; not proof of research runtime competence, collection, evaluation, extraction, provenance completeness, analytical or recommendation correctness, selected proof domain, implementation readiness, or production readiness. |
 | d1e2b22d7b756d7999b83b44f6ba91bd07ed3b8f (verified local and `origin/main` before this update) | Records CTO-ratified completion of the first joined repeatable fictional controlled dossier workflow at deterministic source/test level. One explicit fictional case persists and reloads with explicit source/fact identities, supplied evidence links, existing evidence-linked synthesis, and a human disposition separate from recommendation. Focused workflow tests passed `7`; coupled tests passed `51`; full deterministic validation passed `2,589 passed, 1 skipped`. This satisfies the first fictional structural Phase 6 proof while generalized and real-world Phase 6 evidence remains incomplete; Phase 7 remains ratified but not operationally proven. The immediate management priority is safe real non-sensitive proving-use-case preparation and evidence gathering, with engineering only after concrete repeated burden. | Documentation synthesis of current source, tests, contracts, accepted CTO ratification, and verified Git state; it is not evidence truth or quality, evidentiary sufficiency, recommendation correctness, autonomous analysis or recommendation generation, real-implementation authorization, independent-user usability, real-client usefulness, willingness to pay, privacy/security compliance, Phase 5 provenance, generalized Phase 6 completion, product-wedge evidence, or production proof. |
 | 11418c0b17b0ed2630b52313f0c2e4515555eba0 (verified local and `origin/main` before this update) | Records CTO-ratified Phase 4A completion at deterministic source/test/docs level. One caller-supplied structured packet transforms packet-locally into a reviewable recommendation package with explicit claim basis, limitations, contradictions, gaps, and caller judgment; `NeutralEvidenceLink` is reused unchanged. Focused and coupled tests passed `77`; full deterministic validation passed `2,582 passed, 1 skipped`. Phase 5 remains deferred, Phase 6 remains incomplete, and fresh CTO ranking is required before adoption or workflow-proof implementation. | Documentation synthesis of current source, tests, accepted CTO ratification, and verified Git state; it is not evidence truth, source quality, evidentiary sufficiency, semantic recommendation correctness, provenance persistence, complete workflow, real-client usefulness, product-wedge evidence, privacy/security compliance, or production proof. |
 | ff13eb67f16ea4f503ef2c8f39baa776328a300a (verified local and `origin/main` before this update) | Records CTO-ratified Phase 4 completion at source/test level. The existing persistence seam preserves explicit source-material and extracted-fact identity and transition semantics across local save/load; protected collections require the explicit persisted-transition adapter, while unrelated packet state remains updatable. Commits `27fafd1e3d849a83ce187ccdd7859c5faea0c04d` and `ff13eb67f16ea4f503ef2c8f39baa776328a300a` are durable on `main`. | Documentation synthesis of current source, tests, persistence contract, accepted CTO ratification, and verified Git state; it is not provenance, evidence-link integrity, semantic correctness, complete workflow, real-use-case, product-wedge, concurrency, recovery, or production proof. |
