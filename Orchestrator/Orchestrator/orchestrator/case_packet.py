@@ -1,6 +1,8 @@
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
+from typing import Any, Mapping
 
 from orchestrator.paths import DATA_DIR
 
@@ -44,6 +46,11 @@ _ORIENTATION_FIELDS = [
     "status",
     "next_step",
 ]
+
+_ENTRY_KIND_TO_CASE_PACKET_FIELD = {
+    "source_material": "source_materials",
+    "extracted_fact": "extracted_facts",
+}
 
 
 def _normalize_scalar(value: object) -> str:
@@ -199,6 +206,42 @@ def append_case_packet_entry(packet: dict, field: str, entry: object) -> dict:
     normalized_packet = normalize_case_packet(packet)
     normalized_packet[normalized_field].append(entry)
     return normalized_packet
+
+
+def apply_case_packet_entry_preservation_operation(
+    packet: Mapping[str, Any], operation: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Apply one explicit source/fact transition to an in-memory case packet.
+
+    The caller supplies the case-scoped entry identity and transition.  This
+    producer delegates all entry semantics to the preservation contract and
+    deliberately does not save a packet, infer identity, or associate evidence.
+    """
+    if not isinstance(packet, Mapping):
+        raise ValueError("packet must be a mapping")
+
+    # The local import keeps the pure contract's existing dependency on this
+    # module's case-id validation rule acyclic.
+    from orchestrator.case_packet_entry_preservation import (
+        apply_case_scoped_entry_operation,
+        normalize_case_scoped_entry_operation,
+    )
+
+    normalized_packet = normalize_case_packet(dict(packet))
+    normalized_operation = normalize_case_scoped_entry_operation(operation)
+    if normalized_packet["case_id"] != normalized_operation["case_id"]:
+        raise ValueError("operation case_id does not match packet case_id")
+
+    field = _ENTRY_KIND_TO_CASE_PACKET_FIELD[normalized_operation["entry_kind"]]
+    preservation_result = apply_case_scoped_entry_operation(
+        normalized_packet[field], normalized_operation
+    )
+    updated_packet = deepcopy(normalized_packet)
+    updated_packet[field] = preservation_result["entries"]
+    return {
+        "case_packet": updated_packet,
+        "readback": deepcopy(preservation_result["readback"]),
+    }
 
 
 def get_case_packet_orientation_fields() -> list[str]:
