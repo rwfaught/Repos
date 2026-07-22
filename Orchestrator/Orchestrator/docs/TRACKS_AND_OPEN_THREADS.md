@@ -3980,3 +3980,36 @@ fresh artifact proof.
   Phase 387 activation, architectural lock-in, or productionization.
 
 `ACTIVE_CTO_CONTINUITY_CAPSULE_RETIREMENT_AND_REFERENCE_CLOSURE_DOCS_ONLY=COMPLETED`
+
+### Governed Research V1 Bounded Application Design Decision
+
+- Specialist classification:
+  `SPECIALIST_GOVERNED_RESEARCH_V1_BOUNDED_DESIGN_COMPLETE_WITH_NAMED_GAPS`.
+- CTO acceptance: `PASS_GOVERNED_RESEARCH_V1_BOUNDED_APPLICATION_DESIGN_CTO_RATIFIED`;
+  `GOVERNED_RESEARCH_V1_BOUNDED_DESIGN=COMPLETED_CTO_RATIFIED`.
+- V1 is a small, human-supervised application for one bounded public,
+  non-sensitive question and a finite caller-supplied or caller-approved corpus;
+  it is not a crawler, autonomous investigator, truth adjudicator, generic
+  workflow engine, complete provenance system, provider/model integration, or
+  production product.
+- The research application layer owns research semantics. A semantic-firewall
+  adapter preserves identity, ordering, claim posture, typed evidence,
+  contradictions, gaps, abstention, and separate human disposition. Neutral
+  evidence links reuse unchanged; deterministic blocking, disposition
+  separation, identity, transitions, persistence behavior, and packet-local
+  synthesis reuse only under the stated research-adapter constraints.
+- Minimum provenance is bounded and incomplete: `PHASE_5_PROVENANCE=INCOMPLETE`
+  and `GENERALIZED_PHASE_6=INCOMPLETE`. Human-owned source evaluation,
+  claim/inference posture, material support, and explicit contradiction/gap
+  visibility are required; abstention is a first-class successful outcome and
+  recommendation remains separate from authorization and disposition.
+- `PUBLIC_SOURCE_PROOF_DOMAIN=NOT_YET_SELECTED`; the historical-record claim
+  brief is only the leading advisory candidate. `GOVERNED_RESEARCH_V1_PROOF_PLANNING_GATE=READY`;
+  the next candidate is read-only public-source proof design, not proof execution.
+- This decision does not prove implementation readiness, proof success, research
+  competence, collection, source quality or completeness, extraction or
+  contradiction-discovery accuracy, analytical/recommendation correctness,
+  complete provenance, Phase 5, generalized Phase 6, runtime/provider/model
+  suitability, product usefulness or wedge, neutral-core admission, or
+  production readiness. `PUBLIC_SOURCE_PROOF_AUTHORIZED=FALSE` and
+  `RESEARCH_IMPLEMENTATION_AUTHORIZED=FALSE` remain in force.

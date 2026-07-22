@@ -48,16 +48,17 @@ proving-use-case option.
 `RECONCILE_CURRENT_TRUTH → RATIFY_ACTIVE_DIRECTION → AUDIT_CROSS_DOMAIN_GENERALITY → DESIGN_GOVERNED_RESEARCH_V1 → RUN_ONE_PUBLIC_SOURCE_PROOF`.
 
 Before ranking work, inspect the current coordination documents and the durable
-decision records: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`
-and `docs/GOVERNED_RESEARCH_CROSS_DOMAIN_GENERALITY_AUDIT_DECISION.md`.
+decision records: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`,
+`docs/GOVERNED_RESEARCH_CROSS_DOMAIN_GENERALITY_AUDIT_DECISION.md`, and
+`docs/GOVERNED_RESEARCH_V1_BOUNDED_APPLICATION_DESIGN_DECISION.md`.
 `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`
 at `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`;
 `FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_CTO_RATIFIED`.
 `CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED` and
-`GOVERNED_RESEARCH_V1_DESIGN_GATE=READY_WITH_NAMED_PRECONDITIONS`.
-Startup does not automatically authorize Governed Research V1 design or any
-implementation; public-source proof remains blocked pending design and separate
-authorization.
+`GOVERNED_RESEARCH_V1_BOUNDED_DESIGN=COMPLETED_CTO_RATIFIED`.
+`GOVERNED_RESEARCH_V1_PROOF_PLANNING_GATE=READY`, while
+`PUBLIC_SOURCE_PROOF_DOMAIN=NOT_YET_SELECTED`. Startup does not authorize proof
+execution or implementation.
 The temporary active CTO continuity capsule has been retired and deleted;
 future startup should not expect it as a source. Orient through ordinary
 startup authority and the durable decision record.
