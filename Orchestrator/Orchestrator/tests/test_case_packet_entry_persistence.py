@@ -122,6 +122,9 @@ class CasePacketEntryPersistenceTests(unittest.TestCase):
         self.assertEqual("edited", edited["readback"]["transition"])
         self.assertEqual("replaced", replaced["readback"]["transition"])
         self.assertEqual("retired", retired["readback"]["transition"])
+        self.assertEqual(
+            {"entry_id": "source-2", "value": "edited source"}, edited["case_packet"]["source_materials"][2]
+        )
         self.assertEqual([{"entry_id": "source-1", "value": "old source"}, "legacy source"], retired["case_packet"]["source_materials"])
         self.assertEqual(
             [{"entry_id": "fact-1", "value": "old fact"}, "legacy fact", {"entry_id": "fact-2", "value": "new fact"}],
@@ -166,17 +169,48 @@ class CasePacketEntryPersistenceTests(unittest.TestCase):
                 "persistence-case-1", operation(operation="preserve", entry_id="same text")
             )
 
-    def test_whole_packet_replacement_cannot_drop_or_rewrite_explicit_identity(self):
+    def test_whole_packet_replacement_cannot_change_an_identified_entry_value_or_identity(self):
         original = packet(source_materials=[{"entry_id": "source-1", "value": "original"}])
         save_case_packet(original)
         dropped = packet(source_materials=[])
         rewritten = packet(source_materials=[{"entry_id": "source-2", "value": "original"}])
+        edited = packet(source_materials=[{"entry_id": "source-1", "value": "edited outside transition"}])
 
-        with self.assertRaisesRegex(ValueError, "whole-packet update changes explicit source_materials identities"):
+        with self.assertRaisesRegex(ValueError, "whole-packet update changes protected source_materials"):
             save_case_packet(dropped)
-        with self.assertRaisesRegex(ValueError, "whole-packet update changes explicit source_materials identities"):
+        with self.assertRaisesRegex(ValueError, "whole-packet update changes protected source_materials"):
             save_case_packet(rewritten)
+        with self.assertRaisesRegex(ValueError, "whole-packet update changes protected source_materials"):
+            save_case_packet(edited)
         self.assertEqual(original, load_case_packet("persistence-case-1"))
+
+    def test_whole_packet_replacement_cannot_change_reorder_add_or_remove_anonymous_entries(self):
+        original = packet(source_materials=["first legacy", {"value": "second legacy"}, "third legacy"])
+        save_case_packet(original)
+        value_changed = packet(source_materials=["changed legacy", {"value": "second legacy"}, "third legacy"])
+        reordered = packet(source_materials=["third legacy", {"value": "second legacy"}, "first legacy"])
+        added = packet(source_materials=["first legacy", {"value": "second legacy"}, "third legacy", "new legacy"])
+        removed = packet(source_materials=["first legacy", "third legacy"])
+
+        for candidate in (value_changed, reordered, added, removed):
+            with self.subTest(candidate=candidate["source_materials"]):
+                with self.assertRaisesRegex(ValueError, "whole-packet update changes protected source_materials"):
+                    save_case_packet(candidate)
+        self.assertEqual(original, load_case_packet("persistence-case-1"))
+
+    def test_whole_packet_replacement_can_update_unrelated_fields_when_protected_collections_match(self):
+        original = packet(
+            source_materials=[{"entry_id": "source-1", "value": "source"}, "legacy source"],
+            extracted_facts=[{"entry_id": "fact-1", "value": "fact"}, "legacy fact"],
+        )
+        save_case_packet(original)
+        updated = deepcopy(original)
+        updated["status"] = "in_review"
+        updated["next_step"] = "review packet"
+        updated["open_issues"] = ["operator review needed"]
+
+        save_case_packet(updated)
+        self.assertEqual(updated, load_case_packet("persistence-case-1"))
 
     def test_atomic_write_failure_leaves_existing_packet_and_no_temporary_residue(self):
         original = packet(status="original")

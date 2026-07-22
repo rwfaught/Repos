@@ -14,9 +14,12 @@ entries by content.
 
 ## Safe Updates
 
-Ordinary whole-packet saves may update other packet state and identified-entry
-values, but they may not add, discard, reorder, or rewrite explicit IDs in the
-two protected collections.  Such a change fails diagnostically.
+After initial persistence, ordinary whole-packet saves must preserve both
+protected collections exactly: `source_materials` and `extracted_facts`.
+They may update unrelated packet fields, such as status, objective, next step,
+or other nonprotected collections.  Any addition, removal, value change, or
+reordering in either protected collection fails diagnostically, including for
+anonymous legacy values.
 
 Use `save_case_packet_entry_preservation_operation(case_id, operation)` for an
 identified create, preserve, edit, replace, or retire transition.  It loads the
@@ -27,8 +30,10 @@ adapter; it does not duplicate transition semantics.
 ## Compatibility And Failure Posture
 
 Legacy anonymous entries and unversioned normalized packet shapes remain
-compatible.  No IDs are synthesized or migrated.  There is no global registry,
-history ledger, semantic matching, or evidence-link behavior.
+compatible.  No IDs are synthesized or migrated, and anonymous values are not
+silently modified through whole-packet replacement.  There is no global
+registry, history ledger, semantic matching, migration, or evidence-link
+behavior.
 
 Load rejects malformed JSON, a non-object packet, missing required packet
 fields, incompatible scalar/list types, invalid or mismatched case IDs, and

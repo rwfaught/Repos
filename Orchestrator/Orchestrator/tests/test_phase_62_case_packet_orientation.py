@@ -272,7 +272,7 @@ class Phase62CasePacketOrientationTests(unittest.TestCase):
 
     def test_17_phase59_summary_validate_readiness_still_passes(self):
         case_id = f"case62_reg59_{uuid4().hex[:8]}"
-        packet = self._create_case_packet(case_id)
+        packet = initialize_case_packet_from_seed(self._seed(case_id))
         packet["source_materials"] = ["invoice.pdf"]
         packet["open_issues"] = ["wrong charge"]
         packet["next_step"] = "Send dispute"

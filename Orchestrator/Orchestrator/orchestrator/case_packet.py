@@ -154,15 +154,13 @@ def _validate_persisted_case_packet(packet: object, *, expected_case_id: str | N
     return deepcopy(packet)
 
 
-def _identified_entry_ids(entries: list[Any]) -> list[str]:
-    return [entry["entry_id"] for entry in entries if isinstance(entry, Mapping) and "entry_id" in entry]
-
-
-def _validate_whole_packet_update_preserves_identities(existing: dict[str, Any], candidate: dict[str, Any]) -> None:
+def _validate_whole_packet_update_preserves_protected_collections(
+    existing: dict[str, Any], candidate: dict[str, Any]
+) -> None:
     for field in _ENTRY_KIND_TO_CASE_PACKET_FIELD.values():
-        if _identified_entry_ids(existing[field]) != _identified_entry_ids(candidate[field]):
+        if existing[field] != candidate[field]:
             raise ValueError(
-                f"whole-packet update changes explicit {field} identities; "
+                f"whole-packet update changes protected {field}; "
                 "use save_case_packet_entry_preservation_operation"
             )
 
@@ -175,7 +173,7 @@ def save_case_packet(packet: dict, *, entry_operation: Mapping[str, Any] | None 
     if path.exists():
         existing = load_case_packet(case_id)
         if entry_operation is None:
-            _validate_whole_packet_update_preserves_identities(existing, candidate)
+            _validate_whole_packet_update_preserves_protected_collections(existing, candidate)
         else:
             expected = apply_case_packet_entry_preservation_operation(existing, entry_operation)["case_packet"]
             if candidate != expected:
