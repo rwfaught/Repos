@@ -50,18 +50,20 @@ proving-use-case option.
 Before ranking work, inspect the current coordination documents and the durable
 decision records: `docs/GOVERNED_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION.md`,
 `docs/GOVERNED_RESEARCH_CROSS_DOMAIN_GENERALITY_AUDIT_DECISION.md`,
-`docs/GOVERNED_RESEARCH_V1_BOUNDED_APPLICATION_DESIGN_DECISION.md`, and
-`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_PROOF_DESIGN_DECISION.md`.
+`docs/GOVERNED_RESEARCH_V1_BOUNDED_APPLICATION_DESIGN_DECISION.md`,
+`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_PROOF_DESIGN_DECISION.md`, and
+`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_CORPUS_RATIFICATION_AND_MANUAL_PROOF_SELECTION_DECISION.md`.
 `DURABLE_RESEARCH_DIRECTION_AND_DOSSIER_PAUSE_DECISION_RECORD=COMPLETED_CTO_RATIFIED`
 at `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`;
 `FULL_HISTORICAL_LEDGER_UPDATE=COMPLETED_CTO_RATIFIED`.
 `CROSS_DOMAIN_GENERALITY_AUDIT=COMPLETED_CTO_RATIFIED` and
 `GOVERNED_RESEARCH_V1_BOUNDED_DESIGN=COMPLETED_CTO_RATIFIED`.
-`GOVERNED_RESEARCH_V1_PROOF_PLANNING_GATE=READY` and
-`SELECTED_PROOF_DOMAIN=PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF` under the
-CTO-ratified historical-record proof-design decision. Source collection is the
-next candidate only; startup does not authorize collection, proof execution,
-or implementation.
+`GOVERNED_RESEARCH_V1_PROOF_PLANNING_GATE=COMPLETED_CTO_RATIFIED` and
+`SELECTED_PROOF_DOMAIN=PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`. The corrected
+six-source corpus is CTO-ratified with explicit transcription, scan-access,
+scholarly-publication, and endpoint-definition limits. Manual documentary
+proof is selected next but not yet executed; fixture-driven source/test proof,
+proof execution, and implementation remain unauthorized.
 The temporary active CTO continuity capsule has been retired and deleted;
 future startup should not expect it as a source. Orient through ordinary
 startup authority and the durable decision record.
