@@ -4,6 +4,7 @@ import json
 import os
 import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -429,6 +430,23 @@ class CanonicalAlphaRuntimeTests(unittest.TestCase):
         self._run_packet(self._packet("isolated"))
         after = sorted(str(path.relative_to(repo_data)) for path in repo_data.rglob("*") if path.is_file())
         self.assertEqual(before, after)
+
+    def test_isolated_data_root_rebinds_import_time_data_path_aliases(self):
+        import orchestrator.paths as paths
+
+        module_name = "tests._isolated_data_root_alias_fixture"
+        fixture_module = types.ModuleType(module_name)
+        fixture_module.FIXTURE_DIR = paths.DATA_DIR / "isolated_alias_fixture"
+        sys.modules[module_name] = fixture_module
+        try:
+            with isolated_data_root(self.data_root):
+                self.assertEqual(fixture_module.FIXTURE_DIR, self.data_root / "isolated_alias_fixture")
+                fixture_module.FIXTURE_DIR.mkdir(parents=True)
+                (fixture_module.FIXTURE_DIR / "created_by_test.txt").write_text("temporary", encoding="utf-8")
+            self.assertEqual(fixture_module.FIXTURE_DIR, paths.DATA_DIR / "isolated_alias_fixture")
+            self.assertFalse(fixture_module.FIXTURE_DIR.exists())
+        finally:
+            sys.modules.pop(module_name, None)
 
     def test_cli_end_to_end_success_through_external_temporary_worker(self):
         exit_code, result = self._run_cli(self._packet("cli_success"))

@@ -50,7 +50,10 @@ class Phase54ContentVerificationChecksTests(unittest.TestCase):
     def _write_fixture_file(self, name: str, content: str) -> str:
         path = self.fixture_dir / name
         path.write_text(content, encoding="utf-8")
-        return str(path.relative_to(Path.cwd()))
+        try:
+            return str(path.relative_to(Path.cwd()))
+        except ValueError:
+            return str(Path("data") / path.relative_to(DATA_DIR))
 
     def _verifier_result_for_task(self, task_id: str) -> dict:
         matches: list[dict] = []

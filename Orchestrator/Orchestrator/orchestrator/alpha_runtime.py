@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path
@@ -95,11 +96,39 @@ def isolated_data_root(data_root: str | Path | None) -> Iterator[Path | None]:
         (acceptance, "ACCEPTANCE_RECORDS_DIR"): root / "acceptance_records",
     }
     originals = {(module, name): getattr(module, name) for module, name in replacements}
+    original_data_dir = paths.DATA_DIR.resolve()
+    imported_path_aliases: list[tuple[object, str, Path]] = []
     try:
         for (module, name), value in replacements.items():
             setattr(module, name, value)
+
+        # Legacy tests commonly import checkout data paths directly. Rebinding
+        # only the source module leaves those import-time aliases pointing at
+        # the checkout, so redirect loaded project-module Path aliases too.
+        for module_name, module in list(sys.modules.items()):
+            if module is None or not (
+                module_name == "main"
+                or module_name.startswith("orchestrator")
+                or module_name.startswith("providers")
+                or module_name.startswith("tests")
+                or module_name.startswith("test_")
+            ):
+                continue
+            for name, value in list(vars(module).items()):
+                if not isinstance(value, Path):
+                    continue
+                try:
+                    resolved = value.resolve()
+                except OSError:
+                    continue
+                if resolved != original_data_dir and original_data_dir not in resolved.parents:
+                    continue
+                imported_path_aliases.append((module, name, value))
+                setattr(module, name, root / resolved.relative_to(original_data_dir))
         yield root
     finally:
+        for module, name, value in reversed(imported_path_aliases):
+            setattr(module, name, value)
         for (module, name), value in originals.items():
             setattr(module, name, value)
 
