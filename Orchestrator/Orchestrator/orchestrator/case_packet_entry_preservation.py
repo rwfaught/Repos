@@ -33,7 +33,7 @@ NON_PROOF_STATEMENTS = (
     "Source-material identity does not establish source quality.",
     "Fact identity does not establish fact correctness.",
     "Replacement does not establish that the new entry is better.",
-    "No persistence or evidence-link adoption occurred.",
+    "This readback alone does not persist a case packet or adopt evidence links.",
 )
 
 
@@ -127,6 +127,20 @@ def _identified_entries(current_entries: list[Any]) -> dict[str, int]:
     return identified
 
 
+def validate_case_scoped_entry_collection(current_entries: list[Any]) -> list[Any]:
+    """Return a copy after validating the existing explicit-entry shape.
+
+    Legacy anonymous entries remain opaque and are deliberately not assigned,
+    compared, or otherwise interpreted.  This gives persistence callers the
+    same malformed-entry checks used by the transition contract without
+    applying a transition.
+    """
+    if not isinstance(current_entries, list):
+        raise ValueError("current_entries must be a list")
+    _identified_entries(current_entries)
+    return deepcopy(current_entries)
+
+
 def _readback(operation: Mapping[str, Any]) -> dict[str, Any]:
     operation_kind = operation["operation"]
     entry_id = operation["entry_id"]
@@ -166,8 +180,7 @@ def apply_case_scoped_entry_operation(
     Anonymous legacy entries are copied through unchanged but are never targets
     for preservation operations.  Only an explicit ``entry_id`` is addressable.
     """
-    if not isinstance(current_entries, list):
-        raise ValueError("current_entries must be a list")
+    validate_case_scoped_entry_collection(current_entries)
 
     normalized = normalize_case_scoped_entry_operation(operation)
     identified = _identified_entries(current_entries)

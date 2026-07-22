@@ -4,6 +4,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any, Mapping
 
+from orchestrator.alpha_runtime import atomic_write_json
 from orchestrator.paths import DATA_DIR
 
 CASE_PACKETS_DIR = DATA_DIR / "case_packets"
@@ -114,17 +115,84 @@ def _case_packet_path(case_id: str) -> Path:
     return CASE_PACKETS_DIR / f"{normalized}.json"
 
 
-def save_case_packet(packet: dict) -> Path:
-    case_id = _normalize_scalar(packet.get("case_id"))
+def _validate_persisted_case_packet(packet: object, *, expected_case_id: str | None = None) -> dict[str, Any]:
+    """Reject malformed durable packets without normalizing or migrating them."""
+    if not isinstance(packet, dict):
+        raise ValueError("persisted case packet must be a JSON object")
+
+    missing_fields = [
+        field for field in (*_REQUIRED_SCALAR_FIELDS, *_REQUIRED_LIST_FIELDS) if field not in packet
+    ]
+    if missing_fields:
+        raise ValueError(f"persisted case packet is missing required fields: {', '.join(missing_fields)}")
+
+    non_string_scalars = [field for field in _REQUIRED_SCALAR_FIELDS if not isinstance(packet[field], str)]
+    if non_string_scalars:
+        raise ValueError(
+            f"persisted case packet scalar fields must be strings: {', '.join(non_string_scalars)}"
+        )
+    non_list_fields = [field for field in _REQUIRED_LIST_FIELDS if not isinstance(packet[field], list)]
+    if non_list_fields:
+        raise ValueError(f"persisted case packet list fields must be lists: {', '.join(non_list_fields)}")
+
+    case_id = packet["case_id"]
+    if expected_case_id is not None and case_id != expected_case_id:
+        raise ValueError("persisted case packet case_id does not match requested case_id")
+
+    validation = validate_case_packet(packet)
+    if not validation["valid"]:
+        raise ValueError(f"persisted case packet is invalid: {', '.join(validation['errors'])}")
+
+    from orchestrator.case_packet_entry_preservation import validate_case_scoped_entry_collection
+
+    for field in _ENTRY_KIND_TO_CASE_PACKET_FIELD.values():
+        try:
+            validate_case_scoped_entry_collection(packet[field])
+        except ValueError as error:
+            raise ValueError(f"persisted {field} are malformed: {error}") from error
+
+    return deepcopy(packet)
+
+
+def _identified_entry_ids(entries: list[Any]) -> list[str]:
+    return [entry["entry_id"] for entry in entries if isinstance(entry, Mapping) and "entry_id" in entry]
+
+
+def _validate_whole_packet_update_preserves_identities(existing: dict[str, Any], candidate: dict[str, Any]) -> None:
+    for field in _ENTRY_KIND_TO_CASE_PACKET_FIELD.values():
+        if _identified_entry_ids(existing[field]) != _identified_entry_ids(candidate[field]):
+            raise ValueError(
+                f"whole-packet update changes explicit {field} identities; "
+                "use save_case_packet_entry_preservation_operation"
+            )
+
+
+def save_case_packet(packet: dict, *, entry_operation: Mapping[str, Any] | None = None) -> Path:
+    candidate = _validate_persisted_case_packet(packet)
+    case_id = candidate["case_id"]
     path = _case_packet_path(case_id)
-    CASE_PACKETS_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(packet, indent=2), encoding="utf-8")
+
+    if path.exists():
+        existing = load_case_packet(case_id)
+        if entry_operation is None:
+            _validate_whole_packet_update_preserves_identities(existing, candidate)
+        else:
+            expected = apply_case_packet_entry_preservation_operation(existing, entry_operation)["case_packet"]
+            if candidate != expected:
+                raise ValueError("case-packet update does not match the explicit entry preservation operation")
+
+    atomic_write_json(path, candidate)
     return path
 
 
 def load_case_packet(case_id: str) -> dict:
-    path = _case_packet_path(case_id)
-    return json.loads(path.read_text(encoding="utf-8"))
+    normalized_case_id = _normalize_scalar(case_id)
+    path = _case_packet_path(normalized_case_id)
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as error:
+        raise ValueError(f"malformed persisted case packet JSON: {error.msg}") from error
+    return _validate_persisted_case_packet(packet, expected_case_id=normalized_case_id)
 
 
 def assess_case_packet_readiness(packet: dict) -> dict:
@@ -227,7 +295,8 @@ def apply_case_packet_entry_preservation_operation(
         normalize_case_scoped_entry_operation,
     )
 
-    normalized_packet = normalize_case_packet(dict(packet))
+    supplied_packet = dict(packet)
+    normalized_packet = normalize_case_packet(supplied_packet)
     normalized_operation = normalize_case_scoped_entry_operation(operation)
     if normalized_packet["case_id"] != normalized_operation["case_id"]:
         raise ValueError("operation case_id does not match packet case_id")
@@ -236,11 +305,26 @@ def apply_case_packet_entry_preservation_operation(
     preservation_result = apply_case_scoped_entry_operation(
         normalized_packet[field], normalized_operation
     )
-    updated_packet = deepcopy(normalized_packet)
+    updated_packet = deepcopy(supplied_packet)
+    updated_packet.update(normalized_packet)
     updated_packet[field] = preservation_result["entries"]
     return {
         "case_packet": updated_packet,
         "readback": deepcopy(preservation_result["readback"]),
+    }
+
+
+def save_case_packet_entry_preservation_operation(
+    case_id: str, operation: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Load, apply, and atomically save one explicit source/fact transition."""
+    packet = load_case_packet(case_id)
+    result = apply_case_packet_entry_preservation_operation(packet, operation)
+    path = save_case_packet(result["case_packet"], entry_operation=operation)
+    return {
+        "case_packet": deepcopy(result["case_packet"]),
+        "path": path,
+        "readback": deepcopy(result["readback"]),
     }
 
 
