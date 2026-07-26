@@ -51,9 +51,10 @@ Research V1 application design is complete and CTO-ratified.
 CTO-ratified selected domain is `PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`. The
 manual documentary proof is completed and CTO-ratified; Roger accepted its
 `QUALIFIED_CONCLUSION`, with provenance and endpoint limitations preserved.
-Fixture-driven source/test proof is now a CTO decision candidate, while
-source/test execution and research implementation remain unauthorized, and the
-public-evidence synthetic HVAC case remains a future proving-use-case option.
+One fixture-driven source/test proof is selected as the next stage, with
+implementation and fixture creation still unauthorized pending a separate
+readiness assessment; the public-evidence synthetic HVAC case remains a future
+proving-use-case option.
 
 Governance strength is substantial. The primary strategic challenge is turning
 that discipline into useful, founder-legible work without allowing framework or
@@ -79,7 +80,7 @@ replace it with opaque autonomy or an alternate control system.
 | Case/dossier substrate | First fictional controlled workflow proof completed; generalized phase incomplete | One explicit fictional dossier case can be persisted and reloaded, adapted into the existing evidence-linked synthesis contract, and returned with validated supplied evidence links and a separate human disposition. This satisfies the first structural fictional Phase 6 proof, but does not establish generalized workflow competence, real proving-use-case evidence, competent casework, or Phase 5 provenance adoption. |
 | Founder Cockpit | Static design/prototype accepted; live work separate | The fixture-backed static visual hierarchy and representative-context transfer are accepted at prototype level; this is not a deployed control surface, live integration, or implementation authorization. |
 | Revenue-bearing proving use case | Ratified, paused-valid, not operationally proven | The dossier remains valid and preserved, but its real engagement is blocked pending a participant and is off the immediate critical path. |
-| Governed-research investigation | Manual documentary proof completed and CTO-ratified | The selected domain is `PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`; the six-source corpus remains unchanged and Roger accepted the manual proof's `QUALIFIED_CONCLUSION`. Fixture-driven source/test proof is a next CTO decision candidate; source/test execution and implementation remain unauthorized. |
+| Governed-research investigation | Source/test proof selected; implementation not yet authorized | The selected domain is `PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`; the six-source corpus remains unchanged and Roger accepted the manual proof's `QUALIFIED_CONCLUSION`. One fixture-driven proof is selected to demonstrate governed evidence handling; fixture creation, source/test implementation, and research implementation remain unauthorized. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
 
 ## 5. Completed Foundation
@@ -126,9 +127,9 @@ product-wedge evidence, productization, or production-readiness evidence.
 - trusted_local_unsandboxed is a trusted-worker posture, not comprehensive operating-system containment.
 - Provider/model generalization remains unproven, and main.py remains a separate legacy migration concern.
 - Repeated real-world user, value, burden, trust, privacy, and willingness-to-pay evidence is still absent.
-- Governed Research V1 manual historical-record proof is completed only at the
-  documentary semantic level; deciding whether source/test proof adds meaningful
-  application evidence remains a separate CTO gate.
+- Governed Research V1 source/test proof is selected to establish bounded
+  application behavior beyond documentary semantics, but it remains unimplemented
+  pending a separate readiness assessment and authorization.
 
 ## 8. Roadmap Phases
 
@@ -315,8 +316,8 @@ productization-oriented sequence. Immediate management priorities are:
 3. preserve the CTO-ratified corrected six-source corpus and its explicit
    transcription, scan-access, scholarly-publication, and endpoint limits;
 4. preserve the completed CTO-ratified manual documentary proof and Roger's
-   accepted `QUALIFIED_CONCLUSION`, then decide whether a fixture-driven
-   source/test proof would add meaningful application evidence;
+   accepted `QUALIFIED_CONCLUSION`, then conduct the separately authorized
+   readiness assessment before implementing the selected fixture-driven proof;
 5. retain the public-evidence synthetic HVAC case as a future proving-use-case
    option;
 6. preserve the paused-valid dossier and its reusable real-engagement packet;
@@ -337,8 +338,10 @@ six-source corpus and manual-proof selection are durable at
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_CORPUS_RATIFICATION_AND_MANUAL_PROOF_SELECTION_DECISION.md`.
 The completed manual-proof and human-disposition result is durable at
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_MANUAL_PROOF_AND_HUMAN_DISPOSITION_DECISION.md`.
-Fixture-driven source/test proof remains a next CTO decision candidate;
-source/test execution and implementation remain blocked.
+The selected source/test proof and bounded implementation design are durable at
+`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_SOURCE_TEST_PROOF_SELECTION_AND_BOUNDED_IMPLEMENTATION_DESIGN_DECISION.md`.
+Fixture creation, source/test implementation, and research implementation
+remain blocked pending a separate readiness assessment and authorization.
 
 ## 11. Deferred Decisions
 
@@ -393,7 +396,7 @@ replacing technical proof with roadmap prose.
 
 | Revision basis | Change | Evidence posture |
 | --- | --- | --- |
-| Current historical-record manual-proof and human-disposition decision | Records completion and CTO ratification of the bounded manual documentary proof, Roger's `ACCEPT_QUALIFIED_CONCLUSION` disposition, and the retained provenance, quotation, corpus-completeness, and endpoint limits. Fixture-driven source/test proof is now a decision candidate, not an authorized activity. | Documentation decision and coordination synthesis only; it records manual semantic evidence and human disposition, not source/test proof, application behavior, deterministic validation, implementation authorization, Phase 5 completion, generalized Phase 6 completion, neutral-core admission, or production proof. |
+| Current historical-record source/test selection and bounded implementation design decision | Records selection of one fixture-driven source/test proof to demonstrate governed evidence handling beyond manual semantic proof. It fixes the positive and diagnostic case postures, anti-hard-coding controls, reuse-first requirement, persistence posture, readiness gate, and success criterion. | Documentation decision and coordination synthesis only; it does not create fixtures, implement or validate source/test behavior, authorize implementation, complete Phase 5, complete generalized Phase 6, admit a neutral-core abstraction, or prove production readiness. |
 | Historical proof-design decision | Historical predecessor: records the CTO-ratified selected domain, finite five-to-seven-source corpus posture, first-class abstention, and the then-pending Specialist evidence-preparation gate. Its former next-candidate wording is superseded by the current corpus-ratification and manual-proof-selection decision. | Documentation decision and coordination synthesis only; not proof of source collection, historical truth, source quality, provenance completeness, research competence, proof success, implementation readiness, or production readiness. |
 | 7fb68148e079910612b295e1fe14c3e3323fa460 (verified local, tracking, and direct remote `main` before this update) | Records completed CTO-ratified bounded Governed Research V1 application design. Reconciliation, direction ratification, and cross-domain audit remain complete; proof planning is now the next candidate. The proof domain remained unselected at that earlier decision; proof execution was blocked and implementation unauthorized. | Documentation decision and coordination synthesis only; not proof of public-source collection, source quality, provenance completeness, research competence, proof success, implementation readiness, or production readiness. |
 | 215905889a4aadcd8d702f2066ef49b6968e3d32 (verified local and `origin/main` before this update) | Records completed CTO-ratified cross-domain generality audit. A narrow semantic core is accepted; case-packet persistence and packet-local synthesis are reusable only through a research application adapter; dossier-shaped workflow, current schema, and candidate-prioritization recommendation packet remain application-layer-only. Bounded Governed Research V1 design is the next candidate only with named preconditions; public-source proof remains blocked pending design and separate authorization; research implementation remains unauthorized. | Documentation decision and coordination synthesis only; not proof of research runtime competence, collection, evaluation, extraction, provenance completeness, analytical or recommendation correctness, selected proof domain, implementation readiness, or production readiness. |

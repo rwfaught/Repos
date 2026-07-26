@@ -65,8 +65,11 @@ scholarly-publication, and endpoint-definition limits. The manual documentary
 proof is completed and CTO-ratified, and Roger accepted its
 `QUALIFIED_CONCLUSION`; the durable result is
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_MANUAL_PROOF_AND_HUMAN_DISPOSITION_DECISION.md`.
-Fixture-driven source/test proof is a next CTO decision candidate; source/test
-execution and implementation remain unauthorized.
+One fixture-driven source/test proof is selected as the next stage. Its bounded
+design is durable at
+`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_SOURCE_TEST_PROOF_SELECTION_AND_BOUNDED_IMPLEMENTATION_DESIGN_DECISION.md`.
+Fixture creation, source/test implementation, and research implementation remain
+unauthorized pending a separate readiness assessment and authorization.
 The temporary active CTO continuity capsule has been retired and deleted;
 future startup should not expect it as a source. Orient through ordinary
 startup authority and the durable decision record.
