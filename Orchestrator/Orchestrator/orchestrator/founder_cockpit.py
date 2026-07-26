@@ -27,6 +27,18 @@ LABELS = {
     "FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW": "Review this Cockpit’s usefulness and comprehension",
 }
 
+CAPABILITY_AREAS = (
+    ("Governance and bounded execution", "Mature at alpha level", "A bounded task can move through authorization, verification, human disposition, and read-only reconciliation.", "Not generalized autonomous work or production readiness.", "docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md"),
+    ("Canonical runtime", "Adopted alpha capability", "One coherent bounded execution spine is source-backed.", "Not a production service or an operating-system sandbox.", "docs/TRACKS_AND_OPEN_THREADS_CURRENT.md"),
+    ("Provider-backed proof", "One exact proof complete", "One bounded coding task was accepted through the canonical seam.", "No provider/model selection or generalized competence.", "docs/TRACKS_AND_OPEN_THREADS_CURRENT.md"),
+    ("Case and dossier substrate", "Bounded fictional workflow proof", "One controlled fictional case workflow persists, reloads, and keeps evidence links/disposition separate.", "Phase 5 provenance and generalized Phase 6 remain incomplete.", "docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md"),
+    ("Governed research", "Bounded V1 proof complete", "One fixed historical-record proof preserves qualifications and evidence controls.", "Not generalized research competence.", "docs/GOVERNED_RESEARCH_V1_CLOSEOUT_AUTONOMY_AND_FOUNDER_VISIBILITY_RECONCILIATION_DECISION.md"),
+    ("Founder Cockpit", "Technical substrate implemented", "Local, read-only, loopback-only repository orientation is available.", "Founder usefulness is rejected pending this project-level correction.", "docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md"),
+    ("Product direction", "Open strategic choice", "A proving-use-case path exists and product wedge remains unselected.", "No wedge is ratified.", "docs/FOUNDER_CONTROL_PROTOCOL.md"),
+    ("Provider/model and platform strategy", "Deferred", "No provider/model is selected; platform integrations remain deferred.", "No runtime/provider/platform proof follows.", "docs/CAPABILITY_REALITY_MAP.md"),
+    ("Productionization", "Not started", "The project has bounded alpha evidence.", "No deployment, product-market fit, or production readiness.", "docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md"),
+)
+
 
 def _read(path: Path) -> tuple[str | None, str | None]:
     try:
@@ -118,6 +130,11 @@ def derive_cockpit(root: Path) -> dict[str, Any]:
         "founder_decision": founder_decision, "founder_label": _label(founder_decision), "warnings": warnings, "health": health,
         "sources": sources, "tracks": _track_groups(tracks),
         "read_only": "PROVEN_FOR_IMPLEMENTED_SURFACE: generation reads docs and ordinary Git metadata only; the HTTP surface exposes GET only.",
+        "identity": "Orchestrator is a governed alpha system for bounded AI-assisted work: it has real control and workflow proofs, but not a selected product direction or production-ready product.",
+        "bottleneck": "Convert proven governance and workflow discipline into a useful, founder-legible, product-relevant capability without premature product or architecture lock-in.",
+        "journey": ("Governance foundation", "Canonical bounded execution", "Controlled case/workflow structures", "Bounded governed-research proof", "Founder visibility", "Next useful product-facing proof pending strategic re-ranking"),
+        "capabilities": CAPABILITY_AREAS,
+        "open_choices": ("First product wedge", "Real proving-use-case direction", "Provider/model posture", "Productionization timing"),
     }
 
 
@@ -128,10 +145,14 @@ def render_html(model: dict[str, Any]) -> str:
     source_rows = "".join(f"<tr><th scope='row'>{e(item['label'])}</th><td><code>{e(item['path'])}</code></td><td>{e(item['state'])}</td></tr>" for item in model["sources"])
     primary = "".join(f"<section class='track'><h3>{kind.title()}</h3><ul>{''.join(f'<li>{e(row)}</li>' for row in model['tracks'][kind]) or '<li>None recorded</li>'}</ul></section>" for kind in ("ACTIVE", "PAUSED", "BLOCKED"))
     secondary = "".join(f"<section class='track'><h3>{kind.title()} ({len(model['tracks'][kind])})</h3><ul>{''.join(f'<li>{e(row)}</li>' for row in model['tracks'][kind]) or '<li>None recorded</li>'}</ul></section>" for kind in ("WATCH", "DEFERRED", "COMPLETED"))
+    capabilities = "".join(f"<article class='cap'><h3>{e(name)} <small>{e(status)}</small></h3><p>{e(proof)}</p><p><strong>Limit:</strong> {e(limit)}</p><p><code>{e(source)}</code></p></article>" for name, status, proof, limit, source in model["capabilities"])
+    journey = " → ".join(e(step) for step in model["journey"])
+    choices = "".join(f"<li>{e(choice)} — NOT_RATIFIED / OPEN</li>" for choice in model["open_choices"])
     return f"""<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Founder Cockpit</title><style>
 body{{font:16px system-ui,sans-serif;line-height:1.45;max-width:1200px;margin:auto;padding:1rem;background:#f7f8fa;color:#17202a}}header,.card{{background:#fff;border:1px solid #ccd3db;border-radius:8px;padding:1rem;margin:.75rem 0}}header{{font-size:.88rem}}.grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;align-items:start}}.attention{{border-left:5px solid #7c3aed}}.warning{{border-left:5px solid #b45309;background:#fff7ed}}.track{{margin:.75rem 0}}code{{overflow-wrap:anywhere}}table{{width:100%;border-collapse:collapse;table-layout:fixed}}td,th{{padding:.45rem;border-bottom:1px solid #d7dde3;text-align:left;vertical-align:top;overflow-wrap:anywhere}}td:last-child{{width:18%}}details{{margin-top:.75rem}}@media(max-width:720px){{.grid{{grid-template-columns:1fr}}body{{padding:.5rem}}table,tbody,tr,td,th{{display:block}}thead{{display:none}}tr{{border-bottom:1px solid #d7dde3;padding:.5rem 0}}td:last-child{{width:auto}}}}</style></head><body>
 <header><strong>LIVE REPOSITORY-DERIVED · READ ONLY · NON-AUTHORITATIVE DISPLAY</strong><br>Generated {e(model['generated_at'])}; branch <code>{e(model['branch'])}</code>; Git <code>{e(model['git_head'])}</code></header>
-<main><div class='grid'><section class='card'><h1>Where the project is</h1><p><strong>{e(model['stage_label'])}</strong><br><code>{e(model['stage'])}</code></p><p><strong>Most recent accepted proof:</strong> {e(model['proof'])}</p><p><strong>Decisive non-proof:</strong> {e(model['non_proof'])}</p></section><section class='card attention'><h2>What needs your attention</h2><p><strong>{e(model['founder_label'])}</strong><br><code>{e(model['founder_decision'])}</code></p><p>Review whether this Cockpit explains position, non-proofs, required decisions, and the next meaningful move without ChatGPT/Codex narration.</p></section></div>
+<main><div class='grid'><section class='card'><h1>What Orchestrator is today</h1><p>{e(model['identity'])}</p><p><strong>{e(model['stage_label'])}</strong><br><code>{e(model['stage'])}</code></p><p><strong>Most recent accepted proof:</strong> {e(model['proof'])}</p><p><strong>Decisive non-proof:</strong> {e(model['non_proof'])}</p></section><section class='card attention'><h2>What needs your attention</h2><p><strong>{e(model['founder_label'])}</strong><br><code>{e(model['founder_decision'])}</code></p><p>Review whether this Cockpit explains position, non-proofs, required decisions, and the next meaningful move without ChatGPT/Codex narration.</p><h3>Main bottleneck</h3><p>{e(model['bottleneck'])}</p></section></div>
+<section class='card'><h2>Project journey</h2><p>{journey}</p></section><section class='card'><h2>Major capability map</h2><div class='grid'>{capabilities}</div></section><section class='card'><h2>Open strategic choices</h2><ul>{choices}</ul></section>
 <div class='grid'><section class='card'><h2>What happens next</h2><p><strong>{e(model['outcome_label'])}</strong><br><code>{e(model['outcome'])}</code></p><h2>Current tracks</h2>{primary}<details><summary>Watch, deferred, and completed tracks</summary>{secondary}</details></section><section class='card warning'><h2>Source health: {e(model['health'])}</h2><ul>{warnings}</ul><p>{e(model['read_only'])}</p></section></div>
 <section class='card'><h2>Authority details</h2><p>Each displayed claim retains its source identity. This view cannot resolve disagreement or make authority decisions.</p><table><thead><tr><th>Source</th><th>Path</th><th>Availability</th></tr></thead><tbody>{source_rows}</tbody></table></section></main></body></html>"""
 

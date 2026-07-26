@@ -70,3 +70,7 @@ After using the Cockpit, please answer:
 3. Can you distinguish what is proven from what is not?
 4. Can you identify whether a decision is currently required from you?
 5. Does the page reduce your dependence on ChatGPT or Codex explanations?
+
+For the project-level view, also answer: What is Orchestrator today? Name the
+three most mature capabilities. What is the main bottleneck? What two or three
+major choices remain open? What does the Cockpit say happens next?

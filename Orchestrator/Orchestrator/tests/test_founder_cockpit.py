@@ -27,7 +27,7 @@ class FounderCockpitTests(unittest.TestCase):
 
     def test_canonical_model_has_live_sources_and_escaped_output(self):
         root = self.make_root(); model = derive_cockpit(root); page = render_html(model)
-        self.assertEqual("CANONICAL_CURRENT_READ", model["health"]); self.assertIn("Where the project is", page); self.assertIn("READ ONLY", page)
+        self.assertEqual("CANONICAL_CURRENT_READ", model["health"]); self.assertIn("What Orchestrator is today", page); self.assertIn("READ ONLY", page)
 
     def test_missing_source_is_visible(self):
         model = derive_cockpit(self.make_root(missing="STARTUP_BRIEF.md")); self.assertIn("MISSING_SOURCE", " ".join(model["warnings"]))
@@ -51,6 +51,12 @@ class FounderCockpitTests(unittest.TestCase):
         model = derive_cockpit(self.make_root()); page = render_html(model)
         self.assertEqual("PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION", model["outcome"])
         self.assertIn("What needs your attention", page); self.assertIn("Watch, deferred, and completed tracks", page)
+
+    def test_project_level_capability_map_is_source_traceable(self):
+        model = derive_cockpit(self.make_root()); page = render_html(model)
+        self.assertGreaterEqual(len(model["capabilities"]), 9)
+        self.assertIn("Major capability map", page)
+        self.assertIn("docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md", page)
 
     def test_loopback_server_is_get_only_and_serves_current_view(self):
         server = make_server(self.make_root(), 0); thread = threading.Thread(target=server.serve_forever); thread.start()
