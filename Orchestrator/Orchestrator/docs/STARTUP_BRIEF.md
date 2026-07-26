@@ -282,10 +282,11 @@ The current cockpit snapshot is
 project should stop at founder ratification rather than resume implementation
 by sequence momentum.
 
-The accepted static Founder Cockpit has not become a live read-only operator
-surface. After this reconciliation, the ranked next project outcome is
-`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`; it remains separately
-authorized and is not implemented by this document update.
+The accepted static Founder Cockpit is now supplemented by a live local
+read-only operator surface at source/test/operator-launch level. Launch and
+limits are documented in `docs/FOUNDER_COCKPIT_LIVE_READ_ONLY_OPERATOR_GUIDE.md`.
+It is a non-authoritative window over current repository authority, not a
+production dashboard or a product-interface commitment.
 
 The prior Option 3 abstraction-first ratification remains historical structural
 context. The current proving-use-case ratification is recorded in

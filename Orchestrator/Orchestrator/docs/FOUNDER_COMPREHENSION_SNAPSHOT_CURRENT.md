@@ -25,12 +25,12 @@ neutral dossier/case abstraction before final wedge selection.
 
 Roger must decide what to ratify before implementation resumes.
 
-The accepted static Founder Cockpit has not become a live operator surface.
-Roger still relies primarily on ChatGPT, Codex, and written reports for project
-state. The next ranked project outcome is
-`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`: a read-only view over
-existing authority, not a second control system or product-interface commitment.
-It is not implemented or proven by this snapshot.
+The accepted static Founder Cockpit is now supplemented by a local live
+read-only operator surface. It derives a view from current repository authority
+and ordinary Git metadata, with explicit missing, stale, conflicting, and
+unknown states. It is not a second control system, production dashboard, or
+proof of independent-user usefulness. See
+`docs/FOUNDER_COCKPIT_LIVE_READ_ONLY_OPERATOR_GUIDE.md` for launch and limits.
 
 ## 2. Accepted Facts
 

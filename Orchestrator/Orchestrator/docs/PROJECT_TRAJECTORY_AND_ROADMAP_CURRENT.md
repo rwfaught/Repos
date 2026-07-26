@@ -78,7 +78,7 @@ replace it with opaque autonomy or an alternate control system.
 | Canonical bounded execution | Alpha-authoritative | A structured bounded coding task can move through explicit authorization, persisted records, controlled worker execution, deterministic verification, human disposition, and read-only reconciliation. |
 | Provider-backed task proof | Exact task closed | One exact provider-backed coding task is accepted; this is not generalized provider/model competence or selection. |
 | Case/dossier substrate | First fictional controlled workflow proof completed; generalized phase incomplete | One explicit fictional dossier case can be persisted and reloaded, adapted into the existing evidence-linked synthesis contract, and returned with validated supplied evidence links and a separate human disposition. This satisfies the first structural fictional Phase 6 proof, but does not establish generalized workflow competence, real proving-use-case evidence, competent casework, or Phase 5 provenance adoption. |
-| Founder Cockpit | Static design/prototype accepted; live surface ranked next | The fixture-backed static visual hierarchy and representative-context transfer are accepted; live integration is not implemented or proven. The next ranked project outcome is a bounded read-only minimum useful surface, not a second control system or product-interface commitment. |
+| Founder Cockpit | Local read-only source/test/operator surface implemented | The fixture-backed static visual hierarchy and representative-context transfer are accepted. A loopback-only, repository-derived read-only surface is implemented at local source/test/operator-launch level; it is not a deployed control surface, production dashboard, accessibility certification, or independent-user proof. |
 | Revenue-bearing proving use case | Ratified, paused-valid, not operationally proven | The dossier remains valid and preserved, but its real engagement is blocked pending a participant and is off the immediate critical path. |
 | Governed-research investigation | Bounded V1 proof stage complete; reusable pattern preserved | The selected historical-record case now has completed CTO-ratified manual and source/test proof at `ee1a1f97e7c29fcc0f47ac3ccd9d0b0b64ce3221`. Its `QUALIFIED_CONCLUSION` is narrow and does not establish generalized research, Phase 5, generalized Phase 6, or production readiness. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
@@ -145,7 +145,7 @@ Exit condition: a coherent bounded alpha spine is proven and adopted.
 
 ### Phase 2 — Founder Visibility and Cockpit
 
-Status: STATIC_PROTOTYPE_COMPLETE_LIVE_READ_ONLY_OUTCOME_RANKED
+Status: LOCAL_READ_ONLY_MINIMUM_USEFUL_SURFACE_IMPLEMENTED
 
 This phase covers Founder Cockpit information architecture, read-only state
 visualization, proof/caveat visibility, authority and freshness indicators, and
@@ -153,9 +153,10 @@ a fixture-backed prototype before live integration. The static design/prototype
 exit condition is satisfied: the accepted six-unit hierarchy was reviewed in a
 four-frame canonical/degraded/narrow composition and transferred without
 redesign into the representative fictional `Ozark Family Dental AI Intake
-Pilot`. Live integration is not implemented or proven. The next ranked project
-outcome is `LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`; it still
-requires a separate implementation boundary.
+Pilot`. The local read-only minimum useful surface is implemented at
+source/test/operator-launch level. It derives a display from current repository
+authority and Git metadata, binds only to loopback when served, and has no
+write/control path. See `docs/FOUNDER_COCKPIT_LIVE_READ_ONLY_OPERATOR_GUIDE.md`.
 
 Static design/prototype exit condition: satisfied. This does not complete or
 deploy a Cockpit, or establish accessibility, responsive, interaction,
