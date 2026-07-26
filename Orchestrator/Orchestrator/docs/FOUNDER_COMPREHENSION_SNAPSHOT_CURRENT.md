@@ -25,6 +25,13 @@ neutral dossier/case abstraction before final wedge selection.
 
 Roger must decide what to ratify before implementation resumes.
 
+The accepted static Founder Cockpit has not become a live operator surface.
+Roger still relies primarily on ChatGPT, Codex, and written reports for project
+state. The next ranked project outcome is
+`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`: a read-only view over
+existing authority, not a second control system or product-interface commitment.
+It is not implemented or proven by this snapshot.
+
 ## 2. Accepted Facts
 
 - Repository inspected: `C:\Users\accou\Desktop\Repos\Orchestrator\Orchestrator`.
@@ -34,7 +41,7 @@ Roger must decide what to ratify before implementation resumes.
   `origin/main`.
 - The dossier/case abstraction ratification docs commit
   `4899c9ea0d565eda5d5e52c3cc82465b3f3fa34f` is on `origin/main`.
-- `docs/PHASE_387.md` was not present during source inspection.
+- No current `PHASE_387.md` record was present during source inspection.
 - `docs/PHASE_386.md` records
   `CAMPAIGN_CAP_REACHED_NO_PHASE_387_AUTHORIZED`.
 - `docs/FOUNDER_CONTROL_PROTOCOL.md` makes first product wedge, first proving
@@ -230,13 +237,14 @@ This snapshot does not prove:
 
 ## 9. Next Bounded Move
 
-Recommended next boundary:
+Recommended next outcome:
 
-`FOUNDER_RATIFICATION_GATE_STOP`
+`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`
 
 Purpose:
 
-Stop and wait for Roger to select a ratification path.
+Implement, under a separate authorized boundary, the minimum live read-only
+surface over current authoritative project state.
 
 Allowed operations:
 

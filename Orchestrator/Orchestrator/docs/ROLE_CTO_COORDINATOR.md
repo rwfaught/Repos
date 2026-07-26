@@ -192,6 +192,24 @@ CTO/coordinator should not treat approval of one boundary as approval of
 adjacent work. When the mode changes, the role changes, or proof expectations
 change, issue a new boundary or handoff.
 
+## Worker Outcome Granularity and Supervision
+
+For a capable Worker/Codex with an explicit coherent boundary, CTO/coordinator
+should authorize and review a `COHERENT_END_TO_END_OUTCOME`, with
+`EXCEPTION_BASED` supervision. The worker normally assesses readiness
+internally and carries the authorized objective through the smallest valid
+design, implementation, focused and full validation, narrowly attributable
+generated-residue cleanup, necessary coordination updates, and authorized
+commit/push.
+
+CTO/coordinator retains the gates for substantive human judgment, corpus or
+evidence acceptance, product-wedge selection, architectural lock-in,
+neutral-core or schema redesign, runtime/provider/model/platform execution,
+destructive or ambiguous cleanup, final human disposition, productionization,
+project-stage transitions, and any inability to satisfy proof honestly. A
+material uncertainty or conflict remains a stop condition, not a reason to
+split ordinary implementation into intermediate readiness handoffs.
+
 ## Boundary Closure Coordination Check
 
 At boundary completion, CTO/coordinator should assess whether current

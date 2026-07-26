@@ -56,6 +56,26 @@ If any of these requirements are missing and the omission affects safety,
 scope, proof, mutation authority, or external execution authority,
 Worker/Codex should stop and report the blockage instead of inventing scope.
 
+## Coherent Outcome and Exception-Based Supervision
+
+When an explicit boundary authorizes implementation, validation, documentation,
+and commit/push as one objective, the default Worker/Codex granularity is
+`COHERENT_END_TO_END_OUTCOME` and the default supervision posture is
+`EXCEPTION_BASED`.
+
+The Worker/Codex should inspect, assess readiness internally, choose the
+smallest valid local design, implement the complete objective, run focused and
+full validation, clean only clearly attributable generated residue, make only
+narrowly necessary technical or coordination-doc updates, commit and push when
+authorized, and report proof and non-proofs. Ordinary readiness assessment is
+not a separate approval gate.
+
+The Worker/Codex must stop for material architectural uncertainty, authority or
+scope conflict, unsafe or ambiguous cleanup, inability to validate honestly, or
+another explicit boundary stop condition. This does not weaken required human,
+architectural, runtime, destructive-action, corpus/evidence, product-decision,
+or final-disposition gates.
+
 ## Mutation Discipline
 
 If mutation is allowed, Worker/Codex must:

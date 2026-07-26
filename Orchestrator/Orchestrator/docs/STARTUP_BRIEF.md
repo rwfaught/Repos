@@ -42,8 +42,8 @@ participant is present, and no participant recruitment or outreach is
 authorized. The public-evidence synthetic HVAC case is retained as a future
 proving-use-case option.
 
-`GOVERNED_RESEARCH_INVESTIGATION=ACTIVE_REUSABLE_WORK_PATTERN_TRACK` and
-`RESEARCH_IMPLEMENTATION_AUTHORIZED=FALSE`. The governing sequence is:
+`GOVERNED_RESEARCH_INVESTIGATION=BOUNDED_V1_PROOF_STAGE_COMPLETE_REUSABLE_PATTERN_PRESERVED`.
+The governing sequence has completed its one bounded historical-record proof:
 
 `RECONCILE_CURRENT_TRUTH → RATIFY_ACTIVE_DIRECTION → AUDIT_CROSS_DOMAIN_GENERALITY → DESIGN_GOVERNED_RESEARCH_V1 → RUN_ONE_PUBLIC_SOURCE_PROOF`.
 
@@ -65,11 +65,12 @@ scholarly-publication, and endpoint-definition limits. The manual documentary
 proof is completed and CTO-ratified, and Roger accepted its
 `QUALIFIED_CONCLUSION`; the durable result is
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_MANUAL_PROOF_AND_HUMAN_DISPOSITION_DECISION.md`.
-One fixture-driven source/test proof is selected as the next stage. Its bounded
-design is durable at
-`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_SOURCE_TEST_PROOF_SELECTION_AND_BOUNDED_IMPLEMENTATION_DESIGN_DECISION.md`.
-Fixture creation, source/test implementation, and research implementation remain
-unauthorized pending a separate readiness assessment and authorization.
+The fixture-driven source/test proof is completed and CTO-ratified at
+`ee1a1f97e7c29fcc0f47ac3ccd9d0b0b64ce3221`; its bounded closeout and
+non-proofs are durable at
+`docs/GOVERNED_RESEARCH_V1_CLOSEOUT_AUTONOMY_AND_FOUNDER_VISIBILITY_RECONCILIATION_DECISION.md`.
+This completes one fixed historical-record proof stage only, not generalized
+research, Phase 5, generalized Phase 6, or research implementation generally.
 The temporary active CTO continuity capsule has been retired and deleted;
 future startup should not expect it as a source. Orient through ordinary
 startup authority and the durable decision record.
@@ -280,6 +281,11 @@ The current cockpit snapshot is
 `docs/FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md`. After that snapshot, the
 project should stop at founder ratification rather than resume implementation
 by sequence momentum.
+
+The accepted static Founder Cockpit has not become a live read-only operator
+surface. After this reconciliation, the ranked next project outcome is
+`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`; it remains separately
+authorized and is not implemented by this document update.
 
 The prior Option 3 abstraction-first ratification remains historical structural
 context. The current proving-use-case ratification is recorded in

@@ -51,10 +51,10 @@ Research V1 application design is complete and CTO-ratified.
 CTO-ratified selected domain is `PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`. The
 manual documentary proof is completed and CTO-ratified; Roger accepted its
 `QUALIFIED_CONCLUSION`, with provenance and endpoint limitations preserved.
-One fixture-driven source/test proof is selected as the next stage, with
-implementation and fixture creation still unauthorized pending a separate
-readiness assessment; the public-evidence synthetic HVAC case remains a future
-proving-use-case option.
+The fixture-driven source/test proof is completed and CTO-ratified at
+`ee1a1f97e7c29fcc0f47ac3ccd9d0b0b64ce3221`; this completes one bounded
+historical-record proof stage only. The public-evidence synthetic HVAC case
+remains a future proving-use-case option.
 
 Governance strength is substantial. The primary strategic challenge is turning
 that discipline into useful, founder-legible work without allowing framework or
@@ -78,9 +78,9 @@ replace it with opaque autonomy or an alternate control system.
 | Canonical bounded execution | Alpha-authoritative | A structured bounded coding task can move through explicit authorization, persisted records, controlled worker execution, deterministic verification, human disposition, and read-only reconciliation. |
 | Provider-backed task proof | Exact task closed | One exact provider-backed coding task is accepted; this is not generalized provider/model competence or selection. |
 | Case/dossier substrate | First fictional controlled workflow proof completed; generalized phase incomplete | One explicit fictional dossier case can be persisted and reloaded, adapted into the existing evidence-linked synthesis contract, and returned with validated supplied evidence links and a separate human disposition. This satisfies the first structural fictional Phase 6 proof, but does not establish generalized workflow competence, real proving-use-case evidence, competent casework, or Phase 5 provenance adoption. |
-| Founder Cockpit | Static design/prototype accepted; live work separate | The fixture-backed static visual hierarchy and representative-context transfer are accepted at prototype level; this is not a deployed control surface, live integration, or implementation authorization. |
+| Founder Cockpit | Static design/prototype accepted; live surface ranked next | The fixture-backed static visual hierarchy and representative-context transfer are accepted; live integration is not implemented or proven. The next ranked project outcome is a bounded read-only minimum useful surface, not a second control system or product-interface commitment. |
 | Revenue-bearing proving use case | Ratified, paused-valid, not operationally proven | The dossier remains valid and preserved, but its real engagement is blocked pending a participant and is off the immediate critical path. |
-| Governed-research investigation | Source/test proof selected; implementation not yet authorized | The selected domain is `PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`; the six-source corpus remains unchanged and Roger accepted the manual proof's `QUALIFIED_CONCLUSION`. One fixture-driven proof is selected to demonstrate governed evidence handling; fixture creation, source/test implementation, and research implementation remain unauthorized. |
+| Governed-research investigation | Bounded V1 proof stage complete; reusable pattern preserved | The selected historical-record case now has completed CTO-ratified manual and source/test proof at `ee1a1f97e7c29fcc0f47ac3ccd9d0b0b64ce3221`. Its `QUALIFIED_CONCLUSION` is narrow and does not establish generalized research, Phase 5, generalized Phase 6, or production readiness. |
 | Product wedge and productionization | Deferred / not started | Neither a first wedge nor the operational foundations for production have been selected or proven. |
 
 ## 5. Completed Foundation
@@ -127,9 +127,9 @@ product-wedge evidence, productization, or production-readiness evidence.
 - trusted_local_unsandboxed is a trusted-worker posture, not comprehensive operating-system containment.
 - Provider/model generalization remains unproven, and main.py remains a separate legacy migration concern.
 - Repeated real-world user, value, burden, trust, privacy, and willingness-to-pay evidence is still absent.
-- Governed Research V1 source/test proof is selected to establish bounded
-  application behavior beyond documentary semantics, but it remains unimplemented
-  pending a separate readiness assessment and authorization.
+- The bounded Governed Research V1 historical-record proof stage is complete;
+  its source/test proof is not generalized research, Phase 5, or generalized
+  Phase 6 completion.
 
 ## 8. Roadmap Phases
 
@@ -145,7 +145,7 @@ Exit condition: a coherent bounded alpha spine is proven and adopted.
 
 ### Phase 2 — Founder Visibility and Cockpit
 
-Status: ACTIVE_ADVISORY_SIDECAR
+Status: STATIC_PROTOTYPE_COMPLETE_LIVE_READ_ONLY_OUTCOME_RANKED
 
 This phase covers Founder Cockpit information architecture, read-only state
 visualization, proof/caveat visibility, authority and freshness indicators, and
@@ -153,8 +153,9 @@ a fixture-backed prototype before live integration. The static design/prototype
 exit condition is satisfied: the accepted six-unit hierarchy was reviewed in a
 four-frame canonical/degraded/narrow composition and transferred without
 redesign into the representative fictional `Ozark Family Dental AI Intake
-Pilot`. Live integration and implementation are neither authorized nor proven;
-any future Cockpit work must be separately ranked against useful-work needs.
+Pilot`. Live integration is not implemented or proven. The next ranked project
+outcome is `LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`; it still
+requires a separate implementation boundary.
 
 Static design/prototype exit condition: satisfied. This does not complete or
 deploy a Cockpit, or establish accessibility, responsive, interaction,
@@ -338,10 +339,11 @@ six-source corpus and manual-proof selection are durable at
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_CORPUS_RATIFICATION_AND_MANUAL_PROOF_SELECTION_DECISION.md`.
 The completed manual-proof and human-disposition result is durable at
 `docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_MANUAL_PROOF_AND_HUMAN_DISPOSITION_DECISION.md`.
-The selected source/test proof and bounded implementation design are durable at
-`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_SOURCE_TEST_PROOF_SELECTION_AND_BOUNDED_IMPLEMENTATION_DESIGN_DECISION.md`.
-Fixture creation, source/test implementation, and research implementation
-remain blocked pending a separate readiness assessment and authorization.
+The completed source/test proof is durable in
+`docs/GOVERNED_RESEARCH_V1_CLOSEOUT_AUTONOMY_AND_FOUNDER_VISIBILITY_RECONCILIATION_DECISION.md`
+and implementation commit `ee1a1f97e7c29fcc0f47ac3ccd9d0b0b64ce3221`.
+The proof stage is complete for one fixed historical-record case only; broader
+research implementation, Phase 5, and generalized Phase 6 remain unproven.
 
 ## 11. Deferred Decisions
 
