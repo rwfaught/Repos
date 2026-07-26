@@ -237,9 +237,14 @@ This snapshot does not prove:
 
 ## 9. Next Bounded Move
 
-Recommended next outcome:
+Historical preimplementation recommendation (superseded by the implemented
+Cockpit and current coordination authority):
 
 `LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`
+
+`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`
+
+`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`
 
 Purpose:
 

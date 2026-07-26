@@ -60,3 +60,13 @@ This proves only local source/test/operator-launch behavior. It does not prove
 production deployment, accessibility certification, independent-user utility,
 complete Markdown understanding, generalized project management, or automatic
 authority reconciliation.
+
+## Founder Review Prompt
+
+After using the Cockpit, please answer:
+
+1. Can you tell where the project is within 30 seconds?
+2. Can you identify the most important unresolved issue?
+3. Can you distinguish what is proven from what is not?
+4. Can you identify whether a decision is currently required from you?
+5. Does the page reduce your dependence on ChatGPT or Codex explanations?

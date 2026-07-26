@@ -86,7 +86,11 @@ Roger currently relies primarily on ChatGPT, Codex, and written reports to
 understand project state. The accepted static cockpit was not rejected; live
 integration was deferred while underlying structures and workflows matured.
 
-`NEXT_RANKED_PROJECT_OUTCOME=LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`
+`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE=IMPLEMENTED_PENDING_FOUNDER_USEFULNESS_DISPOSITION`
+
+`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`
+
+`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`
 
 The future Cockpit is a read-only window over existing authority, not a second
 control system or a product-interface commitment. Subject to current source

@@ -6,6 +6,12 @@ This file is the compact current-state startup summary for CTO/coordinator
 orientation. It is a cockpit view of current tracks and open threads. It does
 not replace the full historical ledger.
 
+`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE=IMPLEMENTED_PENDING_FOUNDER_USEFULNESS_DISPOSITION`
+
+`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`
+
+`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`
+
 ## Source Relationship
 
 - Full historical ledger: `TRACKS_AND_OPEN_THREADS.md`

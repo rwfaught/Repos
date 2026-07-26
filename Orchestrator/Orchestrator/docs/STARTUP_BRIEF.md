@@ -288,6 +288,10 @@ limits are documented in `docs/FOUNDER_COCKPIT_LIVE_READ_ONLY_OPERATOR_GUIDE.md`
 It is a non-authoritative window over current repository authority, not a
 production dashboard or a product-interface commitment.
 
+`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`
+
+`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`
+
 The prior Option 3 abstraction-first ratification remains historical structural
 context. The current proving-use-case ratification is recorded in
 `docs/FIRST_REVENUE_PROVING_USE_CASE_RATIFICATION_RECORD.md`. Neither record

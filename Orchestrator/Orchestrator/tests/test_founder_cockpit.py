@@ -14,12 +14,12 @@ class FounderCockpitTests(unittest.TestCase):
         root = Path(tempfile.mkdtemp()); docs = root / "docs"; docs.mkdir()
         data = {
             "PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md": "Project stage remains `POST_FOUNDATION_PRE_PRODUCTIZATION_ALPHA`\n",
-            "TRACKS_AND_OPEN_THREADS_CURRENT.md": "| Track | Status | Current posture |\n| --- | --- | --- |\n| Core | ACTIVE | visible |\n| Deferred | DEFERRED | visible |\n",
-            "STARTUP_BRIEF.md": "Current authority.\n",
-            "FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md": "Roger must decide what to ratify before implementation resumes.\nRecommended next outcome:\n`LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`\n",
-            "GOVERNED_RESEARCH_V1_CLOSEOUT_AUTONOMY_AND_FOUNDER_VISIBILITY_RECONCILIATION_DECISION.md": "`NEXT_RANKED_PROJECT_OUTCOME=LIVE_READ_ONLY_FOUNDER_COCKPIT_MINIMUM_USEFUL_SURFACE`\n",
+            "TRACKS_AND_OPEN_THREADS_CURRENT.md": "| Track | Status | Current posture |\n| --- | --- | --- |\n| Core | ACTIVE | visible |\n| Core | ACTIVE | duplicate |\n| Core alias | ACTIVE | distinct |\n| Deferred | DEFERRED | visible |\n",
+            "STARTUP_BRIEF.md": "`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`\n`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`\n",
+            "FOUNDER_COMPREHENSION_SNAPSHOT_CURRENT.md": "Historical text only.\n",
+            "GOVERNED_RESEARCH_V1_CLOSEOUT_AUTONOMY_AND_FOUNDER_VISIBILITY_RECONCILIATION_DECISION.md": "`NEXT_RANKED_PROJECT_OUTCOME=PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION`\n`PENDING_FOUNDER_DISPOSITION=FOUNDER_COCKPIT_USEFULNESS_AND_COMPREHENSION_REVIEW`\n",
         }
-        if conflict: data["STARTUP_BRIEF.md"] += "`NEXT_RANKED_PROJECT_OUTCOME=OTHER_OUTCOME`\n"
+        if conflict: data["STARTUP_BRIEF.md"] = data["STARTUP_BRIEF.md"].replace("PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION", "OTHER_OUTCOME")
         if stale: data["STARTUP_BRIEF.md"] += "`CURRENT_REPOSITORY_BASIS=not-current`\n"
         for name, text in data.items():
             if name != missing: (docs / name).write_text(text, encoding="utf-8")
@@ -27,7 +27,7 @@ class FounderCockpitTests(unittest.TestCase):
 
     def test_canonical_model_has_live_sources_and_escaped_output(self):
         root = self.make_root(); model = derive_cockpit(root); page = render_html(model)
-        self.assertEqual("CANONICAL_CURRENT_READ", model["health"]); self.assertIn("Position", page); self.assertIn("READ ONLY", page)
+        self.assertEqual("CANONICAL_CURRENT_READ", model["health"]); self.assertIn("Where the project is", page); self.assertIn("READ ONLY", page)
 
     def test_missing_source_is_visible(self):
         model = derive_cockpit(self.make_root(missing="STARTUP_BRIEF.md")); self.assertIn("MISSING_SOURCE", " ".join(model["warnings"]))
@@ -43,7 +43,14 @@ class FounderCockpitTests(unittest.TestCase):
         self.assertIn("&lt;script&gt;", render_html(model))
 
     def test_track_groups_are_present(self):
-        model = derive_cockpit(self.make_root()); self.assertEqual(["Core — ACTIVE"], model["tracks"]["ACTIVE"])
+        model = derive_cockpit(self.make_root())
+        self.assertEqual(2, len(model["tracks"]["ACTIVE"]))
+        self.assertIn("Core alias — ACTIVE [ACTIVE]", model["tracks"]["ACTIVE"])
+
+    def test_current_orientation_supersedes_historical_cockpit_outcome(self):
+        model = derive_cockpit(self.make_root()); page = render_html(model)
+        self.assertEqual("PENDING_CTO_RERANK_AFTER_FOUNDER_COCKPIT_USEFULNESS_DISPOSITION", model["outcome"])
+        self.assertIn("What needs your attention", page); self.assertIn("Watch, deferred, and completed tracks", page)
 
     def test_loopback_server_is_get_only_and_serves_current_view(self):
         server = make_server(self.make_root(), 0); thread = threading.Thread(target=server.serve_forever); thread.start()
