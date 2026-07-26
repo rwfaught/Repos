@@ -58,6 +58,10 @@ class FounderCockpitTests(unittest.TestCase):
         self.assertIn("Major capability map", page)
         self.assertIn("docs/PROJECT_TRAJECTORY_AND_ROADMAP_CURRENT.md", page)
 
+    def test_long_track_identifier_has_safe_wrap_style(self):
+        page = render_html(derive_cockpit(self.make_root()))
+        self.assertIn(".track li{overflow-wrap:anywhere;word-break:break-word}", page)
+
     def test_loopback_server_is_get_only_and_serves_current_view(self):
         server = make_server(self.make_root(), 0); thread = threading.Thread(target=server.serve_forever); thread.start()
         try:
