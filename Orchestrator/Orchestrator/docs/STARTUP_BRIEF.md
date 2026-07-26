@@ -61,9 +61,12 @@ at `DURABLE_DECISION_RECORD_COMMIT=2bda3418b7573d471a81c7794124e4b9a9499cdc`;
 `GOVERNED_RESEARCH_V1_PROOF_PLANNING_GATE=COMPLETED_CTO_RATIFIED` and
 `SELECTED_PROOF_DOMAIN=PUBLIC_HISTORICAL_RECORD_CLAIM_BRIEF`. The corrected
 six-source corpus is CTO-ratified with explicit transcription, scan-access,
-scholarly-publication, and endpoint-definition limits. Manual documentary
-proof is selected next but not yet executed; fixture-driven source/test proof,
-proof execution, and implementation remain unauthorized.
+scholarly-publication, and endpoint-definition limits. The manual documentary
+proof is completed and CTO-ratified, and Roger accepted its
+`QUALIFIED_CONCLUSION`; the durable result is
+`docs/GOVERNED_RESEARCH_V1_HISTORICAL_RECORD_MANUAL_PROOF_AND_HUMAN_DISPOSITION_DECISION.md`.
+Fixture-driven source/test proof is a next CTO decision candidate; source/test
+execution and implementation remain unauthorized.
 The temporary active CTO continuity capsule has been retired and deleted;
 future startup should not expect it as a source. Orient through ordinary
 startup authority and the durable decision record.
