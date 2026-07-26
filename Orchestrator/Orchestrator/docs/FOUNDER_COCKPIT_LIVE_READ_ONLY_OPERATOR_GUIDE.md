@@ -8,7 +8,15 @@ authority, approve decisions, or control project state.
 
 ## Launch and Refresh
 
-From `Orchestrator/Orchestrator`, run:
+From `Orchestrator/Orchestrator`, run the one-step launcher:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\start_founder_cockpit.ps1
+```
+
+It opens `http://127.0.0.1:8765/` and keeps the read-only server running in
+that PowerShell window. Leave the window open while using the Cockpit; press
+`Ctrl+C` there to stop it. As an alternative, run the server directly:
 
 ```powershell
 $Start = Get-Date
