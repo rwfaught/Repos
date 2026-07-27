@@ -88,6 +88,14 @@ Its deterministic fixture flow is source/test proof. The fixed native Codex
 worker has also completed the exact fixture proof, passed the canonical audit
 and verifier, and received the persisted operator acceptance disposition.
 
+## Operator Workbench V1.1 guided flow
+
+`OPERATOR_WORKBENCH_V1_1_GUIDED_INTENT_TO_REVIEWED_RESULT=SOURCE_TEST_AND_BOUNDED_NATIVE_CODEX_PROOF_PENDING`
+
+The primary Workbench path now begins with ordinary-language intent, presents a
+bounded proposal before authorization, and keeps technical packet detail
+secondary. This does not prove founder usability or semantic correctness.
+
 ## Accepted Exact Bounded Proof Closure
 
 The bounded real provider-backed canonical proof has completed and was ratified

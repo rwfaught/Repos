@@ -5,7 +5,7 @@ import time
 import unittest
 from pathlib import Path
 
-from orchestrator.operator_workbench import Workbench, packet_from_form, render_html
+from orchestrator.operator_workbench import Workbench, guided_packet_from_form, packet_from_form, render_html
 
 
 class OperatorWorkbenchTests(unittest.TestCase):
@@ -13,18 +13,20 @@ class OperatorWorkbenchTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         self.app = Workbench(self.root, self.root / "data")
-        self.form = {"title": "Exact fixture", "objective": "Write the exact expected line.", "path": "workbench_fixtures/proof.txt", "expected_output": "Expected Workbench proof line.\n", "validation": "Exact expected output.", "worker": "fixture", "timeout": "10"}
+        self.form = {"request": "Create a launcher for the Founder Cockpit and Operator Workbench.", "worker": "fixture"}
 
     def tearDown(self): self.temp.cleanup()
 
     def test_preview_never_authorizes_execution(self):
-        packet = packet_from_form(self.form)
+        packet, proposal = guided_packet_from_form(self.form)
         self.assertEqual("preview_only", packet["authorization_decision"])
+        self.assertIn("launcher", proposal["result"].lower())
         self.assertFalse((self.root / "data").exists())
 
     def test_paths_outside_dedicated_fixture_are_rejected(self):
-        with self.assertRaises(ValueError): packet_from_form({**self.form, "path": "../outside.txt"})
-        with self.assertRaises(ValueError): packet_from_form({**self.form, "path": "source.py"})
+        generic = {"request": "Create a text file.", "result": "A sufficiently descriptive expected result."}
+        with self.assertRaises(ValueError): guided_packet_from_form({**generic, "path": "../outside.txt"})
+        with self.assertRaises(ValueError): guided_packet_from_form({**generic, "path": "source.py"})
 
     def test_fixture_run_persists_canonical_evidence_then_accepts(self):
         self.app.start(self.form)
@@ -58,7 +60,8 @@ class OperatorWorkbenchTests(unittest.TestCase):
         self.assertEqual("Do not accept yet", presentation["keep"])
 
     def test_completed_result_is_decision_ready_and_elapsed_time_stops(self):
-        self.app.active = {"state": "awaiting_review", "started_at": "2026-01-01T00:00:00+00:00", "ended_at": "2026-01-01T00:00:02+00:00", "packet": packet_from_form(self.form, authorized=True)}
+        packet, _ = guided_packet_from_form(self.form, authorized=True)
+        self.app.active = {"state": "awaiting_review", "started_at": "2026-01-01T00:00:00+00:00", "ended_at": "2026-01-01T00:00:02+00:00", "packet": packet}
         self.assertEqual(2.0, self.app.status()["elapsed_seconds"])
         presentation = self.app._presentation(
             {"state": "awaiting_review"},
@@ -69,9 +72,9 @@ class OperatorWorkbenchTests(unittest.TestCase):
 
     def test_result_view_hides_raw_evidence_by_default(self):
         page = render_html(self.app)
-        self.assertIn("Can this be kept?", page)
-        self.assertIn("Technical evidence (optional)", page)
-        self.assertNotIn('id=status', page)
+        self.assertIn("Describe the outcome you want", page)
+        self.assertIn("Proposal before authorization", page)
+        self.assertNotIn("Expected output", page)
 
 
 if __name__ == "__main__": unittest.main()

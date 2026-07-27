@@ -28,6 +28,18 @@ from orchestrator.operator_packet_result_decision import record_packet_result_op
 TRUST_POSTURE = "trusted_local_unsandboxed"
 ALLOWED_PREFIX = "workbench_fixtures/"
 MAX_OUTPUT_CHARS = 12000
+LAUNCHER_TEMPLATE = """$ProjectRoot = Split-Path -Parent $PSScriptRoot
+$FounderCockpit = Join-Path $ProjectRoot 'scripts\\start_founder_cockpit.ps1'
+$Workbench = Join-Path $ProjectRoot 'scripts\\start_orchestrator_workbench.ps1'
+Write-Host 'Orchestrator Tools'
+Write-Host '1. Start Founder Cockpit'
+Write-Host '2. Start Operator Workbench'
+Write-Host 'Q. Quit'
+$choice = Read-Host 'Select an option'
+if ($choice -eq '1') { & powershell.exe -ExecutionPolicy Bypass -File $FounderCockpit }
+elseif ($choice -eq '2') { & powershell.exe -ExecutionPolicy Bypass -File $Workbench }
+else { Write-Host 'No launcher was started.' }
+"""
 
 
 def _now() -> str:
@@ -66,6 +78,27 @@ def packet_from_form(form: dict[str, str], *, authorized: bool = False) -> dict[
     }
 
 
+def guided_packet_from_form(form: dict[str, str], *, authorized: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
+    request = _text(form.get("request"), limit=4000)
+    if not request:
+        raise ValueError("Describe the small outcome you want in ordinary language.")
+    lowered = request.lower()
+    known_launcher = "launcher" in lowered and "cockpit" in lowered and "workbench" in lowered
+    if known_launcher:
+        derived = {"title": "Create an Orchestrator tools launcher", "objective": request, "path": "workbench_fixtures/start_orchestrator_tools.ps1", "expected_output": LAUNCHER_TEMPLATE, "validation": "The declared launcher file exists and exactly matches the proposed launcher.", "worker": "codex", "timeout": "600"}
+        assumptions = ["This is the recognized Founder Cockpit and Operator Workbench launcher request.", "The launcher is limited to the dedicated Workbench fixture path."]
+    else:
+        path = _text(form.get("path"))
+        result = str(form.get("result") or "")
+        if not path or not result.strip():
+            raise ValueError("To keep this task bounded, say where the fixture result should be saved and describe the exact result it should contain.")
+        derived = {"title": request[:180], "objective": request, "path": path, "expected_output": result, "validation": "The declared file exists and exactly matches the proposed result.", "worker": "codex", "timeout": "600"}
+        assumptions = ["The requested result is limited to the single fixture file you named."]
+    packet = packet_from_form({**derived, "commit_authorized": "", "push_authorized": ""}, authorized=authorized)
+    proposal = {"understanding": request, "file": packet["files_in_scope"][0], "result": "A Windows launcher for the currently supported operator tools." if known_launcher else "The exact plain-language result you supplied.", "checks": packet["success_criteria"], "will_not": ["change files outside the declared fixture path", "commit or push", "run an arbitrary browser-supplied command"], "commit_authorized": False, "push_authorized": False, "assumptions": assumptions}
+    return packet, proposal
+
+
 def _read_json(path: Path) -> dict[str, Any] | None:
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
@@ -95,14 +128,14 @@ class Workbench:
         with self.lock:
             if self.active and self.active.get("state") == "executing":
                 raise ValueError("One Workbench run is already executing.")
-            packet = packet_from_form(form, authorized=True)
-            worker = _text(form.get("worker"))
+            packet, proposal = guided_packet_from_form(form, authorized=True)
+            worker = _text(form.get("worker")) or "codex"
             command = self.worker_command(worker)
             timeout = _text(form.get("timeout")) or "600"
             packet_dir = self.data_root / "workbench_packets"; packet_dir.mkdir(parents=True, exist_ok=True)
             packet_path = packet_dir / f"{packet['packet_id']}.json"; packet_path.write_text(json.dumps(packet, indent=2), encoding="utf-8")
             argv = [sys.executable, "-m", "orchestrator.operator_coding_task_packet_cli", "--packet-json", str(packet_path), "--data-root", str(self.data_root), "--trusted-worker-posture", TRUST_POSTURE, "--worker-timeout-seconds", timeout, "--worker-command", *command]
-            item = {"state": "executing", "started_at": _now(), "packet": packet, "worker": worker, "command": "configured_named_worker", "process_state": "starting", "stdout": "", "stderr": "", "result": None}
+            item = {"state": "executing", "started_at": _now(), "packet": packet, "proposal": proposal, "worker": worker, "command": "configured_named_worker", "process_state": "preparing the bounded task", "stdout": "", "stderr": "", "result": None}
             self.active = item
             threading.Thread(target=self._run, args=(item, argv), daemon=True).start()
             return self.status()
@@ -116,7 +149,7 @@ class Workbench:
             try: item["result"] = json.loads(process.stdout)
             except json.JSONDecodeError: item["result"] = {"accepted": False, "blocked": True, "detail": "Canonical CLI returned non-JSON output."}
             item["state"] = "awaiting_review" if item["result"].get("final_task_status") == "completed" else "needs_attention"
-            item["process_state"] = f"exited:{process.returncode}"
+            item["process_state"] = "preparing the operator review" if item["state"] == "awaiting_review" else "stopped with a diagnosable failure"
         except subprocess.TimeoutExpired:
             item.update({"state": "stopped", "process_state": "workbench_launcher_timeout", "result": {"blocked": True, "detail": "Workbench launcher timeout."}})
         finally: item["ended_at"] = _now()
@@ -176,7 +209,7 @@ class Workbench:
 
 def render_html(workbench: Workbench) -> str:
     token = html.escape(workbench.csrf, quote=True)
-    return f"""<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>Operator Workbench V1</title><style>body{{font:16px system-ui;max-width:1100px;margin:auto;padding:1rem;background:#f7f8fa;color:#17202a}}section{{background:white;border:1px solid #ccd3db;border-radius:8px;padding:1rem;margin:.8rem 0}}label{{display:block;margin:.5rem 0}}input,textarea,select,button{{font:inherit;width:100%;box-sizing:border-box;padding:.45rem}}textarea{{min-height:5rem}}button{{width:auto;margin:.3rem .3rem .3rem 0}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;background:#17202a;color:#edf2f7;padding:1rem}}.warn{{border-left:5px solid #b45309}}.grid{{display:grid;grid-template-columns:1fr 1fr;gap:1rem}}.result{{border-left:5px solid #2563eb}}@media(max-width:700px){{.grid{{grid-template-columns:1fr}}}}</style><main><section><strong>LOCAL · ONE OPERATOR · BOUNDED TASKS · NOT A SANDBOX</strong><h1>Operator Workbench V1</h1><p>Creates and runs one declared coding task. It is not a safety guarantee or an operating-system sandbox.</p></section><div class=grid><section><h2>1. Task intake</h2><form id=f><label>Title<input name=title required maxlength=180></label><label>Objective<textarea name=objective required></textarea></label><label>Fixture-relative path<input name=path value='workbench_fixtures/proof.txt' required></label><label>Expected output<textarea name=expected_output required></textarea></label><label>Validation<input name=validation value='Declared output exists and matches expected output.'></label><label>Worker<select name=worker><option value=codex>Native Codex worker</option><option value=fixture>Deterministic fixture worker (test only)</option></select></label><label>Timeout seconds<input name=timeout type=number min=10 max=3600 value=600></label><label><input type=checkbox name=commit_authorized value=true> Commit authorized</label><label><input type=checkbox name=push_authorized value=true> Push authorized</label><button type=button onclick='preview()'>Preview task</button><button type=button onclick='authorize()'>Authorize and run</button></form></section><section class=warn><h2>2. Before you run it</h2><p>Preview does not run anything. Authorize and run is the deliberate execution action. The worker command is selected by the Workbench, not entered in this page.</p><pre id=preview>Fill the form, then preview the declared task.</pre></section></div><section class=result><h2>3. Result and your decision</h2><h3 id=headline>Loading…</h3><p><strong>Can this be kept?</strong> <span id=keep></span></p><p id=explanation></p><p id=elapsed></p><p id=changed></p><div id=review hidden><p><strong>Choose one recorded decision:</strong></p><button onclick="dispose('accept')">Accept result</button><button onclick="dispose('reject')">Reject result</button><button onclick="dispose('correction_required')">Request correction</button></div><details><summary>Technical evidence (optional)</summary><pre id=technical></pre></details></section><section><h2>Evidence location</h2><p>Canonical records are retained at the displayed local data location. A browser refresh or server restart keeps records but cannot reattach to an in-memory running process.</p></section></main><script>const csrf='{token}';const form=()=>Object.fromEntries(new FormData(document.querySelector('#f')).entries());async function api(path,body){{let r=await fetch(path,{{method:'POST',headers:{{'Content-Type':'application/json','X-Workbench-CSRF':csrf}},body:JSON.stringify(body)}});let x=await r.json();if(!r.ok)throw Error(x.error);return x}}async function preview(){{try{{document.querySelector('#preview').textContent=JSON.stringify(await api('/api/preview',form()),null,2)}}catch(e){{alert(e)}}}}async function authorize(){{try{{await api('/api/authorize',form());tick()}}catch(e){{alert(e)}}}}async function dispose(d){{let reason=prompt('Reason for this decision:','');if(reason===null)return;try{{await api('/api/disposition',{{decision:d,reason}});tick()}}catch(e){{alert(e)}}}}async function tick(){{let x=await (await fetch('/api/status')).json(),p=x.presentation||{{headline:'No task has been run',keep:'Not ready',explanation:'Authorize a declared task to begin.',elapsed_seconds:0,can_decide:false}};document.querySelector('#headline').textContent=p.headline;document.querySelector('#keep').textContent=p.keep;document.querySelector('#explanation').textContent=p.explanation;document.querySelector('#elapsed').textContent=`Elapsed: ${{p.elapsed_seconds||0}} seconds`;document.querySelector('#changed').textContent=p.changed_paths?.length?`Declared changes: ${{p.changed_paths.join(', ')}}`:'';document.querySelector('#technical').textContent=JSON.stringify(x,null,2);document.querySelector('#review').hidden=!p.can_decide;}}tick();setInterval(tick,1500);</script>"""
+    return f"""<!doctype html><meta charset=utf-8><title>Operator Workbench V1.1</title><style>body{{font:16px system-ui;max-width:900px;margin:auto;padding:1rem}}section{{border:1px solid #ccd3db;border-radius:8px;padding:1rem;margin:.8rem 0}}textarea,input,button{{font:inherit;width:100%;box-sizing:border-box;padding:.5rem;margin:.3rem 0}}textarea{{min-height:8rem}}button{{width:auto}}pre{{white-space:pre-wrap;overflow-wrap:anywhere}}</style><main><section><h1>Describe the outcome you want</h1><p>Use ordinary language. Orchestrator will show its bounded proposal before anything runs.</p><label>What would you like to accomplish?<textarea name=request form=f required placeholder='Create a Windows PowerShell launcher that starts the supported Orchestrator operator tools.'></textarea></label><details><summary>More detail, only if this is not the standard launcher request</summary><label>Fixture file to create<input name=path form=f placeholder='workbench_fixtures/result.txt'></label><label>What exact result should it contain?<textarea name=result form=f></textarea></label></details><form id=f><button type=button onclick='preview()'>Show proposal</button><button type=button onclick='authorize()'>Authorize this proposal</button></form></section><section><h2>Proposal before authorization</h2><div id=proposal>Describe the outcome, then choose Show proposal.</div><details><summary>Technical packet</summary><pre id=technical></pre></details></section><section><h2>Progress and review</h2><h3 id=headline>No task has been run</h3><p id=explanation></p><p id=elapsed></p><p id=changed></p><div id=review hidden><button onclick="dispose('accept')">Accept result</button><button onclick="dispose('reject')">Reject result</button><button onclick="dispose('correction_required')">Request correction</button></div></section></main><script>const csrf='{token}',form=()=>Object.fromEntries(new FormData(document.querySelector('#f')).entries());async function api(p,b){{let r=await fetch(p,{{method:'POST',headers:{{'Content-Type':'application/json','X-Workbench-CSRF':csrf}},body:JSON.stringify(b)}});let x=await r.json();if(!r.ok)throw Error(x.error);return x}}function proposal(x){{return `I understand: ${{x.understanding}}\n\nIt may change: ${{x.file}}\n\nIt will produce: ${{x.result}}\n\nIt will check: ${{x.checks.join('; ')}}\n\nIt will not: ${{x.will_not.join('; ')}}\n\nAssumptions: ${{x.assumptions.join(' ')}}\n\nCommit: no. Push: no.`}}async function preview(){{try{{let x=await api('/api/preview',form());document.querySelector('#proposal').textContent=proposal(x.proposal);document.querySelector('#technical').textContent=JSON.stringify(x.packet,null,2)}}catch(e){{alert(e)}}}}async function authorize(){{try{{await api('/api/authorize',form());tick()}}catch(e){{alert(e)}}}}async function dispose(d){{let r=prompt('Reason:','');if(r!==null){{try{{await api('/api/disposition',{{decision:d,reason:r}});tick()}}catch(e){{alert(e)}}}}}}async function tick(){{let x=await (await fetch('/api/status')).json(),p=x.presentation||{{headline:'No task has been run',explanation:'Show a proposal before authorizing.',elapsed_seconds:0,can_decide:false}};document.querySelector('#headline').textContent=p.headline;document.querySelector('#explanation').textContent=p.explanation;document.querySelector('#elapsed').textContent=`Elapsed: ${{p.elapsed_seconds||0}} seconds · ${{x.process_state||'waiting'}}`;document.querySelector('#changed').textContent=p.changed_paths?.length?`Changed: ${{p.changed_paths.join(', ')}}`:'';document.querySelector('#review').hidden=!p.can_decide}}tick();setInterval(tick,1500)</script>"""
 
 
 def make_server(root: Path, port: int = 8766, data_root: Path | None = None) -> ThreadingHTTPServer:
@@ -195,7 +228,9 @@ def make_server(root: Path, port: int = 8766, data_root: Path | None = None) -> 
             try:
                 length = int(self.headers.get("Content-Length", "0")); body = json.loads(self.rfile.read(min(length, 20000)) or b"{}")
                 if not isinstance(body, dict): raise ValueError("JSON object required")
-                if self.path == "/api/preview": value = packet_from_form({str(k): str(v) for k,v in body.items()})
+                if self.path == "/api/preview":
+                    packet, proposal = guided_packet_from_form({str(k): str(v) for k,v in body.items()})
+                    value = {"proposal": proposal, "packet": packet}
                 elif self.path == "/api/authorize": value = app.start({str(k): str(v) for k,v in body.items()})
                 else: value = app.disposition(_text(body.get("decision")), _text(body.get("reason")))
                 self._json(value)
