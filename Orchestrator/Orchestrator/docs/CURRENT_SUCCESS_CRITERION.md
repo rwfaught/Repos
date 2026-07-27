@@ -90,11 +90,13 @@ and verifier, and received the persisted operator acceptance disposition.
 
 ## Operator Workbench V1.1 guided flow
 
-`OPERATOR_WORKBENCH_V1_1_GUIDED_INTENT_TO_REVIEWED_RESULT=SOURCE_TEST_AND_BOUNDED_NATIVE_CODEX_PROOF_PENDING`
+`OPERATOR_WORKBENCH_V1_1_GUIDED_INTENT_TO_REVIEWED_RESULT=SOURCE_TEST_AND_BOUNDED_NATIVE_CODEX_PROOF_COMPLETE_FOUNDER_USABILITY_PENDING`
 
 The primary Workbench path now begins with ordinary-language intent, presents a
 bounded proposal before authorization, and keeps technical packet detail
-secondary. This does not prove founder usability or semantic correctness.
+secondary. Its exact bounded native Codex proof passed the canonical audit and
+verifier; this remains worker evidence only and does not prove founder
+usability, broad semantic correctness, or production readiness.
 
 ## Accepted Exact Bounded Proof Closure
 

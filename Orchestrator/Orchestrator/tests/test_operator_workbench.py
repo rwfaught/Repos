@@ -58,6 +58,8 @@ class OperatorWorkbenchTests(unittest.TestCase):
         )
         self.assertFalse(presentation["can_decide"])
         self.assertEqual("Do not accept yet", presentation["keep"])
+        self.assertTrue(presentation["can_revise"])
+        self.assertIn("production readiness", presentation["limitations"][0])
 
     def test_completed_result_is_decision_ready_and_elapsed_time_stops(self):
         packet, _ = guided_packet_from_form(self.form, authorized=True)
@@ -74,6 +76,8 @@ class OperatorWorkbenchTests(unittest.TestCase):
         page = render_html(self.app)
         self.assertIn("Describe the outcome you want", page)
         self.assertIn("Proposal before authorization", page)
+        self.assertIn("Requested outcome", page)
+        self.assertIn("Use this correction in a revised proposal", page)
         self.assertNotIn("Expected output", page)
 
 

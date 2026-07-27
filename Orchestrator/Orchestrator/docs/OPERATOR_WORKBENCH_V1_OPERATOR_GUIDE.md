@@ -26,18 +26,23 @@ separate surface; the Cockpit itself remains read-only.
 
 ## Use
 
-Enter title, objective, a `workbench_fixtures/` path, exact expected output,
-validation text, explicit worker, timeout, and optional commit/push intent.
-Preview first. Preview creates no task and does not authorize a worker.
-`Authorize and run` is the only execution action and preserves the canonical
-authorization record. The browser never accepts a shell command or a free-form
-provider command.
+Describe the small outcome you want in ordinary language. For the recognized
+request to create a launcher for the Founder Cockpit and Operator Workbench,
+the Workbench fills in the single allowed fixture file and its exact launcher
+content. For another small fixture result, provide the allowed fixture path and
+the exact result to contain. Preview first. Preview creates no task and does
+not authorize a worker. `Authorize this proposal` is the only execution action
+and preserves the canonical authorization record. The browser never accepts a
+shell command, free-form provider command, commit, or push instruction.
 
-While executing, the page reports a plain-language result, whether it is ready
-for a recorded decision, declared changed paths, and frozen elapsed time once
-the worker stops. The technical lifecycle records remain available only in an
-optional disclosure. The Workbench shows decision buttons only when the
-canonical lifecycle can record them; otherwise it says not to accept yet.
+While executing, the page reports a plain-language result, the requested
+outcome, declared checks, limits of those checks, changed paths, and frozen
+elapsed time once the worker stops. The technical lifecycle records remain
+available only in an optional disclosure. The Workbench shows decision buttons
+only when the canonical lifecycle can record them. If a task cannot be
+recorded as a decision, the page says not to accept it and lets the operator
+describe the correction; that note creates a revised proposal which still
+requires a fresh preview and explicit authorization.
 
 The Codex selection uses the fixed, native Windows Codex CLI distributed at
 `C:\Users\accou\.codex\packages\standalone\releases\0.145.0-x86_64-pc-windows-msvc\bin\codex.exe`.
