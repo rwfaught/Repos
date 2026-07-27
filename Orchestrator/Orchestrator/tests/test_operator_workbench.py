@@ -5,7 +5,7 @@ import time
 import unittest
 from pathlib import Path
 
-from orchestrator.operator_workbench import Workbench, packet_from_form
+from orchestrator.operator_workbench import Workbench, packet_from_form, render_html
 
 
 class OperatorWorkbenchTests(unittest.TestCase):
@@ -47,6 +47,31 @@ class OperatorWorkbenchTests(unittest.TestCase):
     def test_codex_selection_uses_the_fixed_protocol_adapter(self):
         command = self.app.worker_command("codex")
         self.assertEqual(["-m", "orchestrator.operator_workbench_codex_worker"], command[1:])
+
+    def test_failed_result_has_no_recordable_decision(self):
+        presentation = self.app._presentation(
+            {"state": "needs_attention"},
+            {"task": {"status": "execution_failed"}, "artifact": {"error": "worker_nonzero_exit"}, "verifier": {}},
+            2.0,
+        )
+        self.assertFalse(presentation["can_decide"])
+        self.assertEqual("Do not accept yet", presentation["keep"])
+
+    def test_completed_result_is_decision_ready_and_elapsed_time_stops(self):
+        self.app.active = {"state": "awaiting_review", "started_at": "2026-01-01T00:00:00+00:00", "ended_at": "2026-01-01T00:00:02+00:00", "packet": packet_from_form(self.form, authorized=True)}
+        self.assertEqual(2.0, self.app.status()["elapsed_seconds"])
+        presentation = self.app._presentation(
+            {"state": "awaiting_review"},
+            {"task": {"status": "completed", "worker_security": {"workspace_effect_audit": {"changed_paths": ["workbench_fixtures/proof.txt"]}}}, "artifact": {"status": "success"}, "verifier": {"verification_result": {"overall_passed": True}}},
+            2.0,
+        )
+        self.assertTrue(presentation["can_decide"])
+
+    def test_result_view_hides_raw_evidence_by_default(self):
+        page = render_html(self.app)
+        self.assertIn("Can this be kept?", page)
+        self.assertIn("Technical evidence (optional)", page)
+        self.assertNotIn('id=status', page)
 
 
 if __name__ == "__main__": unittest.main()

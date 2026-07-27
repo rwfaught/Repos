@@ -33,11 +33,11 @@ Preview first. Preview creates no task and does not authorize a worker.
 authorization record. The browser never accepts a shell command or a free-form
 provider command.
 
-While executing, the page polls persisted task/run/artifact/verifier and worker
-state, showing elapsed time, process state, worker result, bounded stdout and
-stderr, changed-path audit, verification, non-proofs, and record location.
-After completion, inspect the records and explicitly accept, reject, or mark
-correction required with a reason. Rejection never launches follow-up work.
+While executing, the page reports a plain-language result, whether it is ready
+for a recorded decision, declared changed paths, and frozen elapsed time once
+the worker stops. The technical lifecycle records remain available only in an
+optional disclosure. The Workbench shows decision buttons only when the
+canonical lifecycle can record them; otherwise it says not to accept yet.
 
 The Codex selection uses the fixed, native Windows Codex CLI distributed at
 `C:\Users\accou\.codex\packages\standalone\releases\0.145.0-x86_64-pc-windows-msvc\bin\codex.exe`.

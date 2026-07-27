@@ -43,6 +43,21 @@ class WorkbenchCodexWorkerTests(unittest.TestCase):
             with patch("sys.stdin", __import__("io").StringIO(json.dumps(payload))), patch("sys.stderr", __import__("io").StringIO()):
                 self.assertEqual(1, adapter.main())
 
+    def test_adapter_cleans_native_residue_before_reporting_an_exact_output_failure(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = Path(temporary)
+            target = workspace / "workbench_fixtures" / "proof.txt"
+            binary = workspace / "codex.exe"; binary.write_text("test binary", encoding="utf-8")
+            payload = {"task_id": "task", "run_id": "run", "objective": "write proof", "expected_output": "exact", "allowed_paths": [str(target)], "worker_workspace": str(workspace), "trust_posture": "trusted_local_unsandboxed"}
+            def write_wrong_target(command, **_):
+                target.parent.mkdir(); target.write_text("wrong", encoding="utf-8")
+                (workspace / ".agents").mkdir(); (workspace / ".git").mkdir()
+                return type("Done", (), {"returncode": 0, "stdout": "done", "stderr": ""})()
+            with patch.object(adapter, "CODEX_BINARY", binary), patch("sys.stdin", __import__("io").StringIO(json.dumps(payload))), patch("sys.stderr", __import__("io").StringIO()), patch("orchestrator.operator_workbench_codex_worker.subprocess.run", side_effect=write_wrong_target):
+                self.assertEqual(1, adapter.main())
+            self.assertFalse((workspace / ".agents").exists())
+            self.assertFalse((workspace / ".git").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

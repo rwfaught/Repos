@@ -88,9 +88,9 @@ def main() -> int:
         if completed.returncode != 0:
             detail = (completed.stderr or completed.stdout)[-MAX_CODEX_OUTPUT_CHARS:]
             raise RuntimeError(f"Native Codex exited {completed.returncode}: {detail}")
+        removed_residue = _remove_known_cli_residue(workspace)
         if not target.is_file() or target.read_text(encoding="utf-8") != payload["expected_output"]:
             raise RuntimeError("Native Codex did not produce the exact declared output.")
-        removed_residue = _remove_known_cli_residue(workspace)
         print(json.dumps({
             "task_id": payload["task_id"], "run_id": payload["run_id"], "status": "success",
             "output": payload["expected_output"], "changed_paths": [str(target)],
