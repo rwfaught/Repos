@@ -76,6 +76,18 @@ product-market fit. `trusted_local_unsandboxed` is not an operating-system
 sandbox, and effects outside the controlled workspace are not comprehensively
 observed.
 
+## Operator Workbench V1
+
+`ORCHESTRATOR_OPERATOR_WORKBENCH_V1=IMPLEMENTED_AT_LOCAL_SINGLE_OPERATOR_BOUNDED_CODING_TASK_LEVEL`
+
+The separate loopback Workbench gives the operator a preview, explicit
+execution action, live canonical-state readback, evidence inspection, and
+human disposition over the adopted lifecycle. It is limited to one active,
+fixture-scoped bounded task and does not alter the alpha spine or its caveats.
+Its deterministic fixture flow is source/test proof. The fixed native Codex
+worker has also completed the exact fixture proof, passed the canonical audit
+and verifier, and received the persisted operator acceptance disposition.
+
 ## Accepted Exact Bounded Proof Closure
 
 The bounded real provider-backed canonical proof has completed and was ratified

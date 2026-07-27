@@ -8,6 +8,7 @@ htmlcov/
 *.Zone.Identifier
 .DS_Store
 Thumbs.db
+.operator_workbench_data/
 
 # ORCHESTRATOR_SOURCE_HYGIENE_GENERATED_WORKSPACE_BEGIN
 # Generated Orchestrator workspace state: preserve directories, exclude runtime/proof payloads.
